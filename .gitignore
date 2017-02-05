@@ -1,6 +1,8 @@
 .idea/
-main.aux
-main.log
+src/main.pdf
+src/main.aux
+src/main.log
+src/main.dvi
 literature-network.gml
 .ipynb_checkpoints/
 
