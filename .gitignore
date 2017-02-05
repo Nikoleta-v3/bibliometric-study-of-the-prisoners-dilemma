@@ -3,6 +3,7 @@ src/main.pdf
 src/main.aux
 src/main.log
 src/main.dvi
+src/main.out
 literature-network.gml
 .ipynb_checkpoints/
 
