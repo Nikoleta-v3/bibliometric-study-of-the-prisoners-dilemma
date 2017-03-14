@@ -9,4 +9,7 @@ src/main.blg
 src/_minted-main/
 literature-network.gml
 .ipynb_checkpoints/
-
+scraping/articles/
+scraping/__pycache__/
+scraping/nbs/data.json
+scraping/failed_validation
