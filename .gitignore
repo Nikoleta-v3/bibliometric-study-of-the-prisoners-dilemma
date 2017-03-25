@@ -9,4 +9,5 @@ src/main.blg
 src/_minted-main/
 literature-network.gml
 .ipynb_checkpoints/
-
+scraping/
+.Rhistory
