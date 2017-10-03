@@ -1,13 +1,19 @@
+# pycharm files
 .idea/
-src/main.pdf
-src/main.aux
-src/main.log
-src/main.dvi
-src/main.out
-src/main.bbl
-src/main.blg
-src/_minted-main/
-literature-network.gml
-.ipynb_checkpoints/
-scraping/
-.Rhistory
+
+# tex files
+*.aux
+*.log
+*.dvi
+*.out
+*.bbl
+*.blg
+
+# minted files 
+*/_minted-main/*
+
+# data
+src/data
+
+# notebooks
+src/nbs/.ipynb_checkpoints/*
