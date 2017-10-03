@@ -17,3 +17,6 @@ src/data
 
 # notebooks
 src/nbs/.ipynb_checkpoints/*
+
+# password to axelbib
+src/password.py
