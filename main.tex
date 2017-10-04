@@ -1,14 +1,18 @@
 \documentclass{article}
 % Package to manage page layout
-\usepackage[a4paper, top=25.4mm, bottom=25.4mm, right=25.4mm, left=40mm]{geometry}
+\usepackage[margin=1.5cm, includefoot, footskip=30pt]{geometry}
 
-% Line spacing: single=1 one-and-a-half=1.3 double=1.6
-\linespread{1.3}
+\setlength\parindent{0pt}
+\setlength{\parskip}{1em}
 
 %%%%%%%PACKAGES HERE%%%%%%%
-
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{standalone}
+\usepackage{tikz}
+\usetikzlibrary{er,positioning}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
-\title{Literature Review Paper for IPD}
+\title{Literature review paper for the iterated prisoner's dilemma.}
 \author{N. Glynatsi}
 \date{2016}
 
@@ -16,4 +20,218 @@
 
 \maketitle
 
+\section{Introduction}\label{section:introduction}
+
+The emergence of cooperation is a topic of continuing and public interest
+for social, biological and ecological sciences. The prisoner's dilemma is a 
+fundamental game of game theory commonly used in the evolution of altruistic
+behaviour.
+
+The prisoner's dilemma is a two players no-cooperative game where the decisions
+of the players are made simultaneously and independently. Both players can
+choose between cooperation (\textbf{C}) and defection (\textbf{D}).
+
+The fitness of each player is influenced by its own behaviour, and the behaviour
+of the participants. Players will receive a \textbf{reward} if both of them choose
+\textbf{C}, even so each of the players has a  \textbf{temptation} to deviate and
+defect. Due to rational behaviour and the knowledge that an individual is tempted,
+the game's equilibrium lies at a mutual defection and players receive a 
+\textbf{punishment} payoff.
+
+The game's payoff are  defined by,
+
+\begin{equation} \label{eq:the_pd_payoffs}
+	\begin{pmatrix} 
+	R & S \\ T & P
+	\end{pmatrix},
+\end{equation}
+
+where, 
+
+\begin{equation} \label{eq:payoffs_constrain_one}
+	T > R > P > S 
+\end{equation}
+
+and 
+
+\begin{equation} \label{eq:payoffs_constrain_two}
+	2R > T + S.
+\end{equation}
+
+Though the one shot game illustrate how  players will not
+trust their opponents and  will act selfishly, choosing defection, greater insights
+can be achieved by studying the game in a manner where the prior outcomes 
+matters. The repeated form is called the iterated prisoner's dilemma and it will
+be discussed later on how it was proven to leave more room for cooperation to 
+emerge. 
+
+The origin of the prisoner's dilemma go back to 1950 in early experiments 
+conducted in RAND~\cite{Flood1958} to test the applicability of games
+described in~\cite{VonNeumann1944}.  In~\cite{Flood1958} they introduced 
+a two player non-cooperative game but the story behind the game was
+given later the same year. A. W. Tucker, who was John Nash's supervisor, in 
+his attempt to tell a story during one of his talks gave the background story of 
+the prisoner's dilemma as we know it today~\cite{Tucker1983}. 
+
+In the following section several milestones on the research of the prisoner's
+dilemma are presented and discussed. 
+
+\section{Timeline}\label{section:timeline}
+
+The study of the prisoner's dilemma attracted people from various field.
+An important figure within the field is professor Anatol Rapoport, a mathematical
+psychologist focused on war and peacekeeping.  
+In his early work~\cite{rapoport1965} conducted experiments using humans
+playing the game. This was not only done by Prof Rapoport but several other
+researchers perform similar experiments~\cite{Evans1966, Gallo1968, Lutzker1961,
+Mack1971, Sensenig1972}. This is done until today 
+(ask Martina for a reference?). %REF
+
+These early experiments explored the conditions under which 
+altruist behaviour emerges. Furthermore, researchers were in search of a 
+dominant way to play the game. Inspired by the work of Rapoport and 
+the idea that AI was trained to play the game of chess~\cite{axelrod2012}, 
+the political scientist R. Axelrod performed the first ever computer tournament 
+of the iterated prisoner's dilemma~\cite{Axelrod1981}.
+
+In 1980~\cite{axelrod1980a}, the first computer tournament of the prisoner's 
+dilemma took place with 14 participants. The tournament was of a round robin 
+topology where each
+strategy played against all the opponents, itself and the Random strategy (a 
+strategy that chooses between \textbf{C} and \textbf{D} randomly). Each
+participant knew the exact length of the matches and had access to full history
+of each match.  The payoffs values of (\ref{eq:the_pd_payoffs}) used by Axelrod
+were the following, \(R=3, P=1, T=5\) and \(S=0\).  These values are the most 
+common used in literature and assume that they are being used in the works 
+referenced from now on unless is stated otherwise. The winner of the tournament 
+was determined by the total average score and not by the number of matches 
+wins. The strategy that was announced the winner was submitted by Prof. 
+Rapoport and was called called Tit For Tat.
+
+Tit for Tat, was a strategy that always cooperated on the first round and then
+mimics the opponents previous move. his is illustrated diagrammatically in 
+Figure~\ref{fig:tit_for_tat_diagram}. To further test the robustness of the 
+results a second tournament was performed later with a total of 63 strategies
+\cite{axelrod1980b}. All the opponents knew the results of the previous 
+tournament by this time the number of turns was not specified. Instead
+a probabilistic ending tournament was used. Each match has probability of 
+ending after each move. This is also refereed as `shadow of the future'
+is some other works~\cite{axelrod1988}. The winner of the second tournament
+was once again the strategy Tit For Tat. Tit for tat was an example of how reciprocity
+behaviour allows for cooperation to emerge in the iterated game.
+
+\begin{figure}[!hbtp]
+    \centering
+    \includestandalone[height=.3\textheight]{./assets/tex/tit_for_tat_diagram}
+    \caption{Diagrammatic representation of Tit for Tat.}
+    \label{fig:tit_for_tat_diagram}
+\end{figure}
+
+According to Axelrod, the secrets behind the strategy's success have been
+1) that it start of by cooperating 2) it would forgive it's opponent after a
+defection 3) after opponents identified that they were playing Tit for Tat choose 
+to cooperate for the rest of the game. 
+
+In~\cite{Axelrod1981}, the strategies set of second tournament was used
+to perform a ecological kind of tournament. The 63 strategies interact generation
+after generation to a round robin competition where their frequencies is proportional
+to their payoff in the previous round. Results showed that in a homogeneous
+population of Tit for Tat invasion by mutant strategies was not successful. 
+The success of Tit For Tat was very soon  known world wide and several researcher
+focused their work on the strategy ever since.%REF
+
+But success often comes with criticism. Axelrod's tournaments assumed that
+each player has perfect information of the opponent's actions. In real life 
+situation this is not always the case. Colleagues interactions are unprotected
+and often suffer from a measure of uncertainty. In the original tournaments
+there was no possibility of misimplementation or misunderstanding. These
+are implemented within the iterated prisoner's dilemma as noise and 
+mis-perception. The performance of Tit for Tat was proven to suffer from
+such stochasticity in the tournament environment, especially against
+itself~\cite{Bendor1991,Godfray1992, Molander1985, Nowak1992}.
+
+An interesting result was introduced by~\cite{Molander1985}.  If two players are
+both using the Tit for Tat strategy, both players would get the same average
+payoffs as two interacting Random players with \(p=0.5\). 
+In~\cite{Nowak1992}, they used evolutionary dynamics and showed that to cope
+with noise a more generous version of Tit for Tat is needed. 
+The space of re-active strategies was explored and the strategy that stand out 
+was a re-active strategy known as Generous Tit for Tat. 
+Reactive strategies are denoted by the probabilities to cooperate after a
+\textbf{C} and a \textbf{D} of the opponent. Thus, a reactive strategy
+only considers the previous turn of the opponent. 
+
+Reactive strategies are a subset of memory one strategies introduced in 1989
+\cite{nowak1989}. Memory one strategies, are a set of strategies that 
+consider only the last turn of the game to decide on the next action~\cite{Nowak1990}.
+They are represented by the four conditional probabilities \(p_1, p_2, p_3\) and
+\(p_4\) to cooperate after \(CC, CD, DC\) and \(DD\) respectively
+(the four possible states a player can be in if only the last turn of the game was
+to be considered).  
+
+Reactive strategies are just a constrained version where \(p_1=p_3\) and
+\(p_2=p_1\). A few examples of strategies that have been discussed can be 
+in their reactive representation are the following,
+
+\begin{itemize}
+	\item Tit for Tat - \((p_1=1, p_2=0)\),
+	\item Generous Tit for Tat - \((p_1=1, p_2=\frac{1}{3})\).
+\end{itemize}
+
+The first action of the strategy (when the history does not exist yet) is assumed
+to be \textbf{C} unless is stated otherwise. For example, a strategy called
+Suspicious Tit for Tat, studied in~\cite{Nowak1992}, has the same representation
+as Tit for Tat but plays \textbf{D} in the first round.
+
+In 1993~\cite{Nowak1993}, an interesting memory-one  strategy with the 
+tolerance of Generous Tit for Tat but the capability of resisting and invading
+an all-out cooperators population was introduced. The strategy is called Pavlov,
+and is based on the fundamental behavioural mechanism win-stay, lose-shift.
+The strategy starts off with a \textbf{C}, then Pavlov will repeat it's last 
+move it was awarder with by \(R\) or \(T\) but will shift if punished by \(P\) or \(S\).
+
+A memory one representation of strategies are the following, 
+
+\begin{itemize}
+	\item Tit for Tat - \((p_1=1, p_2=0, p_3=1, p_4=0)\) or for simplicity 
+	\((1, 0, 1, 0)\),
+	\item Pavlov - \((1, 0, 0, 1)\).
+\end{itemize}
+
+A diagrammatic representation of Pavlov is given in Figure~\ref{fig:pavlov_fsm},
+using a 2 state finite machines.  Finite state machines are a common mean of representing
+iterated prisoner's dilemma strategies~\cite{Rubinstein1986, Miller1996}. 
+
+\begin{figure}[!hbtp]
+    \centering
+    \includestandalone[width=.4\textwidth]{./assets/tex/pavlov}
+    \caption{Diagrammatic representation of Pavlov using a finite state machine.}
+    \label{fig:pavlov_fsm}
+\end{figure}
+
+Note that the transition arrows are labeled \textit{O/P} where \textit{O} is the 
+opponent’s last action and \textit{P} is the player’s response. 
+The initial move of the strategy, enters state 1, is \textbf{C}. An example,
+of how several strategies can be represented in a similar manner is given
+by Figure~\ref{fig:tit_for_tat_fsm}, illustrating the strategy Tit for Tat.
+
+\begin{figure}[!hbtp]
+    \centering
+    \includestandalone[width=.2\textwidth]{./assets/tex/tit_for_tat_fsm}
+    \caption{Diagrammatic representation of Tit for Tat using a finite state machine.}
+    \label{fig:tit_for_tat_fsm}
+\end{figure}
+
+In his works~\cite{axelrod1988} try to address the criticism by studying Tit for 
+Tat in an evolutionary manner as well. It was shown that Tit For Tat does not 
+perform as well in noisy and in environments with mis-perception, but there are 
+variants of Tit for Tat that do.
+
+In~\cite{Rapoport2015}, they claim the re-run the first tournament. 
+They altered aspects such as, the format of the tournament, the objective
+and the population. They claim one of the authors was also a contributor to
+the first tournaments. Source code? 
+
+\bibliographystyle{plain}
+\bibliography{bibliography.bib}
 \end{document}
