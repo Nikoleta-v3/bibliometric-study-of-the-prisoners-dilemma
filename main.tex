@@ -12,7 +12,11 @@
 \usepackage{subcaption}
 \usepackage{tikz}
 \usepackage{booktabs}
+\usepackage{minted}
 \usetikzlibrary{er,positioning, calc}
+
+\definecolor{background}{RGB}{5, 66, 81}
+\usemintedstyle{tango}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{Literature review paper for the iterated prisoner's dilemma.}
 \author{Nikoleta E. Glynatsi}
@@ -350,7 +354,7 @@ not matter' statement was questioned. A set of more complex strategies,
 strategies that take in account the entire history set of the game, were
 trained and proven to be more stable than ZD strategies.
 
-\subsubsection{Complex Strategies}
+\subsubsection{Complex Strategies and Archetypes}
 
 Complex strategies are defined here as a set of strategies that can make use of any
 information that can be provided during a match. The term complex can also be
@@ -379,16 +383,28 @@ illustrates their diagrammatic representation.
 \end{figure}
 
 Finite state machines are commonly used to represent iterated prisoner's
-dilemma strategies~\cite{Miller1996, Rubinstein1986}. Other representation
-methods include lookup tables~\cite{Axelrod1987, Lindgren1994} and 
-artificial neural networks~\cite{Fogel1996, Lee2015}.
+dilemma strategies~\cite{Miller1996, Rubinstein1986}. Strategies based on 
+finite state machines are deterministic and are described by the number of states.
+The strategy selects the next action in each round based on the current state 
+and the opponent’s last move, transitioning to a new state each time. 
 
+Other representation methods include lookup tables~\cite{Axelrod1987, Lindgren1994}
+and artificial neural networks~\cite{Fogel1996, Lee2015}. In~\cite{Axelrod1987}
+look up tables are introduces as a mean of representing a strategy in gene 
+format. A look up table is a set of deterministic responses based on the
+opponents \(n\) last moves; \cite{Axelrod1987} considered \(n=3\). Similarly,
+artificial neural networks provide a maping function to an action
+based on a selection of the match's history.
+
+Figures~\ref{fig:tit_for_tat_fsm}, \ref{fig:tit_for_tat_lu}, \ref{fig:tit_for_tat_neural},
+illustrate an example of representing the strategy Tit for Tat with three different
+methods.
 
 \begin{figure}[!hbtp]
     \centering
     \includestandalone[width=.3\textwidth]{./assets/tex/tit_for_tat_fsm}
     \caption{Finite state machine representation of Tit for Tat.}
-    \label{fig:tit_for_tat_fsn}
+    \label{fig:tit_for_tat_fsm}
 \end{figure}
 
 \begin{figure}[!hbtp]
@@ -405,26 +421,62 @@ artificial neural networks~\cite{Fogel1996, Lee2015}.
     \label{fig:tit_for_tat_neural}
 \end{figure}
 
-The work of~\cite{Gaudesi2016} uses an evolutionary algorithm to train a finite
-state machine. The evolutionary algorithm used in both~\cite{Axelrod1987,
+In~\cite{Knight2017}, these representation methods are refereed to as archetypes.
+Finite state machines and artificial neural networks are included in the 
+work but also new archetypes are introduced. A variant of a fnite state machine
+called hidden Markov models. The hidden Markov models use probabilistic transitions
+based on the prior round of play to other states and cooperate or defect with 
+various probabilities at each state.
+
+A variant of a look up table is also presented called the lookerup archetype. 
+The main difference of this new look up strategy is that it responses based on 
+the opponent’s first \(n_1\) moves, the opponent’s last \(m_1\) moves, and the 
+players last \(m_2\) moves. Taking into account the initial move of the opponent
+can give many insights. For it is the only move a strategy is trually it self 
+without being affected by the opponent. As a reminder, Axelrod in his work 
+highlighted the importance of the initial move and believed that it was one
+of the secrets of success of the strategy Tit for Tat. Finally, a new archetype
+called the Gambler is also introduced, which is a stochactis variant of the 
+lookerup archetype.
+
+Commonly archetypes are used with evolutionary algorithms to train set of 
+new strategies. The evolutionary algorithm used in both~\cite{Axelrod1987,
 Gaudesi2016} is called genetic algorithm. Other algorithms including particle
 swarm optimization have been used in research of the most dominant strategy
-\cite{Franken2005}.In~\cite{Knight2017}, several of the representation methods 
-have been used alongside evolutionary algorithms to represent as stated by the
-authors the best performing strategies for the iterated prisoner’s dilemma.
+\cite{Franken2005}.
 
-The different representation methods are refereed to as archetypes. In~\cite{Knight2017}
-the following combinations of archetypes and evolutionary algorithms have 
-been used to introduce a number of successful new strategies:
+In~\cite{Knight2017} the approach in used to introduce as stated
+by the authors the best performing strategies for the iterated prisoner’s dilemma.
+These strategies will be refereed here as \textbf{Evolved} strategie.
+A number of successful new strategies are the following,
 
 \begin{itemize}
-    \item Lookup tables and genetic algorithm have been used to train a strategy 
-    called \textbf{LokkerUp};
-    \item Lookup tables and particle swarm optimization have introduced the 
-    strategy \textbf{PSOGambler};
-    \item Finally neural networks alongside genetic algorithm have trained a
-    strategy called \textbf{Evolved HMM}.
+    \item \textbf{EvolvedLookerUp2\_2\_2} a looker up strategy trained with a
+    genetic algorithm;
+    \item \textbf{Evolved HMM 5} a hidden markov model trained with a genetic 
+    algorithm;
+    \item \textbf{Evolved FSM 16} a finite state machine trained with a genetic
+    algorithm;
+    \item Finally \textbf{PSO Gambler 2 2 2} a looker up strategy trained with
+    a particle swarm algorithm.
 \end{itemize}
+
+Though several papers have claimed before to have discovered the dominant
+strategies for the game, the work of \cite{Knight2017} seems very promising. 
+This is due the fact that the introduced strategies have been trained using
+different types of evolutionary algorithms in a pool of 176 well known 
+strategies for the literature. Including all the strategies that have been 
+discussed in this section.
+
+\subsubsection{Fingerprinting}
+
+With a large number of strategies and different representations in the literature
+a question was soon risen. How can we be sure that all these strategies are 
+indeed different to each other. In~\cite{Ashlock2005} a method called fingerprinting was given
+as an answer to the problem. The method of fingerprinting is a technique for 
+generating a functional signature for a strategy~\cite{Ashlock2008}. Fingerprint functions
+can then be compared to allow for easier identification of similar strategies.
+it has been studied in depth in~\cite{Ashlock2008, Ashlock2009, Ashlock2010, Ashlock2006a}.
 
 \subsection{Strategies Stability}
 
@@ -440,7 +492,7 @@ success of a strategy based only on it's performance in a round robin tournament
 or should the strategy's performances be checked through other ways as well.
 
 Following his initial tournaments Axelrod performed an `ecological' tournament
-in 1981~\cite{Axelrod1981}.  The ability of strategies to be favoured under
+in 1981~\cite{Axelrod1981}. The ability of strategies to be favoured under
 natural selection and their ability to withstand invasion from other strategies
 soon became an new measure of performance. 
 
@@ -462,8 +514,8 @@ stable in the iterated prisoner's dilemma. This was not proven analytically, ins
 a series of examples using strategies such as Tit for Tat, Suspicious
 Tit for Tat and All Defector where explored; a very constrained set of strategies.
 
-The results were questioned by~\cite{May1987}, they stated that much was 
-still no fully explored and more research had to be put into the results. 
+The results were questioned by~\cite{May1987}, they stated that much was
+still no fully explored and more research had to be put into the results.
 Another attempt to explore stability of strategies in the prisoner's dilemma
 was done in~\cite{Boyd1989}. This time exploring the results in a noisy
 environment, but similarly a analytical prove was not given.
@@ -475,7 +527,7 @@ where the individuals can now interact only with the immediate neighbours.
 The number of immediate neighbours can be either, fourth, six or eight. As
 shown in Figure~\ref{fig:topologies}. The authors claimed that the essential
 results remain true of all topologies; the results also hold whether self interactions
-are taken into account. 
+are taken into account.
 
 Thus each cell of the lattice is occupied by a \textbf{C} or a \textbf{D} and in
 each generation step each cell owner interacts with its immediate neighbour and
@@ -489,8 +541,6 @@ defectors can persist together indefinitely.
 
 The new topology has been called every since, spatial topology in the 
 literature. %REF
-
-\textit{Nowak and moran process.} 
 
 \begin{figure}[!hbtp]
 \centering
@@ -510,44 +560,123 @@ literature. %REF
 \subsection{Software} 
 
 Due the nature of the research regarding the iterated prisoner's dilemma
-several software packages have been created in order to simulate the 
-computer tournaments.
+several software packages have been created in order to simulate computer
+tournaments.
 
 The earliest source code that can be found, to the authors knowledge, is that
-of Axelrod's second tournament~\cite{axelrod1980b}.  The code has been 
+of Axelrod's second tournament~\cite{axelrod1980b}. The code has been 
 written by Axelrod and several other contributors in the programming 
-language Fortran~\cite{fortan_code}. The site specifically says that the course 
-code of the initial tournament is not available. 
+language Fortran and can be found on Axelrod's personal website~\cite{fortan_code}.
+the source code includes the code only for the strategies and not for creating 
+and performing the tournament. The code for the winning strategy Tit for Tat
+is illustrated in Figure~\ref{fig:tit_for_tat_fortran}.
+A few strategies were submitted in Basic but where translated into Fortran by 
+Axelrod's team. Unfortunately, the source code of the first tournament is not 
+available as stated in Axelrod's personal website~\cite{fortan_code}.
 
-Another  piece of software includes a library called PRISON. PRISON is 
-is written in the programming language Java and it has been used by it's authors
+\begin{figure}[!hbtp]
+    \centering
+    \begin{minted}
+        [
+        autogobble=true,
+        framesep=2mm,
+        fontsize=\normalsize,
+        ]
+        {fortran}
+    FUNCTION K92R(J,M,K,L,R, JA)
+C BY ANATOL RAPOPORT
+C TYPED BY AX 3/27/79 (SAME AS ROUND ONE TIT FOR TAT)
+c replaced by actual code, Ax 7/27/93
+c  T=0
+c   K92R=ITFTR(J,M,K,L,T,R)
+      k92r=0
+      k92r = j
+c test 7/30
+c   write(6,77) j, k92r
+c77   format(' test k92r. j,k92r: ', 2i3)
+      RETURN
+      END
+    \end{minted}
+    \caption{\label{fig:tit_for_tat_fortran} Source code for Tit for Tat in Fortran.
+    Provided by~\cite{fortan_code}.}
+\end{figure}
+
+Another piece of software includes a library called PRISON~\cite{prison}.
+PRISON is written in the programming language Java and it has been used by it's authors
 in several publications. The project includes a good number of strategies from
 the literature but unfortunately the last update of the project dates back in 2004.
 
-More recent projects include~\cite{pd_trust, pd_game}. Note that~\cite{pd_trust}
-is a user interface project that introduces several concept of the research.
-Such as the iterated game, computer tournaments and evolutionary
-dynamics. The list of strategies included is very limited. On the other hand,
-\cite{pd_game} offers a bigger collection of strategies. The users are also
-able to introduce the concept of noise in their tournaments. Even so, 
-it remains a user interface project and makes it constrained for a research tool. 
+More recent projects include~\cite{pd_trust, pd_game}, both are education 
+platforms and not research tools. In~\cite{pd_trust}, several concepts such as 
+the iterated game, computer tournaments and evolutionary dynamics are introduced
+through a user interface game. Project~\cite{pd_game} offers a big collection of
+strategies and allows the user to try several match and tournaments configurations.
+Such as noise. 
 
 In 2015 an open source library, called the Axelrod project was introduced
 \cite{axelrodproject}. The project is written in the programming language 
 Python, it is accessible and open source. To date the list of strategies implemented
 within the library exceed the 200. The project has been used in several
 publications including~\cite{Knight2017} and a paper describing it and
-it's capabilities was published in 2016~\cite{Knight2016}.
+it's capabilities was published in 2016~\cite{Knight2016}. The source code
+for Tit for Tat as implement withing the library is shown in Figure
+\ref{fig:tit_for_tat_axelrod}. Furthermore, performancing a tournament 
+with a selection of strategies is possible in five lines of code, shown in 
+Figure~\ref{fig:tournament_code}.
 
+\begin{figure}[!hbtp]
+    \centering
+    \begin{minted}
+        [
+        autogobble=true,
+        framesep=2mm,
+        fontsize=\normalsize,
+        ]
+        {fortran}
+def strategy(self, opponent: Player) -> Action:
+"""This is the actual strategy"""
+# First move
+if not self.history:
+    return C
+# React to the opponent's last move
+if opponent.history[-1] == D:
+    return D
+return C
+    \end{minted}
+    \caption{\label{fig:tit_for_tat_axelrod} Source code for Tit for Tat in Python
+    as implemented in Axelrod Python library~\cite{axelrodproject}}.
+\end{figure}
+
+\begin{figure}[!hbtp]
+    \centering
+    \begin{minted}
+        [
+        autogobble=true,
+        framesep=2mm,
+        fontsize=\normalsize,
+        ]
+        {fortran}
+>>> import axelrod as axl
+>>> players = (axl.Cooperator(), axl.Alternator(), axl.TitForTat())
+>>> tournament = axl.Tournament(players)
+>>> results = tournament.play()
+>>> results.ranked_names
+['Alternator', 'Tit For Tat', 'Cooperator']
+    \end{minted}
+    \caption{\label{fig:tournament_code} Performing a computer tournament
+    using~\cite{axelrodproject}.}
+\end{figure}
 Software has a crucial role in research. Well written and maintained softwares
 allows the reproducibility of prior work and can accelerate findings withing the
 field. The field of the iterated prisoner's dilemma has suffered the consequences
 of poor research software. As stated above the source code of the initial
 computer tournament is not retrievable. Several of the strategies that competed
 in the tournament are not given a full explanation of how the decided on their
-next move. 
+next move. In terms of best practice and reproducibility the Axelrod library
+is the lead software in the field.
 
 \subsection{Applications}
+
 \subsubsection{Ecological Applications}
 
 The reciprocal period of the prisoner's dilemma spread the knowledge of the
@@ -561,9 +690,13 @@ Other works that include applications to ecological settings have been those
 of~\cite{Godfray1992, Wilkinson1984}. There the reciprocal food sharing
 between vampire bats was studied.
 
-\subsection{Biological Applications}
+\subsubsection{Biological Applications}
 
-
+\begin{itemize}
+    \item \cite{Turner1999} uses evolutionary game theory to study the spread of
+    virus.
+    \item \cite{Douglas2011} a shout for his work, using tit for tat to study cells.
+\end{itemize}
 \subsubsection{not sure}
 In~\cite{Rapoport2015}, the authors claim that they have managed to 
 re-run the first tournament that Axelrod performed. They tried to push his work

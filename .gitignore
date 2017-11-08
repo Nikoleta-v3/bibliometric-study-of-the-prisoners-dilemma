@@ -8,15 +8,23 @@
 *.out
 *.bbl
 *.blg
+*.fdb_latexmk
+*.fls
+*.synctex.gz
 
 # minted files 
-*/_minted-main/*
+*_minted-main/*
 
 # data
 src/data
 
 # notebooks
-src/nbs/.ipynb_checkpoints/*
+*.ipynb_checkpoints/
+*/__pycache__/
 
 # password to axelbib
 src/password.py
+
+# ingored notebooks
+src/nbs/examples.ipynb
+
