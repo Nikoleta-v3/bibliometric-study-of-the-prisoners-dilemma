@@ -1,6 +1,6 @@
 # pycharm files
 .idea/
-
+.vscode/
 # tex files
 *.aux
 *.log
