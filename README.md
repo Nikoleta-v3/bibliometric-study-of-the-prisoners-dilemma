@@ -24,7 +24,9 @@ The repository is structured as follows:
 ```
 
 
-The command to compile `main.tex` is::
+The command to compile `main.tex` is:
+
+`pdflatex --shell-escape main`
 
 The articles has the following structure:
 
@@ -37,10 +39,10 @@ The articles has the following structure:
 |---  Analysis
       |--- papers I have not read
       |--- data
-      	|--- description of data set
-      	|--- temporal analysis
-      	|--- co-authors analysis
-      	.... 
+            |--- description of data set
+            |--- temporal analysis
+            |--- co-authors analysis
+            .... 
 |---  Reproducing
       |--- zenodo
       |--- axelbib
