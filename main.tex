@@ -444,8 +444,8 @@ Tats}. The results showed that Tit for Tat performed purely placing eight in
 the tournament. Bendor stated that a more forgiving strategy was needed, in his
 tournament a strategy called \textbf{Nice and Forgiving} ranked first.
 
-The work of~\cite{Nowak1990} following a similar approach agreed with this result.
-In~\cite{Nowak1990}, the space of re-active strategies was explored in a noisy
+The work of~\cite{Nowak1992} following a similar approach agreed with this result.
+In~\cite{Nowak1992}, the space of re-active strategies was explored in a noisy
 environment. The strategy that was performing the best in that environment was
 the re-active strategy known as \textbf{Generous Tit for Tat}. A reactive 
 strategy is a strategy that consider only the past move of the opponent, but 
@@ -453,7 +453,7 @@ they will be discussed later on in more detail. Generous Tit for Tat, attracted
 attention as it was a generous variant of the famous strategy Tit for Tat able
 to withstand noisy environments.
 
-The author published yet another paper three years later introducing another
+The author published yet another paper a years later~\cite{Nowak1993} introducing another
 interesting player. The new strategy had the tolerance of Generous Tit for Tat 
 but also the capability of resisting and invading an all-out cooperators population
 was. The strategy is called \textbf{Pavlov},
@@ -929,6 +929,197 @@ to the first tournaments, which would explain how it was managed to reproduce
 the tournament.
 
 \section{Analysis}\label{section:analysis}
+
+In the progress of writing the literature new questions were raised; is it 
+possible to analyse a literature time line and what information can be gathered. 
+To address this question, a data analysis of literature is performed using various
+machine learning techniques. The data analysis is carried out on a data set which
+contains meta data of academic articles on the research of the iterated prisoner's 
+dilemma.
+
+\subsection{Data Collection}
+
+Academic articles are accessible through scholarly databases and collections.
+In this work 5 different source have been used to collect metadata on articles 
+regarding the prisoner's dilemma. The sources that have been used was due the fact
+that they have an open API. APIs are an application protocol interface which 
+allows direct access to the data base of a journal. 
+
+Receiving articles from academic journal's APIs include two faces. 
+
+\begin{enumerate}
+    \item requesting;
+    \item receiving answer;
+\end{enumerate}
+
+Both faces different on different journals. Thus for collecting the data 
+used in this analysis another open source project was used called Arcas. Arcas is
+a Python tool and made the data collection trivial. In order to collect the data
+keywords have been used. The keywords were checked to exists within the title or
+the abstract of an article and the keywords used are given by Table~\ref{table:search_keywords}. 
+
+\begin{table}[!hbtp]
+    \begin{center}
+        \begin{tabular}{lll}
+            \toprule
+             & Keywords & \\
+            \midrule
+             1 &  prisoner's dilemma & \\
+             2 &  prisoners dilemma  & \\  
+             3 &  prisoners evolution & \\
+             4 &  prisoner game theory & \\
+             5 &  R Axelrod & \\
+             6 &  memory one strategy & \\
+             7 & tit-for-tat & \\
+             8 & tit for tata & \\
+             9 & zero determinant strategies & \\
+            \bottomrule
+        \end{tabular}
+    \end{center}
+    \caption{Keywords used in searching for articles.}
+    \label{table:search_keywords}
+\end{table}
+
+The search managed to retrieve a total of 1128 articles. The total number
+of articles within the data is 1170, 42 articles have been added manually.
+Though Arcas retrieves several metadata on articles only features list on 
+Table~\ref{table:result_set} the following are considered in this analysis.
+
+\begin{table}[!hbtp]
+    \begin{center}
+        \begin{tabular}{lll}
+            \toprule
+             & Result name & Explanation \\
+             \midrule
+             1 & Abstract & The abstract of the article.\\ 
+             2 & Author & A single entity of an author from the list of 
+             authors of the respective article.\\ 
+             3 & Date & Year of publication.\\ 
+             4 & Journal & Journal of publication.\\               
+             5 & Provenance & Scholarly database for where the article was 
+             collected.\\                        
+             6 & Title & Title of article.\\               
+            \bottomrule
+        \end{tabular}
+    \end{center}
+    \caption{Structure of data set. Contained results.}
+    \label{table:result_set}
+\end{table}
+
+\subsection{Preliminary Analysis}
+
+The provenance of the 1128 articles that have been collected manually is given 
+by Table\ref{table:provenance}. Within these articles a total of 2110 different
+authors exist and 1140 articles. Several articles have been published to more 
+than one journal. Still they are treated as individual records. Abstract and 
+journals differ between entries of the same title. 
+
+\begin{table}[!hbtp]
+    \begin{center}
+        \begin{tabular}{lll}
+            \toprule
+             & provenance \\
+            \midrule
+             IEEE &  253 \\
+             Nature & 25 \\  
+             PLOS & 63 \\
+             Springer & 317 \\
+             arXiv & 470 \\
+            \bottomrule
+        \end{tabular}
+    \end{center}
+    \caption{Keywords used in searching for articles.}
+    \label{table:provenance}
+\end{table}
+
+In Figure~\ref{fig:provenance}, the number of articles collected per year and 
+per API are illustrated. Additionally, the total number of articles per year
+have been plotted regardless the provenance per year has been plotted in Figure
+\ref{fig:timeline_no_points}.
+
+\begin{figure}[!hbtp]
+    \centering
+    \includegraphics[width=.8\textwidth]{./assets/images/timeline_no_points.pdf}
+    \caption{Provenance of articles}
+    \label{fig:timeline_no_points}
+\end{figure}
+
+\begin{figure}[!hbtp]
+    \centering
+    \includegraphics[width=.8\textwidth]{./assets/images/provenance.pdf}
+    \caption{Provenance of articles}
+    \label{fig:provenance}
+\end{figure}
+
+\subsection{Authors Analysis}
+The data set contains a total of 2110 authors. Initially some the data were cleared.
+Levenshtein Distance to calculate the differences between name entries. 
+Interesting insights can be retrieved when looking at the co-authors links.
+A graph has been generated where each node is an individual author, 
+co authorships are the edges and weights are the number of times the authors 
+have written together. 
+
+The centrality of the network is looked upon. Betweeness unweighted, have been 
+chosen as a centrality measure in this work. The results are given by Table
+\ref{table:central_authors}.
+
+\begin{table}[!hbtp]
+    \begin{center}
+        \begin{tabular}{lll}
+            \toprule
+            Name & Centrality \\
+            \midrule
+            Matjaz Perc & 0.0086 \\
+            Yamir Moreno & 0.0073 \\
+            Luo-luo Jiang & 0.0032 \\
+            Arne Traulsen & 0.0031 \\
+            Martin A. Nowak & 0.0030 \\
+            V. Latora & 0.0028 \\
+            Angel Sanchez & 0.0022 \\
+            Krishnendu Chatterjee & 0.0021 \\
+            Han-xin Yang & 0.0017 \\
+            Zhihai Rong & 0.0015 \\
+            \bottomrule
+        \end{tabular}
+    \end{center}
+    \caption{Central authors.}
+    \label{table:central_authors}
+\end{table}
+
+The immediate step is to look at the co-author cliques. A total of 
+928 cliques exists within the graph and the max node number of a clique is 21.
+For this work only the cliques with more than 5 authors is studied and from
+those only the ones that.
+
+\begin{figure}[!hbtp]
+    \begin{subfigure}{0.3\textwidth}
+        \includegraphics[width=\textwidth]{./assets/images/coauthor00.pdf}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+        \includegraphics[width=\textwidth]{./assets/images/coauthor01.pdf}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+        \includegraphics[width=\textwidth]{./assets/images/coauthor02.pdf}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+        \includegraphics[width=\textwidth]{./assets/images/coauthor03.pdf}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+        \includegraphics[width=\textwidth]{./assets/images/coauthor04.pdf}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+        \includegraphics[width=\textwidth]{./assets/images/coauthor05.pdf}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+        \includegraphics[width=\textwidth]{./assets/images/coauthor06.pdf}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+        \includegraphics[width=\textwidth]{./assets/images/coauthor07.pdf}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+        \includegraphics[width=\textwidth]{./assets/images/coauthor08.pdf}
+    \end{subfigure}
+\end{figure}
 
 \bibliographystyle{plain}
 \bibliography{bibliography.bib}
