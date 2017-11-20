@@ -72,12 +72,10 @@ to defect the game's equilibrium lies at a mutual defection and both players
 receive a payoff of \(P\). Thus, the unbeatable strategy for the prisoner's dilemma
 is \textbf{D}.
 
-Though both players end up with a worse payoff than if they had behaved
-otherwise and received a payoff of \(R\). However, when the game is studied
-in a manner where prior outcomes matter, the defecting choice is no longer
-necessarily the unbeatable choice. The repeated form of
-the game is called the iterated prisoner's dilemma and now players interact
-more than just once.
+However, when the game is studied in a manner where prior outcomes matter, the 
+defecting choice is no longer necessarily the unbeatable choice. The repeated 
+form of the game is called the iterated prisoner's dilemma and now players 
+interact more than just once.
 
 In Section~\ref{section:timeline} it will be discussed how it was proven that
 the iterated prisoner's dilemma leaves room for cooperation. The prisoner's
@@ -155,7 +153,7 @@ prisoner's dilemma~\cite{axelrod2012, Axelrod1981}.
 
 In 1980~\cite{axelrod1980a} a computer tournament of the iterated prisoner's
 dilemma took place. R. Axelrod invited 14 participants to submit a strategy written
-in the programming languages Fortran or Basic, the names of the attendants were
+in the programming languages Fortran or Basic; the names of the attendants were
 the following,
 
 \begin{multicols}{2}
@@ -190,10 +188,13 @@ The winner of the tournament was determined by the total average score and not b
 the number of matches won. The strategy that was announced the winner was
 submitted by Rapoport and was called \textbf{Tit For Tat}. Tit for Tat, is a 
 strategy that always cooperates on the first round and then mimics the opponent's
-previous move. Tables~\ref{table:tft_vs_c} \ref{table:tft_vs_d} show two
-examples of Tit for Tat interacting with two very deterministic opponents.
-An opponent refereed here as \textbf{Cooperator}, that always cooperates and
-and opponent that always defects, \textbf{Defector}.
+previous move. 
+
+Examples of Tit for Tat interacting with deterministic opponents are given by 
+Tables~\ref{table:tft_vs_c}, \ref{table:tft_vs_d}, \ref{table:tft_vs_a}. 
+The opponents are, \textbf{Cooperator} a strategy that always cooperates, 
+\textbf{Defector} an opponent that always defects and \textbf{Altenator} a 
+player who alternates between cooperating and defecting.
 
 \begin{table}[!hbtp]
     \begin{center}
@@ -226,6 +227,23 @@ and opponent that always defects, \textbf{Defector}.
         \bottomrule
     \end{tabular}
     \caption{Tit for Tat example match against Defector}\label{table:tft_vs_d}
+\end{center}
+\end{table}
+
+\begin{table}[!hbtp]
+    \begin{center}
+    \begin{tabular}{lcc}
+        \toprule
+        Turns & Tit for Tat & Altenator\\
+        \toprule
+        1 & C & C\\
+        2 & C & D\\
+        3 & D & C\\ 
+        $\vdots$ & $\vdots$ & $\vdots$ \\ 
+        200 & C & D \\
+        \bottomrule
+    \end{tabular}
+    \caption{Tit for Tat example match against Altenator}\label{table:tft_vs_a}
 \end{center}
 \end{table}
 
@@ -344,7 +362,7 @@ the main conclusions indicating strong performance was:
 %The strategies of the second tournament where bias due the first tournament. Discuss with V. 
 %TODO add better conclusion on Axelrod's work
 
-Though a full explanation of all 13 strategies in given in~\cite{Axelrod1981}
+Though a full explanation of all 14 strategies in given in~\cite{Axelrod1981}
 the same does not hold for all 63 strategies of the second tournament~\cite{Axelrod1981}.
 The author mainly focuses on the high ranked participants. However, the source 
 code for of the strategies be found on Axelrod's personal website~\cite{fortan_code}.
@@ -354,8 +372,7 @@ Fortran before the tournament. The source code includes the code only for the
 strategies and not for creating and performing the tournament.
 
 The code for the winning strategy Tit for Tat is illustrated in Figure
-\ref{fig:tit_for_tat_fortran}. A few strategies were submitted in Basic but where translated into Fortran by 
-Axelrod's team. 
+\ref{fig:tit_for_tat_fortran}.
 
 \begin{figure}[!hbtp]
     \centering
@@ -474,7 +491,7 @@ But is the overall success of a strategy based only on it's performance in a
 round robin tournament or should it be checked through other ways as well?
 
 Following his initial tournaments Axelrod performed an `ecological' tournament
-in 1981~\cite{Axelrod1981}. In~\cite{Axelrod1981}, the set of strategies from 
+in 1981~\cite{Axelrod1984}. In~\cite{Axelrod1984}, the set of strategies from 
 Axelrod's second tournament was used to perform the ecological tournament. The 
 63 strategies interacted generation after generation to a round robin competition
 where their frequencies were proportional to their payoff in the previous round.
@@ -931,7 +948,7 @@ the tournament.
 \section{Analysis}\label{section:analysis}
 
 In the progress of writing the literature new questions were raised; is it 
-possible to analyse a literature time line and what information can be gathered. 
+possible to analyse a literature timeline and what information can be gathered. 
 To address this question, a data analysis of literature is performed using various
 machine learning techniques. The data analysis is carried out on a data set which
 contains meta data of academic articles on the research of the iterated prisoner's 
@@ -940,23 +957,32 @@ dilemma.
 \subsection{Data Collection}
 
 Academic articles are accessible through scholarly databases and collections.
-In this work 5 different source have been used to collect metadata on articles 
+In this work 5 different source have been used to collect metadata on articles
 regarding the prisoner's dilemma. The sources that have been used was due the fact
-that they have an open API. APIs are an application protocol interface which 
-allows direct access to the data base of a journal. 
-
-Receiving articles from academic journal's APIs include two faces. 
+that they have an open API. APIs are an application protocol interface which
+allows direct access to the data base of a journal. Receiving articles from
+academic journal's APIs include two faces.
 
 \begin{enumerate}
     \item requesting;
     \item receiving answer;
 \end{enumerate}
 
-Both faces different on different journals. Thus for collecting the data 
-used in this analysis another open source project was used called Arcas. Arcas is
-a Python tool and made the data collection trivial. In order to collect the data
-keywords have been used. The keywords were checked to exists within the title or
-the abstract of an article and the keywords used are given by Table~\ref{table:search_keywords}. 
+\begin{figure}[!hbtp]
+    \begin{center}
+    \includestandalone[width=.8\textwidth]{assets/tex/api}
+    \end{center}
+\end{figure}
+
+Both the requesting url and the received xml differ for different journals.
+The data collection is a crucial proceeder and we wanted to be automated. For
+this reason an open source project was used called Arcas. Arcas is
+a Python tool and made the data collection trivial. It works as a translator
+between the user and the different APIs.
+
+In order to collect the data several keywords had to be specified. The keywords
+were checked to exists within the title or the abstract of an article and the 
+keywords used are given by Table~\ref{table:search_keywords}. 
 
 \begin{table}[!hbtp]
     \begin{center}
@@ -1009,10 +1035,14 @@ Table~\ref{table:result_set} the following are considered in this analysis.
 \subsection{Preliminary Analysis}
 
 The provenance of the 1128 articles that have been collected manually is given 
-by Table\ref{table:provenance}. Within these articles a total of 2110 different
+by Table~\ref{table:provenance}. Within these articles a total of 2110 different
 authors exist and 1140 articles. Several articles have been published to more 
 than one journal. Still they are treated as individual records. Abstract and 
-journals differ between entries of the same title. 
+journals differ between entries of the same title.
+
+More specifically, a total number of 470 articles have been collected from arXiv
+and 317 from Springer journal. From IEEE 253 articles, and finally a small 
+number have been contributed by Nature and Plos.
 
 \begin{table}[!hbtp]
     \begin{center}
@@ -1032,10 +1062,21 @@ journals differ between entries of the same title.
     \label{table:provenance}
 \end{table}
 
-In Figure~\ref{fig:provenance}, the number of articles collected per year and 
-per API are illustrated. Additionally, the total number of articles per year
-have been plotted regardless the provenance per year has been plotted in Figure
-\ref{fig:timeline_no_points}.
+
+In Figure~\ref{fig:provenance}, the number of articles collected per year
+and per API are illustrated. Springer seems to have a continuous contribution on
+the data set from 1996 up to 2017. The total number of articles collected from
+Springer per year does not exceed 30. On the other hand, arXiv that has a 
+significant contribution to the data set, seems to have articles on 
+the iterated prisoner's dilemma a bit before the 2000s. Finally, PLOS
+with a small significant contribution appears after 2005.
+
+Additionally, the total number of articles per year have been plotted regardless
+the provenance per year has been plotted in Figure~\ref{fig:timeline_no_points}.
+This illustrates the time series. It is shown that there is a steady increase in
+the number of articles until 2000 where a steep increase is spotted. There seems
+to be a peak at the year of 2014 and a decrease from 2016 onwards.
+That is due the fact that the latest data has been collected in November 2017.
 
 \begin{figure}[!hbtp]
     \centering
