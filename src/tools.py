@@ -1,9 +1,9 @@
-from spacy.en import English
+import spacy
 from nltk.corpus import stopwords
 from sklearn.feature_extraction.stop_words import ENGLISH_STOP_WORDS
 import string
 
-parser = English()
+parser = spacy.load('en')
 
 STOPLIST = set(stopwords.words('english') + list(ENGLISH_STOP_WORDS))
 SYMBOLS = " ".join(string.punctuation).split(" ")
