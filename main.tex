@@ -920,12 +920,11 @@ the tournament.
 \section{Analysis}\label{section:analysis}
 
 This section follows a circumstantial review of the prisoner's dilemma timeline
-conducted by the authors. It focuses on the analysis of the 
-prisoner's dilemma timeline using a large dataset of prisoner's dilemma articles'
-metadata. Using various machine learning techniques the number and topics that
-have been researched over the years within the field are discussed. Moreover, we 
-explore the connections of the authors that have work on the game using
-network theory. %TODO: alter at the end
+conducted by the authors. It focuses on the analysis of the prisoner's dilemma
+field using a large dataset of prisoner's dilemma articles' metadata.
+The number of articles and connections of authors that work on the game are
+explored. Moreover, the collaborations within the field are examined and compared
+to other fields of game theory.
 
 \subsection{Data Collection}
 
@@ -947,7 +946,7 @@ of the Api and the syntax of the search arguments differ from journal to journal
 Thus different journals can generate completely different requesting urls. 
 
 The second phase is that of the receiving. This includes receiving a number of raw
-metadata of articles that satisfied the request message. The raw metadata are 
+metadata of articles that satisfied the requesting message. The raw metadata are 
 commonly received in an xml format. Similarly the number of features and the
 structure of the xml file differs from journal to journal.
 
@@ -959,11 +958,11 @@ is called Arcas and though the package itself will not be analysed here the
 source code is available online(\url{https://github.com/Nikoleta-v3/Arcas}).
 
 Arcas serves as a translator between us and various Apis. More specifically it
-works in coordinate with five different journal. For Arcas to collect data a series
-of keywords had to be specified. Each keyword individually is checked weather
-it exists within the title or the abstract of an article. Only if this check is
-satisfied an article is collected. A list of the keywords that were used in this
-work are given by Table~\ref{table:search_keywords}.
+works in coordinate with five different journals. Arcas collects data based on 
+a series of arguments. In the work described here, a series of keywords were given.
+Each keyword individually was checked weather it existed within the title or the
+abstract of an article. Only if this check was satisfied an article would be collected.
+A list of the keywords that were used in this are shown in Table~\ref{table:search_keywords}.
 
 \begin{multicols}{3}
     \begin{enumerate}
@@ -997,9 +996,11 @@ work are given by Table~\ref{table:search_keywords}.
     \label{table:search_keywords}
 \end{table}
 
-Each entry retrieved by Arcas is constituted of various features which are 
-listed on Table~\ref{table:arcas_results}. In the following section only a number
+Each entry retrieved by Arcas is consisted of various features which are 
+listed on Table~\ref{table:arcas_results}. In the following sections only a number
 of these features are considered. These are listed on Table~\ref{table:result_set}.
+The search has managed to retrieve a number of different articles. The data set
+that was created will be analysed in the following sections.
 
 \begin{table}[!hbtp]
     \begin{center}
@@ -1055,19 +1056,20 @@ of these features are considered. These are listed on Table~\ref{table:result_se
 
 \subsection{Preliminary Analysis}
 
-The data set is consisted by a total of \totalarticles articles, although only
+The data set explored in this work is consisted of \totalarticles articles. Although only
 \uniquetitles are unique titles. This is because a total of \numberofduplicates
 articles have been collected from more than just one Api. All \numberofduplicates
 duplicates are from the pre print server arXiv and will be dropped
-for the analysis, thus hereupon we consider \uniquetitles entries. The full
+for the analysis, thus hereupon we consider \uniquetitles unique article entries. The full
 data set has been archived and is available online. % archived articles
 
-Though Arcas was used as an automated data collection in progress of writing the
+Though Arcas was used to automatically collect data, in progress of writing the
 literature review of Section~\ref{section:timeline} the authors have discussed 
 a number of articles that were not retrieved by Arcas. This is only because these
-articles were not published by the 5 journals considered in the analysis. Even so,
+articles were not published by the 5 journals accessible by the software. Even so,
 the meta data of those article have been manually included, more specifically
-\manual entries. The provenance of the articles are given by Table~\ref{table:provenance}.
+\manual entries have been manually added to the data set. The overall provenance
+of the data is given by Table~\ref{table:provenance}.
 
 More specifically, a total number of 470 articles have been collected from arXiv,
 312 from Springer and 241 from IEEE. A smaller number of entries were
@@ -1081,9 +1083,9 @@ contributed by Nature and PLOS.
     \label{table:provenance}
 \end{table}
 
-The eldest entry was published in 1944 and the most recent one in 2017. Note
+The eldest article was published in 1944 and the most recent one in 2017. Note
 that the last time data were collected was on December 2017. The provenance of
-articles can also be viewed over the year of publication. This is illustrated
+articles can also be viewed over the years. This is illustrated
 in Figure~\ref{fig:provenance}. This allow us to view the significance of each
 journal's contribution to the field over the years as well as when the prisoner's
 dilemma fitted the scope of each journal. 
@@ -1091,38 +1093,38 @@ dilemma fitted the scope of each journal.
 Springer and IEEE are the two journals that have been publishing papers on the 
 topic for the longest time. Even so, it can been seen that IEEE contributed more
 than 10 articles per year after 2002. Similarly, arXiv contributes with a large
-number of papers with an increasing trend after the 2000s. Both arXiv and IEEE
+number of papers with an increasing trend after 2000. Both arXiv and IEEE
 are associated with computer engineering and allied disciplines. As a reminder
 from Section~\ref{section:timeline}, the `Modern Area' started near the 2000s
 where now the study of the prisoner's dilemma is associated with computer science.
 PLOS journal was launched on 2000 and it can been seen that accepted it's first
-publication on the topic on 2006 and Nature has a few publications over the
+publication on the topic on 2006. Finally Nature has a few publications over the
 years. Nature began it's publications after the work of Axelord in 1980s and
 some of it's first publications include the work of Nowak done in the 1990's.
 
 \begin{figure}[!hbtp]
     \centering
     \includegraphics[width=.6\textwidth]{./assets/images/provenance.pdf}
-    \caption{Provenance of articles}
+    \caption{Provenance of articles.}
     \label{fig:provenance}
 \end{figure}
 
-Now that the number and the years over when publications have been made on 
-the prisoner's dilemma have been discussed in the following section we explore
-the people that have written about their game and their connections.
+The number and years of publications that have been made on the prisoner's dilemma
+have been discussed in this section. In the following section we explore
+the people that have written about the game and their connections to each other.
 
 \subsection{Authors Analysis}
 
 In this section we present and analyse the authorship in the research field of the
 prisoner's dilemma through a network analysis. A network is presented where each
-unique author, within the data set, is represented as a node of the network and
+unique author is represented as a node of the network and
 a co-authorship is represented as an edge. Over the \uniquetitles articles of the
 data set the total number of unique authors is \authors. 
 
 Several different methods are being used from different journals for writing an
 author's name. Consequently, several different entries of the same author existed
-within the data set. In order to address the problem the Levenshtein Distance was
-used. The Levenshtein Distance highlighted the entries with a small difference
+within the data set. In order to address the problem the Levenshtein Distance~\cite{miller2009}
+was used. The Levenshtein Distance highlighted the entries with a small difference
 between them. A manual check was performed to assure that both entries were in
 did the same author and one of them was replaced by the other.
 
@@ -1132,30 +1134,30 @@ the research field were explored. The number of authors per papers and fields
 can vary a lot. Some fields tend to be more collaborative than others. Thus, we
 use two other research topics and compare the results with those of the
 prisoner's dilemma authorship network. Finally, a number of sub graphs are
-examined.
+examined more closely.
 
-\subsubsection{Co-authors network from the prisoner's dilemma data set}
+\subsubsection{Co-authorship network for the prisoner's dilemma}
 \label{section:co_authors_network_analysis}
 
 The authors are represented using an undirected network, shown in Figure
 \ref{fig:authors_network}. The network has sets of vertices \(V\) and edges \(E\).
-The \authors vertices represent each of the unique authors in the data set. 
+The \authors vertices represent each of the unique authors from the data. 
 The vertices are connected with an edge if and only if two authors have written
 together. Weights have been applied to both the vertices and the edges.
 
-Vertices' weight corresponds to the number of publications an author has within
-the data set. The ten authors with the highest number of publications are given
+Vertices' weights corresponds to the number of publications an author has.
+The ten authors with the highest number of publications are given
 by Table~\ref{table:most_published}. Authors such as M. Nowak and D. Ashlock,
 that have previously been discussed in Section~\ref{section:timeline}, appear on
 the list. Though other authors such as R. Axelrod do not. On the other hand, 
 several people whose work was not discussed in the previous section appear here,
 for example Matjaz Perc with a total of 34 publications. The network once the 
-node weight has been applied is now given in Figure~\ref{fig:authors_network_weighted}.
+vertices' weight has been applied is shown in Figure~\ref{fig:authors_network_weighted}.
 
 \begin{figure}[!hbtp]
     \centering
     \includegraphics[width=0.6\textwidth]{./assets/images/co-authors-network.pdf}
-    \caption{Co authors network.}\label{fig:authors_network}
+    \caption{Co-authorship network.}\label{fig:authors_network}
 \end{figure}
 
 \begin{table}[!hbtp]
@@ -1169,7 +1171,7 @@ node weight has been applied is now given in Figure~\ref{fig:authors_network_wei
 \begin{figure}[!hbtp]
     \centering
     \includegraphics[width=0.6\textwidth]{./assets/images/co-authors-network-weight.pdf}
-    \caption{Co authors network with vertices' weight.}
+    \caption{Co-authorship network with vertices' weight.}
     \label{fig:authors_network_weighted}
 \end{figure}
 
@@ -1178,7 +1180,7 @@ wrote together. From Figures~\ref{fig:authors_network}, \ref{fig:authors_network
 it can bee seen that overall the co-authors network is disjoint. Several researchers
 on the outer circle seem to have written alone or have a single connection to
 another researcher. On the other hand, in the inner circle of the network some
-connectivity of the vertices does seem to exists, with a single large cluster
+connectivity of the vertices does seem to exist, with a single large cluster
 located in the middle of the network.
  
 The authors that cover the outer space, that seem to be less collaborative,
@@ -1186,7 +1188,8 @@ are not authors that have single contributions to the field. On the other hand
 authors that have repeatedly published on the topic are located in both the outer
 and inner circles of the network.
 
-More insights can be gained by reviewing several network measures. The first
+More insights can be gained by reviewing several network measures such as the
+density, the average degree and centrality measures~\cite{bakshi2009}. The first
 measure to be considered is the density of the network. The density of a network
 is given by, \(\frac{2E}{V(V -1)}\) and is calculated to be 0.00163. The density
 is defined as the ratio of the number of edges and the number of possible edges.
@@ -1229,7 +1232,7 @@ These are authors:
 \end{itemize}
 
 In agreement of all measures the above are the most central authors of our network.
-More specifically, the most central author for this work in Matjaz Perc.
+More specifically, the most central author is Matjaz Perc.
 
 Though several insights were gained from studying the authorship within the field
 we do not know how these findings compare to either fields. For example, an 
@@ -1250,19 +1253,17 @@ These questions are delved into in the following section.
 \subsubsection{Comparison with other topics authorship}
 
 In order to achieve objective insights regarding authorship in the field of the
-prisoner's dilemma we perform a comparison this section. How well connected the
-network of authors for the prisoner's dilemma is compared to two other networks.
-These are network constructed from two new data set collected for the purpose
-of this work. The data collected are on two different topics within game theory,
-these are:
+prisoner's dilemma we perform a comparison in this section. We compare how well connected the
+network of authors for the prisoner's dilemma is compared to other topics.
+The data collected are on two different topics within game theory, these are:
 
 \begin{itemize}
-    \item price of anarchy. key: price of anarchy;
-    \item auction games. key: auction game theory.
+    \item price of anarchy and
+    \item auction games.
 \end{itemize}
 
 The open source project Arcas was used again, this time using the following 
-keyword respectively for each topic,
+keywords respectively for each topic,
 
 \begin{itemize}
     \item key: price of anarchy;
@@ -1272,13 +1273,13 @@ keyword respectively for each topic,
 A summary of the two data set is given by Table~\ref{table:data_sets_summary}.
 A total of 296 unique articles have been collected on price of anarchy. The 
 earliest entry being in 2003 and a total of 668 unique authors have written about
-the topic. In comparison, a total of 2103 articles are examined here for auction 
-games. Auction games are a well studied topic for many year, the earliest entry
-was published in 1974. Finally, 3860 different names are examined. The frequency
-of the prisoner's dilemma, for both articles and authors, lies between these two
-data sets. In Figure~\ref{fig:timeplots_anarchy_auction} a timeplot for each topic
-are viewed, both topics have an increasing trend over the years. Though price of
-anarchy is clearly a new topic compared to auction games.
+the topic. In comparison, a total of 2103 articles are examined for auction 
+games. Auction games are a well studied topic for several years with the earliest entry
+going back to 1974. Finally, 3860 different names are examined. The frequency
+of the prisoner's dilemma, for both articles and authors, lies between the frequencies
+of these two topics. In Figure~\ref{fig:timeplots_anarchy_auction} a timeplot for each
+topic is displayed and is exhibited that both topics have an increasing trend over
+the years. Though price of anarchy is clearly a new topic compared to auction games.
 
 \begin{table}[!hbtp]
     \begin{center}
@@ -1309,14 +1310,14 @@ anarchy is clearly a new topic compared to auction games.
 \end{center}
 
 
-The immediate step is to compare the networks we construct from all three 
-data set. The aim of the comparison is to gain insight as to how collaborative
+The immediate step is to compare the networks we have constructed for all three 
+fields. The aim of the comparison is to gain insight as to how collaborative
 the prisoner's dilemma authors are compared to other fields. Network measures
 discussed in this comparison are given by Table~\ref{table:descriptive_networks}.
 The smallest network is that of the authorship describing the price of anarchy,
 followed by the prisoner's dilemma and the largest one is that of the auction
 games. The average degree (calculated as \(\frac{2E}{V}\)), is for all three
-networks close to 3 and the density of all networks is very small, less than
+networks is close to 3 and the density of all networks is very small, less than
 0.005.
 
 \begin{table}[!hbtp]
@@ -1336,14 +1337,14 @@ Average degree                     & 3.22    & 2.71 & 2.87 \\
 \end{table}
 
 To further examined the differences or the similarities of these networks we 
-consider the degree distributions. The normalised described distributions of all
-three networks are given in Figure~\ref{fig:degrees_dist}. They have been normalise
-such that the frequencies are sum to one. The distributions appear to be similar
+consider the degree distributions. The normalised distributions of all
+three networks are given in Figure~\ref{fig:degrees_dist}. They have been normalised
+such that the frequencies sum to one. The distributions appear to be similar
 but to validate the hypothesis a statistical test will be used. None of the
 distributions is normally distributed thus the non parametric test Kruskal-Wallis
-is used. Kruskal-Wallis allow us to compare the medians of two or more distributions.
-The test returns a p-value of 0.29. Thus, there is no significant difference in
-the degree distributions of the three networks.
+is used~\cite{mckight2010}. Kruskal-Wallis allow us to compare the medians of
+two or more distributions. The test returns a \(p\)-value of 0.29. Thus, there is no
+significant difference in the degree distributions of the three networks.
 
 \begin{figure}[!hbtp]
     \centering
@@ -1359,9 +1360,9 @@ degrees over the publication years of each topic have been very different.
 This can be observed by Figures~\ref{fig:av_degrees_over_time} and
 \ref{fig:md_degrees_over_time}. Auction games have had an increasing trend in
 co-authorships over time. The prisoner's dilemma study, though it does have an
-increasing trend there have been two jumps. A decreased jump in 1960 and 
-and an increasing on around 1970. Finally, the price of anarchy had a big
-increase in authorship over the years 2004-2006.
+increasing trend has two sudden jumps. A decrease occurred in 1960 and a sudden
+increase in 1970. Finally, the price of anarchy had a big increase in authorship
+in 2004.
 
 \begin{figure}[!hbtp]
     \centering
@@ -1384,7 +1385,7 @@ Table~\ref{table:summary_centrality_networks}. The individual histograms
 are illustrated in Figures~\ref{fig:w_betweenness_hist},~\ref{fig:closeness_hist}
 and~\ref{fig:page_rank_hist}. A normality test has been performed for each of the
 9 distributions and with a significance level of 0.05 none of the distributions
-are normally distributed. Thus, a Krustal-Wallis test will be performed to test
+is normally distributed. Thus, a Krustal-Wallis test will be performed to test
 the mean difference between the topics for each centrality measure.
 
 \begin{table}[!hbtp]
@@ -1432,12 +1433,10 @@ Median weighted page rank    & 0.0005     & 0.0015     & 0.0002 \\
 The results of the Kruskal-Wallis tests are shown in Table~\ref{table:kruskal_wallis_results}.
 It can be seen that for the closeness centrality the null hypothesis holds. Thus
 there is not a significant difference of the medians. On the other hand, for
-both the weighted betweenness and weighted page rank we reject the null hypothesis.
-Thus there seems to exist a significant difference of the medians for these two
+both the weighted betweenness and weighted page rank the null hypothesis is being
+rejected. Thus there seems to exist a significant difference of the medians for these two
 measures. A post-hoc test could be carried to further explore which medians 
-are significantly different. Though for the aims of this analysis we have shown
-that even though the degrees in the topics do follow similar distributions
-in some fields more central author exist.
+are significantly different.
 
 \begin{table}[!hbtp]
     \begin{center}
@@ -1456,32 +1455,29 @@ Weighted page rank      & 0.0   \\
 
 In this section the amount of collaboration within the field was examined.
 Furthermore, to be objective this was compared to other topics within game
-theory. In the section to follow we return in the exploration of the co-authorships
-within the field. The collaboration of some well known authors alongside authors
-that appear to be central in our network are explored.
+theory. In the section to follow we focus on the exploration of the co-authorships
+within the field of the prisoner's dilemma. The collaboration of some well known
+authors alongside authors that appear to be central in our network are explored.
 
 \subsubsection{Sub graphs analysis}
 
 In this section we explore and gain insights as to who well known authors within
 our field tend to collaborate and write with. This is achieved by studying the
-cliques of the network that has been constructed. Cliques are subsets of vertices,
-all adjacent to each other. 
-
+cliques of the network. Cliques are subsets of vertices, all adjacent to each other. 
 A total of 779 cliques exists within the network and the max node number of a
-clique is 21. The clique with the 21 authors is that of the co-authorship from
-the paper~\cite{Knight2016}. Though a big number of cliques exists in this 
-section we will only examine those of authors that have been discussed several
-times within this work.
+clique is 21. The clique with the 21 authors is from~\cite{Knight2016}.
+Though a big number of cliques exists in this section we will only examine those
+of authors that have been discussed several times within this work.
 
-The first clique is that of R. Axelrod. The sub graph, shown in Figure
-\ref{fig:axelrods_clique}, consists of 4 vertices and 3 edges. The central
-node is Axelrod himself and the edge weights are all equal to 1. Thus 
-for this subgraph we examined the betweenness, closeness and page rank centrality
-(all without weights). The results are shown in Table~\ref{table:axelrods_clique}.
+The first clique is that of R. Axelrod. The subgraph, shown in Figure
+\ref{fig:axelrods_clique}, consists of 4 vertices, 3 edges and the edge weights
+are all equal to 1. Thus for this subgraph we examined the betweenness, closeness
+and page rank centrality (all without weights). The central node is Axelrod 
+based on all centrality measures. The results are shown in Table~\ref{table:axelrods_clique}.
 
-Furthermore, the density of the sub graph is equal to 0.5 and the average degree
+Furthermore, the density of the subgraph is equal to 0.5 and the average degree
 in 1.5. All authors are connected to Axelrod with a step of one. That is because
-all these authors have written with Axelrod. These are the papers~\cite{Axelrod1988,
+all these authors have written only with Axelrod in~\cite{Axelrod1988,
 Axelrod1984, Wu1995}.
 
 \begin{figure}[!hbtp]
@@ -1509,11 +1505,11 @@ Axelrod1984, Wu1995}.
 \end{table}
 
 The next clique considered is that of D. Ashlock. The subgraph which contains
-Ashlock is larger than the previous one we reviewed. It has a total of 24 vertices
+Ashlock is larger than Axelrod's one. It has a total of 24 vertices
 and 38 edges. The density is equal to 0.137 and the average degree is 3.16.
-Moreover, based on all three centrality measures, examined for the previous subgraph,
-Ashlock appears to be the most central node of this subgraph. Table~\ref{table:ashlock_clique}
-present the 10 most central authors.
+Moreover, based on all three centrality measures Ashlock appears to be the most
+central node of this subgraph. Table~\ref{table:ashlock_clique} present the 10
+most central authors.
 
 An interesting insight can be gained by observing the length of the shortest
 paths for any author to reach Ashlock. The maximum shortest path is 4. Thus,
@@ -1542,8 +1538,8 @@ The final two authors considered in this section are M. Nowak and the most centr
 author of the network M. Perc. It appreas that these two authors are in same
 subgraph, Figure~\ref{fig:perc_clique}. This is the largest subgraph within the
 network with a total of 266 vertices and 736 edges. Similarly, the centrality
-of the subgraph was calculated using three different measures and are shown in
-Table~\ref{table:perc_clique}. The density is equal to 0.02088 and the average
+of the subgraph was calculated using three different measures and the results are
+displayed in Table~\ref{table:perc_clique}. The density is equal to 0.02088 and the average
 degree is 5.533. 
 
 The subgraph does not only include these two authors but also the rest of 
@@ -1560,13 +1556,17 @@ These are,
 Thus this subgraph is the most connected component of the intrire network. 
 Similarly, the average steps of reaching each author is calculated. M. Perc is,
 on average, three steps away from each node where M. Nowak is 4.
-The short path that connected these authors is also retrieved and is the following:
-(M. Nowak - A. Traulsen- Y. Moreno - M. Perc. Thus the authors that connect them
-are two of the most central authors. The answer as to why these people are connected
-can be seen if we consider the topic the have writen for. The similarity on these
-people work is evolunationary process and spatial tournaments. M. Perc is a 
-signicant author within the topic with some of his most well received and most 
-citated works being~\cite{Perc2010, Perc2013, Perc2013b, Perc2008}.
+
+The short path that connects the two authors is also retrieved and is the following:
+M. Nowak - A. Traulsen- Y. Moreno - M. Perc. Thus the authors that connect them
+are two of the most central authors. 
+
+The answer as to why these people are connected can be seen if we consider the
+topic the have focused their research on. The common subject to all these authors
+works is evolunationary game theory, spatial tournaments and social applications.
+
+M. Perc is a signicant author within the topic with some of his most well received
+and most citated works being~\cite{Perc2013b, Perc2008, Perc2010, Perc2013}.
 Perc is well connected author which is proven from the connectivity of his
 subgraph, the centrality measures and can be verified by his publications.
 
@@ -1589,8 +1589,68 @@ subgraph, the centrality measures and can be verified by his publications.
     \end{center}
 \end{table}
 
+\subsection{Conclusions from the analysis}
 
-\subsubsection{Conclusions from the analysis.}
+In the section of the paper it was described how insights on the research on the
+field can be gained by performing a data analysis. Initially the method that
+was used to collect various metadata of articles was briefly presented.
+
+Furthermore, the number of articles and their provenance over the years was
+reviewed. The number of articles appears to be increasing after 2000. That could
+be because most of the journals used for data collection are either recent or
+focused on computing/engineering sciences that have been used in the field mainly
+after 2000.
+
+One of the features retrieved by the collection is the authors name. Exploring
+the connections of these authors has been the main focus of the section as it
+provides several interesting findings. The connection have been examined using
+network theory methods. 
+
+The aim of the network analysis has been to research how collaborative the field
+of the prisoner's dilemma is. Furthermore, the crucial authors of the network
+were identifies and provide some insights of the partnerships of well known
+authors and their topic of research.
+
+The connectivity of the network was studied using several different measures.
+In order to have an objective insight two other topics were considered as 
+separate networks. The topics have been the price of anarchy and auction games.
+The results have shown that the connectivity of all three
+networks have been similar. Thus, the prisoner's dilemma is neither more or
+less collaborative than these fields. 
+
+However, the historical progress of the authorship is very different between the
+fields. Auction games have been attracting more authors and collaborations
+as time progresses. The price of anarchy is a new field that attracted a large
+number of authors after 2004. The prisoner's dilemma seems to be a more
+complicated, having a sudden decrease in 1960 and a sudden increase in 1970.
+
+Those this could be due the bias that this analysis suffers, which is that only
+5 journals are considered. 
+
+Furthermore, there has been some difference  in the centrality of the networks. 
+Further study can be performed to understand why there is indeed significant
+difference in the centrality. 
+
+An interpretation, based on the sub graphs study, is that the main centrality of
+the network is due a single large clique. This could differ in the other fields were
+several central authors that have managed to connect the overall network more.
+
+A surprise has been that the main author that was highlighted several times
+within the analysis has been M. Perc. An author whose work was not delved into
+in the literature section.  A number of authors such as Perc, Moreno and
+Traulsen would have not come to our attention if this analysis was not held.
+Thought their work seems promising and may be of interest to people that focus
+on  evolutionary game theory, spatial games and social stuff.
+Thus advantages of such analysis is that authors that have not previously be
+considered can stand out.
+
+Another powerful results emerges by reviewing several subgraphs of authors.
+The connections to an author of interest can offer new opportunities and guidelines
+to research as to whose work to follow next. Nevertheless, only a small number
+of the subgraphs were presented here the reader is encouraged to explore
+the extra material of this work and investigate the connection of their chosen
+author.
+
 \newpage
 \bibliographystyle{plain}
 \bibliography{bibliography.bib}
