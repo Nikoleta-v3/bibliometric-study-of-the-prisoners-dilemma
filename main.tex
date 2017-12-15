@@ -1135,6 +1135,7 @@ prisoner's dilemma authorship network. Finally, a number of sub graphs are
 examined.
 
 \subsubsection{Co-authors network from the prisoner's dilemma data set}
+\label{section:co_authors_network_analysis}
 
 The authors are represented using an undirected network, shown in Figure
 \ref{fig:authors_network}. The network has sets of vertices \(V\) and edges \(E\).
@@ -1453,7 +1454,144 @@ Weighted page rank      & 0.0   \\
     \caption{Kruskal-Wallis tests results.}\label{table:kruskal_wallis_results}
 \end{table}
 
+In this section the amount of collaboration within the field was examined.
+Furthermore, to be objective this was compared to other topics within game
+theory. In the section to follow we return in the exploration of the co-authorships
+within the field. The collaboration of some well known authors alongside authors
+that appear to be central in our network are explored.
 
+\subsubsection{Sub graphs analysis}
+
+In this section we explore and gain insights as to who well known authors within
+our field tend to collaborate and write with. This is achieved by studying the
+cliques of the network that has been constructed. Cliques are subsets of vertices,
+all adjacent to each other. 
+
+A total of 779 cliques exists within the network and the max node number of a
+clique is 21. The clique with the 21 authors is that of the co-authorship from
+the paper~\cite{Knight2016}. Though a big number of cliques exists in this 
+section we will only examine those of authors that have been discussed several
+times within this work.
+
+The first clique is that of R. Axelrod. The sub graph, shown in Figure
+\ref{fig:axelrods_clique}, consists of 4 vertices and 3 edges. The central
+node is Axelrod himself and the edge weights are all equal to 1. Thus 
+for this subgraph we examined the betweenness, closeness and page rank centrality
+(all without weights). The results are shown in Table~\ref{table:axelrods_clique}.
+
+Furthermore, the density of the sub graph is equal to 0.5 and the average degree
+in 1.5. All authors are connected to Axelrod with a step of one. That is because
+all these authors have written with Axelrod. These are the papers~\cite{Axelrod1988,
+Axelrod1984, Wu1995}.
+
+\begin{figure}[!hbtp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{./assets/images/Axelrod.pdf}
+    \caption{R. Axelrod's clique.}
+    \label{fig:axelrods_clique}
+\end{figure}
+
+\begin{table}[!hbtp]
+    \begin{center}
+    \begin{tabular}{llll}
+    \toprule
+    Author name &  Betweenness & Closeness & Page rank \\
+    \midrule
+     R. Axelrod          &    1.00 & 0.6 & 0.1734 \\
+     J. WU               &    0.00 & 1.0 & 0.4797 \\
+     William D. Hamilton &    0.00 & 0.6 & 0.1734 \\
+     D. Douglas          &    0.00 & 0.6 & 0.1734 \\
+    \bottomrule
+    \end{tabular}
+    \caption{Centrality measures for Axelrod's clique.}
+    \label{table:axelrods_clique}
+    \end{center}
+\end{table}
+
+The next clique considered is that of D. Ashlock. The subgraph which contains
+Ashlock is larger than the previous one we reviewed. It has a total of 24 vertices
+and 38 edges. The density is equal to 0.137 and the average degree is 3.16.
+Moreover, based on all three centrality measures, examined for the previous subgraph,
+Ashlock appears to be the most central node of this subgraph. Table~\ref{table:ashlock_clique}
+present the 10 most central authors.
+
+An interesting insight can be gained by observing the length of the shortest
+paths for any author to reach Ashlock. The maximum shortest path is 4. Thus,
+anyone can reach Ashlock at most with 4 steps.
+
+\begin{figure}[!hbtp]
+    \centering
+    \includegraphics[width=\textwidth]{./assets/images/Ashlock.pdf}
+    \caption{Subgraph that contains D. Ashlock.}
+    \label{fig:ashlocks_clique}
+\end{figure}
+
+\begin{table}[!hbtp]
+    \begin{center}
+    \scalebox{0.8}{
+    \input{assets/ashlock_betweenness_centrality}
+    \input{assets/ashlock_closeness_centrality}
+    \input{assets/ashlock_page_rank_centrality}}
+    \caption{Central authors based on different centrality measures of the subgraph
+    which includes author D. Ashlock.}
+    \label{table:ashlock_clique}
+    \end{center}
+\end{table}
+
+The final two authors considered in this section are M. Nowak and the most central
+author of the network M. Perc. It appreas that these two authors are in same
+subgraph, Figure~\ref{fig:perc_clique}. This is the largest subgraph within the
+network with a total of 266 vertices and 736 edges. Similarly, the centrality
+of the subgraph was calculated using three different measures and are shown in
+Table~\ref{table:perc_clique}. The density is equal to 0.02088 and the average
+degree is 5.533. 
+
+The subgraph does not only include these two authors but also the rest of 
+the most central authors that we indentified in Section~\ref{section:co_authors_network_analysis}.
+These are,
+
+\begin{itemize}
+    \item Yamir Moreno;
+    \item Arne Traulsen;
+    \item Angel Snchez;
+    \item Krishnendu Chatterjee.
+\end{itemize}
+
+Thus this subgraph is the most connected component of the intrire network. 
+Similarly, the average steps of reaching each author is calculated. M. Perc is,
+on average, three steps away from each node where M. Nowak is 4.
+The short path that connected these authors is also retrieved and is the following:
+(M. Nowak - A. Traulsen- Y. Moreno - M. Perc. Thus the authors that connect them
+are two of the most central authors. The answer as to why these people are connected
+can be seen if we consider the topic the have writen for. The similarity on these
+people work is evolunationary process and spatial tournaments. M. Perc is a 
+signicant author within the topic with some of his most well received and most 
+citated works being~\cite{Perc2010, Perc2013, Perc2013b, Perc2008}.
+Perc is well connected author which is proven from the connectivity of his
+subgraph, the centrality measures and can be verified by his publications.
+
+\begin{figure}[!hbtp]
+    \centering
+    \includegraphics[width=\textwidth]{./assets/images/Perc.pdf}
+    \caption{Subgraph that contains M. Nowak and M. Perc.}
+    \label{fig:perc_clique}
+\end{figure}
+
+\begin{table}[!hbtp]
+    \begin{center}
+    \scalebox{0.8}{
+    \input{assets/perc_betweenness_centrality}
+    \input{assets/perc_closeness_centrality}
+    \input{assets/perc_page_rank_centrality}}
+    \caption{Central authors based on different centrality measures of the subgraph
+    which includes author M. Nowak and M. Perc.}
+    \label{table:perc_clique}
+    \end{center}
+\end{table}
+
+
+\subsubsection{Conclusions from the analysis.}
+\newpage
 \bibliographystyle{plain}
 \bibliography{bibliography.bib}
 \end{document}
