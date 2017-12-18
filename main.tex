@@ -162,13 +162,13 @@ the aim of the game is clear to them. Thus, Axelrod was the first researcher,
 to the author's knowledge, to perform a computer tournament of the iterated
 prisoner's dilemma. The work of Axelrod is considered one of the greatest
 milestones within the field. The tournaments and their results are discussed in
-the next section.
+the next sections.
 
 \subsection{Axelrod's Tournaments (1981-1984)}\label{subsection:axelrods_tournament}
 
 This section serves as a follow up from the earlier years of the topic and as an
 introduction to the modern ways of studying the prisoner's dilemma. It is 
-dedicated to the computer tournaments of Axelrod from 1981 to 1984. 
+dedicated to the computer tournaments of R. Axelrod from 1981 to 1984.
 
 The first computer tournament was performed in 1980~\cite{Axelrod1980a}.
 Several scientists were invited to submit their strategies, written in the
@@ -193,15 +193,15 @@ made by the following researchers,
     \end{enumerate}
 \end{multicols}
 
-Each strategy competed against all the 13 opponents, itself and a player that played
-randomly a match of 200 turns. This topology is called round robin and is the 
-equivalent of a complete graph. The tournament was repeated \(5\) times to
-reduce variation in the results. Each participant knew the exact length of the
-matches and had access to the full history of each match. Furthermore, Axelrod
-performed an preliminary tournament and the results were known to the participants.
-The payoff values used where \(R=3, P=1, T=5\) and \(S=0\). These values are
-commonly used in the literature and unless specified will be the values used in
-the rest of the work described here. 
+Each competed in a 200 turn match against all 13 opponents, itself and a player
+that played randomly. This type of tournament is referred to as a round robin and
+corresponds to a complete graph from a topological point of view. The tournament
+was repeated \(5\) times to reduce variation in the results. Each participant knew
+the exact length of the matches and had access to the full history of each match.
+Furthermore, Axelrod performed an preliminary tournament and the results were known
+to the participants. The payoff values used for~\ref{eq:the_pd_payoffs} where
+\(R=3, P=1, T=5\) and \(S=0\). These values are commonly used in the literature
+and unless specified will be the values used in the rest of the work described here. 
 
 The winner of the tournament was determined by the total average score and not by
 the number of matches won. The strategy that was announced the winner was
@@ -209,8 +209,8 @@ submitted by Rapoport and was called \textbf{Tit For Tat}. Tit for Tat, is a
 strategy that always cooperates on the first round and then mimics the opponent's
 previous move. 
 
-Examples of Tit for Tat interacting with deterministic opponents are given by 
-Tables~\ref{table:tft_vs_c}, \ref{table:tft_vs_d}, \ref{table:tft_vs_a}. 
+Examples of Tit for Tat interacting for 8 turns with deterministic opponents are
+given by Tables~\ref{table:tft_vs_c}, \ref{table:tft_vs_d}, \ref{table:tft_vs_a}. 
 The opponents are, \textbf{Cooperator} a strategy that always cooperates, 
 \textbf{Defector} an opponent that always defects and \textbf{Altenator} a 
 player who alternates between cooperating and defecting.
@@ -221,14 +221,17 @@ player who alternates between cooperating and defecting.
         \toprule
         Turns & Tit for Tat & Cooperator\\
         \toprule
-        1 & C & C\\
-        2 & C & C\\
-        3 & C & C\\
-        $\vdots$ & $\vdots$ & $\vdots$ \\
-        200 & C & C \\
+        1 & C & C \\
+        2 & C & C \\
+        3 & C & C \\
+        4 & C & C \\
+        5 & C & C \\
+        6 & C & C \\
+        7 & C & C \\
+        8 & C & C \\
         \bottomrule
     \end{tabular}
-    \caption{Tit for Tat example match against Cooperator}\label{table:tft_vs_c}
+    \caption{Tit for Tat example match of 8 turns against Cooperator}\label{table:tft_vs_c}
     \end{center}
 \end{table}
 
@@ -241,11 +244,14 @@ player who alternates between cooperating and defecting.
         1 & C & D\\
         2 & D & D\\
         3 & D & D\\ 
-        $\vdots$ & $\vdots$ & $\vdots$ \\ 
-        200 & D & D \\
+        4 & D & D \\
+        5 & D & D\\
+        6 & D & D\\ 
+        7 & D & D \\
+        8 & D & D \\
         \bottomrule
     \end{tabular}
-    \caption{Tit for Tat example match against Defector}\label{table:tft_vs_d}
+    \caption{Tit for Tat example match of 8 turns against Defector}\label{table:tft_vs_d}
 \end{center}
 \end{table}
 
@@ -255,14 +261,17 @@ player who alternates between cooperating and defecting.
         \toprule
         Turns & Tit for Tat & Altenator\\
         \toprule
-        1 & C & C\\
-        2 & C & D\\
-        3 & D & C\\ 
-        $\vdots$ & $\vdots$ & $\vdots$ \\ 
-        200 & C & D \\
+        1 & C & C \\ 
+        2 & C & D \\ 
+        3 & D & C \\ 
+        4 & C & D \\
+        5 & D & C \\ 
+        6 & C & D \\ 
+        7 & D & C \\ 
+        8 & C & D \\
         \bottomrule
     \end{tabular}
-    \caption{Tit for Tat example match against Altenator}\label{table:tft_vs_a}
+    \caption{Tit for Tat example match of 8 turns against Altenator}\label{table:tft_vs_a}
 \end{center}
 \end{table}
 
@@ -272,17 +281,16 @@ tried to improve on Tit for Tat after the preliminary tournament results.
 Axelrod justified the success of the strategy saying that the strategy was
 `nice' and `forgiving'. 
 
-The top eight ranked strategies have been strategies that never defected on the
-first round, thus they were described as `nice' strategies. Compared to the rest
-nice strategies Tit for Tat had also another property. That property was 
+The top eight ranked strategies were strategies that did no defect on the first 
+round, thus they were described as `nice' strategies. Compared to the rest of the
+"nice" strategies, Tit for Tat had also another property. That property was 
 `forgiveness'. Tit for Tat punished it's opponent for a defection but just once
-and then it would try to cooperate again.
+and then it would try to cooperate again. These two properties were described to
+be the secret of success in a prisoner's dilemma tournament.
 
-These two properties were described to be the secret of success in a prisoner's
-dilemma tournament. In order to further test the robustness of the results
-Axelrod performed a second tournament~\cite{Axelrod1980b}. This time a total of
-63 participants submitted strategies for the second tournament, their names were
-the following,
+In order to further test the robustness of the results Axelrod performed a second
+tournament~\cite{Axelrod1980b} later in 1980. This time a total of 63 participants
+submitted strategies for the second tournament, their names were the following,
 
 \begin{multicols}{3}
     \begin{enumerate}
@@ -353,20 +361,17 @@ the following,
 
 All the participants knew the results of the previous tournament. The rules 
 were similar to those of the first tournament with only one exception;
-the number of turns was not specified instead a probabilistic ending tournament was
-meant to be used. In a probabilistic ending tournament each match has probability 
-of ending after each turn. This is  also refereed as `shadow of the future'
-\cite{Axelrod1988}.
+the number of turns was not specified instead a fixed probability (refereed to as
+`shadow of the future'~\cite{Axelrod1988}) of the game ending on the next move
+was used. The fixed probability was chosen to be 0.0036 so that the expected
+median length of a match would be 200 turns. The topology was of a round robin
+and each pair of players was matched 5 times. The length of the matches was
+determined once by drawing a random sample. Each of the five matches had a length
+of 63, 77, 151 and 308.
 
-However, the tournament was not a probabilistic ending one. A fixed probability 
-of  0.0036 was chosen as a chance of ending a match with each given move. The
-value was chosen so that the expected median length of a match would be 200
-turns. The topology was of a round robin and each pair of players was matched 
-5 times. The length of the matches was determined once by drawing a random sample.
-Each of the five matches had a length of 63, 77, 151 and 308.
-
-The results of the tournament once again came as a surprise. Tit for Tat was the
-simplest submission in the second tournament and won the second tournament as well.
+The results of the tournament once again came as a surprise. Tit for Tat was
+considered to be one of the simplest submissions in the second tournament and won
+the second tournament as well.
 Tit for Tat provided proof that reciprocity behaviour can allow cooperation
 to emerge in the iterated prisoner's dilemma game. In~\cite{Axelrod1980a}
 the main conclusions indicating strong performance was:
@@ -380,22 +385,23 @@ the main conclusions indicating strong performance was:
 %The strategies of the second tournament where bias due the first tournament. Discuss with V. 
 
 Another successful strategy from Axelrod's tournament that can been seen
-in literature to date is \textbf{Grudger}. Grudger is a strategy that will cooperate
-as long as the opponent does not defect. The name Grudger was give to the strategy
+in literature to date is \textbf{Grudger}, originally submitted by James W. Friedman.
+Grudger is a strategy that will cooperate as long as the opponent does not defect.
+The name Grudger was give to the strategy
 in~\cite{Li2014}. Though the strategy goes by many names in the literature such as,
 Spite~\cite{Beaufils1997}, Grim Trigger~\cite{Banks1990} and Grim~\cite{Van2015}.
 
-As for the rest of the strategies, though a full explanation of all 14 strategies
+As for the rest of the strategies, though a full explanation of all 13 submitted strategies
 is given in~\cite{Axelrod1980a} the same does not hold for all 63 strategies of
 the second tournament~\cite{Axelrod1980b}. The author mainly focuses on the high
 ranked participants and several details for the rest strategies are left unknown. 
 
-However, the source code of the 63 strategies be found on Axelrod's personal
+The source code of the 63 strategies be found on Axelrod's personal
 website~\cite{fortan_code}. The source code was written by Axelrod and several 
 other contributors. The strategies written in Basic were translated to 
 Fortran before the tournament. The source code includes the code only for the
 strategies and not for creating and performing the tournament.Figure~\ref{fig:tit_for_tat_fortran}
-serves as an example of the source code giving the code for the the winning
+serves as an example of the source code giving the code for the winning
 strategy Tit for Tat. Unfortunately, the source code of the first 13 strategies
 is not available, as stated in Axelrod's personal website~\cite{fortan_code}.
 
@@ -426,10 +432,10 @@ c77   format(' test k92r. j,k92r: ', 2i3)
     Provided by~\cite{fortan_code}.}
 \end{figure}
 
-So far it was discussed how the performance of the strategy was tested through
-tournament against other strategies. But is the overall success of a strategy
-based only on it's performance in a round robin tournament or should it be
-checked through other ways as well?
+So far it has been discussed how the performance of the strategy has been tested
+through tournaments against other strategies. A question remains: is the overall
+success of a strategy based only on it's performance in a round robin tournament
+or should it be checked through other ways as well?
 
 Following his initial tournaments Axelrod performed an `ecological' tournament
 in 1981~\cite{Axelrod1984}. In~\cite{Axelrod1984}, the set of strategies from
@@ -440,10 +446,10 @@ The ecological approach is based on the payoff matrix of the tournament. The
 highest performing strategies are adapted by lower scoring individuals
 within a fixed population. Over time a strategy takes over the population.
 Figure~\ref{fig:ecological.tournament} demonstrates an example of the
-natural selection proceeder. Four different strategies are being used by the
-population, Defector, Alternator, TitForTat and Grudger. In~\cite{Axelrod1984},
-the results showed that in a homogeneous population of Tit for Tat invasion by
-mutant strategies was not successful.
+natural selection procedure. Four different strategies strategies have a non zero
+probability of remaining in the final population, Defector, Alternator, TitForTat
+and Grudger. In~\cite{Axelrod1984},the results showed that in a homogeneous population
+of Tit for Tat invasion by mutant strategies was not successful.
 
 The ability of strategies to be favoured under natural selection and their
 ability to withstand invasion from other strategies soon became an new measure
