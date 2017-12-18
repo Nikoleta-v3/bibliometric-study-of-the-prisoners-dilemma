@@ -26,7 +26,7 @@
 \newcommand{\manual}{\input{assets/prov_manual.txt}}
 \newcommand{\authors}{\input{assets/authors.txt}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
-\title{Literature review paper for the iterated prisoner's dilemma.}
+\title{A systematic literature review of the Prisoner's Dilemma and an analysis of the corresponding co author network.}
 \author{Nikoleta E. Glynatsi}
 \date{2016}
 
@@ -37,33 +37,26 @@
 \section{Introduction}\label{section:introduction}
 
 The emergence of cooperation is a topic of continuing and public interest
-for social~\cite{capraro2014, gracia2012},
+for the social~\cite{capraro2014, gracia2012},
 biological~\cite{Douglas2011}
 and ecological sciences~\cite{Godfray1992,Krama2012,Milinski1987,Wilkinson1984}.
-Cooperation is essential for evolution but according to Darwin’s theory 
+Cooperation is essential for evolution but according to Darwin's theory 
 it is not always easy to achieve. The game called the prisoner's
 dilemma offers a theoretical framework for studying the emergence of
-altruist behaviour. Collecting data from 5 sources shows that more than \totalarticles
-papers related to the prisoner's dilemma have been published since it's origin.
+altruistic behaviour.
 
-In this work an extensive literature review will be presented. In addition, 
-an introduction to the prisoner's dilemma is given in Section~\ref{section:prisoners_dilemma}
-and some major pieces of work will be discussed in Section~\ref{section:timeline}.
-In Section~\ref{section:analysis} a comprehensive data set of literature
-regarding the prisoner's dilemma will be presented and analysed.
+\subsection{The Prisoner's Dilemma}\label{section:prisoners_dilemma}
 
-\section{The Prisoner's Dilemma}\label{section:prisoners_dilemma}
-
-The prisoner's dilemma a two player no-cooperative game where the decisions
-of the players are made simultaneously and independently. Both players can
-choose between cooperation (\textbf{C}) or defection (\textbf{D}).
+The prisoner's dilemma a two player no-cooperative game~\cite{Flood1958} where 
+the decisions of the players are made simultaneously and independently. Both players
+can choose between cooperation (\textbf{C}) or defection (\textbf{D}).
 
 The fitness of each player is influenced by its own behaviour, and the behaviour
 of the opponent. If both players choose to cooperate, both do better
 than if both defect. However, a player has the temptation to deviate. If a
 player was to defect while the other cooperates, the defector receives
-more than if both had cooperated. The reward for mutual cooperation is \(R\)
-units, for a mutual defection they receive \(P\), and for cooperation-defection,
+more than if both had cooperated. The reward for mutual cooperation is \(R\),
+for a mutual defection they receive \(P\), and for cooperation-defection,
 the cooperator receives \(S\) where the defector receives \(T\). Thus, the game's
 payoffs are given by,
 
@@ -76,19 +69,28 @@ payoffs are given by,
 where \(T > R > P > S \) and \(2R > T + S\) are the conditions for a dilemma
 to exist. Due to rational behaviour and the knowledge that an individual is tempted
 to defect the game's equilibrium lies at a mutual defection and both players
-receive a payoff of \(P\). Thus, the unbeatable strategy for the prisoner's dilemma
+receive a payoff of \(P\). Thus, the dominant strategy for the prisoner's dilemma
 is \textbf{D}.
 
-However, when the game is studied in a manner where prior outcomes matter, the 
-defecting choice is no longer necessarily the unbeatable choice. The repeated 
-form of the game is called the iterated prisoner's dilemma and now players 
-interact more than just once.
+However, when the game is studied in a manner where prior outcomes matter, the
+defecting choice is no longer necessarily the dominant choice. The repeated
+form of the game is called the iterated prisoner's dilemma and now two players play
+the game repeatedly. Interest was sparked on the iterated prisoner dilemma by
+R. Axelrod and his book~\cite{Axelrod1984} ``The Evolution of Cooperation''.
 
-In Section~\ref{section:timeline} it will be discussed how it was proven that
-the iterated prisoner's dilemma leaves room for cooperation. The prisoner's
-dilemma has attracted much attention and that's shown in Figure
-\ref{fig:timeline}, which illustrates the number of 
-publications on the prisoner's dilemma per year from the following sources:
+In his book Axelrod reports on a series of computer tournaments he organised of
+a finite turns games of the iterated prisoner's dilemma. Participants
+had to choose between \textbf{C} and \textbf{D} again and again while having
+memory of their previous encounters. Academics from several fields were invited
+design computer strategies to compete in the tournament. The pioneer work of Axelrod
+showed that greedy strategies did very poorly in the long run while more altruistic
+strategies did better.
+
+``The Evolution of Cooperation'' is considered a milestone in the field but it
+is not the only one. On the contrary, the prisoner's dilemma has attracted much
+attention ever since the game's origins. This is shown in Figure~\ref{fig:timeline},
+which illustrates the number of  publications on the prisoner's dilemma per year
+from the following sources:
 
 \begin{multicols}{3}
     \begin{itemize}
@@ -101,10 +103,18 @@ publications on the prisoner's dilemma per year from the following sources:
 \end{multicols}
 
 The choice of sources is due to the fact that they have an open access Api, the 
-process of collecting the data and the analysis will be described more
-comprehensively in Section~\ref{section:analysis}. Each point of Figure
-\ref{fig:timeline} marks the starting year of a time period. Each of these time
-periods is discussed later in Section~\ref{section:timeline}.
+process of collecting the data (including criteria for inclusion of papers) and
+the analysis will be described more comprehensively in Section~\ref{section:analysis}.
+
+Each point of Figure~\ref{fig:timeline} marks the starting year of a time period.
+Each of these time periods is reviewed and presented in~\ref{section:timeline},
+as an extensive literature review. This paper is the review of this type, in 
+such detail since the origins to date.
+
+Furthermore, in Section~\ref{section:analysis} a comprehensive data set of literature
+regarding the prisoner's dilemma will be presented and analysed. This allow us to
+review the amount of published academic articles as well as measure and explore
+the collaborations within the field.
 
 \begin{figure}[!htbp]
     \centering
@@ -730,7 +740,7 @@ not matter' statement was questioned. A set of more complex strategies,
 strategies that take in account the entire history set of the game, were
 trained and proven to be more stable than ZD strategies.
 
-\subsection{Current area (2015 - 2017)}
+\subsection{Contemporary period (2015 - 2017)}
 
 Following a discussion on research of short memory strategies this section
 reviews recent work done in complex strategies. As well as a discussion of
