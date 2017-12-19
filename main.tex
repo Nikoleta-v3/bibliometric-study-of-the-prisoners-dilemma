@@ -694,9 +694,11 @@ shown in Figure~\ref{fig:topologies}. The authors claimed that the essential
 results remain true of all topologies; the results also hold whether self interactions
 are taken into account.
 
-Thus each cell of the lattice is occupied by a \textbf{C} or a \textbf{D} and in
-each generation step each cell owner interacts with its immediate neighbours and
-play the game. The score of each player is the sum of the overall games the player
+Thus each cell of the lattice is occupied by a Cooperator or a Defector. At
+each generation step each cell owner interacts with its immediate neighbours.
+The score of each player is calculated as the sum of 
+
+the sum of the overall games the player
 competed in. At the start of the next generation, each lattice cell is occupied by the
 player with the highest score among the previous owner and the immediate
 neighbours. Nowak and all created this model where the model parameter
@@ -744,24 +746,28 @@ moves; \cite{Axelrod1987} considered \(m=3\).
 
 \subsection{Modern approaches (1995-2015)}\label{section:modern_approaches}
 
-This section covers several pieces of work from 1995 to 2015. During this time
-period several aspects discussed in the previous sections are now being applied
-continuously and are considered standard means of researching the iterated
-prisoners dilemma.
+A number of aspects discussed in the previous sections such as round robin
+tournaments, evolutionary tournaments, training of strategies and noise environments
+soon became standard means of studying the iterated prisoner's dilemma. In this
+section we review a number of computer tournament that used these methods
+and introduced a number of findings that made an impact in the literature.
 
-Several computer tournaments are performed, and new strategic rules surface.
-The performance of these strategic rules is being measured by round robin tournaments
-and evolutionary tournaments.
- 
-A number of Tit for Tat variants make an appearance and are introduced as more
-as more dominant than Tit for Tat. These include, \textbf{Contrite Tit for Tat}
-\cite{Wu1995} and \textbf{Adaptive Tit for Tat}~\cite{tzafestas-2000a}.
-On the other hand, defector variants have also been studied~\cite{Hilde2013}.
+Initially in 1995 a combination of tournament studies, ecological simulations
+and theoretical analysis was used in~\cite{Wu1995} to demonstrate approaches to
+copy with noise. These included generosity, contrition and win-stay, lose-shift
+by respectively using the strategies Generous Tit for Tat, \textbf{Contrite Tit for Tat}
+and Pavlov. A fourth strategy was also analysed \textbf{Generous Pavlov}.
+A strategy that acts like Palvov but cooperates 10\% of the time when it would
+defect otherwise.
+
+- \textbf{Adaptive Tit for Tat}~\cite{tzafestas-2000a}.
+
+Less generous variants also made an appearance~\cite{Hilde2013}.
 \textbf{Anti Tit for Tat}, is a strategy that plays the opposite of the opponents
 previous move. Another limitation of the strategy was discussed in~\cite{Wolfgang2006}.
-Tit for Tat was proven to hit a deadlock. Deadlock meaning a loop between 
-cooperation and defection. \textbf{Omega Tit For Tat} was introduced and was
-a strategy capable of avoiding the deadlock~\cite{Wolfgang2006}.
+Tit for Tat was proven to hit a loop between cooperation and defection.
+\textbf{Omega Tit For Tat} was introduced and was a strategy capable of avoiding
+such problem~\cite{Wolfgang2006}.
 
 In 2011 the authors of~\cite{Li2011} performed their own tournament where 
 several interesting strategies made an appearance.
