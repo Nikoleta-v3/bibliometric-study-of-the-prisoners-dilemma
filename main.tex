@@ -508,6 +508,44 @@ of performance; refereed to as the stability of a strategy.
     \label{fig:ecological.tournament}
 \end{figure}
 
+A much more general approach was discussed in~\cite{axelrod1981}; the evolutionary
+approach. Imagine a population made up of individuals where everyone follows the
+same strategy, \(B\) and a single individual adopts a mutant strategy \(A\).
+Strategy \(A\) is said to invade strategy \(B\) if,
+
+\begin{equation}
+V(A \mid B) > V(B \mid B)
+\end{equation}
+where \(V(B \mid B)\) is the expected payoff received by \(B\) against itself.
+
+Since the strategy \(B\) is an population that interacts only with itself,
+the concept of invasion is equivalent to a single mutant being able to outperform
+the average population. This leads to the concept of the evolutionary approach.
+Thus for a strategy to be \textbf{evolutionary stable} it must be able to
+resists any invasion. There are several applications in biology for the interpretation
+of this approach, for example the survival of the fitness in wildlife.
+
+Due the large number of possible strategies in the prisoner's dilemma identifying
+all the stable strategies was a difficulty task at the time. Axelrod focused 
+the work of~\cite{axelrod1981} in three questions,
+
+\begin{enumerate}
+    \item Under what conditions was Tit for Tat evolutionary stable?
+    \item What were the necessary and sufficient conditions for any strategy to be
+    evolutionary stable?
+    \item Finally, in an environment where all followed a strategy of unconditional
+    defection, can cooperation emerge?
+\end{enumerate}
+
+A series of theorems were presented which showed, that Tit for Tat is evolutionary
+stable y if and only if it is invadable neither by Defector nor Alternator. This
+is true only if the game is likely to last long enough for the retaliation
+to counteract the temptation to defect, according to Axelrod. Secondly,
+Defectors can withstand invasion by any strategy, as long as the players using 
+other strategies come one at a time. But if they come in clusters (even in rather small
+clusters), the strategy could be invaded. As for the characteristics of stable
+strategies, Axelrod provided a series of theorems.
+
 \subsubsection{Response to the computer tournaments (1984-1993)}
 
 The pioneering work of computer tournaments and the results on the reciprocal behaviour
@@ -631,19 +669,21 @@ the probability that the opponent's current move is flipped before being recorde
 
 \subsection{Evolutionary Dynamics (1987-1999)}
 
-The results of the round robin tournaments were not the only ones to receive
-criticism. Similarly, the ecological tournament and the statements for
-the stability of Tit for Tat were also delved into by other researchers.
-The results of~\cite{Boyd1987} argued that no pure strategy is evolutionary
-stable in the iterated prisoner's dilemma. This was not proven analytically,
-instead a series of examples using strategies such as Tit for Tat, Suspicious
-Tit for Tat and Defector where explored.
+Determining the evolutionary stability of strategies for the iterated prisoner's
+dilemma as we discussed is not an easy task. Methods can be use to deal with
+the difficulty. In~~\cite{Boyd1987} the author restricted the possible strategies
+that could be adopted to a relatively narrow set and resulted that no pure strategy
+is evolutionary stable, including Tit for Tat. Arguing with the results presented
+in~\cite{axelrod1981}. The list of strategies used included strategies such as
+Defector and \textbf{Suspicious Tit for Tat}, a strategy that plays
+Tit for Tat but starts by defecting.
 
-The results were questioned by~\cite{May1987}, stating that much was
-still no fully explored and more research had to be put into the results.
-Another attempt to explore stability of strategies in the prisoner's dilemma
-was done in~\cite{Boyd1989}. This time exploring the results in a noisy
-environment, but similarly a analytical proof was not achieved.
+The results were questioned by~\cite{May1987}, stating that much was still no fully
+explored and more research had to be put into the results. Farrel and Ware in
+1989~\cite{Farrell1989} extended the result to include finite mixture of pure
+and mixtures of Tit For \(n\) Tats as well. On the same year the work of~\cite{Boyd1989}
+looking again at a narrow set of strategies extended their results to 
+noisy environments.
 
 An extension to the natural selection was introduced in the 1992~\cite{Nowak1992b},
 recommending a different type of topology. A population of two deterministic
@@ -688,6 +728,12 @@ spatial topology.
      \end{subfigure}
      \caption{Spatial neighbourhoods}\label{fig:topologies}
     \end{figure}
+
+This work dealt with dealt with symmetric spatial lattices in two dimensions,
+deterministic winning and discrete time. The authors in later work~\cite{nowak1994spatial},
+that the results remain valid in more realistic situations. Such as situations
+where the spatial distributions of cells are random in two or three dimensions,
+and where winning is partly probabilistic.
 
 Evolutionary dynamics have been highly useful in the research of the prisoner's
 dilemma. In~\cite{Axelrod1987}, an evolutionary process, called the genetic
