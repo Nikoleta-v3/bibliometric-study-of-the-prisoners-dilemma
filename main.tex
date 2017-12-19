@@ -7,6 +7,7 @@
 
 %%%%%%%PACKAGES HERE%%%%%%%
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{hyperref}
 \usepackage{standalone}
 \usepackage{subcaption}
@@ -503,98 +504,130 @@ of performance; refereed to as the stability of a strategy.
     \centering
     \includegraphics[width=.6\textwidth]{./assets/images/ecological.pdf}
     \caption{System evolving over time based on natural selection using
-    \cite{axelrodproject}.}
+    \cite{axelrodproject}, strategies set from Axelord's second tournament.}
     \label{fig:ecological.tournament}
 \end{figure}
 
-\subsubsection{Immediate work and Criticism on Computer Tournaments (1984-1993)}
+\subsubsection{Response to the computer tournaments (1984-1993)}
 
-The pioneer work of computer tournaments and the results on the reciprocal behaviour
+The pioneering work of computer tournaments and the results on the reciprocal behaviour
 of the prisoner's dilemma spread the knowledge of the game not only worldwide
-but also across different scientific principles. The study of cooperation was 
-once again a critical issue. This section focuses on the immediate research
-that was spawn after the initial computer tournaments and on the criticism these
-tournaments received from 1984 to 1993.
+but also across different scientific principles. The study of cooperation became
+of critical interest once again. This section focuses on the immediate research
+that was carried out after the initial computer tournaments.
 
 Ecological studies that made use of Axelrod's results include the 
-works of~\cite{Godfray1992, Milinski1987, Wilkinson1984}. In\cite{Milinski1987}
-an experiment was conducted using sticklebacks to test the robustness of the 
-strategy Tit for Tat in the interactions of fish. Fish usually travel in pairs
-and monitor their hunters to gain information on the enemy. The works of
-\cite{Godfray1992, Wilkinson1984} looked upon food sharing between vampire bats.
+works of~\cite{Godfray1992, Milinski1987, Wilkinson1984}, more specifically how
+the successful strategy Tit for Tat can be applied in nature and wildlife.
 
-Nevertheless success often comes with criticism. Axelrod's tournaments assumed that
-each player has perfect information of the opponent's actions. In real life
-situations this is not always the case. Colleagues' interactions often suffer from
-measures of uncertainty. In the original tournaments there was no possibility of
-mis implementation or misunderstanding. These stochastic variations are refereed
-to as \textbf{noise} and \textbf{mis perception}. Noise is the concept of flipping
-one's move based on a given probability. On the contrary, mis perception is the
-probability that the opponent's current move is flipped before being recorded.
-Noise will flip a player's action  and it will be recorded correctly in the history
-where mis perception will not have an effect on the player's move but it will be
-recorded wrong~\cite{Hoffmann1998}.
+In~\cite{Milinski1987} the behaviour of fish when confronting a potential predator
+was studied. Conflicts can arise within pairs of fish in these circumstances.
+Two experiments were held using a system of mirrors where sticklebacks would be
+accompanied by  a cooperating companion or a defecting one. In both cases the hypothesis
+that the fish would behave according to Tit for Tat and that cooperation would evolve
+were supported. The works of~\cite{Godfray1992, Wilkinson1984} looked at
+food sharing between vampire bats and explained behaviour based on famous at
+that time tournament strategies.
 
-The performance of Tit for Tat was proven to suffer from such stochasticity in
-the tournament environment, especially against itself~\cite{Bendor1991, Godfray1992,
-Molander1985, Nowak1992}. If two strategies playing Tit for Tat were % Wolfgang2006
-to compete against each other in a noisy environment the strategies will get 
-a series of unwanted defections. In a non noisy environment
-the two strategies would have been cooperating for the entire match.
-An interesting result was introduced by~\cite{Molander1985}. Molander stated
-that if two strategies playing Tit for Tat meet in a noisy match the average
-payoff that a strategy will receive will be the same as that of a Random player
-(with probability \(0.5\) of cooperating). 
+Axelrod's tournaments assumed that each player has perfect information of the
+opponent's actions. In real life situations this is not always the case. 
+Interactions often suffer from measures of uncertainty. In the original tournaments
+there was no possibility of misunderstanding.
+
+In 1985, P. Molander tested the robustness of Tit for Tat in an uncertain environment
+by introducing noise~\cite{Molander1985}. Noise is a probability that that one's
+move will be flipped. Molander findings stated that if two strategies playing Tit
+for Tat meet in a noisy match the average payoff that a strategy will receive will
+be the same as that of a Random player (with probability \(0.5\) of cooperating).
+
+Further work on the performance of Tit for Tat in uncertain environments was
+conducted, described in~\cite{Bendor1991, Godfray1992, Nowak1992}. These works
+focused, similar to Molander's, focused on how the strategy suffers against itself
+the most. In a noise environment, where a random defection can occur, the two
+strategies would end up in an unwanted circle of defection-cooperation. In a non
+noisy environment the strategies would have cooperated until the final interaction.
 
 In~\cite{Bendor1991} a similar tournament to that of Axelrod's was performed 
-but this time noise was used. Bendor invited academics to submit strategies 
-to participate in his tournament. A total of thirteen strategies were used 
+but this time noise was used. J. Bendor invited academics to submit strategies 
+to participate in the tournament. A total of thirteen strategies were used 
 including already existed strategies such as Tit for Tat and \textbf{Tit for Two 
-Tats}. The results showed that Tit for Tat performed purely placing eight in
-the tournament. Bendor stated that a more forgiving strategy was needed, in his
-tournament a strategy called \textbf{Nice and Forgiving} ranked first.
+Tats}~\cite{Axelrod1988}. Tit for Two Tats is a variant of the classic strategy
+that defects only when the opponent has defected twice in a row. The findings
+of the tournaments suggested that a more forgiving strategy is needed in a noisy
+environment. The winner of this tournament was a strategy called
+\textbf{Nice and Forgiving}.
 
-The work of~\cite{Nowak1992} following a similar approach agreed with the result.
-In~\cite{Nowak1992}, the space of re-active strategies was explored in a noisy
-environment. The strategy that was performing the best in that environment was
-the re-active strategy known as \textbf{Generous Tit for Tat}. Reactive strategies
-are a subset of memory one strategies introduced in 1989~\cite{nowak1989}.
-Reactive strategies are denoted by the probabilities to cooperate after a
-\textbf{C} and a \textbf{D} of the opponent. Thus, a reactive strategy only
-considers the previous turn of the opponent. Strategies such as, Tit for Tat and
-Generous Tit for Tat are reactive.
+The work of~\cite{Nowak1992} aimed to also investigate stochastic effects.
+Using an evolutionary setting of a heterogeneous population where noise is taken
+into account, the space of reactive strategies was explored. Though a small fraction
+of Tit for Tat players have been essential for the emergence of cooperation, 
+more generous strategies took over the population. This reactive strategy was
+is known as \textbf{Generous Tit for Tat} and can be presented as \((0, \frac{2}{}3)\).
 
-The author published yet another paper a years later~\cite{Nowak1993} introducing another
-interesting player. The new strategy had the tolerance of Generous Tit for Tat 
-but also the capability of resisting and invading an all-out cooperators population
-was. The strategy is called \textbf{Pavlov}, and is based on the fundamental
-behavioural mechanism win-stay, lose-shift. The strategy starts off with a
-\textbf{C}, then Pavlov will repeat it's last move it was awarder with by
-\(R\) or \(T\) but will shift if punished by \(P\) or \(S\). Palvov is a memory
-one strategy.
+Reactive strategies are a subset of memory one strategies introduced in 1989~\cite{nowak1989}.
+Reactive strategies are denoted by the probabilities to cooperate after an
+opponent's \textbf{C} or \textbf{D} respectively. Thus, a reactive strategy only
+considers the previous turn of the opponent. Memory one strategies, are a set of
+strategies that consider the entire last turn of the game to decide on a next move.
 
-Memory one strategies, are a set of strategies that consider only the last turn
-of the game to decide on the next action~\cite{Nowak1990}. They are represented
-by the four conditional probabilities \(p_1, p_2, p_3\) and
-\(p_4\) to cooperate after \(CC, CD, DC\) and \(DD\) respectively
-(the four possible states a player can be in if only the last turn of the game was
-to be considered). Reactive strategies are just a constrained version where
-\(p_1=p_3\) and \(p_2=p_1\). The first action of the strategy (when the history
-does not exist yet) is assumed to be \textbf{C} unless is stated otherwise. For
-example, a reactive strategy called \textbf{Suspicious Tit for Tat}, studied
-in~\cite{Nowak1992}.
+Memory one strategies were also introduced by M. Nowak in 1990~\cite{Nowak1990}.
+Depending on the simultaneous moves of two players the states of the game,
+when only the previous round is considered, a state where both cooperated,
+both defected or either of them defected. These states are represented as
+\(CC, CD, DC, DD\). A memory one strategy can be written as the probability of
+cooperating after each of these states. Thus as a vector of four probabilities
+\(p\) where \( p = (p_1, p_2, p_3, p_4) \in\mathbb{R}_{[0,1]}^{4} \). 
+Reactive strategies are just a constrained version of memory one strategies where
+\(p_1=p_3\) and \(p_2=p_1\).
 
-Other strategies that made an impact have been \textbf{Tit for Two Tats}~\cite{Axelrod1988},
+The above formulation offered a new framework of studying strategies. Consider
+that two memory one strategies are in a game of the prisoner's dilemma. Their 
+interaction can be written as the following markov chain,
+
+\begin{equation}\label{eq:markov_matrix}
+    M =
+\begin{bmatrix}
+    p_{1} q_{1} & p_{1} (- q_{1} + 1) & q_{1} (- p_{1} + 1) & (- p_{1} + 1) (- q_{1} + 1)
+    \\
+    p_{2} q_{3} & p_{2} (- q_{3} + 1) & q_{3} (- p_{2} + 1) & (- p_{2} + 1) (- q_{3} + 1)
+    \\
+    p_{3} q_{2} & p_{3} (- q_{2} + 1) & q_{2} (- p_{3} + 1) & (- p_{3} + 1) (- q_{2} + 1)
+    \\
+    p_{4} q_{4} & p_{4} (- q_{4} + 1) & q_{4} (- p_{4} + 1) & (- p_{4} + 1) (- q_{4} + 1)
+    \\
+\end{bmatrix}    
+\end{equation}
+
+where the opponent is denoted as \(q=(q_1, q_2, q_3, q_4) \in\mathbb{R}_{[0,1]}^{4}\).
+The expected state that two opponents will end up can be estimated by calculating
+the steady states of the markov chain.
+
+Nowak, as described, studied the reactive but also the memory one strategies
+space and introduced several other strategies, among them the most popular was
+\textbf{Pavlov}. Pavlov is a strategy with the tolerance of Generous Tit for Tat 
+but also the capability of resisting and invading an all-out cooperators population.
+The strategy is based on the fundamental behavioural mechanism win-stay,
+lose-shift. It starts off with a cooperation and then repeats it's previous move
+only if it was awarder with a payoff of \(R\) or \(T\). Otherwise it shifts
+it's last move.
+
+A number of researchers searched for new strategies. Such strategies have been,
 \textbf{Handshake}~\cite{Robson1989} and \textbf{Gradual}~\cite{Beaufils1997}.
-Presented in 1988, 1989 and 1997 respectively. Tit for Two Tats, is a variant
-of the classic strategy which defects only if the other player defected on the
-two preceding moves. Handshake is a strategy that starts with cooperation,
-defection. If the opponent plays in a similar way then it will cooperate forever,
-otherwise it will defect forever.Gradual starts off by cooperating, then after
-the first defection of the other player, it defects one time and cooperates twice.
-After the second defection of the opponent, it defects two times and cooperates
-twice. After the \(n^{th}\) defection it reacts with \(n\) consecutive defections
-and then two cooperations. 
+Presented in 1989 and 1997 respectively.Handshake was developed using an 
+evolutionary tournament, where Gradual performance was tested in both a round-robin
+tournament and ecological simulation.
+
+Handshake is a strategy that starts with cooperation, defection. If the opponent
+plays in a similar way then it will cooperate forever, otherwise it will defect
+forever. Gradual starts off by cooperating, then after the first defection of the
+other player, it defects one time and cooperates twice. After the second defection
+of the opponent, it defects two times and cooperates twice. After the \(n^{th}\)
+defection it reacts with \(n\) consecutive defections and then two cooperations. 
+
+Another measure of uncertainty is that of mis perception. Though noise will flip
+a player's action it will be recorded correctly in the history. Mis perception is
+the probability that the opponent's current move is flipped before being recorded
+\cite{Hoffmann1998}.
 
 \subsection{Evolutionary Dynamics (1987-1999)}
 
