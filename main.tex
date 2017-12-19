@@ -438,21 +438,65 @@ success of a strategy based only on it's performance in a round robin tournament
 or should it be checked through other ways as well?
 
 Following his initial tournaments Axelrod performed an `ecological' tournament
-in 1981~\cite{Axelrod1984}. In~\cite{Axelrod1984}, the set of strategies from
-Axelrod's second tournament was used to perform the ecological tournament. The
-63 strategies interacted generation after generation to a round robin competition
-where their frequencies were proportional to their payoff in the previous round.
-The ecological approach is based on the payoff matrix of the tournament. The
-highest performing strategies are adapted by lower scoring individuals
-within a fixed population. Over time a strategy takes over the population.
-Figure~\ref{fig:ecological.tournament} demonstrates an example of the
-natural selection procedure. Four different strategies strategies have a non zero
-probability of remaining in the final population, Defector, Alternator, TitForTat
-and Grudger. In~\cite{Axelrod1984},the results showed that in a homogeneous population
-of Tit for Tat invasion by mutant strategies was not successful.
+in 1981~\cite{Axelrod1984}. Axelrod argued that some strategies are so unsuccessful
+that there are very likely to be dropped in the future, while other more successful
+strategies would continue in later interactions. Influenced by evolutionary biology
+Axelrod introduced a way of capturing this behaviour, which included running a
+series of tournaments where more successful strategies would occupy a larger part
+of the environment and the less successful strategies would become less often.
+This is known as an ecological tournament. 
+
+The simulation of the process, as described in~\cite{Axelrod1984}, is straightforward.
+Recall the game matrix~\ref{eq:interaction_payoffs} which provides the expected payoff
+when two individuals of different type interact. Starting with proportions of
+each type in a given generation the proportions of these strategies in the next
+generation is the only measure needed to be calculated. This is achieved by
+calculating the weighted average of the scores of a given strategy with all
+other players, where the weights are the numbers of the other strategies which
+exist in the current generation. The numbers of a given strategy in the next
+generation is then taken to be proportional to the product of its numbers in the
+current generation and its score in the current generation.
+
+\begin{equation} \label{eq:interaction_payoffs}
+    \begin{pmatrix}
+    (R=3, R=3) & (S=0, T=5) \\ (T=5, S=0) & (P=1, P=1)
+    \end{pmatrix}
+\end{equation}
+
+Note the ecological tournament does not offer any evolutionary perspective.
+There is no possibility of a new strategy to be introduced, there is no mutation 
+probability to drive the evolution. The ecological is a framework that provides
+the distributions of given types over time when interacting with the population.
+
+The set of strategies from Axelrod's second tournament was used to perform the
+ecological tournament. Several interesting insights were reported,
+
+\begin{itemize}
+    \item The lowest ranking 11 strategies had fallen to half their initial size
+    by the 5 generation;
+    \item The middle-ranking entries managed to hold their initial size;
+    \item By the \(500^{th}\) generation the only strategies that were larger than their
+    initial size have been the top 11 ranked strategies;
+    \item These formed 96\% of the population at that time;
+    \item The rule which ranked fifth in the tournament, submitted by William Adams,
+    grew to three times its original size in the population and then began to sink
+    after generation 100;
+    \item The rule which ranked eighth, submitted by Paul D. Harrington, and was
+    the only non nice rule in the top 15, grew to four times its original size but
+    began to shrink after generation 150 to reach only a third of its original
+    size by the \(1000^{th}\) generation.
+\end{itemize}
+
+Overall the strategies that did rank at the top of the second tournament have
+also ranked top in the ecological tournament. On the same note, the strategy that
+was ranked at the top was again Tit for Tat. By the 1000th generation it was 14.5\%
+of the whole population, followed by the third place rule at 13.9\% and then the
+second place rue at 13.1\%, Tit for Tat was growing at .05\% per generation which
+was a faster rate than any other strategy. All these ar captured in
+Figure~\ref{fig:ecological.tournament}.
 
 The ability of strategies to be favoured under natural selection and their
-ability to withstand invasion from other strategies soon became an new measure
+ability to withstand invasion from other strategies soon became a measure
 of performance; refereed to as the stability of a strategy.
 
 \begin{figure}[!hbtp]
