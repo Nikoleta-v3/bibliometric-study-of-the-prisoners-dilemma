@@ -48,7 +48,7 @@ altruistic behaviour.
 
 \subsection{The Prisoner's Dilemma}\label{section:prisoners_dilemma}
 
-The prisoner's dilemma a two player no-cooperative game~\cite{Flood1958} where 
+The prisoner's dilemma is a two player non-cooperative game~\cite{Flood1958} where 
 the decisions of the players are made simultaneously and independently. Both players
 can choose between cooperation (\textbf{C}) or defection (\textbf{D}).
 
@@ -448,7 +448,7 @@ of the environment and the less successful strategies would become less often.
 This is known as an ecological tournament. 
 
 The simulation of the process, as described in~\cite{Axelrod1984}, is straightforward.
-Recall the game matrix~\ref{eq:interaction_payoffs} which provides the expected payoff
+Consider matrix~\ref{eq:interaction_payoffs} which provides the expected payoff
 when two individuals of different type interact. Starting with proportions of
 each type in a given generation the proportions of these strategies in the next
 generation is the only measure needed to be calculated. This is achieved by
@@ -685,6 +685,13 @@ and mixtures of Tit For \(n\) Tats as well. On the same year the work of~\cite{B
 looking again at a narrow set of strategies extended their results to 
 noisy environments.
 
+Evolutionary dynamics have been highly useful in the research of the prisoner's
+dilemma. In~\cite{Axelrod1987}, an evolutionary process, called the genetic
+algorithm, was used to discover effective strategies. The author introduced
+lookup tables as a mean of representing a strategy in a gene format. A lookup
+table is a set of deterministic responses based on the opponents \(m\) last
+moves; \cite{Axelrod1987} considered \(m=3\).
+
 An extension to the natural selection was introduced in the 1992~\cite{Nowak1992b},
 recommending a different type of topology. A population of two deterministic
 strategies, Defector and Cooperator, were placed on a a two dimensional square array
@@ -696,16 +703,14 @@ are taken into account.
 
 Thus each cell of the lattice is occupied by a Cooperator or a Defector. At
 each generation step each cell owner interacts with its immediate neighbours.
-The score of each player is calculated as the sum of 
+The score of each player is calculated as the sum of all the scores the player
+achieved at each generation. At the start of the next generation, each lattice
+cell is occupied by the player with the highest score among the previous owner
+and the immediate neighbours. This topology is refereed to as spatial topology.
 
-the sum of the overall games the player
-competed in. At the start of the next generation, each lattice cell is occupied by the
-player with the highest score among the previous owner and the immediate
-neighbours. Nowak and all created this model where the model parameter
-has been the temptation payoff denoted as \(b\). Thus \(T=b\). For 
-different values of the parameter \(b\) it was shown that cooperators and
-defectors can persist together indefinitely. This topology is refereed to as
-spatial topology.
+Nowak studied the population dynamics as a function of the temptation payoff.
+It was shown that for different values of the temptation payoff, cooperators
+and defectors could persist together. 
 
 \begin{figure}[!hbtp]
 \centering
@@ -732,17 +737,10 @@ spatial topology.
     \end{figure}
 
 This work dealt with dealt with symmetric spatial lattices in two dimensions,
-deterministic winning and discrete time. The authors in later work~\cite{nowak1994spatial},
+deterministic winning and discrete time. The authors in later work~\cite{nowak1994},
 that the results remain valid in more realistic situations. Such as situations
 where the spatial distributions of cells are random in two or three dimensions,
 and where winning is partly probabilistic.
-
-Evolutionary dynamics have been highly useful in the research of the prisoner's
-dilemma. In~\cite{Axelrod1987}, an evolutionary process, called the genetic
-algorithm, was used to discover effective strategies. The author introduced
-lookup tables as a mean of representing a strategy in a gene format. A lookup
-table is a set of deterministic responses based on the opponents \(m\) last
-moves; \cite{Axelrod1987} considered \(m=3\).
 
 \subsection{Modern approaches (1995-2015)}\label{section:modern_approaches}
 
@@ -1064,60 +1062,73 @@ the tournament.
 
 \section{Analysis}\label{section:analysis}
 
-This section follows a circumstantial review of the prisoner's dilemma timeline
-conducted by the authors. It focuses on the analysis of the prisoner's dilemma
-field using a large dataset of prisoner's dilemma articles' metadata.
-The number of articles and connections of authors that work on the game are
-explored. Moreover, the collaborations within the field are examined and compared
-to other fields of game theory.
+In this section we will focus on the analysis of the study of the prisoner's dilemma
+using a large dataset of articles. This data set will be used to ascertain the level
+of collaborative nature of the field and identify influencers. This will be done
+relative to:
+
+\begin{itemize}
+    \item Other sub fields of game theory: the price of anarchy and auction games. %TODO: add generic reference for each
+    \item A temporal analysis.
+\end{itemize}
 
 \subsection{Data Collection}
 
+Before analysing our data this subsection will describe the data collection
+process.
+
 Academic articles are accessible through scholarly databases and collections of
 academic journals. Several databases and collections today offer access through
-an open Api. An Api is an application protocol interface that allows users to talk
-directly to the database and skipping the user interface side of a journal.
-Interacting with an Api has two phases:
+an open application protocol interface (API). An API allows users to talk
+directly to the database by skipping the user interface side of a journal.
+Interacting with an API has two phases:
 
 \begin{itemize}
     \item requesting;
     \item receiving;
 \end{itemize}
 
-The requesting phase includes composing a url with the requesting message.
-The head of the url includes the address of the Api and the tail the search 
-argument, such as the word `prisoner' to exists within the title. The address 
-of the Api and the syntax of the search arguments differ from journal to journal.
-Thus different journals can generate completely different requesting urls. 
+The request phase includes composing a url with the request. For example:
+%TODO text example of url/message/request
 
-The second phase is that of the receiving. This includes receiving a number of raw
-metadata of articles that satisfied the requesting message. The raw metadata are 
-commonly received in an xml format. Similarly the number of features and the
-structure of the xml file differs from journal to journal.
+We can see in Figure~{}, the first part of the message indicates that we are 
+sending a request to the arXiv API and the second part contains the search argument,
+in our example we want the word `prisoners dilemma' to exists within the title.
+%TODO: add reference for arXiv.
+This format of the request message will be different from API to API.
 
-Data collection is a crucial proceeder. We wanted to include a large number of
-articles from various journals for the analysis to be objective. Moreover, we 
-wanted the collection to be fast. For these reasons
-an open source library was developed for the purpose of this work. The library
-is called Arcas and though the package itself will not be analysed here the
-source code is available online(\url{https://github.com/Nikoleta-v3/Arcas}).
+The second phase is receiving. This includes receiving a number of raw
+metadata of articles that satisfies the requesting message. The raw metadata are 
+commonly received in an xml or json format. Similarly to the request message
+the structure of the received data differs from journal to journal.
+%TODO: reference about the format.
 
-Arcas serves as a translator between us and various Apis. More specifically it
-works in coordinate with five different journals. Arcas collects data based on 
-a series of arguments. In the work described here, a series of keywords were given.
-Each keyword individually was checked weather it existed within the title or the
-abstract of an article. Only if this check was satisfied an article would be collected.
-A list of the keywords that were used in this are shown in Table~\ref{table:search_keywords}.
+This data collection is crucial to this study, to ensure that this study can be
+reproduced all code used to query the different APIs has been packaged and is
+available online~\cite{}. This software could be used for any type of project
+similar to the one described here, documentation for it is available at
+\url{http://arcas.readthedocs.io/en/latest/}.
+%TODO cite Arcas and version etc. in zenodo and reference. 
 
-\begin{multicols}{3}
-    \begin{enumerate}
+Data was collected from the following sources,
+
+\begin{enumerate}
         \item arXiv;
         \item PLOS;
         \item IEEE;
         \item Nature;
         \item Springer.
     \end{enumerate}
-\end{multicols}
+
+These are four prominent journals in the field as well as the arXiv pre print
+server.%TODO: add arxiv citation. 
+In the case of an article being both in a journal and the arXiv, only the 
+journal version was considered. 
+
+In the work described here, a series of keywords were used to identify relevant
+articles. Articles for which these keywords were in the title or the abstract
+are included in the analysis. A list of the keywords that were used are
+shown in Table~\ref{table:search_keywords}.
 
 \begin{table}[!hbtp]
     \begin{center}
@@ -1131,9 +1142,9 @@ A list of the keywords that were used in this are shown in Table~\ref{table:sear
              4 &  prisoner game theory & \\
              5 &  R Axelrod & \\
              6 &  memory one strategy & \\
-             7 & tit-for-tat & \\
-             8 & tit for tata & \\
-             9 & zero determinant strategies & \\
+             7 &  tit-for-tat & \\
+             8 &  tit for tata & \\
+             9 &  zero determinant strategies & \\
             \bottomrule
         \end{tabular}
     \end{center}
@@ -1141,11 +1152,10 @@ A list of the keywords that were used in this are shown in Table~\ref{table:sear
     \label{table:search_keywords}
 \end{table}
 
-Each entry retrieved by Arcas is consisted of various features which are 
-listed on Table~\ref{table:arcas_results}. In the following sections only a number
-of these features are considered. These are listed on Table~\ref{table:result_set}.
-The search has managed to retrieve a number of different articles. The data set
-that was created will be analysed in the following sections.
+For each article~\cite{} collects data with the features shown in Table~\ref{table:arcas_results}.
+Note that the plain text of the article is not collected, just the metadata. The
+data is archived and available at. %TODO: archive data
+In this work only the features of Table~\ref{table:result_set} are used.
 
 \begin{table}[!hbtp]
     \begin{center}
