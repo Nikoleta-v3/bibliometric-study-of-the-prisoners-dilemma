@@ -1282,9 +1282,16 @@ Our data set contains \uniquetitles articles collected since 1944 from a variety
 of sources. The overall rate at which papers have been written is ....
 % TODO summarise main findings.
 In the following section we explore
-the people that have written about the game and their connections to each other.
+the authors of the papers and their connections to one another.
 
-\subsection{Authors Analysis}
+\subsection{Co author network}
+
+% TODO Describe some works that look at literature graphs (these typically look
+% at citation graphs)
+% TODO Describe how these are often used to measure influence however (mention
+% that blog post) influence does not correspond to citation.
+% TODO Define the co author network as a weight graph G =...
+% TODO Possibly include subgraphs as examples.
 
 In this section we present and analyse the authorship in the research field of the
 prisoner's dilemma through a network analysis. A network is presented where each
@@ -1298,6 +1305,9 @@ within the data set. In order to address the problem the Levenshtein Distance~\c
 was used. The Levenshtein Distance highlighted the entries with a small difference
 between them. A manual check was performed to assure that both entries were in
 did the same author and one of them was replaced by the other.
+% TODO Inlclude more details about this: better description of the problem (with
+% examples) and robust definition of distance measure. Include examples of
+% authors that are "unified" or not.
 
 Once the network was constructed several network methods were used to perform an
 analysis. The connectivity of the network and the trend of co-authorship within
@@ -1394,6 +1404,7 @@ some names appear to be on the most central vertices for all three measures.
 These are authors:
 
 \begin{itemize}
+    % TODO Add these people to the timeline section.
     \item Matjaz Perc;
     \item Yamir Moreno;
     \item Arne Traulsen;
@@ -1631,6 +1642,8 @@ within the field of the prisoner's dilemma. The collaboration of some well known
 authors alongside authors that appear to be central in our network are explored.
 
 \subsubsection{Sub graphs analysis}
+% TODO Think about what to do with this: where does it fit with the rest of the
+% restructure?
 
 In this section we explore and gain insights as to who well known authors within
 our field tend to collaborate and write with. This is achieved by studying the
