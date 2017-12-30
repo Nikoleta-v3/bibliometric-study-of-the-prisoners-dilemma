@@ -1068,7 +1068,8 @@ of collaborative nature of the field and identify influencers. This will be done
 relative to:
 
 \begin{itemize}
-    \item Other sub fields of game theory: the price of anarchy and auction games. %TODO: add generic reference for each
+    \item Other sub fields of game theory: the price of anarchy~\cite{roughgarden2005}
+    and auction games~\cite{menezes2005}.
     \item A temporal analysis.
 \end{itemize}
 
@@ -1089,41 +1090,51 @@ Interacting with an API has two phases:
 \end{itemize}
 
 The request phase includes composing a url with the request. For example:
-%TODO text example of url/message/request
 
-We can see in Figure~{}, the first part of the message indicates that we are
-sending a request to the arXiv API and the second part contains the search argument,
-in our example we want the word `prisoners dilemma' to exists within the title.
-%TODO: add reference for arXiv.
+\begin{figure}[!hbtp]
+    \centering
+    \begin{minted}
+        [
+        autogobble=true,
+        framesep=2mm,
+        fontsize=\normalsize,
+        ]
+        {xml}
+        http://export.arxiv.org/api/query?search_query=abs:prisoner's dilemma&max_results=1
+    \end{minted}
+    \caption{\label{fig:request_message} A request message for the arXiv API.}
+\end{figure}
+
+We can see in Figure~\ref{fig:request_message}, the first part of the message
+indicates that we are sending a request to the arXiv~\cite{mckiernan2000} API
+and the second part contains the search argument, in our example we want a single
+article that the word `prisoners dilemma' exists within it's title.
 This format of the request message will be different from API to API.
 
 The second phase is receiving. This includes receiving a number of raw
 metadata of articles that satisfies the requesting message. The raw metadata are
-commonly received in an xml or json format. Similarly to the request message
-the structure of the received data differs from journal to journal.
-%TODO: reference about the format.
+commonly received in an xml or json format~\cite{nurseitov2009}. Similarly to
+the request message the structure of the received data differs from journal to journal.
 
 This data collection is crucial to this study, to ensure that this study can be
 reproduced all code used to query the different APIs has been packaged and is
-available online~\cite{}. This software could be used for any type of project
+available online~\cite{nikoleta_2017}. This software could be used for any type of project
 similar to the one described here, documentation for it is available at
 \url{http://arcas.readthedocs.io/en/latest/}.
-%TODO cite Arcas and version etc. in zenodo and reference.
 
 Data was collected from the following sources,
 
 \begin{enumerate}
-        \item arXiv;
-        \item PLOS;
+        \item arXiv~\cite{mckiernan2000};
+        \item PLOS~\cite{plos_one};
         \item IEEE;
         \item Nature;
         \item Springer.
-    \end{enumerate}
+\end{enumerate}
 
-These are four prominent journals in the field as well as the arXiv pre print
-server.%TODO: add arxiv citation.
-In the case of an article being both in a journal and the arXiv, only the
-journal version was considered.
+These are four prominent journals in the field as well as the arXiv~\cite{mckiernan2000}
+pre print server. In the case of an article being both in a journal and the arXiv,
+only the journal version was considered.
 
 In the work described here, a series of keywords were used to identify relevant
 articles. Articles for which these keywords were in the title or the abstract
@@ -1218,8 +1229,8 @@ articles have been collected from more than just one source. All
 \numberofduplicates duplicates are from the pre print server arXiv and are
 dropped for the analysis, thus hereupon we consider \uniquetitles unique article
 entries. Note that not all articles were collected from the aforementioned APIs:
-\manual_entries were manually added to the dataset throughout the writing of
-Section~\ref{section:timetimeline}. The details of how many papers came from
+\manual were manually added to the dataset throughout the writing of
+Section~\ref{section:timeline}. The details of how many papers came from
 each source are given in Table~\ref{table:provenance}.
 
 \begin{table}[!hbtp]
@@ -1239,14 +1250,15 @@ journal's contribution to the field over the years as well as when the prisoner'
 dilemma fitted the scope of each journal.
 
 Springer and IEEE are the two journals that have been publishing papers on the
-topic for the longest time. The first papers respectively being~\cite{}.
+topic for the longest time. The first papers respectively are~\cite{Evans1966} in
+1966 and~\cite{4045089} in 1973.
 % TODO Add the references
 % TODO POSSIBLY add sentence about each (do they correspond to something worth
 % mentioning in the timeline? )
-
-It can been seen that IEEE contributed more
-than 10 articles per year after 2002. Similarly, arXiv contributes with a large
-number of papers with an increasing trend after 2000.
+It can been seen that IEEE contributed more than 10 articles per year after 2002.
+Similarly, arXiv contributes with a large number of papers with an increasing trend
+after 2000. In 1991 the preprint server arXiv was lanced and the first article on
+the prisoner's dilemma was published in 1993~\cite{Huberman1993}.
 % TODO Add frame of reference about when the arXiv started. (Read those two
 % references about the arxiv)
 % TODO Invesitage if there was a rise of computer scientific journals in 2000.
@@ -1258,13 +1270,25 @@ PLOS journal was launched in 2000 and it can been seen that accepted it's first
 % TODO Is there a good reference describing PLOS's philosophy? Can this be
 % somewhat related to the delay in the first submission to PLOS? No matter what,
 % this needs more.
-publication on the topic in 2006~\cite{}. Finally Nature has a few publications over the
+publication on the topic in 2006~\cite{0020178}. Finally Nature has a few publications over the
 years. Nature was one of the early destinations for publications following the
-pioneering paper by Axelrod~\cite{}. The first paper published was~\cite{} which
-...
-% TODO
-Another leader in the field: Nowak (mentioned in Section~\ref{section:...} has
-published various papers in Nature~\cite{}.
+pioneering paper by Axelrod~\cite{Axelrod1984}. The first paper published was
+\cite{Milinski1987} which studied the applications of Tit for Tat in nature
+using sticklebacks. Another leader in the field: Nowak (mentioned in Section~\ref{section:timeline}
+has published various papers in Nature~\cite{Nowak1993, Nowak1992}.
+
+To investigate the rates of publications of each journal an exponential function
+of the structure, \(a \epsilon^{b \times x}\), was fitted in each journal
+provenance set. Table~\ref{table:exponential_coefficients} summarises the best coefficients based on a non
+linear least square errors.
+
+\begin{table}[!hbtp]
+    \begin{center}
+    \input{assets/exponential}
+    \end{center}
+    \caption{Coefficients for fitted exponential curve to provenance data.}
+    \label{table:exponential_coefficients}
+\end{table}
 
 % TODO Investigate rates of increase of journal.
 % Explain momentum.
@@ -1279,12 +1303,14 @@ published various papers in Nature~\cite{}.
 \end{figure}
 
 Our data set contains \uniquetitles articles collected since 1944 from a variety
-of sources. The overall rate at which papers have been written is ....
+of sources. The overall rate at which papers have been written is calculated
+as \(rate = \frac{present}{past}^{\frac{1}{n}} - 1\). The overall rate is at 6.68
+percent.
 % TODO summarise main findings.
 In the following section we explore
 the authors of the papers and their connections to one another.
 
-\subsection{Co author network}
+\subsection{Co authorship}
 
 % TODO Describe some works that look at literature graphs (these typically look
 % at citation graphs)
@@ -1293,6 +1319,24 @@ the authors of the papers and their connections to one another.
 % TODO Define the co author network as a weight graph G =...
 % TODO Possibly include subgraphs as examples.
 
+Measuring academic collaborations and influences is not always trivial. Many
+academics tend to consider citations as a measure of how could a research project
+is. According to a blog post~\cite{nature_blog} written by Nature in 2017,
+depending on citation could be misleading. This is because:
+
+\begin{itemize}
+    \item The true number of citations can not be known. Citations can be missed
+    due data entry errors or typos in a journal.
+    \item Academics are influenced by many more papers than they actually cite.
+    \item Several citations are superficial.
+\end{itemize}
+
+For this reasons in this work we consider other measures. Initially, we construct
+a network of co authorship. Then using several network measures, which will be
+explained in details in the following sections, we study how collaborative 
+the field is and which authors have more influence.
+
+\subsubsection{The network}
 In this section we present and analyse the authorship in the research field of the
 prisoner's dilemma through a network analysis. A network is presented where each
 unique author is represented as a node of the network and
