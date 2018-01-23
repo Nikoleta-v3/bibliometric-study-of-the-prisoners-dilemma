@@ -20,6 +20,8 @@
 \definecolor{background}{RGB}{5, 66, 81}
 \usemintedstyle{tango}
 
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%PARAMETERS%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\totalarticles}{\input{assets/total_articles.txt}}
@@ -28,6 +30,12 @@
 \newcommand{\manual}{\input{assets/prov_manual.txt}}
 \newcommand{\authors}{\input{assets/authors.txt}}
 \newcommand{\edges}{\input{assets/prisoners_edges.txt}}
+\newcommand{\auctionauthors}{\input{assets/authors_auction.txt}}
+\newcommand{\auctionedges}{\input{assets/edges_auction.txt}}
+\newcommand{\priceauthors}{\input{assets/authors_price.txt}}
+\newcommand{\priceedges}{\input{assets/edges_price.txt}}
+\newcommand{\prisonerscon}{\input{assets/prisoners_connected_components.txt}}
+\newcommand{\prisonerscc}{\input{assets/prisoners_clustering.txt}}
 \newcommand{\pricecon}{\input{assets/price_connected_components.txt}}
 \newcommand{\pricecc}{\input{assets/price_clustering.txt}}
 \newcommand{\auctioncon}{\input{assets/auction_connected_components.txt}}
@@ -1239,13 +1247,14 @@ A total of three data sets are explored in this work. A summary of each data is
 presented in this section. The three data sets are,
 
 \begin{itemize}
-    \item the main data set, which contains articles on the prisoner's dilemma,~\cite{}
-    \item a data set containing data on auction games~\cite{} and
-    \item a data set containing data on the price of anarchy~\cite{}.
+    \item the main data set which contains articles on the prisoner's dilemma,~\cite{}
+    \item a secondary data set which contains article on auction games~\cite{} and
+    \item a secondary data set which contains articles on the price of anarchy~\cite{}.
 \end{itemize}
 % TODO archive all data sets
 
-\textbf{The prisoner's dilemma data set.}
+\paragraph{The prisoner's dilemma data set}
+\mbox{ }\\
 
 The main data set and the main focus of this analysis. The data set~\cite{}
 consists of \totalarticles articles, where \uniquetitles have unique titles.
@@ -1273,9 +1282,9 @@ article was published in 1944 and the most recent one in 2017. Note
 that the last data collection was on December 2017.
 % TODO Ensure this stay accurate
 
-The average publication over the year has been calculated. This is done for the overall
+Moreover we calculate the average publication over time. This is done for the overall
 data set and for each journal individually. The average publication is estimated
-as the ratio of the number of total articles and the years of publication.
+as the ratio of the number of articles and the years of publication.
 Thus:
 
 \[ \text{av. publication}= \frac{\text{number of articles}}{\text{years of publication}}\]
@@ -1284,9 +1293,9 @@ The years of publication is calculated as the range between 2017 and the first p
 article within the data.
 
 Table~\ref{table:publication_rates} summarises these averages. Overall an average of
-21 articles are published per year. The most significant contribution to this
-appears to be from arXiv with 8 articles per year, followed by Springer with 5
-articles per year.
+21 articles are published per year on the topic. The most significant contribution
+to this appears to be from arXiv with 8 articles per year, followed by Springer
+with 5 articles per year.
 
 \begin{table}[!hbtp]
     \begin{center}
@@ -1323,19 +1332,20 @@ articles per year.
 %     \label{fig:provenance}
 % \end{figure}
 
-\textbf{Auction games and the price of anarchy data sets.}
+\paragraph{Auction games and the price of anarchy data sets}
+\mbox{ }\\
 
 A summary of both data sets, auction games~\cite{} and price of anarchy~\cite{},
 is given by Table~\ref{table:summary_other_topics}.
 
-A total of 2103 articles are examined for auction games. Auction games are a well
-studied topic for several years with 3860 authors and the earliest entry going
+A total of 2103 articles with 3860 unique authors are examined for auction games.
+Auction games is well studied topic with the earliest entry going
 back to 1974. In comparison, 296 unique articles have been collected on price of
 anarchy. The earliest entry being in 2003 and a total of 668 unique authors have
 written about the topic.
 
 In Figure~\ref{fig:timeplots_other_topics} a time plot for each topic is
-displayed and is exhibited that both topics have an increasing trend over
+displayed and is exhibited that both topics have had an increasing trend over
 the years. Though price of anarchy is clearly a new topic compared to auction games.
 
 The frequency of the prisoner's dilemma, for both articles and authors, lies
@@ -1374,7 +1384,7 @@ between the frequencies of these two topics.
 The provenance of the articles is given by Table~\ref{table:provenance_other_topics}.
 Almost 1500 article for auction games have been collected from Springer, that is
 more than three times the articles that have been collected from other sources.
-Where PLOS and Nature have a minor contribution and PLOS and Nature had no
+PLOS and Nature have a minor contribution and PLOS and Nature had no
 articles on the price of anarchy.
 
 \begin{table}[!hbtp]
@@ -1423,12 +1433,13 @@ the same average publication. Note that the significance of each journal differs
 from topic to topic. Though this analysis will not focus on individual sources
 from hereupon.
 
-\textbf{Temporal analysis.}
+\paragraph{Temporal analysis}
+\mbox{ }\\
 
 For comparison reasons in the following subsections the analysis will also be
 held relative to a temporal analysis. The main data set~\cite{}
 is divided into time period according to the subsections of Section~\ref{section:timeline}.
-The respective measures of unique titles and unique authors for each period is also
+The respective measures of unique titles and unique authors for each period is
 given by Table~\ref{table:summary_temporal}.
 
 \begin{table}[!hbtp]
@@ -1439,7 +1450,7 @@ given by Table~\ref{table:summary_temporal}.
     \label{table:summary_temporal}
 \end{table}
 
-In this section we have described the the three data sets that we are going to use
+In this section we have described the three data sets that we are going to use
 in the following sections in order to identify collaborative behaviour and influence.
 Two data sets of different topics are used for comparison reasons. The frequency of
 articles and authors differs within the three data sets which is ideal. Furthermore
@@ -1460,11 +1471,11 @@ connections to one another.
 % TODO Define the co author network as a weight graph G =...
 % TODO Possibly include subgraphs as examples.
 
-Measuring academic collaborations and influences of academic projects is not
-always trivial. Many
-academics tend to consider citations as a measure of how good a research project
-is. According to a blog post~\cite{nature_blog} written by Nature in 2017,
-depending on citation can be misleading. This is because:
+Measuring academic collaborations and the influence academics offer to their
+field is not always trivial. Several studies consider academic citations as a measure
+and base their analysis on the citations network. According to a blog post~\cite{nature_blog} 
+written by Nature in 2017, depending on citations can often be misleading.
+This is because:
 
 \begin{itemize}
     \item The true number of citations can not be known. Citations can be missed
@@ -1473,23 +1484,25 @@ depending on citation can be misleading. This is because:
     \item Several citations are superficial.
 \end{itemize}
 
-For these reasons in this work we introduce an alternative way. 
-Initially, we construct a network of co authorship for a given topic, then
-several network measures, such as,
+We are in agreement with the aforementioned reasons and in this work citations
+will not be considered. On the contrary we introduce an alternative way of measuring
+both \textbf{collaborative behaviour} and \textbf{influence} based on the co authorship network.
+Initially we discuss how such network can be constructed for a given topic and
+then we consider several network measures to retrieve our results. 
+Measures such as,
 
 \begin{itemize}
-    \item number of connected components,
+    \item the number of connected components,
     \item clustering coefficient,
-    \item degrees and
-    \item centrality measures
+    \item degrees distributions and
+    \item centrality measures.
 \end{itemize}
 
-are used to explain \textbf{collaboration} and \textbf{influence} within the field. All
-network measures are introduced with examples in the following sections.
+All network measures are introduced with examples in the following sections.
 
-\subsubsection{Constructing the networks}
+\subsubsection{Constructing a co authorship network}
 
-To construct a co authorship network all the unique authors of a data set are needed.
+To construct a co authorship network we need to consider all the unique authors of a data set.
 The issue with retrieving the unique authors is that authors names can be written
 in different ways in different sources. For example consider the author of this
 paper:
@@ -1513,8 +1526,8 @@ allowable edit operations:
     \item substitution of a single character.
 \end{enumerate}
 
-The Levenshtein distance of all possible pairs of authors in the data set was
-computed. If the distance was between \(85\) and \(99\) the entries were
+The ration of the Levenshtein distance of all possible pairs of authors in the
+data set was computed. If the ratio was between \(85\) and \(99\) the entries were
 highlighted. The highlighted entries were manually checked to assure that there
 were indeed the same author and then one of them was replaced by the other.
 
@@ -1534,57 +1547,58 @@ same. For example:
     \item Zhen Wang
 \end{enumerate}
 
-are two individual authors. Once the names were cleaned the total number of
-unique authors can be estimated.
+are two different authors.
 
-Thus, the co authorship network of the prisoner's dilemma is now defined as:
+Once we have cleaned the name entries the number of unique authors is calculated.
+The co authorship network of the prisoner's dilemma can now be defined as:
 
-An undirected graph \(G\) of of vertices \(V\) and edges \(E\). There are
-\authors vertices representing each unique author. The vertices are joined by \edges
-edges. An edge connects two authors if and only if those authors have written together.
-No weight has been applied to the edges or the nodes.
-
-The network is shown in Figure~\ref{fig:authors_network}.
+An undirected graph \(G\) of vertices \(V\) and edges \(E\), Figure~\ref{fig:authors_network}.
+There are \authors vertices representing each unique author. The vertices are
+joined by \edges edges. An edge connects two authors if and only if those authors
+have written together. No weight has been applied to the edges nor the nodes.
 
 \begin{figure}[!hbtp]
     \centering
     \includegraphics[width=0.8\textwidth]{./assets/images/co-authors-network.pdf}
-    \caption{Co-authorship network for prisoner's dilemma.}\label{fig:authors_network}
+    \caption{Co authorship network for prisoner's dilemma.}\label{fig:authors_network}
 \end{figure}
 
 The same approached is used to construct the networks for auction games and the
-price of anarchy. Their respective networks are illustrated in Figure~\ref{fig:co-authorship-other-topics}.
+price of anarchy. For auction games there are \auctionauthors vertices and \auctionedges
+edges. The price of anarchy corresponds to a smaller network with \priceauthors
+vertices and \priceedges edges. Their respective networks are illustrated in
+Figure~\ref{fig:co-authorship-other-topics}. The following sections focuses on
+the analysis of these networks.
 
 \begin{center}
     \begin{figure}[!hbtp]
         \begin{subfigure}{0.5\textwidth}
             \includegraphics[width=\textwidth]{./assets/images/co-authors-network-auction.pdf}
-            \caption{Co-authorship network for auction games.}
+            \caption{Co authorship network for auction games.}
         \end{subfigure}
         \begin{subfigure}{0.5\textwidth}
             \includegraphics[width=\textwidth]{./assets/images/co-authors-network-price.pdf}
-            \caption{Co-authorship network for the price of anarchy.}
+            \caption{Co authorship network for the price of anarchy.}
         \end{subfigure}
-    \caption{Co-authorship network for other topics.}
+    \caption{Co authorship network for other topics.}
     \label{fig:co-authorship-other-topics}
     \end{figure}
     \end{center}
 
-Now that the networks have been defined in the following sections the collaborative
-trend of the field and the influence are explored.
-
 \subsubsection{Collaborative behaviour}
 
 In this section we ascertain the level of collaborative nature of the field
-using several connectivity measures such as, number of connected components,
-clustering coefficients and degree distribution. To explain the notion of some
-measures we will be using several sub graphs of \(G\).
+using several connectivity measures. Several sub graphs of \(G\) will be used
+as examples to explain the notion of some of these measures.
 
-The first measure is the number of connected components.
-A connected component of an undirected graph is a sub graph in which any two
-vertices are connected to each other by paths. Let us consider two sub graphs of
-\(G\), \(Z\) and \(H\) (shown in Figure~\ref{fig:connected_components}) where sub
-graph \(Z\) is a connected graph and \(H\) is not.
+\paragraph{The measures}
+\mbox{ }\\
+
+The first measure introduced is the number of connected components.
+A connected component of an undirected graph is a maximal set of nodes such that
+each pair of nodes is connected by a path. Let us consider two graphs \(Z\) and
+\(H\) (shown in Figure~\ref{fig:connected_components}), where \(V(Z), V(H)
+\subseteq V (G)\) and \( E(Z), E(H) \subseteq E(G)\).
 
 \begin{center}
 \begin{figure}[!hbtp]
@@ -1601,26 +1615,33 @@ graph \(Z\) is a connected graph and \(H\) is not.
 \end{figure}
 \end{center}
 
-The number of connected components indicates the number of connected sub graphs
-within the co authorship network. Thus the number of authors teams that are connected
-either because their wrote with each other or with someone that wrote with someone
-else.
+The number of connected components for sub graph \(Z\) is 1. On the other
+hand the number of connected components for sub graph \(H\) is 5. Note that single
+vertices are considered a connected component because they are connected by a path
+to themselves. Due the nature of our study we are interested only in connected components
+with more than one vertex, thus authors that have written with at least another
+person. For the number of connected components we isolate the single vertices
+and we count only those with at least two vertices.
 
 The second connectivity measure considered is the clustering coefficient. Clustering
 coefficient is a measure of the degree to which nodes in a graph tend to
-cluster together, thus a measure of cliqueness.
-There are two types of clustering coefficient of a graph. The local and the global
-measure. The local measure, measures the clustering coefficients of a specific
-node and is calculated as,
+cluster together, thus a measure of cliqueness. There are two version of this
+meaurer, the local and the global. The local coefficient measures the clustering
+coefficient of a single node and is calculated as,
 
-\[\frac{2 \times \text{Number of edges between neighbours}}{\text{Node degree (Node degree - 1).}}\]
+\[\text{cc} = \frac{2 \times \text{Number of edges between neighbours}}{\text{Node degree (Node degree - 1).}}\]
 
-The global version of the measure can be calculating by averaging all the local
-coefficients of the graph. The clustering coefficient ranges between values of
-\(1\) and \(0\). The closer to \(1\) indicates that the graph is getting closer to
-a complete graph, sub graph \(K\), where the closer to \(0\) indicates being a
-star graph, sub graph \(A\). Sub graph \(M\) lies within the two extreme cases
-and has a clustering coefficient of 0.23.
+The global coefficient is calculated by averaging all the local coefficients of
+the graph. The values of the measure can range between \(0\) and \(1\). 
+
+A clustering coefficient of \(1\) indicicates that the graph is a complete graph.
+This case is not ideal in a co authorship network. Such a high coefficient would
+indicate that teams of authors only write with each other, and not a sinle person
+tends to collaborate with an external author (sub graph \(K\)). On the contrary,
+a coefficient of \(0\) indicates
+that authors write only with just a single co author, sub graph \(A\).
+The case that lines in between is that of sub graph \(M\) where the clustering
+coefficient has been estimated to be \(0.23\).
 
 \begin{center}
     \begin{figure}[!hbtp]
@@ -1641,19 +1662,16 @@ and has a clustering coefficient of 0.23.
     \end{figure}
     \end{center}
 
-In this work having a high clustering coefficient indicates that the connectivity
-of the connected component is because people wrote a paper together. Thus there
-is no larger connection to the sub graph other than that clique of authors that
-worked together.
-
 The final measure considered in this section is the degree distribution. Degree
 shows the number of connections a node has. The degree distribution will allow
 us to understand the most common degree in our networks.
 
-\textbf{Comparison with other topics authorship.}
+\paragraph{Comparison with other topics co authorship}
+\mbox{ }\\
 
-Let us compare the collaborative behaviour of the prisoners dilemma against two
-other topics. Table~\ref{table:other_topics_cc} summarizes the measures.
+All the above measure have been calculated for graph \(G\). Though we can not describe
+how collaborative the network is without any comparison. Table~\ref{table:other_topics_cc}
+summarises the measures for \(G\) and two other topics.
 
 \begin{table}[!hbtp]
     \begin{center}
@@ -1661,9 +1679,9 @@ other topics. Table~\ref{table:other_topics_cc} summarizes the measures.
         \toprule
                              & \textbf{Connected components} & \textbf{Clustering coefficient}\\
         \midrule
-        Prisoner's dilemma   & 529  & 0.68 \\
-        Auction games        &                     \auctioncon & \auctioncc \\
-        The price of anarchy &                     \pricecon & \pricecc \\
+        Prisoner's dilemma   &                 \prisonerscon & \prisonerscc \\
+        Auction games        &                   \auctioncon & \auctioncc   \\
+        The price of anarchy &                     \pricecon & \pricecc     \\
         \bottomrule
     \end{tabular}
     \end{center}
@@ -1671,18 +1689,12 @@ other topics. Table~\ref{table:other_topics_cc} summarizes the measures.
     \label{table:other_topics_cc}
 \end{table}
 
-The field of the prisoner's dilemma has smaller number connected components than
-auction games and a higher  number than the price of anarchy. This could be 
-due the size of the data sets. The interesting result can be obtained by the
-clustering coefficients by considering the difference in the number of connected
-components.
-
-The prisoner's dilemma has the same clustering coefficient to auction games.
-Based on their number of connected components we can result that authors of the
-prisoner's dilemma tend to collaborate only with specific authors, and avoid
-interactions with other sub graph compared to auction game authors. However,
-the field appears to be more collaborative compared to the topic of price of anarchy,
-which has a clustering coefficient of 0.77 with only 162 connected components.
+Graphs \(G\) has a smaller number of connected components compared to the equivalent
+graph for auction games. Even so, the global clustering coefficient of the two
+networks is the same. This implies that authors of network \(G\) tend to collaborate
+with more people. However, the field appears to be less collaborative compared
+to the topic of price of anarchy, which has a clustering coefficient of 0.77 with
+only 162 connected components.
 
 To further examined the differences or the similarities of these networks we
 consider the degree distributions. The normalised distributions of all
@@ -1702,22 +1714,25 @@ three networks.
     \caption{Degree distributions for all three networks.}\label{fig:degrees_dist}
 \end{figure}
 
-\textbf{Temporal comparison.}
+\paragraph{Temporal comparison}
+\mbox{ }\\
 
 The collaborative behaviour of \(G\) is also studied over time. That is achieve
 by calculating the number of connected components, the clustering coefficients and
-the degrees distribution.
+the degrees distribution for each time period. Table~\ref{table:cc_over_time}
+summarises the results.
 
-The number of connected connected components and the clustering coefficients 
-are both increasing from period 2 to period 7.
-
-Period 2 was a very poor period of publications in our sources.
+Period 2 appears to be a very poor period of publication in our sources. There is
+a single connected components, with an average clustering coefficient of 0. This
+indicates collaboration with a single author.
 Period 5 has the highest number of connected components but period 7 has the highest
-clustering coefficient of 0.76 with only 134 connected components.
+clustering coefficient of 0.8 with only 108 connected components.
 A big increase of connected components is spotted from periods 4 to 5.
+Thus from period 2 onwards the field appears to be more collaborative, with most
+collaborative period being the 7th.
 
 Furthermore, over time the degree seems to be stabilising over 2 degrees, Figure
-\ref{fig:dist_over_time}. Thus in the  study of the prisoners dilemma according
+\ref{fig:dist_over_time}. Thus in the study of the prisoners dilemma according
 to our data, papers with 3 authors seems to be favoured.
 
 \begin{table}[!hbtp]
@@ -1726,13 +1741,13 @@ to our data, papers with 3 authors seems to be favoured.
         \toprule
                   & \textbf{Connected components} & \textbf{Clustering coefficient}\\
         \midrule
-        period 1  & 15                            & 0.50 \\
-        period 2  & 5                             & 0.00 \\
-        period 3  & 49                            & 0.14 \\
-        period 4  & 96                            & 0.30 \\
-        period 5  & 534                           & 0.64 \\
-        period 6  & 281                           & 0.74 \\
-        period 7  & 134                           & 0.76 \\
+        period 1  & 12                            & 0.54 \\
+        period 2  & 1                             & 0.0 \\
+        period 3  & 14                            & 0.29 \\
+        period 4  & 44                            & 0.44 \\
+        period 5  & 411                           & 0.69 \\
+        period 6  & 230                           & 0.78 \\
+        period 7  & 108                           & 0.8 \\
         \bottomrule
     \end{tabular}
     \end{center}
@@ -1746,622 +1761,200 @@ to our data, papers with 3 authors seems to be favoured.
     \caption{Degrees distribution over time.}\label{fig:dist_over_time}
 \end{figure}
 
+\paragraph{Conclusion}
+\mbox{ }\\
+
+The conclusions for the collaborative behaviour of the field are discussed here.
+The ranking based on the number of connected components for the three topics
+is the following, auction games, the prisoner's dilemma and the price of anarchy.
+Though this could be due the size of the data set of each respective topic.
+
+The clustering coefficients allow us to conclude that that the prisoner's dilemma
+is more collaborative, as field, compared to auction games but less than the 
+price of anarchy. Note that the price of anarchy is a relative new topic. Thus
+with less authors there is a higher change to collaborate with the few people
+in your field.
+
+The median degree was statistically proven to be the same over the three different
+topics. Thus the above results hold for topics where the median connections
+of an author is the same.
+
+Based on the time periods the prisoner dilemma appears to have increased it's
+collaborations since period 2. Note that period 2 is a poor period based on our
+data. Period 5 to 7 re the most collaboratice of the field.
+
 \subsubsection{Influence}
 
 Network centrality is used in network theory to study which nodes of a graph are
 the most important. There are several centrality measures used in different
-projects to explain different behaviours of the nodes. The advantage of constructing
-a co authorship network is that measure such that can used to
-measure influence in the literature of the fields.
-
-Two centrality measures are used here:
+projects to explain different behaviours of the nodes. Centrality will be used
+here to explain influence. Two centrality measures are used here:
 
 \begin{itemize}
-    \item betweenness centrality and closeness centrality.
+    \item closeness centrality and
+    \item betweenness centrality.
 \end{itemize}
 
-Betweenness will be used to explain the people in a network that gain influence
-and closeness the people that influence the field. Similarly both network measures
-are explained with exampled using sub graphs.
+\paragraph{Measures}
+\mbox{ }\\
 
-\textbf{Closeness centrality}
+Closeness centrality is used to explain which people influence the field and
+betweenness centrality is used to explain which people gain from that influence.
+Similarly both network measures are explained with an example.
 
-Closeness centrality of a node \(u\) is the reciprocal of the average shortest
-path distance to \(u\) over all \(n-1\) reachable nodes.
+\textbf{Closeness} centrality of a node \(u\) is the reciprocal of the average
+shortest path distance to \(u\) over all \(n-1\) reachable nodes. It is denoted as,
 
 \[C(u)= \frac{n - 1}{\displaystyle \Sigma_{v=1}^{n-1}d(v, u)}\]
 
 where \(d(v, u)\) is the shortest-path distance between \(v\) and \(u\), and \(n\)
-is the number of nodes that can reach \(u\).
+is the number of nodes that can reach \(u\). In our analysis we consider the
+normalised closeness centrality which is normalised by the number of nodes in the
+connected part of the graph.
 
-\textbf{Betweenness centrality}
+\textbf{Betweenness} centrality of a node \(u\) is the sum of the fraction of all-pairs
+shortest paths that pass through \(u\). It is denoted as,
 
-Betweenness centrality of a node \(v\) is the sum of the fraction of all-pairs
-shortest paths that pass through \(v\)
-
-\[ C_B(v)=\Sigma_{s,t \in V} \frac{\sigma (s,t|v)}{\sigma(s,t)}\]
+\[ C_B(u)=\Sigma_{s,t \in V} \frac{\sigma (s,t|u)}{\sigma(s,t)}\]
 
 where \(V\) is the set of nodes, \(\sigma(s,t)\) is the number of shortest \((s,t)\)-paths,
 and \(\sigma(s,t|v)\) is the number of those paths passing through some node
-\(v\) other than \(s,t\). If \(s=t\), \(\sigma(s,t)=1\), and if \(v \in s,t, \sigma(s,t|v)=0\).
+\(u\) other than \(s,t\). If \(s=t\), \(\sigma(s,t)=1\), and if \(u \in s,t, \sigma(s,t|u)=0\).
+Betweenness values are normalized by \(\frac{2}{((n-1)(n-2))}\).
 
-These two measures can be used to explain different things. Closeness is a measure
-that shows how well a node conenects other nodes. In out work how well an author
-is connected to other uahtors and make them collaborate. We call this influence.
-How much an author influene their enviroment. On the other hand betweeness is 
-about how connected a node is, how much influence an author can gain from their
-enviroment.
+Closeness is a measure that shows how well a node connects other nodes. Equivalently,
+how well an author is connected to other authors and make them collaborate. 
+This is called influence. On the other hand betweenness is about how connected a
+node is, thus how much influence an author can gain from their environment.
 
-As an example consider sub graph T. Note that nodes 2, 3 and 1 are immiatly connected
-to three authors. thus we expect their between measure to be the same but closeness
-is different. Node 3 is the connecting link between at leat 4 people. Thus node 3
-is the person in the subgraph that influences most authors cause it connects people
-work. And that is hld to be true when we calculate, \(C_{b}\).
-
-Node 3 also gains influence due ot its rule in the team, but node 2 that does not
-connected people as much has the same betweeness. That is because node 2 without connecting operations
-byt haing the right collaborations can gain from the influence of the team.
+As an example consider sub graph \(T\), Figure~\ref{fig:subgraph_t}. Note that
+nodes 1, 2 and 3 are connected to three authors. Thus we expect their betweenness
+centrality to be the same. However, this is not true for closeness centrality.
+Node 3 is the connecting link between at least 4 people. Thus node 3
+is the person in the sub graph that influences most authors. Node 3 also gains
+influence due ot its rule in the team, but node 2 achieves the same without connecting
+people as much as node 3.
 
 \begin{figure}[!hbtp]
     \centering
     \includegraphics[width=0.8\textwidth]{./assets/images/centrality_example.pdf}
-    % \caption{Co-authorship network for prisoner's dilemma.}\label{fig:authors_network}
+    \caption{Sub graph \(T\).}\label{fig:subgraph_t}
 \end{figure}
 
-We indentify those two measures to be importnant and easily calcutalted 
-due to an open source package. We base our further analysis to these measures
-in order to test how the authors affect the field.
+We identify those two measure to be important and we base our further analysis
+on these measures. Due to an open source package called networkx the centrality
+measures are easily calculated.
+%ref networkx
 
-\textbf{Comparison to other fields.}
+Table~\ref{table:central_authors_pd} shows the most important authors of network
+\(G\) based on the two centralities. The people that influence the field the most
+are Matjaz Perc, Yamir Moreno, Luo-Luo Jiang, Arne Traulsen and Martin A. Nowak.
+Their work have been discussed in Section~\ref{section:timeline}.
+%Examples of their works.
+
+Though Matjaz Perc and Yamir Moreno appear to both influence and gain from
+the networks influence, it does not hold for the rest of the three authors.
 
 \begin{table}[!hbtp]
     \begin{center}
     \scalebox{0.8}{
     \input{assets/prisoners_centrality_betweness}
     \input{assets/prisoners_centrality_closeness}}
-    \caption{Central authors based on different centrality measures.}
+    \caption{Top 5 ranked authors based on different centrality measures.}
     \label{table:central_authors_pd}
+    \end{center}
+\end{table}
+
+\paragraph{Comparison with other topics co authorship}
+\mbox{ }\\
+
+In order to compare the influence of the authors of different topics we
+conduct pairwise comparisons of the centrality distributions of \(G\)
+against the other topics. A total of \((2 \times 2)\) 4 statistical tests
+are performed. Note that all distributions are not normally distributed thus a
+non parametric test will be used. More specifically, the Mann-Whitney U 
+test~\cite{nachar2008mann}.
+
+Initially we test whether the median of the closeness centrality distribution
+of \(G\) is equal or greater than the equivilent median of auction games.
+Mann-Whitney U returns a \(p-\) value of 0. A similar test is conducted for
+the betweenness centrality. This time we test that the median of \(G\) distribution
+is equal or less. The results of our statical tests indicate that the prisoner's
+dilemma authors tend to influence their field more than auction games authors.
+However, the authors do not seem to gain as much from this influence.
+
+The rest two Mann-Whitney U tests test whether the medians of the centralities
+distribution of \(G\) are the same or less than the the equivilent medians for
+the price of anarchy. Based on the \(p-\)values, the authors on the topic of price of
+anarchy have both a stronger influence and gain from their co authorship connections
+more than the authors of \(G\).
+
+\paragraph{Temporal comparison}
+\mbox{ }\\
+
+The two centralities are also studied over time. Table~\ref{table:cc_over_time} higlights
+the authors with the most influnce at each time period. Equivalently, Table~\ref{table:bc_over_time}
+highlights the authors that gained more from the networks' influence at each
+time period.
+
+For periods 1, 3, 4, 5 and 6 the authors with the highest closeness centrality
+are the authors with the highest betweenness centrality as well. Several of these
+authors have been shown to also have a strong influence to the entire network
+as well.
+
+For period 7 though March Harper is the person that influences most authors,
+Chen Yi Xia is the person that gains the most. For period 2 we have a similar
+case. Robert Axelrod appears to be the most influenced author but not gaining 
+as much from it.
+
+Note that the centrality values are decreasing over the time periods. This could
+be an effect due the size of the network which is increasing. Remember that
+in smaller networks authors have more motivation to collaborate with the 
+few people on their fields.
+
+\begin{table}[!hbtp]
+    \begin{center}
+    \scalebox{0.8}{
+    \input{assets/closeness_periods.tex}}
+    \caption{Authors with the most influnce at each time period.}
+    \label{table:cc_over_time}
     \end{center}
 \end{table}
 
 \begin{table}[!hbtp]
     \begin{center}
     \scalebox{0.8}{
-    \input{assets/auction_games_centrality_betweness}
-    \input{assets/auction_games_centrality_closeness}}
-    \caption{Central authors based on different centrality measures.}
-    \label{table:central_authors_pd}
+    \input{assets/betweness_periods.tex}}
+    \caption{Authors that gained more from the networks influence at each
+    time period.}
+    \label{table:bc_over_time}
     \end{center}
 \end{table}
 
-\begin{table}[!hbtp]
-    \begin{center}
-    \scalebox{0.8}{
-    \input{assets/price_of_anarchy_centrality_betweness}
-    \input{assets/price_of_anarchy_centrality_closeness}}
-    \caption{Central authors based on different centrality measures.}
-    \label{table:central_authors_pd}
-    \end{center}
-\end{table}
+\paragraph{Conclusion}
+\mbox{ }\\
+
+In this sub section we have studied the influncers and the people that gain
+from the influence of their field. We have presented the authors within the
+field of the prisoner's dilemma that fitted the descriptions.
+
+Moreover, in order to compare the power of influnce of the field we conducted
+statistical tests to compaire both measures of centrality against two other
+topics of game theory. The results of the statistical tests have shown that,
+
+\begin{itemize}
+    \item The prisoner's dilemma authors have more influence than the authors of
+    auction games.
+    \item Though they appear to be gaining less from that influence compared to
+    auction games.
+    \item Finally, the price of anarchy has a stronger influence, both ways, than
+    the prisoner's dilemma. 
+\end{itemize}
+
+Over time we have shown in the previous subsection that the field is becoming
+more collaborative. Though due the number of possible connections and connected
+components over the time, the power of influence is shown to be decreasing.
 
-\textbf{Temporal comparison.}
-
-\subsubsection{Conclusion}
-
-% \subsubsection{Co-authorship network for the prisoner's dilemma}
-% \label{section:co_authors_network_analysis}
-
-% The authors are represented using an undirected network, shown in Figure
-% \ref{fig:authors_network}. The network has sets of vertices \(V\) and edges \(E\).
-% The \authors vertices represent each of the unique authors from the data.
-% The vertices are connected with an edge if and only if two authors have written
-% together. Weights have been applied to both the vertices and the edges.
-
-% Vertices' weights corresponds to the number of publications an author has.
-% The ten authors with the highest number of publications are given
-% by Table~\ref{table:most_published}. Authors such as M. Nowak and D. Ashlock,
-% that have previously been discussed in Section~\ref{section:timeline}, appear on
-% the list. Though other authors such as R. Axelrod do not. On the other hand,
-% several people whose work was not discussed in the previous section appear here,
-% for example Matjaz Perc with a total of 34 publications. The network once the
-% vertices' weight has been applied is shown in Figure~\ref{fig:authors_network_weighted}.
-
-% \begin{figure}[!hbtp]
-%     \centering
-%     \includegraphics[width=0.6\textwidth]{./assets/images/co-authors-network.pdf}
-%     \caption{Co-authorship network.}\label{fig:authors_network}
-% \end{figure}
-
-% \begin{table}[!hbtp]
-%     \begin{center}
-%     \input{assets/most_published}
-%     \end{center}
-%     \caption{Top 10 most published authors.}
-%     \label{table:most_published}
-% \end{table}
-
-% \begin{figure}[!hbtp]
-%     \centering
-%     \includegraphics[width=0.6\textwidth]{./assets/images/co-authors-network-weight.pdf}
-%     \caption{Co-authorship network with vertices' weight.}
-%     \label{fig:authors_network_weighted}
-% \end{figure}
-
-% Furthermore, the edge weight corresponds to the number of times the authors
-% wrote together. From Figures~\ref{fig:authors_network}, \ref{fig:authors_network_weighted}
-% it can bee seen that overall the co-authors network is disjoint. Several researchers
-% on the outer circle seem to have written alone or have a single connection to
-% another researcher. On the other hand, in the inner circle of the network some
-% connectivity of the vertices does seem to exist, with a single large cluster
-% located in the middle of the network.
-
-% The authors that cover the outer space, that seem to be less collaborative,
-% are not authors that have single contributions to the field. On the other hand
-% authors that have repeatedly published on the topic are located in both the outer
-% and inner circles of the network.
-
-% More insights can be gained by reviewing several network measures such as the
-% density, the average degree and centrality measures~\cite{bakshi2009}. The first
-% measure to be considered is the density of the network. The density of a network
-% is given by, \(\frac{2E}{V(V -1)}\) and is calculated to be 0.00163. The density
-% is defined as the ratio of the number of edges and the number of possible edges.
-% Thus a small value as 0.00163 indicates that the network as a low connectivity.
-% Another measure closely related to the density is the average degree. The average
-% degree is given by \(\frac{2E}{V}\) and has been calculated to be 3.22. The
-% histogram of the the degree distribution is given by Figure\ref{fig:degree_hist_pd}.
-% The most frequent degree appears to be that of 2 degrees.
-
-% \begin{figure}
-%     \begin{center}
-%     \includegraphics[width=.8\textwidth]{./assets/images/degrees_hist_pd.pdf}
-%     \caption{Degree Histogram. Co-authors network of prisoner's dilemma data.}
-%     \label{fig:degree_hist_pd}
-%     \end{center}
-% \end{figure}
-
-% Furthermore we compute node centrality measures. Indicators of centrality
-% identify the most important vertices of the network. There are several centrality
-% measures, for the purpose of this work the following are considered:
-
-% \begin{itemize}
-%     \item weighted betweenness centrality;
-%     \item closeness centrality;
-%     \item weighted page rank;
-% \end{itemize}
-
-% The results of the different centrality measures are given by Table~\ref{table:central_authors_pd}.
-% Though several differences between the ranks of the three measures are spotted,
-% some names appear to be on the most central vertices for all three measures.
-% These are authors:
-
-% \begin{itemize}
-%     % TODO Add these people to the timeline section.
-%     \item Matjaz Perc;
-%     \item Yamir Moreno;
-%     \item Arne Traulsen;
-%     \item Martin A. Nowak;
-%     \item Angel Snchez;
-%     \item Krishnendu Chatterjee.
-% \end{itemize}
-
-% In agreement of all measures the above are the most central authors of our network.
-% More specifically, the most central author is Matjaz Perc.
-
-% Though several insights were gained from studying the authorship within the field
-% we do not know how these findings compare to either fields. For example, an
-% average degree of 3.22 means that the field is more collaborative than other or not?
-% These questions are delved into in the following section.
-
-% \begin{table}[!hbtp]
-%     \begin{center}
-%     \scalebox{0.8}{
-%     \input{assets/prisoners_centrality_betweness}
-%     \input{assets/prisoners_centrality_closeness}
-%     \input{assets/prisoners_centrality_page_rank}}
-%     \caption{Central authors based on different centrality measures.}
-%     \label{table:central_authors_pd}
-%     \end{center}
-% \end{table}
-
-% \subsubsection{Comparison with other topics authorship}
-
-% In order to achieve objective insights regarding authorship in the field of the
-% prisoner's dilemma we perform a comparison in this section. We compare how well connected the
-% network of authors for the prisoner's dilemma is compared to other topics.
-% The data collected are on two different topics within game theory, these are:
-
-% \begin{itemize}
-%     \item price of anarchy and
-%     \item auction games.
-% \end{itemize}
-
-% The open source project Arcas was used again, this time using the following
-% keywords respectively for each topic,
-
-% \begin{itemize}
-%     \item key: price of anarchy;
-%     \item key: auction game theory.
-% \end{itemize}
-
-% A summary of the two data set is given by Table~\ref{table:data_sets_summary}.
-% A total of 296 unique articles have been collected on price of anarchy. The
-% earliest entry being in 2003 and a total of 668 unique authors have written about
-% the topic. In comparison, a total of 2103 articles are examined for auction
-% games. Auction games are a well studied topic for several years with the earliest entry
-% going back to 1974. Finally, 3860 different names are examined. The frequency
-% of the prisoner's dilemma, for both articles and authors, lies between the frequencies
-% of these two topics. In Figure~\ref{fig:timeplots_anarchy_auction} a timeplot for each
-% topic is displayed and is exhibited that both topics have an increasing trend over
-% the years. Though price of anarchy is clearly a new topic compared to auction games.
-
-% \begin{table}[!hbtp]
-%     \begin{center}
-%     \begin{tabular}{llr}
-%         \toprule
-%          &            Price of anarchy &  Auction games \\
-%         \midrule
-%         Unique articles      & 296  & 2103 \\
-%         Unique authors       & 668  & 3860 \\
-%         Min publication year & 2003 & 1974 \\
-%         Max publication year & 2017 & 2017 \\
-%         \bottomrule
-%     \end{tabular}
-%     \end{center}
-%     \caption{Data sets summary.}\label{table:data_sets_summary}
-% \end{table}
-
-% \begin{center}
-% \begin{figure}[!hbtp]
-%     \begin{subfigure}{0.5\textwidth}
-%         \includegraphics[width=\textwidth]{./assets/images/anarchy_timeline.pdf}
-%     \end{subfigure}
-%     \begin{subfigure}{0.5\textwidth}
-%         \includegraphics[width=\textwidth]{./assets/images/auction_timeline.pdf}
-%     \end{subfigure}
-% \caption{Timeplots.}\label{fig:timeplots_anarchy_auction}
-% \end{figure}
-% \end{center}
-
-
-% The immediate step is to compare the networks we have constructed for all three
-% fields. The aim of the comparison is to gain insight as to how collaborative
-% the prisoner's dilemma authors are compared to other fields. Network measures
-% discussed in this comparison are given by Table~\ref{table:descriptive_networks}.
-% The smallest network is that of the authorship describing the price of anarchy,
-% followed by the prisoner's dilemma and the largest one is that of the auction
-% games. The average degree (calculated as \(\frac{2E}{V}\)), is for all three
-% networks is close to 3 and the density of all networks is very small, less than
-% 0.005.
-
-% \begin{table}[!hbtp]
-%     \begin{center}
-%     \begin{tabular}{cccc}
-% \toprule
-% & Prisoner's Dilemma & Price of anarchy &  Auction games \\
-% \midrule
-% \(\mid V \mid \)                   & 1970    & 637 & 3968 \\
-% \(\mid E \mid \)                   & 3179    & 865 & 5713 \\
-% Density                            & 0.00163 & 0.00427 & 0.00072\\
-% Average degree                     & 3.22    & 2.71 & 2.87 \\
-% \bottomrule
-%     \end{tabular}
-%     \end{center}
-%     \caption{Descriptive measures of networks.}\label{table:descriptive_networks}
-% \end{table}
-
-% To further examined the differences or the similarities of these networks we
-% consider the degree distributions. The normalised distributions of all
-% three networks are given in Figure~\ref{fig:degrees_dist}. They have been normalised
-% such that the frequencies sum to one. The distributions appear to be similar
-% but to validate the hypothesis a statistical test will be used. None of the
-% distributions is normally distributed thus the non parametric test Kruskal-Wallis
-% is used~\cite{mckight2010}. Kruskal-Wallis allow us to compare the medians of
-% two or more distributions. The test returns a \(p\)-value of 0.29. Thus, there is no
-% significant difference in the degree distributions of the three networks.
-
-% \begin{figure}[!hbtp]
-%     \centering
-%     \includegraphics[width=\textwidth]{./assets/images/degrees_histrograms.pdf}
-%     \caption{Degree distributions for all three networks.}\label{fig:degrees_dist}
-% \end{figure}
-
-% An interesting insight can be gained by examining the evolution of both the
-% average and the median degree over time. Though when the entire data sets are
-% considered the average degree of all networks is close to 3, when observing
-% the previous year this does not seem to be the case. The evolution of the
-% degrees over the publication years of each topic have been very different.
-% This can be observed by Figures~\ref{fig:av_degrees_over_time} and
-% \ref{fig:md_degrees_over_time}. Auction games have had an increasing trend in
-% co-authorships over time. The prisoner's dilemma study, though it does have an
-% increasing trend has two sudden jumps. A decrease occurred in 1960 and a sudden
-% increase in 1970. Finally, the price of anarchy had a big increase in authorship
-% in 2004.
-
-% \begin{figure}[!hbtp]
-%     \centering
-%     \includegraphics[width=\textwidth]{./assets/images/average_degrees_lineplots.pdf}
-%     \caption{Average degree over time for all three networks.}
-%     \label{fig:av_degrees_over_time}
-% \end{figure}
-
-% \begin{figure}[!hbtp]
-%     \centering
-%     \includegraphics[width=\textwidth]{./assets/images/median_degrees_lineplots.pdf}
-%     \caption{Median degree over time for all three networks.}
-%     \label{fig:md_degrees_over_time}
-% \end{figure}
-
-% Other measures that could highlight similarities in the connectivity of the graphs
-% are centrality measures. A summary of the maximum, mean and median centrality
-% value based on three centrality measures for all three networks is given by
-% Table~\ref{table:summary_centrality_networks}. The individual histograms
-% are illustrated in Figures~\ref{fig:w_betweenness_hist},~\ref{fig:closeness_hist}
-% and~\ref{fig:page_rank_hist}. A normality test has been performed for each of the
-% 9 distributions and with a significance level of 0.05 none of the distributions
-% is normally distributed. Thus, a Krustal-Wallis test will be performed to test
-% the mean difference between the topics for each centrality measure.
-
-% \begin{table}[!hbtp]
-%     \begin{center}
-%     \begin{tabular}{lccc}
-% \toprule
-% & Prisoner's Dilemma & Price of anarchy &  Auction games \\
-% \midrule
-% Max weighted betweenness     & 0.0093     & 0.0024     & 0.0011 \\
-% Mean weighted betweenness    & 4.537e-05  & 0.0        &  0.0 \\
-% Median weighted betweenness  & 0.0        & 3.4677e-05 & 4.5096e-06 \\
-% Max closeness                & 0.0443     & 0.0333     & 0.0209 \\
-% Mean closeness               & 0.0051     & 0.0047     & 0.0007 \\
-% Median closeness             & 0.0015     & 0.0063     & 0.0017 \\
-% Max weighted page rank       & 0.0040     & 0.0063     & 0.0012 \\
-% Mean weighted page rank      & 0.0005     & 0.0015     & 0.0002 \\
-% Median weighted page rank    & 0.0005     & 0.0015     & 0.0002 \\
-% \bottomrule
-%     \end{tabular}
-%     \end{center}
-%     \caption{Summary of centrality measures.}\label{table:summary_centrality_networks}
-% \end{table}
-
-% \begin{figure}[!hbtp]
-%     \centering
-%     \includegraphics[width=\textwidth]{./assets/images/w_betweenness_hist.pdf}
-%     \caption{Between centrality histogram for all three networks.}
-%     \label{fig:w_betweenness_hist}
-% \end{figure}
-
-% \begin{figure}[!hbtp]
-%     \centering
-%     \includegraphics[width=\textwidth]{./assets/images/closeness_hist.pdf}
-%     \caption{Closeness centrality histogram for all three networks.}
-%     \label{fig:closeness_hist}
-% \end{figure}
-
-% \begin{figure}[!hbtp]
-%     \centering
-%     \includegraphics[width=\textwidth]{./assets/images/page_rank_hist.pdf}
-%     \caption{Page rank centrality histogram for all three networks.}
-%     \label{fig:page_rank_hist}
-% \end{figure}
-
-% The results of the Kruskal-Wallis tests are shown in Table~\ref{table:kruskal_wallis_results}.
-% It can be seen that for the closeness centrality the null hypothesis holds. Thus
-% there is not a significant difference of the medians. On the other hand, for
-% both the weighted betweenness and weighted page rank the null hypothesis is being
-% rejected. Thus there seems to exist a significant difference of the medians for these two
-% measures. A post-hoc test could be carried to further explore which medians
-% are significantly different.
-
-% \begin{table}[!hbtp]
-%     \begin{center}
-%     \begin{tabular}{llc}
-% \toprule
-% & \(p-\)value &   \\
-% \midrule
-% Weighted betweenness    & 0.0   \\
-% Closeness               & 0.799 \\
-% Weighted page rank      & 0.0   \\
-% \bottomrule
-%     \end{tabular}
-%     \end{center}
-%     \caption{Kruskal-Wallis tests results.}\label{table:kruskal_wallis_results}
-% \end{table}
-
-% In this section the amount of collaboration within the field was examined.
-% Furthermore, to be objective this was compared to other topics within game
-% theory. In the section to follow we focus on the exploration of the co-authorships
-% within the field of the prisoner's dilemma. The collaboration of some well known
-% authors alongside authors that appear to be central in our network are explored.
-
-% \subsubsection{Sub graphs analysis}
-% % TODO Think about what to do with this: where does it fit with the rest of the
-% % restructure?
-
-% In this section we explore and gain insights as to who well known authors within
-% our field tend to collaborate and write with. This is achieved by studying the
-% cliques of the network. Cliques are subsets of vertices, all adjacent to each other.
-% A total of 779 cliques exists within the network and the max node number of a
-% clique is 21. The clique with the 21 authors is from~\cite{Knight2016}.
-% Though a big number of cliques exists in this section we will only examine those
-% of authors that have been discussed several times within this work.
-
-% The first clique is that of R. Axelrod. The subgraph, shown in Figure
-% \ref{fig:axelrods_clique}, consists of 4 vertices, 3 edges and the edge weights
-% are all equal to 1. Thus for this subgraph we examined the betweenness, closeness
-% and page rank centrality (all without weights). The central node is Axelrod
-% based on all centrality measures. The results are shown in Table~\ref{table:axelrods_clique}.
-
-% Furthermore, the density of the subgraph is equal to 0.5 and the average degree
-% in 1.5. All authors are connected to Axelrod with a step of one. That is because
-% all these authors have written only with Axelrod in~\cite{Axelrod1988,
-% Axelrod1984, Wu1995}.
-
-% \begin{figure}[!hbtp]
-%     \centering
-%     \includegraphics[width=0.6\textwidth]{./assets/images/Axelrod.pdf}
-%     \caption{R. Axelrod's clique.}
-%     \label{fig:axelrods_clique}
-% \end{figure}
-
-% \begin{table}[!hbtp]
-%     \begin{center}
-%     \begin{tabular}{llll}
-%     \toprule
-%     Author name &  Betweenness & Closeness & Page rank \\
-%     \midrule
-%      R. Axelrod          &    1.00 & 0.6 & 0.1734 \\
-%      J. WU               &    0.00 & 1.0 & 0.4797 \\
-%      William D. Hamilton &    0.00 & 0.6 & 0.1734 \\
-%      D. Douglas          &    0.00 & 0.6 & 0.1734 \\
-%     \bottomrule
-%     \end{tabular}
-%     \caption{Centrality measures for Axelrod's clique.}
-%     \label{table:axelrods_clique}
-%     \end{center}
-% \end{table}
-
-% The next clique considered is that of D. Ashlock. The subgraph which contains
-% Ashlock is larger than Axelrod's one. It has a total of 24 vertices
-% and 38 edges. The density is equal to 0.137 and the average degree is 3.16.
-% Moreover, based on all three centrality measures Ashlock appears to be the most
-% central node of this subgraph. Table~\ref{table:ashlock_clique} present the 10
-% most central authors.
-
-% An interesting insight can be gained by observing the length of the shortest
-% paths for any author to reach Ashlock. The maximum shortest path is 4. Thus,
-% anyone can reach Ashlock at most with 4 steps.
-
-% \begin{figure}[!hbtp]
-%     \centering
-%     \includegraphics[width=\textwidth]{./assets/images/Ashlock.pdf}
-%     \caption{Subgraph that contains D. Ashlock.}
-%     \label{fig:ashlocks_clique}
-% \end{figure}
-
-% \begin{table}[!hbtp]
-%     \begin{center}
-%     \scalebox{0.8}{
-%     \input{assets/ashlock_betweenness_centrality}
-%     \input{assets/ashlock_closeness_centrality}
-%     \input{assets/ashlock_page_rank_centrality}}
-%     \caption{Central authors based on different centrality measures of the subgraph
-%     which includes author D. Ashlock.}
-%     \label{table:ashlock_clique}
-%     \end{center}
-% \end{table}
-
-% The final two authors considered in this section are M. Nowak and the most central
-% author of the network M. Perc. It appreas that these two authors are in same
-% subgraph, Figure~\ref{fig:perc_clique}. This is the largest subgraph within the
-% network with a total of 266 vertices and 736 edges. Similarly, the centrality
-% of the subgraph was calculated using three different measures and the results are
-% displayed in Table~\ref{table:perc_clique}. The density is equal to 0.02088 and the average
-% degree is 5.533.
-
-% The subgraph does not only include these two authors but also the rest of
-% the most central authors that we indentified in Section~\ref{section:co_authors_network_analysis}.
-% These are,
-
-% \begin{itemize}
-%     \item Yamir Moreno;
-%     \item Arne Traulsen;
-%     \item Angel Snchez;
-%     \item Krishnendu Chatterjee.
-% \end{itemize}
-
-% Thus this subgraph is the most connected component of the intrire network.
-% Similarly, the average steps of reaching each author is calculated. M. Perc is,
-% on average, three steps away from each node where M. Nowak is 4.
-
-% The short path that connects the two authors is also retrieved and is the following:
-% M. Nowak - A. Traulsen- Y. Moreno - M. Perc. Thus the authors that connect them
-% are two of the most central authors.
-
-% The answer as to why these people are connected can be seen if we consider the
-% topic the have focused their research on. The common subject to all these authors
-% works is evolunationary game theory, spatial tournaments and social applications.
-
-% M. Perc is a signicant author within the topic with some of his most well received
-% and most citated works being~\cite{Perc2013b, Perc2008, Perc2010, Perc2013}.
-% Perc is well connected author which is proven from the connectivity of his
-% subgraph, the centrality measures and can be verified by his publications.
-
-% \begin{figure}[!hbtp]
-%     \centering
-%     \includegraphics[width=\textwidth]{./assets/images/Perc.pdf}
-%     \caption{Subgraph that contains M. Nowak and M. Perc.}
-%     \label{fig:perc_clique}
-% \end{figure}
-
-% \begin{table}[!hbtp]
-%     \begin{center}
-%     \scalebox{0.8}{
-%     \input{assets/perc_betweenness_centrality}
-%     \input{assets/perc_closeness_centrality}
-%     \input{assets/perc_page_rank_centrality}}
-%     \caption{Central authors based on different centrality measures of the subgraph
-%     which includes author M. Nowak and M. Perc.}
-%     \label{table:perc_clique}
-%     \end{center}
-% \end{table}
-
-% \subsection{Conclusions from the analysis}
-
-% In this section of the paper it was described how insights on the research of the
-% field can be gained by performing a data analysis. Initially the method that
-% was used to collect various metadata of articles was briefly presented.
-
-% Secondly, the number of articles and their provenance over the years was
-% reviewed. The number of articles appears to be gradually increasing after 2000.
-% That could be because most of the journals used in the data collection are either
-% recent or focused on computing/engineering sciences that have been used in the
-% field mainly after 2000.
-
-% One of the features retrieved by the collection is the authors name. Exploring
-% the connections of these authors has been the main focus of the section as it
-% provides several interesting findings.The aims of the network analysis have been,
-
-% \begin{itemize}
-%     \item to research how collaborative the field of the prisoner's dilemma is;
-%     \item indentify the most crucial authors of the network;
-%     \item explore several specific collaborations.
-% \end{itemize}
-
-% Researching the collaborative behaviour of the the field is achieved by examining
-% several network measures. The network was proven to be rather disjoint with a
-% very low density adn an average degree of 3. The median degree of authors has been
-% two, thus most people in the area are maninly writing with two co-authors.
-
-% In order to have an objective insights as to how collaborative the field is
-% two other topics were considered as separate networks. The topics have been the
-% price of anarchy and auction games. The results have shown that the collaboration
-% behaviour is very similar to all three topics. The average degreres of all networks
-% was close to 3 and all had a very small density. Furthermore, there was not a
-% significant difference between the degree distributions of the topics.
-
-% However, the historical progress of the authorship is it significant different
-% between the fields. Auction games have been attracting more authors and collaborations
-% as time progresses. The price of anarchy is a new field that attracted a large
-% number of authors and parternshipd after 2004. The prisoner's dilemma seems to
-% be a more complicated, having a sudden decrease in 1960 and a sudden increase in
-% 1970. Those this could be due the bias that this analysis suffers, which is that only
-% 5 journals are considered. More insights can be brought in the analysis by performing
-% further tests.
-
-% A surprise has been that the main author that was highlighted several times
-% within the analysis has been M. Perc. An author whose work was not delved into
-% in the literature section. A number of authors such as Perc, Moreno and
-% Traulsen would have not come to our attention if this analysis was not held.
-% Thought their work seems promising and may be of interest to people that focus
-% on evolutionary game theory, spatial games and social stuff.
-% Thus advantages of such analysis is that authors that have not previously be
-% considered can stand out.
-
-% Another powerful results emerges by reviewing several subgraphs of authors.
-% The connections to an author of interest can offer new opportunities and guidelines
-% as to whose work to follow next. Nevertheless, only a small number
-% of the subgraphs were presented here. The reader is encouraged to explore
-% the extra material of this work and investigate the connection of their chosen
-% author.
 
 \newpage
 \bibliographystyle{plain}
