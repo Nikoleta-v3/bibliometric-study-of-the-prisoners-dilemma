@@ -7,6 +7,7 @@
 
 %%%%%%%PACKAGES HERE%%%%%%%
 \usepackage{amsmath}
+\usepackage{amsthm}
 \usepackage{amssymb}
 \usepackage{hyperref}
 \usepackage{standalone}
@@ -22,6 +23,10 @@
 
 \setcounter{secnumdepth}{4}
 \setcounter{tocdepth}{4}
+
+\usepackage{kbordermatrix}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%PARAMETERS%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\totalarticles}{\input{assets/total_articles.txt}}
@@ -1137,12 +1142,13 @@ project similar to the one described here, documentation for it is available at:
 \url{http://arcas.readthedocs.io/en/latest/}.
 
 The following sources were used to collect data,
+
 \begin{enumerate}
-        \item arXiv~\cite{mckiernan2000};
         \item PLOS~\cite{plos_one};
-        \item IEEE;
-        \item Nature;
-        \item Springer.
+        \item Nature~\cite{nature};
+        \item IEEE~\cite{ieee};
+        \item arXiv~\cite{mckiernan2000};
+        \item Springer~\cite{springer}.
 \end{enumerate}
 
 These are four prominent journals in the field, as well as the arXiv~\cite{mckiernan2000}
@@ -1208,8 +1214,8 @@ In this work only the features of Table~\ref{table:result_set} are used.
 
 In the work described here, a series of keywords were used to identify relevant
 articles. Articles for which these keywords were in the title or the abstract
-are included in the analysis. A list of the keywords that were used are
-shown in Table~\ref{table:search_keywords}.
+are included in the analysis. A list of the keywords that were used for the main
+data set are shown in Table~\ref{table:search_keywords}.
 
 \begin{table}[!hbtp]
     \begin{center}
@@ -1230,22 +1236,30 @@ shown in Table~\ref{table:search_keywords}.
 \end{table}
 
 Similarly, for collecting data on auction games and the price of anarchy the
-following keywords respectively for each topic,
+following keywords were used:
 
 \begin{itemize}
     \item key: auction game theory;
     \item key: price of anarchy.
 \end{itemize}
 
+For both of these topics a single keyword has been used. In comparison there
+are 5 different keywords used for the prisoner's dilemma topic. This is due the
+fact that the main focus of this analysis is the prisoner's dilemma. Thus, we
+wanted to collected as many articles as possible for our analysis results to
+be more accurate. Even so, the amount of articles collected from the search
+of such keywords like tit for tat and zero determinant was small compared to
+the actual size of tha data.
+% TODO Add a sentence on the keywords difference.
 \subsection{Preliminary Analysis}
 
 A total of three data sets are explored in this work. A summary of each data is
-presented in this section. The three data sets are,
+presented in this section. The three data sets are:
 
 \begin{itemize}
-    \item the main data set which contains articles on the prisoner's dilemma,~\cite{}
-    \item a secondary data set which contains article on auction games~\cite{} and
-    \item a secondary data set which contains articles on the price of anarchy~\cite{}.
+    \item The main data set which contains articles on the prisoner's dilemma.
+    \item A secondary data set which contains article on auction games.
+    \item A secondary data set which contains articles on the price of anarchy.
 \end{itemize}
 % TODO archive all data sets
 
@@ -1279,14 +1293,11 @@ that the last data collection was on December 2017.
 % TODO Ensure this stay accurate
 
 Moreover we calculate the average publication over time. This is done for the overall
-data set and for each journal individually. The average publication is estimated
-as the ratio of the number of articles and the years of publication. Denoted as
-\(\mu_p\),
+data set and for each journal individually. This is denotes as,
 
-\[ \mu_p = \frac{N_a}{N_y}\]
+\[ \mu_P = \frac{N_A}{N_Y},\]
 
-where \(N_a\) is number of articles and \(N_u\) is the years of publication.
-
+where \(N_A\) is the total number of articles and \(N_Y\) is the years of publication.
 The years of publication is calculated as the range between 2017 and the first published
 article within the data.
 
@@ -1302,33 +1313,6 @@ with 5 articles per year.
     \caption{Average publication for~\cite{}.}
     \label{table:publication_rates}
 \end{table}
-
-% The trends of these rates can also be explored. This is achieved by using the 
-% software package Prophet by Facebook. Prophet fits an additive model
-% to the data. The results are demonstrated in Figure~\ref{fig:provenance}.
-% It seems that all journals have an increasing trend, apart from Nature which has
-% a constant number of publications throughout the years.
-
-% \begin{figure}[!hbtp]
-%     \centering
-%     \begin{subfigure}{.4\textwidth}
-%         \includegraphics[width=\textwidth]{./assets/images/trend_IEEE.pdf}
-%     \end{subfigure}
-%     \begin{subfigure}{.4\textwidth}
-%         \includegraphics[width=\textwidth]{./assets/images/trend_PLOS.pdf}
-%     \end{subfigure}
-%     \begin{subfigure}{.4\textwidth}
-%         \includegraphics[width=\textwidth]{./assets/images/trend_Nature.pdf}
-%     \end{subfigure}
-%     \begin{subfigure}{.4\textwidth}
-%         \includegraphics[width=\textwidth]{./assets/images/trend_Springer.pdf}
-%     \end{subfigure}
-%     \begin{subfigure}{.4\textwidth}
-%         \includegraphics[width=\textwidth]{./assets/images/trend_arXiv.pdf}
-%     \end{subfigure}
-%     \caption{Number of publications over time for each journal.}
-%     \label{fig:provenance}
-% \end{figure}
 
 \paragraph{Auction games and the price of anarchy data sets}
 \mbox{ }\\
@@ -1513,23 +1497,67 @@ paper:
 \end{itemize}
 
 Consequently, several different entries of the same author existed within the data
-set. To address the problem the Levenshtein Distance~\cite{miller2009} was used.
-The Levenshtein Distance is a metric for measuring the difference between two
-sequences. The Levenshtein distance between two strings is defined as the
-minimum number of edits needed to transform one string into the other, with the
-allowable edit operations:
+set. Thus we wanted to figure out when two author names were the same in real life.
+Though identifying if two string correspond to the same author is human possible
+the data sets consited of more than 1000 authors, thus we wanted to automate the
+procedure.
+
+This was done by using the Levenshtein Distance~\cite{miller2009}. The Levenshtein
+Distance is a metric for measuring the difference between two sequences. It is
+based upon the number of actions one has to take to transform one string into
+the other. These actions include:
 
 \begin{enumerate}
-    \item insertion;
-    \item deletion;
-    \item substitution of a single character.
+    \item Insertion;
+    \item Deletion;
+    \item Substitution of a single character.
 \end{enumerate}
 
-The ration of the Levenshtein distance of all possible pairs of authors in the
-data set was computed. If the ratio was between \(85\) and \(99\) the entries were
-highlighted. The highlighted entries were manually checked to assure that there
-were indeed the same author and then one of them was replaced by the other.
-%Example
+Let us consider an example where we are trying to calculate the distance between
+the two strings `Wang' and `Yang'. To compute the distance in a non-recursive
+way, we use a matrix \(D\) containing the distances between all the prefixes of the
+two strings. The first row and column are indexed by empty strings. The rest of
+the rows and columns are index by the prefixes of the two strings.
+
+The matrix is filled from left to right. The first row is filled as follows:
+
+\begin{enumerate}
+    \item To go from an empty string to an empty string zero actions are needed.
+    Thus the \(D_{\text{e}, \text{e}}\) is 0.
+    \item To go from an empty string to `W', or the other way around, 1 action
+    is needed. Thus the \(D_{\text{e}, \text{W}}\) is 1.
+    \item For every new letter we have to take another action \((+1)\).
+\end{enumerate}
+
+Similarly, this is done for the first columns. For rest of the elements
+we follow a similar approach, but this time the previous distances are also
+taken in account. For example, \(D_{\text{Y}, \text{W}}\). For the letter `Y'
+to go to `W' a single action is required. Note that now 1 is added to the minimum
+distance between of \(D_{\text{e}, \text{e}}, D_{\text{e}, \text{W}}\) and
+\(D_{\text{e}, \text{Y}}\). 
+
+Similarly we fill the rest of matrix. The last value computed, bottom right,
+is the Levenshtein Distance of the two strings. In our example it is calculated
+to be 1.
+
+\[ D = \kbordermatrix{
+     & \text{e} & \text{W} & \text{A} & \text{N} & \text{G} \\
+   \text{e} & 0 & 1 & 2 & 3 & 4 \\
+    \text{Y} & 1 & 1 & 2 & 3 & 4 \\
+    \text{A} & 2 & 2 & 1 & 2 & 3 \\
+    \text{N} & 3 & 3 & 2 & 1 & 2 \\
+    \text{G} & 4 & 4 & 3 & 2 & 1
+  }\]
+
+In this work we calculate the ratio of two string matching for all possible
+pairs of authors in the data sets. The matching ratio is calculated as,
+
+\[(1 - \frac{\text{lev}}{m}) \times 100,\]
+
+where \(\text{lev}\) is the distance and \(m\) is the length of the longest of
+the two words. If the ratio of a pair was between \(85\) and \(99\) both entries
+were highlighted. The highlighted entries were manually checked to assure that
+there were indeed the same author and then one of them was replaced by the other.
 
 For example all entries with author name written as example 1 were replaced by
 2.
@@ -1547,29 +1575,37 @@ same. For example:
     \item Zhen Wang
 \end{enumerate}
 
-are two different authors.
+are two different authors. Once the name entries have been cleaned the
+co authorship networks can be defined. The definition of a co authorship network
+is given by:
 
-Once we have cleaned the name entries the number of unique authors is calculated.
+\begin{definition}{Co authorship network.}
+    A co authorship network is an undirected network \(G\) of vertices \(V\) and
+    edges \(E\) where vertices representing each unique author and an edge
+    connects two authors if and only if those authors have written together.
+    No weight has been applied to the edges nor the nodes.
+\end{definition}
+
 %Define what a network is and then G_1, G_2, G_3
-The co authorship network of the prisoner's dilemma can now be defined as:
+Three such networks are studied here. These are:
 
-An undirected graph \(G\) of vertices \(V\) and edges \(E\), Figure~\ref{fig:authors_network}.
-There are \authors vertices representing each unique author. The vertices are
-joined by \edges edges. An edge connects two authors if and only if those authors
-have written together. No weight has been applied to the edges nor the nodes.
+\begin{itemize}
+    \item \(G_1\) a prisoner's dilemma network, where \(V(G_1)=\) \authors and
+    \(E(G_1)=\) \edges.
+    \item \(G_2\) an auction games network, where \(V(G_2)=\) \auctionauthors and
+    \(E(G_2)=\) \auctionedges.
+    \item \(G_3\) an auction games network, where \(V(G_3)=\) \priceauthors and
+    \(E(G_3)=\) \priceedges.
+\end{itemize}
+
+The respective illustrations of \(G_1, G_2\) and \(G_3\) are given by Figures
+\ref{fig:authors_network} and \ref{fig:co-authorship-other-topics}.
 
 \begin{figure}[!hbtp]
     \centering
     \includegraphics[width=0.8\textwidth]{./assets/images/co-authors-network.pdf}
     \caption{Co authorship network for prisoner's dilemma.}\label{fig:authors_network}
 \end{figure}
-
-The same approached is used to construct the networks for auction games and the
-price of anarchy. For auction games there are \auctionauthors vertices and \auctionedges
-edges. The price of anarchy corresponds to a smaller network with \priceauthors
-vertices and \priceedges edges. Their respective networks are illustrated in
-Figure~\ref{fig:co-authorship-other-topics}. The following sections focuses on
-the analysis of these networks.
 
 \begin{center}
     \begin{figure}[!hbtp]
