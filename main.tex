@@ -1224,7 +1224,7 @@ shown in Table~\ref{table:search_keywords}.
              5 &  R Axelrod & \\
              6 &  memory one strategy & \\
              7 &  tit-for-tat & \\
-             8 &  tit for tata & \\
+             8 &  tit for tat & \\
              9 &  zero determinant strategies & \\
             \bottomrule
         \end{tabular}
@@ -1284,10 +1284,12 @@ that the last data collection was on December 2017.
 
 Moreover we calculate the average publication over time. This is done for the overall
 data set and for each journal individually. The average publication is estimated
-as the ratio of the number of articles and the years of publication.
-Thus:
+as the ratio of the number of articles and the years of publication. Denoted as
+\(\mu_p\),
 
-\[ \text{av. publication}= \frac{\text{number of articles}}{\text{years of publication}}\]
+\[ \mu_p = \frac{N_a}{N_y}\]
+
+where \(N_a\) is number of articles and \(N_u\) is the years of publication.
 
 The years of publication is calculated as the range between 2017 and the first published
 article within the data.
@@ -1489,6 +1491,7 @@ will not be considered. On the contrary we introduce an alternative way of measu
 both \textbf{collaborative behaviour} and \textbf{influence} based on the co authorship network.
 Initially we discuss how such network can be constructed for a given topic and
 then we consider several network measures to retrieve our results. 
+%TODO write more here
 Measures such as,
 
 \begin{itemize}
@@ -1530,6 +1533,7 @@ The ration of the Levenshtein distance of all possible pairs of authors in the
 data set was computed. If the ratio was between \(85\) and \(99\) the entries were
 highlighted. The highlighted entries were manually checked to assure that there
 were indeed the same author and then one of them was replaced by the other.
+%Example
 
 For example all entries with author name written as example 1 were replaced by
 2.
@@ -1550,6 +1554,7 @@ same. For example:
 are two different authors.
 
 Once we have cleaned the name entries the number of unique authors is calculated.
+%Define what a network is and then G_1, G_2, G_3
 The co authorship network of the prisoner's dilemma can now be defined as:
 
 An undirected graph \(G\) of vertices \(V\) and edges \(E\), Figure~\ref{fig:authors_network}.
@@ -1604,11 +1609,11 @@ each pair of nodes is connected by a path. Let us consider two graphs \(Z\) and
 \begin{figure}[!hbtp]
     \begin{subfigure}{0.5\textwidth}
         \includegraphics[width=\textwidth]{./assets/images/connected_example_one.pdf}
-        \caption{Sub graph \(Z\).}
+        \caption{A sub graph of \(G_1\) with 1 connected component.}
     \end{subfigure}
     \begin{subfigure}{0.5\textwidth}
         \includegraphics[width=\textwidth]{./assets/images/connected_example_two.pdf}
-        \caption{Sub graph \(H\).}
+        \caption{A sub graph of \(G_1\) with 5 connected component.}
     \end{subfigure}
 \caption{Connected components examples.}
 \label{fig:connected_components}
@@ -1629,7 +1634,9 @@ cluster together, thus a measure of cliqueness. There are two version of this
 meaurer, the local and the global. The local coefficient measures the clustering
 coefficient of a single node and is calculated as,
 
-\[\text{cc} = \frac{2 \times \text{Number of edges between neighbours}}{\text{Node degree (Node degree - 1).}}\]
+\[C_i = \frac{2 \times N_E}{(I_degree)}\]
+
+Number of edges between neighbours, Node degree (Node degree - 1).
 
 The global coefficient is calculated by averaging all the local coefficients of
 the graph. The values of the measure can range between \(0\) and \(1\). 
@@ -1647,15 +1654,15 @@ coefficient has been estimated to be \(0.23\).
     \begin{figure}[!hbtp]
         \begin{subfigure}{0.33\textwidth}
             \includegraphics[width=\textwidth]{./assets/images/clustering_example_one.pdf}
-            \caption{Sub graph \(A\).}
+            \caption{A sub graph of \(G_1\) with a clustering coefficient of 0.}
         \end{subfigure}
         \begin{subfigure}{0.33\textwidth}
             \includegraphics[width=\textwidth]{./assets/images/clustering_example_two.pdf}
-            \caption{Sub graph \(M\).}
+            \caption{A sub graph of \(G_1\) with a clustering coefficient of 0.23.}
         \end{subfigure}
         \begin{subfigure}{0.33\textwidth}
             \includegraphics[width=\textwidth]{./assets/images/clustering_example_three.pdf}
-            \caption{Sub graph \(K\).}
+            \caption{A sub graph of \(G_1\) with a clustering coefficient of 1.}
         \end{subfigure}
     \caption{Clustering coefficients examples.}
     \label{fig:clustering_coefficients}
@@ -1761,28 +1768,6 @@ to our data, papers with 3 authors seems to be favoured.
     \caption{Degrees distribution over time.}\label{fig:dist_over_time}
 \end{figure}
 
-\paragraph{Conclusion}
-\mbox{ }\\
-
-The conclusions for the collaborative behaviour of the field are discussed here.
-The ranking based on the number of connected components for the three topics
-is the following, auction games, the prisoner's dilemma and the price of anarchy.
-Though this could be due the size of the data set of each respective topic.
-
-The clustering coefficients allow us to conclude that that the prisoner's dilemma
-is more collaborative, as field, compared to auction games but less than the 
-price of anarchy. Note that the price of anarchy is a relative new topic. Thus
-with less authors there is a higher change to collaborate with the few people
-in your field.
-
-The median degree was statistically proven to be the same over the three different
-topics. Thus the above results hold for topics where the median connections
-of an author is the same.
-
-Based on the time periods the prisoner dilemma appears to have increased it's
-collaborations since period 2. Note that period 2 is a poor period based on our
-data. Period 5 to 7 re the most collaboratice of the field.
-
 \subsubsection{Influence}
 
 Network centrality is used in network theory to study which nodes of a graph are
@@ -1838,7 +1823,7 @@ people as much as node 3.
 \begin{figure}[!hbtp]
     \centering
     \includegraphics[width=0.8\textwidth]{./assets/images/centrality_example.pdf}
-    \caption{Sub graph \(T\).}\label{fig:subgraph_t}
+    \caption{A sub graph of \(G_1\).}\label{fig:subgraph_t}
 \end{figure}
 
 We identify those two measure to be important and we base our further analysis
@@ -1934,6 +1919,24 @@ few people on their fields.
 \paragraph{Conclusion}
 \mbox{ }\\
 
+The conclusions for the collaborative behaviour of the field are discussed here.
+The ranking based on the number of connected components for the three topics
+is the following, auction games, the prisoner's dilemma and the price of anarchy.
+Though this could be due the size of the data set of each respective topic.
+
+The clustering coefficients allow us to conclude that that the prisoner's dilemma
+is more collaborative, as field, compared to auction games but less than the 
+price of anarchy. Note that the price of anarchy is a relative new topic. Thus
+with less authors there is a higher change to collaborate with the few people
+in your field.
+
+The median degree was statistically proven to be the same over the three different
+topics. Thus the above results hold for topics where the median connections
+of an author is the same.
+
+Based on the time periods the prisoner dilemma appears to have increased it's
+collaborations since period 2. Note that period 2 is a poor period based on our
+data. Period 5 to 7 re the most collaboratice of the field.
 In this sub section we have studied the influncers and the people that gain
 from the influence of their field. We have presented the authors within the
 field of the prisoner's dilemma that fitted the descriptions.
