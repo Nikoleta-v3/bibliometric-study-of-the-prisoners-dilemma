@@ -45,6 +45,9 @@
 \newcommand{\pricecc}{\input{assets/price_clustering.txt}}
 \newcommand{\auctioncon}{\input{assets/auction_connected_components.txt}}
 \newcommand{\auctioncc}{\input{assets/auction_clustering.txt}}
+\newcommand{\prisonerisolated}{\input{assets/prisoners_isolated.txt}}
+\newcommand{\auctionisolated}{\input{assets/auction_isolated.txt}}
+\newcommand{\priceisolated}{\input{assets/price_isolated.txt}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{A systematic literature review of the Prisoner's Dilemma and an analysis of the corresponding co author network.}
@@ -1453,10 +1456,22 @@ connections to one another.
 % TODO Define the co author network as a weight graph G =...
 % TODO Possibly include subgraphs as examples.
 
-Measuring academic collaborations and the influence academics offer to their
-field is not always trivial. Several studies consider academic citations as a measure
-and base their analysis on the citations network. According to a blog post~\cite{nature_blog} 
-written by Nature in 2017, depending on citations can often be misleading.
+Broadly speaking, most academic research is undertaken in the form of
+collaborative effort. As discussed in~\cite{}, it is rationale that two
+or more people can do better as a group than individually. Academic collaborations
+have many different forms. Researchers might have immediate collaborated and
+written together. Others might have collaborated through an common co author.
+
+Collaboration in groups has a long tradition in experimental sciences and it has
+be proven to be productive according to~\cite{}. Even so, the number of collaborations
+can be very different between research fields and measuring collaboration is
+not always an easy task. Moreover, we are not interested only in collaborative
+behaviour but also in the power of influence. For example academics can influence
+us through workshops, talks or by collaborating we people in our environment.
+Such as other researchers in our department or our supervisors.
+
+Several studies tend to consider academic citations as a measure for these things.
+As discussed in~\cite{nature_blog}, depending on citations can often be misleading.
 This is because:
 
 \begin{itemize}
@@ -1466,22 +1481,39 @@ This is because:
     \item Several citations are superficial.
 \end{itemize}
 
-We are in agreement with the aforementioned reasons and in this work citations
-will not be considered. On the contrary we introduce an alternative way of measuring
-both \textbf{collaborative behaviour} and \textbf{influence} based on the co authorship network.
-Initially we discuss how such network can be constructed for a given topic and
-then we consider several network measures to retrieve our results. 
-%TODO write more here
-Measures such as,
+We are in agreement with the above reasons and here we suggest that new way of
+measuring collaboration and influence must be introduced. We suggest that this
+should be done by looking the co authorship network. A co authorship network,
+is a network where academics that have written and published together are connected.
+Moreover, people that have not written together but have with the same co author
+can reach each other.
+
+We must properly define what collaboration and influence means to us in order to
+measure them using the co authorship network.
+
+An academic field will never be fully connected, instead there will be various
+academic groups of people who are connected to each other. By collaborative
+behaviour we mean the average connections an author can have in their academic
+group. Moreover, how strongly close they are in that group of theirs.
+
+Additionally, influence is defined as how much authors connect their groups.
+In essence, how many connections are made possible because of an author. A strong
+influence can have many advantages for a field. Authors can have a wider perspective
+for the undergoing research in their field, they can compare results and be more
+accurate. Thus they authors that do not necessarily have influence but can
+have a big gain from it. We are interested in both types, people that influence
+and people that gain from it.
+
+In the following section we give a rigorous definition of the co authorship
+network. moreover we introduced several network measures that we will be using
+such as:
 
 \begin{itemize}
-    \item the number of connected components,
-    \item clustering coefficient,
-    \item degrees distributions and
-    \item centrality measures.
+    \item Number of connected components.
+    \item Clustering coefficient.
+    \item Degrees distributions.
+    \item Centrality measures.
 \end{itemize}
-
-All network measures are introduced with examples in the following sections.
 
 \subsubsection{Constructing a co authorship network}
 
@@ -1624,18 +1656,20 @@ The respective illustrations of \(G_1, G_2\) and \(G_3\) are given by Figures
 
 \subsubsection{Collaborative behaviour}
 
-In this section we ascertain the level of collaborative nature of the field
-using several connectivity measures. Several sub graphs of \(G\) will be used
-as examples to explain the notion of some of these measures.
+In this section we ascertain the level of collaborative nature of the field.
+The collaborative behaviour is measured as the connections authors can
+have within their groups. Moreover, how strongly connected these groups are.
+Several connectivity measures will be used to explain such behaviour, in this
+section these are introduced through various examples.
 
 \paragraph{The measures}
 \mbox{ }\\
 
-The first measure introduced is the number of connected components.
-A connected component of an undirected graph is a maximal set of nodes such that
-each pair of nodes is connected by a path. Let us consider two graphs \(Z\) and
-\(H\) (shown in Figure~\ref{fig:connected_components}), where \(V(Z), V(H)
-\subseteq V (G)\) and \( E(Z), E(H) \subseteq E(G)\).
+The first measure introduced is the number of connected components. A connected
+component of an undirected graph is a maximal set of nodes such that each pair
+of nodes is connected by a path. Two examples are illustrated in Figure
+\ref{fig:connected_components}. These are two different sub graphs of \(G_1\)
+with a number of connected components of 1 and 5.
 
 \begin{center}
 \begin{figure}[!hbtp]
@@ -1652,35 +1686,29 @@ each pair of nodes is connected by a path. Let us consider two graphs \(Z\) and
 \end{figure}
 \end{center}
 
-The number of connected components for sub graph \(Z\) is 1. On the other
-hand the number of connected components for sub graph \(H\) is 5. Note that single
-vertices are considered a connected component because they are connected by a path
-to themselves. Due the nature of our study we are interested only in connected components
-with more than one vertex, thus authors that have written with at least another
-person. For the number of connected components we isolate the single vertices
-and we count only those with at least two vertices.
+Note that a vertex with no incident edges is itself a connected component.
+Connected components show us how disjoint the network is. In essence the number
+of groups in the field.
 
-The second connectivity measure considered is the clustering coefficient. Clustering
-coefficient is a measure of the degree to which nodes in a graph tend to
-cluster together, thus a measure of cliqueness. There are two version of this
-meaurer, the local and the global. The local coefficient measures the clustering
-coefficient of a single node and is calculated as,
+The second measure considered is the degree. The degree of a node express
+the number of connections a node has. We will consider the degree distribution
+of a network. It will allow us to understand the mean connection that authors
+have in the network's groups.
 
-\[C_i = \frac{2 \times N_E}{(I_degree)}\]
+The final measure is the clustering coefficient. Clustering coefficient is a
+measure of the degree to which nodes in a graph tend to cluster together. There
+are two versions of the measure. The local and the global coefficients. The local
+coefficient is the clustering coefficient of a single vertex. It is calculated as,
 
-Number of edges between neighbours, Node degree (Node degree - 1).
+\[C_u = \frac{2 \times L_u}{(k_u (k_u - 1)},\]
 
-The global coefficient is calculated by averaging all the local coefficients of
-the graph. The values of the measure can range between \(0\) and \(1\). 
+where \(k_u\) is the degree of vertex \(u\) and \(L_u\) is the number of edges
+between \(k_u\) neighbours of vertex \(u\).
 
-A clustering coefficient of \(1\) indicicates that the graph is a complete graph.
-This case is not ideal in a co authorship network. Such a high coefficient would
-indicate that teams of authors only write with each other, and not a sinle person
-tends to collaborate with an external author (sub graph \(K\)). On the contrary,
-a coefficient of \(0\) indicates
-that authors write only with just a single co author, sub graph \(A\).
-The case that lines in between is that of sub graph \(M\) where the clustering
-coefficient has been estimated to be \(0.23\).
+The global coefficient, \(\bar{C}\), is calculated by averaging all the local
+coefficients of the graph. The values of the measure can range between \(0\) and
+\(1\). Figure~\ref{fig:clustering_coefficients} illustrates several sub graphs
+with different \(\bar{C}\) values.
 
 \begin{center}
     \begin{figure}[!hbtp]
@@ -1701,43 +1729,37 @@ coefficient has been estimated to be \(0.23\).
     \end{figure}
     \end{center}
 
-The final measure considered in this section is the degree distribution. Degree
-shows the number of connections a node has. The degree distribution will allow
-us to understand the most common degree in our networks.
+A clustering coefficient of \(1\) indicates that that a sub graph is a
+complete graph. On the contrary, a coefficient of \(0\) indicates that authors write only
+with just a single co author. This case is not ideal in a co authorship group.
+A high clustering coefficient indicates that people within groups have several
+connections. There are not there due to a single publication with a random researcher
+but on the contrary that group is said to be collaborative.
 
 \paragraph{Comparison with other topics co authorship}
 \mbox{ }\\
 
-All the above measure have been calculated for graph \(G\). Though we can not describe
-how collaborative the network is without any comparison. Table~\ref{table:other_topics_cc}
-summarises the measures for \(G\) and two other topics.
+All connectivity measures are calculated for \(G_1, G_2\) and \(G_3\). This is
+done using the open source package~\cite{networkx}.
 
-\begin{table}[!hbtp]
-    \begin{center}
-    \begin{tabular}{lcc}
-        \toprule
-                             & \textbf{Connected components} & \textbf{Clustering coefficient}\\
-        \midrule
-        Prisoner's dilemma   &                 \prisonerscon & \prisonerscc \\
-        Auction games        &                   \auctioncon & \auctioncc   \\
-        The price of anarchy &                     \pricecon & \pricecc     \\
-        \bottomrule
-    \end{tabular}
-    \end{center}
-    \caption{Collaborative behaviour measures for auction games and the price of anarchy.}
-    \label{table:other_topics_cc}
-\end{table}
+We are aware that all three of the networks are disjoint. This is also verified
+by the number of connected components. More specifically there are \prisonerscon,
+\auctioncon and \pricecon for graphs \(G_1, G_2\) and \(G_3\) respectively.
+Though the number of connected components for \(G_1\) is between \(G_2\) and \(G_3\)
+we believe that this could be due the size of the data sets.
 
-Graphs \(G\) has a smaller number of connected components compared to the equivalent
-graph for auction games. Even so, the global clustering coefficient of the two
-networks is the same. This implies that authors of network \(G\) tend to collaborate
-with more people. However, the field appears to be less collaborative compared
-to the topic of price of anarchy, which has a clustering coefficient of 0.77 with
-only 162 connected components.
+An interesting insights can be given by looking at the number of the isolated
+authors, thus the authors that have written by themselves. These are
+\prisonerisolated, \auctionisolated, \priceisolated. The price of anarchy has
+only a total of \(4\) authors that have not written with anyone else, indicating
+high collaboration. Graphs \(G_1\) and \(G_2\) appear to have a similar number
+of isolated authors.
 
-To further examined the differences or the similarities of these networks we
+Now that the number of groups for each topic have been calcutated we can still
+be very ojective. That is because the these could be affected by the size of the
+data sets. Thus to further examine the collaborative behaviour we 
 consider the degree distributions. The normalised distributions of all
-three networks are given in Figure~\ref{fig:degrees_dist}. They have been normalised
+three networks are shown in Figure~\ref{fig:degrees_dist}. They have been normalised
 such that the frequencies sum to one. The distributions appear to be similar
 but to validate the hypothesis a statistical test is used.
 
@@ -1753,26 +1775,46 @@ three networks.
     \caption{Degree distributions for all three networks.}\label{fig:degrees_dist}
 \end{figure}
 
+Finally we calculate \(\bar{C}\) for all three networks.
+
+\begin{table}[!hbtp]
+    \begin{center}
+    \begin{tabular}{lcc}
+        \toprule
+                  & \textbf{\(\bar{C}\)}\\
+        \midrule 
+        \(G_1\) & \prisonerscc\\
+        \(G_2\) & \auctioncc\\
+        \(G_3\) & \pricecc\\
+        \bottomrule
+    \end{tabular}
+    \end{center}
+    \caption{Clustering coefficient for all three networks.}
+    \label{table:clustering}
+\end{table}
+
+The price of anarchy appears to have the largest clustering coefficient.
+The price of anarchy did not only not have authors writting on their own
+but authors is groups appear to be clustered together. The prisoners dilemma 
+and auction games have a similar clustering coefficient.
+
 \paragraph{Temporal comparison}
 \mbox{ }\\
 
-The collaborative behaviour of \(G\) is also studied over time. That is achieve
-by calculating the number of connected components, the clustering coefficients and
-the degrees distribution for each time period. Table~\ref{table:cc_over_time}
+The collaborative behaviour of \(G_1\) is also studied over time. This is achieved
+by calculating the number of connected components, the degrees distribution
+and the clustering coefficients for each time period. Table~\ref{table:cc_over_time}
 summarises the results.
 
-Period 2 appears to be a very poor period of publication in our sources. There is
-a single connected components, with an average clustering coefficient of 0. This
-indicates collaboration with a single author.
-Period 5 has the highest number of connected components but period 7 has the highest
-clustering coefficient of 0.8 with only 108 connected components.
-A big increase of connected components is spotted from periods 4 to 5.
-Thus from period 2 onwards the field appears to be more collaborative, with most
-collaborative period being the 7th.
+The number of connected components indicate that after period 3 to 7 the 
+number of author is increasing. Period 2 is a very poor period of publication
+in our sources. For periods 3 to 7 it is shown in Figure~\ref{fig:dist_over_time}
+that the degrees are stabilising over 3.Thus in the study of the prisoners dilemma
+according to our data, papers with 3 authors seems to be favoured.
 
-Furthermore, over time the degree seems to be stabilising over 2 degrees, Figure
-\ref{fig:dist_over_time}. Thus in the study of the prisoners dilemma according
-to our data, papers with 3 authors seems to be favoured.
+Furthermore, the clustering coefficients are also increasing over these periods.
+This analysis indicates that not only more people are were attracted to the
+the topic over the years but also that the field was becoming more collaborative.
 
 \begin{table}[!hbtp]
     \begin{center}
@@ -1780,13 +1822,13 @@ to our data, papers with 3 authors seems to be favoured.
         \toprule
                   & \textbf{Connected components} & \textbf{Clustering coefficient}\\
         \midrule
-        period 1  & 12                            & 0.54 \\
-        period 2  & 1                             & 0.0 \\
-        period 3  & 14                            & 0.29 \\
-        period 4  & 44                            & 0.44 \\
-        period 5  & 411                           & 0.69 \\
-        period 6  & 230                           & 0.78 \\
-        period 7  & 108                           & 0.8 \\
+        period 1  & 15                            & 0.5 \\
+        period 2  & 5                             & 0.0 \\
+        period 3  & 49                            & 0.14 \\
+        period 4  & 96                            & 0.3 \\
+        period 5  & 534                           & 0.64 \\
+        period 6  & 281                           & 0.74 \\
+        period 7  & 134                           & 0.76 \\
         \bottomrule
     \end{tabular}
     \end{center}
@@ -1803,33 +1845,35 @@ to our data, papers with 3 authors seems to be favoured.
 \subsubsection{Influence}
 
 Network centrality is used in network theory to study which nodes of a graph are
-the most important. There are several centrality measures used in different
-projects to explain different behaviours of the nodes. Centrality will be used
-here to explain influence. Two centrality measures are used here:
+the most important. There are several centrality measures used to explain different
+behaviours of the nodes. Centrality will be used here to explain influence. 
+The two centrality which are used are:
 
 \begin{itemize}
-    \item closeness centrality and
-    \item betweenness centrality.
+    \item Closeness centrality \(C_C\).
+    \item Betweenness centrality \(C_B\).
 \end{itemize}
 
 \paragraph{Measures}
 \mbox{ }\\
 
-Closeness centrality is used to explain which people influence the field and
-betweenness centrality is used to explain which people gain from that influence.
-Similarly both network measures are explained with an example.
+Both network measures are explained with an example. The definitions for both
+centralities are given by Definition~\ref{def:closeness} and~\ref{def:betweenness}.
 
-\textbf{Closeness} centrality of a node \(u\) is the reciprocal of the average
-shortest path distance to \(u\) over all \(n-1\) reachable nodes. It is denoted as,
+\begin{definition}{Closeness.}\label{def:closeness}
+    Closenesse centrality of a node \(u\) is the reciprocal of the average
+    shortest path distance to \(u\) over all \(n-1\) reachable nodes. It is denoted as,
+    
+    \[C_C(u)= \frac{n - 1}{\displaystyle \Sigma_{v=1}^{n-1}d(v, u)}\]
+    
+    where \(d(v, u)\) is the shortest-path distance between \(v\) and \(u\), and \(n\)
+    is the number of nodes that can reach \(u\). The mornalised centrality
+    is \(C_C\) normalised by the number of nodes in the connected part of the
+    graph.
+\end{definition}
 
-\[C(u)= \frac{n - 1}{\displaystyle \Sigma_{v=1}^{n-1}d(v, u)}\]
-
-where \(d(v, u)\) is the shortest-path distance between \(v\) and \(u\), and \(n\)
-is the number of nodes that can reach \(u\). In our analysis we consider the
-normalised closeness centrality which is normalised by the number of nodes in the
-connected part of the graph.
-
-\textbf{Betweenness} centrality of a node \(u\) is the sum of the fraction of all-pairs
+\begin{definition}{Betweenness.}\label{def:betweenness}
+Betweenness centrality of a node \(u\) is the sum of the fraction of all-pairs
 shortest paths that pass through \(u\). It is denoted as,
 
 \[ C_B(u)=\Sigma_{s,t \in V} \frac{\sigma (s,t|u)}{\sigma(s,t)}\]
@@ -1837,20 +1881,21 @@ shortest paths that pass through \(u\). It is denoted as,
 where \(V\) is the set of nodes, \(\sigma(s,t)\) is the number of shortest \((s,t)\)-paths,
 and \(\sigma(s,t|v)\) is the number of those paths passing through some node
 \(u\) other than \(s,t\). If \(s=t\), \(\sigma(s,t)=1\), and if \(u \in s,t, \sigma(s,t|u)=0\).
-Betweenness values are normalized by \(\frac{2}{((n-1)(n-2))}\).
+Normalised \(C_B\) is normalized by \(\frac{2}{((n-1)(n-2))}\)
+\end{definition}
 
 Closeness is a measure that shows how well a node connects other nodes. Equivalently,
 how well an author is connected to other authors and make them collaborate. 
 This is called influence. On the other hand betweenness is about how connected a
 node is, thus how much influence an author can gain from their environment.
 
-As an example consider sub graph \(T\), Figure~\ref{fig:subgraph_t}. Note that
-nodes 1, 2 and 3 are connected to three authors. Thus we expect their betweenness
-centrality to be the same. However, this is not true for closeness centrality.
-Node 3 is the connecting link between at least 4 people. Thus node 3
-is the person in the sub graph that influences most authors. Node 3 also gains
-influence due ot its rule in the team, but node 2 achieves the same without connecting
-people as much as node 3.
+As an example consider a sub graph of \(G_1\) which is illustrated in
+Figure~\ref{fig:subgraph_t}. Note that nodes 1, 2 and 3 are connected to three
+authors. Thus we expect their betweenness centrality to be the same. However, this
+is not true for closeness centrality. Node 3 is the connecting link between at least
+4 people. Thus node 3 is the person in the sub graph that influences most authors.
+Node 3 also gains influence due ot its rule in the team, but node 2 achieves the
+same without connecting people as much as node 3.
 
 \begin{figure}[!hbtp]
     \centering
@@ -1858,17 +1903,12 @@ people as much as node 3.
     \caption{A sub graph of \(G_1\).}\label{fig:subgraph_t}
 \end{figure}
 
-We identify those two measure to be important and we base our further analysis
-on these measures. Due to an open source package called networkx the centrality
-measures are easily calculated.
-%ref networkx
-
-Table~\ref{table:central_authors_pd} shows the most important authors of network
-\(G\) based on the two centralities. The people that influence the field the most
-are Matjaz Perc, Yamir Moreno, Luo-Luo Jiang, Arne Traulsen and Martin A. Nowak.
-Their work have been discussed in Section~\ref{section:timeline}.
+The centrlity for all three networks are calculated using~\cite{networkx}. Table
+\ref{table:central_authors_pd} summarises the most important authors of network
+\(G_1\) based on the two centralities. The people that influence the field the
+most are Matjaz Perc, Yamir Moreno, Luo-Luo Jiang, Arne Traulsen and Martin A.
+Nowak. Their work have been discussed in Section~\ref{section:timeline}.
 %Examples of their works.
-
 Though Matjaz Perc and Yamir Moreno appear to both influence and gain from
 the networks influence, it does not hold for the rest of the three authors.
 
@@ -1877,7 +1917,7 @@ the networks influence, it does not hold for the rest of the three authors.
     \scalebox{0.8}{
     \input{assets/prisoners_centrality_betweness}
     \input{assets/prisoners_centrality_closeness}}
-    \caption{Top 5 ranked authors based on different centrality measures.}
+    \caption{Top 5 ranked authors of \(G_1\) based on different centrality measures.}
     \label{table:central_authors_pd}
     \end{center}
 \end{table}
@@ -1885,26 +1925,55 @@ the networks influence, it does not hold for the rest of the three authors.
 \paragraph{Comparison with other topics co authorship}
 \mbox{ }\\
 
-In order to compare the influence of the authors of different topics we
-conduct pairwise comparisons of the centrality distributions of \(G\)
-against the other topics. A total of \((2 \times 2)\) 4 statistical tests
-are performed. Note that all distributions are not normally distributed thus a
-non parametric test will be used. More specifically, the Mann-Whitney U 
-test~\cite{nachar2008mann}.
+The centrality is calculated using~\cite{networkx}. Table
+\ref{table:central_authors_pd} summarises the most important authors of network
+\(G_1\) based on the two centralities. The people that influence the field the
+most are Matjaz Perc, Yamir Moreno, Luo-Luo Jiang, Arne Traulsen and Martin A.
+Nowak. Their work have been discussed in Section~\ref{section:timeline}.
+%Examples of their works.
+Matjaz Perc and Yamir Moreno appear to both influence and gain from
+the networks influence however this does not hold for the rest of the three authors.
 
-Initially we test whether the median of the closeness centrality distribution
-of \(G\) is equal or greater than the equivilent median of auction games.
-Mann-Whitney U returns a \(p-\) value of 0. A similar test is conducted for
-the betweenness centrality. This time we test that the median of \(G\) distribution
-is equal or less. The results of our statical tests indicate that the prisoner's
-dilemma authors tend to influence their field more than auction games authors.
-However, the authors do not seem to gain as much from this influence.
+Influence for a given network is calculated easily. However, we want to assert
+the power of the influence of \(G_1\) by comparing the results to those of
+\(G_2\) and \(G_3\). Using the distribution of the centralities will we
+statistically tests whether a difference does exist between them.
 
-The rest two Mann-Whitney U tests test whether the medians of the centralities
-distribution of \(G\) are the same or less than the the equivilent medians for
-the price of anarchy. Based on the \(p-\)values, the authors on the topic of price of
-anarchy have both a stronger influence and gain from their co authorship connections
-more than the authors of \(G\).
+For \(C_C\) all distributions are not normally distributed so we will use the
+non parametric test Kruskal Wallis. The test returns a \(p\) value of 0.0 thus 
+it can be stated with 95\% confidence of that the distributions are statistically
+different. These are plotted in Figure~\ref{fig:closeness_dist}.
+
+Both \(G_1\) and \(G_2\) appear to have a similar distribution. Most authors
+are gathered together to the left side of the histograms and only a few authors
+appear on the right side. This means that for the two topics, the highest
+frequency of authors have a very small influence in their field. Though there 
+are people with a high influence they are only a few. Note that the centrality
+values range between 0 and 1. For all three graphs \(C_C\) has lowe values.
+
+The difference is on \(G_3\) where similarly most authors are gathered on
+the left side of the histogram but there is overall a better spread of frequencies
+across all the closeness values.
+
+\begin{figure}[!hbtp]
+    \centering
+    \includegraphics[width=\textwidth]{./assets/images/Closeness_histrograms.pdf}
+    \caption{Closeness distributions for all three networks.}\label{fig:closeness_dist}
+\end{figure}
+
+The betweenness centrality of the networks is compared in a similar manner.
+All three distribution are not normally distributed thus Kruskal Wallis test
+is used again the assert whether they medians are the same. The test returns
+a \(p\) value of  thus the medians are statistically not the same. Note from
+th histograms that are given by Figure~\ref{} that all betweenness centralities
+have very all values. Most authors for all networks are gathered near 0.
+Thus we conclude that not much is gain from the networks.
+
+\begin{figure}[!hbtp]
+    \centering
+    \includegraphics[width=\textwidth]{./assets/images/Betweenness_histrograms.pdf}
+    \caption{Betweenness distributions for all three networks.}\label{fig:closeness_dist}
+\end{figure}
 
 \paragraph{Temporal comparison}
 \mbox{ }\\
@@ -1948,47 +2017,45 @@ few people on their fields.
     \end{center}
 \end{table}
 
-\paragraph{Conclusion}
-\mbox{ }\\
+\subsubsection{Conclusion}
+% The conclusions for the collaborative behaviour of the field are discussed here.
+% The ranking based on the number of connected components for the three topics
+% is the following, auction games, the prisoner's dilemma and the price of anarchy.
+% Though this could be due the size of the data set of each respective topic.
 
-The conclusions for the collaborative behaviour of the field are discussed here.
-The ranking based on the number of connected components for the three topics
-is the following, auction games, the prisoner's dilemma and the price of anarchy.
-Though this could be due the size of the data set of each respective topic.
+% The clustering coefficients allow us to conclude that that the prisoner's dilemma
+% is more collaborative, as field, compared to auction games but less than the 
+% price of anarchy. Note that the price of anarchy is a relative new topic. Thus
+% with less authors there is a higher change to collaborate with the few people
+% in your field.
 
-The clustering coefficients allow us to conclude that that the prisoner's dilemma
-is more collaborative, as field, compared to auction games but less than the 
-price of anarchy. Note that the price of anarchy is a relative new topic. Thus
-with less authors there is a higher change to collaborate with the few people
-in your field.
+% The median degree was statistically proven to be the same over the three different
+% topics. Thus the above results hold for topics where the median connections
+% of an author is the same.
 
-The median degree was statistically proven to be the same over the three different
-topics. Thus the above results hold for topics where the median connections
-of an author is the same.
+% Based on the time periods the prisoner dilemma appears to have increased it's
+% collaborations since period 2. Note that period 2 is a poor period based on our
+% data. Period 5 to 7 re the most collaboratice of the field.
+% In this sub section we have studied the influncers and the people that gain
+% from the influence of their field. We have presented the authors within the
+% field of the prisoner's dilemma that fitted the descriptions.
 
-Based on the time periods the prisoner dilemma appears to have increased it's
-collaborations since period 2. Note that period 2 is a poor period based on our
-data. Period 5 to 7 re the most collaboratice of the field.
-In this sub section we have studied the influncers and the people that gain
-from the influence of their field. We have presented the authors within the
-field of the prisoner's dilemma that fitted the descriptions.
+% Moreover, in order to compare the power of influnce of the field we conducted
+% statistical tests to compaire both measures of centrality against two other
+% topics of game theory. The results of the statistical tests have shown that,
 
-Moreover, in order to compare the power of influnce of the field we conducted
-statistical tests to compaire both measures of centrality against two other
-topics of game theory. The results of the statistical tests have shown that,
+% \begin{itemize}
+%     \item The prisoner's dilemma authors have more influence than the authors of
+%     auction games.
+%     \item Though they appear to be gaining less from that influence compared to
+%     auction games.
+%     \item Finally, the price of anarchy has a stronger influence, both ways, than
+%     the prisoner's dilemma. 
+% \end{itemize}
 
-\begin{itemize}
-    \item The prisoner's dilemma authors have more influence than the authors of
-    auction games.
-    \item Though they appear to be gaining less from that influence compared to
-    auction games.
-    \item Finally, the price of anarchy has a stronger influence, both ways, than
-    the prisoner's dilemma. 
-\end{itemize}
-
-Over time we have shown in the previous subsection that the field is becoming
-more collaborative. Though due the number of possible connections and connected
-components over the time, the power of influence is shown to be decreasing.
+% Over time we have shown in the previous subsection that the field is becoming
+% more collaborative. Though due the number of possible connections and connected
+% components over the time, the power of influence is shown to be decreasing.
 
 
 \newpage
