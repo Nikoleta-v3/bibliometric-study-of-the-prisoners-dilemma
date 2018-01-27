@@ -1087,7 +1087,7 @@ the tournament.
 
 In this section we will focus on the analysis of the study of the prisoner's dilemma
 using a large dataset of articles. This data set will be used to ascertain the level
-of collaborative nature of the field and identify influencers. This will be done
+of collaborative nature of the field and identify influencer. This will be done
 relative to:
 
 \begin{itemize}
@@ -1113,8 +1113,8 @@ Interacting with an API has two phases:
 \end{enumerate}
 
 The request phase includes composing a url with the request. Figure~\ref{fig:request_message}
-demonstrates an example request. The first part of the request is the address of
-the API we are querying. In this example the address is that of the arXiv API.
+presents an example of a request message. The first part of the request is the address
+of the API we are querying. In this example the address corresponds to the API of arXiv.
 The second part of the request contains the search arguments. In our example we
 are requesting for a single article that the word `prisoners dilemma' exists within
 it's title. The format of the request message is different from API to API.
@@ -1138,13 +1138,15 @@ structure of the received data differs from journal to journal.
     \caption{\label{fig:request_message} A request message for the arXiv API.}
 \end{figure}
 
-The data collection is crucial to this study, to ensure that this study can be
+The data collection is crucial to this study. To ensure that this study can be
 reproduced all code used to query the different APIs has been packaged and is
 available online~\cite{nikoleta_2017}. The software could be used for any type of
-project similar to the one described here, documentation for it is available at:
+projects similar to the one described here, documentation for it is available at:
 \url{http://arcas.readthedocs.io/en/latest/}.
 
-The following sources were used to collect data,
+Project~\cite{nikoleta_2017} allow us to collect articles from a list of APIS by
+specifying just a single keyword. The following sources were used to collect data
+of this analysis:
 
 \begin{enumerate}
         \item PLOS~\cite{plos_one};
@@ -1215,10 +1217,10 @@ In this work only the features of Table~\ref{table:result_set} are used.
     \label{table:result_set}
 \end{table}
 
-In the work described here, a series of keywords were used to identify relevant
-articles. Articles for which these keywords were in the title or the abstract
-are included in the analysis. A list of the keywords that were used for the main
-data set are shown in Table~\ref{table:search_keywords}.
+A series of keywords were used to identify relevant articles. Articles for which
+any of these keywords existed within the title or the abstract are included in the
+analysis. A list of the keywords that were used for the main data set are shown
+in Table~\ref{table:search_keywords}.
 
 \begin{table}[!hbtp]
     \begin{center}
@@ -1238,7 +1240,7 @@ data set are shown in Table~\ref{table:search_keywords}.
     \label{table:search_keywords}
 \end{table}
 
-Similarly, for collecting data on auction games and the price of anarchy the
+Similarly for collecting data on auction games and the price of anarchy the
 following keywords were used:
 
 \begin{itemize}
@@ -1246,14 +1248,15 @@ following keywords were used:
     \item key: price of anarchy.
 \end{itemize}
 
-For both of these topics a single keyword has been used. In comparison there
-are 5 different keywords used for the prisoner's dilemma topic. This is due the
-fact that the main focus of this analysis is the prisoner's dilemma. Thus, we
-wanted to collected as many articles as possible for our analysis results to
-be more accurate. Even so, the amount of articles collected from the search
-of such keywords like tit for tat and zero determinant was small compared to
-the actual size of tha data.
-% TODO Add a sentence on the keywords difference.
+For both of these topics only a single keyword has been used. In comparison 5
+different keywords were used to search of articles on the prisoner's dilemma.
+This is because the main focus of this analysis is the prisoner's dilemma. The
+aim has been been to collect as many articles as possible for the sources, so
+that the results of this work would be accurate.
+
+Even so, the amount of articles collected from the key such as `tit for tat' and
+`zero determinant' had a small contribution to the size of the data set.
+
 \subsection{Preliminary Analysis}
 
 A total of three data sets are explored in this work. A summary of each data is
@@ -1292,7 +1295,7 @@ articles' provenance is given by Table~\ref{table:provenance}.
 The larger number of articles were collected from arXiv, Springer and IEEE. Both
 Nature and PLOS have a small contribution to the size of the data set. The oldest
 article was published in 1944 and the most recent one in 2017. Note
-that the last data collection was on December 2017.
+that the latest data collection was on December 2017.
 % TODO Ensure this stay accurate
 
 Moreover we calculate the average publication over time. This is done for the overall
@@ -1317,10 +1320,52 @@ with 5 articles per year.
     \label{table:publication_rates}
 \end{table}
 
+Though the average publication can have insights of the publications of the fields
+it is still a constant number. Our data are changing are over time. More specifically
+the data are non stationary. Time series data are said to be stationary if their
+statistical properties such as mean and variance remain constant over time. An
+Augmented Dickey-Fuller test is used to verify that the data are non stationary.
+The results show that the data is non stationary: the \(p\) value is greater than 0.005.
+
+Calculating the rolling average we can see that our data have an increasing trend.
+This is presented in Figure~\ref{fig:timeseries}. The rolling average of each time
+point is calculated as the average of the points on either side of it. The number
+of neighbourhood points is specified as window size and here we have chosen a
+window size of 5.
+
+The rolling average indicates that the time series has an increasing trend.
+Even so there seems to be a small decrease by the last time point. In order
+to offer some insights as to what expected of the field in the next years
+we conduct a forecast of the next time periods. An Autoregressive Integrated
+Moving Average Model (ARIMA (1, 1, 1)) has been used.
+
+Though details of the ARIMA models are not going to be given here the models
+parameters had to be fitted. This was done using the Akaike Information Criterion
+value. ARIMA also has been chosen because it can handle non stationary data.
+The results of the forecast of the next following 10 years are given by Table.
+
+\begin{figure}[!hbtp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{./assets/images/timeseries.pdf}
+    \caption{Time series of main data set and the rolling average.}\label{fig:timeseries}
+\end{figure}
+
+\begin{table}[!hbtp]
+    \begin{center}
+    \input{assets/predictions.tex}
+    \end{center}
+    \caption{Forecasting the number of publications over the next 10 years.}
+    \label{table:summary_temporal}
+\end{table}
+
+thought the time series have indicated a slight decrease we can see that the
+model forecasts an increase over the next years.
+
 \paragraph{Auction games and the price of anarchy data sets}
 \mbox{ }\\
 
-A summary of both data sets, auction games~\cite{} and price of anarchy~\cite{},
+The secondary data sets are described in this subsection. More specifically, a
+summary of both data sets, auction games~\cite{} and price of anarchy~\cite{},
 is given by Table~\ref{table:summary_other_topics}.
 
 A total of 2103 articles with 3860 unique authors are examined for auction games.
@@ -1448,13 +1493,6 @@ In the following section we explore the authors of the papers and their
 connections to one another.
 
 \subsection{Co authorship Analysis}
-
-% TODO Describe some works that look at literature graphs (these typically look
-% at citation graphs)
-% TODO Describe how these are often used to measure influence however (mention
-% that blog post) influence does not correspond to citation.
-% TODO Define the co author network as a weight graph G =...
-% TODO Possibly include subgraphs as examples.
 
 Broadly speaking, most academic research is undertaken in the form of
 collaborative effort. As discussed in~\cite{}, it is rationale that two
@@ -1925,15 +1963,6 @@ the networks influence, it does not hold for the rest of the three authors.
 \paragraph{Comparison with other topics co authorship}
 \mbox{ }\\
 
-The centrality is calculated using~\cite{networkx}. Table
-\ref{table:central_authors_pd} summarises the most important authors of network
-\(G_1\) based on the two centralities. The people that influence the field the
-most are Matjaz Perc, Yamir Moreno, Luo-Luo Jiang, Arne Traulsen and Martin A.
-Nowak. Their work have been discussed in Section~\ref{section:timeline}.
-%Examples of their works.
-Matjaz Perc and Yamir Moreno appear to both influence and gain from
-the networks influence however this does not hold for the rest of the three authors.
-
 Influence for a given network is calculated easily. However, we want to assert
 the power of the influence of \(G_1\) by comparing the results to those of
 \(G_2\) and \(G_3\). Using the distribution of the centralities will we
@@ -1942,36 +1971,36 @@ statistically tests whether a difference does exist between them.
 For \(C_C\) all distributions are not normally distributed so we will use the
 non parametric test Kruskal Wallis. The test returns a \(p\) value of 0.0 thus 
 it can be stated with 95\% confidence of that the distributions are statistically
-different. These are plotted in Figure~\ref{fig:closeness_dist}.
+different. These are plotted as violin plots in Figure~\ref{fig:closeness_dist}.
 
-Both \(G_1\) and \(G_2\) appear to have a similar distribution. Most authors
-are gathered together to the left side of the histograms and only a few authors
-appear on the right side. This means that for the two topics, the highest
+Note that the centrality values range between 0 and 1. For all three graphs \(C_C\)
+have very low values. Both \(G_1\) and \(G_2\) appear to have a similar distributions.
+Most authors have have a coefficient of zero and a few authors by the tails
+appear to have a larger coefficient. This means that for the two topics, the highest
 frequency of authors have a very small influence in their field. Though there 
-are people with a high influence they are only a few. Note that the centrality
-values range between 0 and 1. For all three graphs \(C_C\) has lowe values.
+are people with a high influence they are only a few.
 
-The difference is on \(G_3\) where similarly most authors are gathered on
-the left side of the histogram but there is overall a better spread of frequencies
-across all the closeness values.
+The coefficients of \(G_3\) are different from the other topics. Overall it
+can be seen that authors' centrality is more spread through the different values.
 
 \begin{figure}[!hbtp]
     \centering
-    \includegraphics[width=\textwidth]{./assets/images/Closeness_histrograms.pdf}
+    \includegraphics[width=.8\textwidth]{./assets/images/Closeness_histrograms.pdf}
     \caption{Closeness distributions for all three networks.}\label{fig:closeness_dist}
 \end{figure}
 
 The betweenness centrality of the networks is compared in a similar manner.
 All three distribution are not normally distributed thus Kruskal Wallis test
 is used again the assert whether they medians are the same. The test returns
-a \(p\) value of  thus the medians are statistically not the same. Note from
-th histograms that are given by Figure~\ref{} that all betweenness centralities
-have very all values. Most authors for all networks are gathered near 0.
-Thus we conclude that not much is gain from the networks.
+a \(p\) value of  thus the medians are statistically not the same.
+
+Though the are different Figure~\ref{fig:closeness_dist} that all coefficients
+are clustered around the value of zero. Non of the topics authors gain influence
+from their networks.
 
 \begin{figure}[!hbtp]
     \centering
-    \includegraphics[width=\textwidth]{./assets/images/Betweenness_histrograms.pdf}
+    \includegraphics[width=.8\textwidth]{./assets/images/Betweenness_histrograms.pdf}
     \caption{Betweenness distributions for all three networks.}\label{fig:closeness_dist}
 \end{figure}
 
@@ -1994,9 +2023,8 @@ case. Robert Axelrod appears to be the most influenced author but not gaining
 as much from it.
 
 Note that the centrality values are decreasing over the time periods. This could
-be an effect due the size of the network which is increasing. Remember that
-in smaller networks authors have more motivation to collaborate with the 
-few people on their fields.
+be an effect due the size of the network which is increasing. In smaller networks
+authors have more motivation to collaborate with the few people on their fields.
 
 \begin{table}[!hbtp]
     \begin{center}
