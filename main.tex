@@ -2046,44 +2046,69 @@ authors have more motivation to collaborate with the few people on their fields.
 \end{table}
 
 \subsubsection{Conclusion}
-% The conclusions for the collaborative behaviour of the field are discussed here.
-% The ranking based on the number of connected components for the three topics
-% is the following, auction games, the prisoner's dilemma and the price of anarchy.
-% Though this could be due the size of the data set of each respective topic.
 
-% The clustering coefficients allow us to conclude that that the prisoner's dilemma
-% is more collaborative, as field, compared to auction games but less than the 
-% price of anarchy. Note that the price of anarchy is a relative new topic. Thus
-% with less authors there is a higher change to collaborate with the few people
-% in your field.
+In this section we have conducted an investigation of the literature based on a
+data analysis. More specifically, this was mainly done using network theory.
 
-% The median degree was statistically proven to be the same over the three different
-% topics. Thus the above results hold for topics where the median connections
-% of an author is the same.
+Initially, we gave a summary on the data collection. An open source project which was
+developed for the purpose of this work was used~\cite{nikoleta_2017}. The project
+takes advantage of the API system several academic journals offer today. The
+procedure, the sources as well as the keywords used in the process of collection
+have been clearly specified making the process reproducible.
 
-% Based on the time periods the prisoner dilemma appears to have increased it's
-% collaborations since period 2. Note that period 2 is a poor period based on our
-% data. Period 5 to 7 re the most collaboratice of the field.
-% In this sub section we have studied the influncers and the people that gain
-% from the influence of their field. We have presented the authors within the
-% field of the prisoner's dilemma that fitted the descriptions.
+Three data sets have been composed for three different topics of game theory.
+These are:
 
-% Moreover, in order to compare the power of influnce of the field we conducted
-% statistical tests to compaire both measures of centrality against two other
-% topics of game theory. The results of the statistical tests have shown that,
+\begin{itemize}
+    \item The prisoner's dilemma. The main focus of this paper.
+    \item Auction games. A sub field of game theory used for comparison reasons.
+    \item The price of anarchy. A sub field of game theory used for comparison reasons.
+\end{itemize}
 
-% \begin{itemize}
-%     \item The prisoner's dilemma authors have more influence than the authors of
-%     auction games.
-%     \item Though they appear to be gaining less from that influence compared to
-%     auction games.
-%     \item Finally, the price of anarchy has a stronger influence, both ways, than
-%     the prisoner's dilemma. 
-% \end{itemize}
+We conducted a brief preliminary analysis on these data sets. Mainly to understand
+the sizes, provenance and trends of each topic. The main data set was also partitioned
+into time periods such that an temporal comparison could be conducted.
 
-% Over time we have shown in the previous subsection that the field is becoming
-% more collaborative. Though due the number of possible connections and connected
-% components over the time, the power of influence is shown to be decreasing.
+The main focus of the analysis has been to explain collaborative behaviour and
+influence. Both terms have been defined and we have explained how network measures
+of the co authorship network were used to quantify them. The co authorship
+network is a network representing all the unique authors of a topic. An edge
+exists within two authors if they have written together. Co authorship was
+decided to be used as be believe other measures, such as citations, perform less
+well.
+
+The findings of this analysis are presented in two parts. The comparison of the
+collaborative behaviour and influence of the prisoner's dilemma field based on
+other topics and how these measures change for the field over time.
+
+All three networks have been disjointed with a large number of connected components.
+The collaborative behaviour was based on the nature of these connected components.
+The median connection of an author has been the same for all three networks.
+However, the price of anarchy had a smaller number of authors that prefer to write
+on their own and based on the clustering coefficient the collaboration of the
+field authors appears to be stronger. The collaboration for both the prisoner's
+dilemma and auction games it's similar. Note though that the price of anarchy
+is a new topic with less authors. It makes more sense for a few people that
+work on the topic to be more collaborative which each other.
+
+Similarly influence was studied using two centrality measures. For \(G_1\) and
+\(G_2\) we conclude that there are only a few authors that have power of influence
+on the network. For research this is not ideal. It could mean that the research
+is only driven from the work of specific people. It could also indicate a hostile
+environment for new authors. In comparison, \(G_3\) has several authors that have
+different influence on their neighbours. A wider spread of influence could indicate
+a nice flow of knowledge across the field from different people. This could
+help the growth of a field and accelerate findings. The influence that authors
+gain from the respective networks was also explored. The results argued that
+the gain was very low for all three networks.
+
+Collaborations and influence of the field have changed over time. As argued
+by~\cite{Etzkowitz1992} over time the amount of research groups was increasing
+for the topic. However, as stated earlier, as the number of researchers increases
+the amount of influence and collaboration decreases. This is because researchers
+can not have full knowledge of their entire network and the more people the network
+has the more people we actually do not know. The results from the temporal
+analysis imply that this is true for the field of the prisoner's dilemma.
 
 
 \newpage
