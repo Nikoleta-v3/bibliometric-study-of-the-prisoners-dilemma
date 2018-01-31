@@ -7,6 +7,7 @@
 
 %%%%%%%PACKAGES HERE%%%%%%%
 \usepackage{amsmath}
+\usepackage{amsthm}
 \usepackage{amssymb}
 \usepackage{hyperref}
 \usepackage{standalone}
@@ -15,19 +16,41 @@
 \usepackage{booktabs}
 \usepackage{minted}
 \usepackage{multicol}
+\usepackage{algorithm,algorithmic}
 \usetikzlibrary{er,positioning, calc}
 
 \definecolor{background}{RGB}{5, 66, 81}
 \usemintedstyle{tango}
 
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
 
+\usepackage{kbordermatrix}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%PARAMETERS%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\totalarticles}{\input{assets/total_articles.txt}}
 \newcommand{\uniquetitles}{\input{assets/unique_titles.txt}}
 \newcommand{\numberofduplicates}{\input{assets/number_of_duplicates.txt}}
 \newcommand{\manual}{\input{assets/prov_manual.txt}}
 \newcommand{\authors}{\input{assets/authors.txt}}
 \newcommand{\edges}{\input{assets/prisoners_edges.txt}}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\auctionauthors}{\input{assets/authors_auction.txt}}
+\newcommand{\auctionedges}{\input{assets/edges_auction.txt}}
+\newcommand{\priceauthors}{\input{assets/authors_price.txt}}
+\newcommand{\priceedges}{\input{assets/edges_price.txt}}
+\newcommand{\prisonerscon}{\input{assets/prisoners_connected_components.txt}}
+\newcommand{\prisonerscc}{\input{assets/prisoners_clustering.txt}}
+\newcommand{\pricecon}{\input{assets/price_connected_components.txt}}
+\newcommand{\pricecc}{\input{assets/price_clustering.txt}}
+\newcommand{\auctioncon}{\input{assets/auction_connected_components.txt}}
+\newcommand{\auctioncc}{\input{assets/auction_clustering.txt}}
+\newcommand{\prisonerisolated}{\input{assets/prisoners_isolated.txt}}
+\newcommand{\auctionisolated}{\input{assets/auction_isolated.txt}}
+\newcommand{\priceisolated}{\input{assets/price_isolated.txt}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{A systematic literature review of the Prisoner's Dilemma and an analysis of the corresponding co author network.}
 \author{Nikoleta E. Glynatsi}
 \date{2016}
@@ -39,13 +62,15 @@
 \section{Introduction}\label{section:introduction}
 
 The emergence of cooperation is a topic of continuing and public interest
-for the social~\cite{capraro2014, gracia2012},
-biological~\cite{Douglas2011}
-and ecological sciences~\cite{Godfray1992,Krama2012,Milinski1987,Wilkinson1984}.
-Cooperation is essential for evolution but according to Darwin's theory
-it is not always easy to achieve. The game called the prisoner's
-dilemma offers a theoretical framework for studying the emergence of
-altruistic behaviour.
+for social, biological and ecological sciences. The game called the prisoner's
+dilemma has been used ever since the 1950's as a framework for studying the emergence
+of cooperation. The iterated version of the game attracted attention in 1980's after
+the publication of the ``The Evolution of Cooperation'' and has been a topic
+of pioneering research ever since. In this work we aim to provide a chronological
+literature review of the field. This is achieved by partitioning the timeline into five different
+time periods. Furthermore, a comprehensive data set of literature was analysed
+using modern network theory approaches in order to explore the collaborative
+behaviour and the influencers of the field.
 
 \subsection{The Prisoner's Dilemma}\label{section:prisoners_dilemma}
 
@@ -83,7 +108,7 @@ R. Axelrod and his book~\cite{Axelrod1984} ``The Evolution of Cooperation''.
 In his book Axelrod reports on a series of computer tournaments he organised of
 a finite turns games of the iterated prisoner's dilemma. Participants
 had to choose between \textbf{C} and \textbf{D} again and again while having
-memory of their previous encounters. Academics from several fields were invited
+memory of their previous encounters. Academics from several fields were invited to
 design computer strategies to compete in the tournament. The pioneer work of Axelrod
 showed that greedy strategies did very poorly in the long run while more altruistic
 strategies did better.
@@ -104,14 +129,9 @@ from the following sources:
     \end{itemize}
 \end{multicols}
 
-The choice of sources is due to the fact that they have an open access Api, the
-process of collecting the data (including criteria for inclusion of papers) and
-the analysis will be described more comprehensively in Section~\ref{section:analysis}.
-
 Each point of Figure~\ref{fig:timeline} marks the starting year of a time period.
-Each of these time periods is reviewed and presented in~\ref{section:timeline},
-as an extensive literature review. This paper is the review of this type, in
-such detail since the origins to date.
+Each of these time periods is reviewed and presented in Section~\ref{section:timeline},
+as subsections of an extensive literature review.
 
 Furthermore, in Section~\ref{section:analysis} a comprehensive data set of literature
 regarding the prisoner's dilemma will be presented and analysed. This allow us to
@@ -130,11 +150,11 @@ the collaborations within the field.
 
 The origin of the prisoner's dilemma goes back to the 1950s in early experiments
 conducted in RAND~\cite{Flood1958} to test the applicability of games
-described in~\cite{VonNeumann1944}. Although in~\cite{Flood1958} the two player
-game was introduced the name behind the game was given later the same year.
+described in~\cite{VonNeumann1944}. Although the name behind the game was given
+later the same year.
 According to~\cite{Tucker1983}, A. W. Tucker (the PhD supervisor of J. Nash),
 in an attempt to delivery the game with a story during a talk used prisoners as
-players and the game has been known as the prisoner's dilemma ever since~\cite{Tucker1983}.
+players and the game has been known as the prisoner's dilemma ever since.
 
 The study of the prisoner's dilemma has attracted people from various fields
 across the years. An early figure within the field is Prof A. Rapoport,
@@ -162,8 +182,7 @@ instead of humans. The issues with using humans, according to Axelrod
 \cite{Axelrod2012}, was the fact that humans can act very randomly even though
 the aim of the game is clear to them. Thus, Axelrod was the first researcher,
 to the author's knowledge, to perform a computer tournament of the iterated
-prisoner's dilemma. The work of Axelrod is considered one of the greatest
-milestones within the field. The tournaments and their results are discussed in
+prisoner's dilemma. The tournaments and their results are discussed in
 the next sections.
 
 \subsection{Axelrod's Tournaments (1981-1984)}\label{subsection:axelrods_tournament}
@@ -174,7 +193,7 @@ dedicated to the computer tournaments of R. Axelrod from 1981 to 1984.
 
 The first computer tournament was performed in 1980~\cite{Axelrod1980a}.
 Several scientists were invited to submit their strategies, written in the
-programming languages Fortran or Basic. There was a total number 13 submissions
+programming languages Fortran or Basic. There was a total of 13 submissions
 made by the following researchers,
 
 \begin{multicols}{2}
@@ -201,7 +220,7 @@ corresponds to a complete graph from a topological point of view. The tournament
 was repeated \(5\) times to reduce variation in the results. Each participant knew
 the exact length of the matches and had access to the full history of each match.
 Furthermore, Axelrod performed an preliminary tournament and the results were known
-to the participants. The payoff values used for~\ref{eq:the_pd_payoffs} where
+to the participants. The payoff values used for equation(\ref{eq:the_pd_payoffs}) where
 \(R=3, P=1, T=5\) and \(S=0\). These values are commonly used in the literature
 and unless specified will be the values used in the rest of the work described here.
 
@@ -212,7 +231,7 @@ strategy that always cooperates on the first round and then mimics the opponent'
 previous move.
 
 Examples of Tit for Tat interacting for 8 turns with deterministic opponents are
-given by Tables~\ref{table:tft_vs_c}, \ref{table:tft_vs_d}, \ref{table:tft_vs_a}.
+given by Tables~\ref{table:tft_vs_c}, \ref{table:tft_vs_d} and \ref{table:tft_vs_a}.
 The opponents are, \textbf{Cooperator} a strategy that always cooperates,
 \textbf{Defector} an opponent that always defects and \textbf{Altenator} a
 player who alternates between cooperating and defecting.
@@ -292,7 +311,7 @@ be the secret of success in a prisoner's dilemma tournament.
 
 In order to further test the robustness of the results Axelrod performed a second
 tournament~\cite{Axelrod1980b} later in 1980. This time a total of 63 participants
-submitted strategies for the second tournament, their names were the following,
+submitted strategies, their names were the following,
 
 \begin{multicols}{3}
     \begin{enumerate}
@@ -367,45 +386,172 @@ the number of turns was not specified instead a fixed probability (refereed to a
 `shadow of the future'~\cite{Axelrod1988}) of the game ending on the next move
 was used. The fixed probability was chosen to be 0.0036 so that the expected
 median length of a match would be 200 turns. The topology was of a round robin
-and each pair of players was matched 5 times. The length of the matches was
-determined once by drawing a random sample. Each of the five matches had a length
-of 63, 77, 151 and 308.
+and each pair of players was matched 5 times. Each of the five matches had a
+length of 63, 77, 151, 308 and 401.
 
-The results of the tournament once again came as a surprise. Tit for Tat was
-considered to be one of the simplest submissions in the second tournament and won
-the second tournament as well.
-Tit for Tat provided proof that reciprocity behaviour can allow cooperation
-to emerge in the iterated prisoner's dilemma game. In~\cite{Axelrod1980a}
-the main conclusions indicating strong performance was:
+The first tournament had reported that it paid for a strategy to be nice and forgiving.
+These ideas were carried onto the second tournament from various applicants.
+A total of 39 strategies were now nice and nearly all of them somewhat forgiving.
+There were also two lessons taken from the report of the first tournament:
+
+\begin{enumerate}
+    \item Be nice and forgiving.
+    \item If others are going to be nice and forgiving take advantage of them.
+\end{enumerate}
+
+The strategies that based their behaviour on lesson one suffered due to lesson
+two. The strategies following lesson two suffered while trying to exploit their
+opponents. The most successful entries tended to be variants of Tit for Tat,
+such as \textbf{Tit for Two Tats} submitted by John Maynard Smith. Tit for Two
+Tats defects only when the opponent has defected twice in a row. However
+none of the variants managed to outperform the pure version. All that said
+the winner of the second tournament was once again Tit for Tat. The conclusions
+of~\cite{Axelrod1980a} were that the strong performance of the strategy was due to:
 
 \begin{itemize}
-    \item that it start of by cooperating
-    \item it would forgive it's opponent after a defection
-    \item after opponents identified that they were playing Tit for Tat choose
-    to cooperate for the rest of the game.
+    \item The strategy would start of by cooperating.
+    \item It would forgive it's opponent after a defection.
+    \item It would always be provoked by a defection no matter the history.
+    \item As soon as the opponents identified that they were playing Tit for Tat,
+    they would choose to cooperate for the rest of the game.
 \end{itemize}
 %The strategies of the second tournament where bias due the first tournament. Discuss with V.
+These characteristics allowed Tit for Tat to achieve the highest average score
+over the 63 rules in the tournament. The repeated success of the strategy soon raised
+a question: Is Tit for Tat the best strategy when playing the iterated prisoner's dilemma? 
 
-Another successful strategy from Axelrod's tournament that can been seen
-in literature to date is \textbf{Grudger}, originally submitted by James W. Friedman.
-Grudger is a strategy that will cooperate as long as the opponent does not defect.
-The name Grudger was give to the strategy
-in~\cite{Li2014}. Though the strategy goes by many names in the literature such as,
-Spite~\cite{Beaufils1997}, Grim Trigger~\cite{Banks1990} and Grim~\cite{Van2015}.
+So far it has been discussed how the performance of the strategy has been tested
+through tournaments against other strategies. But is the overall success of a
+strategy based only on it's performance in a round robin tournament or should
+it be checked through other ways as well? R. Axelrod asking the very same question
+performed an `ecological' tournament in 1981~\cite{Axelrod1984}.
 
-As for the rest of the strategies, though a full explanation of all 13 submitted strategies
-is given in~\cite{Axelrod1980a} the same does not hold for all 63 strategies of
-the second tournament~\cite{Axelrod1980b}. The author mainly focuses on the high
-ranked participants and several details for the rest strategies are left unknown.
+Axelrod argued that some strategies are so unsuccessful that there are very likely
+to be dropped in the future, while other more successful strategies would continue
+in later interactions. Influenced by evolutionary biology Axelrod introduced a way
+of capturing this behaviour, which included running a series of tournaments where
+more successful strategies would occupy a larger part of the environment and the
+less successful strategies would become less often. This is known as an ecological
+tournament.
 
-The source code of the 63 strategies be found on Axelrod's personal
-website~\cite{fortan_code}. The source code was written by Axelrod and several
-other contributors. The strategies written in Basic were translated to
-Fortran before the tournament. The source code includes the code only for the
-strategies and not for creating and performing the tournament.Figure~\ref{fig:tit_for_tat_fortran}
-serves as an example of the source code giving the code for the winning
-strategy Tit for Tat. Unfortunately, the source code of the first 13 strategies
-is not available, as stated in Axelrod's personal website~\cite{fortan_code}.
+The simulation of the process, as described in~\cite{Axelrod1984}, is straightforward.
+Consider matrix~\ref{eq:interaction_payoffs} which provides the expected payoff
+when two individuals of different types interact. Starting with proportions of
+each type in a given generation the proportions of these strategies in the next
+generation is the only measure we need to calculated. This is achieved by
+calculating the weighted average of the scores of a given strategy with all
+other players. The weights are the numbers of the other strategies which
+exist in the current generation. The numbers of a given strategy in the next
+generation is then taken to be proportional to the product of its numbers in the
+current generation and its score in the current generation.
+
+\begin{equation} \label{eq:interaction_payoffs}
+    \begin{pmatrix}
+    (R=3, R=3) & (S=0, T=5) \\ (T=5, S=0) & (P=1, P=1)
+    \end{pmatrix}
+\end{equation}
+
+Note that the ecological tournament does not offer any evolutionary perspective.
+There is no possibility of a new strategy to be introduced, there is no mutation
+probability to drive the evolution. The ecological tournament is a framework that provides
+the distributions of given types over time when interacting with the population.
+
+The set of strategies from Axelrod's second tournament was used to perform the
+ecological tournament. Several interesting insights were reported,
+
+\begin{itemize}
+    \item The lowest ranking 11 strategies had fallen to half their initial size
+    by the 5 generation;
+    \item The middle-ranking entries managed to hold their initial size;
+    \item By the \(500^{th}\) generation the only strategies that were larger than their
+    initial size have been the top 11 ranked strategies;
+    \item These formed 96\% of the population at that time;
+    \item The rule which ranked fifth in the tournament, submitted by William Adams,
+    grew to three times its original size in the population and then began to sink
+    after generation 100;
+    \item The rule which ranked eighth, submitted by Paul D. Harrington, and was
+    the only non nice rule in the top 15, grew to four times its original size but
+    began to shrink after generation 150 to reach only a third of its original
+    size by the \(1000^{th}\) generation.
+\end{itemize}
+
+Overall the strategies that did rank at the top of the second tournament have
+also ranked top in the ecological tournament. On the same note, the strategy that
+was ranked at the top was again Tit for Tat. By the 1000th generation it was 14.5\%
+of the whole population, followed by the third place rule at 13.9\% and then the
+second place rule at 13.1\%. Tit for Tat was growing at .05\% per generation which
+was a faster rate than any other strategy. All these are captured by
+Figure~\ref{fig:ecological.tournament}.
+% This is a lie. We said that the table would make more sense here.
+
+\begin{figure}[!hbtp]
+    \centering
+    \includegraphics[width=.6\textwidth]{./assets/images/ecological.pdf}
+    \caption{System evolving over time based on natural selection using
+    \cite{axelrodproject}, strategies set from Axelord's second tournament.}
+    \label{fig:ecological.tournament}
+\end{figure}
+
+A much more general approach was discussed in~\cite{axelrod1981}; the evolutionary
+approach. Imagine a population made up of individuals where everyone follows the
+same strategy, \(B\) and a single individual adopts a mutant strategy \(A\).
+Strategy \(A\) is said to invade strategy \(B\) if,
+
+\begin{equation}
+V(A \mid B) > V(B \mid B)
+\end{equation}
+where \(V(B \mid B)\) is the expected payoff received by \(B\) against itself.
+
+Since the strategy \(B\) is an population that interacts only with itself,
+the concept of invasion is equivalent to a single mutant being able to outperform
+the average population. This leads to the concept of the evolutionary approach.
+Thus for a strategy to be \textbf{evolutionary stable} it must be able to
+resists any invasion. There are several applications in biology for the interpretation
+of this approach, for example the survival of the fitness in wildlife.
+
+The ability of strategies to be favoured under natural selection and their
+ability to withstand invasion from other strategies soon became a measure
+of performance; refereed to as the stability of a strategy.
+
+Due the large number of possible strategies in the prisoner's dilemma identifying
+all the stable strategies was a difficulty task at the time. Axelrod focused
+the work of~\cite{axelrod1981} in three questions,
+
+\begin{enumerate}
+    \item Under what conditions was Tit for Tat evolutionary stable?
+    \item What were the necessary and sufficient conditions for any strategy to be
+    evolutionary stable?
+    \item Finally, in an environment where all followed a strategy of unconditional
+    defection, can cooperation emerge?
+\end{enumerate}
+
+A series of theorems were presented which showed, that Tit for Tat is evolutionary
+stable if and only if it is invadable neither by Defector nor Alternator. This
+is true only if the game is likely to last long enough for the retaliation
+to counteract the temptation to defect, according to Axelrod. Secondly,
+Defectors can withstand invasion by any strategy, as long as the players using
+other strategies come one at a time. But if they come in clusters (even in rather small
+clusters), the strategy could be invaded. As for the characteristics of stable
+strategies, Axelrod provided a series of theorems.
+
+Overall, all of Axelrod's tournaments offered many insights and new concepts to the field.
+These were not only limited on Tit for Tat. For example several strategies of
+these tournaments are still being used in literature to date, such as Tit for
+Two Tats and \textbf{Grudger}.
+
+Grudger was originally submitted by James W. Friedman. Grudger is a strategy that
+will cooperate as long as the opponent does not defect. The name Grudger was give
+to the strategy in~\cite{Li2014}. Though the strategy goes by many names in the
+literature such as, Spite~\cite{Beaufils1997}, Grim Trigger~\cite{Banks1990} and
+Grim~\cite{Van2015}.
+
+Though not all strategies of Axelrod's tournament are retrievable. The author
+had given a explanation of all 13 strategies of the first tournament.
+The size of the second tournament did not allow him this time to go into details
+for every single participant. The author mainly focused on the high ranked participants.
+However, the source code of the 63 strategies can be found on Axelrod's personal
+website~\cite{fortan_code}. Figure~\ref{fig:tit_for_tat_fortran} serves as an
+example of the source code for the winning strategy Tit for Tat.
 
 \begin{figure}[!hbtp]
     \centering
@@ -434,194 +580,76 @@ c77   format(' test k92r. j,k92r: ', 2i3)
     Provided by~\cite{fortan_code}.}
 \end{figure}
 
-So far it has been discussed how the performance of the strategy has been tested
-through tournaments against other strategies. A question remains: is the overall
-success of a strategy based only on it's performance in a round robin tournament
-or should it be checked through other ways as well?
+Note though that the code of the second tournament only includes the strategies.
+The code for running a round robin tournament or an ecological tournament
+is not given. Moreover, the source code of the first 13 strategies is not
+available, as stated in Axelrod's personal website~\cite{fortan_code}.
 
-Following his initial tournaments Axelrod performed an `ecological' tournament
-in 1981~\cite{Axelrod1984}. Axelrod argued that some strategies are so unsuccessful
-that there are very likely to be dropped in the future, while other more successful
-strategies would continue in later interactions. Influenced by evolutionary biology
-Axelrod introduced a way of capturing this behaviour, which included running a
-series of tournaments where more successful strategies would occupy a larger part
-of the environment and the less successful strategies would become less often.
-This is known as an ecological tournament.
+\subsection{Response to the computer tournaments (1984-1993)}
+\label{section:responses_to_computer_tournament}
 
-The simulation of the process, as described in~\cite{Axelrod1984}, is straightforward.
-Consider matrix~\ref{eq:interaction_payoffs} which provides the expected payoff
-when two individuals of different type interact. Starting with proportions of
-each type in a given generation the proportions of these strategies in the next
-generation is the only measure needed to be calculated. This is achieved by
-calculating the weighted average of the scores of a given strategy with all
-other players, where the weights are the numbers of the other strategies which
-exist in the current generation. The numbers of a given strategy in the next
-generation is then taken to be proportional to the product of its numbers in the
-current generation and its score in the current generation.
-
-\begin{equation} \label{eq:interaction_payoffs}
-    \begin{pmatrix}
-    (R=3, R=3) & (S=0, T=5) \\ (T=5, S=0) & (P=1, P=1)
-    \end{pmatrix}
-\end{equation}
-
-Note the ecological tournament does not offer any evolutionary perspective.
-There is no possibility of a new strategy to be introduced, there is no mutation
-probability to drive the evolution. The ecological is a framework that provides
-the distributions of given types over time when interacting with the population.
-
-The set of strategies from Axelrod's second tournament was used to perform the
-ecological tournament. Several interesting insights were reported,
+The pioneering work of computer tournaments and the results of the reciprocal behaviour
+in the prisoner's dilemma spread the knowledge of the game worldwide and across
+disciplines. Several researchers responded immediately to Axelrod's tournaments
+and the study of cooperation became of critical interest once again.
+This section focuses on the research that was carried out after the initial
+computer tournaments. More specifically the research the falls in the following
+categories, over the time period between 1984 and 1993, are considered in this section:
 
 \begin{itemize}
-    \item The lowest ranking 11 strategies had fallen to half their initial size
-    by the 5 generation;
-    \item The middle-ranking entries managed to hold their initial size;
-    \item By the \(500^{th}\) generation the only strategies that were larger than their
-    initial size have been the top 11 ranked strategies;
-    \item These formed 96\% of the population at that time;
-    \item The rule which ranked fifth in the tournament, submitted by William Adams,
-    grew to three times its original size in the population and then began to sink
-    after generation 100;
-    \item The rule which ranked eighth, submitted by Paul D. Harrington, and was
-    the only non nice rule in the top 15, grew to four times its original size but
-    began to shrink after generation 150 to reach only a third of its original
-    size by the \(1000^{th}\) generation.
+    \item Applications of the iterated prisoner's dilemma, the famous strategy
+    Tit for Tat and the reciprocal behaviour.
+    \item Computer tournaments under stochastic uncertainty and the introduction
+    of new strategies.
 \end{itemize}
 
-Overall the strategies that did rank at the top of the second tournament have
-also ranked top in the ecological tournament. On the same note, the strategy that
-was ranked at the top was again Tit for Tat. By the 1000th generation it was 14.5\%
-of the whole population, followed by the third place rule at 13.9\% and then the
-second place rue at 13.1\%, Tit for Tat was growing at .05\% per generation which
-was a faster rate than any other strategy. All these ar captured in
-Figure~\ref{fig:ecological.tournament}.
+One of the scientific disciplines that immediately employed Axelrod's work has
+been the ecological field. More specifically, the works of~\cite{Craig1984,
+Dugatkin1988, Godfray1992, Milinski1987, Wilkinson1984}.
+In~\cite{Dugatkin1988, Milinski1987} the behaviour of fish when confronting a
+potential predator was studied. Conflicts can arise within pairs of fish in these
+circumstances. In both works experiments were held using a system of mirrors
+where sticklebacks and guppies respectively, would be accompanied by a cooperating
+companion or a defecting one. In both cases the hypothesis that the fish would
+behave according to Tit for Tat and that cooperation would evolve was supported.
+The works of~\cite{Godfray1992, Wilkinson1984} looked at food sharing between
+vampire bats and explained behaviour based on known strategies.
 
-The ability of strategies to be favoured under natural selection and their
-ability to withstand invasion from other strategies soon became a measure
-of performance; refereed to as the stability of a strategy.
+Another quick response to the tournaments was that of~\cite{Molander1985}.
+It was argued that Axelrod's work assumed that each player had a perfect
+information of the opponent's actions. In real life situations this is not always
+the case. Interactions often suffer from measures of uncertainty and this was not
+captured in the original tournaments. Molander studied the performance of Tit for
+Tat in an uncertain environment by introducing noise. A probability that a player's
+move will be flipped. It was proven that when two strategies playing Tit for Tat
+met in a noisy match the average payoff of each strategy would be the same as
+that of a Random player (with a probability \(0.5\) of cooperating).
 
-\begin{figure}[!hbtp]
-    \centering
-    \includegraphics[width=.6\textwidth]{./assets/images/ecological.pdf}
-    \caption{System evolving over time based on natural selection using
-    \cite{axelrodproject}, strategies set from Axelord's second tournament.}
-    \label{fig:ecological.tournament}
-\end{figure}
+In 1988 publications from other disciplines were using the iterated prisoner's
+dilemma and Axelrod's work for teaching and social studies.
+In~\cite{Levitt1988} a version of the prisoner's dilemma which set the
+problem in an ordinary business context was used as a pedagogic instrument within
+graduate business students. The work of~\cite{Rabow1988} considered non zero sum
+games, specifically the prisoner's dilemma, and illustrated the impact they
+have on societal problems such as war.
 
-A much more general approach was discussed in~\cite{axelrod1981}; the evolutionary
-approach. Imagine a population made up of individuals where everyone follows the
-same strategy, \(B\) and a single individual adopts a mutant strategy \(A\).
-Strategy \(A\) is said to invade strategy \(B\) if,
+In 1989 reactive strategies are introduced in~\cite{nowak1989}. Reactive strategies
+are a set of players that take into account only the last move of the opponent. 
+Thus, they can be represented by the probability of cooperating after an opponent's
+\textbf{C} or \textbf{D}. The same author a year later in 1990 gave a formal
+definition of a memory one~\cite{Nowak1990}. Memory one strategies consider the
+entire history of the previous turn to make a decision. Thus reactive strategies are
+a subset of memory one.
 
-\begin{equation}
-V(A \mid B) > V(B \mid B)
-\end{equation}
-where \(V(B \mid B)\) is the expected payoff received by \(B\) against itself.
-
-Since the strategy \(B\) is an population that interacts only with itself,
-the concept of invasion is equivalent to a single mutant being able to outperform
-the average population. This leads to the concept of the evolutionary approach.
-Thus for a strategy to be \textbf{evolutionary stable} it must be able to
-resists any invasion. There are several applications in biology for the interpretation
-of this approach, for example the survival of the fitness in wildlife.
-
-Due the large number of possible strategies in the prisoner's dilemma identifying
-all the stable strategies was a difficulty task at the time. Axelrod focused
-the work of~\cite{axelrod1981} in three questions,
-
-\begin{enumerate}
-    \item Under what conditions was Tit for Tat evolutionary stable?
-    \item What were the necessary and sufficient conditions for any strategy to be
-    evolutionary stable?
-    \item Finally, in an environment where all followed a strategy of unconditional
-    defection, can cooperation emerge?
-\end{enumerate}
-
-A series of theorems were presented which showed, that Tit for Tat is evolutionary
-stable y if and only if it is invadable neither by Defector nor Alternator. This
-is true only if the game is likely to last long enough for the retaliation
-to counteract the temptation to defect, according to Axelrod. Secondly,
-Defectors can withstand invasion by any strategy, as long as the players using
-other strategies come one at a time. But if they come in clusters (even in rather small
-clusters), the strategy could be invaded. As for the characteristics of stable
-strategies, Axelrod provided a series of theorems.
-
-\subsubsection{Response to the computer tournaments (1984-1993)}
-
-The pioneering work of computer tournaments and the results on the reciprocal behaviour
-of the prisoner's dilemma spread the knowledge of the game not only worldwide
-but also across different scientific principles. The study of cooperation became
-of critical interest once again. This section focuses on the immediate research
-that was carried out after the initial computer tournaments.
-
-Ecological studies that made use of Axelrod's results include the
-works of~\cite{Godfray1992, Milinski1987, Wilkinson1984}, more specifically how
-the successful strategy Tit for Tat can be applied in nature and wildlife.
-
-In~\cite{Milinski1987} the behaviour of fish when confronting a potential predator
-was studied. Conflicts can arise within pairs of fish in these circumstances.
-Two experiments were held using a system of mirrors where sticklebacks would be
-accompanied by  a cooperating companion or a defecting one. In both cases the hypothesis
-that the fish would behave according to Tit for Tat and that cooperation would evolve
-were supported. The works of~\cite{Godfray1992, Wilkinson1984} looked at
-food sharing between vampire bats and explained behaviour based on famous at
-that time tournament strategies.
-
-Axelrod's tournaments assumed that each player has perfect information of the
-opponent's actions. In real life situations this is not always the case.
-Interactions often suffer from measures of uncertainty. In the original tournaments
-there was no possibility of misunderstanding.
-
-In 1985, P. Molander tested the robustness of Tit for Tat in an uncertain environment
-by introducing noise~\cite{Molander1985}. Noise is a probability that that one's
-move will be flipped. Molander findings stated that if two strategies playing Tit
-for Tat meet in a noisy match the average payoff that a strategy will receive will
-be the same as that of a Random player (with probability \(0.5\) of cooperating).
-
-Further work on the performance of Tit for Tat in uncertain environments was
-conducted, described in~\cite{Bendor1991, Godfray1992, Nowak1992}. These works
-focused, similar to Molander's, focused on how the strategy suffers against itself
-the most. In a noise environment, where a random defection can occur, the two
-strategies would end up in an unwanted circle of defection-cooperation. In a non
-noisy environment the strategies would have cooperated until the final interaction.
-
-In~\cite{Bendor1991} a similar tournament to that of Axelrod's was performed
-but this time noise was used. J. Bendor invited academics to submit strategies
-to participate in the tournament. A total of thirteen strategies were used
-including already existed strategies such as Tit for Tat and \textbf{Tit for Two
-Tats}~\cite{Axelrod1988}. Tit for Two Tats is a variant of the classic strategy
-that defects only when the opponent has defected twice in a row. The findings
-of the tournaments suggested that a more forgiving strategy is needed in a noisy
-environment. The winner of this tournament was a strategy called
-\textbf{Nice and Forgiving}.
-
-The work of~\cite{Nowak1992} aimed to also investigate stochastic effects.
-Using an evolutionary setting of a heterogeneous population where noise is taken
-into account, the space of reactive strategies was explored. Though a small fraction
-of Tit for Tat players have been essential for the emergence of cooperation,
-more generous strategies took over the population. This reactive strategy was
-is known as \textbf{Generous Tit for Tat} and can be presented as \((0, \frac{2}{}3)\).
-
-Reactive strategies are a subset of memory one strategies introduced in 1989~\cite{nowak1989}.
-Reactive strategies are denoted by the probabilities to cooperate after an
-opponent's \textbf{C} or \textbf{D} respectively. Thus, a reactive strategy only
-considers the previous turn of the opponent. Memory one strategies, are a set of
-strategies that consider the entire last turn of the game to decide on a next move.
-
-Memory one strategies were also introduced by M. Nowak in 1990~\cite{Nowak1990}.
-Depending on the simultaneous moves of two players the states of the game,
-when only the previous round is considered, a state where both cooperated,
-both defected or either of them defected. These states are represented as
-\(CC, CD, DC, DD\). A memory one strategy can be written as the probability of
-cooperating after each of these states. Thus as a vector of four probabilities
-\(p\) where \( p = (p_1, p_2, p_3, p_4) \in\mathbb{R}_{[0,1]}^{4} \).
-Reactive strategies are just a constrained version of memory one strategies where
-\(p_1=p_3\) and \(p_2=p_1\).
-
-The above formulation offered a new framework of studying strategies. Consider
-that two memory one strategies are in a game of the prisoner's dilemma. Their
-interaction can be written as the following markov chain,
+If only a single turn of the game is taken into account and depending on the
+simultaneous moves of two players there are only four possible states that
+players could possibly be in. These are \(CC, CD, DC\) and \(DD\). A memory one
+strategy is denoted by the probabilities of cooperating after each of these states,
+\( p = (p_1, p_2, p_3, p_4) \in\mathbb{R}_{[0,1]}^{4} \).
+A match between two memory one players \(p\) and \(q\) can be modelled as a
+stochastic process, where the players move from state to state. More specifically,
+it can be modelled by the use of a Markov chain, which is described by a matrix 
+\(M\).
 
 \begin{equation}\label{eq:markov_matrix}
     M =
@@ -637,42 +665,54 @@ interaction can be written as the following markov chain,
 \end{bmatrix}
 \end{equation}
 
-where the opponent is denoted as \(q=(q_1, q_2, q_3, q_4) \in\mathbb{R}_{[0,1]}^{4}\).
-The expected state that two opponents will end up can be estimated by calculating
-the steady states of the markov chain.
+The players are assumed to move from each state until the system reaches a state
+steady.  The utility of a player can be given by multiplying the steady states of
+\(M\) by the payoffs of equation(\ref{eq:the_pd_payoffs}). Thus~\cite{Nowak1990}
+offered a mathematical framework to calculate the utility of two players without
+simulating the game. Memory one strategies are considered an important family of
+strategies and the formulation given in 1990 is still being used to date.
 
-Nowak, as described, studied the reactive but also the memory one strategies
-space and introduced several other strategies, among them the most popular was
-\textbf{Pavlov}. Pavlov is a strategy with the tolerance of Generous Tit for Tat
+A player called \textbf{Handshake} was presented by~\cite{Robson1989} in 1989.
+Handshake is a strategy that starts with cooperation, defection. If the opponent
+plays in a similar way then it will cooperate forever, otherwise it will defect
+forever. Handshake has a property that will be revisited in this literature
+review which is it's recognition property.
+
+From 1991 to 1992, further research explored the performance of Tit for Tat in uncertain
+environments. These works include~\cite{Godfray1992, Bendor1991, Nowak1992}.
+In~\cite{Bendor1991} a similar tournament to that of Axelrod's was performed,
+but this time it was a noise tournament. Bendor had invited researchers from several
+departments across his university and from a university seminar. Each match
+would last a random number of turns, with a probability of 0.0067 of ending in
+the next turn. The probability of noise was a random variable, distributed normally
+with a mean of zero and a standard deviation of eight. The results of his
+tournament demonstrated that Tit for Tat performed rather poorly and the highest
+ranked strategies were generous ones. The top ranked strategy was \textbf{Nice and Forgiving}.
+
+The work of~\cite{Nowak1992} aimed to also investigate stochastic effects.
+This is was done using an evolutionary setting of a heterogeneous population
+with noise. The author investigate which strategies would manage to take over
+the population and would be evolutionary stable. The strategies were explored
+over the space of reactive strategies. The results demonstrated that 
+though a small fraction of Tit for Tat players have been essential for the emergence
+of cooperation, more generous strategies took over the population. More specifically
+the re active strategy known as \textbf{Generous Tit for Tat} which is presented as
+\((0, \frac{2}{3})\).
+
+The author of~\cite{Nowak1992, nowak1989, Nowak1990} also introduced another
+important strategy of the literature. It was presented in~\cite{Nowak1993} and
+is it known as \textbf{Pavlov}. Pavlov is a strategy with the tolerance of Generous Tit for Tat
 but also the capability of resisting and invading an all-out cooperators population.
 The strategy is based on the fundamental behavioural mechanism win-stay,
 lose-shift. It starts off with a cooperation and then repeats it's previous move
 only if it was awarder with a payoff of \(R\) or \(T\). Otherwise it shifts
 it's last move.
-
-A number of researchers searched for new strategies. Such strategies have been,
-\textbf{Handshake}~\cite{Robson1989} and \textbf{Gradual}~\cite{Beaufils1997}.
-Presented in 1989 and 1997 respectively.Handshake was developed using an
-evolutionary tournament, where Gradual performance was tested in both a round-robin
-tournament and ecological simulation.
-
-Handshake is a strategy that starts with cooperation, defection. If the opponent
-plays in a similar way then it will cooperate forever, otherwise it will defect
-forever. Gradual starts off by cooperating, then after the first defection of the
-other player, it defects one time and cooperates twice. After the second defection
-of the opponent, it defects two times and cooperates twice. After the \(n^{th}\)
-defection it reacts with \(n\) consecutive defections and then two cooperations.
-
-Another measure of uncertainty is that of mis perception. Though noise will flip
-a player's action it will be recorded correctly in the history. Mis perception is
-the probability that the opponent's current move is flipped before being recorded
-\cite{Hoffmann1998}.
-
+ 
 \subsection{Evolutionary Dynamics (1987-1999)}
-
+% This needs work I know
 Determining the evolutionary stability of strategies for the iterated prisoner's
 dilemma as we discussed is not an easy task. Methods can be use to deal with
-the difficulty. In~~\cite{Boyd1987} the author restricted the possible strategies
+the difficulty. In~\cite{Boyd1987} the author restricted the possible strategies
 that could be adopted to a relatively narrow set and resulted that no pure strategy
 is evolutionary stable, including Tit for Tat. Arguing with the results presented
 in~\cite{axelrod1981}. The list of strategies used included strategies such as
@@ -745,58 +785,42 @@ and where winning is partly probabilistic.
 
 \subsection{Modern approaches (1995-2015)}\label{section:modern_approaches}
 
-A number of aspects discussed in the previous sections such as round robin
-tournaments, evolutionary tournaments, training of strategies and noise environments
-soon became standard means of studying the iterated prisoner's dilemma. In this
-section we review a number of computer tournament that used these methods
-and introduced a number of findings that made an impact in the literature.
+In this section we will cover several research projects published between 1995
+and 2015. The research reviewed here focuses on computer tournaments and serves
+as an introduction to various strategies that have made an impact in the literature.
 
 Initially in 1995 a combination of tournament studies, ecological simulations
-and theoretical analysis was used in~\cite{Wu1995} to demonstrate approaches to
-copy with noise. These included generosity, contrition and win-stay, lose-shift
-by respectively using the strategies Generous Tit for Tat, \textbf{Contrite Tit for Tat}
-and Pavlov. A fourth strategy was also analysed \textbf{Generous Pavlov}.
-A strategy that acts like Palvov but cooperates 10\% of the time when it would
-defect otherwise.
+and theoretical analysis was used in~\cite{Wu1995} to demonstrate approaches on
+coping with noise. The first approach was \textit{generosity}. A more generous version
+of Tit for Tat, the strategy called the Generous Tit for Tat, was proven to be
+highly effective against players that were not adapted to noise. The second
+approach introduced was \textit{contrition}. The authors stated that when
+interacting with strategies that have been adapted to noise a contrite version 
+of Tit for Tat is even more effective at quickly restoring mutual cooperation 
+without the risk of exploitation. The strategy introduced as the contrite variant
+was called \textbf{Contrite Tit for Tat}. A strategy which three states:
+\textit{contrite, content, provoked}. It begins by cooperating and stays there unless
+there is a unilateral defection. If it was the victim of a defection while content
+the strategy becomes provoked and defects until the opponent cooperates, and 
+causes it to become content. If it was the defector while content, it
+becomes contrite and cooperates. When contrite it becomes content only after
+there has been a mutual cooperation. The final approach has been using strategy
+Pavlov. Moreover, in the analysis an variant of Pavlov was also included
+called Generous Pavlov, a variant that cooperates 10\% of the times when it 
+would either wise had defected. Though all approaches were effecting in coping
+with noise in a standard tournament, the authors argued that Pavlov was not 
+suited for ecological tournaments.
 
-- \textbf{Adaptive Tit for Tat}~\cite{tzafestas-2000a}.
-
-Less generous variants also made an appearance~\cite{Hilde2013}.
-\textbf{Anti Tit for Tat}, is a strategy that plays the opposite of the opponents
-previous move. Another limitation of the strategy was discussed in~\cite{Wolfgang2006}.
-Tit for Tat was proven to hit a loop between cooperation and defection.
-\textbf{Omega Tit For Tat} was introduced and was a strategy capable of avoiding
-such problem~\cite{Wolfgang2006}.
-
-In 2011 the authors of~\cite{Li2011} performed their own tournament where
-several interesting strategies made an appearance.
-
-\begin{itemize}
-    \item \textbf{Periodic player CCD}, plays \textbf{C}, \textbf{C}, \textbf{D}
-    periodically. Note that variations of a period player also make appearance
-    in the article but will not be listed here.
-    \item \textbf{Prober}, starts with the pattern \textbf{D}, \textbf{C}, \textbf{C}
-     and then defects if the opponent has cooperated in the second and third move;
-     otherwise, it play as Tit for Tat.
-    \item \textbf{Reverse Pavlov}, a strategy that does the reverse of Pavlov.
-\end{itemize}
-
-In earlier work the same author introduced a strategy called \textbf{APavlov},
-which stands for adaptive Pavlov~\cite{Li2007}. The strategy attempts to
-classify the opponent as one of the following strategies, All Cooperator,
-All Defector, Pavlov, Random or \textbf{PavlovD}. PavlovD, is just Pavlov
-but it starts the game with a \textbf{D}. Once Adaptive Pavlov has classified
-the opponent plays to maximize it's payoff.
-
-Evolutionary dynamics and optimization methods are used with different representation
-methods in order to discover new optimized strategies. Include lookup tables
-\cite{Axelrod1987, Lindgren1994}, artificial neural networks~\cite{Fogel1996,
-Lee2015} and finite state machines~\cite{Miller1996, Rubinstein1986}.
+An interesting approach of to capture promising strategies for the game
+was written in 1996 by~\cite{Miller1996}. Strategies represented by finite automata
+were learning to update their choices through an explicit evolutionary process
+modelled by a genetic algorithm.
 
 Strategies based on finite state machines are described by the number of states.
 The strategy selects the next action in each round based on the current state
-and the opponent's last move, transitioning to a new state each time. Figure~\ref{fig:tit_for_tat_fsm},
-illustrates the finite state representation of Tit For Tat.
+and the opponent's last move, transitioning to a new state each time.
+Figure~\ref{fig:tit_for_tat_fsm}, illustrates the finite state representation
+of Tit For Tat.
 
 \begin{figure}[!hbtp]
     \centering
@@ -804,6 +828,62 @@ illustrates the finite state representation of Tit For Tat.
     \caption{Finite state machine representation of Tit for Tat.}
     \label{fig:tit_for_tat_fsm}
 \end{figure}
+
+In 1997, \textbf{Gradual} a well performed strategy and a commonly known in the
+literature was proposed by~\cite{Beaufils1997}. Gradual starts off by cooperating,
+then after the first defection of the other player, it defects one time and cooperates
+twice. After the second defection of the opponent, it defects two times and cooperates
+twice. After the \(n^{th}\) defection it reacts with \(n\) consecutive defections 
+and then two cooperations. Gradual had managed to outperform strategies such
+as Tit for Tat and Pavlov.
+
+Though several of this tournament discussed so far were generated using computer
+code not all of the source code was made available by the authors. Several
+open projects were created and published through the year. The first one
+discussed in this work, excluding the code for Axelrod's strategies, is 
+PRISON~\cite{prison}. PRISON is written in the programming language Java and
+preliminary version was launched on 1998. It was used by it's authors in several
+publications. The project includes a good number of strategies from the
+literature but unfortunately the last update of the project dates back in 2004.
+
+Another measure of uncertainty discussed in 1998~\cite{Hoffmann1998} is that of
+mis perception. Mis perception is the probability that the opponent's current
+move is flipped before being recorded to the history. Results of~\cite{Hoffmann1998}
+indicated that noise effected the emergence of cooperative behaviour in the
+populations. In 1999, \cite{Turner1999} uses evolutionary game theory to study
+the spread of virus.
+
+Following the success of Gradual the authors of~\cite{tzafestas-2000a}
+conducted a tournament of 13 strategies just to outperform it. Their strategy
+was the \textbf{Adaptive Tit for Tat} and the algorithm used by it is given by
+\ref{alg:adaptive_tft}.
+
+\begin{algorithm}
+\begin{algorithmic}[1]
+    \IF{opponent played \textbf{C} in the last cycle}
+     \STATE world = world + \(r(1-\text{world})\), \(r\) is the adaptation rate
+    \ELSE
+     \STATE work = world + \(r(0 - \text{world})\)
+     \ENDIF
+    \IF{world \(\geq\) 0.5}
+        \STATE play \textbf{C}
+    \ELSE
+    \STATE play \textbf{D}
+    \ENDIF
+\end{algorithmic}
+\caption{Adaptive Tit for Tat.}
+\label{alg:adaptive_tft}
+\end{algorithm}
+
+Adaptive Tit for Tat ranked first in it's tournament surpassing Gradual. However,
+the results were drawn from a tournament of 13 strategies.
+
+% Less generous variants also made an appearance~\cite{Hilde2013}.
+% \textbf{Anti Tit for Tat}, is a strategy that plays the opposite of the opponents
+% previous move. Another limitation of the strategy was discussed in~\cite{Wolfgang2006}.
+% Tit for Tat was proven to hit a loop between cooperation and defection.
+% \textbf{Omega Tit For Tat} was introduced and was a strategy capable of avoiding
+% such problem~\cite{Wolfgang2006}.
 
 In~\cite{Ashlock2006b} the author presented two new strategies that have
 been trained using a finite state machine representation. They are called,
@@ -825,8 +905,8 @@ is the player's response.
      \label{fig:fortress3_and_4}
 \end{figure}
 
-Optimisation methods will return a spectrum of strategies. In order to distinguish
-the strategies and assuring that they are indeed different \cite{Ashlock2005}
+Optimisation methods return a spectrum of strategies. In order to distinguish
+the strategies and assuring that they are indeed different~\cite{Ashlock2005}
 introduced a method called fingerprinting.
 
 The method of fingerprinting is a technique for generating a functional signature for a
@@ -847,43 +927,144 @@ Ashlock2010, Ashlock2006a}.
     \label{fig:fingerprinting}
 \end{figure}
 
-Due the nature of the research several pieces of software are starting to appear,
-this includes a library called PRISON~\cite{prison}. PRISON is written in the
-programming language Java and it has been used by it's authors in several
-publications. The project includes a good number of strategies from the
-literature but unfortunately the last update of the project dates back in 2004.
+The adaptive behaviour that was tried to be capture by~\cite{tzafestas-2000a}
+was not constrained only on Tit for Tat. In~\cite{Li2011} \textbf{APavlov},
+which stands for adaptive Pavlov, made an appearance.  The strategy attempts to
+classify the opponent as one of the following strategies, All Cooperator,
+All Defector, Pavlov, Random or \textbf{PavlovD}. PavlovD, is just Pavlov
+but it starts the game with a \textbf{D}. Once Adaptive Pavlov has classified
+the opponent plays to maximize it's payoff.
+
+In 2011 the authors of~\cite{Li2011} performed their own tournament where
+several interesting strategies made an appearance.
+
+\begin{itemize}
+    \item \textbf{Periodic player CCD}, plays \textbf{C}, \textbf{C}, \textbf{D}
+    periodically. Note that variations of a period player also make appearance
+    in the article but will not be listed here.
+    \item \textbf{Prober}, starts with the pattern \textbf{D}, \textbf{C}, \textbf{C}
+     and then defects if the opponent has cooperated in the second and third move;
+     otherwise, it play as Tit for Tat.
+    \item \textbf{Reverse Pavlov}, a strategy that does the reverse of Pavlov.
+\end{itemize}
 
 \subsection{Zero determinant (2012 - 2015)}
 
-Following Section~\ref{section:modern_approaches}, this section is a review
-of an important set of strategies, the zero determinant.
+In 2012 Press and Dyson~\cite{Press2012} studied the iterated prisoner's dilemma and presented
+a new set of strategies called \textbf{zero determinant (ZD)}. The ZD strategies
+are memory one strategies that manage to force a linear relationship between their
+score and that of the opponent.
 
-In~\cite{Press2012}, a new set of memory one strategies were introduced, called
-\textbf{zero determinant (ZD)} strategies. The ZD strategies,
-manage to force a linear relationship between the score of the strategy
-and the opponent. Press and Dyson, prove their concept of the ZD strategies
-and claim that a ZD strategy can outperform any given opponent.
+In Section~\ref{section:responses_to_computer_tournament} it was described how
+the payoffs of two players could be retrieved by formulating their interactions
+using a Markov chain. Let us denote the payoffs of players \(p\) and \(q\) as:
+
+\begin{align*}
+    s_p = v S_p \\
+    s_q = v S_q
+\end{align*}
+
+where \(v\) is a vector of the steady states of matrix \(M\) and \(S_p\), \(S_q\)
+are the equivalent payoff values of the players for each state \(CC, CD, DC, DD\).
+Using linear algebra, Press and Dyson showed that the dot product of the stationary
+distribution of \(v\) with any vector \(f\) can be expressed as a \(4\times 4\)
+determinant. In which one column is \(f\), one column is entirely under the control
+of player \(p\) and another column is entirely under the control of player \(q\).
+
+This meant that either \(p\) or \(q\) could independently force the dot product
+of \(v\) with some other chosen vector \(f\) to be zero by choosing their
+strategy so as to make the column they control be proportional to \(f\).
+In particular, by \( f = \alpha S_p + \beta S_q + \gamma\), any player can force
+a given linear relation to hold between the long-run scores of both players.
+
+Press and Dyson's results suggested that the best strategies were selfish ones
+that led to extortion, not cooperation. Arguing with Axelrod's reports.
+All the more, their work stated that in the iterated prisoner's dilemma, memory
+is not advantageous.
 
 The ZD strategies have attracted a lot of attention. It was stated that
 ``Press and Dyson have fundamentally changed the viewpoint on the Prisoner's
-Dilemma''~\cite{Stewart2012}. In~\cite{Stewart2012}, a new tournament was
-performed including ZD strategies and a new set of ZD
-strategies the \textbf{Generous ZD}. Even so, ZD and memory one strategies have
-also received criticism. In~\cite{Lee2015}, the `memory of a strategy does
-not matter' statement was questioned. A set of more complex strategies,
-strategies that take in account the entire history set of the game, were
-trained and proven to be more stable than ZD strategies.
+Dilemma''~\cite{Stewart2012}. In~\cite{Stewart2012}, they ran a variant of
+Axelrod's tournament with 19 strategies to test the effectiveness of 
+ZD strategies. While conducting their tournament they have implement several
+strategies discussed by~\cite{Press2012} and revealed a set of generous ZDs
+the~\textbf{Generous ZD}.
+
+In~\cite{Lee2015}, the `memory of a strategy does not matter' statement was
+questioned. A set of more complex strategies, strategies that take in account
+the entire history set of the game, were trained and proven to be more stable than
+ZD strategies.
+
+% Include Moran paper.
 
 \subsection{Contemporary period (2015 - 2017)}
 
-Following a discussion on research of short memory strategies this section
-reviews recent work done in complex strategies. As well as a discussion of
-new software and how modern approaches allows us to now revisit several pieces of
-work produced in the past.
+In the following section we report research and publications from 2015 to 2017.
+It will focus on sophisticated strategies and computer software.
 
-Modern approaches of artificial neural networks and machine learning are now used
-in the field.  A number of strategies based on artificial neural networks are
-introduced by~\cite{Knight2017}. Artificial neural networks provide a mapping
+In 2015, an open source library, called the Axelrod project~\cite{axelrodproject}
+was launched. The project is written in the programming language
+Python, it is accessible and open source. To date the list of strategies implemented
+within the library exceed the 200. The project has been used in several
+publications including~\cite{Knight2017} and a paper describing it and
+it's capabilities was published in 2016~\cite{Knight2016}. The source code
+for Tit for Tat as implement within the library is shown in Figure
+\ref{fig:tit_for_tat_axelrod}. Furthermore, performing a tournament
+with a selection of strategies is possible in five lines of code, shown in
+Figure~\ref{fig:tournament_code}.
+
+\begin{figure}[!hbtp]
+    \centering
+    \begin{minted}
+        [
+        autogobble=true,
+        framesep=2mm,
+        fontsize=\normalsize,
+        ]
+        {python}
+def strategy(self, opponent: Player) -> Action:
+    """This is the actual strategy"""
+    # First move
+    if not self.history:
+        return C
+    # React to the opponent's last move
+    if opponent.history[-1] == D:
+        return D
+    return C
+    \end{minted}
+    \caption{\label{fig:tit_for_tat_axelrod} Source code for Tit for Tat in Python
+    as implemented in Axelrod Python library~\cite{axelrodproject}}.
+\end{figure}
+
+\begin{figure}[!hbtp]
+    \centering
+    \begin{minted}
+        [
+        autogobble=true,
+        framesep=2mm,
+        fontsize=\normalsize,
+        ]
+        {python}
+>>> import axelrod as axl
+>>> players = (axl.Cooperator(), axl.Defector(), axl.TitForTat(), axl.Grudger())
+>>> tournament = axl.Tournament(players)
+>>> results = tournament.play()
+>>> results.ranked_names
+['Defector', 'Tit For Tat', 'Grudger', 'Cooperator']
+    \end{minted}
+    \caption{\label{fig:tournament_code} Performing a computer tournament
+    using~\cite{axelrodproject}.}
+\end{figure}
+
+In~\cite{Rapoport2015}, the authors claim that they have managed to
+re-run the first tournament that Axelrod performed. They tried to push his work
+further by altering aspects such as, the format of the tournament, the objective
+and the population. One of the authors claimed to have been a contributor
+to the first tournaments, which would explain how it was managed to reproduce
+the tournament.
+
+A number of strategies based on artificial neural networks are
+introduced by~\cite{Knight2017}, in 2017. Artificial neural networks provide a mapping
 function to an action based on a selection of features computed from the history
 of play.
 
@@ -940,18 +1121,11 @@ Taking into account the initial move of the opponent can give many insights.
 For it is the only move a strategy is truly itself without being affected by
 the other player. As a reminder, Axelrod in his work
 highlighted the importance of the initial move and believed that it was one
-of the secrets of success of the strategy Tit for Tat.
-
-Finally, a new archetype called the Gambler is also introduced, which is a
+of the secrets of success of the strategy Tit for Tat. Finally, a new archetype
+called the Gambler is also introduced, which is a
 stochastic variant of the lookerup archetype.
 
-Archetypes are used with evolutionary algorithms to train set of
-new strategies. The evolutionary algorithm used in both~\cite{Axelrod1987,
-Gaudesi2016} is called genetic algorithm. Other algorithms including particle
-swarm optimization have been used in research of the most dominant strategy
-\cite{Franken2005}.
-
-In~\cite{Knight2017} the approach in used to introduce as stated
+In~\cite{Knight2017} evolutionary algorithms are used to introduce as stated
 by the authors the best performing strategies for the iterated prisoner's dilemma.
 These strategies will be refereed  as \textbf{Evolved} strategies.
 Several successful new strategies are,
@@ -976,121 +1150,53 @@ different types of evolutionary algorithms in a pool of 176 well known
 strategies for the literature. Including all the strategies that have been
 discussed in this section.
 
-This was made possible due an open source  library, called the Axelrod project
-\cite{axelrodproject}. The project is written in the programming language
-Python, it is accessible and open source. To date the list of strategies implemented
-within the library exceed the 200. The project has been used in several
-publications including~\cite{Knight2017} and a paper describing it and
-it's capabilities was published in 2016~\cite{Knight2016}. The source code
-for Tit for Tat as implement within the library is shown in Figure
-\ref{fig:tit_for_tat_axelrod}. Furthermore, performing a tournament
-with a selection of strategies is possible in five lines of code, shown in
-Figure~\ref{fig:tournament_code}.
-
-\begin{figure}[!hbtp]
-    \centering
-    \begin{minted}
-        [
-        autogobble=true,
-        framesep=2mm,
-        fontsize=\normalsize,
-        ]
-        {python}
-def strategy(self, opponent: Player) -> Action:
-    """This is the actual strategy"""
-    # First move
-    if not self.history:
-        return C
-    # React to the opponent's last move
-    if opponent.history[-1] == D:
-        return D
-    return C
-    \end{minted}
-    \caption{\label{fig:tit_for_tat_axelrod} Source code for Tit for Tat in Python
-    as implemented in Axelrod Python library~\cite{axelrodproject}}.
-\end{figure}
-
-\begin{figure}[!hbtp]
-    \centering
-    \begin{minted}
-        [
-        autogobble=true,
-        framesep=2mm,
-        fontsize=\normalsize,
-        ]
-        {python}
->>> import axelrod as axl
->>> players = (axl.Cooperator(), axl.Defector(), axl.TitForTat(), axl.Grudger())
->>> tournament = axl.Tournament(players)
->>> results = tournament.play()
->>> results.ranked_names
-['Defector', 'Tit For Tat', 'Grudger', 'Cooperator']
-    \end{minted}
-    \caption{\label{fig:tournament_code} Performing a computer tournament
-    using~\cite{axelrodproject}.}
-\end{figure}
-
-Software has a crucial role in research. Well written and maintained software
-allows the reproducibility of prior work and can accelerate findings within the
-field. The field of the iterated prisoner's dilemma has suffered the consequences
-of poor research software. As stated above the source code of the initial
-computer tournament is not retrievable. Several of the strategies that competed
-in the tournament are not given a full explanation of how the decided on their
-next move. In terms of best practice and reproducibility the Axelrod library
-is the lead software in the field.
-
-Other recent projects include~\cite{pd_trust, pd_game}, both are education
+Other recent software projects include~\cite{pd_trust, pd_game}, both are education
 platforms and not research tools. In~\cite{pd_trust}, several concepts such as
 the iterated game, computer tournaments and evolutionary dynamics are introduced
 through a user interface game. Project~\cite{pd_game} offers a big collection of
 strategies and allows the user to try several match and tournaments configurations.
 Such as noise.
 
-In~\cite{Rapoport2015}, the authors claim that they have managed to
-re-run the first tournament that Axelrod performed. They tried to push his work
-further by altering aspects such as, the format of the tournament, the objective
-and the population. One of the authors claimed to have been a contributor
-to the first tournaments, which would explain how it was managed to reproduce
-the tournament.
-
-\subsubsection{Biological Applications}
-%TODO include the cancer studies.
-\begin{itemize}
-    \item \cite{Turner1999} uses evolutionary game theory to study the spread of
-    virus.
-    \item \cite{Douglas2011} a shout for his work, using tit for tat to study cells.
-\end{itemize}
-
-\section{Analysis}\label{section:analysis}
+\section{Data Analysis}\label{section:analysis}
 
 In this section we will focus on the analysis of the study of the prisoner's dilemma
 using a large dataset of articles. This data set will be used to ascertain the level
-of collaborative nature of the field and identify influencers. This will be done
+of collaborative nature of the field and identify influencer. This will be done
 relative to:
 
 \begin{itemize}
-    \item Other sub fields of game theory: the price of anarchy~\cite{roughgarden2005}
-    and auction games~\cite{menezes2005}.
+    \item Other sub fields of game theory: auction games~\cite{menezes2005} and 
+    the price of anarchy~\cite{roughgarden2005}.
     \item A temporal analysis.
 \end{itemize}
 
 \subsection{Data Collection}
 
-Before analysing our data this subsection will describe the data collection
+Before analysing our data in this subsection we will describe the data collection
 process.
 
 Academic articles are accessible through scholarly databases and collections of
 academic journals. Several databases and collections today offer access through
-an open application protocol interface (API). An API allows users to talk
-directly to the database by skipping the user interface side of a journal.
+an open application protocol interface (API). An API allows users to query
+directly a journal's database and skip the user interface side of the journal.
 Interacting with an API has two phases:
 
-\begin{itemize}
+\begin{enumerate}
     \item requesting;
     \item receiving;
-\end{itemize}
+\end{enumerate}
 
-The request phase includes composing a url with the request. For example:
+The request phase includes composing a url with the request. Figure~\ref{fig:request_message}
+presents an example of a request message. The first part of the request is the address
+of the API we are querying. In this example the address corresponds to the API of arXiv.
+The second part of the request contains the search arguments. In our example we
+are requesting for a single article that the word `prisoners dilemma' exists within
+it's title. The format of the request message is different from API to API.
+
+The receive phase includes receiving a number of raw metadata of articles that
+satisfied the request message. The raw metadata are commonly received in a xml
+or a json format~\cite{nurseitov2009}. Similarly to the request message, the
+structure of the received data differs from journal to journal.
 
 \begin{figure}[!hbtp]
     \centering
@@ -1106,65 +1212,29 @@ The request phase includes composing a url with the request. For example:
     \caption{\label{fig:request_message} A request message for the arXiv API.}
 \end{figure}
 
-We can see in Figure~\ref{fig:request_message}, the first part of the message
-indicates that we are sending a request to the arXiv~\cite{mckiernan2000} API
-and the second part contains the search argument, in our example we want a single
-article that the word `prisoners dilemma' exists within it's title.
-This format of the request message will be different from API to API.
-
-The second phase is receiving. This includes receiving a number of raw
-metadata of articles that satisfies the requesting message. The raw metadata are
-commonly received in an xml or json format~\cite{nurseitov2009}. Similarly to
-the request message the structure of the received data differs from journal to journal.
-
-This data collection is crucial to this study, to ensure that this study can be
+The data collection is crucial to this study. To ensure that this study can be
 reproduced all code used to query the different APIs has been packaged and is
-available online~\cite{nikoleta_2017}. This software could be used for any type of project
-similar to the one described here, documentation for it is available at
+available online~\cite{nikoleta_2017}. The software could be used for any type of
+projects similar to the one described here, documentation for it is available at:
 \url{http://arcas.readthedocs.io/en/latest/}.
 
-Data was collected from the following sources,
+Project~\cite{nikoleta_2017} allow us to collect articles from a list of APIS by
+specifying just a single keyword. The following sources were used to collect data
+of this analysis:
 
 \begin{enumerate}
-        \item arXiv~\cite{mckiernan2000};
         \item PLOS~\cite{plos_one};
-        \item IEEE;
-        \item Nature;
-        \item Springer.
+        \item Nature~\cite{nature};
+        \item IEEE~\cite{ieee};
+        \item arXiv~\cite{mckiernan2000};
+        \item Springer~\cite{springer}.
 \end{enumerate}
 
-These are four prominent journals in the field as well as the arXiv~\cite{mckiernan2000}
+These are four prominent journals in the field, as well as the arXiv~\cite{mckiernan2000}
 pre print server. In the case of an article being both in a journal and the arXiv,
 only the journal version was considered.
 
-In the work described here, a series of keywords were used to identify relevant
-articles. Articles for which these keywords were in the title or the abstract
-are included in the analysis. A list of the keywords that were used are
-shown in Table~\ref{table:search_keywords}.
-
-\begin{table}[!hbtp]
-    \begin{center}
-        \begin{tabular}{lll}
-            \toprule
-             & Keywords & \\
-            \midrule
-             1 &  prisoner's dilemma & \\
-             2 &  prisoners dilemma  & \\
-             3 &  prisoners evolution & \\
-             4 &  prisoner game theory & \\
-             5 &  R Axelrod & \\
-             6 &  memory one strategy & \\
-             7 &  tit-for-tat & \\
-             8 &  tit for tata & \\
-             9 &  zero determinant strategies & \\
-            \bottomrule
-        \end{tabular}
-    \end{center}
-    \caption{Keywords used in searching for articles.}
-    \label{table:search_keywords}
-\end{table}
-
-For each article~\cite{} collects data with the features shown in Table~\ref{table:arcas_results}.
+For each article~\cite{nikoleta_2017} collects a list of the features, shown in Table~\ref{table:arcas_results}.
 Note that the plain text of the article is not collected, just the metadata. The
 data is archived and available at. %TODO: archive data
 In this work only the features of Table~\ref{table:result_set} are used.
@@ -1221,109 +1291,300 @@ In this work only the features of Table~\ref{table:result_set} are used.
     \label{table:result_set}
 \end{table}
 
+A series of keywords were used to identify relevant articles. Articles for which
+any of these keywords existed within the title or the abstract are included in the
+analysis. A list of the keywords that were used for the main data set are shown
+in Table~\ref{table:search_keywords}.
+
+\begin{table}[!hbtp]
+    \begin{center}
+        \begin{tabular}{lll}
+            \toprule
+             & Keywords & \\
+            \midrule
+             1 &  prisoner's dilemma & \\
+             2 &  prisoners dilemma  & \\
+             3 &  tit-for-tat & \\
+             4 &  tit for tat & \\
+             5 &  zero determinant strategies & \\
+            \bottomrule
+        \end{tabular}
+    \end{center}
+    \caption{Keywords used in searching for articles.}
+    \label{table:search_keywords}
+\end{table}
+
+Similarly for collecting data on auction games and the price of anarchy the
+following keywords were used:
+
+\begin{itemize}
+    \item key: auction game theory;
+    \item key: price of anarchy.
+\end{itemize}
+
+For both of these topics only a single keyword has been used. In comparison 5
+different keywords were used to search of articles on the prisoner's dilemma.
+This is because the main focus of this analysis is the prisoner's dilemma. The
+aim has been been to collect as many articles as possible for the sources, so
+that the results of this work would be accurate.
+
+Even so, the amount of articles collected from the key such as `tit for tat' and
+`zero determinant' had a small contribution to the size of the data set.
+
 \subsection{Preliminary Analysis}
 
-The data set~\cite{} consists of \totalarticles articles. Although only
+A total of three data sets are explored in this work. A summary of each data is
+presented in this section. The three data sets are:
+
+\begin{itemize}
+    \item The main data set which contains articles on the prisoner's dilemma.
+    \item A secondary data set which contains article on auction games.
+    \item A secondary data set which contains articles on the price of anarchy.
+\end{itemize}
+% TODO archive all data sets
+
+\paragraph{The prisoner's dilemma data set}
+\mbox{ }\\
+
+The main data set and the main focus of this analysis. The data set~\cite{}
+consists of \totalarticles articles, where \uniquetitles have unique titles.
 %TODO add reference to archived dataset
-\uniquetitles are unique titles. This is because a total of \numberofduplicates
-articles have been collected from more than just one source. All
-\numberofduplicates duplicates are from the pre print server arXiv and are
-dropped for the analysis, thus hereupon we consider \uniquetitles unique article
-entries. Note that not all articles were collected from the aforementioned APIs:
-\manual were manually added to the dataset throughout the writing of
-Section~\ref{section:timeline}. The details of how many papers came from
-each source are given in Table~\ref{table:provenance}.
+This is because a total of \numberofduplicates articles have been collected from
+both a journal and arXiv. All duplicates from arXiv are dropped, thus hereupon
+we consider \uniquetitles unique article entries.
+
+There are a number of \manual articles that have not been collected from the
+aforementioned APIs. These articles were manually added to the dataset throughout
+the writing of Section~\ref{section:timeline}. A more detailed summary of the 
+articles' provenance is given by Table~\ref{table:provenance}.
 
 \begin{table}[!hbtp]
     \begin{center}
     \input{assets/provenance_table}
     \end{center}
-    \caption{Keywords used in searching for articles.}
+    \caption{Articles' provenance for~\cite{}.}
     \label{table:provenance}
 \end{table}
 
-The oldest article was published in 1944 and the most recent one in 2017. Note
-that the last time data were collected was on December 2017.
+The larger number of articles were collected from arXiv, Springer and IEEE. Both
+Nature and PLOS have a small contribution to the size of the data set. The oldest
+article was published in 1944 and the most recent one in 2017. Note
+that the latest data collection was on December 2017.
 % TODO Ensure this stay accurate
-The cumulative provenance of articles over time is illustrated
-in Figure~\ref{fig:provenance}. This allow us to view the significance of each
-journal's contribution to the field over the years as well as when the prisoner's
-dilemma fitted the scope of each journal.
 
-Springer and IEEE are the two journals that have been publishing papers on the
-topic for the longest time. The first papers respectively are~\cite{Evans1966} in
-1966 and~\cite{4045089} in 1973.
-% TODO Add the references
-% TODO POSSIBLY add sentence about each (do they correspond to something worth
-% mentioning in the timeline? )
-It can been seen that IEEE contributed more than 10 articles per year after 2002.
-Similarly, arXiv contributes with a large number of papers with an increasing trend
-after 2000. In 1991 the preprint server arXiv was lanced and the first article on
-the prisoner's dilemma was published in 1993~\cite{Huberman1993}.
-% TODO Add frame of reference about when the arXiv started. (Read those two
-% references about the arxiv)
-% TODO Invesitage if there was a rise of computer scientific journals in 2000.
-% And see if the following should be modified:
-%This increase could be explained due to ...
-%from Section~\ref{section:timeline}, the `Modern Area' started near the 2000s
-%where now the study of the prisoner's dilemma is associated with computer science.
-PLOS journal was launched in 2000 and it can been seen that accepted it's first
-% TODO Is there a good reference describing PLOS's philosophy? Can this be
-% somewhat related to the delay in the first submission to PLOS? No matter what,
-% this needs more.
-publication on the topic in 2006~\cite{0020178}. Finally Nature has a few publications over the
-years. Nature was one of the early destinations for publications following the
-pioneering paper by Axelrod~\cite{Axelrod1984}. The first paper published was
-\cite{Milinski1987} which studied the applications of Tit for Tat in nature
-using sticklebacks. Another leader in the field: Nowak (mentioned in Section~\ref{section:timeline}
-has published various papers in Nature~\cite{Nowak1993, Nowak1992}.
+Moreover we calculate the average publication over time. This is done for the overall
+data set and for each journal individually. This is denotes as,
 
-To investigate the rates of publications of each journal an exponential function
-of the structure, \(a \epsilon^{b \times x}\), was fitted in each journal
-provenance set. Table~\ref{table:exponential_coefficients} summarises the best coefficients based on a non
-linear least square errors.
+\[ \mu_P = \frac{N_A}{N_Y},\]
+
+where \(N_A\) is the total number of articles and \(N_Y\) is the years of publication.
+The years of publication is calculated as the range between 2017 and the first published
+article within the data.
+
+Table~\ref{table:publication_rates} summarises these averages. Overall an average of
+21 articles are published per year on the topic. The most significant contribution
+to this appears to be from arXiv with 8 articles per year, followed by Springer
+with 5 articles per year.
 
 \begin{table}[!hbtp]
     \begin{center}
-    \input{assets/exponential}
+    \input{assets/rates_table}
     \end{center}
-    \caption{Coefficients for fitted exponential curve to provenance data.}
-    \label{table:exponential_coefficients}
+    \caption{Average publication for~\cite{}.}
+    \label{table:publication_rates}
 \end{table}
 
-% TODO Investigate rates of increase of journal.
-% Explain momentum.
-% Find curves of best fit: fit line, polynomial and exponential.
-% TODO Include a table of these curves of best fit and a discussion.
+Though the average publication can have insights of the publications of the fields
+it is still a constant number. Our data are changing are over time. More specifically
+the data are non stationary. Time series data are said to be stationary if their
+statistical properties such as mean and variance remain constant over time. An
+Augmented Dickey-Fuller test is used to verify that the data are non stationary.
+The results show that the data is non stationary: the \(p\) value is greater than 0.005.
+
+Calculating the rolling average we can see that our data have an increasing trend.
+This is presented in Figure~\ref{fig:timeseries}. The rolling average of each time
+point is calculated as the average of the points on either side of it. The number
+of neighbourhood points is specified as window size and here we have chosen a
+window size of 5.
+
+The rolling average indicates that the time series has an increasing trend.
+Even so there seems to be a small decrease by the last time point. In order
+to offer some insights as to what expected of the field in the next years
+we conduct a forecast of the next time periods. An Autoregressive Integrated
+Moving Average Model (ARIMA (1, 1, 1)) has been used.
+
+Though details of the ARIMA models are not going to be given here the models
+parameters had to be fitted~\cite{brockwell2013}. This was done using the Akaike
+Information Criterion value. ARIMA also has been chosen because it can handle non
+stationary data. The results of the forecast of the next following 10 years are given by Table.
 
 \begin{figure}[!hbtp]
     \centering
-    \includegraphics[width=.6\textwidth]{./assets/images/provenance.pdf}
-    \caption{Provenance of articles.}
-    \label{fig:provenance}
+    \includegraphics[width=0.6\textwidth]{./assets/images/timeseries.pdf}
+    \caption{Time series of main data set and the rolling average.}\label{fig:timeseries}
 \end{figure}
 
-Our data set contains \uniquetitles articles collected since 1944 from a variety
-of sources. The overall rate at which papers have been written is calculated
-as \(rate = \frac{present}{past}^{\frac{1}{n}} - 1\). The overall rate is at 6.68
-percent.
-% TODO summarise main findings.
-In the following section we explore
-the authors of the papers and their connections to one another.
+\begin{table}[!hbtp]
+    \begin{center}
+    \input{assets/predictions.tex}
+    \end{center}
+    \caption{Forecasting the number of publications over the next 10 years.}
+    \label{table:summary_temporal}
+\end{table}
 
-\subsection{Co authorship}
+thought the time series have indicated a slight decrease we can see that the
+model forecasts an increase over the next years.
 
-% TODO Describe some works that look at literature graphs (these typically look
-% at citation graphs)
-% TODO Describe how these are often used to measure influence however (mention
-% that blog post) influence does not correspond to citation.
-% TODO Define the co author network as a weight graph G =...
-% TODO Possibly include subgraphs as examples.
+\paragraph{Auction games and the price of anarchy data sets}
+\mbox{ }\\
 
-Measuring academic collaborations and influences is not always trivial. Many
-academics tend to consider citations as a measure of how could a research project
-is. According to a blog post~\cite{nature_blog} written by Nature in 2017,
-depending on citation could be misleading. This is because:
+The secondary data sets are described in this subsection. More specifically, a
+summary of both data sets, auction games~\cite{} and price of anarchy~\cite{},
+is given by Table~\ref{table:summary_other_topics}.
+
+A total of 2103 articles with 3860 unique authors are examined for auction games.
+Auction games is well studied topic with the earliest entry going
+back to 1974. In comparison, 296 unique articles have been collected on price of
+anarchy. The earliest entry being in 2003 and a total of 668 unique authors have
+written about the topic.
+
+In Figure~\ref{fig:timeplots_other_topics} a time plot for each topic is
+displayed and is exhibited that both topics have had an increasing trend over
+the years. Though price of anarchy is clearly a new topic compared to auction games.
+
+The frequency of the prisoner's dilemma, for both articles and authors, lies
+between the frequencies of these two topics.
+
+\begin{table}[!hbtp]
+    \begin{center}
+    \begin{tabular}{llr}
+        \toprule
+         &            Price of anarchy &  Auction games \\
+        \midrule
+        Unique articles      & 296  & 2103 \\
+        Unique authors       & 668  & 3860 \\
+        Min publication year & 2003 & 1974 \\
+        Max publication year & 2017 & 2017 \\
+        \bottomrule
+    \end{tabular}
+    \end{center}
+    \caption{Data sets~\cite{} and~\cite{} summary.}
+    \label{table:summary_other_topics}
+\end{table}
+
+\begin{center}
+\begin{figure}[!hbtp]
+    \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=\textwidth]{./assets/images/anarchy_timeline.pdf}
+    \end{subfigure}
+    \begin{subfigure}{0.5\textwidth}
+        \includegraphics[width=\textwidth]{./assets/images/auction_timeline.pdf}
+    \end{subfigure}
+\caption{Time plots of~\cite{} and~\cite{}.}
+\label{fig:timeplots_other_topics}
+\end{figure}
+\end{center}
+
+The provenance of the articles is given by Table~\ref{table:provenance_other_topics}.
+Almost 1500 article for auction games have been collected from Springer, that is
+more than three times the articles that have been collected from other sources.
+PLOS and Nature have a minor contribution and PLOS and Nature had no
+articles on the price of anarchy.
+
+\begin{table}[!hbtp]
+    \begin{center}
+    \begin{tabular}{lcc}
+        \toprule
+        \textbf{Provenance} & \textbf{Total articles} & \textbf{Total articles}\\
+                   & (auction games) & (price of anarchy)\\
+        \midrule
+        Springer   &                1429 &                78 \\
+        arXiv      &                 436 &                108 \\
+        IEEE       &                 301 &                131 \\
+        PLOS       &                  15 &                 -  \\
+        Nature     &                   1 &                 -   \\
+        \bottomrule
+    \end{tabular}
+    \end{center}
+    \caption{Articles' provenance for~\cite{} and ~\cite{}.}
+    \label{table:provenance_other_topics}
+\end{table}
+
+\begin{table}[!hbtp]
+    \begin{center}
+    \begin{tabular}{lcc}
+        \toprule
+        \textbf{Provenance} & \textbf{Av. publication}  & \textbf{Av. publication}\\
+                            & (auction games) & (price of anarchy)\\
+        \midrule
+        Overall             &          58.973 & 19.812 \\
+        Springer            &          38.622 & 4.875  \\
+        arXiv               &          11.784 & 6.750   \\
+        IEEE                &           8.135 & 8.188    \\
+        PLOS                &           0.405 &   -       \\
+        Nature              &           0.027 &   -        \\
+        \bottomrule
+    \end{tabular}
+    \end{center}
+    \caption{Average publication for auction games and the price of anarchy.}
+    \label{table:other_topics_publication_rates}
+\end{table}
+
+The overall average publication for~\cite{} and~\cite{} are 59 and 20 articles
+respectively. It appears that auction games publication is largely different
+for both the prisoner's dilemma and the price of anarchy. These two topics have
+the same average publication. Note that the significance of each journal differs
+from topic to topic. Though this analysis will not focus on individual sources
+from hereupon.
+
+\paragraph{Temporal analysis}
+\mbox{ }\\
+
+For comparison reasons in the following subsections the analysis will also be
+held relative to a temporal analysis. The main data set~\cite{}
+is divided into time period according to the subsections of Section~\ref{section:timeline}.
+The respective measures of unique titles and unique authors for each period is
+given by Table~\ref{table:summary_temporal}.
+
+\begin{table}[!hbtp]
+    \begin{center}
+    \input{assets/summary_temporal}
+    \end{center}
+    \caption{Periods and their respective measures.}
+    \label{table:summary_temporal}
+\end{table}
+
+In this section we have described the three data sets that we are going to use
+in the following sections in order to identify collaborative behaviour and influence.
+Two data sets of different topics are used for comparison reasons. The frequency of
+articles and authors differs within the three data sets which is ideal. Furthermore
+the journals effect also differ but not much will be done at that level form now
+onwards.
+
+Finally a temporal analysis of the data sets~\cite{} will also assists us in
+obtaining more insights. The period have also be presented here.
+In the following section we explore the authors of the papers and their
+connections to one another.
+
+\subsection{Co authorship Analysis}
+
+Broadly speaking, most academic research is undertaken in the form of
+collaborative effort. As discussed in~\cite{Kyvik2017}, it is rationale that two
+or more people can do better as a group than individually. Academic collaborations
+have many different forms. Researchers might have immediate collaborated and
+written together. Others might have collaborated through an common co author.
+
+Collaboration in groups has a long tradition in experimental sciences and it has
+be proven to be productive according to~\cite{Etzkowitz1992}. Even so, the number of collaborations
+can be very different between research fields and measuring collaboration is
+not always an easy task. Moreover, we are not interested only in collaborative
+behaviour but also in the power of influence. For example academics can influence
+us through workshops, talks or by collaborating we people in our environment.
+Such as other researchers in our department or our supervisors.
+
+Several studies tend to consider academic citations as a measure for these things.
+As discussed in~\cite{nature_blog}, depending on citations can often be misleading.
+This is because:
 
 \begin{itemize}
     \item The true number of citations can not be known. Citations can be missed
@@ -1332,17 +1593,46 @@ depending on citation could be misleading. This is because:
     \item Several citations are superficial.
 \end{itemize}
 
-For this reasons in this work we consider other measures. Initially, we construct
-a network of co authorship. Then using several network measures, which will be
-explained in details in the following sections, we study how collaborative 
-the field is and which authors have more influence.
+We are in agreement with the above reasons and here we suggest that new way of
+measuring collaboration and influence must be introduced. We suggest that this
+should be done by looking the co authorship network. A co authorship network,
+is a network where academics that have written and published together are connected.
+Moreover, people that have not written together but have with the same co author
+can reach each other.
 
-\subsubsection{Co authorship network for the prisoner's dilemma}
+We must properly define what collaboration and influence means to us in order to
+measure them using the co authorship network.
 
-The first step in constructing the network includes getting all the unique
-authors from the data set. There are several different ways of writing an authors
-name that difference sources use. For example the authors name can be written in
-several ways, such as:
+An academic field will never be fully connected, instead there will be various
+academic groups of people who are connected to each other. By collaborative
+behaviour we mean the average connections an author can have in their academic
+group. Moreover, how strongly close they are in that group of theirs.
+
+Additionally, influence is defined as how much authors connect their groups.
+In essence, how many connections are made possible because of an author. A strong
+influence can have many advantages for a field. Authors can have a wider perspective
+for the undergoing research in their field, they can compare results and be more
+accurate. Thus they authors that do not necessarily have influence but can
+have a big gain from it. We are interested in both types, people that influence
+and people that gain from it.
+
+In the following section we give a rigorous definition of the co authorship
+network. moreover we introduced several network measures that we will be using
+such as:
+
+\begin{itemize}
+    \item Number of connected components.
+    \item Clustering coefficient.
+    \item Degrees distributions.
+    \item Centrality measures.
+\end{itemize}
+
+\subsubsection{Constructing a co authorship network}
+
+To construct a co authorship network we need to consider all the unique authors of a data set.
+The issue with retrieving the unique authors is that authors names can be written
+in different ways in different sources. For example consider the author of this
+paper:
 
 \begin{itemize}
     \item Nikoleta Glynatsi
@@ -1351,611 +1641,551 @@ several ways, such as:
 \end{itemize}
 
 Consequently, several different entries of the same author existed within the data
-set. To address the problem the Levenshtein Distance~\cite{miller2009} was used.
-The Levenshtein Distance is a metric for Measuring the difference between two
-sequences. The Levenshtein distance between two strings is defined as the
-minimum number of edits needed to transform one string into the other, with the
-allowable edit operations:
+set. Thus we wanted to figure out when two author names were the same in real life.
+Though identifying if two string correspond to the same author is human possible
+the data sets consited of more than 1000 authors, thus we wanted to automate the
+procedure.
+
+This was done by using the Levenshtein Distance~\cite{miller2009}. The Levenshtein
+Distance is a metric for measuring the difference between two sequences. It is
+based upon the number of actions one has to take to transform one string into
+the other. These actions include:
 
 \begin{enumerate}
-    \item insertion;
-    \item deletion;
-    \item substitution of a single character.
+    \item Insertion;
+    \item Deletion;
+    \item Substitution of a single character.
 \end{enumerate}
 
-The Levenshtein distance of all possible pairs of authors in the data set was
-computed. If the distance was between \(85\) and \(99\) the entries were
-highlighted. The highlighted entries were manually checked to assure that there
-were indeed the same authors and then one of them was replaced by the other.
+Let us consider an example where we are trying to calculate the distance between
+the two strings `Wang' and `Yang'. To compute the distance in a non-recursive
+way, we use a matrix \(D\) containing the distances between all the prefixes of the
+two strings. The first row and column are indexed by empty strings. The rest of
+the rows and columns are index by the prefixes of the two strings.
 
-For example all entries with author name as 1 were replaced by 2.
+The matrix is filled from left to right. The first row is filled as follows:
+
+\begin{enumerate}
+    \item To go from an empty string to an empty string zero actions are needed.
+    Thus the \(D_{\text{e}, \text{e}}\) is 0.
+    \item To go from an empty string to `W', or the other way around, 1 action
+    is needed. Thus the \(D_{\text{e}, \text{W}}\) is 1.
+    \item For every new letter we have to take another action \((+1)\).
+\end{enumerate}
+
+Similarly, this is done for the first columns. For rest of the elements
+we follow a similar approach, but this time the previous distances are also
+taken in account. For example, \(D_{\text{Y}, \text{W}}\). For the letter `Y'
+to go to `W' a single action is required. Note that now 1 is added to the minimum
+distance between of \(D_{\text{e}, \text{e}}, D_{\text{e}, \text{W}}\) and
+\(D_{\text{e}, \text{Y}}\). 
+
+Similarly we fill the rest of matrix. The last value computed, bottom right,
+is the Levenshtein Distance of the two strings. In our example it is calculated
+to be 1.
+
+\[ D = \kbordermatrix{
+     & \text{e} & \text{W} & \text{A} & \text{N} & \text{G} \\
+   \text{e} & 0 & 1 & 2 & 3 & 4 \\
+    \text{Y} & 1 & 1 & 2 & 3 & 4 \\
+    \text{A} & 2 & 2 & 1 & 2 & 3 \\
+    \text{N} & 3 & 3 & 2 & 1 & 2 \\
+    \text{G} & 4 & 4 & 3 & 2 & 1
+  }\]
+
+In this work we calculate the ratio of two string matching for all possible
+pairs of authors in the data sets. The matching ratio is calculated as,
+
+\[(1 - \frac{\text{lev}}{m}) \times 100,\]
+
+where \(\text{lev}\) is the distance and \(m\) is the length of the longest of
+the two words. If the ratio of a pair was between \(85\) and \(99\) both entries
+were highlighted. The highlighted entries were manually checked to assure that
+there were indeed the same author and then one of them was replaced by the other.
+
+For example all entries with author name written as example 1 were replaced by
+2.
 
 \begin{enumerate}
     \item Y. Moreno
     \item Yamir Moreno
 \end{enumerate}
 
-The manual check is performed because not all highlighted entries are actually the
-same author. For example:
+The manual check is performed because not all highlighted entries are indeed the
+same. For example:
 
 \begin{enumerate}
     \item Zhen Yang and
     \item Zhen Wang
 \end{enumerate}
 
-are two individual authors. Once the names were cleaned the total number of
-unique authors over the \uniquetitles articles is \authors.
+are two different authors. Once the name entries have been cleaned the
+co authorship networks can be defined. The definition of a co authorship network
+is given by:
 
-The co authorship network is defined as the undirected graph \(G\) of of vertices \(V\)
-and edges \(E\). There are \authors vertices representing each unique
-author.
-% The weights corresponds to the number of publications an author has within
-% the data.
-The vertices are joined by \edges edges. An edge connects two authors
-if and only if those authors have written together. No weight has been applied to
-the edges or the nodes. The network is shown in Figure~\ref{fig:authors_network}.
+\begin{definition}{Co authorship network.}
+    A co authorship network is an undirected network \(G\) of vertices \(V\) and
+    edges \(E\) where vertices representing each unique author and an edge
+    connects two authors if and only if those authors have written together.
+    No weight has been applied to the edges nor the nodes.
+\end{definition}
+
+%Define what a network is and then G_1, G_2, G_3
+Three such networks are studied here. These are:
+
+\begin{itemize}
+    \item \(G_1\) a prisoner's dilemma network, where \(V(G_1)=\) \authors and
+    \(E(G_1)=\) \edges.
+    \item \(G_2\) an auction games network, where \(V(G_2)=\) \auctionauthors and
+    \(E(G_2)=\) \auctionedges.
+    \item \(G_3\) an auction games network, where \(V(G_3)=\) \priceauthors and
+    \(E(G_3)=\) \priceedges.
+\end{itemize}
+
+The respective illustrations of \(G_1, G_2\) and \(G_3\) are given by Figures
+\ref{fig:authors_network} and \ref{fig:co-authorship-other-topics}.
 
 \begin{figure}[!hbtp]
     \centering
-    \includegraphics[width=0.6\textwidth]{./assets/images/co-authors-network.pdf}
-    \caption{Co-authorship network.}\label{fig:authors_network}
+    \includegraphics[width=0.8\textwidth]{./assets/images/co-authors-network.pdf}
+    \caption{Co authorship network for prisoner's dilemma.}\label{fig:authors_network}
 \end{figure}
 
-Now that the network has been defined in the following sections the collaborative
-trend of the field and the influencers are explored.
+\begin{center}
+    \begin{figure}[!hbtp]
+        \begin{subfigure}{0.5\textwidth}
+            \includegraphics[width=\textwidth]{./assets/images/co-authors-network-auction.pdf}
+            \caption{Co authorship network for auction games.}
+        \end{subfigure}
+        \begin{subfigure}{0.5\textwidth}
+            \includegraphics[width=\textwidth]{./assets/images/co-authors-network-price.pdf}
+            \caption{Co authorship network for the price of anarchy.}
+        \end{subfigure}
+    \caption{Co authorship network for other topics.}
+    \label{fig:co-authorship-other-topics}
+    \end{figure}
+    \end{center}
 
 \subsubsection{Collaborative behaviour}
 
-In this section we ascertain the level of collaborative nature of the field
-using several measures such as, number of connected components, clustering
-coefficients and degree distribution. To explain the notion of some measures
-we will be using several sub graphs of the network \(G\).
+In this section we ascertain the level of collaborative nature of the field.
+The collaborative behaviour is measured as the connections authors can
+have within their groups. Moreover, how strongly connected these groups are.
+Several connectivity measures will be used to explain such behaviour, in this
+section these are introduced through various examples.
 
-\textbf{Number of connected components.}
+\paragraph{The measures}
+\mbox{ }\\
 
-The first measure of connectivity is the number of connected components.
-A connected component, in graph theory, of an undirected graph is a sub graph in
-which any two vertices are connected to each other by paths. Let us consider
-two sub graphs of \(G\), \(Z\) and \(H\). Sub graph \(Z\) is a connected graph
-where \(H\) is not. 
+The first measure introduced is the number of connected components. A connected
+component of an undirected graph is a maximal set of nodes such that each pair
+of nodes is connected by a path. Two examples are illustrated in Figure
+\ref{fig:connected_components}. These are two different sub graphs of \(G_1\)
+with a number of connected components of 1 and 5.
 
 \begin{center}
 \begin{figure}[!hbtp]
     \begin{subfigure}{0.5\textwidth}
         \includegraphics[width=\textwidth]{./assets/images/connected_example_one.pdf}
-        \caption{Sub graph \(Z\).}
+        \caption{A sub graph of \(G_1\) with 1 connected component.}
     \end{subfigure}
     \begin{subfigure}{0.5\textwidth}
         \includegraphics[width=\textwidth]{./assets/images/connected_example_two.pdf}
-        \caption{Sub graph \(H\).}
+        \caption{A sub graph of \(G_1\) with 5 connected component.}
     \end{subfigure}
 \caption{Connected components examples.}
 \label{fig:connected_components}
 \end{figure}
 \end{center}
 
-There are in total 529 connected components within graph \(G\).
-
-\textbf{Clustering coefficients.}
-
-\textbf{Degree distribution.}
-
-
-
-% \subsubsection{Co-authorship network for the prisoner's dilemma}
-% \label{section:co_authors_network_analysis}
-
-% The authors are represented using an undirected network, shown in Figure
-% \ref{fig:authors_network}. The network has sets of vertices \(V\) and edges \(E\).
-% The \authors vertices represent each of the unique authors from the data.
-% The vertices are connected with an edge if and only if two authors have written
-% together. Weights have been applied to both the vertices and the edges.
-
-% Vertices' weights corresponds to the number of publications an author has.
-% The ten authors with the highest number of publications are given
-% by Table~\ref{table:most_published}. Authors such as M. Nowak and D. Ashlock,
-% that have previously been discussed in Section~\ref{section:timeline}, appear on
-% the list. Though other authors such as R. Axelrod do not. On the other hand,
-% several people whose work was not discussed in the previous section appear here,
-% for example Matjaz Perc with a total of 34 publications. The network once the
-% vertices' weight has been applied is shown in Figure~\ref{fig:authors_network_weighted}.
-
-% \begin{figure}[!hbtp]
-%     \centering
-%     \includegraphics[width=0.6\textwidth]{./assets/images/co-authors-network.pdf}
-%     \caption{Co-authorship network.}\label{fig:authors_network}
-% \end{figure}
-
-% \begin{table}[!hbtp]
-%     \begin{center}
-%     \input{assets/most_published}
-%     \end{center}
-%     \caption{Top 10 most published authors.}
-%     \label{table:most_published}
-% \end{table}
-
-% \begin{figure}[!hbtp]
-%     \centering
-%     \includegraphics[width=0.6\textwidth]{./assets/images/co-authors-network-weight.pdf}
-%     \caption{Co-authorship network with vertices' weight.}
-%     \label{fig:authors_network_weighted}
-% \end{figure}
-
-% Furthermore, the edge weight corresponds to the number of times the authors
-% wrote together. From Figures~\ref{fig:authors_network}, \ref{fig:authors_network_weighted}
-% it can bee seen that overall the co-authors network is disjoint. Several researchers
-% on the outer circle seem to have written alone or have a single connection to
-% another researcher. On the other hand, in the inner circle of the network some
-% connectivity of the vertices does seem to exist, with a single large cluster
-% located in the middle of the network.
-
-% The authors that cover the outer space, that seem to be less collaborative,
-% are not authors that have single contributions to the field. On the other hand
-% authors that have repeatedly published on the topic are located in both the outer
-% and inner circles of the network.
-
-% More insights can be gained by reviewing several network measures such as the
-% density, the average degree and centrality measures~\cite{bakshi2009}. The first
-% measure to be considered is the density of the network. The density of a network
-% is given by, \(\frac{2E}{V(V -1)}\) and is calculated to be 0.00163. The density
-% is defined as the ratio of the number of edges and the number of possible edges.
-% Thus a small value as 0.00163 indicates that the network as a low connectivity.
-% Another measure closely related to the density is the average degree. The average
-% degree is given by \(\frac{2E}{V}\) and has been calculated to be 3.22. The
-% histogram of the the degree distribution is given by Figure\ref{fig:degree_hist_pd}.
-% The most frequent degree appears to be that of 2 degrees.
-
-% \begin{figure}
-%     \begin{center}
-%     \includegraphics[width=.8\textwidth]{./assets/images/degrees_hist_pd.pdf}
-%     \caption{Degree Histogram. Co-authors network of prisoner's dilemma data.}
-%     \label{fig:degree_hist_pd}
-%     \end{center}
-% \end{figure}
-
-% Furthermore we compute node centrality measures. Indicators of centrality
-% identify the most important vertices of the network. There are several centrality
-% measures, for the purpose of this work the following are considered:
-
-% \begin{itemize}
-%     \item weighted betweenness centrality;
-%     \item closeness centrality;
-%     \item weighted page rank;
-% \end{itemize}
-
-% The results of the different centrality measures are given by Table~\ref{table:central_authors_pd}.
-% Though several differences between the ranks of the three measures are spotted,
-% some names appear to be on the most central vertices for all three measures.
-% These are authors:
-
-% \begin{itemize}
-%     % TODO Add these people to the timeline section.
-%     \item Matjaz Perc;
-%     \item Yamir Moreno;
-%     \item Arne Traulsen;
-%     \item Martin A. Nowak;
-%     \item Angel Snchez;
-%     \item Krishnendu Chatterjee.
-% \end{itemize}
-
-% In agreement of all measures the above are the most central authors of our network.
-% More specifically, the most central author is Matjaz Perc.
-
-% Though several insights were gained from studying the authorship within the field
-% we do not know how these findings compare to either fields. For example, an
-% average degree of 3.22 means that the field is more collaborative than other or not?
-% These questions are delved into in the following section.
-
-% \begin{table}[!hbtp]
-%     \begin{center}
-%     \scalebox{0.8}{
-%     \input{assets/prisoners_centrality_betweness}
-%     \input{assets/prisoners_centrality_closeness}
-%     \input{assets/prisoners_centrality_page_rank}}
-%     \caption{Central authors based on different centrality measures.}
-%     \label{table:central_authors_pd}
-%     \end{center}
-% \end{table}
-
-% \subsubsection{Comparison with other topics authorship}
-
-% In order to achieve objective insights regarding authorship in the field of the
-% prisoner's dilemma we perform a comparison in this section. We compare how well connected the
-% network of authors for the prisoner's dilemma is compared to other topics.
-% The data collected are on two different topics within game theory, these are:
-
-% \begin{itemize}
-%     \item price of anarchy and
-%     \item auction games.
-% \end{itemize}
-
-% The open source project Arcas was used again, this time using the following
-% keywords respectively for each topic,
-
-% \begin{itemize}
-%     \item key: price of anarchy;
-%     \item key: auction game theory.
-% \end{itemize}
-
-% A summary of the two data set is given by Table~\ref{table:data_sets_summary}.
-% A total of 296 unique articles have been collected on price of anarchy. The
-% earliest entry being in 2003 and a total of 668 unique authors have written about
-% the topic. In comparison, a total of 2103 articles are examined for auction
-% games. Auction games are a well studied topic for several years with the earliest entry
-% going back to 1974. Finally, 3860 different names are examined. The frequency
-% of the prisoner's dilemma, for both articles and authors, lies between the frequencies
-% of these two topics. In Figure~\ref{fig:timeplots_anarchy_auction} a timeplot for each
-% topic is displayed and is exhibited that both topics have an increasing trend over
-% the years. Though price of anarchy is clearly a new topic compared to auction games.
-
-% \begin{table}[!hbtp]
-%     \begin{center}
-%     \begin{tabular}{llr}
-%         \toprule
-%          &            Price of anarchy &  Auction games \\
-%         \midrule
-%         Unique articles      & 296  & 2103 \\
-%         Unique authors       & 668  & 3860 \\
-%         Min publication year & 2003 & 1974 \\
-%         Max publication year & 2017 & 2017 \\
-%         \bottomrule
-%     \end{tabular}
-%     \end{center}
-%     \caption{Data sets summary.}\label{table:data_sets_summary}
-% \end{table}
-
-% \begin{center}
-% \begin{figure}[!hbtp]
-%     \begin{subfigure}{0.5\textwidth}
-%         \includegraphics[width=\textwidth]{./assets/images/anarchy_timeline.pdf}
-%     \end{subfigure}
-%     \begin{subfigure}{0.5\textwidth}
-%         \includegraphics[width=\textwidth]{./assets/images/auction_timeline.pdf}
-%     \end{subfigure}
-% \caption{Timeplots.}\label{fig:timeplots_anarchy_auction}
-% \end{figure}
-% \end{center}
-
-
-% The immediate step is to compare the networks we have constructed for all three
-% fields. The aim of the comparison is to gain insight as to how collaborative
-% the prisoner's dilemma authors are compared to other fields. Network measures
-% discussed in this comparison are given by Table~\ref{table:descriptive_networks}.
-% The smallest network is that of the authorship describing the price of anarchy,
-% followed by the prisoner's dilemma and the largest one is that of the auction
-% games. The average degree (calculated as \(\frac{2E}{V}\)), is for all three
-% networks is close to 3 and the density of all networks is very small, less than
-% 0.005.
-
-% \begin{table}[!hbtp]
-%     \begin{center}
-%     \begin{tabular}{cccc}
-% \toprule
-% & Prisoner's Dilemma & Price of anarchy &  Auction games \\
-% \midrule
-% \(\mid V \mid \)                   & 1970    & 637 & 3968 \\
-% \(\mid E \mid \)                   & 3179    & 865 & 5713 \\
-% Density                            & 0.00163 & 0.00427 & 0.00072\\
-% Average degree                     & 3.22    & 2.71 & 2.87 \\
-% \bottomrule
-%     \end{tabular}
-%     \end{center}
-%     \caption{Descriptive measures of networks.}\label{table:descriptive_networks}
-% \end{table}
-
-% To further examined the differences or the similarities of these networks we
-% consider the degree distributions. The normalised distributions of all
-% three networks are given in Figure~\ref{fig:degrees_dist}. They have been normalised
-% such that the frequencies sum to one. The distributions appear to be similar
-% but to validate the hypothesis a statistical test will be used. None of the
-% distributions is normally distributed thus the non parametric test Kruskal-Wallis
-% is used~\cite{mckight2010}. Kruskal-Wallis allow us to compare the medians of
-% two or more distributions. The test returns a \(p\)-value of 0.29. Thus, there is no
-% significant difference in the degree distributions of the three networks.
-
-% \begin{figure}[!hbtp]
-%     \centering
-%     \includegraphics[width=\textwidth]{./assets/images/degrees_histrograms.pdf}
-%     \caption{Degree distributions for all three networks.}\label{fig:degrees_dist}
-% \end{figure}
-
-% An interesting insight can be gained by examining the evolution of both the
-% average and the median degree over time. Though when the entire data sets are
-% considered the average degree of all networks is close to 3, when observing
-% the previous year this does not seem to be the case. The evolution of the
-% degrees over the publication years of each topic have been very different.
-% This can be observed by Figures~\ref{fig:av_degrees_over_time} and
-% \ref{fig:md_degrees_over_time}. Auction games have had an increasing trend in
-% co-authorships over time. The prisoner's dilemma study, though it does have an
-% increasing trend has two sudden jumps. A decrease occurred in 1960 and a sudden
-% increase in 1970. Finally, the price of anarchy had a big increase in authorship
-% in 2004.
-
-% \begin{figure}[!hbtp]
-%     \centering
-%     \includegraphics[width=\textwidth]{./assets/images/average_degrees_lineplots.pdf}
-%     \caption{Average degree over time for all three networks.}
-%     \label{fig:av_degrees_over_time}
-% \end{figure}
-
-% \begin{figure}[!hbtp]
-%     \centering
-%     \includegraphics[width=\textwidth]{./assets/images/median_degrees_lineplots.pdf}
-%     \caption{Median degree over time for all three networks.}
-%     \label{fig:md_degrees_over_time}
-% \end{figure}
-
-% Other measures that could highlight similarities in the connectivity of the graphs
-% are centrality measures. A summary of the maximum, mean and median centrality
-% value based on three centrality measures for all three networks is given by
-% Table~\ref{table:summary_centrality_networks}. The individual histograms
-% are illustrated in Figures~\ref{fig:w_betweenness_hist},~\ref{fig:closeness_hist}
-% and~\ref{fig:page_rank_hist}. A normality test has been performed for each of the
-% 9 distributions and with a significance level of 0.05 none of the distributions
-% is normally distributed. Thus, a Krustal-Wallis test will be performed to test
-% the mean difference between the topics for each centrality measure.
-
-% \begin{table}[!hbtp]
-%     \begin{center}
-%     \begin{tabular}{lccc}
-% \toprule
-% & Prisoner's Dilemma & Price of anarchy &  Auction games \\
-% \midrule
-% Max weighted betweenness     & 0.0093     & 0.0024     & 0.0011 \\
-% Mean weighted betweenness    & 4.537e-05  & 0.0        &  0.0 \\
-% Median weighted betweenness  & 0.0        & 3.4677e-05 & 4.5096e-06 \\
-% Max closeness                & 0.0443     & 0.0333     & 0.0209 \\
-% Mean closeness               & 0.0051     & 0.0047     & 0.0007 \\
-% Median closeness             & 0.0015     & 0.0063     & 0.0017 \\
-% Max weighted page rank       & 0.0040     & 0.0063     & 0.0012 \\
-% Mean weighted page rank      & 0.0005     & 0.0015     & 0.0002 \\
-% Median weighted page rank    & 0.0005     & 0.0015     & 0.0002 \\
-% \bottomrule
-%     \end{tabular}
-%     \end{center}
-%     \caption{Summary of centrality measures.}\label{table:summary_centrality_networks}
-% \end{table}
-
-% \begin{figure}[!hbtp]
-%     \centering
-%     \includegraphics[width=\textwidth]{./assets/images/w_betweenness_hist.pdf}
-%     \caption{Between centrality histogram for all three networks.}
-%     \label{fig:w_betweenness_hist}
-% \end{figure}
-
-% \begin{figure}[!hbtp]
-%     \centering
-%     \includegraphics[width=\textwidth]{./assets/images/closeness_hist.pdf}
-%     \caption{Closeness centrality histogram for all three networks.}
-%     \label{fig:closeness_hist}
-% \end{figure}
-
-% \begin{figure}[!hbtp]
-%     \centering
-%     \includegraphics[width=\textwidth]{./assets/images/page_rank_hist.pdf}
-%     \caption{Page rank centrality histogram for all three networks.}
-%     \label{fig:page_rank_hist}
-% \end{figure}
-
-% The results of the Kruskal-Wallis tests are shown in Table~\ref{table:kruskal_wallis_results}.
-% It can be seen that for the closeness centrality the null hypothesis holds. Thus
-% there is not a significant difference of the medians. On the other hand, for
-% both the weighted betweenness and weighted page rank the null hypothesis is being
-% rejected. Thus there seems to exist a significant difference of the medians for these two
-% measures. A post-hoc test could be carried to further explore which medians
-% are significantly different.
-
-% \begin{table}[!hbtp]
-%     \begin{center}
-%     \begin{tabular}{llc}
-% \toprule
-% & \(p-\)value &   \\
-% \midrule
-% Weighted betweenness    & 0.0   \\
-% Closeness               & 0.799 \\
-% Weighted page rank      & 0.0   \\
-% \bottomrule
-%     \end{tabular}
-%     \end{center}
-%     \caption{Kruskal-Wallis tests results.}\label{table:kruskal_wallis_results}
-% \end{table}
-
-% In this section the amount of collaboration within the field was examined.
-% Furthermore, to be objective this was compared to other topics within game
-% theory. In the section to follow we focus on the exploration of the co-authorships
-% within the field of the prisoner's dilemma. The collaboration of some well known
-% authors alongside authors that appear to be central in our network are explored.
-
-% \subsubsection{Sub graphs analysis}
-% % TODO Think about what to do with this: where does it fit with the rest of the
-% % restructure?
-
-% In this section we explore and gain insights as to who well known authors within
-% our field tend to collaborate and write with. This is achieved by studying the
-% cliques of the network. Cliques are subsets of vertices, all adjacent to each other.
-% A total of 779 cliques exists within the network and the max node number of a
-% clique is 21. The clique with the 21 authors is from~\cite{Knight2016}.
-% Though a big number of cliques exists in this section we will only examine those
-% of authors that have been discussed several times within this work.
-
-% The first clique is that of R. Axelrod. The subgraph, shown in Figure
-% \ref{fig:axelrods_clique}, consists of 4 vertices, 3 edges and the edge weights
-% are all equal to 1. Thus for this subgraph we examined the betweenness, closeness
-% and page rank centrality (all without weights). The central node is Axelrod
-% based on all centrality measures. The results are shown in Table~\ref{table:axelrods_clique}.
-
-% Furthermore, the density of the subgraph is equal to 0.5 and the average degree
-% in 1.5. All authors are connected to Axelrod with a step of one. That is because
-% all these authors have written only with Axelrod in~\cite{Axelrod1988,
-% Axelrod1984, Wu1995}.
-
-% \begin{figure}[!hbtp]
-%     \centering
-%     \includegraphics[width=0.6\textwidth]{./assets/images/Axelrod.pdf}
-%     \caption{R. Axelrod's clique.}
-%     \label{fig:axelrods_clique}
-% \end{figure}
-
-% \begin{table}[!hbtp]
-%     \begin{center}
-%     \begin{tabular}{llll}
-%     \toprule
-%     Author name &  Betweenness & Closeness & Page rank \\
-%     \midrule
-%      R. Axelrod          &    1.00 & 0.6 & 0.1734 \\
-%      J. WU               &    0.00 & 1.0 & 0.4797 \\
-%      William D. Hamilton &    0.00 & 0.6 & 0.1734 \\
-%      D. Douglas          &    0.00 & 0.6 & 0.1734 \\
-%     \bottomrule
-%     \end{tabular}
-%     \caption{Centrality measures for Axelrod's clique.}
-%     \label{table:axelrods_clique}
-%     \end{center}
-% \end{table}
-
-% The next clique considered is that of D. Ashlock. The subgraph which contains
-% Ashlock is larger than Axelrod's one. It has a total of 24 vertices
-% and 38 edges. The density is equal to 0.137 and the average degree is 3.16.
-% Moreover, based on all three centrality measures Ashlock appears to be the most
-% central node of this subgraph. Table~\ref{table:ashlock_clique} present the 10
-% most central authors.
-
-% An interesting insight can be gained by observing the length of the shortest
-% paths for any author to reach Ashlock. The maximum shortest path is 4. Thus,
-% anyone can reach Ashlock at most with 4 steps.
-
-% \begin{figure}[!hbtp]
-%     \centering
-%     \includegraphics[width=\textwidth]{./assets/images/Ashlock.pdf}
-%     \caption{Subgraph that contains D. Ashlock.}
-%     \label{fig:ashlocks_clique}
-% \end{figure}
-
-% \begin{table}[!hbtp]
-%     \begin{center}
-%     \scalebox{0.8}{
-%     \input{assets/ashlock_betweenness_centrality}
-%     \input{assets/ashlock_closeness_centrality}
-%     \input{assets/ashlock_page_rank_centrality}}
-%     \caption{Central authors based on different centrality measures of the subgraph
-%     which includes author D. Ashlock.}
-%     \label{table:ashlock_clique}
-%     \end{center}
-% \end{table}
-
-% The final two authors considered in this section are M. Nowak and the most central
-% author of the network M. Perc. It appreas that these two authors are in same
-% subgraph, Figure~\ref{fig:perc_clique}. This is the largest subgraph within the
-% network with a total of 266 vertices and 736 edges. Similarly, the centrality
-% of the subgraph was calculated using three different measures and the results are
-% displayed in Table~\ref{table:perc_clique}. The density is equal to 0.02088 and the average
-% degree is 5.533.
-
-% The subgraph does not only include these two authors but also the rest of
-% the most central authors that we indentified in Section~\ref{section:co_authors_network_analysis}.
-% These are,
-
-% \begin{itemize}
-%     \item Yamir Moreno;
-%     \item Arne Traulsen;
-%     \item Angel Snchez;
-%     \item Krishnendu Chatterjee.
-% \end{itemize}
-
-% Thus this subgraph is the most connected component of the intrire network.
-% Similarly, the average steps of reaching each author is calculated. M. Perc is,
-% on average, three steps away from each node where M. Nowak is 4.
-
-% The short path that connects the two authors is also retrieved and is the following:
-% M. Nowak - A. Traulsen- Y. Moreno - M. Perc. Thus the authors that connect them
-% are two of the most central authors.
-
-% The answer as to why these people are connected can be seen if we consider the
-% topic the have focused their research on. The common subject to all these authors
-% works is evolunationary game theory, spatial tournaments and social applications.
-
-% M. Perc is a signicant author within the topic with some of his most well received
-% and most citated works being~\cite{Perc2013b, Perc2008, Perc2010, Perc2013}.
-% Perc is well connected author which is proven from the connectivity of his
-% subgraph, the centrality measures and can be verified by his publications.
-
-% \begin{figure}[!hbtp]
-%     \centering
-%     \includegraphics[width=\textwidth]{./assets/images/Perc.pdf}
-%     \caption{Subgraph that contains M. Nowak and M. Perc.}
-%     \label{fig:perc_clique}
-% \end{figure}
-
-% \begin{table}[!hbtp]
-%     \begin{center}
-%     \scalebox{0.8}{
-%     \input{assets/perc_betweenness_centrality}
-%     \input{assets/perc_closeness_centrality}
-%     \input{assets/perc_page_rank_centrality}}
-%     \caption{Central authors based on different centrality measures of the subgraph
-%     which includes author M. Nowak and M. Perc.}
-%     \label{table:perc_clique}
-%     \end{center}
-% \end{table}
-
-% \subsection{Conclusions from the analysis}
-
-% In this section of the paper it was described how insights on the research of the
-% field can be gained by performing a data analysis. Initially the method that
-% was used to collect various metadata of articles was briefly presented.
-
-% Secondly, the number of articles and their provenance over the years was
-% reviewed. The number of articles appears to be gradually increasing after 2000.
-% That could be because most of the journals used in the data collection are either
-% recent or focused on computing/engineering sciences that have been used in the
-% field mainly after 2000.
-
-% One of the features retrieved by the collection is the authors name. Exploring
-% the connections of these authors has been the main focus of the section as it
-% provides several interesting findings.The aims of the network analysis have been,
-
-% \begin{itemize}
-%     \item to research how collaborative the field of the prisoner's dilemma is;
-%     \item indentify the most crucial authors of the network;
-%     \item explore several specific collaborations.
-% \end{itemize}
-
-% Researching the collaborative behaviour of the the field is achieved by examining
-% several network measures. The network was proven to be rather disjoint with a
-% very low density adn an average degree of 3. The median degree of authors has been
-% two, thus most people in the area are maninly writing with two co-authors.
-
-% In order to have an objective insights as to how collaborative the field is
-% two other topics were considered as separate networks. The topics have been the
-% price of anarchy and auction games. The results have shown that the collaboration
-% behaviour is very similar to all three topics. The average degreres of all networks
-% was close to 3 and all had a very small density. Furthermore, there was not a
-% significant difference between the degree distributions of the topics.
-
-% However, the historical progress of the authorship is it significant different
-% between the fields. Auction games have been attracting more authors and collaborations
-% as time progresses. The price of anarchy is a new field that attracted a large
-% number of authors and parternshipd after 2004. The prisoner's dilemma seems to
-% be a more complicated, having a sudden decrease in 1960 and a sudden increase in
-% 1970. Those this could be due the bias that this analysis suffers, which is that only
-% 5 journals are considered. More insights can be brought in the analysis by performing
-% further tests.
-
-% A surprise has been that the main author that was highlighted several times
-% within the analysis has been M. Perc. An author whose work was not delved into
-% in the literature section. A number of authors such as Perc, Moreno and
-% Traulsen would have not come to our attention if this analysis was not held.
-% Thought their work seems promising and may be of interest to people that focus
-% on evolutionary game theory, spatial games and social stuff.
-% Thus advantages of such analysis is that authors that have not previously be
-% considered can stand out.
-
-% Another powerful results emerges by reviewing several subgraphs of authors.
-% The connections to an author of interest can offer new opportunities and guidelines
-% as to whose work to follow next. Nevertheless, only a small number
-% of the subgraphs were presented here. The reader is encouraged to explore
-% the extra material of this work and investigate the connection of their chosen
-% author.
+Note that a vertex with no incident edges is itself a connected component.
+Connected components show us how disjoint the network is. In essence the number
+of groups in the field.
+
+The second measure considered is the degree. The degree of a node express
+the number of connections a node has. We will consider the degree distribution
+of a network. It will allow us to understand the mean connection that authors
+have in the network's groups.
+
+The final measure is the clustering coefficient. Clustering coefficient is a
+measure of the degree to which nodes in a graph tend to cluster together. There
+are two versions of the measure. The local and the global coefficients. The local
+coefficient is the clustering coefficient of a single vertex. It is calculated as,
+
+\[C_u = \frac{2 \times L_u}{(k_u (k_u - 1)},\]
+
+where \(k_u\) is the degree of vertex \(u\) and \(L_u\) is the number of edges
+between \(k_u\) neighbours of vertex \(u\).
+
+The global coefficient, \(\bar{C}\), is calculated by averaging all the local
+coefficients of the graph. The values of the measure can range between \(0\) and
+\(1\). Figure~\ref{fig:clustering_coefficients} illustrates several sub graphs
+with different \(\bar{C}\) values.
+
+\begin{center}
+    \begin{figure}[!hbtp]
+        \begin{subfigure}{0.33\textwidth}
+            \includegraphics[width=\textwidth]{./assets/images/clustering_example_one.pdf}
+            \caption{A sub graph of \(G_1\) with a clustering coefficient of 0.}
+        \end{subfigure}
+        \begin{subfigure}{0.33\textwidth}
+            \includegraphics[width=\textwidth]{./assets/images/clustering_example_two.pdf}
+            \caption{A sub graph of \(G_1\) with a clustering coefficient of 0.23.}
+        \end{subfigure}
+        \begin{subfigure}{0.33\textwidth}
+            \includegraphics[width=\textwidth]{./assets/images/clustering_example_three.pdf}
+            \caption{A sub graph of \(G_1\) with a clustering coefficient of 1.}
+        \end{subfigure}
+    \caption{Clustering coefficients examples.}
+    \label{fig:clustering_coefficients}
+    \end{figure}
+    \end{center}
+
+A clustering coefficient of \(1\) indicates that that a sub graph is a
+complete graph. On the contrary, a coefficient of \(0\) indicates that authors write only
+with just a single co author. This case is not ideal in a co authorship group.
+A high clustering coefficient indicates that people within groups have several
+connections. There are not there due to a single publication with a random researcher
+but on the contrary that group is said to be collaborative.
+
+\paragraph{Comparison with other topics co authorship}
+\mbox{ }\\
+
+All connectivity measures are calculated for \(G_1, G_2\) and \(G_3\). This is
+done using the open source package~\cite{networkx}.
+
+We are aware that all three of the networks are disjoint. This is also verified
+by the number of connected components. More specifically there are \prisonerscon,
+\auctioncon and \pricecon for graphs \(G_1, G_2\) and \(G_3\) respectively.
+Though the number of connected components for \(G_1\) is between \(G_2\) and \(G_3\)
+we believe that this could be due the size of the data sets.
+
+An interesting insights can be given by looking at the number of the isolated
+authors, thus the authors that have written by themselves. These are
+\prisonerisolated, \auctionisolated, \priceisolated. The price of anarchy has
+only a total of \(4\) authors that have not written with anyone else, indicating
+high collaboration. Graphs \(G_1\) and \(G_2\) appear to have a similar number
+of isolated authors.
+
+Now that the number of groups for each topic have been calcutated we can still
+be very ojective. That is because the these could be affected by the size of the
+data sets. Thus to further examine the collaborative behaviour we 
+consider the degree distributions. The normalised distributions of all
+three networks are shown in Figure~\ref{fig:degrees_dist}. They have been normalised
+such that the frequencies sum to one. The distributions appear to be similar
+but to validate the hypothesis a statistical test is used.
+
+None of the distributions is normally distributed thus the non parametric test
+Kruskal-Wallis is used~\cite{mckight2010}. Kruskal-Wallis allow us to compare the
+medians of two or more distributions. The test returns a \(p\)-value of 0.29.
+Thus, there is no significant difference in the degree distributions of the
+three networks.
+
+\begin{figure}[!hbtp]
+    \centering
+    \includegraphics[width=\textwidth]{./assets/images/degrees_histrograms.pdf}
+    \caption{Degree distributions for all three networks.}\label{fig:degrees_dist}
+\end{figure}
+
+Finally we calculate \(\bar{C}\) for all three networks.
+
+\begin{table}[!hbtp]
+    \begin{center}
+    \begin{tabular}{lcc}
+        \toprule
+                  & \textbf{\(\bar{C}\)}\\
+        \midrule 
+        \(G_1\) & \prisonerscc\\
+        \(G_2\) & \auctioncc\\
+        \(G_3\) & \pricecc\\
+        \bottomrule
+    \end{tabular}
+    \end{center}
+    \caption{Clustering coefficient for all three networks.}
+    \label{table:clustering}
+\end{table}
+
+The price of anarchy appears to have the largest clustering coefficient.
+The price of anarchy did not only not have authors writting on their own
+but authors is groups appear to be clustered together. The prisoners dilemma 
+and auction games have a similar clustering coefficient.
+
+\paragraph{Temporal comparison}
+\mbox{ }\\
+
+The collaborative behaviour of \(G_1\) is also studied over time. This is achieved
+by calculating the number of connected components, the degrees distribution
+and the clustering coefficients for each time period. Table~\ref{table:cc_over_time}
+summarises the results.
+
+The number of connected components indicate that after period 3 to 7 the 
+number of author is increasing. Period 2 is a very poor period of publication
+in our sources. For periods 3 to 7 it is shown in Figure~\ref{fig:dist_over_time}
+that the degrees are stabilising over 3.Thus in the study of the prisoners dilemma
+according to our data, papers with 3 authors seems to be favoured.
+
+Furthermore, the clustering coefficients are also increasing over these periods.
+This analysis indicates that not only more people are were attracted to the
+the topic over the years but also that the field was becoming more collaborative.
+
+\begin{table}[!hbtp]
+    \begin{center}
+    \begin{tabular}{lcc}
+        \toprule
+                  & \textbf{Connected components} & \textbf{Clustering coefficient}\\
+        \midrule
+        period 1  & 15                            & 0.5 \\
+        period 2  & 5                             & 0.0 \\
+        period 3  & 49                            & 0.14 \\
+        period 4  & 96                            & 0.3 \\
+        period 5  & 534                           & 0.64 \\
+        period 6  & 281                           & 0.74 \\
+        period 7  & 134                           & 0.76 \\
+        \bottomrule
+    \end{tabular}
+    \end{center}
+    \caption{Collaborative behaviour measures over time periods.}
+    \label{table:cc_over_time}
+\end{table}
+
+\begin{figure}[!hbtp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{./assets/images/degrees_histrograms_temporal.pdf}
+    \caption{Degrees distribution over time.}\label{fig:dist_over_time}
+\end{figure}
+
+\subsubsection{Influence}
+
+Network centrality is used in network theory to study which nodes of a graph are
+the most important. There are several centrality measures used to explain different
+behaviours of the nodes. Centrality will be used here to explain influence. 
+The two centrality which are used are:
+
+\begin{itemize}
+    \item Closeness centrality \(C_C\).
+    \item Betweenness centrality \(C_B\).
+\end{itemize}
+
+\paragraph{Measures}
+\mbox{ }\\
+
+Both network measures are explained with an example. The definitions for both
+centralities are given by Definition~\ref{def:closeness} and~\ref{def:betweenness}.
+
+\begin{definition}{Closeness.}\label{def:closeness}
+    Closenesse centrality of a node \(u\) is the reciprocal of the average
+    shortest path distance to \(u\) over all \(n-1\) reachable nodes. It is denoted as,
+    
+    \[C_C(u)= \frac{n - 1}{\displaystyle \Sigma_{v=1}^{n-1}d(v, u)}\]
+    
+    where \(d(v, u)\) is the shortest-path distance between \(v\) and \(u\), and \(n\)
+    is the number of nodes that can reach \(u\). The mornalised centrality
+    is \(C_C\) normalised by the number of nodes in the connected part of the
+    graph.
+\end{definition}
+
+\begin{definition}{Betweenness.}\label{def:betweenness}
+Betweenness centrality of a node \(u\) is the sum of the fraction of all-pairs
+shortest paths that pass through \(u\). It is denoted as,
+
+\[ C_B(u)=\Sigma_{s,t \in V} \frac{\sigma (s,t|u)}{\sigma(s,t)}\]
+
+where \(V\) is the set of nodes, \(\sigma(s,t)\) is the number of shortest \((s,t)\)-paths,
+and \(\sigma(s,t|v)\) is the number of those paths passing through some node
+\(u\) other than \(s,t\). If \(s=t\), \(\sigma(s,t)=1\), and if \(u \in s,t, \sigma(s,t|u)=0\).
+Normalised \(C_B\) is normalized by \(\frac{2}{((n-1)(n-2))}\)
+\end{definition}
+
+Closeness is a measure that shows how well a node connects other nodes. Equivalently,
+how well an author is connected to other authors and make them collaborate. 
+This is called influence. On the other hand betweenness is about how connected a
+node is, thus how much influence an author can gain from their environment.
+
+As an example consider a sub graph of \(G_1\) which is illustrated in
+Figure~\ref{fig:subgraph_t}. Note that nodes 1, 2 and 3 are connected to three
+authors. Thus we expect their betweenness centrality to be the same. However, this
+is not true for closeness centrality. Node 3 is the connecting link between at least
+4 people. Thus node 3 is the person in the sub graph that influences most authors.
+Node 3 also gains influence due ot its rule in the team, but node 2 achieves the
+same without connecting people as much as node 3.
+
+\begin{figure}[!hbtp]
+    \centering
+    \includegraphics[width=0.8\textwidth]{./assets/images/centrality_example.pdf}
+    \caption{A sub graph of \(G_1\).}\label{fig:subgraph_t}
+\end{figure}
+
+The centrlity for all three networks are calculated using~\cite{networkx}. Table
+\ref{table:central_authors_pd} summarises the most important authors of network
+\(G_1\) based on the two centralities. The people that influence the field the
+most are Matjaz Perc, Yamir Moreno, Luo-Luo Jiang, Arne Traulsen and Martin A.
+Nowak. Their work have been discussed in Section~\ref{section:timeline}.
+%Examples of their works.
+Though Matjaz Perc and Yamir Moreno appear to both influence and gain from
+the networks influence, it does not hold for the rest of the three authors.
+
+\begin{table}[!hbtp]
+    \begin{center}
+    \scalebox{0.8}{
+    \input{assets/prisoners_centrality_betweness}
+    \input{assets/prisoners_centrality_closeness}}
+    \caption{Top 5 ranked authors of \(G_1\) based on different centrality measures.}
+    \label{table:central_authors_pd}
+    \end{center}
+\end{table}
+
+\paragraph{Comparison with other topics co authorship}
+\mbox{ }\\
+
+Influence for a given network is calculated easily. However, we want to assert
+the power of the influence of \(G_1\) by comparing the results to those of
+\(G_2\) and \(G_3\). Using the distribution of the centralities will we
+statistically tests whether a difference does exist between them.
+
+For \(C_C\) all distributions are not normally distributed so we will use the
+non parametric test Kruskal Wallis. The test returns a \(p\) value of 0.0 thus 
+it can be stated with 95\% confidence of that the distributions are statistically
+different. These are plotted as violin plots in Figure~\ref{fig:closeness_dist}.
+
+Note that the centrality values range between 0 and 1. For all three graphs \(C_C\)
+have very low values. Both \(G_1\) and \(G_2\) appear to have a similar distributions.
+Most authors have have a coefficient of zero and a few authors by the tails
+appear to have a larger coefficient. This means that for the two topics, the highest
+frequency of authors have a very small influence in their field. Though there 
+are people with a high influence they are only a few.
+
+The coefficients of \(G_3\) are different from the other topics. Overall it
+can be seen that authors' centrality is more spread through the different values.
+
+\begin{figure}[!hbtp]
+    \centering
+    \includegraphics[width=.8\textwidth]{./assets/images/Closeness_histrograms.pdf}
+    \caption{Closeness distributions for all three networks.}\label{fig:closeness_dist}
+\end{figure}
+
+The betweenness centrality of the networks is compared in a similar manner.
+All three distribution are not normally distributed thus Kruskal Wallis test
+is used again the assert whether they medians are the same. The test returns
+a \(p\) value of  thus the medians are statistically not the same.
+
+Though the are different Figure~\ref{fig:closeness_dist} that all coefficients
+are clustered around the value of zero. Non of the topics authors gain influence
+from their networks.
+
+\begin{center}
+\begin{figure}[!hbtp]
+    \centering
+    \includegraphics[width=.8\textwidth]{./assets/images/Betweenness_histrograms.pdf}
+    \caption{Betweenness distributions for all three networks.}\label{fig:closeness_dist}
+\end{figure}
+\end{center}
+
+\paragraph{Temporal comparison}
+\mbox{ }\\
+
+The two centralities are also studied over time. Table~\ref{table:cc_over_time} higlights
+the authors with the most influnce at each time period. Equivalently, Table~\ref{table:bc_over_time}
+highlights the authors that gained more from the networks' influence at each
+time period.
+
+For periods 1, 3, 4, 5 and 6 the authors with the highest closeness centrality
+are the authors with the highest betweenness centrality as well. Several of these
+authors have been shown to also have a strong influence to the entire network
+as well.
+
+For period 7 though March Harper is the person that influences most authors,
+Chen Yi Xia is the person that gains the most. For period 2 we have a similar
+case. Robert Axelrod appears to be the most influenced author but not gaining 
+as much from it.
+
+Note that the centrality values are decreasing over the time periods. This could
+be an effect due the size of the network which is increasing. In smaller networks
+authors have more motivation to collaborate with the few people on their fields.
+
+\begin{table}[!hbtp]
+    \begin{center}
+    \scalebox{0.8}{
+    \input{assets/closeness_periods.tex}}
+    \caption{Authors with the most influnce at each time period.}
+    \label{table:cc_over_time}
+    \end{center}
+\end{table}
+
+\begin{table}[!hbtp]
+    \begin{center}
+    \scalebox{0.8}{
+    \input{assets/betweness_periods.tex}}
+    \caption{Authors that gained more from the networks influence at each
+    time period.}
+    \label{table:bc_over_time}
+    \end{center}
+\end{table}
+
+\subsubsection{Conclusion}
+
+In this section we have conducted an investigation of the literature based on a
+data analysis. More specifically, this was mainly done using network theory.
+
+Initially, we gave a summary on the data collection. An open source project which was
+developed for the purpose of this work was used~\cite{nikoleta_2017}. The project
+takes advantage of the API system several academic journals offer today. The
+procedure, the sources as well as the keywords used in the process of collection
+have been clearly specified making the process reproducible.
+
+Three data sets have been composed for three different topics of game theory.
+These are:
+
+\begin{itemize}
+    \item The prisoner's dilemma. The main focus of this paper.
+    \item Auction games. A sub field of game theory used for comparison reasons.
+    \item The price of anarchy. A sub field of game theory used for comparison reasons.
+\end{itemize}
+
+We conducted a brief preliminary analysis on these data sets. Mainly to understand
+the sizes, provenance and trends of each topic. The main data set was also partitioned
+into time periods such that an temporal comparison could be conducted.
+
+The main focus of the analysis has been to explain collaborative behaviour and
+influence. Both terms have been defined and we have explained how network measures
+of the co authorship network were used to quantify them. The co authorship
+network is a network representing all the unique authors of a topic. An edge
+exists within two authors if they have written together. Co authorship was
+decided to be used as be believe other measures, such as citations, perform less
+well.
+
+The findings of this analysis are presented in two parts. The comparison of the
+collaborative behaviour and influence of the prisoner's dilemma field based on
+other topics and how these measures change for the field over time.
+
+All three networks have been disjointed with a large number of connected components.
+The collaborative behaviour was based on the nature of these connected components.
+The median connection of an author has been the same for all three networks.
+However, the price of anarchy had a smaller number of authors that prefer to write
+on their own and based on the clustering coefficient the collaboration of the
+field authors appears to be stronger. The collaboration for both the prisoner's
+dilemma and auction games it's similar. Note though that the price of anarchy
+is a new topic with less authors. It makes more sense for a few people that
+work on the topic to be more collaborative which each other.
+
+Similarly influence was studied using two centrality measures. For \(G_1\) and
+\(G_2\) we conclude that there are only a few authors that have power of influence
+on the network. For research this is not ideal. It could mean that the research
+is only driven from the work of specific people. It could also indicate a hostile
+environment for new authors. In comparison, \(G_3\) has several authors that have
+different influence on their neighbours. A wider spread of influence could indicate
+a nice flow of knowledge across the field from different people. This could
+help the growth of a field and accelerate findings. The influence that authors
+gain from the respective networks was also explored. The results argued that
+the gain was very low for all three networks.
+
+Collaborations and influence of the field have changed over time. As argued
+by~\cite{Etzkowitz1992} over time the amount of research groups was increasing
+for the topic. However, as stated earlier, as the number of researchers increases
+the amount of influence and collaboration decreases. This is because researchers
+can not have full knowledge of their entire network and the more people the network
+has the more people we actually do not know. The results from the temporal
+analysis imply that this is true for the field of the prisoner's dilemma.
+
 
 \newpage
 \bibliographystyle{plain}

@@ -17,6 +17,12 @@
 
 # data
 src/data
+src/nbs/ag_bc_dist.tex
+src/nbs/ag_cc_dist.tex
+src/nbs/pa_bc_dist.tex
+src/nbs/pa_cc_dist.tex
+src/nbs/pd_bc_dist.tex
+src/nbs/pd_cc_dist.tex
 
 # notebooks
 *.ipynb_checkpoints/
