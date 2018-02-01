@@ -1373,7 +1373,7 @@ that the latest data collection was on December 2017.
 % TODO Ensure this stay accurate
 
 Moreover we calculate the average publication over time. This is done for the overall
-data set and for each journal individually. This is denotes as,
+data set and for each journal individually. This is denoted as,
 
 \[ \mu_P = \frac{N_A}{N_Y},\]
 
@@ -1394,15 +1394,11 @@ with 5 articles per year.
     \label{table:publication_rates}
 \end{table}
 
-Though the average publication can have insights of the publications of the fields
-it is still a constant number. Our data are changing are over time. More specifically
-the data are non stationary. Time series data are said to be stationary if their
-statistical properties such as mean and variance remain constant over time. An
-Augmented Dickey-Fuller test is used to verify that the data are non stationary.
-The results show that the data is non stationary: the \(p\) value is greater than 0.005.
-
-Calculating the rolling average we can see that our data have an increasing trend.
-This is presented in Figure~\ref{fig:timeseries}. The rolling average of each time
+Though the average publication offers insights about the publications of the
+fields, it is still a constant number. The data we are handling here are a time
+series. Moreover it appears that our time series has a trend. This is shown
+by calculating the rolling average which is plotted in Figure~\ref{fig:timeseries}.
+The rolling average of each time
 point is calculated as the average of the points on either side of it. The number
 of neighbourhood points is specified as window size and here we have chosen a
 window size of 5.
@@ -1410,13 +1406,20 @@ window size of 5.
 The rolling average indicates that the time series has an increasing trend.
 Even so there seems to be a small decrease by the last time point. In order
 to offer some insights as to what expected of the field in the next years
-we conduct a forecast of the next time periods. An Autoregressive Integrated
-Moving Average Model (ARIMA (1, 1, 1)) has been used.
+we conduct a forecast for the next time periods.
 
-Though details of the ARIMA models are not going to be given here the models
-parameters had to be fitted~\cite{brockwell2013}. This was done using the Akaike
-Information Criterion value. ARIMA also has been chosen because it can handle non
-stationary data. The results of the forecast of the next following 10 years are given by Table.
+Initially we test for stationarity using an Augmented Dickey-Fuller test
+\cite{HARRIS1992381}. A time series data is said to be stationary if its
+statistical properties such as mean and variance remain constant over time. An
+The results show that out data is non stationary: the \(p\) value is greater than
+0.005.
+
+For projecting the behaviour of the field of the new years we are using an ARIMA
+model which is able to handel non stationary data. Though the details for the
+ARIMA~\cite{brockwell2013} models are not going to be given here, the parameters
+of the model have been fitted using the Akaike Information Criterion value.
+The model used was ARIMA (1, 1, 1) at the forecast for the next 10 time
+periods are given by Table~\ref{table:forecast}.
 
 \begin{figure}[!hbtp]
     \centering
@@ -1429,10 +1432,10 @@ stationary data. The results of the forecast of the next following 10 years are 
     \input{assets/predictions.tex}
     \end{center}
     \caption{Forecasting the number of publications over the next 10 years.}
-    \label{table:summary_temporal}
+    \label{table:forecast}
 \end{table}
 
-thought the time series have indicated a slight decrease we can see that the
+Thought the time series have indicated a slight decrease we can see that the
 model forecasts an increase over the next years.
 
 \paragraph{Auction games and the price of anarchy data sets}
