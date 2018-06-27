@@ -1544,19 +1544,18 @@ articles and authors differs within the three data sets which is ideal.
 
 \subsection{Co authorship Analysis}\label{section:co_authorship_analysis}
 
-Broadly speaking, most academic research is undertaken in the form of
+Most academic research is undertaken in the form of
 collaborative effort. As discussed in~\cite{Kyvik2017}, it is rationale that two
-or more people can do better as a group than individually. Academic collaborations
-have many different forms. Researchers might have immediate collaborated and
-written together. Others might have collaborated through an common co author.
+or more people have the potential to do better as a group than individually. Academic collaborations
+have many different forms. Researchers might have immediately collaborated and
+written together. Others might have collaborated through a common co author.
 
 Collaboration in groups has a long tradition in experimental sciences and it has
 be proven to be productive according to~\cite{Etzkowitz1992}. Even so, the number of collaborations
 can be very different between research fields and measuring collaboration is
-not always an easy task. Moreover, we are not interested only in collaborative
-behaviour but also in the power of influence. For example academics can influence
-us through workshops, talks or by collaborating we people in our environment.
-Such as other researchers in our department or our supervisors.
+not always an easy task. Another aspect of collaborative behaviour is influence. For
+example academics can influence through workshops, talks or by collaborating with people
+in our environment.
 
 Several studies tend to consider academic citations as a measure for these things.
 As discussed in~\cite{nature_blog}, depending on citations can often be misleading.
@@ -1564,48 +1563,35 @@ This is because:
 
 \begin{itemize}
     \item The true number of citations can not be known. Citations can be missed
-    due data entry errors or typos in a journal.
+    due to data entry errors.
     \item Academics are influenced by many more papers than they actually cite.
     \item Several citations are superficial.
 \end{itemize}
 
-We are in agreement with the above reasons and here we suggest that new way of
-measuring collaboration and influence must be introduced. We suggest that this
-should be done by looking the co authorship network. A co authorship network,
+We suggest an alternative measure of collaboration and influence by looking at the co
+authorship network. A co authorship network,
 is a network where academics that have written and published together are connected.
-Moreover, people that have not written together but have with the same co author
-can reach each other.
 
-We must properly define what collaboration and influence means to us in order to
-measure them using the co authorship network.
+Using graph theoretic concepts this network will be analysed to undestand:
 
-An academic field will never be fully connected, instead there will be various
-academic groups of people who are connected to each other. By collaborative
-behaviour we mean the average connections an author can have in their academic
-group. Moreover, how strongly close they are in that group of theirs.
+\begin{itemize}
+    \item Collaborativeness; for example the number of connections an author has
+    as well as more sophisticated measures of closeness.
+    \item Influence; how many connections are made possible because of an author.
+\end{itemize}
 
-Additionally, influence is defined as how much authors connect their groups.
-In essence, how many connections are made possible because of an author. A strong
-influence can have many advantages for a field. Authors can have a wider perspective
-for the undergoing research in their field, they can compare results and be more
-accurate. Thus they authors that do not necessarily have influence but can
-have a big gain from it. We are interested in both types, people that influence
-and people that gain from it.
-
-In the following section we give a rigorous definition of the co authorship
-network. moreover we introduced several network measures that we will be using
-such as:
+We introduced several network measures that we will be using such as:
 
 \begin{itemize}
     \item Number of connected components.
     \item Clustering coefficient.
-    \item Degrees distributions.
-    \item Centrality measures.
+    \item Degree distributions.
+    \item Centrality.
 \end{itemize}
 
 \subsubsection{Constructing a co authorship network}
 
-To construct a co authorship network we need to consider all the unique authors of a data set.
+To construct a co authorship network we need to consider all the unique authors.
 The issue with retrieving the unique authors is that authors names can be written
 in different ways in different sources. For example consider the author of this
 paper:
@@ -1634,7 +1620,7 @@ the other. These actions include:
 \end{enumerate}
 
 Let us consider an example where we are trying to calculate the distance between
-the two strings `Wang' and `Yang'. To compute the distance in a non-recursive
+the two strings. These are `Wang' and `Yang'. To compute the distance in a non-recursive
 way, we use a matrix \(D\) containing the distances between all the prefixes of the
 two strings. The first row and column are indexed by empty strings. The rest of
 the rows and columns are index by the prefixes of the two strings.
@@ -1679,13 +1665,8 @@ the two words. If the ratio of a pair was between \(85\) and \(99\) both entries
 were highlighted. The highlighted entries were manually checked to assure that
 there were indeed the same author and then one of them was replaced by the other.
 
-For example all entries with author name written as example 1 were replaced by
-2.
-
-\begin{enumerate}
-    \item Y. Moreno
-    \item Yamir Moreno
-\end{enumerate}
+For example all entries with author name written as example ``Y. Moreno'' were
+replaced by ``Yamir Moreno''.
 
 The manual check is performed because not all highlighted entries are indeed the
 same. For example:
@@ -1707,14 +1688,14 @@ is given by:
 \end{definition}
 
 %Define what a network is and then G_1, G_2, G_3
-Three such networks are studied here. These are:
+The three networks considered:
 
 \begin{itemize}
-    \item \(G_1\) a prisoner's dilemma network, where \(V(G_1)=\) \authors and
+    \item \(G_1\), the prisoner's dilemma network, where \(V(G_1)=\) \authors and
     \(E(G_1)=\) \edges.
-    \item \(G_2\) an auction games network, where \(V(G_2)=\) \auctionauthors and
+    \item \(G_2\), the auction games network, where \(V(G_2)=\) \auctionauthors and
     \(E(G_2)=\) \auctionedges.
-    \item \(G_3\) an auction games network, where \(V(G_3)=\) \priceauthors and
+    \item \(G_3\), the auction games network, where \(V(G_3)=\) \priceauthors and
     \(E(G_3)=\) \priceedges.
 \end{itemize}
 
@@ -1724,7 +1705,7 @@ The respective illustrations of \(G_1, G_2\) and \(G_3\) are given by Figures
 \begin{figure}[!hbtp]
     \centering
     \includegraphics[width=0.8\textwidth]{./assets/images/co-authors-network.pdf}
-    \caption{Co authorship network for prisoner's dilemma.}\label{fig:authors_network}
+    \caption{Co authorship network for the prisoner's dilemma.}\label{fig:authors_network}
 \end{figure}
 
 \begin{center}
@@ -1737,23 +1718,20 @@ The respective illustrations of \(G_1, G_2\) and \(G_3\) are given by Figures
             \includegraphics[width=\textwidth]{./assets/images/co-authors-network-price.pdf}
             \caption{Co authorship network for the price of anarchy.}
         \end{subfigure}
-    \caption{Co authorship network for other topics.}
+    \caption{Co authorship network for secondary data sets.}
     \label{fig:co-authorship-other-topics}
     \end{figure}
     \end{center}
 
-\subsubsection{Collaborative behaviour}
+\subsubsection{Measures of collaboration}
 
 In this section we ascertain the level of collaborative nature of the field.
-The collaborative behaviour is measured as the connections authors can
+This is measured as the connections authors can
 have within their groups. Moreover, how strongly connected these groups are.
-Several connectivity measures will be used to explain such behaviour, in this
-section these are introduced through various examples.
+Several connectivity measures will be used to explain such behaviour which are
+introduced through various examples.
 
-\paragraph{The measures}
-\mbox{ }\\
-
-The first measure introduced is the number of connected components. A connected
+The first measure introduced is the \textbf{number of connected components}. A connected
 component of an undirected graph is a maximal set of nodes such that each pair
 of nodes is connected by a path. Two examples are illustrated in Figure
 \ref{fig:connected_components}. These are two different sub graphs of \(G_1\)
@@ -1775,17 +1753,17 @@ with a number of connected components of 1 and 5.
 \end{center}
 
 Note that a vertex with no incident edges is itself a connected component.
-Connected components show us how disjoint the network is. In essence the number
-of groups in the field.
+The number of connected components gives a naive measure of how disjoint the network is.
+In essence the number of groups in the field.
 
-The second measure considered is the degree. The degree of a node express
+The second measure considered is the \textbf{degree}. The degree of a node express
 the number of connections a node has. We will consider the degree distribution
 of a network. It will allow us to understand the mean connection that authors
 have in the network's groups.
 
-The final measure is the clustering coefficient. Clustering coefficient is a
+The final measure is the \textbf{clustering coefficient}. The clustering coefficient is a
 measure of the degree to which nodes in a graph tend to cluster together. There
-are two versions of the measure. The local and the global coefficients. The local
+are two types of this measure; the local and the global coefficients. The local
 coefficient is the clustering coefficient of a single vertex. It is calculated as,
 
 \[C_u = \frac{2 \times L_u}{(k_u (k_u - 1)},\]
@@ -1802,60 +1780,49 @@ with different \(\bar{C}\) values.
     \begin{figure}[!hbtp]
         \begin{subfigure}{0.33\textwidth}
             \includegraphics[width=\textwidth]{./assets/images/clustering_example_one.pdf}
-            \caption{A sub graph of \(G_1\) with a clustering coefficient of 0.}
+            \caption{A sub graph of \(G_1\) with a global clustering coefficient of 0.}
         \end{subfigure}
         \begin{subfigure}{0.33\textwidth}
             \includegraphics[width=\textwidth]{./assets/images/clustering_example_two.pdf}
-            \caption{A sub graph of \(G_1\) with a clustering coefficient of 0.23.}
+            \caption{A sub graph of \(G_1\) with a global clustering coefficient of 0.23.}
         \end{subfigure}
         \begin{subfigure}{0.33\textwidth}
             \includegraphics[width=\textwidth]{./assets/images/clustering_example_three.pdf}
-            \caption{A sub graph of \(G_1\) with a clustering coefficient of 1.}
+            \caption{A sub graph of \(G_1\) with a global clustering coefficient of 1.}
         \end{subfigure}
     \caption{Clustering coefficients examples.}
     \label{fig:clustering_coefficients}
     \end{figure}
     \end{center}
 
-A clustering coefficient of \(1\) indicates that that a sub graph is a
-complete graph. On the contrary, a coefficient of \(0\) indicates that authors write only
-with just a single co author. This case is not ideal in a co authorship group.
-A high clustering coefficient indicates that people within groups have several
-connections. There are not there due to a single publication with a random researcher
-but on the contrary that group is said to be collaborative.
+A clustering coefficient of \(1\) indicates that a graph is a
+complete graph. On the contrary, a coefficient of \(0\) indicates that authors write
+with just a single co author.
+% A high clustering coefficient indicates that people within groups have several
+% connections. There are not there due to a single publication with a random researcher
+% but on the contrary that group is said to be collaborative.
 
-\paragraph{Comparison with other topics co authorship}
+\paragraph{Analysis}
 \mbox{ }\\
 
 All connectivity measures are calculated for \(G_1, G_2\) and \(G_3\). This is
-done using the open source package~\cite{networkx}.
+done using the open source package networkx~\cite{networkx}.
 
 We are aware that all three of the networks are disjoint. This is also verified
 by the number of connected components. More specifically there are \prisonerscon,
 \auctioncon and \pricecon for graphs \(G_1, G_2\) and \(G_3\) respectively.
-Though the number of connected components for \(G_1\) is between \(G_2\) and \(G_3\)
-we believe that this could be due the size of the data sets.
+% Though the number of connected components for \(G_1\) is between \(G_2\) and \(G_3\)
+% we believe that this could be due the size of the data sets.
+% The of authors that have written by themselves was also calculated.
+A total of \prisonerisolated, \auctionisolated, \priceisolated authors have
+written by themselves, for graphs \(G_1, G_2\) and \(G_3\) respectively.
 
-An interesting insights can be given by looking at the number of the isolated
-authors, thus the authors that have written by themselves. These are
-\prisonerisolated, \auctionisolated, \priceisolated. The price of anarchy has
-only a total of \(4\) authors that have not written with anyone else, indicating
-high collaboration. Graphs \(G_1\) and \(G_2\) appear to have a similar number
-of isolated authors.
-
-Now that the number of groups for each topic have been calcutated we can still
-be very ojective. That is because the these could be affected by the size of the
-data sets. Thus to further examine the collaborative behaviour we 
-consider the degree distributions. The normalised distributions of all
-three networks are shown in Figure~\ref{fig:degrees_dist}. They have been normalised
-such that the frequencies sum to one. The distributions appear to be similar
-but to validate the hypothesis a statistical test is used.
-
+The normalised degree distributions of all three networks are shown in Figure~\ref{fig:degrees_dist}.
+They have been normalised such that the frequencies sum to one. 
 None of the distributions is normally distributed thus the non parametric test
 Kruskal-Wallis is used~\cite{mckight2010}. Kruskal-Wallis allow us to compare the
 medians of two or more distributions. The test returns a \(p\)-value of 0.29.
-Thus, there is no significant difference in the degree distributions of the
-three networks.
+Thus there is significant difference at the level of 0.005.
 
 \begin{figure}[!hbtp]
     \centering
@@ -1863,7 +1830,10 @@ three networks.
     \caption{Degree distributions for all three networks.}\label{fig:degrees_dist}
 \end{figure}
 
-Finally we calculate \(\bar{C}\) for all three networks.
+The global clustering coefficients of all three networks are presented in Table
+\ref{table:clustering}. The price of anarchy has the largest clustering coefficient
+followed by \(G_1\) and \(G_2\).
+
 
 \begin{table}[!hbtp]
     \begin{center}
@@ -1877,60 +1847,55 @@ Finally we calculate \(\bar{C}\) for all three networks.
         \bottomrule
     \end{tabular}
     \end{center}
-    \caption{Clustering coefficient for all three networks.}
+    \caption{Global clustering coefficient for all three networks.}
     \label{table:clustering}
 \end{table}
 
-The price of anarchy appears to have the largest clustering coefficient.
-The price of anarchy did not only not have authors writting on their own
-but authors is groups appear to be clustered together. The prisoners dilemma 
-and auction games have a similar clustering coefficient.
+% \paragraph{Temporal comparison}
+% \mbox{ }\\
 
-\paragraph{Temporal comparison}
-\mbox{ }\\
+% The collaborative behaviour of \(G_1\) is also studied over time. This is achieved
+% by calculating the number of connected components, the degrees distribution
+% and the clustering coefficients for each time period. Table~\ref{table:cc_over_time}
+% summarises the results.
 
-The collaborative behaviour of \(G_1\) is also studied over time. This is achieved
-by calculating the number of connected components, the degrees distribution
-and the clustering coefficients for each time period. Table~\ref{table:cc_over_time}
-summarises the results.
+% The number of connected components indicate that after period 3 to 7 the 
+% number of author is increasing. Period 2 is a very poor period of publication
+% in our sources. For periods 3 to 7 it is shown in Figure~\ref{fig:dist_over_time}
+% that the degrees are stabilising over 3.Thus in the study of the prisoners dilemma
+% according to our data, papers with 3 authors seems to be favoured.
 
-The number of connected components indicate that after period 3 to 7 the 
-number of author is increasing. Period 2 is a very poor period of publication
-in our sources. For periods 3 to 7 it is shown in Figure~\ref{fig:dist_over_time}
-that the degrees are stabilising over 3.Thus in the study of the prisoners dilemma
-according to our data, papers with 3 authors seems to be favoured.
+% Furthermore, the clustering coefficients are also increasing over these periods.
+% This analysis indicates that not only more people are were attracted to the
+% the topic over the years but also that the field was becoming more collaborative.
 
-Furthermore, the clustering coefficients are also increasing over these periods.
-This analysis indicates that not only more people are were attracted to the
-the topic over the years but also that the field was becoming more collaborative.
+% \begin{table}[!hbtp]
+%     \begin{center}
+%     \begin{tabular}{lcc}
+%         \toprule
+%                   & \textbf{Connected components} & \textbf{Clustering coefficient}\\
+%         \midrule
+%         period 1  & 15                            & 0.5 \\
+%         period 2  & 5                             & 0.0 \\
+%         period 3  & 49                            & 0.14 \\
+%         period 4  & 96                            & 0.3 \\
+%         period 5  & 534                           & 0.64 \\
+%         period 6  & 281                           & 0.74 \\
+%         period 7  & 134                           & 0.76 \\
+%         \bottomrule
+%     \end{tabular}
+%     \end{center}
+%     \caption{Collaborative behaviour measures over time periods.}
+%     \label{table:cc_over_time}
+% \end{table}
 
-\begin{table}[!hbtp]
-    \begin{center}
-    \begin{tabular}{lcc}
-        \toprule
-                  & \textbf{Connected components} & \textbf{Clustering coefficient}\\
-        \midrule
-        period 1  & 15                            & 0.5 \\
-        period 2  & 5                             & 0.0 \\
-        period 3  & 49                            & 0.14 \\
-        period 4  & 96                            & 0.3 \\
-        period 5  & 534                           & 0.64 \\
-        period 6  & 281                           & 0.74 \\
-        period 7  & 134                           & 0.76 \\
-        \bottomrule
-    \end{tabular}
-    \end{center}
-    \caption{Collaborative behaviour measures over time periods.}
-    \label{table:cc_over_time}
-\end{table}
+% \begin{figure}[!hbtp]
+%     \centering
+%     \includegraphics[width=0.8\textwidth]{./assets/images/degrees_histrograms_temporal.pdf}
+%     \caption{Degrees distribution over time.}\label{fig:dist_over_time}
+% \end{figure}
 
-\begin{figure}[!hbtp]
-    \centering
-    \includegraphics[width=0.8\textwidth]{./assets/images/degrees_histrograms_temporal.pdf}
-    \caption{Degrees distribution over time.}\label{fig:dist_over_time}
-\end{figure}
-
-\subsubsection{Influence}
+\subsubsection{Measures of Influence}
 
 Network centrality is used in network theory to study which nodes of a graph are
 the most important. There are several centrality measures used to explain different
@@ -1941,9 +1906,6 @@ The two centrality which are used are:
     \item Closeness centrality \(C_C\).
     \item Betweenness centrality \(C_B\).
 \end{itemize}
-
-\paragraph{Measures}
-\mbox{ }\\
 
 Both network measures are explained with an example. The definitions for both
 centralities are given by Definition~\ref{def:closeness} and~\ref{def:betweenness}.
@@ -1961,7 +1923,7 @@ centralities are given by Definition~\ref{def:closeness} and~\ref{def:betweennes
 \end{definition}
 
 \begin{definition}{Betweenness.}\label{def:betweenness}
-Betweenness centrality of a node \(u\) is the sum of the fraction of all-pairs
+Betweenness centrality of a node \(u\) is the sum of the fraction of all-pairs of
 shortest paths that pass through \(u\). It is denoted as,
 
 \[ C_B(u)=\Sigma_{s,t \in V} \frac{\sigma (s,t|u)}{\sigma(s,t)}\]
@@ -1973,8 +1935,8 @@ Normalised \(C_B\) is normalized by \(\frac{2}{((n-1)(n-2))}\)
 \end{definition}
 
 Closeness is a measure that shows how well a node connects other nodes. Equivalently,
-how well an author is connected to other authors and make them collaborate. 
-This is called influence. On the other hand betweenness is about how connected a
+how well an author is connected to other authors and contributes to them collaborating. 
+On the other hand betweenness is about how connected a
 node is, thus how much influence an author can gain from their environment.
 
 As an example consider a sub graph of \(G_1\) which is illustrated in
@@ -1991,7 +1953,7 @@ same without connecting people as much as node 3.
     \caption{A sub graph of \(G_1\).}\label{fig:subgraph_t}
 \end{figure}
 
-The centrlity for all three networks are calculated using~\cite{networkx}. Table
+The centrality for all three networks are calculated using~\cite{networkx}. Table
 \ref{table:central_authors_pd} summarises the most important authors of network
 \(G_1\) based on the two centralities. The people that influence the field the
 most are Matjaz Perc, Yamir Moreno, Luo-Luo Jiang, Arne Traulsen and Martin A.
@@ -2010,7 +1972,7 @@ the networks influence, it does not hold for the rest of the three authors.
     \end{center}
 \end{table}
 
-\paragraph{Comparison with other topics co authorship}
+\paragraph{Analysis}
 \mbox{ }\\
 
 Influence for a given network is calculated easily. However, we want to assert
@@ -2024,7 +1986,7 @@ it can be stated with 95\% confidence of that the distributions are statisticall
 different. These are plotted as violin plots in Figure~\ref{fig:closeness_dist}.
 
 Note that the centrality values range between 0 and 1. For all three graphs \(C_C\)
-have very low values. Both \(G_1\) and \(G_2\) appear to have a similar distributions.
+have low values. Both \(G_1\) and \(G_2\) appear to have a similar distributions.
 Most authors have have a coefficient of zero and a few authors by the tails
 appear to have a larger coefficient. This means that for the two topics, the highest
 frequency of authors have a very small influence in their field. Though there 
@@ -2039,14 +2001,7 @@ can be seen that authors' centrality is more spread through the different values
     \caption{Closeness distributions for all three networks.}\label{fig:closeness_dist}
 \end{figure}
 
-The betweenness centrality of the networks is compared in a similar manner.
-All three distribution are not normally distributed thus Kruskal Wallis test
-is used again the assert whether they medians are the same. The test returns
-a \(p\) value of  thus the medians are statistically not the same.
-
-Though the are different Figure~\ref{fig:closeness_dist} that all coefficients
-are clustered around the value of zero. Non of the topics authors gain influence
-from their networks.
+Figure~\ref{fig:closeness_dist} shows that all coefficients are clustered around the value of zero.
 
 \begin{center}
 \begin{figure}[!hbtp]
@@ -2056,46 +2011,46 @@ from their networks.
 \end{figure}
 \end{center}
 
-\paragraph{Temporal comparison}
-\mbox{ }\\
+% \paragraph{Temporal comparison}
+% \mbox{ }\\
 
-The two centralities are also studied over time. Table~\ref{table:cc_over_time} higlights
-the authors with the most influnce at each time period. Equivalently, Table~\ref{table:bc_over_time}
-highlights the authors that gained more from the networks' influence at each
-time period.
+% The two centralities are also studied over time. Table~\ref{table:cc_over_time} higlights
+% the authors with the most influnce at each time period. Equivalently, Table~\ref{table:bc_over_time}
+% highlights the authors that gained more from the networks' influence at each
+% time period.
 
-For periods 1, 3, 4, 5 and 6 the authors with the highest closeness centrality
-are the authors with the highest betweenness centrality as well. Several of these
-authors have been shown to also have a strong influence to the entire network
-as well.
+% For periods 1, 3, 4, 5 and 6 the authors with the highest closeness centrality
+% are the authors with the highest betweenness centrality as well. Several of these
+% authors have been shown to also have a strong influence to the entire network
+% as well.
 
-For period 7 though March Harper is the person that influences most authors,
-Chen Yi Xia is the person that gains the most. For period 2 we have a similar
-case. Robert Axelrod appears to be the most influenced author but not gaining 
-as much from it.
+% For period 7 though March Harper is the person that influences most authors,
+% Chen Yi Xia is the person that gains the most. For period 2 we have a similar
+% case. Robert Axelrod appears to be the most influenced author but not gaining 
+% as much from it.
 
-Note that the centrality values are decreasing over the time periods. This could
-be an effect due the size of the network which is increasing. In smaller networks
-authors have more motivation to collaborate with the few people on their fields.
+% Note that the centrality values are decreasing over the time periods. This could
+% be an effect due the size of the network which is increasing. In smaller networks
+% authors have more motivation to collaborate with the few people on their fields.
 
-\begin{table}[!hbtp]
-    \begin{center}
-    \scalebox{0.8}{
-    \input{assets/closeness_periods.tex}}
-    \caption{Authors with the most influnce at each time period.}
-    \label{table:cc_over_time}
-    \end{center}
-\end{table}
+% \begin{table}[!hbtp]
+%     \begin{center}
+%     \scalebox{0.8}{
+%     \input{assets/closeness_periods.tex}}
+%     \caption{Authors with the most influnce at each time period.}
+%     \label{table:cc_over_time}
+%     \end{center}
+% \end{table}
 
-\begin{table}[!hbtp]
-    \begin{center}
-    \scalebox{0.8}{
-    \input{assets/betweness_periods.tex}}
-    \caption{Authors that gained more from the networks influence at each
-    time period.}
-    \label{table:bc_over_time}
-    \end{center}
-\end{table}
+% \begin{table}[!hbtp]
+%     \begin{center}
+%     \scalebox{0.8}{
+%     \input{assets/betweness_periods.tex}}
+%     \caption{Authors that gained more from the networks influence at each
+%     time period.}
+%     \label{table:bc_over_time}
+%     \end{center}
+% \end{table}
 
 \subsubsection{Conclusion}
 
@@ -2129,9 +2084,9 @@ exists within two authors if they have written together. Co authorship was
 decided to be used as be believe other measures, such as citations, perform less
 well.
 
-The findings of this analysis are presented in two parts. The comparison of the
-collaborative behaviour and influence of the prisoner's dilemma field based on
-other topics and how these measures change for the field over time.
+% The findings of this analysis are presented in two parts. The comparison of the
+% collaborative behaviour and influence of the prisoner's dilemma field based on
+% other topics and how these measures change for the field over time.
 
 All three networks have been disjointed with a large number of connected components.
 The collaborative behaviour was based on the nature of these connected components.
@@ -2154,13 +2109,13 @@ help the growth of a field and accelerate findings. The influence that authors
 gain from the respective networks was also explored. The results argued that
 the gain was very low for all three networks.
 
-Collaborations and influence of the field have changed over time. As argued
-by~\cite{Etzkowitz1992} over time the amount of research groups was increasing
-for the topic. However, as stated earlier, as the number of researchers increases
-the amount of influence and collaboration decreases. This is because researchers
-can not have full knowledge of their entire network and the more people the network
-has the more people we actually do not know. The results from the temporal
-analysis imply that this is true for the field of the prisoner's dilemma.
+% Collaborations and influence of the field have changed over time. As argued
+% by~\cite{Etzkowitz1992} over time the amount of research groups was increasing
+% for the topic. However, as stated earlier, as the number of researchers increases
+% the amount of influence and collaboration decreases. This is because researchers
+% can not have full knowledge of their entire network and the more people the network
+% has the more people we actually do not know. The results from the temporal
+% analysis imply that this is true for the field of the prisoner's dilemma.
 
 
 \newpage
