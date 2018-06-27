@@ -1324,37 +1324,37 @@ presented in this section. The three data sets are:
 \end{itemize}
 % TODO archive all data sets
 
-\paragraph{The prisoner's dilemma data set}
-\mbox{ }\\
+\subsubsection{The prisoner's dilemma data set}
 
-The main data set and the main focus of this analysis. The data set~\cite{}
+The main data set and the main focus of this analysis. This data set
 consists of \totalarticles articles, where \uniquetitles have unique titles.
 %TODO add reference to archived dataset
 This is because a total of \numberofduplicates articles have been collected from
 both a journal and arXiv. All duplicates from arXiv are dropped, thus hereupon
 we consider \uniquetitles unique article entries.
 
-There are a number of \manual articles that have not been collected from the
-aforementioned APIs. These articles were manually added to the dataset throughout
+Of these \totalarticles \manual articles that have not been collected from the
+aforementioned APIs. These articles were of specific interest and manually added to the
+dataset throughout
 the writing of Section~\ref{section:timeline}. A more detailed summary of the 
-articles' provenance is given by Table~\ref{table:provenance}.
-
-\begin{table}[!hbtp]
-    \begin{center}
-    \input{assets/provenance_table}
-    \end{center}
-    \caption{Articles' provenance for~\cite{}.}
-    \label{table:provenance}
-\end{table}
-
+articles' provenance is given in Table~\ref{table:provenance}.
 The larger number of articles were collected from arXiv, Springer and IEEE. Both
 Nature and PLOS have a small contribution to the size of the data set. The oldest
 article was published in 1944 and the most recent one in 2017. Note
 that the latest data collection was on December 2017.
 % TODO Ensure this stay accurate
 
-Moreover we calculate the average publication over time. This is done for the overall
-data set and for each journal individually. This is denoted as,
+\begin{table}[!hbtp]
+    \begin{center}
+    \input{assets/provenance_table}
+    \end{center}
+    \caption{Articles' provenance for main data set.} % Use citation when archived
+    \label{table:provenance}
+\end{table}
+
+Not all journal have existed for the same ammount og time, so thus calculate the average
+publication over time. This is done for the overall data set and for each journal
+individually. This is denoted as,
 
 \[ \mu_P = \frac{N_A}{N_Y},\]
 
@@ -1371,18 +1371,16 @@ with 5 articles per year.
     \begin{center}
     \input{assets/rates_table}
     \end{center}
-    \caption{Average publication for~\cite{}.}
+    \caption{Average publication for main data set.} % Use citation when archived
     \label{table:publication_rates}
 \end{table}
 
 Though the average publication offers insights about the publications of the
-fields, it is still a constant number. The data we are handling here are a time
-series. Moreover it appears that our time series has a trend. This is shown
+fields, it is still a constant number. The data we are handling here is a time
+series which appears to have a trend. This is shown
 by calculating the rolling average which is plotted in Figure~\ref{fig:timeseries}.
 The rolling average of each time
-point is calculated as the average of the points on either side of it. The number
-of neighbourhood points is specified as window size and here we have chosen a
-window size of 5.
+point is calculated as the average of the points on either side of it.
 
 The rolling average indicates that the time series has an increasing trend.
 Even so there seems to be a small decrease by the last time point. In order
@@ -1391,15 +1389,14 @@ we conduct a forecast for the next time periods.
 
 Initially we test for stationarity using an Augmented Dickey-Fuller test
 \cite{HARRIS1992381}. A time series data is said to be stationary if its
-statistical properties such as mean and variance remain constant over time. An
-The results show that out data is non stationary: the \(p\) value is greater than
-0.005.
+statistical properties such as mean and variance remain constant over time.
+The results show that our data are not significantly stationary at the 0.005 level
+(\(p > 0.005\)).
 
-For projecting the behaviour of the field of the new years we are using an ARIMA
-model which is able to handel non stationary data. Though the details for the
-ARIMA~\cite{brockwell2013} models are not going to be given here, the parameters
+For projecting the behaviour of the field of the new years we are using an ARIMA~\cite{brockwell2013}
+model which is able to handel non stationary data. The parameters
 of the model have been fitted using the Akaike Information Criterion value.
-The model used was ARIMA (1, 1, 1) at the forecast for the next 10 time
+The model used was ARIMA \((1, 1, 1)\) at the forecast for the next 10 time
 periods are given by Table~\ref{table:forecast}.
 
 \begin{figure}[!hbtp]
@@ -1416,14 +1413,13 @@ periods are given by Table~\ref{table:forecast}.
     \label{table:forecast}
 \end{table}
 
-Thought the time series have indicated a slight decrease we can see that the
+Thought the time series has indicated a slight decrease we can see that the
 model forecasts an increase over the next years.
 
-\paragraph{Auction games and the price of anarchy data sets}
-\mbox{ }\\
+\subsubsection{Auction games and the price of anarchy data sets}
 
-The secondary data sets are described in this subsection. More specifically, a
-summary of both data sets, auction games~\cite{} and price of anarchy~\cite{},
+Two subfields of game theory are chosen for this work; auction game and the
+price of anarchy. A summary of both data sets collected on this two topics %TODO: cite
 is given by Table~\ref{table:summary_other_topics}.
 
 A total of 2103 articles with 3860 unique authors are examined for auction games.
@@ -1452,7 +1448,7 @@ between the frequencies of these two topics.
         \bottomrule
     \end{tabular}
     \end{center}
-    \caption{Data sets~\cite{} and~\cite{} summary.}
+    \caption{Secondary data sets summaries.}
     \label{table:summary_other_topics}
 \end{table}
 
@@ -1464,7 +1460,7 @@ between the frequencies of these two topics.
     \begin{subfigure}{0.5\textwidth}
         \includegraphics[width=\textwidth]{./assets/images/auction_timeline.pdf}
     \end{subfigure}
-\caption{Time plots of~\cite{} and~\cite{}.}
+\caption{Time plots for secondary data sets.} % TODO cite
 \label{fig:timeplots_other_topics}
 \end{figure}
 \end{center}
@@ -1490,7 +1486,7 @@ articles on the price of anarchy.
         \bottomrule
     \end{tabular}
     \end{center}
-    \caption{Articles' provenance for~\cite{} and ~\cite{}.}
+    \caption{Articles' provenance for secondary data sets.}
     \label{table:provenance_other_topics}
 \end{table}
 
@@ -1514,41 +1510,37 @@ articles on the price of anarchy.
     \label{table:other_topics_publication_rates}
 \end{table}
 
-The overall average publication for~\cite{} and~\cite{} are 59 and 20 articles
+The overall average publication for auction games and the price of anarchy are 59 and 20 articles
 respectively. It appears that auction games publication is largely different
 for both the prisoner's dilemma and the price of anarchy. These two topics have
 the same average publication. Note that the significance of each journal differs
 from topic to topic. Though this analysis will not focus on individual sources
 from hereupon.
 
-\paragraph{Temporal analysis}
-\mbox{ }\\
+% \paragraph{Temporal analysis}
+% \mbox{ }\\
 
-For comparison reasons in the following subsections the analysis will also be
-held relative to a temporal analysis. The main data set~\cite{}
-is divided into time period according to the subsections of Section~\ref{section:timeline}.
-The respective measures of unique titles and unique authors for each period is
-given by Table~\ref{table:summary_temporal}.
+% For comparison reasons in the following subsections the analysis will also be
+% held relative to a temporal analysis. The main data set~\cite{}
+% is divided into time period according to the subsections of Section~\ref{section:timeline}.
+% The respective measures of unique titles and unique authors for each period is
+% given by Table~\ref{table:summary_temporal}.
 
-\begin{table}[!hbtp]
-    \begin{center}
-    \input{assets/summary_temporal}
-    \end{center}
-    \caption{Periods and their respective measures.}
-    \label{table:summary_temporal}
-\end{table}
+% \begin{table}[!hbtp]
+%     \begin{center}
+%     \input{assets/summary_temporal}
+%     \end{center}
+%     \caption{Periods and their respective measures.}
+%     \label{table:summary_temporal}
+% \end{table}
 
 In this section we have described the three data sets that we are going to use
 in the following sections in order to identify collaborative behaviour and influence.
 Two data sets of different topics are used for comparison reasons. The frequency of
-articles and authors differs within the three data sets which is ideal. Furthermore
-the journals effect also differ but not much will be done at that level form now
-onwards.
+articles and authors differs within the three data sets which is ideal.
+% Finally a temporal analysis of the data sets~\cite{} will also assists us in
+% obtaining more insights. The period have also be presented here.
 
-Finally a temporal analysis of the data sets~\cite{} will also assists us in
-obtaining more insights. The period have also be presented here.
-In the following section we explore the authors of the papers and their
-connections to one another.
 
 \subsection{Co authorship Analysis}\label{section:co_authorship_analysis}
 
