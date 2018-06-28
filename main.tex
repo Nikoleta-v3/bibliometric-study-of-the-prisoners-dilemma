@@ -72,11 +72,9 @@
     behaviour and identify the influencers of the field.
 \end{abstract}
 
-\section{Introduction}\label{section:introduction}
+\section{The Prisoner's Dilemma}\label{section:introduction}
 
-\subsection{The Prisoner's Dilemma}\label{section:prisoners_dilemma}
-
-The prisoner's dilemma is a two player non-cooperative game~\cite{Flood1958} where
+The prisoner's dilemma is a two player non-cooperative game, originally described in~\cite{Flood1958} where
 the decisions of the players are made simultaneously and independently. Both players
 can choose between cooperation (\textbf{C}) or defection (\textbf{D}).
 
@@ -86,8 +84,8 @@ than if both defect. However, a player has the temptation to deviate. If a
 player was to defect while the other cooperates, the defector receives
 more than if both had cooperated. The reward for mutual cooperation is \(R\),
 for a mutual defection they receive \(P\), and for cooperation-defection,
-the cooperator receives \(S\) where the defector receives \(T\). Thus, the game's
-payoffs are given by,
+the cooperator receives \(S\) where the defector receives \(T\). The game's
+payoffs are generally represented by,
 
 \begin{equation} \label{eq:the_pd_payoffs}
     \begin{pmatrix}
@@ -97,11 +95,11 @@ payoffs are given by,
 
 where \(T > R > P > S \) and \(2R > T + S\) are the conditions for a dilemma
 to exist. Due to rational behaviour and the knowledge that an individual is tempted
-to defect the game's equilibrium lies at a mutual defection and both players
+to defect the game's equilibrium lies at mutual defection and both players
 receive a payoff of \(P\). Thus, the dominant strategy for the prisoner's dilemma
 is \textbf{D}.
 
-However, when the game is studied in a manner where prior outcomes matter, the
+When the game is studied in a manner where prior outcomes matter, the
 defecting choice is no longer necessarily the dominant choice. The repeated
 form of the game is called the iterated prisoner's dilemma and now two players play
 the game repeatedly. Interest was sparked on the iterated prisoner dilemma by
@@ -111,8 +109,8 @@ In his book Axelrod reports on a series of computer tournaments he organised of
 a finite turns games of the iterated prisoner's dilemma. Participants
 had to choose between \textbf{C} and \textbf{D} again and again while having
 memory of their previous encounters. Academics from several fields were invited to
-design computer strategies to compete in the tournament. The pioneer work of Axelrod
-showed that greedy strategies did very poorly in the long run while more altruistic
+design computer strategies to compete in the tournament. The pioneering work of Axelrod
+showed that greedy strategies did very poorly in the long run whereas altruistic
 strategies did better.
 
 ``The Evolution of Cooperation'' is considered a milestone in the field but it
@@ -151,7 +149,7 @@ the collaborations within the field.
 \subsection{Origin and Primal research (1961-1972)}
 
 The origin of the prisoner's dilemma goes back to the 1950s in early experiments
-conducted in RAND~\cite{Flood1958} to test the applicability of games
+conducted at the RAND~\cite{Flood1958} to test the applicability of games
 described in~\cite{VonNeumann1944}. Although the name behind the game was given
 later the same year.
 According to~\cite{Tucker1983}, A. W. Tucker (the PhD supervisor of J. Nash),
@@ -162,36 +160,23 @@ The study of the prisoner's dilemma has attracted people from various fields
 across the years. An early figure within the field is Prof A. Rapoport,
 a mathematical psychologist, whose work focused on peacekeeping.
 In his early work~\cite{rapoport1965} Rapoport conducted experiments using humans
-to simulate a play of the prisoner's dilemma. Experimental groups were not been
-used only by Rapoport but it was a common mean of studying the game
-\cite{Evans1966, Gallo1968, Lutzker1961, Mack1971, Sensenig1972} and are still
-being used today. %TODO reference a good article with human studies.
+to simulate a play of the prisoner's dilemma. Experimental groups have not been
+used only by Rapoport. They are a common mean of studying the game \cite{Evans1966,
+Gallo1968, Lutzker1961, Mack1971, Sensenig1972} used until today. %TODO reference a good article with human studies.
 
-Those experiments explored the conditions under which altruist behaviour emerges
-in human societies. Conditions such as, the gender~\cite{Evans1966,
+The early experiments were exploring the conditions under which altruist behaviour emerges
+in human groups. Conditions explored were the gender~\cite{Evans1966,
 Lutzker1961, Mack1971} of individuals, the representation of the game
 \cite{Evans1966}, the distance between players~\cite{Sensenig1972}, the initial effects
 \cite{Tedeschi1968} and whether the experimenter was biased~\cite{Gallo1968}.
 
-Even though, several of these experiments were held and continuous research on
-the topic was undergoing game theorists were still in disagreement about
-the best way to play the game~\cite{rapoport1965}. Inspired by the work of
-Rapoport and intrigued by the very same question the political scientist R.
-Axelrod took upon himself to identify the dominant strategy of the prisoners dilemma.
-
-The main difference of Axelrod's approach was that machines were going to be used
-instead of humans. The issues with using humans, according to Axelrod
-\cite{Axelrod2012}, was the fact that humans can act very randomly even though
-the aim of the game is clear to them. Thus, Axelrod was the first researcher,
-to the author's knowledge, to perform a computer tournament of the iterated
-prisoner's dilemma. The tournaments and their results are discussed in
-the next sections.
+The community however soon came to ask a different question: ``what is the best way to play the game?''
+Inspired by the work of Rapoport a political scientist R. Axelrod conducted the first
+ever, to the author's knowledge, computer tournaments of the IPD. According to
+Axelrod~\cite{Axelrod2012}, he decided to use computers because human participant
+were known to act very randomly even though the aim of the game is clear to them.
 
 \subsection{Axelrod's Tournaments (1981-1984)}\label{subsection:axelrods_tournament}
-
-This section serves as a follow up from the earlier years of the topic and as an
-introduction to the modern ways of studying the prisoner's dilemma. It is
-dedicated to the computer tournaments of R. Axelrod from 1981 to 1984.
 
 The first computer tournament was performed in 1980~\cite{Axelrod1980a}.
 Several scientists were invited to submit their strategies, written in the
