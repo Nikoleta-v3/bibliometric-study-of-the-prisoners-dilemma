@@ -66,7 +66,7 @@
     of the game attracted attention in 1980's after
     the publication of the ``The Evolution of Cooperation'' and has been a topic
     of pioneering research ever since. In this work we aim to provide a chronological
-    literature review of the field. This is achieved by partitioning the timeline into five different
+    literature review of the field. This is achieved by partitioning the timeline into six different
     time periods. Furthermore, a comprehensive data set of literature is analysed
     using network theoretic approaches in order to explore the collaborative
     behaviour and identify the influencers of the field.
@@ -88,7 +88,7 @@ receive a higher payoff than that of a mutual cooperation.
 
 A player's payoffs are generally represented by (\ref{eq:the_pd_payoffs}). Both
 players receive a reward for mutual cooperation, \(R\), and a payoff \(P\) for
-mutual defection. A player that defected while the other cooperates receives a payoff of
+mutual defection. A player that defects while the other cooperates receives a payoff of
 \(T\), whereas the cooperator receives \(S\). The dilemma exists due
 to constrains (\ref{eq:constrain_one}) and (\ref{eq:constrain_two}).
 
@@ -176,18 +176,22 @@ strategies that could promote international cooperation. It should come to no su
 that in his teaching and research he used the prisoner's dilemma.
 In~\cite{rapoport1965} Rapoport conducted experiments using a group of humans
 to simulate rounds of the iterated prisoner's dilemma. He sought out to understand
-the conditions under which altruist behaviour emerged using human groups, and
+the conditions under which altruist behaviour emerged, and
 he was not the only one in his time.
 Conditions explored were the gender~\cite{Evans1966, Lutzker1961, Mack1971} of
 individuals, the representation of the game~\cite{Evans1966}, the distance between
 players~\cite{Sensenig1972}, the initial effects~\cite{Tedeschi1968} and whether
-the experimenter was biased~\cite{Gallo1968}.
+the experimenter was biased~\cite{Gallo1968}. Several of the results presented
+in these works argued about the importance of these factors.
 
-Several results argued about the importance of these factors. The early experiments
-were very constrained. The only source of simulation was through experimental groups
-and those came with disadvantages. In the next section we will introduce
-the evolutionary computer tournaments of Axelrod and in the next few sections
-it will be come evident how the field has not stood still ever since.
+The early experiments were very constrained. The only source of simulation was
+through groups of humans and those came with disadvantages. Firstly, humans can
+behave very randomly and secondly both the size and the background of the
+individuals were different from experiment to experiment.
+
+The robustness and efficiency of the early experiments was in question. In the
+section we will introduce the pioneer computer tournaments of R. Axelrod, that
+largely replaced experimental groups in the study of the iterated prisoner's dilemma.
 
 \subsection{Axelrod's Tournaments (1981-1984)}\label{subsection:axelrods_tournament}
 
@@ -431,7 +435,7 @@ in a such a well designed framework. As describe in~\cite{Rapoport2015},
 influential in casting light on the conflict between an individual and the collective
 rationality reflected in the choices of a population whose members are unknown
 and its size unspecified, thereby opening a new avenue of research.''
-It is important to mention however that the only source code available in the code
+However, it is important to mention that the only source code available is the code
 for the 62 strategies of the second tournament, found on Axelrod's personal
 website~\cite{fortan_code}.
 
@@ -449,9 +453,7 @@ in the prisoner's dilemma spread the knowledge of the game worldwide and across
 disciplines. Several researchers responded immediately to Axelrod's tournaments
 and the study of cooperation became of critical interest once again.
 This section focuses on the research that was carried out after the initial
-computer tournaments. More specifically, research that introduced new strategies
-in order to surpass several limitations of Tit for Tat over the time period between
-1984 and 1993.
+computer tournaments, over the time period between 1984 and 1993.
 
 % One of the scientific disciplines that immediately employed Axelrod's work has
 % been the ecological field. More specifically, the works of~\cite{Craig1984,
@@ -497,13 +499,6 @@ causes it to become content. If it was the defector while content, it
 becomes contrite and cooperates. When contrite it becomes content only after
 there has been a mutual cooperation.
 
-Such mistakes, such as noise and misperception, are unlikely to occur in a computer
-tournament, but have to be expected
-in real life situations. Actual biological situations are fraught with errors and uncertainties. The
-answer to the opponents last move is to increase or decrease the readiness to cooperate.
-This emerges quite clearly from~\cite{Sugden2004} introduction of Contrite Tit for Tat,
-and~\cite{Milinski1987} experiments on sticklebacks.
-
 Another limitation of~\cite{axelrod1981} was that the
 interactions have been between pairs of players, as argued by~\cite{Joshi1987}.
 In several applications, however, interactions involve more
@@ -514,8 +509,6 @@ individuals play a "hard" Tit For Tat, meaning that they will cooperate until on
 player defects, and the number of individuals playing hard Tir Fot Tat passes a
 certain threshold, then hard Tit For Tat can dominate a population of Defectors.
 But this threshold rises as the number of individuals in the society increases.
-"hard" Tit for Tat means that they will cooperate only when all remaining opponents
-cooperate.
 
 The work of~\cite{May1987} pointed out that it is important `to take more account of intrinsic
 stochasticities'. This suggested considering stochastic strategies and
@@ -571,7 +564,7 @@ The utility of a player can be given by multiplying the steady states of
 offered a mathematical framework to calculate the utility of two players without
 actually simulating the game. The payoff of a player \(p\) can be obtained by,
 
-\[S_p = \bar{v} \times \begin{pmatrix} R \\ S \\ T \\ P \end{pmatrix}\]
+\[s_p = \bar{v} \times \begin{pmatrix} R \\ S \\ T \\ P \end{pmatrix}\]
 
 In 1992 reactive strategies were used
 to investigate which strategies would manage to take over
@@ -579,28 +572,30 @@ the population and would be ESS in an environment with noise. The results demons
 though a small fraction of Tit for Tat players have been essential for the emergence
 of cooperation, more generous strategies took over the population. More specifically
 the re-active strategy known as \textbf{Generous Tit for Tat} which is give by
-the triplet \((1, 0, \frac{2}{3})\).
+the triplet \((1, 0, \frac{2}{3})\). Generous Tit for Tat was not the only strategy
+to outperform Tit for Tat in a noisy environment, same conclusions were made
+by~\cite{Godfray1992, Bendor1991}.
 
-Generous Tit for Tat was not the only strategy to outperform Tit for Tat in
-noisy environment,~same conclusions were made by~\cite{Godfray1992, Bendor1991}
 In~\cite{Bendor1991} a similar tournament to that of Axelrod's was performed,
-but this time it was a noise tournament. Bendor had invited researchers from several
+but with noise. Bendor had invited researchers from several
 departments across his university. Each match would last a random number of turns,
 with a probability of 0.0067 of ending in the next turn. The results of his
 tournament demonstrated that Tit for Tat performed rather poorly and the highest
 ranked strategies were generous ones. The top ranked strategy was
 \textbf{Nice and Forgiving}. Nice and Forgiving, differs in significant ways
-from Tit for Tat.
+from Tit for Tat. Initially, Nice's generosity takes the form of a benign indifference.
+It will continue to play cooperation as long as its rival's cooperation level
+exceeded 80\%. Secondly, although it will retaliate if its rival's observed cooperation fell
+below 80, it is willing to revert to full cooperation before its partner does,
+so long as the partner satisfies a certain thresholds of acceptable behaviour.
 
-Initially, Instead of reciprocating by returning an unbiased estimate of its opponent's
-action, Nice's generosity took the form of a benign indifference. It would continue
-to play cooperation as long as its rival's cooperation level exceeded 80\%.
-Secondly, although it would retaliate if its rival's observed cooperation fell
-below 80, it was willing to revert to full cooperation before its partner did,
-so long as the partner satisfied certain thresholds of acceptable behaviour.
-
-The next section will focus a bit more on the evolutionary settings and dynamics
-that the iterated prisoner's dilemma offered.
+Mistakes, such as noise and misperception, are unlikely to occur in a computer
+tournament, but have to be expected in real life situations. Actual biological
+situations are fraught with errors and uncertainties~\cite{Milinski1987}.
+As it has been discussed through various works in the section, the answer to the
+opponents mistaken moves is to increase or decrease the readiness to cooperate.
+The next section will focus on the evolutionary settings and dynamics that the
+iterated prisoner's dilemma offers.
 
 \subsection{Evolutionary Dynamics (1987-1992)}\label{section:evolutionary_dynamics}
 
@@ -692,7 +687,7 @@ It was shown that for different values of the temptation payoff \(b\), this pure
 deterministic spatial version could generate chaotically change patterns in which
 cooperators and defectors could persist together in a mix population. 
 Though it was known that in unstructured populations natural selection would favour
-defection,~\cite{Nowak1992}, provided evidence that in structured populations
+defection,~\cite{Nowak1992} provided evidence that in structured populations
 the results can be wildly different.
 The authors claimed that the essential results remain true of all topologies; 
 the results also hold whether self interactions are taken into account.
@@ -714,11 +709,11 @@ the results also hold whether self interactions are taken into account.
 
 Later in 2003, the authors~\cite{MASUDA2003} decided to consider small world
 networks instead of regular graphs. More specifically they used the well
-known Watts and Strogatz~\cite{watts1998} graphs. Watts and Strogatz are not
-regular graphs with a \(k\) regular degree. The experiment starts and each node
-has \(k/2\) nearest neighbours on each side.  Then a proportion \(p\) of
-the total edges is rewired by removing \(pkn/2\) edges and creating
-\(pkn/2\) new edges each of whose initial vertex is the initial vertex of a removed
+known Watts and Strogatz~\cite{watts1998} graphs. The experiment starts with each node
+having \(k/2\) nearest neighbours on each side
+. Then a proportion \(\rho\) of
+the total edges is rewired by removing \(\rho kn/2\) edges and creating
+\(\rho kn/2\) new edges each of whose initial vertex is the initial vertex of a removed
 edge and its terminal vertex is randomly chosen so that the generated graph does
 not have multiple edges or once removed edges.
 
@@ -728,17 +723,17 @@ The results of their work had been that:
 
 \begin{itemize}
     \item For small b, it is not so tempting for players to exploit cooperators.
-    Thus cooperators converge regardless the value of \(p\).
-    \item The number of cooperators highly depends on p roughly for for higher
+    Thus cooperators converge regardless the value of \(\rho\).
+    \item The number of cooperators highly depends on \(\rho\) roughly for for higher
     values of the temptation payoff \(b\).
     \item Lastly once temptation if very strong, even cooperators happen to form
     tight clusters, they cannot survive once they face defectors. Finally, the 
     cooperators eventually extinguish.
 \end{itemize}
 
-In~\cite{Ohtsuki2006} where they considering regular \(k\) degree graphs
-introduced a rule regarding the favour of cooperation in spatial tournaments.
-They used the following game matrix,
+In 2006, Ohtsuki studied regular \(k\) degree graphs and introduced a "rule"
+regarding when is cooperation favoured in spatial tournaments.
+Ohtsuki used the following game matrix,
 
 \begin{equation} \label{eq:the_pd_payoffs}
     \begin{pmatrix}
@@ -746,16 +741,16 @@ They used the following game matrix,
     \end{pmatrix}
 \end{equation}
 
+where \(b\) represents the altruistic act and \(c\) represents the cost.
+Ohtsuki etc all proved that natural selection favours cooperation if
+the ration of  \(b/c\) exceeds the average number of neighbours.
+Their result, however, holds for weak selection. That means that the fitness of
+an individual is only proportional to their payoff.
 
-Ohtsuki etc all proved that natural selection favours cooperation, if the benefit
-of the altruistic act, \(b\), divided by the cost, \(c\), exceeds the average number of
-neighbours, \(k\), which means \(b/c > k\). Their result, however, holds for
-weak selection. That means that the fitness of an individual is only proportional
-to their payoff. Later the same year, Ohtsuki and Nowak~\cite{Ohtsuki2006replicator},
+Later the same year, Ohtsuki and Nowak~\cite{Ohtsuki2006replicator},
 managed to approximate the dynamics of a population on graphs using an approximation of the
 replicator equations. The replicator equation was introduced as the first closed
 form differential equation to describe the dynamics of natural selected populations.
-
 A lot of work has been done on evolutionary games on graphs. Though we have covered
 a number of academic publications~\cite{szabo2007} have also conducted a comprehensive
 review.
@@ -1078,7 +1073,7 @@ memory one strategies and their results indicate that a Pavlov like behaviour
 is stable and dominant. But how cooperation evovle in such structure situations
 and more specifically in situations where the number of neighbours can vary,
 still remains answered. In~\cite{Allen2017} the authors tried to shed some light to the
-question. However this was done for week selection. Their results argue that by
+question. However this was done for weak selection. Their results argue that, by
 considering the the coalescence times of random walks of any given graphs they can
 approximate when cooperation will emerge.
 
@@ -1091,6 +1086,14 @@ according to the number of those who show the intention of cooperation/defection
 This \(NPD\) model was introduced in order to provide one explanation of why
 people tend to take into account others' decisions even when doing so gives them
 no payoff consequences at all.
+
+% \subsection{Conclusion}
+
+% Section~\ref{section:timeline}
+
+% Section one
+
+% Section two
 
 
 % \section{Analysing a large corpus of articles}\label{section:analysis}
