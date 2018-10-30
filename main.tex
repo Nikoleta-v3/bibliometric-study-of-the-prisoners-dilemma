@@ -791,9 +791,9 @@ was written in 1996 by~\cite{Miller1996}. Strategies represented by finite autom
 were learning to update their choices through a genetic algorithm.
 The specific type of finite automata that were used were Moore machines~\cite{moore1956}.
 Finite state machine consist of a set of internal states. One of these states
-is the initial state of the machine. A machine also consits of transitions
+is the initial state of the machine. A machine also consists of transitions
 arrows associated with the states. Each arrow is labelled with \(A/R\) where
-\(A\) is the opponent’s last action and \(R\) is the player’s response.
+\(A\) is the opponent's last action and \(R\) is the player's response.
 For example let us consider a graphical representation of the famous Tit for Tat
 given by a finite machine, Figure~\ref{fig:tit_for_tat_fsm}.
 
@@ -805,7 +805,7 @@ given by a finite machine, Figure~\ref{fig:tit_for_tat_fsm}.
 \end{figure}
 
 Miller used the genetic algorithm to train finite state machines in
-enviroments with noise. His results showed that even a small difference in noise
+environments with noise. His results showed that even a small difference in noise
 (from 1\% to 3\%) significantly changed the characteristics of the
 evolving strategies. Three machines described in his paper are the following:
 
@@ -829,11 +829,10 @@ and then two cooperations. In a tournament of 12 strategies~\cite{Beaufils1997},
 Gradual had managed to outperform strategies such as Tit for Tat and Pavlov.
 
 Following the success of Gradual the authors of~\cite{tzafestas-2000a} conducted
-the same tournament, with now 13 strategies, desinged to outperform Gradual. Their strategy
+the same tournament, with now 13 strategies, designed to outperform Gradual. Their strategy
 was the \textbf{Adaptive Tit for Tat} and the algorithm used by it is given by
 Algorithm~\ref{alg:adaptive_tft}. Adaptive Tit for Tat ranked first in it's tournament
-surpassing Gradual. It should be noticable that the number of opponents was low
-and might have influenced the perfomance of Adaptive Tit for Tat.
+surpassing Gradual.
 
 \begin{algorithm}
 \begin{algorithmic}
@@ -855,10 +854,10 @@ and might have influenced the perfomance of Adaptive Tit for Tat.
 In 2006, Slany and Kienreich, tried to deal with one of the problems of Tit for Tat.
 This problem was described above and its that Tit for Tat players would go into
 a chain of mutual defections if noise were to be added in the environment.
-Furthemore, the also altered their strategy so that it had the ability to
+Furthermore, the also altered their strategy so that it had the ability to
 to recognize and exploit the Random strategy in a way that after an opponent
 strategy crosses a certain randomness threshold they conclude that the opponent is
-a Random strategy and change the behavour to act as a Defector.
+a Random strategy and change the behaviour to act as a Defector.
 They called their strategy OmegaTFT~\cite{Wolfgang2006}.
 
 Similar to Miller's work, in~\cite{Ashlock2006b} the author presented two new
@@ -881,7 +880,7 @@ illustrates their diagrammatic representation.
 \end{figure}
 
 During the experiments that introduced Fortress3 and Fortress4 a large diversity
-of strategies were found. Differencianting between strategies represented as 
+of strategies were found. Differentiating between strategies represented as 
 a finite machine is not an easy task.  It is not obvious looking at a finite
 state diagram how a machine will behave, and many different machines can represent
 the same strategy.
@@ -1020,9 +1019,8 @@ a standard tournament with 200 turns but also a noisy tournament. For the standa
 tournament the newly introduced trained strategies outperform the designed ones.
 In the case of noise there is one particular strategy that has not seen much
 attention in the literature called ``Desired Belief Strategy''~\cite{Au2006}.
-
-These tournaments are, to the authors knowledge, the biggest tournaments and 
-evolutionary progress that have been done in the field.
+These experiments are, to the authors knowledge, the biggest ones done in the
+field in terms of different strategies.
 
 \subsubsection{Software}
 
@@ -1052,9 +1050,9 @@ from several such as:~\cite{Latorre2018}.
 % QUESTION: should add all the other publications? Even though I do not
 % discuss them?
 
-\subsection{Contemporary period (2017 - 2018)}
+\subsection{Contemporary period (2017 - 2018)}\label{section:contemporary_period}
 
-In research years the study of the iterated prisoners' dilemma is still active
+In recent years the study of the iterated prisoners' dilemma is still active
 and papers are still being published. New strategies, new variants of the game
 and new applications are being introduced every year. In this section we will
 briefly review some articles that have been published between 2017 and 2018.
@@ -1066,37 +1064,82 @@ Furthermore, in~\cite{Dridi2018} they explore whether learning in social situati
 can be driven by rewards.
 
 A lot of work has been done on evolutionary dynamics on structured populations.
-This is mainly because their applications in social studies. However, understanding
-evolutionary game dynamics in structured populations remains difficult.
+This is mainly because the applications they can offer in real life prolem,
+such as social interactions.
 In~\cite{Liu2017} the authors consider the evolutionary spatial prisoner dilemma with
 memory one strategies and their results indicate that a Pavlov like behaviour
-is stable and dominant. But how cooperation evovle in such structure situations
-and more specifically in situations where the number of neighbours can vary,
-still remains answered. In~\cite{Allen2017} the authors tried to shed some light to the
-question. However this was done for weak selection. Their results argue that, by
-considering the the coalescence times of random walks of any given graphs they can
-approximate when cooperation will emerge.
+is stable and dominant. But how does cooperation evolve in structure situations
+and more specifically in situations where the number of neighbours can vary?
+In~\cite{Allen2017} the authors tried to shed some light to this question.
+However this was done for weak selection. Their results argue that, by considering
+the coalescence times of random walks of any given graph they can approximate if
+cooperation will emerge.
 
 Several variations to the actual game are still being introduced. Ohtsuki in~\cite{Ohtsuki2018},
-studies the \(NPD\), driefly introduced in section~\ref{section:responses_to_computer_tournament}.
-Ohtsuki propose a model called coordinated cooperation. It's an \(NPD\) game
+studies the NPD, briefly introduced in Section~\ref{section:responses_to_computer_tournament}.
+Ohtsuki propose a model called coordinated cooperation. It's an NPD game
 which starts with is a negotiation before an actual game is played. Each individual
 can flexibly change their decision, either to cooperation or to defection,
 according to the number of those who show the intention of cooperation/defection.
-This \(NPD\) model was introduced in order to provide one explanation of why
+This NPD model was introduced in order to provide one explanation of why
 people tend to take into account others' decisions even when doing so gives them
 no payoff consequences at all.
 
-% \subsection{Conclusion}
+\subsection{Conclusion}
 
-% Section~\ref{section:timeline}
+In Section~\ref{section:timeline} we covered a literature review on the prisoner's
+dilemma research. We reviewed articles from 1950 to 2018. This was achieved by
+partitioning the timeline in six different sections. Here we will briefly give an
+overview of the outcomes presented by each of these sections.
 
-% Section one
+In Section~\ref{section:origin}, we covered the origins of the game and some early
+research that was conducted back in the 60s-70s. This research was very limited
+and constrained. The only experiments researchers could conduct were experiments
+that used humans to simulate rounds of the game. Even such experiments are still
+being conducted today, most researchers prefer the use of computer tournaments instead.
 
-% Section two
+Computer tournaments were introduced in 1980s, and their introduction was
+covered in Section~\ref{subsection:axelrods_tournament}. Axelrod performed several
+tournaments in the years 1980 to 1988. All of these have been summarized and presented.
+His work provided proof that reciprocity, more specifically Tit for Tat, was
+a very successful and robust way of playing the game. However, his work did not
+come without criticism.
 
+The main criticism was that Axelrod did not account for uncertainty behaviour that
+could occur in the interactions between strategies. Several works, discussed
+in Section~\ref{section:responses_to_computer_tournament} proved that
+Tit for Tat was not robust enough in such environments. On the contrary, the
+most robust strategies were strategies that would  increase or decrease, based on
+the type of uncertainty, the willingness to cooperate or to defect.
 
-% \section{Analysing a large corpus of articles}\label{section:analysis}
+Even in evolutionary research Axelrod's results were questioned. Though there is
+not a clear answer to which strategies are ESS in the iterated prisoner's dilemma,
+several results were introduced in Section~\ref{section:evolutionary_dynamics}.
+In unstructured populations, Boyd and Lorderbaum showed that if importance of the
+future is large enough, then no deterministic strategy can be ESS. Structure
+populations appear to allow cooperation to emerge more. For weak selection it has
+been shown that we can approximate if cooperation will emerge just by looking
+the degree of the graph.
+
+In Section~\ref{section:modern_approaches}, we presented a number of different
+tournaments that were performed and how the community still aims to identify a
+dominant strategy or even factors that make a strategy successful. Axelrod spoke
+about simplicity and kindness but through out research people had different
+results to show. Zero determinant strategies, were extortionate strategies and
+their success lead the field to believe that exploiting individual opponents can
+be more beneficial than being nice. In more recent years, more complex strategies
+using modern methods of both representation and training, are being introduced.
+These strategies are not easy to described. However, we can observe the sort
+of characteristics these strategies have developed, on their own, and gain
+a better understanding of what makes a strategy successful.
+
+In the final section of this literature review, Section~\ref{section:contemporary_period},
+we very briefly discussed some recent research that was published in 2017-2018.
+Though several other articles have been published in the past few months, the aim of the
+section was to demonstrate that the field is still an active one. This will become
+more evident in Section~\ref{section:analysis}.
+
+\section{Analysing a large corpus of articles}\label{section:analysis}
 
 % In this section we will focus on the analysis of the study of the prisoner's dilemma
 % using a large dataset of articles. In Section~\ref{section:data_collection} the data
