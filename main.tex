@@ -1146,18 +1146,22 @@
 
 \section{Analysing a large corpus of articles}\label{section:analysis}
 
-In this section we will focus on the analysis of the study of the prisoner's dilemma
+Following the chronological literature review we conducted in Section~ref{},
+in this section we will focus on the analysis of the study of the prisoner's dilemma
 using a large dataset of articles. In Section~\ref{section:data_collection} the data
-will be described and analysed in Section~\ref{section:preliminary_analysis}. In Section
-\ref{section:co_authorship_analysis} the author relationships will be analysed graph
+collection is covered, followed by a preliminary analysis of the data in Section
+\ref{section:preliminary_analysis}. In Section
+\ref{section:co_authorship_analysis} we described how the author relationships will be analysed graph
 theoretically to ascertain the level of collaborative nature of the field and identify
 influencer. This will be done relative to:
 
 \begin{itemize}
-    \item two other sub fields of game theory: auction games~\cite{menezes2005} and 
+    \item Two other sub fields of game theory: auction games~\cite{menezes2005} and 
     the price of anarchy~\cite{roughgarden2005}.
-    % \item A temporal analysis. Removing the temporal stuff for now.
+    \item A temporal analysis.
 \end{itemize}
+
+Finally in Section, we present the results of our analysis.
 
 \subsection{Data Collection}\label{section:data_collection}
 
@@ -1166,33 +1170,20 @@ academic journals. Several databases and collections today offer access through
 an open application protocol interface (API). An API allows users to query
 directly a journal's database and bypass the user interface side of the journal.
 Interacting with an API has two phases: requesting and receiving.
+The request phase includes composing a url with the details of what is wanted. For
+example, \url{http://export.arxiv.org/api/query?search_query=abs:prisoner's dilemma&max_results=1}
+represents a request message. The first part of the request is the address
+of the API we are querying.
 
-The request phase includes composing a url with the details of what is wanted. Figure~\ref{fig:request_message}
-presents an example of a request message. The first part of the request is the address
-of the API we are querying. In this example the address corresponds to the API of arXiv.
+In this example the address corresponds to the API of arXiv.
 The second part of the request contains the search arguments. In our example we
 are requesting for a single article that the word `prisoners dilemma' exists within
 it's title. The format of the request message is different from API to API.
-
 The receive phase includes receiving a number of raw metadata of articles that
 satisfied the request message. The raw metadata are commonly received in extensive markup
-language (xml) or Javascript object notation (json) format~\cite{nurseitov2009}.
+language (xml) or Javascript object notation (json) formats~\cite{nurseitov2009}.
 Similarly to the request message, the structure of the received data differs from journal
 to journal.
-
-\begin{figure}[!hbtp]
-    \centering
-    \begin{minted}
-        [
-        autogobble=true,
-        framesep=2mm,
-        fontsize=\normalsize,
-        ]
-        {xml}
-        http://export.arxiv.org/api/query?search_query=abs:prisoner's dilemma&max_results=1
-    \end{minted}
-    \caption{\label{fig:request_message} A request message for the arXiv API.}
-\end{figure}
 
 The data collection is crucial to this study. To ensure that this study can be
 reproduced all code used to query the different APIs has been packaged as a Python library and is
@@ -1216,88 +1207,28 @@ These are four prominent journals in the field, as well as the pre print server 
 In the case of an article being both in a journal and the arXiv, only the journal version
 was considered.
 
-For each article~\cite{nikoleta_2017} collects a list of the features, shown in Table~\ref{table:arcas_results}.
-Note that the plain text of the article is not collected, just the metadata. The
-data is archived and available at. %TODO: archive data
-In this work only the features of Table~\ref{table:result_set} are used.
-
-\begin{table}[!hbtp]
-    \begin{center}
-    \resizebox{0.9\linewidth}{!}{\arraycolsep=2.5pt%
-        \begin{tabular}{lll}
-            \toprule
-             & Result name & Explanation \\
-             \midrule
-             1 & Abstract & The abstract of the article.\\ 
-             2 & Author & A single entity of an author from the list of
-             authors of the respective article. Thus there are multiple entries for each article.\\ 
-             3 & Date & Year of publication.\\ 
-             4 & Journal & Journal of publication.\\ 
-             5 & Key & A generated key containing an authors name and
-             publication year (ex. Glynatsi2017).\\ 
-             6 & Keyword & A single entity of a keyword assigned to the article
-             by the given journal.\\ 
-             7 & Labels & A single entity of labels assigned to the article
-             manual by us.\\ 
-             8 & Pages & Pages of publication.\\ 
-             9 & Provenance & Scholarly database for where the article was
-             collected.\\ 
-             10 & Score & Score given to article by the given journal.\\ 
-             11 & Title & Title of article.\\ 
-             12 & Unique key &  A unique hash. \\ 
-            \bottomrule
-        \end{tabular}}
-    \end{center}
-    \caption{Metadata for each entry.}
-    \label{table:arcas_results}
-\end{table}
-
-\begin{table}[!hbtp]
-    \begin{center}
-        \begin{tabular}{lll}
-            \toprule
-             & Result name & Explanation \\
-             \midrule
-             1 & Abstract & The abstract of the article.\\ 
-             2 & Author & A single entity of an author from the list of
-             authors of the respective article.\\ 
-             3 & Date & Year of publication.\\ 
-             4 & Journal & Journal of publication.\\ 
-             5 & Provenance & Scholarly database for where the article was
-             collected.\\ 
-             6 & Title & Title of article.\\ 
-            \bottomrule
-        \end{tabular}
-    \end{center}
-    \caption{Structure of data set used for this work.}
-    \label{table:result_set}
-\end{table}
-
-A series of keywords were used to identify relevant articles. Articles for which
-any of these keywords existed within the title or the abstract are included in the
-analysis. The keywords used to collect the main data set were,
+A series of search terms were used to identify relevant articles. Articles for which
+any of these terms existed within the title, the abstract or the text are included
+in the analysis. The terms used to collect the main data set were,
 
 \begin{itemize}
     \item ``prisoner's dilemma'',
     \item ``prisoners dilemma'',
-    \item ``tit-for-tat'',
-    \item ``tit for tat'',
-    \item ``zero determinant strategies''.
+    \item ``prisoners evolution'',
+    \item ``prisoner dilemma'',
+    \item ``prisoner game theory''
 \end{itemize}
 
 As will be described in Section~\ref{section:preliminary_analysis}, two other
 game theoretic subfields were also considered in this work, auction games and the
-price of anarchy. For collecting data on these subfields the following keywords were used:
+price of anarchy. For collecting data on these subfields the search terms used
+were ``auction game theory'' and ``price of anarchy''. The data that were collected
+and used in this work are archived and available at. %TODO: archive data.
 
-\begin{itemize}
-    \item key: ``auction game theory'';
-    \item key: ``price of anarchy''.
-\end{itemize}
-
-For both of these topics only a single keyword has been used. In comparison 5
-different keywords were used to search of articles on the prisoner's dilemma.
-The amount of articles collected from the key such as `tit for tat' and
-`zero determinant' had a small contribution to the size of the data set.
+% For both of these topics only a single keyword has been used. In comparison 5
+% different keywords were used to search of articles on the prisoner's dilemma.
+% The amount of articles collected from the key such as `tit for tat' and
+% `zero determinant' had a small contribution to the size of the data set.
 
 \subsection{Preliminary Analysis}\label{section:preliminary_analysis}
 
