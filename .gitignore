@@ -16,7 +16,9 @@
 *_minted-main/*
 
 # data
+src/raw_data
 src/data
+src/articles
 src/nbs/ag_bc_dist.tex
 src/nbs/ag_cc_dist.tex
 src/nbs/pa_bc_dist.tex

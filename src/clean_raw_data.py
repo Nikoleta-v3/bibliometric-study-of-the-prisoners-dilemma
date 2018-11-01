@@ -4,24 +4,12 @@ import json
 import arcas
 
 def normalise_names(s):
+    elements = s.split()
     
-    # split the string into a list  
-    l = s.split() 
-    new = "" 
-  
-    # traverse in the list  
-    for i in range(len(l)-1): 
-        s = l[i] 
-          
-        # adds the capital first character  
-        new += (s[0].upper()+'.') 
-          
-    # l[-1] gives last item of list l. We 
-    # use title to print first character in 
-    # capital. 
-    new += l[-1].title() 
-      
-    return new 
+    new = elements[0][0].upper()+'.'
+    new += elements[-1].title()
+    
+    return new
 
 for api in [arcas.Nature(), arcas.Ieee(), arcas.Plos(), arcas.Arxiv(), arcas.Springer()]:
 
@@ -53,4 +41,4 @@ for api in [arcas.Nature(), arcas.Ieee(), arcas.Plos(), arcas.Arxiv(), arcas.Spr
     edited_names = [normalise_names(name) for name in names]
     dataframe.author = edited_names
 
-    api.export(dataframe, '{}.json'.format(api_name))
+    api.export(dataframe, 'data/{}.json'.format(api_name))
