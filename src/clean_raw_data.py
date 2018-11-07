@@ -1,4 +1,5 @@
 import glob
+import imp
 import json
 
 import pandas as pd
@@ -6,16 +7,10 @@ import pandas as pd
 import arcas
 import unidecode
 
+tools = imp.load_source('tools', '../tools.py')
+
 path = 'raw_data/'
 topic = 'pd'
-
-def normalise_names(s):
-    elements = s.split()
-    
-    new = elements[0][0].upper()+'.'
-    new += elements[-1].title()
-    
-    return new
 
 for api in [arcas.Nature(), arcas.Ieee(), arcas.Plos(), arcas.Arxiv(), arcas.Springer()]:
 
@@ -44,7 +39,7 @@ for api in [arcas.Nature(), arcas.Ieee(), arcas.Plos(), arcas.Arxiv(), arcas.Spr
                 edited.append(last + ' ' + first)
             names = edited
 
-        edited_names = [normalise_names(name) for name in names]
+        edited_names = [tools.normalise_names(name) for name in names]
         unicoded_names = [unidecode.unidecode(name) for name in edited_names]
         dataframe.author =  unicoded_names
 

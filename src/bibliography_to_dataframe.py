@@ -1,6 +1,9 @@
+import imp
 import itertools
 
 import pandas as pd
+
+tools = imp.load_source('tools', '../tools.py')
 
 columns = ['abstract', 'author', 'category', 'date', 'doi', 'journal', 'key',
            'open_access', 'primary_category', 'provenance', 'score', 'title',
@@ -24,14 +27,6 @@ def extract_info(entry):
         key, value = element.split('=')
         details[key] = value
     return details
-
-def normalise_names(s):
-    elements = s.split()
-    
-    new = elements[0][0].upper()+'.'
-    new += elements[-1].title()
-    
-    return new
 
 def dict_to_dataframe(raw_article):
     values = []
@@ -77,7 +72,7 @@ for article in articles:
 
 # break up authors
 for i, article in enumerate(articles):
-    article['author'] = [normalise_names(name) for name in  article['author'].split(' and')]
+    article['author'] = [tools.normalise_names(name) for name in  article['author'].split(' and')]
 
 dfs = []
 for article in articles:
