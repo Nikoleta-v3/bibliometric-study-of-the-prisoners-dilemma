@@ -1,9 +1,11 @@
 import imp
 import itertools
 
+import hashlib
+
 import pandas as pd
 
-tools = imp.load_source('tools', '../tools.py')
+tools = imp.load_source('tools', 'tools.py')
 
 columns = ['abstract', 'author', 'category', 'date', 'doi', 'journal', 'key',
            'open_access', 'primary_category', 'provenance', 'score', 'title',
@@ -34,6 +36,16 @@ def dict_to_dataframe(raw_article):
         try:
             if key == 'provenance':
                 values.append(['Manual'])
+            elif key == 'unique_key':
+                name = raw_article['author'][0][-1]
+                title = raw_article['title']
+                year =  raw_article['date']
+
+                string = name + title + year
+                hash_object = hashlib.md5(string.encode('utf-8'))
+
+                unique_key = hash_object.hexdigest()
+                values.append([unique_key])
             elif type(raw_article[key]) is not list:
                 values.append([raw_article[key]])
             else:
@@ -71,7 +83,7 @@ for article in articles:
         article[new_key] = article.pop(k)
 
 # break up authors
-for i, article in enumerate(articles):
+for article in articles:
     article['author'] = [tools.normalise_names(name) for name in  article['author'].split(' and')]
 
 dfs = []
