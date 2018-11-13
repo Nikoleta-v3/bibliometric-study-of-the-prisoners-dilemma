@@ -16,6 +16,7 @@
 \usepackage{booktabs}
 \usepackage{minted}
 \usepackage{multicol}
+\usepackage{graphicx}
 \usepackage{algorithm,algorithmic}
 \usetikzlibrary{er,positioning, calc}
 
@@ -31,24 +32,22 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%PARAMETERS%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\totalarticles}{\input{assets/total_articles.txt}}
-\newcommand{\uniquetitles}{\input{assets/unique_titles.txt}}
-\newcommand{\numberofduplicates}{\input{assets/number_of_duplicates.txt}}
 \newcommand{\manual}{\input{assets/prov_manual.txt}}
-\newcommand{\authors}{\input{assets/authors.txt}}
-\newcommand{\edges}{\input{assets/prisoners_edges.txt}}
-\newcommand{\auctionauthors}{\input{assets/authors_auction.txt}}
-\newcommand{\auctionedges}{\input{assets/edges_auction.txt}}
-\newcommand{\priceauthors}{\input{assets/authors_price.txt}}
-\newcommand{\priceedges}{\input{assets/edges_price.txt}}
-\newcommand{\prisonerscon}{\input{assets/prisoners_connected_components.txt}}
-\newcommand{\prisonerscc}{\input{assets/prisoners_clustering.txt}}
-\newcommand{\pricecon}{\input{assets/price_connected_components.txt}}
-\newcommand{\pricecc}{\input{assets/price_clustering.txt}}
-\newcommand{\auctioncon}{\input{assets/auction_connected_components.txt}}
-\newcommand{\auctioncc}{\input{assets/auction_clustering.txt}}
-\newcommand{\prisonerisolated}{\input{assets/prisoners_isolated.txt}}
-\newcommand{\auctionisolated}{\input{assets/auction_isolated.txt}}
-\newcommand{\priceisolated}{\input{assets/price_isolated.txt}}
+\newcommand{\authors}{\input{assets/number_of_authors.txt}}
+% \newcommand{\edges}{\input{assets/prisoners_edges.txt}}
+% \newcommand{\auctionauthors}{\input{assets/authors_auction.txt}}
+% \newcommand{\auctionedges}{\input{assets/edges_auction.txt}}
+% \newcommand{\priceauthors}{\input{assets/authors_price.txt}}
+% \newcommand{\priceedges}{\input{assets/edges_price.txt}}
+% \newcommand{\prisonerscon}{\input{assets/prisoners_connected_components.txt}}
+% \newcommand{\prisonerscc}{\input{assets/prisoners_clustering.txt}}
+% \newcommand{\pricecon}{\input{assets/price_connected_components.txt}}
+% \newcommand{\pricecc}{\input{assets/price_clustering.txt}}
+% \newcommand{\auctioncon}{\input{assets/auction_connected_components.txt}}
+% \newcommand{\auctioncc}{\input{assets/auction_clustering.txt}}
+% \newcommand{\prisonerisolated}{\input{assets/prisoners_isolated.txt}}
+% \newcommand{\auctionisolated}{\input{assets/auction_isolated.txt}}
+% \newcommand{\priceisolated}{\input{assets/price_isolated.txt}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{A systematic literature review of the Prisoner's Dilemma; collaboration and influence.}
@@ -1146,14 +1145,14 @@
 
 \section{Analysing a large corpus of articles}\label{section:analysis}
 
-Following the chronological literature review we conducted in Section~ref{},
+Following the literature review we conducted in Section~\ref{},
 in this section we will focus on the analysis of the study of the prisoner's dilemma
 using a large dataset of articles. In Section~\ref{section:data_collection} the data
 collection is covered, followed by a preliminary analysis of the data in Section
 \ref{section:preliminary_analysis}. In Section
-\ref{section:co_authorship_analysis} we described how the author relationships will be analysed graph
-theoretically to ascertain the level of collaborative nature of the field and identify
-influencer. This will be done relative to:
+\ref{section:co_authorship_analysis} we describe how authors relationships are
+analysed graph theoretically to ascertain the level of collaborative nature
+of the field and identify influence. This will be done relative to:
 
 \begin{itemize}
     \item Two other sub fields of game theory: auction games~\cite{menezes2005} and 
@@ -1190,26 +1189,21 @@ reproduced all code used to query the different APIs has been packaged as a Pyth
 available online~\cite{nikoleta_2017}. The software could be used for any type of
 projects similar to the one described here, documentation for it is available at:
 \url{http://arcas.readthedocs.io/en/latest/}.
+Project~\cite{nikoleta_2017} allow us to collect articles from a list of APIs by
+specifying just a single keyword. Four prominent journal in the field and a
+pre print server were used as sources to collect data for this analysis. Those
+were PLOS, Nature, IEEE, Springer and arXiv.
 
-Project~\cite{nikoleta_2017} allow us to collect articles from a list of APIS by
-specifying just a single keyword. The following sources were used to collect data
-for this analysis:
+% \begin{enumerate}
+%         \item PLOS~\cite{plos_one};
+%         \item Nature~\cite{nature};
+%         \item IEEE~\cite{ieee};
+%         \item Springer~\cite{springer}.
+%         \item arXiv~\cite{mckiernan2000};
+% \end{enumerate}
 
-\begin{enumerate}
-        \item PLOS~\cite{plos_one};
-        \item Nature~\cite{nature};
-        \item IEEE~\cite{ieee};
-        \item Springer~\cite{springer}.
-        \item arXiv~\cite{mckiernan2000};
-\end{enumerate}
-
-These are four prominent journals in the field, as well as the pre print server arXiv~\cite{mckiernan2000}.
-In the case of an article being both in a journal and the arXiv, only the journal version
-was considered.
-
-A series of search terms were used to identify relevant articles. Articles for which
-any of these terms existed within the title, the abstract or the text are included
-in the analysis. The terms used to collect the main data set were,
+A series of search terms were used to identify relevant articles. The terms used
+to collect the main data set were,
 
 \begin{itemize}
     \item ``prisoner's dilemma'',
@@ -1218,6 +1212,11 @@ in the analysis. The terms used to collect the main data set were,
     \item ``prisoner dilemma'',
     \item ``prisoner game theory''
 \end{itemize}
+
+and articles for which any of these terms existed within the title, the abstract
+or the text are included in the analysis. More specifically, 30\% of article
+considered here were included because any of the above terms existed within
+the abstract, 30\% within the main text and 40\% within the title.
 
 As will be described in Section~\ref{section:preliminary_analysis}, two other
 game theoretic subfields were also considered in this work, auction games and the
@@ -1242,24 +1241,20 @@ presented in this section. The three data sets are:
 \end{itemize}
 % TODO archive all data sets
 
-\subsubsection{The prisoner's dilemma data set}
-
-The main data set and the main focus of this analysis. This data set
-consists of \totalarticles articles, where \uniquetitles have unique titles.
+The main data set and the main focus of this analysis is [ref]. This data set
+consists of \totalarticles articles with unique titles. In case of duplicates
+the preprint version of an articles (collected from arXiv) were dropped.
 %TODO add reference to archived dataset
-This is because a total of \numberofduplicates articles have been collected from
-both a journal and arXiv. All duplicates from arXiv are dropped, thus hereupon
-we consider \uniquetitles unique article entries.
-
-Of these \totalarticles \manual articles that have not been collected from the
+Of these \totalarticles article, \manual have not been collected from the
 aforementioned APIs. These articles were of specific interest and manually added to the
 dataset throughout
 the writing of Section~\ref{section:timeline}. A more detailed summary of the 
-articles' provenance is given in Table~\ref{table:provenance}.
-The larger number of articles were collected from arXiv, Springer and IEEE. Both
-Nature and PLOS have a small contribution to the size of the data set. The oldest
-article was published in 1944 and the most recent one in 2017. Note
-that the latest data collection was on December 2017.
+articles' provenance is given by Table~\ref{table:provenance}.
+
+Only 3\% of the data set consists by articles we manually added and half the
+articles were collected from arXiv. The rest four journals have contributed 9\%-17\%
+percent of the articles. Note that the latest data collection was perform on November
+2018.
 % TODO Ensure this stay accurate
 
 \begin{table}[!hbtp]
@@ -1270,20 +1265,16 @@ that the latest data collection was on December 2017.
     \label{table:provenance}
 \end{table}
 
-Not all journal have existed for the same ammount og time, so thus calculate the average
-publication over time. This is done for the overall data set and for each journal
-individually. This is denoted as,
-
-\[ \mu_P = \frac{N_A}{N_Y},\]
-
-where \(N_A\) is the total number of articles and \(N_Y\) is the years of publication.
-The years of publication is calculated as the range between 2017 and the first published
-article within the data.
-
-Table~\ref{table:publication_rates} summarises these averages. Overall an average of
-21 articles are published per year on the topic. The most significant contribution
-to this appears to be from arXiv with 8 articles per year, followed by Springer
-with 5 articles per year.
+The average number of publications was calculated for the entire dataset and for
+each provenance. The average number of publications is denoted as,
+\(\mu_P = \frac{N_A}{N_Y},\) where \(N_A\) is the total number of articles and
+\(N_Y\) is the years of publication. The years of publication is calculated as
+the range between 2018 and the first published article, for each provenance,
+within the data.
+These averages are summarised in Table~\ref{table:publication_rates}.
+Overall an average of 62 articles are published per year on the topic. The most
+significant contribution to this appears to be from arXiv with 32 articles per year,
+followed by Springer with 11 articles per year.
 
 \begin{table}[!hbtp]
     \begin{center}
@@ -1294,33 +1285,44 @@ with 5 articles per year.
 \end{table}
 
 Though the average publication offers insights about the publications of the
-fields, it is still a constant number. The data we are handling here is a time
-series which appears to have a trend. This is shown
-by calculating the rolling average which is plotted in Figure~\ref{fig:timeseries}.
-The rolling average of each time
-point is calculated as the average of the points on either side of it.
+fields, it remains a constant number. The data we are handling here is a time
+series (plotted on Figure~\ref{fig:timeseries}). The earliest entry is in 1950
+when the game was introduced and the latest is in 2018. Though a small
+number of publication were made between 1950-1980 since the 1980s, and the
+introduction of computer tournaments, we can see a steady increase to the number
+of publications. Moreover there is a decrease in 2017-2018. We believe that this
+is because our data are incomplete for these time periods. Articles that have been
+written in 2017-2018 have either not being published yet or have are not
+retrievable yet by the APIs.
 
-The rolling average indicates that the time series has an increasing trend.
-Even so there seems to be a small decrease by the last time point. In order
-to offer some insights as to what expected of the field in the next years
-we conduct a forecast for the next time periods.
+Our statements can be explored by studying the time series. Figure~\ref{fig:fitting},
+illustrates a scatter plot showing the number of articles published from 198
+onwards. Exponential fitting of the data, which was done using~\cite{},
+and a perfect fitting proofs that since 1980 to 2016 there has been an increase
+to the number of publications.
 
-Initially we test for stationarity using an Augmented Dickey-Fuller test
-\cite{HARRIS1992381}. A time series data is said to be stationary if its
-statistical properties such as mean and variance remain constant over time.
-The results show that our data are not significantly stationary at the 0.005 level
-(\(p > 0.005\)).
-
-For projecting the behaviour of the field of the new years we are using an ARIMA~\cite{brockwell2013}
-model which is able to handel non stationary data. The parameters
-of the model have been fitted using the Akaike Information Criterion value.
-The model used was ARIMA \((1, 1, 1)\) at the forecast for the next 10 time
-periods are given by Table~\ref{table:forecast}.
+The fitted model can be used to project the behaviour of the field of the next 
+5 years. The forecasted periods are plotted in Figure and their exact values are
+given byTable~\ref{table:forecast}. Thought the time series has indicated a slight
+decrease we can see that the model forecasts an increase over the next years.
 
 \begin{figure}[!hbtp]
+\begin{minipage}{.45\textwidth}
     \centering
-    \includegraphics[width=0.6\textwidth]{./assets/images/timeseries.pdf}
-    \caption{Time series of main data set and the rolling average.}\label{fig:timeseries}
+    \includegraphics[width=\textwidth]{./assets/images/timeline.pdf}
+    \caption{Line plot showing the number of articles published on the PD 1950-2018.}\label{fig:timeseries}
+\end{minipage}%
+\begin{minipage}{.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{./assets/images/fitting.pdf}
+    \caption{Scatter plot showing the number of articles published on the PD 1980-2018.}\label{fig:fitting}
+\end{minipage}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width=.5\textwidth]{./assets/images/forecasting.pdf}
+    %\caption{Time series of main data set and the rolling average.}\label{fig:fitting}
 \end{figure}
 
 \begin{table}[!hbtp]
@@ -1331,136 +1333,45 @@ periods are given by Table~\ref{table:forecast}.
     \label{table:forecast}
 \end{table}
 
-Thought the time series has indicated a slight decrease we can see that the
-model forecasts an increase over the next years.
-
-\subsubsection{Auction games and the price of anarchy data sets}
-
-Two subfields of game theory are chosen for this work; auction game and the
+Moreover, two subfields of game theory have been chosen for this work; auction game and the
 price of anarchy. A summary of both data sets collected on this two topics %TODO: cite
-is given by Table~\ref{table:summary_other_topics}.
+is given by Table~\ref{table:summary_other_topics} in comparison to that of the
+PD.
 
-A total of 2103 articles with 3860 unique authors are examined for auction games.
-Auction games is well studied topic with the earliest entry going
-back to 1974. In comparison, 296 unique articles have been collected on price of
-anarchy. The earliest entry being in 2003 and a total of 668 unique authors have
-written about the topic.
-
-In Figure~\ref{fig:timeplots_other_topics} a time plot for each topic is
-displayed and is exhibited that both topics have had an increasing trend over
-the years. Though price of anarchy is clearly a new topic compared to auction games.
-
-The frequency of the prisoner's dilemma, for both articles and authors, lies
-between the frequencies of these two topics.
-
-\begin{table}[!hbtp]
-    \begin{center}
-    \begin{tabular}{llr}
+\begin{table}
+    \resizebox{\textwidth}{!}{\begin{tabular}{lccccccccc}
         \toprule
-         &            Price of anarchy &  Auction games \\
+        Data Set & Num. Articles & Num. Authors & Nature (\%) & IEEE (\%) & PLOS (\%)& Springer (\%)& 
+        arXiv (\%)& Overall Av. publication \\
         \midrule
-        Unique articles      & 296  & 2103 \\
-        Unique authors       & 668  & 3860 \\
-        Min publication year & 2003 & 1974 \\
-        Max publication year & 2017 & 2017 \\
+        Prisoner's Dilemma & 3637 & \authors & 17.10 & 8.74 & 11.44 & 8.96  & 51.31 & 62 \\
+        Auction Games      & 1386 & 1041     & 13.92 & 0.72 & -     & 65.51 & 19.84 & 29 \\
+        Price of Anarchy   &  432 &  367     & 48.38 &    - & -     & 32.18 & 19.44 & 9 \\
         \bottomrule
-    \end{tabular}
-    \end{center}
-    \caption{Secondary data sets summaries.}
-    \label{table:summary_other_topics}
+        \end{tabular}}
+        \caption{Measures of all three data sets.}
 \end{table}
 
-\begin{center}
 \begin{figure}[!hbtp]
-    \begin{subfigure}{0.5\textwidth}
-        \includegraphics[width=\textwidth]{./assets/images/anarchy_timeline.pdf}
-    \end{subfigure}
-    \begin{subfigure}{0.5\textwidth}
-        \includegraphics[width=\textwidth]{./assets/images/auction_timeline.pdf}
-    \end{subfigure}
-\caption{Time plots for secondary data sets.} % TODO cite
-\label{fig:timeplots_other_topics}
-\end{figure}
-\end{center}
-
-The provenance of the articles is given by Table~\ref{table:provenance_other_topics}.
-Almost 1500 article for auction games have been collected from Springer, that is
-more than three times the articles that have been collected from other sources.
-PLOS and Nature have a minor contribution and PLOS and Nature had no
-articles on the price of anarchy.
-
-\begin{table}[!hbtp]
-    \begin{center}
-    \begin{tabular}{lcc}
-        \toprule
-        \textbf{Provenance} & \textbf{Total articles} & \textbf{Total articles}\\
-                   & (auction games) & (price of anarchy)\\
-        \midrule
-        Springer   &                1429 &                78 \\
-        arXiv      &                 436 &                108 \\
-        IEEE       &                 301 &                131 \\
-        PLOS       &                  15 &                 -  \\
-        Nature     &                   1 &                 -   \\
-        \bottomrule
-    \end{tabular}
-    \end{center}
-    \caption{Articles' provenance for secondary data sets.}
-    \label{table:provenance_other_topics}
-\end{table}
-
-\begin{table}[!hbtp]
-    \begin{center}
-    \begin{tabular}{lcc}
-        \toprule
-        \textbf{Provenance} & \textbf{Av. publication}  & \textbf{Av. publication}\\
-                            & (auction games) & (price of anarchy)\\
-        \midrule
-        Overall             &          58.973 & 19.812 \\
-        Springer            &          38.622 & 4.875  \\
-        arXiv               &          11.784 & 6.750   \\
-        IEEE                &           8.135 & 8.188    \\
-        PLOS                &           0.405 &   -       \\
-        Nature              &           0.027 &   -        \\
-        \bottomrule
-    \end{tabular}
-    \end{center}
-    \caption{Average publication for auction games and the price of anarchy.}
-    \label{table:other_topics_publication_rates}
-\end{table}
-
-The overall average publication for auction games and the price of anarchy are 59 and 20 articles
-respectively. It appears that auction games publication is largely different
-for both the prisoner's dilemma and the price of anarchy. These two topics have
-the same average publication. Note that the significance of each journal differs
-from topic to topic. Though this analysis will not focus on individual sources
-from hereupon.
-
-% \paragraph{Temporal analysis}
-% \mbox{ }\\
-
-% For comparison reasons in the following subsections the analysis will also be
-% held relative to a temporal analysis. The main data set~\cite{}
-% is divided into time period according to the subsections of Section~\ref{section:timeline}.
-% The respective measures of unique titles and unique authors for each period is
-% given by Table~\ref{table:summary_temporal}.
-
-% \begin{table}[!hbtp]
-%     \begin{center}
-%     \input{assets/summary_temporal}
-%     \end{center}
-%     \caption{Periods and their respective measures.}
-%     \label{table:summary_temporal}
-% \end{table}
+    \begin{minipage}{.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{./assets/images/Auction_Games.pdf}
+        \caption{Line plot showing the number of articles published on Auction Games.}\label{fig:timeseries_ag}
+    \end{minipage}%
+    \begin{minipage}{.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{./assets/images/Price_of_Anarchy.pdf}
+        \caption{Line plot showing the number of articles published on the Price of Anarchy.}\label{fig:timeseries_pa}
+    \end{minipage}
+    \end{figure}
 
 In this section we have described the three data sets that we are going to use
 in the following sections in order to identify collaborative behaviour and influence.
 Two data sets of different topics are used for comparison reasons. The frequency of
 articles and authors differs within the three data sets which is ideal.
-% Finally a temporal analysis of the data sets~\cite{} will also assists us in
-% obtaining more insights. The period have also be presented here.
 
 
-\subsection{Co authorship Analysis}\label{section:co_authorship_analysis}
+\subsection{Methodology}\label{section:co_authorship_analysis}
 
 Most academic research is undertaken in the form of
 collaborative effort. As discussed in~\cite{Kyvik2017}, it is rationale that two
@@ -1507,525 +1418,525 @@ We introduced several network measures that we will be using such as:
     \item Centrality.
 \end{itemize}
 
-\subsubsection{Constructing a co authorship network}
+% \subsubsection{Constructing a co authorship network}
 
-To construct a co authorship network we need to consider all the unique authors.
-The issue with retrieving the unique authors is that authors names can be written
-in different ways in different sources. For example consider the author of this
-paper:
+% To construct a co authorship network we need to consider all the unique authors.
+% The issue with retrieving the unique authors is that authors names can be written
+% in different ways in different sources. For example consider the author of this
+% paper:
 
-\begin{itemize}
-    \item Nikoleta Glynatsi
-    \item Nikoleta E. Glynatsi
-    \item Nikoleta Evdokia Glynatsi
-\end{itemize}
+% \begin{itemize}
+%     \item Nikoleta Glynatsi
+%     \item Nikoleta E. Glynatsi
+%     \item Nikoleta Evdokia Glynatsi
+% \end{itemize}
 
-Consequently, several different entries of the same author existed within the data
-set. Thus we wanted to figure out when two author names were the same in real life.
-Though identifying if two string correspond to the same author is human possible
-the data sets consited of more than 1000 authors, thus we wanted to automate the
-procedure.
+% Consequently, several different entries of the same author existed within the data
+% set. Thus we wanted to figure out when two author names were the same in real life.
+% Though identifying if two string correspond to the same author is human possible
+% the data sets consited of more than 1000 authors, thus we wanted to automate the
+% procedure.
 
-This was done by using the Levenshtein Distance~\cite{miller2009}. The Levenshtein
-Distance is a metric for measuring the difference between two sequences. It is
-based upon the number of actions one has to take to transform one string into
-the other. These actions include:
+% This was done by using the Levenshtein Distance~\cite{miller2009}. The Levenshtein
+% Distance is a metric for measuring the difference between two sequences. It is
+% based upon the number of actions one has to take to transform one string into
+% the other. These actions include:
 
-\begin{enumerate}
-    \item Insertion;
-    \item Deletion;
-    \item Substitution of a single character.
-\end{enumerate}
+% \begin{enumerate}
+%     \item Insertion;
+%     \item Deletion;
+%     \item Substitution of a single character.
+% \end{enumerate}
 
-Let us consider an example where we are trying to calculate the distance between
-the two strings. These are `Wang' and `Yang'. To compute the distance in a non-recursive
-way, we use a matrix \(D\) containing the distances between all the prefixes of the
-two strings. The first row and column are indexed by empty strings. The rest of
-the rows and columns are index by the prefixes of the two strings.
+% Let us consider an example where we are trying to calculate the distance between
+% the two strings. These are `Wang' and `Yang'. To compute the distance in a non-recursive
+% way, we use a matrix \(D\) containing the distances between all the prefixes of the
+% two strings. The first row and column are indexed by empty strings. The rest of
+% the rows and columns are index by the prefixes of the two strings.
 
-The matrix is filled from left to right. The first row is filled as follows:
+% The matrix is filled from left to right. The first row is filled as follows:
 
-\begin{enumerate}
-    \item To go from an empty string to an empty string zero actions are needed.
-    Thus the \(D_{\text{e}, \text{e}}\) is 0.
-    \item To go from an empty string to `W', or the other way around, 1 action
-    is needed. Thus the \(D_{\text{e}, \text{W}}\) is 1.
-    \item For every new letter we have to take another action \((+1)\).
-\end{enumerate}
+% \begin{enumerate}
+%     \item To go from an empty string to an empty string zero actions are needed.
+%     Thus the \(D_{\text{e}, \text{e}}\) is 0.
+%     \item To go from an empty string to `W', or the other way around, 1 action
+%     is needed. Thus the \(D_{\text{e}, \text{W}}\) is 1.
+%     \item For every new letter we have to take another action \((+1)\).
+% \end{enumerate}
 
-Similarly, this is done for the first columns. For rest of the elements
-we follow a similar approach, but this time the previous distances are also
-taken in account. For example, \(D_{\text{Y}, \text{W}}\). For the letter `Y'
-to go to `W' a single action is required. Note that now 1 is added to the minimum
-distance between of \(D_{\text{e}, \text{e}}, D_{\text{e}, \text{W}}\) and
-\(D_{\text{e}, \text{Y}}\). 
+% Similarly, this is done for the first columns. For rest of the elements
+% we follow a similar approach, but this time the previous distances are also
+% taken in account. For example, \(D_{\text{Y}, \text{W}}\). For the letter `Y'
+% to go to `W' a single action is required. Note that now 1 is added to the minimum
+% distance between of \(D_{\text{e}, \text{e}}, D_{\text{e}, \text{W}}\) and
+% \(D_{\text{e}, \text{Y}}\). 
 
-Similarly we fill the rest of matrix. The last value computed, bottom right,
-is the Levenshtein Distance of the two strings. In our example it is calculated
-to be 1.
+% Similarly we fill the rest of matrix. The last value computed, bottom right,
+% is the Levenshtein Distance of the two strings. In our example it is calculated
+% to be 1.
 
-\[ D = \kbordermatrix{
-     & \text{e} & \text{W} & \text{A} & \text{N} & \text{G} \\
-   \text{e} & 0 & 1 & 2 & 3 & 4 \\
-    \text{Y} & 1 & 1 & 2 & 3 & 4 \\
-    \text{A} & 2 & 2 & 1 & 2 & 3 \\
-    \text{N} & 3 & 3 & 2 & 1 & 2 \\
-    \text{G} & 4 & 4 & 3 & 2 & 1
-  }\]
+% \[ D = \kbordermatrix{
+%      & \text{e} & \text{W} & \text{A} & \text{N} & \text{G} \\
+%    \text{e} & 0 & 1 & 2 & 3 & 4 \\
+%     \text{Y} & 1 & 1 & 2 & 3 & 4 \\
+%     \text{A} & 2 & 2 & 1 & 2 & 3 \\
+%     \text{N} & 3 & 3 & 2 & 1 & 2 \\
+%     \text{G} & 4 & 4 & 3 & 2 & 1
+%   }\]
 
-In this work we calculate the ratio of two string matching for all possible
-pairs of authors in the data sets. The matching ratio is calculated as,
+% In this work we calculate the ratio of two string matching for all possible
+% pairs of authors in the data sets. The matching ratio is calculated as,
 
-\[(1 - \frac{\text{lev}}{m}) \times 100,\]
+% \[(1 - \frac{\text{lev}}{m}) \times 100,\]
 
-where \(\text{lev}\) is the distance and \(m\) is the length of the longest of
-the two words. If the ratio of a pair was between \(85\) and \(99\) both entries
-were highlighted. The highlighted entries were manually checked to assure that
-there were indeed the same author and then one of them was replaced by the other.
+% where \(\text{lev}\) is the distance and \(m\) is the length of the longest of
+% the two words. If the ratio of a pair was between \(85\) and \(99\) both entries
+% were highlighted. The highlighted entries were manually checked to assure that
+% there were indeed the same author and then one of them was replaced by the other.
 
-For example all entries with author name written as example ``Y. Moreno'' were
-replaced by ``Yamir Moreno''.
+% For example all entries with author name written as example ``Y. Moreno'' were
+% replaced by ``Yamir Moreno''.
 
-The manual check is performed because not all highlighted entries are indeed the
-same. For example:
+% The manual check is performed because not all highlighted entries are indeed the
+% same. For example:
 
-\begin{enumerate}
-    \item Zhen Yang and
-    \item Zhen Wang
-\end{enumerate}
+% \begin{enumerate}
+%     \item Zhen Yang and
+%     \item Zhen Wang
+% \end{enumerate}
 
-are two different authors. Once the name entries have been cleaned the
-co authorship networks can be defined. The definition of a co authorship network
-is given by:
+% are two different authors. Once the name entries have been cleaned the
+% co authorship networks can be defined. The definition of a co authorship network
+% is given by:
 
-\begin{definition}{Co authorship network.}
-    A co authorship network is an undirected network \(G\) of vertices \(V\) and
-    edges \(E\) where vertices representing each unique author and an edge
-    connects two authors if and only if those authors have written together.
-    No weight has been applied to the edges nor the nodes.
-\end{definition}
+% \begin{definition}{Co authorship network.}
+%     A co authorship network is an undirected network \(G\) of vertices \(V\) and
+%     edges \(E\) where vertices representing each unique author and an edge
+%     connects two authors if and only if those authors have written together.
+%     No weight has been applied to the edges nor the nodes.
+% \end{definition}
 
-%Define what a network is and then G_1, G_2, G_3
-The three networks considered:
+% %Define what a network is and then G_1, G_2, G_3
+% The three networks considered:
 
-\begin{itemize}
-    \item \(G_1\), the prisoner's dilemma network, where \(V(G_1)=\) \authors and
-    \(E(G_1)=\) \edges.
-    \item \(G_2\), the auction games network, where \(V(G_2)=\) \auctionauthors and
-    \(E(G_2)=\) \auctionedges.
-    \item \(G_3\), the auction games network, where \(V(G_3)=\) \priceauthors and
-    \(E(G_3)=\) \priceedges.
-\end{itemize}
+% \begin{itemize}
+%     \item \(G_1\), the prisoner's dilemma network, where \(V(G_1)=\) \authors and
+%     \(E(G_1)=\) \edges.
+%     \item \(G_2\), the auction games network, where \(V(G_2)=\) \auctionauthors and
+%     \(E(G_2)=\) \auctionedges.
+%     \item \(G_3\), the auction games network, where \(V(G_3)=\) \priceauthors and
+%     \(E(G_3)=\) \priceedges.
+% \end{itemize}
 
-The respective illustrations of \(G_1, G_2\) and \(G_3\) are given by Figures
-\ref{fig:authors_network} and \ref{fig:co-authorship-other-topics}.
+% The respective illustrations of \(G_1, G_2\) and \(G_3\) are given by Figures
+% \ref{fig:authors_network} and \ref{fig:co-authorship-other-topics}.
 
-\begin{figure}[!hbtp]
-    \centering
-    \includegraphics[width=0.8\textwidth]{./assets/images/co-authors-network.pdf}
-    \caption{Co authorship network for the prisoner's dilemma.}\label{fig:authors_network}
-\end{figure}
+% \begin{figure}[!hbtp]
+%     \centering
+%     \includegraphics[width=0.8\textwidth]{./assets/images/co-authors-network.pdf}
+%     \caption{Co authorship network for the prisoner's dilemma.}\label{fig:authors_network}
+% \end{figure}
 
-\begin{center}
-    \begin{figure}[!hbtp]
-        \begin{subfigure}{0.5\textwidth}
-            \includegraphics[width=\textwidth]{./assets/images/co-authors-network-auction.pdf}
-            \caption{Co authorship network for auction games.}
-        \end{subfigure}
-        \begin{subfigure}{0.5\textwidth}
-            \includegraphics[width=\textwidth]{./assets/images/co-authors-network-price.pdf}
-            \caption{Co authorship network for the price of anarchy.}
-        \end{subfigure}
-    \caption{Co authorship network for secondary data sets.}
-    \label{fig:co-authorship-other-topics}
-    \end{figure}
-    \end{center}
+% \begin{center}
+%     \begin{figure}[!hbtp]
+%         \begin{subfigure}{0.5\textwidth}
+%             \includegraphics[width=\textwidth]{./assets/images/co-authors-network-auction.pdf}
+%             \caption{Co authorship network for auction games.}
+%         \end{subfigure}
+%         \begin{subfigure}{0.5\textwidth}
+%             \includegraphics[width=\textwidth]{./assets/images/co-authors-network-price.pdf}
+%             \caption{Co authorship network for the price of anarchy.}
+%         \end{subfigure}
+%     \caption{Co authorship network for secondary data sets.}
+%     \label{fig:co-authorship-other-topics}
+%     \end{figure}
+%     \end{center}
 
-\subsubsection{Measures of collaboration}
+% \subsubsection{Measures of collaboration}
 
-In this section we ascertain the level of collaborative nature of the field.
-This is measured as the connections authors can
-have within their groups. Moreover, how strongly connected these groups are.
-Several connectivity measures will be used to explain such behaviour which are
-introduced through various examples.
+% In this section we ascertain the level of collaborative nature of the field.
+% This is measured as the connections authors can
+% have within their groups. Moreover, how strongly connected these groups are.
+% Several connectivity measures will be used to explain such behaviour which are
+% introduced through various examples.
 
-The first measure introduced is the \textbf{number of connected components}. A connected
-component of an undirected graph is a maximal set of nodes such that each pair
-of nodes is connected by a path. Two examples are illustrated in Figure
-\ref{fig:connected_components}. These are two different sub graphs of \(G_1\)
-with a number of connected components of 1 and 5.
+% The first measure introduced is the \textbf{number of connected components}. A connected
+% component of an undirected graph is a maximal set of nodes such that each pair
+% of nodes is connected by a path. Two examples are illustrated in Figure
+% \ref{fig:connected_components}. These are two different sub graphs of \(G_1\)
+% with a number of connected components of 1 and 5.
 
-\begin{center}
-\begin{figure}[!hbtp]
-    \begin{subfigure}{0.5\textwidth}
-        \includegraphics[width=\textwidth]{./assets/images/connected_example_one.pdf}
-        \caption{A sub graph of \(G_1\) with 1 connected component.}
-    \end{subfigure}
-    \begin{subfigure}{0.5\textwidth}
-        \includegraphics[width=\textwidth]{./assets/images/connected_example_two.pdf}
-        \caption{A sub graph of \(G_1\) with 5 connected component.}
-    \end{subfigure}
-\caption{Connected components examples.}
-\label{fig:connected_components}
-\end{figure}
-\end{center}
+% \begin{center}
+% \begin{figure}[!hbtp]
+%     \begin{subfigure}{0.5\textwidth}
+%         \includegraphics[width=\textwidth]{./assets/images/connected_example_one.pdf}
+%         \caption{A sub graph of \(G_1\) with 1 connected component.}
+%     \end{subfigure}
+%     \begin{subfigure}{0.5\textwidth}
+%         \includegraphics[width=\textwidth]{./assets/images/connected_example_two.pdf}
+%         \caption{A sub graph of \(G_1\) with 5 connected component.}
+%     \end{subfigure}
+% \caption{Connected components examples.}
+% \label{fig:connected_components}
+% \end{figure}
+% \end{center}
 
-Note that a vertex with no incident edges is itself a connected component.
-The number of connected components gives a naive measure of how disjoint the network is.
-In essence the number of groups in the field.
+% Note that a vertex with no incident edges is itself a connected component.
+% The number of connected components gives a naive measure of how disjoint the network is.
+% In essence the number of groups in the field.
 
-The second measure considered is the \textbf{degree}. The degree of a node express
-the number of connections a node has. We will consider the degree distribution
-of a network. It will allow us to understand the mean connection that authors
-have in the network's groups.
+% The second measure considered is the \textbf{degree}. The degree of a node express
+% the number of connections a node has. We will consider the degree distribution
+% of a network. It will allow us to understand the mean connection that authors
+% have in the network's groups.
 
-The final measure is the \textbf{clustering coefficient}. The clustering coefficient is a
-measure of the degree to which nodes in a graph tend to cluster together. There
-are two types of this measure; the local and the global coefficients. The local
-coefficient is the clustering coefficient of a single vertex. It is calculated as,
+% The final measure is the \textbf{clustering coefficient}. The clustering coefficient is a
+% measure of the degree to which nodes in a graph tend to cluster together. There
+% are two types of this measure; the local and the global coefficients. The local
+% coefficient is the clustering coefficient of a single vertex. It is calculated as,
 
-\[C_u = \frac{2 \times L_u}{(k_u (k_u - 1)},\]
+% \[C_u = \frac{2 \times L_u}{(k_u (k_u - 1)},\]
 
-where \(k_u\) is the degree of vertex \(u\) and \(L_u\) is the number of edges
-between \(k_u\) neighbours of vertex \(u\).
+% where \(k_u\) is the degree of vertex \(u\) and \(L_u\) is the number of edges
+% between \(k_u\) neighbours of vertex \(u\).
 
-The global coefficient, \(\bar{C}\), is calculated by averaging all the local
-coefficients of the graph. The values of the measure can range between \(0\) and
-\(1\). Figure~\ref{fig:clustering_coefficients} illustrates several sub graphs
-with different \(\bar{C}\) values.
+% The global coefficient, \(\bar{C}\), is calculated by averaging all the local
+% coefficients of the graph. The values of the measure can range between \(0\) and
+% \(1\). Figure~\ref{fig:clustering_coefficients} illustrates several sub graphs
+% with different \(\bar{C}\) values.
 
-\begin{center}
-    \begin{figure}[!hbtp]
-        \begin{subfigure}{0.33\textwidth}
-            \includegraphics[width=\textwidth]{./assets/images/clustering_example_one.pdf}
-            \caption{A sub graph of \(G_1\) with a global clustering coefficient of 0.}
-        \end{subfigure}
-        \begin{subfigure}{0.33\textwidth}
-            \includegraphics[width=\textwidth]{./assets/images/clustering_example_two.pdf}
-            \caption{A sub graph of \(G_1\) with a global clustering coefficient of 0.23.}
-        \end{subfigure}
-        \begin{subfigure}{0.33\textwidth}
-            \includegraphics[width=\textwidth]{./assets/images/clustering_example_three.pdf}
-            \caption{A sub graph of \(G_1\) with a global clustering coefficient of 1.}
-        \end{subfigure}
-    \caption{Clustering coefficients examples.}
-    \label{fig:clustering_coefficients}
-    \end{figure}
-    \end{center}
+% \begin{center}
+%     \begin{figure}[!hbtp]
+%         \begin{subfigure}{0.33\textwidth}
+%             \includegraphics[width=\textwidth]{./assets/images/clustering_example_one.pdf}
+%             \caption{A sub graph of \(G_1\) with a global clustering coefficient of 0.}
+%         \end{subfigure}
+%         \begin{subfigure}{0.33\textwidth}
+%             \includegraphics[width=\textwidth]{./assets/images/clustering_example_two.pdf}
+%             \caption{A sub graph of \(G_1\) with a global clustering coefficient of 0.23.}
+%         \end{subfigure}
+%         \begin{subfigure}{0.33\textwidth}
+%             \includegraphics[width=\textwidth]{./assets/images/clustering_example_three.pdf}
+%             \caption{A sub graph of \(G_1\) with a global clustering coefficient of 1.}
+%         \end{subfigure}
+%     \caption{Clustering coefficients examples.}
+%     \label{fig:clustering_coefficients}
+%     \end{figure}
+%     \end{center}
 
-A clustering coefficient of \(1\) indicates that a graph is a
-complete graph. On the contrary, a coefficient of \(0\) indicates that authors write
-with just a single co author.
-% A high clustering coefficient indicates that people within groups have several
-% connections. There are not there due to a single publication with a random researcher
-% but on the contrary that group is said to be collaborative.
+% A clustering coefficient of \(1\) indicates that a graph is a
+% complete graph. On the contrary, a coefficient of \(0\) indicates that authors write
+% with just a single co author.
+% % A high clustering coefficient indicates that people within groups have several
+% % connections. There are not there due to a single publication with a random researcher
+% % but on the contrary that group is said to be collaborative.
 
-\paragraph{Analysis}
-\mbox{ }\\
-
-All connectivity measures are calculated for \(G_1, G_2\) and \(G_3\). This is
-done using the open source package networkx~\cite{networkx}.
-
-We are aware that all three of the networks are disjoint. This is also verified
-by the number of connected components. More specifically there are \prisonerscon,
-\auctioncon and \pricecon for graphs \(G_1, G_2\) and \(G_3\) respectively.
-% Though the number of connected components for \(G_1\) is between \(G_2\) and \(G_3\)
-% we believe that this could be due the size of the data sets.
-% The of authors that have written by themselves was also calculated.
-A total of \prisonerisolated, \auctionisolated, \priceisolated authors have
-written by themselves, for graphs \(G_1, G_2\) and \(G_3\) respectively.
-
-The normalised degree distributions of all three networks are shown in Figure~\ref{fig:degrees_dist}.
-They have been normalised such that the frequencies sum to one. 
-None of the distributions is normally distributed thus the non parametric test
-Kruskal-Wallis is used~\cite{mckight2010}. Kruskal-Wallis allow us to compare the
-medians of two or more distributions. The test returns a \(p\)-value of 0.29.
-Thus there is significant difference at the level of 0.005.
-
-\begin{figure}[!hbtp]
-    \centering
-    \includegraphics[width=\textwidth]{./assets/images/degrees_histrograms.pdf}
-    \caption{Degree distributions for all three networks.}\label{fig:degrees_dist}
-\end{figure}
-
-The global clustering coefficients of all three networks are presented in Table
-\ref{table:clustering}. The price of anarchy has the largest clustering coefficient
-followed by \(G_1\) and \(G_2\).
-
-
-\begin{table}[!hbtp]
-    \begin{center}
-    \begin{tabular}{lcc}
-        \toprule
-                  & \textbf{\(\bar{C}\)}\\
-        \midrule 
-        \(G_1\) & \prisonerscc\\
-        \(G_2\) & \auctioncc\\
-        \(G_3\) & \pricecc\\
-        \bottomrule
-    \end{tabular}
-    \end{center}
-    \caption{Global clustering coefficient for all three networks.}
-    \label{table:clustering}
-\end{table}
-
-% \paragraph{Temporal comparison}
+% \paragraph{Analysis}
 % \mbox{ }\\
 
-% The collaborative behaviour of \(G_1\) is also studied over time. This is achieved
-% by calculating the number of connected components, the degrees distribution
-% and the clustering coefficients for each time period. Table~\ref{table:cc_over_time}
-% summarises the results.
+% All connectivity measures are calculated for \(G_1, G_2\) and \(G_3\). This is
+% done using the open source package networkx~\cite{networkx}.
 
-% The number of connected components indicate that after period 3 to 7 the 
-% number of author is increasing. Period 2 is a very poor period of publication
-% in our sources. For periods 3 to 7 it is shown in Figure~\ref{fig:dist_over_time}
-% that the degrees are stabilising over 3.Thus in the study of the prisoners dilemma
-% according to our data, papers with 3 authors seems to be favoured.
+% We are aware that all three of the networks are disjoint. This is also verified
+% by the number of connected components. More specifically there are \prisonerscon,
+% \auctioncon and \pricecon for graphs \(G_1, G_2\) and \(G_3\) respectively.
+% % Though the number of connected components for \(G_1\) is between \(G_2\) and \(G_3\)
+% % we believe that this could be due the size of the data sets.
+% % The of authors that have written by themselves was also calculated.
+% A total of \prisonerisolated, \auctionisolated, \priceisolated authors have
+% written by themselves, for graphs \(G_1, G_2\) and \(G_3\) respectively.
 
-% Furthermore, the clustering coefficients are also increasing over these periods.
-% This analysis indicates that not only more people are were attracted to the
-% the topic over the years but also that the field was becoming more collaborative.
+% The normalised degree distributions of all three networks are shown in Figure~\ref{fig:degrees_dist}.
+% They have been normalised such that the frequencies sum to one. 
+% None of the distributions is normally distributed thus the non parametric test
+% Kruskal-Wallis is used~\cite{mckight2010}. Kruskal-Wallis allow us to compare the
+% medians of two or more distributions. The test returns a \(p\)-value of 0.29.
+% Thus there is significant difference at the level of 0.005.
+
+% \begin{figure}[!hbtp]
+%     \centering
+%     \includegraphics[width=\textwidth]{./assets/images/degrees_histrograms.pdf}
+%     \caption{Degree distributions for all three networks.}\label{fig:degrees_dist}
+% \end{figure}
+
+% The global clustering coefficients of all three networks are presented in Table
+% \ref{table:clustering}. The price of anarchy has the largest clustering coefficient
+% followed by \(G_1\) and \(G_2\).
+
 
 % \begin{table}[!hbtp]
 %     \begin{center}
 %     \begin{tabular}{lcc}
 %         \toprule
-%                   & \textbf{Connected components} & \textbf{Clustering coefficient}\\
-%         \midrule
-%         period 1  & 15                            & 0.5 \\
-%         period 2  & 5                             & 0.0 \\
-%         period 3  & 49                            & 0.14 \\
-%         period 4  & 96                            & 0.3 \\
-%         period 5  & 534                           & 0.64 \\
-%         period 6  & 281                           & 0.74 \\
-%         period 7  & 134                           & 0.76 \\
+%                   & \textbf{\(\bar{C}\)}\\
+%         \midrule 
+%         \(G_1\) & \prisonerscc\\
+%         \(G_2\) & \auctioncc\\
+%         \(G_3\) & \pricecc\\
 %         \bottomrule
 %     \end{tabular}
 %     \end{center}
-%     \caption{Collaborative behaviour measures over time periods.}
-%     \label{table:cc_over_time}
+%     \caption{Global clustering coefficient for all three networks.}
+%     \label{table:clustering}
 % \end{table}
+
+% % \paragraph{Temporal comparison}
+% % \mbox{ }\\
+
+% % The collaborative behaviour of \(G_1\) is also studied over time. This is achieved
+% % by calculating the number of connected components, the degrees distribution
+% % and the clustering coefficients for each time period. Table~\ref{table:cc_over_time}
+% % summarises the results.
+
+% % The number of connected components indicate that after period 3 to 7 the 
+% % number of author is increasing. Period 2 is a very poor period of publication
+% % in our sources. For periods 3 to 7 it is shown in Figure~\ref{fig:dist_over_time}
+% % that the degrees are stabilising over 3.Thus in the study of the prisoners dilemma
+% % according to our data, papers with 3 authors seems to be favoured.
+
+% % Furthermore, the clustering coefficients are also increasing over these periods.
+% % This analysis indicates that not only more people are were attracted to the
+% % the topic over the years but also that the field was becoming more collaborative.
+
+% % \begin{table}[!hbtp]
+% %     \begin{center}
+% %     \begin{tabular}{lcc}
+% %         \toprule
+% %                   & \textbf{Connected components} & \textbf{Clustering coefficient}\\
+% %         \midrule
+% %         period 1  & 15                            & 0.5 \\
+% %         period 2  & 5                             & 0.0 \\
+% %         period 3  & 49                            & 0.14 \\
+% %         period 4  & 96                            & 0.3 \\
+% %         period 5  & 534                           & 0.64 \\
+% %         period 6  & 281                           & 0.74 \\
+% %         period 7  & 134                           & 0.76 \\
+% %         \bottomrule
+% %     \end{tabular}
+% %     \end{center}
+% %     \caption{Collaborative behaviour measures over time periods.}
+% %     \label{table:cc_over_time}
+% % \end{table}
+
+% % \begin{figure}[!hbtp]
+% %     \centering
+% %     \includegraphics[width=0.8\textwidth]{./assets/images/degrees_histrograms_temporal.pdf}
+% %     \caption{Degrees distribution over time.}\label{fig:dist_over_time}
+% % \end{figure}
+
+% \subsubsection{Measures of Influence}
+
+% Network centrality is used in network theory to study which nodes of a graph are
+% the most important. There are several centrality measures used to explain different
+% behaviours of the nodes. Centrality will be used here to explain influence. 
+% The two centrality which are used are:
+
+% \begin{itemize}
+%     \item Closeness centrality \(C_C\).
+%     \item Betweenness centrality \(C_B\).
+% \end{itemize}
+
+% Both network measures are explained with an example. The definitions for both
+% centralities are given by Definition~\ref{def:closeness} and~\ref{def:betweenness}.
+
+% \begin{definition}{Closeness.}\label{def:closeness}
+%     Closenesse centrality of a node \(u\) is the reciprocal of the average
+%     shortest path distance to \(u\) over all \(n-1\) reachable nodes. It is denoted as,
+    
+%     \[C_C(u)= \frac{n - 1}{\displaystyle \Sigma_{v=1}^{n-1}d(v, u)}\]
+    
+%     where \(d(v, u)\) is the shortest-path distance between \(v\) and \(u\), and \(n\)
+%     is the number of nodes that can reach \(u\). The mornalised centrality
+%     is \(C_C\) normalised by the number of nodes in the connected part of the
+%     graph.
+% \end{definition}
+
+% \begin{definition}{Betweenness.}\label{def:betweenness}
+% Betweenness centrality of a node \(u\) is the sum of the fraction of all-pairs of
+% shortest paths that pass through \(u\). It is denoted as,
+
+% \[ C_B(u)=\Sigma_{s,t \in V} \frac{\sigma (s,t|u)}{\sigma(s,t)}\]
+
+% where \(V\) is the set of nodes, \(\sigma(s,t)\) is the number of shortest \((s,t)\)-paths,
+% and \(\sigma(s,t|v)\) is the number of those paths passing through some node
+% \(u\) other than \(s,t\). If \(s=t\), \(\sigma(s,t)=1\), and if \(u \in s,t, \sigma(s,t|u)=0\).
+% Normalised \(C_B\) is normalized by \(\frac{2}{((n-1)(n-2))}\)
+% \end{definition}
+
+% Closeness is a measure that shows how well a node connects other nodes. Equivalently,
+% how well an author is connected to other authors and contributes to them collaborating. 
+% On the other hand betweenness is about how connected a
+% node is, thus how much influence an author can gain from their environment.
+
+% As an example consider a sub graph of \(G_1\) which is illustrated in
+% Figure~\ref{fig:subgraph_t}. Note that nodes 1, 2 and 3 are connected to three
+% authors. Thus we expect their betweenness centrality to be the same. However, this
+% is not true for closeness centrality. Node 3 is the connecting link between at least
+% 4 people. Thus node 3 is the person in the sub graph that influences most authors.
+% Node 3 also gains influence due ot its rule in the team, but node 2 achieves the
+% same without connecting people as much as node 3.
 
 % \begin{figure}[!hbtp]
 %     \centering
-%     \includegraphics[width=0.8\textwidth]{./assets/images/degrees_histrograms_temporal.pdf}
-%     \caption{Degrees distribution over time.}\label{fig:dist_over_time}
+%     \includegraphics[width=0.8\textwidth]{./assets/images/centrality_example.pdf}
+%     \caption{A sub graph of \(G_1\).}\label{fig:subgraph_t}
 % \end{figure}
 
-\subsubsection{Measures of Influence}
+% The centrality for all three networks are calculated using~\cite{networkx}. Table
+% \ref{table:central_authors_pd} summarises the most important authors of network
+% \(G_1\) based on the two centralities. The people that influence the field the
+% most are Matjaz Perc, Yamir Moreno, Luo-Luo Jiang, Arne Traulsen and Martin A.
+% Nowak. Their work have been discussed in Section~\ref{section:timeline}.
+% %Examples of their works.
+% Though Matjaz Perc and Yamir Moreno appear to both influence and gain from
+% the networks influence, it does not hold for the rest of the three authors.
 
-Network centrality is used in network theory to study which nodes of a graph are
-the most important. There are several centrality measures used to explain different
-behaviours of the nodes. Centrality will be used here to explain influence. 
-The two centrality which are used are:
+% \begin{table}[!hbtp]
+%     \begin{center}
+%     \scalebox{0.8}{
+%     \input{assets/prisoners_centrality_betweness}
+%     \input{assets/prisoners_centrality_closeness}}
+%     \caption{Top 5 ranked authors of \(G_1\) based on different centrality measures.}
+%     \label{table:central_authors_pd}
+%     \end{center}
+% \end{table}
 
-\begin{itemize}
-    \item Closeness centrality \(C_C\).
-    \item Betweenness centrality \(C_B\).
-\end{itemize}
-
-Both network measures are explained with an example. The definitions for both
-centralities are given by Definition~\ref{def:closeness} and~\ref{def:betweenness}.
-
-\begin{definition}{Closeness.}\label{def:closeness}
-    Closenesse centrality of a node \(u\) is the reciprocal of the average
-    shortest path distance to \(u\) over all \(n-1\) reachable nodes. It is denoted as,
-    
-    \[C_C(u)= \frac{n - 1}{\displaystyle \Sigma_{v=1}^{n-1}d(v, u)}\]
-    
-    where \(d(v, u)\) is the shortest-path distance between \(v\) and \(u\), and \(n\)
-    is the number of nodes that can reach \(u\). The mornalised centrality
-    is \(C_C\) normalised by the number of nodes in the connected part of the
-    graph.
-\end{definition}
-
-\begin{definition}{Betweenness.}\label{def:betweenness}
-Betweenness centrality of a node \(u\) is the sum of the fraction of all-pairs of
-shortest paths that pass through \(u\). It is denoted as,
-
-\[ C_B(u)=\Sigma_{s,t \in V} \frac{\sigma (s,t|u)}{\sigma(s,t)}\]
-
-where \(V\) is the set of nodes, \(\sigma(s,t)\) is the number of shortest \((s,t)\)-paths,
-and \(\sigma(s,t|v)\) is the number of those paths passing through some node
-\(u\) other than \(s,t\). If \(s=t\), \(\sigma(s,t)=1\), and if \(u \in s,t, \sigma(s,t|u)=0\).
-Normalised \(C_B\) is normalized by \(\frac{2}{((n-1)(n-2))}\)
-\end{definition}
-
-Closeness is a measure that shows how well a node connects other nodes. Equivalently,
-how well an author is connected to other authors and contributes to them collaborating. 
-On the other hand betweenness is about how connected a
-node is, thus how much influence an author can gain from their environment.
-
-As an example consider a sub graph of \(G_1\) which is illustrated in
-Figure~\ref{fig:subgraph_t}. Note that nodes 1, 2 and 3 are connected to three
-authors. Thus we expect their betweenness centrality to be the same. However, this
-is not true for closeness centrality. Node 3 is the connecting link between at least
-4 people. Thus node 3 is the person in the sub graph that influences most authors.
-Node 3 also gains influence due ot its rule in the team, but node 2 achieves the
-same without connecting people as much as node 3.
-
-\begin{figure}[!hbtp]
-    \centering
-    \includegraphics[width=0.8\textwidth]{./assets/images/centrality_example.pdf}
-    \caption{A sub graph of \(G_1\).}\label{fig:subgraph_t}
-\end{figure}
-
-The centrality for all three networks are calculated using~\cite{networkx}. Table
-\ref{table:central_authors_pd} summarises the most important authors of network
-\(G_1\) based on the two centralities. The people that influence the field the
-most are Matjaz Perc, Yamir Moreno, Luo-Luo Jiang, Arne Traulsen and Martin A.
-Nowak. Their work have been discussed in Section~\ref{section:timeline}.
-%Examples of their works.
-Though Matjaz Perc and Yamir Moreno appear to both influence and gain from
-the networks influence, it does not hold for the rest of the three authors.
-
-\begin{table}[!hbtp]
-    \begin{center}
-    \scalebox{0.8}{
-    \input{assets/prisoners_centrality_betweness}
-    \input{assets/prisoners_centrality_closeness}}
-    \caption{Top 5 ranked authors of \(G_1\) based on different centrality measures.}
-    \label{table:central_authors_pd}
-    \end{center}
-\end{table}
-
-\paragraph{Analysis}
-\mbox{ }\\
-
-Influence for a given network is calculated easily. However, we want to assert
-the power of the influence of \(G_1\) by comparing the results to those of
-\(G_2\) and \(G_3\). Using the distribution of the centralities will we
-statistically tests whether a difference does exist between them.
-
-For \(C_C\) all distributions are not normally distributed so we will use the
-non parametric test Kruskal Wallis. The test returns a \(p\) value of 0.0 thus 
-it can be stated with 95\% confidence of that the distributions are statistically
-different. These are plotted as violin plots in Figure~\ref{fig:closeness_dist}.
-
-Note that the centrality values range between 0 and 1. For all three graphs \(C_C\)
-have low values. Both \(G_1\) and \(G_2\) appear to have a similar distributions.
-Most authors have have a coefficient of zero and a few authors by the tails
-appear to have a larger coefficient. This means that for the two topics, the highest
-frequency of authors have a very small influence in their field. Though there 
-are people with a high influence they are only a few.
-
-The coefficients of \(G_3\) are different from the other topics. Overall it
-can be seen that authors' centrality is more spread through the different values.
-
-\begin{figure}[!hbtp]
-    \centering
-    \includegraphics[width=.8\textwidth]{./assets/images/Closeness_histrograms.pdf}
-    \caption{Closeness distributions for all three networks.}\label{fig:closeness_dist}
-\end{figure}
-
-Figure~\ref{fig:closeness_dist} shows that all coefficients are clustered around the value of zero.
-
-\begin{center}
-\begin{figure}[!hbtp]
-    \centering
-    \includegraphics[width=.8\textwidth]{./assets/images/Betweenness_histrograms.pdf}
-    \caption{Betweenness distributions for all three networks.}\label{fig:closeness_dist}
-\end{figure}
-\end{center}
-
-% \paragraph{Temporal comparison}
+% \paragraph{Analysis}
 % \mbox{ }\\
 
-% The two centralities are also studied over time. Table~\ref{table:cc_over_time} higlights
-% the authors with the most influnce at each time period. Equivalently, Table~\ref{table:bc_over_time}
-% highlights the authors that gained more from the networks' influence at each
-% time period.
+% Influence for a given network is calculated easily. However, we want to assert
+% the power of the influence of \(G_1\) by comparing the results to those of
+% \(G_2\) and \(G_3\). Using the distribution of the centralities will we
+% statistically tests whether a difference does exist between them.
 
-% For periods 1, 3, 4, 5 and 6 the authors with the highest closeness centrality
-% are the authors with the highest betweenness centrality as well. Several of these
-% authors have been shown to also have a strong influence to the entire network
-% as well.
+% For \(C_C\) all distributions are not normally distributed so we will use the
+% non parametric test Kruskal Wallis. The test returns a \(p\) value of 0.0 thus 
+% it can be stated with 95\% confidence of that the distributions are statistically
+% different. These are plotted as violin plots in Figure~\ref{fig:closeness_dist}.
 
-% For period 7 though March Harper is the person that influences most authors,
-% Chen Yi Xia is the person that gains the most. For period 2 we have a similar
-% case. Robert Axelrod appears to be the most influenced author but not gaining 
-% as much from it.
+% Note that the centrality values range between 0 and 1. For all three graphs \(C_C\)
+% have low values. Both \(G_1\) and \(G_2\) appear to have a similar distributions.
+% Most authors have have a coefficient of zero and a few authors by the tails
+% appear to have a larger coefficient. This means that for the two topics, the highest
+% frequency of authors have a very small influence in their field. Though there 
+% are people with a high influence they are only a few.
 
-% Note that the centrality values are decreasing over the time periods. This could
-% be an effect due the size of the network which is increasing. In smaller networks
-% authors have more motivation to collaborate with the few people on their fields.
+% The coefficients of \(G_3\) are different from the other topics. Overall it
+% can be seen that authors' centrality is more spread through the different values.
 
-% \begin{table}[!hbtp]
-%     \begin{center}
-%     \scalebox{0.8}{
-%     \input{assets/closeness_periods.tex}}
-%     \caption{Authors with the most influnce at each time period.}
-%     \label{table:cc_over_time}
-%     \end{center}
-% \end{table}
+% \begin{figure}[!hbtp]
+%     \centering
+%     \includegraphics[width=.8\textwidth]{./assets/images/Closeness_histrograms.pdf}
+%     \caption{Closeness distributions for all three networks.}\label{fig:closeness_dist}
+% \end{figure}
 
-% \begin{table}[!hbtp]
-%     \begin{center}
-%     \scalebox{0.8}{
-%     \input{assets/betweness_periods.tex}}
-%     \caption{Authors that gained more from the networks influence at each
-%     time period.}
-%     \label{table:bc_over_time}
-%     \end{center}
-% \end{table}
+% Figure~\ref{fig:closeness_dist} shows that all coefficients are clustered around the value of zero.
 
-\subsubsection{Conclusion}
+% \begin{center}
+% \begin{figure}[!hbtp]
+%     \centering
+%     \includegraphics[width=.8\textwidth]{./assets/images/Betweenness_histrograms.pdf}
+%     \caption{Betweenness distributions for all three networks.}\label{fig:closeness_dist}
+% \end{figure}
+% \end{center}
 
-In this section we have conducted an investigation of the literature based on a
-data analysis. More specifically, this was mainly done using network theory.
+% % \paragraph{Temporal comparison}
+% % \mbox{ }\\
 
-Initially, we gave a summary on the data collection. An open source project which was
-developed for the purpose of this work was used~\cite{nikoleta_2017}. The project
-takes advantage of the API system several academic journals offer today. The
-procedure, the sources as well as the keywords used in the process of collection
-have been clearly specified making the process reproducible.
+% % The two centralities are also studied over time. Table~\ref{table:cc_over_time} higlights
+% % the authors with the most influnce at each time period. Equivalently, Table~\ref{table:bc_over_time}
+% % highlights the authors that gained more from the networks' influence at each
+% % time period.
 
-Three data sets have been composed for three different topics of game theory.
-These are:
+% % For periods 1, 3, 4, 5 and 6 the authors with the highest closeness centrality
+% % are the authors with the highest betweenness centrality as well. Several of these
+% % authors have been shown to also have a strong influence to the entire network
+% % as well.
 
-\begin{itemize}
-    \item The prisoner's dilemma. The main focus of this paper.
-    \item Auction games. A sub field of game theory used for comparison reasons.
-    \item The price of anarchy. A sub field of game theory used for comparison reasons.
-\end{itemize}
+% % For period 7 though March Harper is the person that influences most authors,
+% % Chen Yi Xia is the person that gains the most. For period 2 we have a similar
+% % case. Robert Axelrod appears to be the most influenced author but not gaining 
+% % as much from it.
 
-We conducted a brief preliminary analysis on these data sets. Mainly to understand
-the sizes, provenance and trends of each topic. The main data set was also partitioned
-into time periods such that an temporal comparison could be conducted.
+% % Note that the centrality values are decreasing over the time periods. This could
+% % be an effect due the size of the network which is increasing. In smaller networks
+% % authors have more motivation to collaborate with the few people on their fields.
 
-The main focus of the analysis has been to explain collaborative behaviour and
-influence. Both terms have been defined and we have explained how network measures
-of the co authorship network were used to quantify them. The co authorship
-network is a network representing all the unique authors of a topic. An edge
-exists within two authors if they have written together. Co authorship was
-decided to be used as be believe other measures, such as citations, perform less
-well.
+% % \begin{table}[!hbtp]
+% %     \begin{center}
+% %     \scalebox{0.8}{
+% %     \input{assets/closeness_periods.tex}}
+% %     \caption{Authors with the most influnce at each time period.}
+% %     \label{table:cc_over_time}
+% %     \end{center}
+% % \end{table}
 
-% The findings of this analysis are presented in two parts. The comparison of the
-% collaborative behaviour and influence of the prisoner's dilemma field based on
-% other topics and how these measures change for the field over time.
+% % \begin{table}[!hbtp]
+% %     \begin{center}
+% %     \scalebox{0.8}{
+% %     \input{assets/betweness_periods.tex}}
+% %     \caption{Authors that gained more from the networks influence at each
+% %     time period.}
+% %     \label{table:bc_over_time}
+% %     \end{center}
+% % \end{table}
 
-All three networks have been disjointed with a large number of connected components.
-The collaborative behaviour was based on the nature of these connected components.
-The median connection of an author has been the same for all three networks.
-However, the price of anarchy had a smaller number of authors that prefer to write
-on their own and based on the clustering coefficient the collaboration of the
-field authors appears to be stronger. The collaboration for both the prisoner's
-dilemma and auction games it's similar. Note though that the price of anarchy
-is a new topic with less authors. It makes more sense for a few people that
-work on the topic to be more collaborative which each other.
+% \subsubsection{Conclusion}
 
-Similarly influence was studied using two centrality measures. For \(G_1\) and
-\(G_2\) we conclude that there are only a few authors that have power of influence
-on the network. For research this is not ideal. It could mean that the research
-is only driven from the work of specific people. It could also indicate a hostile
-environment for new authors. In comparison, \(G_3\) has several authors that have
-different influence on their neighbours. A wider spread of influence could indicate
-a nice flow of knowledge across the field from different people. This could
-help the growth of a field and accelerate findings. The influence that authors
-gain from the respective networks was also explored. The results argued that
-the gain was very low for all three networks.
+% In this section we have conducted an investigation of the literature based on a
+% data analysis. More specifically, this was mainly done using network theory.
+
+% Initially, we gave a summary on the data collection. An open source project which was
+% developed for the purpose of this work was used~\cite{nikoleta_2017}. The project
+% takes advantage of the API system several academic journals offer today. The
+% procedure, the sources as well as the keywords used in the process of collection
+% have been clearly specified making the process reproducible.
+
+% Three data sets have been composed for three different topics of game theory.
+% These are:
+
+% \begin{itemize}
+%     \item The prisoner's dilemma. The main focus of this paper.
+%     \item Auction games. A sub field of game theory used for comparison reasons.
+%     \item The price of anarchy. A sub field of game theory used for comparison reasons.
+% \end{itemize}
+
+% We conducted a brief preliminary analysis on these data sets. Mainly to understand
+% the sizes, provenance and trends of each topic. The main data set was also partitioned
+% into time periods such that an temporal comparison could be conducted.
+
+% The main focus of the analysis has been to explain collaborative behaviour and
+% influence. Both terms have been defined and we have explained how network measures
+% of the co authorship network were used to quantify them. The co authorship
+% network is a network representing all the unique authors of a topic. An edge
+% exists within two authors if they have written together. Co authorship was
+% decided to be used as be believe other measures, such as citations, perform less
+% well.
+
+% % The findings of this analysis are presented in two parts. The comparison of the
+% % collaborative behaviour and influence of the prisoner's dilemma field based on
+% % other topics and how these measures change for the field over time.
+
+% All three networks have been disjointed with a large number of connected components.
+% The collaborative behaviour was based on the nature of these connected components.
+% The median connection of an author has been the same for all three networks.
+% However, the price of anarchy had a smaller number of authors that prefer to write
+% on their own and based on the clustering coefficient the collaboration of the
+% field authors appears to be stronger. The collaboration for both the prisoner's
+% dilemma and auction games it's similar. Note though that the price of anarchy
+% is a new topic with less authors. It makes more sense for a few people that
+% work on the topic to be more collaborative which each other.
+
+% Similarly influence was studied using two centrality measures. For \(G_1\) and
+% \(G_2\) we conclude that there are only a few authors that have power of influence
+% on the network. For research this is not ideal. It could mean that the research
+% is only driven from the work of specific people. It could also indicate a hostile
+% environment for new authors. In comparison, \(G_3\) has several authors that have
+% different influence on their neighbours. A wider spread of influence could indicate
+% a nice flow of knowledge across the field from different people. This could
+% help the growth of a field and accelerate findings. The influence that authors
+% gain from the respective networks was also explored. The results argued that
+% the gain was very low for all three networks.
 
 % Collaborations and influence of the field have changed over time. As argued
 % by~\cite{Etzkowitz1992} over time the amount of research groups was increasing
