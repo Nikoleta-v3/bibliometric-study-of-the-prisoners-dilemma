@@ -167,6 +167,7 @@ described in~\cite{VonNeumann1944}. The game received it's name later the same y
 According to~\cite{Tucker1983}, A. W. Tucker (the PhD supervisor of J. Nash~\cite{Nash1951}),
 in an attempt to delivery the game with a story during a talk he described the players
 as prisoners and the game has been known as the prisoner's dilemma ever since.
+% TODO Origins
 
 The study of the prisoner's dilemma has attracted people from various fields
 across the years. An early figure within the field of game theory
@@ -183,11 +184,13 @@ individuals, the representation of the game~\cite{Evans1966}, the distance betwe
 players~\cite{Sensenig1972}, the initial effects~\cite{Tedeschi1968} and whether
 the experimenter was biased~\cite{Gallo1968}. Several of the results presented
 in these works argued about the importance of these factors.
+% TODO Origins
 
 The early experiments were very constrained. The only source of simulation was
 through groups of humans and those came with disadvantages. Firstly, humans can
 behave very randomly and secondly both the size and the background of the
 individuals were different from experiment to experiment.
+% TODO Origins
 
 The robustness and efficiency of the early experiments was in question. In the
 section we will introduce the pioneer computer tournaments of R. Axelrod, that
@@ -203,11 +206,13 @@ how an individual should play the game. Combining his interest in artificial
 intelligence and political sciences Axelrod created a framework for exploring these
 questions using computer tournaments. This section is dedicated to a series of
 computer tournaments he performed in the early 1980s.
+% TODO Intelligent design
 
 The first computer tournament was performed in 1980~\cite{Axelrod1980a}.
 Several scientists were invited to submit their strategies, written in the
 programming languages Fortran or Basic. There was a total of 13 submissions
 made by the following researchers,
+% TODO Intelligent design
 
 \begin{multicols}{2}
     \begin{enumerate}
@@ -236,6 +241,7 @@ Furthermore, Axelrod performed an preliminary tournament and the results were kn
 to the participants. The payoff values used for equation~(\ref{eq:the_pd_payoffs}) where
 \(R=3, P=1, T=5\) and \(S=0\). These values are commonly used in the literature
 and unless specified will be the values used in the rest of the work described here.
+% TODO Intelligent design
 
 The winner of the tournament was determined by the total average score and not by
 the number of matches won. The strategy that was announced the winner was
@@ -245,11 +251,13 @@ previous move.
 The success of Tit for Tat came as a surprise. It was not only the simplest submitted
 strategy but it had also won the tournament even though it could never do better
 than the player it was interacting with.
+% TODO Intelligent design
 
 In order to further test the results Axelrod performed a second
 tournament~\cite{Axelrod1980b} later in 1980. The results of the first tournament
 had been publicised and the second tournament received much more attention, with 62 entries
 made by the following people,
+% TODO Intelligent design
 
 \begin{multicols}{3}
     \begin{enumerate}
@@ -326,6 +334,7 @@ was used. The fixed probability was chosen to be 0.0036 so that the expected
 median length of a match would be 200 turns. The topology was of a round robin
 and each pair of players was matched 5 times. Each of the five matches had a
 length of 63, 77, 151, 308 and 401.
+% TODO Intelligent design
 
 Several entries tended to be variants of Tit for Tat, such as
 \textbf{Tit for Two Tats} submitted by John Maynard Smith. Tit for Two
@@ -333,6 +342,7 @@ Tats defects only when the opponent has defected twice in a row. However
 none of the variants managed to outperform the pure version and the winner was once
 again Tit for Tat. The conclusions made from the first two tournaments were that the strong
 performance of the strategy was due to:
+% TODO Intelligent design
 
 \begin{itemize}
     \item The strategy would start of by cooperating.
@@ -353,6 +363,7 @@ Let us consider an example. Let the four strategies Tit for Tat, Tit for Two Tat
 Cooperator and Defector are two deterministic strategies that will always cooperate
 and defect equivalently. The expected payoff matrix, when these four strategies
 interact, is give by,
+% TODO Evolutionary dynamics
 
 \[\begin{bmatrix}
     3.0,  & 3.0,  & 3.0, & 0.99 \\
@@ -364,6 +375,7 @@ interact, is give by,
 Starting with proportions of each type in a given generation, their proportions
 for the next generation needs to be calculated. This is achieved by calculating
 the weighted average of the scores of a given strategy with all other players.
+% TODO Evolutionary dynamics
 
 \begin{itemize}
     \item The weights are the numbers of the other strategies which
@@ -380,6 +392,7 @@ A similar result was presented by Axelrod. In his ecological tournament cooperat
 strategies started to take over the population over time. On the other hand exploitative
 strategies started to die off as weaker strategies were becoming extinct. In other
 words they were dying because there was fewer and fewer prey for them to exploit.
+% TODO Evolutionary dynamics
 
 \begin{figure}[!hbtp]
     \centering
@@ -388,6 +401,7 @@ words they were dying because there was fewer and fewer prey for them to exploit
     Cooperator and Defector.}
     \label{fig:ecological_tournament}
 \end{figure}
+% TODO Evolutionary dynamics
 
 In 1981, Axelrod also studied the prisoner's dilemma in an evolutionary context based
 on the evolutionary approaches of John Maynard Smith~\cite{Smith1973,
@@ -395,6 +409,7 @@ Smith1974, Smith1979}. John Smith is a well know evolutionary biologist as well
 as an attendant of Axelord's second tournament. John Maynard Smith alongside George Price
 are considered fundamental figures of evolutionary game theory. In~\cite{Smith1973}
 they introduced the definition of an evolutionary stable strategy (ESS).
+% TODO Evolutionary dynamics
 
 Imagine a population made up of individuals where everyone follows the
 same strategy \(B\) and a single individual adopts a mutant strategy \(A\).
@@ -404,6 +419,7 @@ Since strategy \(B\) is in a population that interacts only with itself,
 the concept of invasion is equivalent to a single mutant being able to outperform
 the average population. Thus for a strategy to be ESS it must be able to resists
 any invasion.
+% TODO Evolutionary dynamics
 
 The work described in~\cite{axelrod1981}, studied the evolutionary stability of
 Tit for Tat and although the strategy was likely to take over the population, its
@@ -417,6 +433,7 @@ his evolutionary results in collaboration with the biologist William Donald Hami
 According to Richard Dawkins he was the one to introduce Axelrod to Hamilton's work.
 Their collaboration~\cite{Axelrod1984} won the pair the Newcomb-Cleveland prize
 of the American Association for the Advancement of Science.
+% TODO Evolutionary dynamics
 
 Axelrod's work was evolutionary and offered many insights to the field. Several
 other strategies, apart from Tit for Tat, are still being
@@ -426,6 +443,7 @@ will cooperate as long as the opponent does not defect. The name Grudger was giv
 to the strategy in~\cite{Li2014}. Though the strategy goes by many names in the
 literature such as, Spite~\cite{Beaufils1997}, Grim Trigger~\cite{Banks1990} and
 Grim~\cite{Van2015}.
+% TODO Intelligent design
 
 Axelrod was neither the first to demonstrate that cooperation is possible
 in the iterated prisoner's dilemma, neither to provide proof that reciprocity can
@@ -438,12 +456,14 @@ and its size unspecified, thereby opening a new avenue of research.''
 However, it is important to mention that the only source code available is the code
 for the 62 strategies of the second tournament, found on Axelrod's personal
 website~\cite{fortan_code}.
+% TODO Intelligent design
 
 His work offered him more than 9000 citations and opened a new avenue of research.
 In a collaboration~\cite{Axelrod1988} with a colleague, Douglas Dion, they summarized
 a number of works inspired from the ``Evolution of Cooperation''.
 Several of these are presented and discussed in the following section where
 we cover the response of the academic community to the computer tournaments.
+% TODO Intelligent design
 
 \subsection{Response to the computer tournaments (1984-1993)}
 \label{section:responses_to_computer_tournament}
@@ -486,6 +506,7 @@ this locks the two opponents into a hopeless sequence of alternating defections
 and cooperations. A year later in 1986,~\cite{Donninger1986} ran a computer tournament with a
 10 percent chance of noise and Tit for Tat finished sixth out of
 21 strategies.
+% TODO Intelligent design
 
 A second type of noise is misperception, where a player's action
 is made correctly but it's recorder incorrectly by the opponent. In 1986,~\cite{Sugden2004}
@@ -498,6 +519,7 @@ the strategy becomes provoked and defects until the opponent cooperates, and
 causes it to become content. If it was the defector while content, it
 becomes contrite and cooperates. When contrite it becomes content only after
 there has been a mutual cooperation.
+% TODO Intelligent design
 
 Another limitation of~\cite{axelrod1981} was that the
 interactions have been between pairs of players, as argued by~\cite{Joshi1987}.
@@ -509,6 +531,7 @@ individuals play a "hard" Tit For Tat, meaning that they will cooperate until on
 player defects, and the number of individuals playing hard Tir Fot Tat passes a
 certain threshold, then hard Tit For Tat can dominate a population of Defectors.
 But this threshold rises as the number of individuals in the society increases.
+% TODO Intelligent design
 
 The work of~\cite{May1987} pointed out that it is important `to take more account of intrinsic
 stochasticities'. This suggested considering stochastic strategies and
@@ -519,12 +542,14 @@ to cooperate, given that the opponent's last move was a cooperation or a defecti
 These are a very specific set of strategies that only remember their
 opponent's last move, not their own and they are called reactive strategies.
 Using the above notation a strategy can now be defined by a triple. For example,
+% TODO Structured strategies
 
 \begin{itemize}
     \item Defector: (0, 0, 0)
     \item Cooperator: (1, 1, 1)
     \item Tit for Tat: (1, 1, 0)
 \end{itemize}
+% TODO Structured strategies
 
 This framework was used in~\cite{nowak1989} to study game dynamical aspects of the
 iterated prisoner's dilemma, the results of which will be presented in the next section
@@ -532,6 +557,7 @@ which is dedicated to such research. Another outcome of the framework came
 the next year. In 1990,~\cite{Nowak1990} gave a formal definition of a memory one strategy.
 Memory one strategies consider the entire history of the previous turn to make a
 decision (thus reactive strategies are a subset of memory one).
+% TODO Structured strategies
 
 If only a single turn of the game is taken into account and depending on the
 simultaneous moves of two players there are only four possible states that
@@ -542,6 +568,7 @@ A match between two memory one players \(p\) and \(q\) can be modelled as a
 stochastic process, where the players move from state to state. More specifically,
 it can be modelled by the use of a Markov chain~\cite{gamerman2006markov},
 which is described by a matrix \(M\).
+% TODO Structured strategies
 
 \begin{equation}\label{eq:markov_matrix}
     M =
@@ -563,8 +590,10 @@ The utility of a player can be given by multiplying the steady states of
 \(M\) by the payoffs of equation~(\ref{eq:the_pd_payoffs}). Thus~\cite{Nowak1990}
 offered a mathematical framework to calculate the utility of two players without
 actually simulating the game. The payoff of a player \(p\) can be obtained by,
+% TODO Structured strategies
 
 \[s_p = \bar{v} \times \begin{pmatrix} R \\ S \\ T \\ P \end{pmatrix}\]
+% TODO Structured strategies
 
 In 1992 reactive strategies were used
 to investigate which strategies would manage to take over
@@ -575,6 +604,7 @@ the re-active strategy known as \textbf{Generous Tit for Tat} which is give by
 the triplet \((1, 0, \frac{2}{3})\). Generous Tit for Tat was not the only strategy
 to outperform Tit for Tat in a noisy environment, same conclusions were made
 by~\cite{Godfray1992, Bendor1991}.
+% TODO Structured strategies
 
 In~\cite{Bendor1991} a similar tournament to that of Axelrod's was performed,
 but with noise. Bendor had invited researchers from several
@@ -588,6 +618,7 @@ It will continue to play cooperation as long as its rival's cooperation level
 exceeded 80\%. Secondly, although it will retaliate if its rival's observed cooperation fell
 below 80, it is willing to revert to full cooperation before its partner does,
 so long as the partner satisfies a certain thresholds of acceptable behaviour.
+% TODO Intelligent design
 
 Mistakes, such as noise and misperception, are unlikely to occur in a computer
 tournament, but have to be expected in real life situations. Actual biological
@@ -612,6 +643,7 @@ Furthermore, Boyd and Lorderbaum, in~\cite{Boyd1989}, showed that cooperation ca
 be started without a population structure if the correct combination of strategies
 is presented. This remark argued with Axelrod's result that only a cluster of
 cooperative strategies would succeed. The example they provided was the following:
+% TODO Evolutionary dynamics
 
 Suppose that a population consists of Tit for Tat, Suspicious Tit for Tat and
 Tit for Two Tat. Suspicious Tit for Tat will end up cooperating after the first
@@ -626,6 +658,7 @@ iterated prisoner's dilemma with a spectrum of stochastic strategies.
 The strategies they considered, as discussed in the previous section, were the reactive
 strategies. They managed to prove that there can be multiple fixed points that
 there can be an evolutionary stable coexistence among multiple such strategies.
+% TODO Structured strategies
 
 There is limitation to all of these  dynamic treatments. That is their inability
 to develop new strategies. A way of overcoming  is to use a genetic approach.
@@ -635,6 +668,7 @@ that is inspired by the theory of natural selection. In a population of candidat
 solutions, the fittest individuals are selected for reproduction. They
 produce offsprings that will replace the weakest members of the population as long
 as they do better than them.
+% TODO Structured strategies
 
 In order to use a genetic algorithm~\cite{Axelrod1987} needed to represent strategies
 in a format such that the algorithm could optimise. Axelord considered deterministic
@@ -646,6 +680,7 @@ lookup table, which is a set of deterministic responses based on
 the opponents \(m\) last moves; for example \cite{Axelrod1987} considered \(m=3\).
 In later section we discuss some more recent work that has been done using lookup
 tables.
+% TODO Structured strategies
 
 Another dynamic approach that was considered in 1992 is that of using very simplistic
 strategies but in more complex topological structures. An extension to the natural selection
@@ -655,6 +690,7 @@ dimensional square array where the individuals could interact only with the imme
 neighbours. The number of immediate neighbours could be either, fourth, six or eight. As
 shown in Figure~\ref{fig:topologies}, where each node represents a player and the
 edges denote whether two players will interact.
+% TODO Evolutionary dynamics
 
 Thus each cell of the lattice is occupied by a Cooperator or a Defector.
 \begin{itemize}
@@ -670,6 +706,7 @@ This topology is refereed to as spatial topology. The population dynamics of the
 experiments were studied as a function of the temptation (\(T\)) payoff.
 More specifically the following payoff matrix was used, which is equivalent
 to equation~(\ref{eq:the_pd_payoffs}):
+% TODO Evolutionary dynamics
 
 \begin{equation}
     \begin{pmatrix}
@@ -691,6 +728,7 @@ defection,~\cite{Nowak1992} provided evidence that in structured populations
 the results can be wildly different.
 The authors claimed that the essential results remain true of all topologies; 
 the results also hold whether self interactions are taken into account.
+% TODO Evolutionary dynamics
 
 \begin{figure}[!hbtp]
 \centering
@@ -716,10 +754,12 @@ the total edges is rewired by removing \(\rho kn/2\) edges and creating
 \(\rho kn/2\) new edges each of whose initial vertex is the initial vertex of a removed
 edge and its terminal vertex is randomly chosen so that the generated graph does
 not have multiple edges or once removed edges.
+% TODO Evolutionary dynamics
 
 The authors argued that by applying these experimental rules we re closer to
 capturing real life behaviour where we constantly change who we interact with.
 The results of their work had been that:
+% TODO Evolutionary dynamics
 
 \begin{itemize}
     \item For small b, it is not so tempting for players to exploit cooperators.
@@ -734,6 +774,7 @@ The results of their work had been that:
 In 2006, Ohtsuki studied regular \(k\) degree graphs and introduced a "rule"
 regarding when is cooperation favoured in spatial tournaments.
 Ohtsuki used the following game matrix,
+% TODO Evolutionary dynamics
 
 \begin{equation} \label{eq:the_pd_payoffs}
     \begin{pmatrix}
@@ -746,6 +787,7 @@ Ohtsuki etc all proved that natural selection favours cooperation if
 the ration of  \(b/c\) exceeds the average number of neighbours.
 Their result, however, holds for weak selection. That means that the fitness of
 an individual is only proportional to their payoff.
+% TODO Evolutionary dynamics
 
 Later the same year, Ohtsuki and Nowak~\cite{Ohtsuki2006replicator},
 managed to approximate the dynamics of a population on graphs using an approximation of the
@@ -754,6 +796,7 @@ form differential equation to describe the dynamics of natural selected populati
 A lot of work has been done on evolutionary games on graphs. Though we have covered
 a number of academic publications~\cite{szabo2007} have also conducted a comprehensive
 review.
+% TODO Evolutionary dynamics
 
 Another topic worth mentioning is that of coevolution on graphs. In~\cite{Perc2011}
 studied graphs were a probability of rewiring ones connections was in place,
@@ -762,6 +805,7 @@ with imitate neighbours. Perc etc all showed that ``making of new friends'' may
 be an important activity for the successful evolution of cooperation,
 but also that partners must be selected carefully and one should keep their number
 limited.
+% TODO Evolutionary dynamics
 % A player called \textbf{Handshake} was presented by~\cite{Robson1989} in 1989.
 % Handshake is a strategy that starts with cooperation, defection. If the opponent
 % plays in a similar way then it will cooperate forever, otherwise it will defect
@@ -785,6 +829,7 @@ lose-shift. It starts off with a cooperation and then repeats it's previous move
 only if it was awarder with a payoff of \(R\) or \(T\). A variant of Pavlov
 was quickly introduced by~\cite{Wu1995}. That variant was Generous Pavlov, a variant
 that cooperates 10\% of the times when it would either wise had defected.
+% TODO Structured strategies
 
 An interesting approach of capturing promising strategies for the game
 was written in 1996 by~\cite{Miller1996}. Strategies represented by finite automata
@@ -796,6 +841,7 @@ arrows associated with the states. Each arrow is labelled with \(A/R\) where
 \(A\) is the opponent's last action and \(R\) is the player's response.
 For example let us consider a graphical representation of the famous Tit for Tat
 given by a finite machine, Figure~\ref{fig:tit_for_tat_fsm}.
+% TODO Structured strategies
 
 \begin{figure}[!hbtp]
     \centering
@@ -808,6 +854,7 @@ Miller used the genetic algorithm to train finite state machines in
 environments with noise. His results showed that even a small difference in noise
 (from 1\% to 3\%) significantly changed the characteristics of the
 evolving strategies. Three machines described in his paper are the following:
+% TODO Structured strategies
 
 \begin{itemize}
     \item \textbf{Punish Twice}: A strategy that punishes defection with 2 defections.
@@ -827,12 +874,14 @@ twice. After the second defection of the opponent, it defects two times and coop
 twice. After the \(n^{th}\) defection it reacts with \(n\) consecutive defections 
 and then two cooperations. In a tournament of 12 strategies~\cite{Beaufils1997},
 Gradual had managed to outperform strategies such as Tit for Tat and Pavlov.
+% TODO Intelligent design
 
 Following the success of Gradual the authors of~\cite{tzafestas-2000a} conducted
 the same tournament, with now 13 strategies, designed to outperform Gradual. Their strategy
 was the \textbf{Adaptive Tit for Tat} and the algorithm used by it is given by
 Algorithm~\ref{alg:adaptive_tft}. Adaptive Tit for Tat ranked first in it's tournament
 surpassing Gradual.
+% TODO Intelligent design
 
 \begin{algorithm}
 \begin{algorithmic}
@@ -859,12 +908,14 @@ to recognize and exploit the Random strategy in a way that after an opponent
 strategy crosses a certain randomness threshold they conclude that the opponent is
 a Random strategy and change the behaviour to act as a Defector.
 They called their strategy OmegaTFT~\cite{Wolfgang2006}.
+% TODO Intelligent design
 
 Similar to Miller's work, in~\cite{Ashlock2006b} the author presented two new
 strategies that have been trained using a finite state machine representation.
 These strategies are called,
 \textbf{Fortress3} and \textbf{Fortress4}. Figure~\ref{fig:fortress3_and_4}
 illustrates their diagrammatic representation.
+% TODO Structured strategies
 
 \begin{figure}[!hbtp]
 \centering
@@ -896,6 +947,7 @@ can then be compared to allow for easier identification of similar strategies.
 In Figure~\ref{fig:fingerprinting} an example of Pavlov's fingerprint is given.
 Fingerprinting has been studied in depth in~\cite{Ashlock2008, Ashlock2009,
 Ashlock2010, Ashlock2006a}.
+% TODO Structured strategies
 
 \begin{figure}[!hbtp]
     \centering
@@ -913,6 +965,7 @@ but it starts the game with a \textbf{D}. Once Adaptive Pavlov has classified
 the opponent plays to maximize it's payoff.
 In 2011 the authors of~\cite{Li2011} performed their own tournament where
 several interesting strategies made an appearance.
+% TODO Intelligent design
 
 \begin{itemize}
     \item \textbf{Periodic player CCD}, plays \textbf{C}, \textbf{C}, \textbf{D}
@@ -931,6 +984,7 @@ score and that of the opponent.
 In Section~\ref{section:responses_to_computer_tournament} it was described how
 the payoffs of two players could be retrieved by formulating their interactions
 using a Markov chain. Let us denote the payoffs of players \(p\) and \(q\) as:
+% TODO Structured strategies
 
 \begin{align*}
     s_p = v S_p \\
@@ -943,17 +997,23 @@ Using linear algebra, Press and Dyson showed that the dot product of the station
 distribution of \(v\) with any vector \(f\) can be expressed as a \(4\times 4\)
 determinant. In which one column is \(f\), one column is entirely under the control
 of player \(p\) and another column is entirely under the control of player \(q\).
+% TODO Structured strategies
+
 
 This meant that either \(p\) or \(q\) could independently force the dot product
 of \(v\) with some other chosen vector \(f\) to be zero by choosing their
 strategy so as to make the column they control be proportional to \(f\).
 In particular, by \( f = \alpha S_p + \beta S_q + \gamma\), any player can force
 a given linear relation to hold between the long-run scores of both players.
+% TODO Structured strategies
+
 
 Press and Dyson's results suggested that the best strategies were selfish ones
 that led to extortion, not cooperation. Arguing with Axelrod's reports.
 All the more, their work stated that in the iterated prisoner's dilemma, memory
 is not advantageous.
+% TODO Structured strategies
+
 
 The ZD strategies have attracted a lot of attention. It was stated that
 ``Press and Dyson have fundamentally changed the viewpoint on the Prisoner's
@@ -962,6 +1022,8 @@ Axelrod's tournament with 19 strategies to test the effectiveness of
 ZD strategies. While conducting their tournament they have implement several
 strategies discussed by~\cite{Press2012} and revealed a set of generous ZDs
 the~\textbf{Generous ZD}.
+% TODO Structured strategies
+
 
 In~\cite{Lee2015}, the `memory of a strategy does not matter' statement was
 questioned. A set of more complex strategies, strategies that take in account
@@ -969,12 +1031,15 @@ the entire history set of the game, were trained and proven to be more stable th
 ZD strategies. Complex strategies were also studied by~\cite{Knight2017,KnightHGC17}.
 This was done using an open source package, called the Axelrod project~\cite{axelrodproject}
 which launched on 2015.
+% TODO Structured strategies
+
 
 The project is written in the programming language
 Python, it is accessible and open source. To date the list of strategies implemented
 within the library exceed the 200. The project has been used in several
 publications including~\cite{Knight2017} and a paper describing it and
 it's capabilities was published in 2016~\cite{Knight2016}.
+
 
 The two paper using the Axelrod project~\cite{Knight2017, KnightHGC17} present
 several powerful strategies created using reinforcement learning techniques.
@@ -985,6 +1050,7 @@ algorithms~\cite{suganthan1999}. A number of strategy representations, referred 
 archetypes, were used to train strategies. These included, lookerup tables,
 finite state machines, artificial neural networks~\cite{yegnanarayana2009} and
 hidden Markov models~\cite{eddy1996}.
+% TODO Structured strategies
 
 Hidden Markov models, are a variant of a finite state machine that use probabilistic
 transitions based on the prior round of play to other states and cooperate or
@@ -992,6 +1058,7 @@ defect with various probabilities at each state. Finite state machines and hidde
 based strategies are characterized by the number of states. Similarly, artificial
 neural networks based players are characterized by the size of the hidden layer
 and number of input features.
+% TODO Structured strategies
 
 Additionally a variant of a look up table is also presented called the lookerup
 archetype. The lookerup archetype responses based on the opponent's first \(n_1\)
@@ -1002,6 +1069,7 @@ the other player. As a reminder, Axelrod in his work highlighted the importance
 of the initial move and believed that it was one of the secrets of success of the
 strategy Tit for Tat. Finally, a new archetype called the Gambler is also introduced,
 which is a stochastic variant of the lookerup archetype.
+% TODO Structured strategies
 
 The training of these archetypes was done in two following settings:
 
