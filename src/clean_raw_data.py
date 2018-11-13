@@ -7,17 +7,18 @@ import pandas as pd
 import arcas
 import unidecode
 
-tools = imp.load_source('tools', '../tools.py')
+tools = imp.load_source('tools', 'tools.py')
 
-path = 'raw_data/'
-topic = 'pd'
+topic = 'Anarchy'
+path = 'raw_data/' + topic
 
 for api in [arcas.Nature(), arcas.Ieee(), arcas.Plos(), arcas.Arxiv(), arcas.Springer()]:
 
     raw_articles = []
     api_name = api.__class__.__name__
 
-    for filename in glob.glob('{}*_{}_*.json'.format(path, api_name)):
+    d = []
+    for filename in glob.glob('{}/*_{}_*.json'.format(path, api_name)):
         with open(filename) as json_data:
             d = json.load(json_data)
             raw_articles.append(d)
