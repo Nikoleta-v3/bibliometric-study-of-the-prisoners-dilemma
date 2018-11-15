@@ -7,9 +7,10 @@ import pandas as pd
 
 from password import password
 
-words = ["prisoner's dilemma", "prisoner’s dilemma", "prisoners evolution",
-         "prisoner dilemma", "prisoner game theory", "memory one strategy",
-         "tit for tat", "tit-for-tat", "zero determinant strategy"]
+# words = ["prisoner's dilemma", "prisoner’s dilemma", "prisoners evolution",
+#          "prisoner dilemma", "prisoner game theory", "memory one strategy",
+#          "tit for tat", "tit-for-tat", "zero determinant strategy"]
+words = [['auction game theory'], ['price of anarchy']]
 
 def post_to_axelbib(post):
     """A function for posting to Axelbib

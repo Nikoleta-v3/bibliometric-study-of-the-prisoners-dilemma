@@ -9,7 +9,7 @@ import unidecode
 
 tools = imp.load_source('tools', 'tools.py')
 
-topic = 'Anarchy'
+topic = 'PD'
 path = 'raw_data/' + topic
 
 for api in [arcas.Nature(), arcas.Ieee(), arcas.Plos(), arcas.Arxiv(), arcas.Springer()]:
