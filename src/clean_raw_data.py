@@ -1,6 +1,7 @@
 import glob
 import imp
 import json
+import sys
 
 import pandas as pd
 
@@ -9,7 +10,7 @@ import unidecode
 
 tools = imp.load_source('tools', 'tools.py')
 
-topic = 'PD'
+topic = sys.argv[1]
 path = 'raw_data/' + topic
 
 for api in [arcas.Nature(), arcas.Ieee(), arcas.Plos(), arcas.Arxiv(), arcas.Springer()]:

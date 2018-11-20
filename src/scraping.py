@@ -5,15 +5,14 @@ import json
 
 import arcas
 
-# words = ["prisoner's dilemma", "prisoners dilemma", "prisoners evolution",
-#          "prisoner dilemma", "prisoner game theory"]
+words = ["prisoner's dilemma", "prisoners dilemma", "prisoners evolution",
+         "prisoner dilemma", "prisoner game theory"]
  
-words = ['auction game theory']
-for p in [arcas.Plos]:
-    pbar = tqdm(total=len(words) * 3)
+for p in [arcas.Nature, arcas.Plos, arcas.Arxiv, arcas.Springer, arcas.Ieee]:
+    pbar = tqdm(total=len(words) * 2)
     for key in words:
         api = p()
-        for field in ['title', 'abstract', 'keyword']:
+        for field in ['title', 'abstract']:
             start = 1
             switch = True
             arguments = {field: key, 'records': 10}
