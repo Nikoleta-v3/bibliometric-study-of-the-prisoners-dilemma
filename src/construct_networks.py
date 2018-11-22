@@ -31,19 +31,20 @@ ipd      = pd.read_json('data/pd_November_2018_clean.json')
 anarchy  = pd.read_json('data/anarchy_November_2018_clean.json')
 auction  = pd.read_json('data/auction_November_2018_clean.json')
 
-dataframes = [ipd, anarchy, auction]
+dataframes = [ipd, auction, anarchy]
+topics = ['pd', 'auction', 'anarchy']
 
-periods = np.sort(ipd['date'].unique())
-periods = periods[~np.isnan(periods)]
-periods = periods[1:]
-cumulative_dataframes = [ipd[ipd['date'] <= period].reset_index() for period in periods]
-
-filenames = ['pd_graph', 'auction_graph', 'anarchy_graph']
-
-for data, name in zip(dataframes, filenames):
+for data, topic in zip(dataframes, topics):
     G = generate_graph(data)
-    nx.write_gml(G, "data/{}.gml".format(name))
-for i, data in enumerate(cumulative_dataframes):
-    G = generate_graph(data)
-    nx.write_gml(G, "data/G_{}.gml".format(i))
+    nx.write_gml(G, "data/networks/{}_graph.gml".format(topic))
+
+for data, topic in zip(dataframes, topics):
+    periods = np.sort(data['date'].unique())
+    periods = periods[~np.isnan(periods)]
+    periods = periods[1:]
+    cumulative_dataframes = [data[data['date'] <= period].reset_index() for period in periods]
+
+    for i, frame in enumerate(cumulative_dataframes):
+        G = generate_graph(frame)
+        nx.write_gml(G, "data/networks/G_{}_{}.gml".format(topic, i))
 print('Done')
