@@ -1402,16 +1402,18 @@ superficial.
 A more recent approach to measure collaborative behaviour is to use the co
 authorship network, as described in~\cite{Liu2015}. Using this approach has many
 advantages as several graph theoretic measures can be used as proxies to explain
-authors relationship. In this paper we build upon
-the work done by~\cite{Liu2015} and also extend their methodology. Though in
+authors relationship. In~\cite{Liu2015}, they analyse the development of the field
+``evolution of cooperation'' using this approach. The topic ``evolution of cooperation''
+is a multidisciplinary field which also includes a large number of publications
+on the prisoner's dilemma. In this paper we build upon
+the work done by~\cite{Liu2015} and extend their methodology. Though in
 \cite{Liu2015}, they considered a data set from a single source, Web of Science,
-our data have been collected from 5 different sources. Moreover, the collaborative
+our data have been collected from five different sources. Moreover, the collaborative
 results of our analysis are compared to those of two different sub fields.
 Co authorship networks have also been used in~\cite{youngblood2018} for classifying
 topics of an interdisciplinary field. This was done using centrality measures,
-which will be covered below, here we do not constrain our analysis to partitioning
-the network but we use centrality measures in order to understand the influence
-an author can have and can receive by being part of an academic group.
+which will be covered below, here we use centrality measures in order to understand
+the influence an author can have and can receive by being part of an academic group.
 
 The relationship between the authors within a field will be modelled as a graph \(G\) with
 a set \(V_G\) of nodes and \(E_G\) of edges. The set \(V_G\) represents the authors
@@ -1442,7 +1444,8 @@ of the entire network, as it will discussed in the analysis section.
 Clustering coefficient and modularity and are also calculated.
 Clustering coefficient defined by,
 
-\[C = \frac{3 \times \text{(number of triangle on the graph)}}{\text{number of connected triples of nodes}}\]
+\[\text{clustering coeff.} =
+\frac{3 \times \text{(number of triangle on the graph)}}{\text{number of connected triples of nodes}}\]
 
 is a local measure of the degree to which nodes in a graph tend to cluster together
 in a clique. It is precisely the probability that the collaborators
@@ -1450,7 +1453,7 @@ of an author also write together. In comparison, modularity is a global measure
 designed to measure the strength of division of a network into modules. A high
 value of modularity corresponds to a structure where authors mainly write
 in groups and interact less with the rest of the network. We will be using the
-Louvain method described in~\cite{Blondel2008} to calculated modularity.
+Louvain method described in~\cite{Blondel2008} to calculate modularity.
 
 Furthermore, the second part of the analysis focuses on the study of influence.
 Networks are commonly dominated by one person who controls information flow and
@@ -1471,21 +1474,20 @@ centrality.
     as centrally involved in the network if it requires only few intermediaries
     for contacting others and thus is structurally relatively independent. Here,
     we define this as influence. Authors with a high value of closeness centrality,
-    are the authors that spread knowledge easier on the network and because here
-    we are looking on a co authorship network, where scientific knowledge is
-    spread and discuss, we say that they have the highest influence.
+    are the authors that spread scientific knowledge easier on the network
+    and we say that they have high influence.
     \item Another centrality measure is the \textbf{betweenness centrality},
     where the determination of an author's centrality is based on the quotient of
     the number of all shortest paths between nodes in the network that include
     the regarded node and the number of all shortest paths in the network.
-    In betweenness centrality now the position of the node matters, and nodes
-    with a higher value of betweenness receives a lot of information.
-    In this works we define this as gaining from the influence, the knowledge
-    spread of you field.
+    In betweenness centrality the position of the node matters. Nodes
+    with a higher value of betweenness centrality are located in positions that
+    a lot of information pass through them, we define this as the gain from
+    the influence, thus these authors gain the most from their networks.
 \end{enumerate}
 
-In the next section we will be using all the metrics discussed here to
-provide insights on the field.
+In the next section we will be using all the metrics discussed here to provide
+insights on the field.
 
 \subsection{Analysis of co authorship network}\label{section:results}
 
