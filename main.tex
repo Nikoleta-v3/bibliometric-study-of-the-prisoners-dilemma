@@ -1523,29 +1523,7 @@ How does these compare to other fields and more specifically to other fields of
 game theory? A summary of the two graphs, which be denoted as \(G_2\) for auction
 games and \(G_3\) for the price of anarchy, are given by Figure.
 A summary of metrics and for all three co authorship networks is given by
-Table~\ref{table:summary_other_networks}. The following remarks can be made
-from Table~\ref{table:summary_other_networks}.
-
-\begin{itemize}
-    \item Comparing to another well studied topic (\(G_2\)), the co authorship
-    network \(G_1\) appears to be more modular. This is due the high values of
-    modularity, connected components and clustering coefficient. Authors in \(G_1\)
-    tend to write in teams, separated from the main cluster and it's very likely
-    to create smaller clusters of 3. Compared that \(G_2\) has a smaller number
-    of connected component but the the main cluster has a bigger size.
-    \item In the more recent topic price of anarchy (\(G_3\)) there are hardly
-    any people that have published a paper alone. There is already a small community
-    that is connected with a main cluster of 421 authors. The network is also very
-    modular. Indicating that people that are not connected to the main cluster
-    are in smaller connected components. There is even higher clustering coefficient
-    compared to the rest of networks so these connected components are very likely
-    of size 3, which is also indicated by the degree distribution of \(G_3\)
-    (Figure~\ref{fig:degree_distrs}).
-    \item Shown in Figure~\ref{fig:degree_distrs} the degree distributions of
-    \(G_1\) and \(G_2\) are more skewed to the left, though there are some cases
-    of high degree (\(> 20\)) this could be due the size of the networks and
-    respectively the size of the main clusters.
-\end{itemize}
+Table~\ref{table:summary_other_networks}, and the following remarks can be made:
 
 \begin{table}[!hbtp]
     \centering
@@ -1554,27 +1532,49 @@ from Table~\ref{table:summary_other_networks}.
     \caption{Network metrics for \(G_1, G_2, G_3\).}\label{table:summary_other_networks}
 \end{table}
 
-The growth of collaborativeness behaviour can also be studied. To achieve that
-we construct the network cumulative with one year of publication interval
-There are a total of 64 graphs, for 64 periods starting from 1954.
-All the collaborative metrics have been calculated for each period
-and they are given in Table~\ref{table:coll_cumulative}.
-Similar to the results of~\cite{Liu2015}, we can observe that the network
-grows over time and that there is a rapid expansion to of its largest connected
-component. The size of it its rapidly ncressing seing that links are created
-over the authors of the field over time. However, since the beginining there
-has been a high value of modularity. People in \(G_1\) tend to create smaller
-communities or clusters.
+\begin{itemize}
+    \item Comparing to another well studied topic (\(G_2\)), the co authorship
+    network \(G_1\) appears to be more modular. This is due the high values of
+    modularity, connected components and clustering coefficient. Authors in \(G_1\)
+    tend to write more in teams (modularity $.931 > .892$), separated from the
+    main cluster and it's more likely for them to create smaller clusters of 3
+    (clustering $.685 > .595$). On the other hand, \(G_2\) has main cluster
+    of bigger size ($2079 > 1457$), suggesting a more chained community than \(G_1\).
+    \item In the more recent topic price of anarchy (\(G_3\)) there are hardly
+    any people that have published a paper alone. There is already a small community
+    that is chained in the main cluster of $421$ authors. The network is the most modular
+    of all three (modularity$=0.948$). The value of modularity and the percentage
+    of isolated authors, suggest that authors are either in the main cluster or
+    in smaller connected components with a high clustering probability (clustering
+    coeff.$=0.7$).
+    \item Shown in Figure~\ref{fig:degree_distrs} are the degree distributions of
+    all three networks. It has been statistically tested, and none of the distributions
+    are normally distributed. More specifically, all three distributions are
+    very skewed to the left side. Though the average degree is near 4 the medians
+    for \(G_1 - G_3\) are 3, 2 and 3. Based Kruskal Wallis test \(p< 0.05\) there
+    is significant difference in the medians. In \(G_1\) and \(G_2\) there are cases
+    of high degree (\(> 20\)) but this could be an affect of the size of the data,
+    networks and subsequently the size of the main clusters.
+\end{itemize}
 
-One might notice a sundent incrase to the network after 2000. This was briefly
-comment upon in~\cite{Liu2015}. 
-In Figure~\ref{fig:nodes_cumu_pd}, the number of nodes over time have been plotted. More specifically,
-we plot the normalised number of nodes which is calculated by dividing with
-the total number of nodes, in \(G_1\) case that is \authors. A steep increase,
-appears to be happening after 2000, though this could indicate a specific
-thing that happened only in \(G_1\), Figure~\ref{fig:nodes_cumu} argues with that.
-Compared to both \(G_2\) and \(G_3\) there is an increase in the number of authors
-since 2000.
+In order to study the growth collaborative behaviour we construct the network
+cumulatively, with a year (of publication) interval. There are a total of
+64 subgraphs, for 64 periods starting from 1954. All the collaborative metrics
+have been calculated for each period and they are given in Table~\ref{table:coll_cumulative}.
+
+Similar to the results of~\cite{Liu2015}, we can observe that a rapid growth to
+network over time. The number of nodes, the number of connected components and
+the degree all increase over time. Note that since the beginning there has
+been a high value of modularity to \(G_1\).
+
+In Figure~\ref{fig:nodes_cumu_pd} the normalised number of nodes which is
+calculated by dividing by the total number of nodes in \(G_1\) (\authors).
+A steep increase is occurring around 2000. This was briefly comment upon in~\cite{Liu2015}.
+No compare whether this is occurring only in \(G_1\) we plot the normalised number
+of nodes for all three graphs in Figure~\ref{fig:nodes_cumu}, which argues
+with that. There is a perfect match in the growth of the networks over
+time since the 2000. This is evidence that something else shocked the academic
+community around that time.
 
 \begin{figure}[!hbtp]
     \begin{minipage}{.45\textwidth}
@@ -1585,16 +1585,17 @@ since 2000.
     \begin{minipage}{.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{./assets/images/percentage_networks_nodes.pdf}
-        \caption{Normalized \# Nodes over time for all networks.}\label{fig:nodes_cumu}
+        \caption{Normalized \# Nodes over time for \(G_1-G_3\) .}\label{fig:nodes_cumu}
     \end{minipage}
 \end{figure}
 
-The average degree over time for all three networks is given Figure~\ref{fig:degree_distr_cumu}.
-Thought auction game theory and the prisoners' dilemma have been for different
-time periods we can see that the follow a similar trend. A small peek after the
-first years of publications followed by a steady increase ever since with a highest
-value of an average degree of 4. Price of anarchy as a similar trend but suffered of
-a small decrease around 2003.
+The average degree for \(G_1 - G_3\) has been reported to be 4. The change of the
+average degree over time differs for the three graphs, as shown in Figure~\ref{fig:degree_distr_cumu}.
+In \(G_1\) the first publications were single author ones. There is a steep increase
+to a degree of 1 just before the 1970s and the average degree is steadily increasing
+since then. A similar trend appears in \(G_2\) as well, in \(G_3\) however
+there has been a sharp increase since the beginning of the field, with
+a minor decrease.
 
 \begin{figure}[!hbtp]
     \centering
@@ -1610,33 +1611,45 @@ a small decrease around 2003.
 \end{adjustbox}
 \end{table}
 
-Morover,
-The influence of the networks were explored using centrality measures. For \(G_1\)
+The next results were presenting here are on the centrality measures. For \(G_1\)
 the most central author based on closeness and betweenness are given by Tables
-respectively.
-
+\ref{table:central_authors_cc} and \ref{table:central_authors} respectively.
+All centrality measures can have values between 0 and 1. As shown in
+Table~\ref{table:central_authors}, the betweenness centrality of the top authors
+is rather small. The author that gains the most from the network is M. Perc,
+who's work we briefly discussed in Section. Perc is connected to 59 nodes, and
+he the second most influent person in \(G_1\). The values of closeness centrality
+appear to be higher than those of betweenness.
 
 \begin{figure}[!hbtp]
     \begin{minipage}{.45\textwidth}
         \centering
-        \centering
-        \input{assets/central_authors.tex}
-        \caption{Ten most influenced authors in \(G_1\).}\label{table:central_authors}
+        \input{assets/central_authors_cc.tex}
+        \caption{Authors that gain the most influence in \(G_1\).}\label{table:central_authors_cc}
     \end{minipage}%
     \begin{minipage}{.45\textwidth}
         \centering
-        \input{assets/central_authors_cc.tex}
-        \caption{Authors that gain the most influence in \(G_1\).}\label{table:central_authors_cc}
+        \input{assets/central_authors.tex}
+        \caption{Ten most influenced authors in \(G_1\).}\label{table:central_authors}
     \end{minipage}
 \end{figure}
 
+The distributions for both centralities are plotted in Figures~\ref{fig:betweenness_dist}
+and~\ref{fig:closeness_dist}. Several remarks are made from the centralities'
+distributions.
 
-The distrubtion of both centrality measures for \(G_1-G_3\) are given by Figures.
-These are used to explore the how strong influence is compared to other fields.
-The main coclusions that can be made are:
+Regarding between centrality, none of the three distribution is normally related.
+The medians of the distributions are compared and found to be statistically different
+based on a Kruskal Wallis test.
+    \item All three distributions are skewed to the
+    left, very close to zero. This imply that in all three networks, none
+    of the authors gain much from being in the networks.
+\end{itemize}
 
 \begin{itemize}
-    \item For all three networks betweenness centrality is very skewed to the left
+    \item None of the
+    
+    For all three networks betweenness centrality is very skewed to the left
     size, around 0. This could indicate that in academia there is not as much gain
     as we would have thought from the network we belong to.
     \item On the other hand closeness appears to have more variation. From
@@ -1655,19 +1668,19 @@ The main coclusions that can be made are:
 \begin{figure}[!hbtp]
     \centering
     \includegraphics[width=\textwidth]{./assets/images/betweeness_distributions.pdf}
-    %\caption{Degree distribution for network \(G_1\).}\label{fig:degree_distr_cumu}
+    \caption{Betweenness centrality distributions \(G_1-G_3\).}\label{fig:betweenness_dist}
 \end{figure}
 
 \begin{figure}[!hbtp]
     \centering
     \includegraphics[width=\textwidth]{./assets/images/closeness_distributions.pdf}
-    %\caption{Degree distribution for network \(G_1\).}\label{fig:closeness_distributions.pdf}
+    \caption{Closeness centrality distributions  \(G_1- G_3\).}\label{fig:closeness_dist}
 \end{figure}
 
 \begin{figure}[!hbtp]
     \centering
-    \includegraphics[width=\textwidth]{./assets/images/closeness_violins.pdf}
-    %\caption{Degree distribution for network \(G_1\).}\label{fig:closeness_distributions.pdf}
+    \includegraphics[width=.7\textwidth]{./assets/images/closeness_violins.pdf}
+    \caption{Violin plots of closeness centralities.}\label{fig:violin_closeness}
 \end{figure}
 
 
