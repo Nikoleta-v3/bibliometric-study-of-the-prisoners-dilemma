@@ -1636,33 +1636,33 @@ appear to be higher than those of betweenness.
 
 The distributions for both centralities are plotted in Figures~\ref{fig:betweenness_dist}
 and~\ref{fig:closeness_dist}. Several remarks are made from the centralities'
-distributions.
+distributions. Regarding between centrality, none of the three distribution is
+normally distributed. The medians of the distributions are compared and found to be
+statistically different based on a Kruskal Wallis test. That is because authors
+in \(G_3\) gain more from being in the network than others in \(G_1\) and \(G_2\).
+Even so, the distributions are skewed to the left around 0. That implies that
+in all three networks, authors do not gain much from the influence of their
+fields.
 
-Regarding between centrality, none of the three distribution is normally related.
-The medians of the distributions are compared and found to be statistically different
-based on a Kruskal Wallis test.
-    \item All three distributions are skewed to the
-    left, very close to zero. This imply that in all three networks, none
-    of the authors gain much from being in the networks.
-\end{itemize}
+On the other hand, closeness distributions have more variation. The following
+observations are made from the distributions:
 
 \begin{itemize}
-    \item None of the
-    
-    For all three networks betweenness centrality is very skewed to the left
-    size, around 0. This could indicate that in academia there is not as much gain
-    as we would have thought from the network we belong to.
-    \item On the other hand closeness appears to have more variation. From
-    the authors of a cc > 0.02 not attern was found. the provenance of their
-    work, the year of publication have all been very different.
-    \item closeness centrality the people with a higher calue are the people on
-    the main clusters of their respective networks. The only way to have influence
-    to the larger picture if to be in that main cluster.
-    \item We can explore the distribution of closeness even beter from Figure.
-    There is a large amount of people near 0 and 0.0.3 \(G_3\) has more people
-    with higher values.
-    \item the network with the highest value of cc is the network with the
-    biger cluster.
+    \item  Neither are normally distributed and there is a significant difference
+    between the medians of all three distributions, with \(G_3\) having a larger median.
+    \item There are clusters from all three networks for which a number of authors
+    have a closeness centrality greater than 0.02. The authors in these clusters
+    were explored but not pattern was found behind their publications. The
+    provenance and the year of publication were checked.
+    \item The authors in these clusters, are the authors which are in the main
+    clusters of their relative networks. Thus, the people that influence the
+    field the most are the most central authors in the main cluster of the
+    co authorship network of a field.
+    \item In Figure~\ref{fig:violin_closeness}, the distributions are plotted in
+    a violin plot. The network with the highest value of closeness centrality
+    is the plot with the largest cluster.
+    \item Both \(G_2\) and \(G_3\) have more people influencing the field compared
+    to \(G_1\).
 \end{itemize}
 
 \begin{figure}[!hbtp]
@@ -1683,6 +1683,16 @@ based on a Kruskal Wallis test.
     \caption{Violin plots of closeness centralities.}\label{fig:violin_closeness}
 \end{figure}
 
+These results can be extend to the cumulative graphs. The distributions for both
+centralities has been plotted over time. In Figure~ that between has always
+been low in the network over ti,e. Thught there have been several outliers.
+This could be more evindence that in academic networks, betweenness is very low,
+the gain of being well conneted to several authors in your fields.
+
+closen centrality over time has changed more. There are several periods that
+there ave been people with a big inlunce in the field. This seems ot be drcrasong
+over the last peropd. 
+the centra
 
 \subsection{Conclusion}
 
