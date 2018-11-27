@@ -1562,22 +1562,22 @@ Table~\ref{table:summary_other_networks}, and the following remarks can be made:
     \caption{Degree distribution for networks \(G_1\) - \(G_3\).}\label{fig:degree_distrs}
 \end{figure}
 
-In order to study the growth collaborative behaviour we construct the network
-cumulatively, with a year (of publication) interval. There are a total of
-64 subgraphs, for 64 periods starting from 1950. All the collaborative metrics
-have been calculated for each period and they are given in Table~\ref{table:coll_cumulative}.
-Similar to the results of~\cite{Liu2015}, we can observe that the network \(G_1\)
-grows over time. The number of nodes, the number of connected components and
-the degree all increase over time. Note that since that the network has always
-a high value of modularity to \(G_1\).
-In Figure~\ref{fig:nodes_cumu_pd} the normalised number of nodes which is
-calculated by dividing by the total number of nodes in \(G_1\) (\authors).
-A steep increase is occurring around 2000. This was briefly comment upon in~\cite{Liu2015}.
-No compare whether this is occurring only in \(G_1\) we plot the normalised number
-of nodes for all three graphs in Figure~\ref{fig:nodes_cumu}, which argues
-with that. There is a perfect match in the growth of the networks over
-time since the 2000. This is evidence that something else shocked the academic
-community around that time.
+The growth of the networks over time is studied by constructing the network
+cumulatively with a year (of publication) interval. A total of 64 subgraphs
+over 64 periods, starting in 1950, were created and all the collaborative metrics
+for each subgraph have been calculated. These are given by Table~\ref{table:coll_cumulative}.
+Similar to the results of~\cite{Liu2015}, it can been observed that the network \(G_1\)
+grows over time. Metrics such as the number of nodes, the number of connected components and
+the degree all increase. The network seems to have always had a high value of modularity.
+
+In Figure~\ref{fig:nodes_cumu_pd} the normalised number of nodes,
+which is calculated by dividing by the total number of nodes in \(G_1\) (\authors),
+is shown. A steep increase to the size of the network is spotted around the 2000s,
+this is was also briefly comment upon in~\cite{Liu2015}. However, that increase
+does not appear only in \(G_1\). By comparing the normalised
+number of nodes of \(G_1\) to the other networks it is shown that the growth rate
+for all three networks after the 2000s is a perfect match, Figure~\ref{fig:nodes_cumu}.
+This is evidence that something else shocked the academic community around that time.
 
 \begin{figure}[!hbtp]
     \begin{minipage}{.45\textwidth}
@@ -1588,22 +1588,23 @@ community around that time.
     \begin{minipage}{.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{./assets/images/percentage_networks_nodes.pdf}
-        \caption{Normalized \# Nodes over time for \(G_1\) \-\(G_3\) .}\label{fig:nodes_cumu}
+        \caption{Normalized \# Nodes over time for \(G_1\) -\(G_3\).}\label{fig:nodes_cumu}
     \end{minipage}
 \end{figure}
 
-The average degree for \(G_1 - G_3\) has been reported to be 4. The change of the
-average degree over time differs for the three graphs, as shown in Figure~\ref{fig:degree_distr_cumu}.
-In \(G_1\) the first publications were single author ones. There is a steep increase
+The change of the average degree over time has also been calculated for the
+subgraphs and is shown in Figure~\ref{fig:degree_distr_cumu}. The growth of
+the average degree appears to differ between the networks. In \(G_1\) the first
+publications were single author ones, followed by a steep increase
 to a degree of 1 just before the 1970s and the average degree is steadily increasing
-since then. A similar trend appears in \(G_2\) as well, in \(G_3\) however
+since then. A similar trend appears in \(G_2\), however in \(G_3\)
 there has been a sharp increase since the beginning of the field, with
 a minor decrease.
 
 \begin{figure}[!hbtp]
     \centering
     \includegraphics[width=.7\textwidth]{./assets/images/degrees_over_time.pdf}
-    \caption{Degree distribution for network \(G_1\).}\label{fig:degree_distr_cumu}
+    \caption{Degree distribution of cumulative subgraphs for \(G_1\) - \(G_3\).}\label{fig:degree_distr_cumu}
 \end{figure}
 
 \begin{table}[!hbtp]
@@ -1614,17 +1615,19 @@ a minor decrease.
 \end{adjustbox}
 \end{table}
 
-The next results were presenting here are on the centrality measures. For \(G_1\)
+The next results discussed here are on centrality measures. For \(G_1\)
 the most central author based on closeness and betweenness are given by Tables
 \ref{table:central_authors_cc} and \ref{table:central_authors} respectively.
-Centrality measures range between \([0, 1]\).
-
-The values of the betweenness centrality of the top authors are rather low,
-Table~\ref{table:central_authors}.
-The author that gains the most from the network is Matjaz Perc, who's work we
-briefly discussed in Section. Perc is connected to 58 nodes, and
-he the most influence person in \(G_1\). The values of closeness centrality
-appear to be higher than those of betweenness.
+Centrality measures range between \([0, 1]\). The betweenness centrality of the
+most central authors in \(G_1\) are rather low with the highest ranked author
+being Matjaz Perc with a between centrality of 0.008, Table~\ref{table:central_authors}.
+Matjaz Perc is also the first ranked author based on closeness centrality, with
+a centrality of 0.04. Perc's work has been briefly discussed in Section, and the
+centrality measure suggest that the network is very influenced by him. He is
+connected to a total of 58 nodes and he has published to all five of the different
+sources we are considering in the study. Though he also gains from his position
+in the network, the gain is minor. An author is not in the top influencers but
+gain much from his position is Martin Nowak.
 
 \begin{figure}[!hbtp]
     \begin{minipage}{.45\textwidth}
@@ -1639,15 +1642,31 @@ appear to be higher than those of betweenness.
     \end{minipage}
 \end{figure}
 
-The distributions for both centralities are plotted in Figures~\ref{fig:betweenness_dist}
-and~\ref{fig:closeness_dist}. Several remarks are made from the centralities'
-distributions. Regarding between centrality, none of the three distribution is
-normally distributed. The medians of the distributions are compared and found to be
-statistically different based on a Kruskal Wallis test. That is because authors
-in \(G_3\) gain more from being in the network than others in \(G_1\) and \(G_2\).
-Even so, the distributions are skewed to the left around 0. That implies that
-in all three networks, authors do not gain much from the influence of their
-fields.
+Overall, the values of closeness centrality appear to be higher than those of
+betweenness. These can be better explored by considering the centralities'
+distributions for all three networks. The distributions for both centralities are
+plotted in Figures~\ref{fig:betweenness_dist} and~\ref{fig:closeness_dist}, and
+more over for closeness centrality a violin plot is also given by Figure~\ref{fig:violin_closeness}.
+Several remarks are made from the centralities' distributions.
+
+Regarding between centrality,
+
+\begin{itemize}
+    \item None of the three distributions, Figure~\ref{fig:betweenness_dist}, is
+    normally distributed. The medians of the distributions are compared and found
+    to be statistically different based on a Kruskal Wallis test.
+    Authors in \(G_3\) gain more from being in the network than others in \(G_1\)
+    and \(G_2\).
+    \item All three distributions are skewed to the left (at 0). That implies that
+    in all three networks, authors do not gain much from the influence of their
+    fields.
+\end{itemize}
+ 
+\begin{figure}[!hbtp]
+    \centering
+    \includegraphics[width=\textwidth]{./assets/images/betweeness_distributions.pdf}
+    \caption{Betweenness centrality distributions \(G_1-G_3\).}\label{fig:betweenness_dist}
+\end{figure}
 
 On the other hand, closeness distributions have more variation. The following
 observations are made from the distributions:
@@ -1665,16 +1684,10 @@ observations are made from the distributions:
     co authorship network of a field.
     \item In Figure~\ref{fig:violin_closeness}, the distributions are plotted in
     a violin plot. The network with the highest value of closeness centrality
-    is the plot with the largest cluster.
+    is the network with the largest cluster, \(G_2\).
     \item Both \(G_2\) and \(G_3\) have more people influencing the field compared
     to \(G_1\).
 \end{itemize}
-
-\begin{figure}[!hbtp]
-    \centering
-    \includegraphics[width=\textwidth]{./assets/images/betweeness_distributions.pdf}
-    \caption{Betweenness centrality distributions \(G_1-G_3\).}\label{fig:betweenness_dist}
-\end{figure}
 
 \begin{figure}[!hbtp]
     \centering
@@ -1688,36 +1701,25 @@ observations are made from the distributions:
     \caption{Violin plots of closeness centralities.}\label{fig:violin_closeness}
 \end{figure}
 
-These results can be extend to the cumulative graphs. The distributions for both
-centralities has been plotted over time. In Figure~ that between has always
-been low in the network over ti,e. Thught there have been several outliers.
-This could be more evindence that in academic networks, betweenness is very low,
-the gain of being well conneted to several authors in your fields.
-
-closen centrality over time has changed more. There are several periods that
-there ave been people with a big inlunce in the field. This seems ot be drcrasong
-over the last peropd. 
-the centra
+These results can be extend to the cumulative sub graphs. The distributions for
+both centralities for each sub graph of \(G_1\) have been plotted. In
+Figure~\ref{fig:betweenness_dist_cumu} we observe that though there are a few outliers,
+betweenness centrality has always been low for \(G_1\). In comparison, the
+closeness centrality of the network changes over times. There are several
+periods when authors influenced the field more than today, for example in 1972-1973.
+The centrality does not appear to follow a pattern, Figure~\ref{fig:closeness_dist_cumu}.
 
 \begin{figure}[!hbtp]
     \centering
     \includegraphics[width=\textwidth]{./assets/images/betweeness_over_time.pdf}
-    %\caption{Closeness centrality distributions  \(G_1- G_3\).}\label{fig:closeness_dist}
+    \caption{Betweenness centrality distributions cumulative sub graphs of \(G_1\).}\label{fig:betweenness_dist_cumu}
 \end{figure}
 
 \begin{figure}[!hbtp]
     \centering
     \includegraphics[width=\textwidth]{./assets/images/closeness_over_time.pdf}
-    %\caption{Violin plots of closeness centralities.}\label{fig:violin_closeness}
+    \caption{Closeness centrality distributions cumulative sub graphs of \(G_1\).}\label{fig:closeness_dist_cumu}
 \end{figure}
-
-\begin{table}[!hbtp]
-    \centering
-    \begin{adjustbox}{totalheight=\textheight-2\baselineskip}
-    \input{assets/centrality_over_time.txt}}
-    %\caption{Collaborativeness metrics for cumulative graphs.}\label{table:coll_cumulative}
-\end{adjustbox}
-\end{table}
 
 \subsection{Conclusion}
 
