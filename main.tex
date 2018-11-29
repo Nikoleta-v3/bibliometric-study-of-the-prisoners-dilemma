@@ -18,6 +18,7 @@
 \usepackage{multicol,multirow,array}
 \usepackage{algorithm,algorithmic}
 \usetikzlibrary{er,positioning, calc, patterns}
+\usetikzlibrary{decorations.pathreplacing}
 
 \definecolor{background}{RGB}{5, 66, 81}
 \usemintedstyle{tango}
@@ -65,7 +66,7 @@
     for mathematical, social, biological and ecological sciences. The iterated version
     of the game attracted attention in the 1980's after
     the publication of the ``The Evolution of Cooperation'' and has been a topic
-    of pioneering research ever since. In this work we aim to provide a detailed
+    of pioneering research ever since. This paper aims to provide a detailed
     literature review of the field. This is achieved by partitioning the timeline into six different
     sections. Furthermore, a comprehensive data set of literature is analysed
     using network theoretic approaches in order to explore the influence and the
@@ -136,8 +137,8 @@ strategies did better.
 ``The Evolution of Cooperation'' is considered a milestone in the field but it
 is not the only one. On the contrary, the prisoner's dilemma has attracted much
 attention ever since the game's origins. In Section~\ref{section:analysis} a comprehensive
-data set of literature regarding the prisoner's dilemma collected from the
-the following sources
+data set of literature regarding the prisoner's dilemma, and collected from
+the following sources, is presented and analysed.
 
 \begin{multicols}{2}
     \begin{itemize}
@@ -165,15 +166,17 @@ the following sources
     \end{itemize}
 \end{multicols}
 
-will be presented and analysed. This allow us to review the amount of published
-academic articles as well as measure and explore the collaborations within the field.
+Reviewing the amount of published academic articles as well as measuring and
+exploring the collaborations within the field became able tasks using this
+data set of literature.
 
 \section{Timeline}\label{section:timeline}
 
-In this section we review a large amount of literature regarding the prisoner's
-dilemma. We start from the year the game was formulated all the way to today.
+In this section a large amount of literature regarding the prisoner's
+dilemma is reviewed. The review starts from the year the game was formulated
+and covers publications all the way to today.
 
-\subsection{Origins of the Prisoner's Dilemma}\label{section:origin}
+\subsection{Origins of the prisoner's dilemma}\label{section:origin}
 
 The origin of the prisoner's dilemma goes back to the 1950s in early experiments
 conducted at RAND~\cite{Flood1958} to test the applicability of games
@@ -184,62 +187,61 @@ as prisoners and the game has been known as the prisoner's dilemma ever since.
 
 The early research on the prisoner's dilemma had been very constrained. The only
 source of experimental results was through groups of humans that simulated rounds
-of the games. Human groups came with disadvantages. Firstly, the participants
-behave randomly and secondly both the size and the background of the
-individuals were different in each experiment. Thus comparing results of two or
-more studies was becoming tricky. The aim of these experiments has mainly be to
-understand the conditions behind the emergence of cooperation.
+of the games and human groups came with disadvantages. Human can behave very
+randomly and in several experiments both the size and the background of the
+individuals were different. Thus comparing results of two or more studies
+is tricky.
+
+The main aim of these experiments had been to understand the conditions behind
+the emergence of cooperation. Conditions such as the gender~\cite{Evans1966, Lutzker1961, Mack1971} of
+individuals, the representation of the game~\cite{Evans1966}, the distance between
+players~\cite{Sensenig1972}, the initial effects~\cite{Tedeschi1968} and whether
+the experimenter was biased~\cite{Gallo1968} were being explored and still are
+today.
 
 An early figure that sought out to understand the conditions under which altruist
 behaviour emerged was Prof A. Rapoport. A mathematical psychologist, whose work focused on
 how to promote international and national cooperation. Rapoport tried to conceptualize
 strategies that could promote international cooperation. In his teaching and research
 he used the prisoner's dilemma. Rapoport offered the field many insights, he
-is the creator of strategies such as Tit for Tat and Pavlov, which will be discussed
-in later parts of this paper.
-Several others around his time sought the conditions of cooperation. Factor such as
-the gender~\cite{Evans1966, Lutzker1961, Mack1971} of
-individuals, the representation of the game~\cite{Evans1966}, the distance between
-players~\cite{Sensenig1972}, the initial effects~\cite{Tedeschi1968} and whether
-the experimenter was biased~\cite{Gallo1968} were being explored and still are
-today.
+is the creator of strategies such as Tit for Tat and Pavlov, which are going to be
+discussed in later parts of this paper.
 
-Nevertheless, decades later the political scientist R. Axelrod introduced the 
+Decades later the political scientist R. Axelrod introduced the 
 pioneer computer tournaments that have largely replaced human subjects in the study
-of the iterated prisoner's dilemma ever since. In the next section we will
-introduce these tournaments and several strategies that were design by researchers
-such as Rapoport.
+of the iterated prisoner's dilemma ever since. In the next section  these
+tournaments and several strategies that were design by researchers,
+such as Rapoport, are introduced.
 
-\subsection{Axelrod's Tournaments and intelligent design of strategies}\label{subsection:intelligent_design}
+\subsection{Axelrod's tournaments and intelligent design of strategies}\label{subsection:intelligent_design}
 
-As discussed in Section~\ref{section:origin}, before the 1980s a great deal of
-research was done in the field. However, as described in~\cite{Axelrod2012}, the
+As discussed in Section~\ref{section:origin}, before 1980 a great deal of
+research was done in the field, however, as described in~\cite{Axelrod2012}, the
 political scientist R. Axelrod believed that there was no clear answer to the question
 of how to avoid conflict, or even how an individual should play the game. Combining
 his interest in artificial intelligence and political sciences Axelrod created a
 framework for exploring these questions using computer tournaments.
-Axelrod asked a number of researchers to design their own strategies and submit them
-in the form of computer code. In essence, the competitors were asked to design a
-strategy, to set a number of rules, with the purpose of wining an iterated prisoner's
-dilemma tournament; an intelligent design of strategies.
 
-Due to Axelrod's tournaments the study of cooperation became of critical interest
-once again. As described in~\cite{Rapoport2015}, ``Axelrod's “new approach” has been extremely
+Axelrod's tournaments made the study of cooperation of critical interest
+once again, academic articles were being published reproducing Axelord's work,
+accessing and further developing his results. Mainly performing new tournaments
+and designing new strategies. As described in~\cite{Rapoport2015}, ``Axelrod's
+“new approach” has been extremely
 successful and immensely influential in casting light on the conflict between an
 individual and the collective rationality reflected in the choices of a population
 whose members are unknown and its size unspecified, thereby opening a new avenue
-of research.'' and in a collaboration with a colleague, Douglas Dion,
-Axelrod in~\cite{Axelrod1988} summarized a number of works inspired from the
-``Evolution of Cooperation''.
-
-A number of these research have been trying to surpass Axelord's limitations
-and results. This was mainly done by performing new tournaments and designing
-new strategies. In 2012,~\cite{Jurisic2012} wrote a review on iterated prisoner's
+of research''.
+In a collaboration with a colleague, Douglas Dion, Axelrod in~\cite{Axelrod1988}
+summarized a number of works that were immediately inspired from the ``Evolution of Cooperation''
+and in 2012,~\cite{Jurisic2012} wrote a review on iterated prisoner's
 dilemma strategies and big competitions that had occurred since the originals.
-In this section we will cover Axelrod's original tournaments as well as 
-research that introduced new strategies of intelligent design. The strategies discussed in
-this section are strategies were constructed by an intelligent cause and not an
-undirected process, such strategies will be covered in a later section of this review.
+
+In essence, Axelrod in the tournaments had asked researchers to design a strategy,
+set a number of rules, with the purpose of wining an iterated prisoner's dilemma
+tournament. These strategies were constructed by an intelligent cause and not an
+undirected process, and here there are refereed to as strategies of intelligent
+design. This section covers Axelrod's original tournaments as well as 
+research that introduced new strategies of intelligent design.
 
 The first reported computer tournament took place in 1980~\cite{Axelrod1980a}.
 Several scientists were invited to submit their strategies, written in the
@@ -482,9 +484,9 @@ of Southampton used teams and recognition patterns and managed to win the 2004
 Anniversary IPD Tournament.
 
 
-\subsection{Evolutionary Dynamics}\label{subsection:evoandinflutionary_dynamics}
+\subsection{Evolutionary Dynamics}\label{subsection:evolutionary_dynamics}
 
-Folowing the original tournaments it was proven that direct reciprocity can
+Following the original tournaments it was proven that direct reciprocity can
 make cooperation successful is an round robin setting. A long standing question
 had been to understand the conditions required for the emergence and maintenance
 of cooperation in evolving populations.
@@ -713,62 +715,79 @@ limited.
 % TODO Evolutionary dynamics
 
 \subsection{Structured strategies and training}
-\label{section:responses_to_computer_tournament}
+\label{section:structured_strategies}
 
-There is limitation to all of these  dynamic treatments. That is their inability
-to develop new strategies. A way of overcoming  is to use a genetic approach.
-An evolutionary process called the genetic algorithm was used to discover
-effective strategies in~\cite{Axelrod1987}. A genetic algorithm is a search heuristic
+In Section~\ref{subsection:evolutionary_dynamics} several evolutionary
+dynamic approaches used in the iterated prisoner's dilemma research were covered.
+All of these approaches have a limitation, and that is their inability to develop
+new strategies. In evolutionary settings strategies can be learn to adapt their
+strategy over time based upon what has been effective and what has not. In
+essence reinforcement learning techniques can be used to train strategies for the
+iterated prisoner's dilemma. A strategy must represented in a generic strategy
+archetype so it can be trained. Strategies that are discovered via strategy archetypes
+are refereed to as structured strategies. They are the opposite to that of intelligent
+designed
+discussed in Section~\ref{subsection:intelligent_design}. In this section papers
+that proposed new structured strategies as well as papers that explore new
+training algorithms are covered.
+
+% A way of overcoming this limitation is to use an undirected
+% evolution process as a reinforcement learning technique to discover new effective
+% strategies. Reinforcement learning is based on the idea that the tendency to
+% produce an action which corresponds to a favourable results should be strengthened,
+% whereas it should be weakened if it corresponds to unfavourable results.
+% Reinforcement learning algorithms can be evolutionary, for example
+% genetic algorithms~\cite{Axelrod1987}, but is not necessary for example
+% Q-learning~\cite{Sandholm1996}.
+
+% , such an example is the genetic algorithm used by Axelrod
+% in~\cite{Axelrod1987}. In order to use such process
+% Axelrod required a representation of an iterated prisoner's dilemma strategy such
+% that the algorithm could optimise; he required a parametrised strategy able to
+% change it's behaviour and adapt. These will re refereed to as structured strategies.
+% In this section we will cover papers that explore new structures for IPD strategies
+% or new training algorithms discover effective strategies.
+
+In~\cite{Axelrod1987} Axelrod, having realised the limitations of his evolutionary
+work, sicked to use a reinforcement algorithm called the genetic algorithm to train
+strategies. Axelrod decided to considered deterministic strategies that took into account
+the last 3 turns of the game. For each turn there are 4 possible outcomes
+\((CC, CD, DC, DD)\), thus for 3 turns there are a total of \(4\times4\times4=64\)
+possible combinations. Axelord therefore used a list of 64 C's and D's to represent
+different strategies. This archetype is reffeed to as a lookup table. A set of deterministic responses based on
+the opponents \(m\) last moves; for example \cite{Axelrod1987} considered \(m=3\).
+He then used a genetic algorithm in order to fine tune the responses and
+obtain a trained strategy.
+a genetic algorithm was used to optimise a structured
+strategy refereed to as a look up table. A genetic algorithm is a search heuristic
 that is inspired by the theory of natural selection. In a population of candidate
 solutions, the fittest individuals are selected for reproduction. They
 produce offsprings that will replace the weakest members of the population as long
 as they do better than them.
-% TODO Structured strategies
 
-In order to use a genetic algorithm~\cite{Axelrod1987} needed to represent strategies
-in a format such that the algorithm could optimise. Axelord considered deterministic
-strategies that took into account the last 3 turns of the game. For each turn
-there are 4 possible outcomes \((CC, CD, DC, DD)\), thus for 3 turns there are a total
-of \(4\times4\times4=64\) possible combinations. Axelord therefore used a list of 64 C's and D's
-to represent different strategies. We refer to this representation structure as a
-lookup table, which is a set of deterministic responses based on
-the opponents \(m\) last moves; for example \cite{Axelrod1987} considered \(m=3\).
-In later section we discuss some more recent work that has been done using lookup
-tables.
-% TODO Structured strategies
-
-The pioneering work of the computer tournaments and the results of the reciprocal behaviour
-in the prisoner's dilemma spread the knowledge of the game worldwide and across
-disciplines. Several researchers responded immediately to Axelrod's tournaments
-and the study of cooperation became of critical interest once again.
-This section focuses on the research that was carried out after the initial
-computer tournaments, over the time period between 1984 and 1993.
-
-The work of~\cite{May1987} pointed out that it is important `to take more account of intrinsic
-stochasticities'. This suggested considering stochastic strategies and
-\cite{nowak1989} studied such strategies. An iterated prisoner's dilemma strategy
-was represented by using three parameters \((y, p_1, p_2)\), where \(y\) is the
+In 1989~\cite{nowak1989}, Nowak and Sigmund proposed a structure for studying a
+set of very simple strategies. These are strategies that remember only the previous
+turn, and moreover, only record the move of the opponent. They are called reactive
+strategies and they can be represented by using three parameters \((y, p_1, p_2)\), where \(y\) is the
 probability to cooperate in the first move, and \(p_1\) and \(p_2\) the conditional probabilities
 to cooperate, given that the opponent's last move was a cooperation or a defection.
-These are a very specific set of strategies that only remember their
-opponent's last move, not their own and they are called reactive strategies.
 Using the above notation a strategy can now be defined by a triple. For example,
-% TODO Structured strategies
 
 \begin{itemize}
     \item Defector: (0, 0, 0)
     \item Cooperator: (1, 1, 1)
     \item Tit for Tat: (1, 1, 0)
+    \item Pavlov: (0, 1, 1, 0)
 \end{itemize}
-% TODO Structured strategies
 
-This framework was used in~\cite{nowak1989} to study game dynamical aspects of the
-iterated prisoner's dilemma, the results of which will be presented in the next section
-which is dedicated to such research. Another outcome of the framework came
-the next year. In 1990,~\cite{Nowak1990} gave a formal definition of a memory one strategy.
+In 1992~\cite{Nowak1992} the same authors used a population 99 reactive to study
+which one would take over. The winning strategy was called \textbf{Generous Tit for Tat}
+given by the triplet \((1, 0, \frac{2}{3})\), which was their answer as to how to
+deal with noise environment. Moreover in
+1990~\cite{Nowak1990} they expanded their structure and gave a formal definition
+of a memory one strategy.
 Memory one strategies consider the entire history of the previous turn to make a
 decision (thus reactive strategies are a subset of memory one).
-% TODO Structured strategies
 
 If only a single turn of the game is taken into account and depending on the
 simultaneous moves of two players there are only four possible states that
@@ -779,7 +798,6 @@ A match between two memory one players \(p\) and \(q\) can be modelled as a
 stochastic process, where the players move from state to state. More specifically,
 it can be modelled by the use of a Markov chain~\cite{gamerman2006markov},
 which is described by a matrix \(M\).
-% TODO Structured strategies
 
 \begin{equation}\label{eq:markov_matrix}
     M =
@@ -801,25 +819,18 @@ The utility of a player can be given by multiplying the steady states of
 \(M\) by the payoffs of equation~(\ref{eq:the_pd_payoffs}). Thus~\cite{Nowak1990}
 offered a mathematical framework to calculate the utility of two players without
 actually simulating the game. The payoff of a player \(p\) can be obtained by,
-% TODO Structured strategies
 
 \[s_p = \bar{v} \times \begin{pmatrix} R \\ S \\ T \\ P \end{pmatrix}\]
-% TODO Structured strategies
 
-In 1992 reactive strategies were used
-to investigate which strategies would manage to take over
-the population and would be ESS in an environment with noise. The results demonstrated that 
-though a small fraction of Tit for Tat players have been essential for the emergence
-of cooperation, more generous strategies took over the population. More specifically
-the re-active strategy known as \textbf{Generous Tit for Tat} which is give by
-the triplet \((1, 0, \frac{2}{3})\). Generous Tit for Tat was not the only strategy
-to outperform Tit for Tat in a noisy environment, same conclusions were made
-by~\cite{Godfray1992, Bendor1991}.
+The family of memory on strategies have been proven rather useful in the terms
+of exploring strategies and we discuss some more recent work that has been done
+using this structure.
 
-In this section we will cover several
-research projects published between 1993 and 2017. The research reviewed here focuses
-on computer tournaments and serves as an introduction to various strategies that
-have made an impact in the literature.
+by Harrald and Fogel (1996). The~\cite{Harrald1996}
+network used memory with length of 3 and the actions were encoded as continuous values between -1
+and 1 where 1 meant complete cooperation. 6 input nodes represented 3 previous steps of the player
+and the opponent. There was a hidden layer of N fully connected nodes and an output node that
+produced values from the range <-1;1>. 
 
 An interesting approach of capturing promising strategies for the game
 was written in 1996 by~\cite{Miller1996}. Strategies represented by finite automata
@@ -831,7 +842,6 @@ arrows associated with the states. Each arrow is labelled with \(A/R\) where
 \(A\) is the opponent's last action and \(R\) is the player's response.
 For example let us consider a graphical representation of the famous Tit for Tat
 given by a finite machine, Figure~\ref{fig:tit_for_tat_fsm}.
-% TODO Structured strategies
 
 \begin{figure}[!hbtp]
     \centering
@@ -855,13 +865,11 @@ evolving strategies. Three machines described in his paper are the following:
     cooperated.
 \end{itemize}
 
-
 Similar to Miller's work, in~\cite{Ashlock2006b} the author presented two new
 strategies that have been trained using a finite state machine representation.
 These strategies are called,
 \textbf{Fortress3} and \textbf{Fortress4}. Figure~\ref{fig:fortress3_and_4}
 illustrates their diagrammatic representation.
-% TODO Structured strategies
 
 \begin{figure}[!hbtp]
 \centering
@@ -893,7 +901,6 @@ can then be compared to allow for easier identification of similar strategies.
 In Figure~\ref{fig:fingerprinting} an example of Pavlov's fingerprint is given.
 Fingerprinting has been studied in depth in~\cite{Ashlock2008, Ashlock2009,
 Ashlock2010, Ashlock2006a}.
-% TODO Structured strategies
 
 \begin{figure}[!hbtp]
     \centering
