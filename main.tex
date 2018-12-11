@@ -1147,16 +1147,19 @@
 
 \section{Analysing a large corpus of articles}\label{section:analysis}
 
-The focus of the paper has been the academic publications on the topic the iterated
+The focus of Section~\ref{section:timeline} has been the academic publications on the topic of the iterated
 prisoner's dilemma. Whilst in Section~\ref{section:timeline} we covered
 several publications of specific interest and manually partitioned the literature
 in different sections, in the second part of this paper we analyse the publications
 using a large dataset of articles. The data collection process is covered in
 Section~\ref{section:data_collection} and a preliminary analysis of the data is
 conducted in Section~\ref{section:preliminary_analysis}. In Section~\ref{section:methodology},
-we present the methodology which will be used to analyse the authors relationships.
+we present the methodology which will be used to analyse the author relationships.
 In summary, we will be using graph theoretical methods to ascertain the level of
-collaborative nature of the field and identify influence, relative to:
+collaborative nature of the field and identify influence.
+This type of analysis has been carried out in~\cite{Liu2015}. The novelty here
+is to consider approaches not considered in~\cite{Liu2015} and new origins of
+publications. A further comparison of the results are made, relative to:
 
 \begin{itemize}
     \item Two other sub fields of game theory: auction games~\cite{menezes2005} and 
@@ -1168,8 +1171,8 @@ Finally in Section~\ref{section:results}, the results of the analysis are presen
 
 \subsection{Data Collection}\label{section:data_collection}
 
-Academic articles are accessible through scholarly databases and collections of
-academic journals. Several databases and collections today offer access through
+Academic articles are accessible through scholarly databases.
+Several databases and collections today offer access through
 an open application protocol interface (API). An API allows users to query
 directly a journal's database and bypass the user interface side of the journal.
 Interacting with an API has two phases: requesting and receiving.
@@ -1179,10 +1182,10 @@ represents a request message. The first part of the request is the address
 of the API we are querying.
 In this example the address corresponds to the API of arXiv.
 The second part of the request contains the search arguments. In our example we
-are requesting for a single article that the word `prisoners dilemma' exists within
-it's title. The format of the request message is different from API to API.
+are requesting that the word `prisoners dilemma' exists within
+the article's title. The format of the request message is different from API to API.
 The receive phase includes receiving a number of raw metadata of articles that
-satisfied the request message. The raw metadata are commonly received in extensive markup
+satisfies the request message. The raw metadata are commonly received in extensive markup
 language (xml) or Javascript object notation (json) formats~\cite{nurseitov2009}.
 Similarly to the request message, the structure of the received data differs from journal
 to journal.
@@ -1194,17 +1197,16 @@ projects similar to the one described here, documentation for it is available at
 \url{http://arcas.readthedocs.io/en/latest/}.
 Project~\cite{nikoleta_2017} allow us to collect articles from a list of APIs by
 specifying just a single keyword. Four prominent journals in the field and a
-pre print server were used as sources to collect data for this analysis. Those
-were PLOS, Nature, IEEE, Springer and arXiv.
+pre print server were used as sources to collect data for this analysis:
+PLOS, Nature, IEEE, Springer and arXiv.
 
-A series of search terms were used to identify relevant articles. The terms used
-to collect the main data set were,
+A series of search terms were used to identify relevant articles:
 
 \begin{itemize}
     \item ``prisoner's dilemma'',
     \item ``prisoners dilemma'',
-    \item ``prisoners evolution'',
     \item ``prisoner dilemma'',
+    \item ``prisoners evolution'',
     \item ``prisoner game theory''
 \end{itemize}
 
@@ -1227,12 +1229,12 @@ The three data sets are:
 
 \begin{itemize}
     \item The main data set which contains articles on the prisoner's dilemma.
-    \item A secondary data set which contains article on auction games.
-    \item A secondary data set which contains articles on the price of anarchy.
+    \item A data set which contains article on auction games.
+    \item A data set which contains articles on the price of anarchy.
 \end{itemize}
 % TODO archive all data sets
 
-The main data set and the main focus of this analysis is [ref]. It
+The main data set is archived at~[ref]. It
 consists of \totalarticles articles with unique titles. In case of duplicates
 the preprint version of an article (collected from arXiv) was dropped.
 %TODO add reference to archived dataset
@@ -1240,15 +1242,14 @@ Of these \totalarticles article, \manual have not been collected from the
 aforementioned APIs. These articles were of specific interest and manually added
 to the dataset throughout the writing of Section~\ref{section:timeline}. A more
 detailed summary of the articles' provenance is given by Table~\ref{table:provenance}.
-Only 3\% of the data set consists by articles that were manually added and 33\% of the
-articles were collected from arXiv. The rest four journals have contributed 9\%-21\%
-percent of the articles.
+Only 3\% of the data set consists of articles that were manually added and 33\% of the
+articles were collected from arXiv.
 
 \begin{table}[!hbtp]
     \begin{center}
     \input{assets/provenance_table}
     \end{center}
-    \caption{Articles' provenance for main data set.} % Use citation when archived
+    \caption{Articles' provenance for the main data set.} % Use citation when archived
     \label{table:provenance}
 \end{table}
 
@@ -1256,7 +1257,7 @@ The average number of publications was calculated for the entire dataset and for
 each provenance. The average number of publications is denoted as,
 \(\mu_P = \frac{N_A}{N_Y},\) where \(N_A\) is the total number of articles and
 \(N_Y\) is the years of publication. The years of publication is calculated as
-the range between 2018 and the first published article, for each provenance,
+the range between the collection date and the first published article, for each provenance,
 within the data.
 These averages are summarised in Table~\ref{table:publication_rates}.
 Overall an average of 49 articles are published per year on the topic. The most
@@ -1279,19 +1280,19 @@ Two observations can be made from Figure~\ref{fig:timeseries}.
 \begin{enumerate}
     \item A steady increase to the number of publications since the 1980s
     and the introduction of computer tournaments.
-    \item A decrease in 2017-2018. This is due our data set being incomplete.
+    \item A decrease in 2017-2018. This is due to our data set being incomplete.
     Articles that have been written in 2017-2018 have either not being published
     or have are not retrievable by the APIs yet.
 \end{enumerate}
 
 These observations can be confirmed by studying the time series.
 Using~\cite{scipy}, an exponential distribution is fitted to
-the data from 1980-2016. The perfect fitting proves that since 1980 there has
-been an exponential increase to the number of publications till 2016 (Figure~\ref{fig:fitting}).
+the data from 1980-2016. The exponential fitting proves that since 1980 there has
+been an exponential increase in the number of publications till 2016 (Figure~\ref{fig:fitting}).
 The fitted model can also be used to project the behaviour of the field for the next 
 5 years. The forecasted periods are plotted in Figure~\ref{fig:forecasting} and
-their exact values are given by Table~\ref{table:forecast}. Thought the time series
-has indicated a slight decrease we can see that the model forecasts that the number
+their exact values are given by Table~\ref{table:forecast}. The time series
+has indicated a slight decrease however we can see that the model forecasts that the number
 of publications will keep increasing, thus indicating that the field of the iterated
 prisoner's dilemma still attracts academic attention.
 
@@ -1322,48 +1323,48 @@ prisoner's dilemma still attracts academic attention.
     \label{table:forecast}
 \end{table}
 
-Moreover, two sub fields of game theory have been chosen for this work; auction game and the
-price of anarchy.
+To allow for a comparative analysis two sub fields of game theory have been chosen
+for this work; auction games and the price of anarchy.
 
 \begin{itemize}
-    \item Auction theory is a branch of economics which deals with how
-    people act in auction markets and researches the properties of auction markets.
-    Game theory is being used for years to study auctions and the behaviour of
-    the bidders~\cite{Shubik1971}. The earlies entry in our data set [ref] goes
+    \item Auction theory is a branch of game theory which researches the properties
+    of auction markets.
+    Game theory is used for years to study auctions and the behaviour of
+    bidders~\cite{Shubik1971}. The earliest entry in our data set~[ref] goes
     back to 1974 (Figure~\ref{fig:timeseries_ag}).
-    \item Price of Anarchy is a concept in economics and game theory which
+    \item Price of Anarchy is a concept in game theory which
     measures how the efficiency of a system degrades due to selfish behaviour of
     it's agents. There is a variety of such measures however the price of anarchy
     has attracted a lot of attention since it's informal introduction in 1999
-    by~\cite{Koutsoupias1999}. The first entry in the data set [ref] is a year
+    by~\cite{Koutsoupias1999}. The first entry in the data set~[ref] is a year
     later in 2000 (Figure~\ref{fig:timeseries_pa}).
 \end{itemize}
 
 A summary of both data sets collected on both topics, in comparison to that of
-[ref], is given by Table~\ref{table:summary_other_topics}.
+[ref], is given by Table~\ref{table:summary_other_topics}. Note that no article
+have been added manually for the data sets for the two extra sub fields.
+
+\begin{table}[!hbtp]
+    \centering
+    \resizebox{\textwidth}{!}{
+    \input{assets/prelimanary_comparison.tex}}
+    \caption{Measures of all three data sets.}\label{table:summary_other_topics}
+\end{table}
 
 The iterated prisoner's dilemma and auction theory are very well studied topics
 that have been publicising for decades. A large number of articles have
 been collected for both topics, \totalarticles and 34444 respectively. Though, auction
 games have a larger number of articles, the iterated prisoner's dilemma
-has almost 300 more authors. Auction games have an overall average publication
-of 93 articles compared to the prisoner's dilemma with 49. The 50\% of articles
+has almost 300 more authors. Auction games have an overall average yearly publication
+of 93 articles per year compared to the prisoner's dilemma with 49 per year. 50\% of articles
 for [ref] have been collected from the pre print server arXiv and no articles have
 been published in PLOS.
 
 Compared to these two topics the price of anarchy is a fairly recent one. Only a
 total of 747 articles have been collected, however it has a large number
-of 1229 authors. Meaning that on average each paper had had at least two authors.
+of 1229 authors. On average each paper had had at least two authors.
 It has an overall average publication of 39 articles and the biggest contribution
-has been made from Springer. Note that no article have been added manually for
-the data sets for the two extra sub fields.
-
-\begin{table}[!hbtp]
-        \centering
-        \resizebox{\textwidth}{!}{
-        \input{assets/prelimanary_comparison.tex}}
-        \caption{Measures of all three data sets.}\label{table:summary_other_topics}
-\end{table}
+has been made to Springer.
 
 \begin{figure}[!hbtp]
     \begin{minipage}{.45\textwidth}
