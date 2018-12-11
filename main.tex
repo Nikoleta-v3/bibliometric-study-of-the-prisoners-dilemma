@@ -1392,7 +1392,7 @@ points out, it is rationale that two or more people have the potential to do bet
 as a group than individually. Collaboration in groups has a long tradition in experimental 
 sciences and it has be proven to be productive according to~\cite{Etzkowitz1992}.
 The number of collaborations can be very different between research fields and
-understanding how collaborative a field is, it is not always an easy task.
+understanding how collaborative a field is, is not always an easy task.
 Several studies tend to consider academic citations as a measure for these things.
 A blog post published in Nature~\cite{nature_blog} argues that depending on citations
 can often be misleading because the true number of citations can not be
@@ -1441,12 +1441,9 @@ connected by a path. We are interested in the number of connected components
 but also the size of the largest connected component in the network.
 The size of largest connected component represents the scale of the central cluster
 of the entire network, as it will discussed in the analysis section.
-Clustering coefficient and modularity and are also calculated.
-Clustering coefficient defined by,
-
-\[\text{clustering coeff.} =
-\frac{3 \times \text{(number of triangle on the graph)}}{\text{number of connected triples of nodes}}\]
-
+Clustering coefficient and modularity and are also calculated. The clustering
+coefficient, defined as 3 times the number of triangle on the graph divided
+by the number of connected triples of nodes,
 is a local measure of the degree to which nodes in a graph tend to cluster together
 in a clique. It is precisely the probability that the collaborators
 of an author also write together. In comparison, modularity is a global measure
@@ -1455,16 +1452,15 @@ value of modularity corresponds to a structure where authors mainly write
 in groups and interact less with the rest of the network. We will be using the
 Louvain method described in~\cite{Blondel2008} to calculate modularity.
 
-Furthermore, the second part of the analysis focuses on the study of influence.
 Networks are commonly dominated by one person who controls information flow and
 people that receive a great amount of information due to their position.
-In this paper we aim to understand two things, (1) which people control the flow;
+In this paper we aim to understand two further things, (1) which people control the flow;
 as in which people influence the field the most and (2) which are the authors that
 gain the most from the influence of the field.
 To measure these concepts we will be using graph theoretic metrics, more specifically
 centrality measures. Centrality measures are often used to understand different
 aspects fo social networks~\cite{Landherr2010}. In order to achieve that two
-centrality measures that have been chosen were closeness and betweenness
+centrality measures that have been chosen are closeness and betweenness
 centrality.
 
 \begin{enumerate}
@@ -1472,7 +1468,7 @@ centrality.
     are able to spread information on the network very effectively.
     A representative of this idea is \textbf{closeness centrality}, where a person is seen
     as centrally involved in the network if it requires only few intermediaries
-    for contacting others and thus is structurally relatively independent. Here,
+    to contact others and thus is structurally relatively independent. Here,
     we define this as influence. Authors with a high value of closeness centrality,
     are the authors that spread scientific knowledge easier on the network
     and we say that they have high influence.
@@ -1487,7 +1483,7 @@ centrality.
 \end{enumerate}
 
 In the next section we will be using all the metrics discussed here to provide
-insights on the field.
+insights into the field.
 
 \subsection{Analysis of co authorship network}\label{section:results}
 
