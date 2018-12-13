@@ -1504,16 +1504,30 @@ average degree is \(\approx4\), however there are authors with far more connecti
 the largest one being 58.
 
 \begin{figure}[!hbtp]
-    \begin{minipage}{.45\textwidth}
-        \centering
-        \includegraphics[width=.9\textwidth]{./assets/pd_network.pdf}
+    \begin{subfigure}{.45\textwidth}\centering
+        \includegraphics[width=.6\textwidth]{./assets/pd_network.pdf}
         \caption{\(G_1\) network.}\label{fig:g_one_network}
-    \end{minipage}
-    \begin{minipage}{.45\textwidth}
-        \centering
-        \includegraphics[width=.9\textwidth]{./assets/pd_network_cluster.pdf}
+    \end{subfigure}
+    \begin{subfigure}{.45\textwidth}\centering
+        \includegraphics[width=.6\textwidth]{./assets/pd_network_cluster.pdf}
         \caption{\(G_1\) larger connected component.}\label{fig:g_one_cluster}
-    \end{minipage}
+     \end{subfigure}
+     \begin{subfigure}{.45\textwidth}\centering
+        \includegraphics[width=.6\textwidth]{./assets/auction.pdf}
+        \caption{\(G_2\) network.}\label{fig:g_two}
+     \end{subfigure}
+    \begin{subfigure}{.45\textwidth}\centering
+        \includegraphics[width=.6\textwidth]{./assets/pd_network_cluster.pdf}
+        \caption{\(G_2\) larger connected component.}\label{fig:g_two_cluster}
+    \end{subfigure}
+    \begin{subfigure}{.45\textwidth}\centering
+        \includegraphics[width=.6\textwidth]{./assets/anarchy_network.pdf}
+        \caption{\(G_3\) network.}\label{fig:g_three}
+     \end{subfigure}
+     \begin{subfigure}{.45\textwidth}\centering
+        \includegraphics[width=.6\textwidth]{./assets/pd_network_cluster.pdf}
+        \caption{\(G_3\) larger connected component.}\label{fig:g_three_cluster}
+     \end{subfigure}
 \end{figure}
 
 How does these compare to other fields and more specifically to other fields of
@@ -1528,24 +1542,18 @@ are given by Figures~\ref{fig:g_two} and~\ref{fig:g_three}.
 A summary of the collaborative metrics for all three co authorship networks is given by
 Table~\ref{table:summary_other_networks}, and the following remarks can be made:
 
-\begin{figure}[!hbtp]
-    \begin{minipage}{.45\textwidth}
-        \centering
-        \includegraphics[width=.9\textwidth]{./assets/auction.pdf}
-        \caption{\(G_2\) network.}\label{fig:g_two}
-    \end{minipage}
-    \begin{minipage}{.45\textwidth}
-        \centering
-        \includegraphics[width=.9\textwidth]{./assets/anarchy_network.pdf}
-        \caption{\(G_3\) network.}\label{fig:g_three}
-    \end{minipage}
-\end{figure}
-
 \begin{table}[!hbtp]
     \centering
     \resizebox{\textwidth}{!}{
     \input{assets/network_comparison.tex}}
     \caption{Network metrics for \(G_1, G_2, G_3\).}\label{table:summary_other_networks}
+\end{table}
+
+\begin{table}[!hbtp]
+    \centering
+    \resizebox{\textwidth}{!}{
+    \input{assets/clusters_comparison.tex}}
+    \caption{Network metrics for \(G_1, G_2, G_3\).}\label{table:summary_clusters}
 \end{table}
 
 \begin{itemize}
@@ -1595,13 +1603,13 @@ number of nodes of \(G_1\) to the other networks it is shown that the growth rat
 for all three networks after the 2000s is a perfect match, Figure~\ref{fig:nodes_cumu}.
 This is evidence that something else shocked the academic community around that time.
 
-\begin{figure}[!hbtp]
-    \begin{minipage}{.45\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{./assets/images/percentage_networks_nodes.pdf}
-        \caption{Normalized \# Nodes over time for \(G_1\) -\(G_3\).}\label{fig:nodes_cumu}
-    \end{minipage}
-\end{figure}
+% \begin{figure}[!hbtp]
+%     \begin{minipage}{.45\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{./assets/images/percentage_networks_nodes.pdf}
+%         \caption{Normalized \# Nodes over time for \(G_1\) -\(G_3\).}\label{fig:nodes_cumu}
+%     \end{minipage}
+% \end{figure}
 
 The change of the average degree over time has also been calculated for the
 subgraphs and is shown in Figure~\ref{fig:degree_distr_cumu}. The growth of
@@ -1614,15 +1622,70 @@ a minor decrease.
 
 \begin{figure}[!hbtp]
     \centering
-    \includegraphics[width=.7\textwidth]{./assets/images/degrees_over_time.pdf}
-    \caption{Degree distribution of cumulative subgraphs for \(G_1\) - \(G_3\).}\label{fig:degree_distr_cumu}
+    \begin{subfigure}{.45\textwidth}\centering
+        \includegraphics[width=1.1\textwidth]{./assets/images/percentage_networks_nodes.pdf}
+        % \caption{\(G_1\) network.}\label{fig:g_one_network}
+    \end{subfigure}
+    \begin{subfigure}{.45\textwidth}\centering
+        \includegraphics[width=1.1\textwidth]{./assets/images/degrees_over_time.pdf}
+        %\caption{\(G_1\) larger connected component.}\label{fig:g_one_cluster}
+     \end{subfigure}
+
+     \begin{subfigure}{.45\textwidth}\centering
+        \includegraphics[width=1.1\textwidth]{./assets/images/connected_components_over_time.pdf}
+        %\caption{\(G_2\) network.}\label{fig:g_two}
+     \end{subfigure}
+    \begin{subfigure}{.45\textwidth}\centering
+        \includegraphics[width=1.1\textwidth]{./assets/images/size_of_largest_cc_over_time.pdf}
+        %\caption{\(G_2\) larger connected component.}\label{fig:g_two_cluster}
+    \end{subfigure}
+
+    \begin{subfigure}{.45\textwidth}\centering
+        \includegraphics[width=1.1\textwidth]{./assets/images/clustering_coeff_over_time.pdf}
+        %\caption{\(G_3\) network.}\label{fig:g_three}
+     \end{subfigure}
+     \begin{subfigure}{.45\textwidth}\centering
+        \includegraphics[width=1.1\textwidth]{./assets/images/modularity_over_time.pdf}
+        %\caption{\(G_3\) larger connected component.}\label{fig:g_three_cluster}
+     \end{subfigure}
 \end{figure}
+
+
+\begin{figure}[!hbtp]
+    \centering
+    \begin{subfigure}{\textwidth}\centering
+        \includegraphics[width=.6\textwidth]{./assets/images/degrees_over_time_cluster.pdf}
+        %\caption{\(G_2\) larger connected component.}\label{fig:g_two_cluster}
+    \end{subfigure}
+    \begin{subfigure}{\textwidth}\centering
+        \includegraphics[width=.6\textwidth]{./assets/images/clustering_coeff_over_time_clusters.pdf}
+        %\caption{\(G_3\) network.}\label{fig:g_three}
+     \end{subfigure}
+     \begin{subfigure}{\textwidth}\centering
+        \includegraphics[width=.6\textwidth]{./assets/images/modularity_over_time_cluster.pdf}
+        %\caption{\(G_3\) larger connected component.}\label{fig:g_three_cluster}
+     \end{subfigure}
+\end{figure}
+
+% \begin{figure}[!hbtp]
+%     \centering
+%     \includegraphics[width=.7\textwidth]{./assets/images/degrees_over_time.pdf}
+%     \caption{Degree distribution of cumulative subgraphs for \(G_1\) - \(G_3\).}\label{fig:degree_distr_cumu}
+% \end{figure}
 
 \begin{table}[!hbtp]
     \centering
-    \begin{adjustbox}{totalheight=\textheight-2\baselineskip}
+    \begin{adjustbox}{totalheight=\textheight-2\baselineskip, width=\textwidth}
     \input{assets/cumulative_graphs_table.tex}}
     \caption{Collaborativeness metrics for cumulative graphs.}\label{table:coll_cumulative}
+\end{adjustbox}
+\end{table}
+
+\begin{table}[!hbtp]
+    \centering
+    \begin{adjustbox}{totalheight=\textheight-2\baselineskip, width=\textwidth}
+    \input{assets/cumulative_clusters_table.tex}}
+    % \caption{Collaborativeness metrics for cumulative graphs.}\label{table:coll_cumulative}
 \end{adjustbox}
 \end{table}
 
@@ -1679,6 +1742,14 @@ Regarding between centrality,
     \caption{Betweenness centrality distributions \(G_1-G_3\).}\label{fig:betweenness_dist}
 \end{figure}
 
+ 
+\begin{figure}[!hbtp]
+    \centering
+    \includegraphics[width=\textwidth]{./assets/images/betweeness_distributions_clusters.pdf}
+    %\caption{Betweenness centrality distributions \(G_1-G_3\).}\label{fig:betweenness_dist}
+\end{figure}
+
+
 On the other hand, closeness distributions have more variation. The following
 observations are made from the distributions:
 
@@ -1704,6 +1775,12 @@ observations are made from the distributions:
     \centering
     \includegraphics[width=\textwidth]{./assets/images/closeness_distributions.pdf}
     \caption{Closeness centrality distributions  \(G_1- G_3\).}\label{fig:closeness_dist}
+\end{figure}
+
+\begin{figure}[!hbtp]
+    \centering
+    \includegraphics[width=\textwidth]{./assets/images/closeness_distributions_clusters.pdf}
+    %\caption{Closeness centrality distributions  \(G_1- G_3\).}\label{fig:closeness_dist}
 \end{figure}
 
 \begin{figure}[!hbtp]

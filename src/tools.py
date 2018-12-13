@@ -15,9 +15,20 @@ def write_to_file(filename, metric):
 
 def test_kruskal(distributions):
     alpha = 0.05
-    _, p = stats.kruskal(distributions[0],distributions[1], distributions[2])
+    _, p = stats.kruskal(*distributions)
     
     if p < alpha:
         print(p, "The null hypothesis can be rejected.")
     else:
         print(p, "The null hypothesis cannot be rejected.")
+
+def test_mannwhitneyu(distributions):
+    alpha = 0.05
+    _, p = stats.mannwhitneyu(*distributions)
+    
+    if p < alpha:
+        print(p, "The null hypothesis can be rejected.")
+    else:
+        print(p, "The null hypothesis cannot be rejected.")
+
+        
