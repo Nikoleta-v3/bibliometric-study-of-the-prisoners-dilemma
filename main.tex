@@ -39,6 +39,7 @@
 \newcommand{\isolated}{\input{assets/num_Isolated_nodes.txt}}
 \newcommand{\isolatedpercentage}{\input{assets/perce_Isolated_nodes.txt}}
 \newcommand{\connectedcomponents}{\input{assets/num_Connected_components.txt}}
+\newcommand{\communities}{\input{assets/num_Communities.txt}}
 \newcommand{\largestcc}{\input{assets/Size_of_largest_component.txt}}
 \newcommand{\clustering}{\input{assets/Clustering_coeff.txt}}
 \newcommand{\avdegree}{\input{assets/Av._degree.txt}}
@@ -1147,27 +1148,66 @@
 
 \section{Analysing a large corpus of articles}\label{section:analysis}
 
-The focus of Section~\ref{section:timeline} has been the academic publications on the topic of the iterated
-prisoner's dilemma. Whilst in Section~\ref{section:timeline} we covered
-several publications of specific interest and manually partitioned the literature
-in different sections, in the second part of this paper we analyse the publications
-using a large dataset of articles. The data collection process is covered in
+The focus of Section~\ref{section:timeline} has been the academic publications on
+the topic of the iterated prisoner's dilemma. Whilst in Section~\ref{section:timeline}
+several publications of specific interest were covered and the literature was manually
+partitioned in different sections, in the second part of this paper the publications
+are analysed using a large dataset of articles. In Section~\ref{section:background}
+some background
+research on bibliometrics is covered. The data collection process is covered in
 Section~\ref{section:data_collection} and a preliminary analysis of the data is
 conducted in Section~\ref{section:preliminary_analysis}. In Section~\ref{section:methodology},
-we present the methodology which will be used to analyse the author relationships.
-In summary, we will be using graph theoretical methods to ascertain the level of
+the methodology which will be used to analyse the author relationships is presented.
+In summary, graph theoretical methods will be used to ascertain the level of
 collaborative nature of the field and identify influence.
 This type of analysis has been carried out in~\cite{Liu2015}. The novelty here
 is to consider approaches not considered in~\cite{Liu2015} and new origins of
-publications. A further comparison of the results are made, relative to:
-
-\begin{itemize}
-    \item Two other sub fields of game theory: auction games~\cite{menezes2005} and 
-    the price of anarchy~\cite{roughgarden2005}.
-    \item A temporal analysis.
-\end{itemize}
-
+publications. A further comparison of the results are made, relative to
+two other sub fields of game theory: auction games~\cite{menezes2005} and
+the price of anarchy~\cite{roughgarden2005} and a temporal analysis.
 Finally in Section~\ref{section:results}, the results of the analysis are presented.
+
+\subsection{Background}\label{section:background}
+
+As discussed in~\cite{youngblood2018}, bibliometrics or the statistical analysis
+of published works (originally described by~\cite{pritchard1969}) 
+have been used to support historical assumptions about the development of fields
+\cite{raina1998}, identify connections between scientific growth and policy changes 
+\cite{das2016}, to develop a quantitative understanding of author order~\cite{sekara2018},
+and investigate the collaborative structure of an interdisciplinary field~\cite{Liu2015}.
+Most academic research is undertaken in the form of collaborative effort and as~\cite{Kyvik2017}
+points out, it is rationale that two or more people have the potential to do better
+as a group than individually. Collaboration in groups has a long tradition in experimental 
+sciences and it has be proven to be productive according to~\cite{Etzkowitz1992}.
+The number of collaborations can be very different between research fields and
+understanding how collaborative a field is, is not always an easy task.
+Several studies tend to consider academic citations as a measure for these things.
+A blog post published in Nature~\cite{nature_blog} argues that depending on citations
+can often be misleading because the true number of citations can not be
+known. Citations can be missed due to data entry errors, academics are influenced
+by many more papers than they actually cite and several of the citations are
+superficial.
+
+A more recent approach to measure collaborative behaviour is to use the co
+authorship network, as described in~\cite{Liu2015}. Using this approach has many
+advantages as several graph theoretic measures can be used as proxies to explain
+authors relationship. In~\cite{Liu2015}, they analyse the development of the field
+``evolution of cooperation'' using this approach. The topic ``evolution of cooperation''
+is a multidisciplinary field which also includes a large number of publications
+on the prisoner's dilemma. This paper builds upon the work done by~\cite{Liu2015}
+and extends their methodology. Though in
+\cite{Liu2015}, they considered a data set from a single source, Web of Science,
+the data set described here has been collected from five different sources. Moreover, the collaborative
+results of the analysis are compared to those of two different sub fields.
+Co authorship networks have also been used in~\cite{youngblood2018} for classifying
+topics of an interdisciplinary field. This was done using centrality measures,
+which will be covered below, here centrality measures are used in order to understand
+the influence an author can have and can receive by being part of an academic group.
+Furthermore, in~\cite{alshebli2018} they study the relationship between research
+impact and five classes of diversity: ethnicity, discipline, gender, affiliation,
+and academic age. These characteristics of the authors described here are not
+being captured. This is considered to be a limitation to this work which will
+be will explored in future work.
 
 \subsection{Data Collection}\label{section:data_collection}
 
@@ -1181,9 +1221,9 @@ example, \url{http://export.arxiv.org/api/query?search_query=abs:prisoner's dile
 represents a request message. The first part of the request is the address
 of the API we are querying.
 In this example the address corresponds to the API of arXiv.
-The second part of the request contains the search arguments. In our example we
-are requesting that the word `prisoners dilemma' exists within
-the article's title. The format of the request message is different from API to API.
+The second part of the request contains the search arguments. In this example 
+it is requested that the word `prisoners dilemma' exists within the article's title.
+The format of the request message is different from API to API.
 The receive phase includes receiving a number of raw metadata of articles that
 satisfies the request message. The raw metadata are commonly received in extensive markup
 language (xml) or Javascript object notation (json) formats~\cite{nurseitov2009}.
@@ -1195,7 +1235,7 @@ reproduced all code used to query the different APIs has been packaged as a Pyth
 available online~\cite{nikoleta_2017}. The software could be used for any type of
 projects similar to the one described here, documentation for it is available at:
 \url{http://arcas.readthedocs.io/en/latest/}.
-Project~\cite{nikoleta_2017} allow us to collect articles from a list of APIs by
+Project~\cite{nikoleta_2017} allow users to collect articles from a list of APIs by
 specifying just a single keyword. Four prominent journals in the field and a
 pre print server were used as sources to collect data for this analysis:
 PLOS, Nature, IEEE, Springer and arXiv.
@@ -1240,7 +1280,9 @@ the preprint version of an article (collected from arXiv) was dropped.
 %TODO add reference to archived dataset
 Of these \totalarticles article, \manual have not been collected from the
 aforementioned APIs. These articles were of specific interest and manually added
-to the dataset throughout the writing of Section~\ref{section:timeline}. A more
+to the dataset throughout the writing of Section~\ref{section:timeline}. A
+similar approach was used in~\cite{Liu2015} where a number of articles of interest
+where manually added to the data set. A more
 detailed summary of the articles' provenance is given by Table~\ref{table:provenance}.
 Only 3\% of the data set consists of articles that were manually added and 33\% of the
 articles were collected from arXiv.
@@ -1273,7 +1315,7 @@ followed by Nature with 10 and Springer with 9.
 \end{table}
 
 Though the average publication offers insights about the publications of the
-fields, it remains a constant number. The data we are handling here is a time
+fields, it remains a constant number. The data handled here is a time
 series between 1950, when the game was introduced, and 2018 (Figure~\ref{fig:timeseries}). 
 Two observations can be made from Figure~\ref{fig:timeseries}.
 
@@ -1288,7 +1330,7 @@ Two observations can be made from Figure~\ref{fig:timeseries}.
 These observations can be confirmed by studying the time series.
 Using~\cite{scipy}, an exponential distribution is fitted to
 the data from 1980-2016. The exponential fitting proves that since 1980 there has
-been an exponential increase in the number of publications till 2016 (Figure~\ref{fig:fitting}).
+been an increase in the number of publications till 2016 (Figure~\ref{fig:fitting}).
 The fitted model can also be used to project the behaviour of the field for the next 
 5 years. The forecasted periods are plotted in Figure~\ref{fig:forecasting} and
 their exact values are given by Table~\ref{table:forecast}. The time series
@@ -1312,7 +1354,7 @@ prisoner's dilemma still attracts academic attention.
 \begin{figure}[!hbtp]
     \centering
     \includegraphics[width=.5\textwidth]{./assets/images/forecasting.pdf}
-    \caption{Forecast for 2017-2022}\label{fig:forecasting}
+    \caption{Forecast for 2017-2022.}\label{fig:forecasting}
 \end{figure}
 
 \begin{table}[!hbtp]
@@ -1331,18 +1373,18 @@ for this work; auction games and the price of anarchy.
     of auction markets.
     Game theory is used for years to study auctions and the behaviour of
     bidders~\cite{Shubik1971}. The earliest entry in our data set~[ref] goes
-    back to 1974 (Figure~\ref{fig:timeseries_ag}).
+    back to 1974 (Figure~\ref{fig:timeseries_ag}). Note that no articles
+    have been added manually for auction games.
     \item Price of Anarchy is a concept in game theory which
     measures how the efficiency of a system degrades due to selfish behaviour of
     it's agents. There is a variety of such measures however the price of anarchy
     has attracted a lot of attention since it's informal introduction in 1999
-    by~\cite{Koutsoupias1999}. The first entry in the data set~[ref] is a year
-    later in 2000 (Figure~\ref{fig:timeseries_pa}).
+    by~\cite{Koutsoupias1999}. Note that~\cite{Koutsoupias1999} has been manually
+    added to the date set and it's the first entry (Figure~\ref{fig:timeseries_pa}).
 \end{itemize}
 
 A summary of both data sets collected on both topics, in comparison to that of
-[ref], is given by Table~\ref{table:summary_other_topics}. Note that no article
-have been added manually for the data sets for the two extra sub fields.
+[ref], is given by Table~\ref{table:summary_other_topics}.
 
 \begin{table}[!hbtp]
     \centering
@@ -1355,7 +1397,9 @@ The iterated prisoner's dilemma and auction theory are very well studied topics
 that have been publicising for decades. A large number of articles have
 been collected for both topics, \totalarticles and 34444 respectively. Though, auction
 games have a larger number of articles, the iterated prisoner's dilemma
-has almost 300 more authors. Auction games have an overall average yearly publication
+has almost 300 more authors.
+
+Auction games have an overall average yearly publication
 of 93 articles per year compared to the prisoner's dilemma with 49 per year. 50\% of articles
 for [ref] have been collected from the pre print server arXiv and no articles have
 been published in PLOS.
@@ -1381,46 +1425,11 @@ has been made to Springer.
 
 \subsection{Methodology}\label{section:methodology}
 
-As discussed in~\cite{youngblood2018}, bibliometrics or the statistical analysis
-of published works (originally described by~\cite{pritchard1969}) 
-have been used to support historical assumptions about the development of fields
-\cite{raina1998}, identify connections between scientific growth and policy changes 
-\cite{das2016}, and investigate the collaborative structure of an interdisciplinary
-field~\cite{Liu2015}.
-Most academic research is undertaken in the form of collaborative effort and as~\cite{Kyvik2017}
-points out, it is rationale that two or more people have the potential to do better
-as a group than individually. Collaboration in groups has a long tradition in experimental 
-sciences and it has be proven to be productive according to~\cite{Etzkowitz1992}.
-The number of collaborations can be very different between research fields and
-understanding how collaborative a field is, is not always an easy task.
-Several studies tend to consider academic citations as a measure for these things.
-A blog post published in Nature~\cite{nature_blog} argues that depending on citations
-can often be misleading because the true number of citations can not be
-known. Citations can be missed due to data entry errors, academics are influenced
-by many more papers than they actually cite and several of the citations are
-superficial.
-
-A more recent approach to measure collaborative behaviour is to use the co
-authorship network, as described in~\cite{Liu2015}. Using this approach has many
-advantages as several graph theoretic measures can be used as proxies to explain
-authors relationship. In~\cite{Liu2015}, they analyse the development of the field
-``evolution of cooperation'' using this approach. The topic ``evolution of cooperation''
-is a multidisciplinary field which also includes a large number of publications
-on the prisoner's dilemma. In this paper we build upon
-the work done by~\cite{Liu2015} and extend their methodology. Though in
-\cite{Liu2015}, they considered a data set from a single source, Web of Science,
-our data have been collected from five different sources. Moreover, the collaborative
-results of our analysis are compared to those of two different sub fields.
-Co authorship networks have also been used in~\cite{youngblood2018} for classifying
-topics of an interdisciplinary field. This was done using centrality measures,
-which will be covered below, here we use centrality measures in order to understand
-the influence an author can have and can receive by being part of an academic group.
-
 The relationship between the authors within a field will be modelled as a graph \(G\) with
 a set \(V_G\) of nodes and \(E_G\) of edges. The set \(V_G\) represents the authors
 and an edge connects two authors if and only if those authors have written together.
 The co authorship network is constructed using the main data set described in
-Section~\ref{section:preliminary_analysis} and the open source package Networkx
+Section~\ref{section:preliminary_analysis} and the open source package
 \cite{networkx}. The prisoner's dilemma network is denoted as \(G_1\) where the
 number of unique authors \(|V(G_1)|\) is \authors and \(|E(G_1)|=\) \edges.
 Note that the names of all authors names were formatted as their last name and
@@ -1428,8 +1437,8 @@ first initial (i.e. Martin A. Nowak to Martin Nowak). This was done to avoid err
 such as Martin A. Nowak and Martin Nowak, being treated as a different person.
 
 Collaborativeness, will be analysed using measures such as, isolated nodes,
-connected components, clustering coefficient, modularity and average degree.
-These measures allow us to understand the number of connections authors can have
+connected components, clustering coefficient, communities, modularity and average degree.
+These measures show the number of connections authors can have
 and how strongly connected these people are. The number of isolated nodes is the
 number of nodes that are not connected to another node, thus the
 number of authors that have published alone. The average degree denotes the average
@@ -1437,28 +1446,34 @@ number of neighbours for each nodes, i.e. the average number of collaborations
 between the authors.
 
 A connected component is a maximal set of nodes such that each pair of nodes is
-connected by a path. We are interested in the number of connected components
-but also the size of the largest connected component in the network.
+connected by a path. The number of connected components as well as the size of the
+largest connected component in the network are reported.
 The size of largest connected component represents the scale of the central cluster
 of the entire network, as it will discussed in the analysis section.
 Clustering coefficient and modularity and are also calculated. The clustering
 coefficient, defined as 3 times the number of triangle on the graph divided
-by the number of connected triples of nodes,
-is a local measure of the degree to which nodes in a graph tend to cluster together
+by the number of connected triples of nodes, is a local measure of the degree to
+which nodes in a graph tend to cluster together
 in a clique. It is precisely the probability that the collaborators
-of an author also write together. In comparison, modularity is a global measure
-designed to measure the strength of division of a network into modules. A high
-value of modularity corresponds to a structure where authors mainly write
-in groups and interact less with the rest of the network. We will be using the
-Louvain method described in~\cite{Blondel2008} to calculate modularity.
+of an author also write together.
+
+In comparison, modularity is a global measure designed to measure the strength of
+division of a network into communities. The number of communities will be reported
+using the Clauset-Newman-Moore method~\cite{clauset2004}. Also the modularity index
+is calculated using the Louvain method described in~\cite{Blondel2008}. The value
+of the modularity index can vary between \([-1, 1]\), a high value of modularity
+corresponds to a structure where have dense connections between the nodes within
+communities but sparse connections between nodes in different communities.
+That means that authors in the network are mainly connected co-authors that they
+all have written together, and not to several different collaborators.
 
 Networks are commonly dominated by one person who controls information flow and
 people that receive a great amount of information due to their position.
-In this paper we aim to understand two further things, (1) which people control the flow;
+Two further points are aimed to be explored in this work, (1) which people control the flow;
 as in which people influence the field the most and (2) which are the authors that
-gain the most from the influence of the field.
-To measure these concepts we will be using graph theoretic metrics, more specifically
-centrality measures. Centrality measures are often used to understand different
+gain the most from the influence of the field. To measure these concepts graph
+theoretic metrics, more specifically centrality measures are going to be used.
+Centrality measures are often used to understand different
 aspects fo social networks~\cite{Landherr2010}. In order to achieve that two
 centrality measures that have been chosen are closeness and betweenness
 centrality.
@@ -1469,78 +1484,97 @@ centrality.
     A representative of this idea is \textbf{closeness centrality}, where a person is seen
     as centrally involved in the network if it requires only few intermediaries
     to contact others and thus is structurally relatively independent. Here,
-    we define this as influence. Authors with a high value of closeness centrality,
+    this is defined as influence. Authors with a high value of closeness centrality,
     are the authors that spread scientific knowledge easier on the network
-    and we say that they have high influence.
+    and they have high influence.
     \item Another centrality measure is the \textbf{betweenness centrality},
     where the determination of an author's centrality is based on the quotient of
     the number of all shortest paths between nodes in the network that include
     the regarded node and the number of all shortest paths in the network.
     In betweenness centrality the position of the node matters. Nodes
     with a higher value of betweenness centrality are located in positions that
-    a lot of information pass through them, we define this as the gain from
+    a lot of information pass through them, this is defined as the gain from
     the influence, thus these authors gain the most from their networks.
 \end{enumerate}
 
-In the next section we will be using all the metrics discussed here to provide
-insights into the field.
+In the next section all the metrics discussed here are calculated for the data
+sets in order to provide insights into the field.
 
 \subsection{Analysis of co authorship network}\label{section:results}
 
 As mentioned previously, \(G_1\) denotes the co authorship network of the iterated
-prisoner's dilemma. The open source visualization software Gephi~\cite{ICWSM09154}
-has been used
-to plot the networks of this work, more specifically \(G_1\) is given by Figure~\ref{fig:g_one_network}. %TODO Plot in Gephi
-It is evident that our network is disjoint, which is only natural as many authors
+prisoner's dilemma. It's graphical representation is given by Figure~\ref{fig:g_one_network}.
+It is evident that the network is disjoint, which is only natural as many authors
 write academic articles on their own. More specifically, a total of \isolated authors,
 have had single author publications, which corresponds to the \isolatedpercentage (\%)
-of authors in \(G_1\). There are a total of \connectedcomponents connected components
-and the largest one has a size of \largestcc. The largest connected component is shown in
-Figure~\ref{fig:g_one_cluster}. %TODO plot and add a little something for the main people on tht cluster
-The network as a clustering coefficient of \clustering, thus authors are 70\% likely
-to write with a collaborator's co author. 
-The degree distribution, Figure~\ref{fig:degree_distrs}, shows that the
-average degree is \(\approx4\), however there are authors with far more connections,
-the largest one being 58.
+of authors in \(G_1\).
 
-\begin{figure}[!hbtp]
-    \begin{subfigure}{.45\textwidth}\centering
-        \includegraphics[width=.6\textwidth]{./assets/pd_network.pdf}
-        \caption{\(G_1\) network.}\label{fig:g_one_network}
-    \end{subfigure}
-    \begin{subfigure}{.45\textwidth}\centering
-        \includegraphics[width=.6\textwidth]{./assets/pd_network_cluster.pdf}
-        \caption{\(G_1\) larger connected component.}\label{fig:g_one_cluster}
-     \end{subfigure}
-     \begin{subfigure}{.45\textwidth}\centering
-        \includegraphics[width=.6\textwidth]{./assets/auction.pdf}
-        \caption{\(G_2\) network.}\label{fig:g_two}
-     \end{subfigure}
-    \begin{subfigure}{.45\textwidth}\centering
-        \includegraphics[width=.6\textwidth]{./assets/pd_network_cluster.pdf}
-        \caption{\(G_2\) larger connected component.}\label{fig:g_two_cluster}
-    \end{subfigure}
-    \begin{subfigure}{.45\textwidth}\centering
-        \includegraphics[width=.6\textwidth]{./assets/anarchy_network.pdf}
-        \caption{\(G_3\) network.}\label{fig:g_three}
-     \end{subfigure}
-     \begin{subfigure}{.45\textwidth}\centering
-        \includegraphics[width=.6\textwidth]{./assets/pd_network_cluster.pdf}
-        \caption{\(G_3\) larger connected component.}\label{fig:g_three_cluster}
-     \end{subfigure}
-\end{figure}
+There are a total of \connectedcomponents connected components and the largest one
+has a size of \largestcc nodes. The largest connected component is shown in Figure~\ref{fig:g_one_cluster}
+and is going to be refereed to as the main cluster of the network.
+There are total of \communities communities in \(G_1\). The network has a clustering
+coefficient of \clustering,
+thus authors are 70\% likely to write with a collaborator's co author and the degree
+distribution, Figure~\ref{fig:degree_distrs}, shows that the average degree is \(\approx4\).
+Thus authors are on average connected to 4 other authors, however there are authors
+with far more connections, the largest one being 58.
 
-How does these compare to other fields and more specifically to other fields of
-game theory? A summary of the two graphs,
+In~\cite{Liu2015} the collaborative metrics for the ``evolution of cooperation''
+co authorship network were reported. Though their network is of smaller size
+(number of nodes 3670 \(<\) 5394), the collaborative metrics are fairly similar
+between the two graphs (clustering coeff. \(0.632\approx0.708\) and modularity
+\(0.950\approx0.977\)), indicating that for the same multidisciplinary field the same
+remarks can be made from a different co authors network. But how does these compare to other fields
+and more specifically to other fields of game theory? The representation of the
+two graphs,
 
 \begin{itemize}
     \item \(G_2\) for auction games and
     \item \(G_3\) for the price of anarchy,
 \end{itemize}
 
-are given by Figures~\ref{fig:g_two} and~\ref{fig:g_three}.
+are given by Figures~\ref{fig:g_two} and~\ref{fig:g_three} and their respective
+clusters in Figures~\ref{fig:g_two_cluster} and \ref{fig:g_three_cluster}.
+As stated before \(G_3\) is the smallest network of all three, this is also clearly
+seen from it's graphical representation. The \(G_2\) network  appears to be
+very similar to \(G_1\), however it's main cluster is larger in size.
+
+\begin{figure}[!hbtp]
+    \begin{subfigure}{.45\textwidth}\centering
+        \includegraphics[width=.54\textwidth]{./assets/pd_network.pdf}
+        \caption{\(G_1\) network.}\label{fig:g_one_network}
+    \end{subfigure}
+    \begin{subfigure}{.45\textwidth}\centering
+        \includegraphics[width=.54\textwidth]{./assets/pd_network_cluster.pdf}
+        \caption{\(G_1\) larger connected component.}\label{fig:g_one_cluster}
+     \end{subfigure}
+     
+     \begin{subfigure}{.45\textwidth}\centering
+        \includegraphics[width=.54\textwidth]{./assets/auction.pdf}
+        \caption{\(G_2\) network.}\label{fig:g_two}
+     \end{subfigure}
+    \begin{subfigure}{.45\textwidth}\centering
+        \includegraphics[width=.54\textwidth]{./assets/auction_network_cluster.pdf}
+        \caption{\(G_2\) larger connected component.}\label{fig:g_two_cluster}
+    \end{subfigure}
+
+    \begin{subfigure}{.45\textwidth}\centering
+        \includegraphics[width=.54\textwidth]{./assets/anarchy_network.pdf}
+        \caption{\(G_3\) network.}\label{fig:g_three}
+     \end{subfigure}
+     \begin{subfigure}{.45\textwidth}\centering
+        \includegraphics[width=.54\textwidth]{./assets/anarchy_network_cluster.pdf}
+        \caption{\(G_3\) larger connected component.}\label{fig:g_three_cluster}
+     \end{subfigure}
+     \caption{Graphical representations of \(G_1, G_2, G_3\) and their respective
+     main clusters.}
+\end{figure}
+
 A summary of the collaborative metrics for all three co authorship networks is given by
-Table~\ref{table:summary_other_networks}, and the following remarks can be made:
+Table~\ref{table:summary_other_networks} and shown in Figure~\ref{fig:degree_distrs}
+are the degree distributions of all three networks. In \(G_1\) and \(G_2\) there
+are cases of high degree (\(> 20\)) but this could be an affect of the size of
+the data, networks and subsequently the size of the main clusters.
 
 \begin{table}[!hbtp]
     \centering
@@ -1549,6 +1583,58 @@ Table~\ref{table:summary_other_networks}, and the following remarks can be made:
     \caption{Network metrics for \(G_1, G_2, G_3\).}\label{table:summary_other_networks}
 \end{table}
 
+\begin{figure}[!hbtp]
+    \centering
+    \includegraphics[width=\textwidth]{./assets/images/networks_ditributions.pdf}
+    \caption{Degree distribution for networks \(G_1, G_2\) and \(G_3\). The descriptive
+    statistics for each of the distribution are for \(G_1\): mean \(=3.85\),
+    median \(=3\), std \(=4.25\). For \(G_2\): mean \(=3.04\), median \(=2\),
+    std \(=3.01\) and for \(G_3\): mean \(=3.38\), median \(=3\), std \(=2.90\).
+    It is clear that these distributions are not normally distributed, which has
+    also been verified using a statistical test. Moreover, the statistical difference
+    of the medians has been tested using a Kruskal Wallis test. The medians
+    of \(G_1\) and \(G_3\) are not significantly different, however they are
+    are significantly large than that of \(G_2\).}\label{fig:degree_distrs}
+\end{figure}
+
+Regarding the three sub fields of game theory and using Table~\ref{table:summary_other_networks}
+and Figure~\ref{fig:degree_distrs} the following remarks can be made:
+
+\begin{itemize}
+    \item All three networks have similar values of modularity index, and they are
+    all very high (Table~\ref{table:summary_other_networks}), indicating that the
+    networks are partitioned in many communities.
+    Note that the number of
+    communities is very much similar to the number of connected components.
+    This is all to expected.
+    Due to the nature of our network,
+    the number of connected components and the number of communities are very close.
+    Most connected components represent a single publication written by all the 
+    authors in the component (corresponding to a fully connected graph), and due to that density they are
+    also a community on their own.
+    \item Comparing to another well studied topic, auction games, the field of the
+    iterated prisoner's dilemma appear to be more collaborative. Due to the
+    value of the average degree, authors in \(G_1\) are known to have on average almost
+    one more collaboration than \(G_2\). A slightly lower cluster coefficient ($ .622 < .702$)
+    of auction games indicate that is less likely for authors in \(G_2\) to collaborate
+    with a collaborators co author.
+    \item Regarding the price of anarchy, the measures indicate that the field
+    is not as mature as the other two sub fields. There are no isolated authors,
+    which is more of an indication of the time the field has been active. As a
+    more recent field there had been better communication tools that enable more
+    collaborations between researches. The average degree as well as the clustering
+    coefficient (clustering coeff.$=0.713$) of \(G_3\) is comparable to those
+    of the iterated prisoner's dilemma.
+\end{itemize}
+
+These results can be extend to the main clusters of each network, Table~\ref{table:summary_clusters}.
+The metrics's values are fairly similar and the size of \(G_2\)'s main cluster
+does not appear to gave any significant effect; all the same conclusions are made.
+Compared to auction games the iterated prisoner's
+dilemma is a more collaborative field, and it is fairly similar to the price of
+anarchy. However, our analysis suggests that the price of anarchy is still a
+maturing field.
+
 \begin{table}[!hbtp]
     \centering
     \resizebox{\textwidth}{!}{
@@ -1556,126 +1642,18 @@ Table~\ref{table:summary_other_networks}, and the following remarks can be made:
     \caption{Network metrics for \(G_1, G_2, G_3\).}\label{table:summary_clusters}
 \end{table}
 
-\begin{itemize}
-    \item Comparing to another well studied topic (\(G_2\)), the co authorship
-    network \(G_1\) appears to be more modular. This is due the high values of
-    modularity, connected components and clustering coefficient. Authors in \(G_1\)
-    tend to write more in teams (modularity $.977 > .958$), separated from the
-    main cluster and it's more likely for them to create smaller clusters of 3
-    (clustering $.702 > .622$). On the other hand, \(G_2\) has main cluster
-    of bigger size ($1348 > 815$), suggesting a more chained community than \(G_1\).
-    \item In the more recent topic of price of anarchy (\(G_3\)) there are hardly
-    any people that have published a paper alone. There is already a small community
-    that is chained in the main cluster of $221$ authors. The network has a high value
-    of modularity $0.964$ and  a high clustering probability (clustering
-    coeff.$=0.713$).
-    \item Shown in Figure~\ref{fig:degree_distrs} are the degree distributions of
-    all three networks. It has been statistically tested, and none of the distributions
-    are normally distributed. More specifically, all three distributions are
-    very skewed to the left side. Though the average degree is near 4 the medians
-    for \(G_1 - G_3\) are 3, 2 and 3. Based Kruskal Wallis test \(p< 0.05\) there
-    is significant difference in the medians. In \(G_1\) and \(G_2\) there are cases
-    of high degree (\(> 20\)) but this could be an affect of the size of the data,
-    networks and subsequently the size of the main clusters.
-\end{itemize}
-
-
-\begin{figure}[!hbtp]
-    \centering
-    \includegraphics[width=\textwidth]{./assets/images/networks_ditributions.pdf}
-    \caption{Degree distribution for networks \(G_1\) - \(G_3\).}\label{fig:degree_distrs}
-\end{figure}
-
-The growth of the networks over time is studied by constructing the network
-cumulatively with a year (of publication) interval. A total of 64 subgraphs
+The change of the networks over time is also studied by constructing the network
+cumulatively with a year interval. A total of 64 sub graphs
 over 64 periods, starting in 1950, were created and all the collaborative metrics
-for each subgraph have been calculated. These are given by Table~\ref{table:coll_cumulative}.
+for each sub graph have been calculated. Note that years 1952 and 1953 have no
+publications in our data set. The metrics of each network for each period are given by
+Table~\ref{table:coll_cumulative} and for each main cluster by Table~\ref{table:clusters_cumulative}.
 Similar to the results of~\cite{Liu2015}, it can been observed that the network \(G_1\)
-grows over time. Metrics such as the number of nodes, the number of connected components and
-the degree all increase. The network seems to have always had a high value of modularity.
-
-In Figure~\ref{fig:nodes_cumu_pd} the normalised number of nodes,
-which is calculated by dividing by the total number of nodes in \(G_1\) (\authors),
-is shown. A steep increase to the size of the network is spotted around the 2000s,
-this is was also briefly comment upon in~\cite{Liu2015}. However, that increase
-does not appear only in \(G_1\). By comparing the normalised
-number of nodes of \(G_1\) to the other networks it is shown that the growth rate
-for all three networks after the 2000s is a perfect match, Figure~\ref{fig:nodes_cumu}.
-This is evidence that something else shocked the academic community around that time.
-
-% \begin{figure}[!hbtp]
-%     \begin{minipage}{.45\textwidth}
-%         \centering
-%         \includegraphics[width=\textwidth]{./assets/images/percentage_networks_nodes.pdf}
-%         \caption{Normalized \# Nodes over time for \(G_1\) -\(G_3\).}\label{fig:nodes_cumu}
-%     \end{minipage}
-% \end{figure}
-
-The change of the average degree over time has also been calculated for the
-subgraphs and is shown in Figure~\ref{fig:degree_distr_cumu}. The growth of
-the average degree appears to differ between the networks. In \(G_1\) the first
-publications were single author ones, followed by a steep increase
-to a degree of 1 just before the 1970s and the average degree is steadily increasing
-since then. A similar trend appears in \(G_2\), however in \(G_3\)
-there has been a sharp increase since the beginning of the field, with
-a minor decrease.
-
-\begin{figure}[!hbtp]
-    \centering
-    \begin{subfigure}{.45\textwidth}\centering
-        \includegraphics[width=1.1\textwidth]{./assets/images/percentage_networks_nodes.pdf}
-        % \caption{\(G_1\) network.}\label{fig:g_one_network}
-    \end{subfigure}
-    \begin{subfigure}{.45\textwidth}\centering
-        \includegraphics[width=1.1\textwidth]{./assets/images/degrees_over_time.pdf}
-        %\caption{\(G_1\) larger connected component.}\label{fig:g_one_cluster}
-     \end{subfigure}
-
-     \begin{subfigure}{.45\textwidth}\centering
-        \includegraphics[width=1.1\textwidth]{./assets/images/connected_components_over_time.pdf}
-        %\caption{\(G_2\) network.}\label{fig:g_two}
-     \end{subfigure}
-    \begin{subfigure}{.45\textwidth}\centering
-        \includegraphics[width=1.1\textwidth]{./assets/images/size_of_largest_cc_over_time.pdf}
-        %\caption{\(G_2\) larger connected component.}\label{fig:g_two_cluster}
-    \end{subfigure}
-
-    \begin{subfigure}{.45\textwidth}\centering
-        \includegraphics[width=1.1\textwidth]{./assets/images/clustering_coeff_over_time.pdf}
-        %\caption{\(G_3\) network.}\label{fig:g_three}
-     \end{subfigure}
-     \begin{subfigure}{.45\textwidth}\centering
-        \includegraphics[width=1.1\textwidth]{./assets/images/modularity_over_time.pdf}
-        %\caption{\(G_3\) larger connected component.}\label{fig:g_three_cluster}
-     \end{subfigure}
-\end{figure}
-
-
-\begin{figure}[!hbtp]
-    \centering
-    \begin{subfigure}{\textwidth}\centering
-        \includegraphics[width=.6\textwidth]{./assets/images/degrees_over_time_cluster.pdf}
-        %\caption{\(G_2\) larger connected component.}\label{fig:g_two_cluster}
-    \end{subfigure}
-    \begin{subfigure}{\textwidth}\centering
-        \includegraphics[width=.6\textwidth]{./assets/images/clustering_coeff_over_time_clusters.pdf}
-        %\caption{\(G_3\) network.}\label{fig:g_three}
-     \end{subfigure}
-     \begin{subfigure}{\textwidth}\centering
-        \includegraphics[width=.6\textwidth]{./assets/images/modularity_over_time_cluster.pdf}
-        %\caption{\(G_3\) larger connected component.}\label{fig:g_three_cluster}
-     \end{subfigure}
-\end{figure}
-
-% \begin{figure}[!hbtp]
-%     \centering
-%     \includegraphics[width=.7\textwidth]{./assets/images/degrees_over_time.pdf}
-%     \caption{Degree distribution of cumulative subgraphs for \(G_1\) - \(G_3\).}\label{fig:degree_distr_cumu}
-% \end{figure}
+grows over time and that the network always had a high value of modularity.
 
 \begin{table}[!hbtp]
     \centering
-    \begin{adjustbox}{totalheight=\textheight-2\baselineskip, width=\textwidth}
+    \begin{adjustbox}{totalheight=.8\textheight-2\baselineskip, width=\textwidth}
     \input{assets/cumulative_graphs_table.tex}}
     \caption{Collaborativeness metrics for cumulative graphs.}\label{table:coll_cumulative}
 \end{adjustbox}
@@ -1685,11 +1663,118 @@ a minor decrease.
     \centering
     \begin{adjustbox}{totalheight=\textheight-2\baselineskip, width=\textwidth}
     \input{assets/cumulative_clusters_table.tex}}
-    % \caption{Collaborativeness metrics for cumulative graphs.}\label{table:coll_cumulative}
+    \caption{Collaborativeness metrics for cumulative graphs' main clusters.}\label{table:clusters_cumulative}
 \end{adjustbox}
 \end{table}
 
-The next results discussed here are on centrality measures. For \(G_1\)
+To better assess the change over time for each metric they have been plotted in
+Figure~\ref{fig:cumulative_networks}. The number of nodes, connected components
+and the size of largest component have been normalised such that we can compare
+the trend between the three networks.
+
+\begin{itemize}
+    \item In Figure~\ref{fig:normalised_number_nodes} the normalised number of nodes,
+    which is calculated by dividing by the total number of nodes in each respective network,
+    is shown. A steep increase in the size of all three networks is spotted soon after
+    2000. This could indicate that more data have been available in the sources
+    used in this work following the year 2000. It is however, definitely not a effect
+    of a single field, as it is true for all three sub fields considered here.
+    The sudden increase following the year 2000, is also reported by the
+    number of connected components and the size of the main cluster, Figures
+    \ref{fig:normalised_number_connected_components}, \ref{fig:normalised_size_of_cc}.
+    A connected components represents at least one publication which means that indeed
+    more articles are being gathered from 2000 onwards.
+    \item Auction games have been through out time less collaborative compared
+    to the iterated prisoner's dilemma. The average degree (Figure~\ref{fig:average_degree})
+    and the clustering coefficient (Figure~\ref{fig:clustering_coefficient}) of 
+    the cumulative sub graphs have been lower than that of \(G_1\) throughout
+    time. The only exception is during years 2001-2008. For these
+    year auction games appear to have had a more collaborative environment.
+    \item In the price of anarchy cumulative graphs a sharp increase since the 
+    beginning of the field can be observed for all metrics. There are not
+    many data points due to the recent development of the field, however
+    these steep trends could be an indication that game theoretic and potentially
+    all scientific research has over time been more collaborative. This could
+    be due to logistic and techical solutions.
+    \item The high values of modularity through out time is not true only for the
+    network reported in~\cite{Liu2015} but also for all three networks of this
+    field. This could indicate a limitation to the co authorship network. As the
+    measure is likely to be skewed, as each paper is more likely a connected
+    component on it's own.
+\end{itemize}
+
+\begin{figure}[!hbtp]
+    \centering
+    \begin{subfigure}{.45\textwidth}\centering
+        \includegraphics[width=1.1\textwidth]{./assets/images/percentage_networks_nodes.pdf}
+        \caption{\% Nodes.}\label{fig:normalised_number_nodes}
+    \end{subfigure}
+    \begin{subfigure}{.45\textwidth}\centering
+        \includegraphics[width=1.1\textwidth]{./assets/images/degrees_over_time.pdf}
+        \caption{Average Degree.}\label{fig:average_degree}
+     \end{subfigure}
+
+     \begin{subfigure}{.45\textwidth}\centering
+        \includegraphics[width=1.1\textwidth]{./assets/images/connected_components_over_time.pdf}
+        \caption{\% Connected components.}\label{fig:normalised_number_connected_components}
+     \end{subfigure}
+    \begin{subfigure}{.45\textwidth}\centering
+        \includegraphics[width=1.1\textwidth]{./assets/images/size_of_largest_cc_over_time.pdf}
+        \caption{\% Size of largest connected component.}\label{fig:normalised_size_of_cc}
+    \end{subfigure}
+
+    \begin{subfigure}{.45\textwidth}\centering
+        \includegraphics[width=1.1\textwidth]{./assets/images/clustering_coeff_over_time.pdf}
+        \caption{Clustering coefficient.}\label{fig:clustering_coefficient}
+     \end{subfigure}
+     \begin{subfigure}{.45\textwidth}\centering
+        \includegraphics[width=1.1\textwidth]{./assets/images/modularity_over_time.pdf}
+        \caption{Modularity.}\label{fig:modularity}
+     \end{subfigure}
+    \caption{Collaborative metrics over time for cumulative networks for \(G_1\),
+    \(G_2\) and \(G_3\).}\label{fig:cumulative_networks}
+\end{figure}
+
+The metrics that change over time for the main clusters have also been plotted,
+to further gain understanding in the change of the main cluster for all three networks
+over the course of time.
+Summary the results do not appear to change over the main cluster. The networks
+have been always modular which could be a limitation to the co authorship
+network. Over time auction gae have only a small amount of period where the
+collaborativeness was more, and the historical data with the steep increases support
+our hypothesis that the anarchy is not mature yet.
+
+% \begin{figure}[!hbtp]
+%     \centering
+%     \begin{subfigure}{.45\textwidth}\centering
+%         \includegraphics[width=\textwidth]{./assets/images/degrees_over_time_cluster.pdf}
+%         \caption{Average degree.}\label{fig:average_degree_clusters}
+%     \end{subfigure}
+%     \begin{subfigure}{.45\textwidth}\centering
+%         \includegraphics[width=\textwidth]{./assets/images/clustering_coeff_over_time_clusters.pdf}
+%         \caption{Clustering coefficient.}\label{fig:g_three}
+%      \end{subfigure}
+%      \begin{subfigure}{.45\textwidth}\centering
+%         \includegraphics[width=\textwidth]{./assets/images/modularity_over_time_cluster.pdf}
+%         %\caption{\(G_3\) larger connected component.}\label{fig:g_three_cluster}
+%      \end{subfigure}
+%      \caption{Collaborative metrics over time for cumulative networks for \(G_1\)'s,
+%      \(G_2\)'s and \(G_3\)'s main clusters.}\label{fig:cumulative_networks}
+% \end{figure}
+
+\newpage
+
+The next results discussed here are on centrality measures. As a reminder,
+two centrality measures are reported here, these are the closeness centrality
+and the betweenness centrality. Closeness centrality is a measure of how
+easy is for an author to contact others, and consequently affect them; influence them.
+Thus closeness centrality here is a measure of influence. Betweenness centrality
+is a measure of how many paths pass through a specific nodes, thus the amount
+of information this person has access to. Betweenness centrality is used here
+as a measure of how much an author gain from the field. All centrality measure
+can have values ranging from \([0, 1]\).
+
+For \(G_1\)
 the most central author based on closeness and betweenness are given by Tables
 \ref{table:central_authors_cc} and \ref{table:central_authors} respectively.
 Centrality measures range between \([0, 1]\). The betweenness centrality of the
@@ -1700,55 +1785,69 @@ a centrality of 0.04. Perc's work has been briefly discussed in Section, and the
 centrality measure suggest that the network is very influenced by him. He is
 connected to a total of 58 nodes and he has published to all five of the different
 sources we are considering in the study. Though he also gains from his position
-in the network, the gain is minor. An author is not in the top influencers but
-gain much from his position is Martin Nowak.
+in the network, the gain is minor. An author who is not in the top influencers but
+does indeed gain from his position in the network is Martin Nowak. An author
+that his work has been discussed in Section~\ref{section:timeline}.
 
 \begin{figure}[!hbtp]
+    \centering
     \begin{minipage}{.45\textwidth}
         \centering
         \input{assets/central_authors_cc.tex}
-        \caption{Authors that gain the most influence in \(G_1\).}\label{table:central_authors_cc}
+        \caption{Ten most influenced authors in \(G_1\).}\label{table:central_authors_cc}
     \end{minipage}%
     \begin{minipage}{.45\textwidth}
         \centering
         \input{assets/central_authors.tex}
-        \caption{Ten most influenced authors in \(G_1\).}\label{table:central_authors}
+        \caption{Authors that gain the most influence in \(G_1\).}\label{table:central_authors}
     \end{minipage}
 \end{figure}
+
+
+From Tables~\ref{table:central_authors_cc} and \ref{table:central_authors} it
+can be seen that authors in \(G_1\) are more likely to affect their field instead
+of gaining from it. This can be better explored by considering the distributions
+of the centralities and by comparing them to other fields.
 
 Overall, the values of closeness centrality appear to be higher than those of
 betweenness. These can be better explored by considering the centralities'
 distributions for all three networks. The distributions for both centralities are
 plotted in Figures~\ref{fig:betweenness_dist} and~\ref{fig:closeness_dist}, and
-more over for closeness centrality a violin plot is also given by Figure~\ref{fig:violin_closeness}.
-Several remarks are made from the centralities' distributions.
+in Figures~\ref{fig:betweenness_dist_cluster} and~\ref{fig:closeness_dist_cluster}
+for their respective main clusters.
 
-Regarding between centrality,
+Regarding gaining from your network. For all the distributions the values
+are vely low and skewed to the left. That implies that
+in all three networks, authors do not gain much from the influence of their
+fields.
 
-\begin{itemize}
-    \item None of the three distributions, Figure~\ref{fig:betweenness_dist}, is
-    normally distributed. The medians of the distributions are compared and found
-    to be statistically different based on a Kruskal Wallis test.
-    Authors in \(G_3\) gain more from being in the network than others in \(G_1\)
-    and \(G_2\).
-    \item All three distributions are skewed to the left (at 0). That implies that
-    in all three networks, authors do not gain much from the influence of their
-    fields.
-\end{itemize}
- 
 \begin{figure}[!hbtp]
     \centering
-    \includegraphics[width=\textwidth]{./assets/images/betweeness_distributions.pdf}
-    \caption{Betweenness centrality distributions \(G_1-G_3\).}\label{fig:betweenness_dist}
+    \begin{subfigure}{\textwidth}\centering
+        \includegraphics[width=\textwidth]{./assets/images/betweeness_distributions.pdf}
+        \caption{Betweenness centrality distributions \(G_1, G_2, G_3\). The descriptive
+        statistics for each of the distribution are for \(G_1\): mean\(=0.000019\),
+        median\(=0.0\), std\(=0.000207\). For \(G_2\): mean\(=0.000086\), median\(=0.0\),
+        std\(=0.000693\) and for \(G_3\): mean\(=0.000151\), median\(=0.0\), std\(=0.000931\).
+        None of the three distributions is normally distributed. There is no
+        statistical difference between the medians of \(G_1\) and \(G_3\). There
+        is however, statistical difference between the median of \(G_2\).
+        These have been tested using a Kruskal Wallis test.}\label{fig:betweenness_dist}
+    \end{subfigure}
+    \begin{subfigure}{\textwidth}\centering
+        \includegraphics[width=\textwidth]{./assets/images/betweeness_distributions_clusters.pdf}
+        \caption{Betweenness centrality distributions for \(G_1, G_2, G_3\) respective
+        main clusters.The descriptive
+        statistics for each of the distribution are for \(G_1\): mean\(=0.0054\),
+        median\(=0.0\), std\(=0.022\). For \(G_2\): mean\(=0.0048\), median\(=0.0\),
+        std\(=0.019\) and for \(G_3\): mean\(=0.02\), median\(=0.0\), std\(=0.055\).
+        None of the three distributions is normally distributed. There is no
+        statistical difference between the medians of \(G_1\) and \(G_3\). There
+        is however, statistical difference between the median of \(G_2\).
+        These have been tested using a Kruskal Wallis test.}\label{fig:betweenness_dist_cluster}
+    \end{subfigure}%
 \end{figure}
-
  
-\begin{figure}[!hbtp]
-    \centering
-    \includegraphics[width=\textwidth]{./assets/images/betweeness_distributions_clusters.pdf}
-    %\caption{Betweenness centrality distributions \(G_1-G_3\).}\label{fig:betweenness_dist}
-\end{figure}
-
 
 On the other hand, closeness distributions have more variation. The following
 observations are made from the distributions:
@@ -1764,45 +1863,44 @@ observations are made from the distributions:
     clusters of their relative networks. Thus, the people that influence the
     field the most are the most central authors in the main cluster of the
     co authorship network of a field.
-    \item In Figure~\ref{fig:violin_closeness}, the distributions are plotted in
-    a violin plot. The network with the highest value of closeness centrality
-    is the network with the largest cluster, \(G_2\).
     \item Both \(G_2\) and \(G_3\) have more people influencing the field compared
     to \(G_1\).
 \end{itemize}
 
 \begin{figure}[!hbtp]
     \centering
+    \begin{subfigure}{\textwidth}\centering
     \includegraphics[width=\textwidth]{./assets/images/closeness_distributions.pdf}
-    \caption{Closeness centrality distributions  \(G_1- G_3\).}\label{fig:closeness_dist}
-\end{figure}
-
-\begin{figure}[!hbtp]
+    \caption{Closeness centrality distributions \(G_1, G_2, G_3\). The descriptive
+        statistics for each of the distribution are for \(G_1\): mean\(=0.0050\),
+        median\(=0.00056\), std\(=0.010\). For \(G_2\): mean\(=0.000086\), median\(=0.00058\),
+        std\(=0.000693\) and for \(G_3\): mean\(=0.000151\), median\(=0\), std\(=0.000931\).
+        None of the three distributions is normally distributed. All medians
+        are statistically different.}\label{fig:closeness_dist}
+\end{subfigure}
+\begin{subfigure}{\textwidth}\centering
     \centering
     \includegraphics[width=\textwidth]{./assets/images/closeness_distributions_clusters.pdf}
-    %\caption{Closeness centrality distributions  \(G_1- G_3\).}\label{fig:closeness_dist}
+    \caption{Closeness centrality distributions for \(G_1, G_2, G_3\) respective
+    main clusters. The descriptive statistics for each of the distribution are
+    for \(G_1\): mean\(=0.19\),
+    median\(=0.19\), std\(=0.035\). For \(G_2\): mean\(=0.14\), median\(=0.14\),
+    std\(=0.026\) and for \(G_3\): mean\(=0.19\), median\(=0.19\), std\(=0.035\).
+    None of the three distributions is normally distributed. All medians
+    are statistically different.}\label{fig:closeness_dist_cluster}
+    \end{subfigure}
 \end{figure}
-
-\begin{figure}[!hbtp]
-    \centering
-    \includegraphics[width=.7\textwidth]{./assets/images/closeness_violins.pdf}
-    \caption{Violin plots of closeness centralities.}\label{fig:violin_closeness}
-\end{figure}
-
-These results can be extend to the cumulative sub graphs. The distributions for
-both centralities for each sub graph of \(G_1\) have been plotted. In
-Figure~\ref{fig:betweenness_dist_cumu} we observe that though there are a few outliers,
-betweenness centrality has always been low for \(G_1\). In comparison, the
-closeness centrality of the network changes over times. There are several
-periods when authors influenced the field more than today, for example in 1972-1973.
-The centrality does not appear to follow a pattern, Figure~\ref{fig:closeness_dist_cumu}.
 
 \subsection{Conclusion}
-
+%
 \section{Acknowledges}
 
+A variety of software libraries have been used in this work:
+
 \begin{itemize}
-    \item Networkx will also be used the following section to conduct our analysis.
+    \item Networkx~\cite{networkx}, library for analysing networks.
+    \item Gephi~\cite{ICWSM09154} open source package for visualising networks.
+    \item louvain, library for calculating the networks modularity.
 \end{itemize}
 
 \newpage

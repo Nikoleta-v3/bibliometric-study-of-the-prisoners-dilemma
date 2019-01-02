@@ -22,9 +22,9 @@ def test_kruskal(distributions):
     else:
         print(p, "The null hypothesis cannot be rejected.")
 
-def test_mannwhitneyu(distributions):
+def test_mannwhitneyu(distributions, alternative=None):
     alpha = 0.05
-    _, p = stats.mannwhitneyu(*distributions)
+    _, p = stats.mannwhitneyu(*distributions, alternative=alternative)
     
     if p < alpha:
         print(p, "The null hypothesis can be rejected.")
