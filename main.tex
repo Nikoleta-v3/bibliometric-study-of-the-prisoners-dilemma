@@ -97,7 +97,7 @@ As discussed in~\cite{youngblood2018}, bibliometrics or the statistical analysis
 of published works (originally described by~\cite{pritchard1969}) 
 have been used to support historical assumptions about the development of fields
 \cite{raina1998}, identify connections between scientific growth and policy changes 
-\cite{das2016}, to develop a quantitative understanding of author order~\cite{sekara2018},
+\cite{das2016}, develop a quantitative understanding of author order~\cite{sekara2018},
 and investigate the collaborative structure of an interdisciplinary field~\cite{Liu2015}.
 Most academic research is undertaken in the form of collaborative effort and as~\cite{Kyvik2017}
 points out, it is rationale that two or more people have the potential to do better
@@ -127,11 +127,10 @@ Co authorship networks have also been used in~\cite{youngblood2018} for classify
 topics of an interdisciplinary field. This was done using centrality measures,
 which will be covered below, here centrality measures are used in order to understand
 the influence an author can have and can receive by being part of an academic group.
-Furthermore, in~\cite{alshebli2018} they study the relationship between research
+Furthermore, in~\cite{alshebli2018} they look at the relationship between research
 impact and five classes of diversity: ethnicity, discipline, gender, affiliation,
-and academic age. These characteristics of the authors described here are not
-being captured. This is considered to be a limitation to this work which will
-be will explored in future work.
+and academic age. These characteristics of the authors are not being captured here.
+In future work these characteristics would be included in the analysis.
 
 \subsection{Data Collection}\label{section:data_collection}
 
@@ -143,7 +142,7 @@ Interacting with an API has two phases: requesting and receiving.
 The request phase includes composing a url with the details of the request. For
 example, \url{http://export.arxiv.org/api/query?search_query=abs:prisoner's dilemma&max_results=1}
 represents a request message. The first part of the request is the address
-of the API we are querying.
+of the API.
 In this example the address corresponds to the API of arXiv.
 The second part of the request contains the search arguments. In this example 
 it is requested that the word `prisoners dilemma' exists within the article's title.
@@ -244,9 +243,9 @@ series between 1950, when the game was introduced, and 2018 (Figure~\ref{fig:tim
 Two observations can be made from Figure~\ref{fig:timeseries}.
 
 \begin{enumerate}
-    \item A steady increase to the number of publications since the 1980s
+    \item There is a steady increase to the number of publications since the 1980s
     and the introduction of computer tournaments.
-    \item A decrease in 2017-2018. This is due to our data set being incomplete.
+    \item There is a decrease in 2017-2018. This is due to our data set being incomplete.
     Articles that have been written in 2017-2018 have either not being published
     or have are not retrievable by the APIs yet.
 \end{enumerate}
@@ -258,7 +257,7 @@ been an increase in the number of publications till 2016 (Figure~\ref{fig:fittin
 The fitted model can also be used to project the behaviour of the field for the next 
 5 years. The forecasted periods are plotted in Figure~\ref{fig:forecasting} and
 their exact values are given by Table~\ref{table:forecast}. The time series
-has indicated a slight decrease however we can see that the model forecasts that the number
+has indicated a slight decrease however the model forecasts that the number
 of publications will keep increasing, thus indicating that the field of the iterated
 prisoner's dilemma still attracts academic attention.
 
@@ -304,7 +303,7 @@ for this work; auction games and the price of anarchy.
     it's agents. There is a variety of such measures however the price of anarchy
     has attracted a lot of attention since it's informal introduction in 1999
     by~\cite{Koutsoupias1999}. Note that~\cite{Koutsoupias1999} has been manually
-    added to the date set and it's the first entry (Figure~\ref{fig:timeseries_pa}).
+    added to the date set and it's its first entry (Figure~\ref{fig:timeseries_pa}).
 \end{itemize}
 
 A summary of both data sets collected on both topics, in comparison to that of
@@ -355,8 +354,8 @@ and an edge connects two authors if and only if those authors have written toget
 The co authorship network is constructed using the main data set described in
 Section~\ref{section:preliminary_analysis} and the open source package
 \cite{networkx}. The prisoner's dilemma network is denoted as \(G_1\) where the
-number of unique authors \(|V(G_1)|\) is \authors and \(|E(G_1)|=\) \edges.
-Note that the names of all authors names were formatted as their last name and
+number of unique authors \(|V(G_1)|\) is \authors and \(|E(G_1)|\) is \edges.
+All authors' names were formatted as their last name and
 first initial (i.e. Martin A. Nowak to Martin Nowak). This was done to avoid errors
 such as Martin A. Nowak and Martin Nowak, being treated as a different person.
 
@@ -372,7 +371,7 @@ between the authors.
 A connected component is a maximal set of nodes such that each pair of nodes is
 connected by a path. The number of connected components as well as the size of the
 largest connected component in the network are reported.
-The size of largest connected component represents the scale of the central cluster
+The size of the largest connected component represents the scale of the central cluster
 of the entire network, as it will discussed in the analysis section.
 Clustering coefficient and modularity and are also calculated. The clustering
 coefficient, defined as 3 times the number of triangle on the graph divided
@@ -386,7 +385,7 @@ division of a network into communities. The number of communities will be report
 using the Clauset-Newman-Moore method~\cite{clauset2004}. Also the modularity index
 is calculated using the Louvain method described in~\cite{Blondel2008}. The value
 of the modularity index can vary between \([-1, 1]\), a high value of modularity
-corresponds to a structure where have dense connections between the nodes within
+corresponds to a structure where there are dense connections between the nodes within
 communities but sparse connections between nodes in different communities.
 That means that authors in the network are mainly connected co-authors that they
 all have written together, and not to several different collaborators.
@@ -398,9 +397,8 @@ as in which people influence the field the most and (2) which are the authors th
 gain the most from the influence of the field. To measure these concepts graph
 theoretic metrics, more specifically centrality measures are going to be used.
 Centrality measures are often used to understand different
-aspects fo social networks~\cite{Landherr2010}. In order to achieve that two
-centrality measures that have been chosen are closeness and betweenness
-centrality.
+aspects fo social networks~\cite{Landherr2010}. Two centrality measures have been
+chosen for this paper and these are closeness and betweenness centrality.
 
 \begin{enumerate}
     \item In networks some nodes have a short distance to other nodes and consequently
@@ -459,8 +457,8 @@ two graphs,
 
 are given by Figures~\ref{fig:g_two} and~\ref{fig:g_three} and their respective
 clusters in Figures~\ref{fig:g_two_cluster} and \ref{fig:g_three_cluster}.
-As stated before \(G_3\) is the smallest network of all three, this is also clearly
-seen from it's graphical representation. The \(G_2\) network  appears to be
+As stated before \(G_3\) is the smallest network of all three, this is also clear
+from it's graphical representation. The \(G_2\) network appears to be
 very similar to \(G_1\), however it's main cluster is larger in size.
 
 \begin{figure}[!hbtp]
@@ -530,12 +528,10 @@ and Figure~\ref{fig:degree_distrs} the following remarks can be made:
     networks are partitioned in many communities.
     Note that the number of
     communities is very much similar to the number of connected components.
-    This is all to expected.
-    Due to the nature of our network,
-    the number of connected components and the number of communities are very close.
-    Most connected components represent a single publication written by all the 
-    authors in the component (corresponding to a fully connected graph), and due to that density they are
-    also a community on their own.
+    This is all to expected. Due to the nature of our network, most connected
+    components represent a single publication written by all the authors in the
+    component (corresponding to a fully connected graph), and due to that density
+    they are also a community on their own.
     \item Comparing to another well studied topic, auction games, the field of the
     iterated prisoner's dilemma appear to be more collaborative. Due to the
     value of the average degree, authors in \(G_1\) are known to have on average almost
@@ -571,7 +567,7 @@ cumulatively with a year interval. A total of 64 sub graphs
 over 64 periods, starting in 1950, were created and all the collaborative metrics
 for each sub graph have been calculated. Note that years 1952 and 1953 have no
 publications in our data set. The metrics of each network for each period are given by
-Table~\ref{table:coll_cumulative} and for each main cluster by Table~\ref{table:clusters_cumulative}.
+Table~\ref{table:coll_cumulative}.
 Similar to the results of~\cite{Liu2015}, it can been observed that the network \(G_1\)
 grows over time and that the network always had a high value of modularity.
 
@@ -593,8 +589,8 @@ grows over time and that the network always had a high value of modularity.
 
 To better assess the change over time for each metric they have been plotted in
 Figure~\ref{fig:cumulative_networks}. The number of nodes, connected components
-and the size of largest component have been normalised such that we can compare
-the trend between the three networks.
+and the size of largest component have been normalised such that the trend between
+the three networks can be compared.
 
 \begin{itemize}
     \item In Figure~\ref{fig:normalised_number_nodes} the normalised number of nodes,
@@ -611,8 +607,8 @@ the trend between the three networks.
     \item Auction games have been through out time less collaborative compared
     to the iterated prisoner's dilemma. The average degree (Figure~\ref{fig:average_degree})
     and the clustering coefficient (Figure~\ref{fig:clustering_coefficient}) of 
-    the cumulative sub graphs have been lower than that of \(G_1\) throughout
-    time. The only exception is during years 2001-2008. For these
+    the cumulative sub graphs have been lower than that of \(G_1\).
+    The only exception is during years 2001-2008. For these
     year auction games appear to have had a more collaborative environment.
     \item In the price of anarchy cumulative graphs a sharp increase since the 
     beginning of the field can be observed for all metrics. There are not
@@ -622,7 +618,7 @@ the trend between the three networks.
     be due to logistic and techical solutions.
     \item The high values of modularity through out time is not true only for the
     network reported in~\cite{Liu2015} but also for all three networks of this
-    field. This could indicate a limitation to the co authorship network. As the
+    field. This could indicate a limitation to the co authorship network. The
     measure is likely to be skewed, as each paper is more likely a connected
     component on it's own.
 \end{itemize}
@@ -659,32 +655,9 @@ the trend between the three networks.
     \(G_2\) and \(G_3\).}\label{fig:cumulative_networks}
 \end{figure}
 
-The metrics that change over time for the main clusters have also been plotted,
-to further gain understanding in the change of the main cluster for all three networks
-over the course of time.
-Summary the results do not appear to change over the main cluster. The networks
-have been always modular which could be a limitation to the co authorship
-network. Over time auction gae have only a small amount of period where the
-collaborativeness was more, and the historical data with the steep increases support
-our hypothesis that the anarchy is not mature yet.
-
-% \begin{figure}[!hbtp]
-%     \centering
-%     \begin{subfigure}{.45\textwidth}\centering
-%         \includegraphics[width=\textwidth]{./assets/images/degrees_over_time_cluster.pdf}
-%         \caption{Average degree.}\label{fig:average_degree_clusters}
-%     \end{subfigure}
-%     \begin{subfigure}{.45\textwidth}\centering
-%         \includegraphics[width=\textwidth]{./assets/images/clustering_coeff_over_time_clusters.pdf}
-%         \caption{Clustering coefficient.}\label{fig:g_three}
-%      \end{subfigure}
-%      \begin{subfigure}{.45\textwidth}\centering
-%         \includegraphics[width=\textwidth]{./assets/images/modularity_over_time_cluster.pdf}
-%         %\caption{\(G_3\) larger connected component.}\label{fig:g_three_cluster}
-%      \end{subfigure}
-%      \caption{Collaborative metrics over time for cumulative networks for \(G_1\)'s,
-%      \(G_2\)'s and \(G_3\)'s main clusters.}\label{fig:cumulative_networks}
-% \end{figure}
+The cumulative collaborative metrics have also been calculated for each main
+cluster, given in Table~\ref{table:clusters_cumulative}. Summarily, the results
+do not appear to change over the main cluster.
 
 \newpage
 
@@ -693,7 +666,7 @@ two centrality measures are reported here, these are the closeness centrality
 and the betweenness centrality. Closeness centrality is a measure of how
 easy is for an author to contact others, and consequently affect them; influence them.
 Thus closeness centrality here is a measure of influence. Betweenness centrality
-is a measure of how many paths pass through a specific nodes, thus the amount
+is a measure of how many paths pass through a specific node, thus the amount
 of information this person has access to. Betweenness centrality is used here
 as a measure of how much an author gain from the field. All centrality measure
 can have values ranging from \([0, 1]\).
@@ -701,14 +674,13 @@ can have values ranging from \([0, 1]\).
 For \(G_1\)
 the most central author based on closeness and betweenness are given by Tables
 \ref{table:central_authors_cc} and \ref{table:central_authors} respectively.
-Centrality measures range between \([0, 1]\). The betweenness centrality of the
+The betweenness centrality of the
 most central authors in \(G_1\) are rather low with the highest ranked author
 being Matjaz Perc with a between centrality of 0.008, Table~\ref{table:central_authors}.
-Matjaz Perc is also the first ranked author based on closeness centrality, with
-a centrality of 0.04. Perc's work has been briefly discussed in Section, and the
-centrality measure suggest that the network is very influenced by him. He is
-connected to a total of 58 nodes and he has published to all five of the different
-sources we are considering in the study. Though he also gains from his position
+A publication of Perc's work has been briefly discussed in
+Section, and the centrality measure suggest that the network is very influenced by him.
+He is connected to a total of 58 nodes and he has published to all five of the different
+sources considered in the study. Though he also gains from his position
 in the network, the gain is minor. An author who is not in the top influencers but
 does indeed gain from his position in the network is Martin Nowak. An author
 that his work has been discussed in Section~\ref{section:timeline}.
@@ -732,18 +704,18 @@ From Tables~\ref{table:central_authors_cc} and \ref{table:central_authors} it
 can be seen that authors in \(G_1\) are more likely to affect their field instead
 of gaining from it. This can be better explored by considering the distributions
 of the centralities and by comparing them to other fields.
-
-Overall, the values of closeness centrality appear to be higher than those of
-betweenness. These can be better explored by considering the centralities'
-distributions for all three networks. The distributions for both centralities are
+The distributions for both centralities are
 plotted in Figures~\ref{fig:betweenness_dist} and~\ref{fig:closeness_dist}, and
 in Figures~\ref{fig:betweenness_dist_cluster} and~\ref{fig:closeness_dist_cluster}
 for their respective main clusters.
 
-Regarding gaining from your network. For all the distributions the values
-are vely low and skewed to the left. That implies that
-in all three networks, authors do not gain much from the influence of their
-fields.
+Regarding gaining from your network. An author is more likely to gain more
+from the influence of the field if they were authors in auction games or the
+price of anarchy. Though if it were an author in the main cluster it would make
+to statistical difference in which field they were to published. Overall,
+all the betweenness values are rather small and the distributions skewed to the
+left. This could imply that in all three networks, authors do not gain much from
+the influence of their fields.
 
 \begin{figure}[!hbtp]
     \centering
@@ -753,10 +725,11 @@ fields.
         statistics for each of the distribution are for \(G_1\): mean\(=0.000019\),
         median\(=0.0\), std\(=0.000207\). For \(G_2\): mean\(=0.000086\), median\(=0.0\),
         std\(=0.000693\) and for \(G_3\): mean\(=0.000151\), median\(=0.0\), std\(=0.000931\).
-        None of the three distributions is normally distributed. There is no
-        statistical difference between the medians of \(G_1\) and \(G_3\). There
-        is however, statistical difference between the median of \(G_2\).
-        These have been tested using a Kruskal Wallis test.}\label{fig:betweenness_dist}
+        None of the three distributions is normally distributed and there is
+        significant difference between the means (these have been tested using
+        appropriate statistical difference). According to a Mann Whitney both
+        \(G_2\) and \(G_3\) medians are significant larger than that of \(G_1\) however there
+        is not statistical difference between those two medians.}\label{fig:betweenness_dist}
     \end{subfigure}
     \begin{subfigure}{\textwidth}\centering
         \includegraphics[width=\textwidth]{./assets/images/betweeness_distributions_clusters.pdf}
@@ -771,25 +744,18 @@ fields.
         These have been tested using a Kruskal Wallis test.}\label{fig:betweenness_dist_cluster}
     \end{subfigure}%
 \end{figure}
- 
 
-On the other hand, closeness distributions have more variation. The following
-observations are made from the distributions:
-
-\begin{itemize}
-    \item  Neither are normally distributed and there is a significant difference
-    between the medians of all three distributions, with \(G_3\) having a larger median.
-    \item There are clusters from all three networks for which a number of authors
-    have a closeness centrality greater than 0.02. The authors in these clusters
-    were explored but not pattern was found behind their publications. The
-    provenance and the year of publication were checked.
-    \item The authors in these clusters, are the authors which are in the main
-    clusters of their relative networks. Thus, the people that influence the
-    field the most are the most central authors in the main cluster of the
-    co authorship network of a field.
-    \item Both \(G_2\) and \(G_3\) have more people influencing the field compared
-    to \(G_1\).
-\end{itemize}
+In relation to influencing your field. An author is most likely to influence their
+field if the write for the price of anarchy and authors that publish on auctions
+game are more likely to influence compared to authors in the iterated prisoner's
+dilemma. Though if an author was to be placed in the main cluster of the respective
+field they would chose to be in either \(G_1\) or \(G_3\).
+In conclusion, authors regarding both influence metrics that have been defined Here
+are more likely to gain more if they were to published on either topics of auction
+games or the price of anarchy. Though the value of gaining is actual very small,
+you are more likely to influence you field more in another compared to that
+of the prisoner's dilemma, expect if you were wired to the main cluster of
+the topic.
 
 \begin{figure}[!hbtp]
     \centering
@@ -799,8 +765,9 @@ observations are made from the distributions:
         statistics for each of the distribution are for \(G_1\): mean\(=0.0050\),
         median\(=0.00056\), std\(=0.010\). For \(G_2\): mean\(=0.000086\), median\(=0.00058\),
         std\(=0.000693\) and for \(G_3\): mean\(=0.000151\), median\(=0\), std\(=0.000931\).
-        None of the three distributions is normally distributed. All medians
-        are statistically different.}\label{fig:closeness_dist}
+        None of the three distributions is normally distributed and the median
+        of \(G_3\) is statistically larger than that of \(G_2\), which is
+        larger than that of \(G_1\).}\label{fig:closeness_dist}
 \end{subfigure}
 \begin{subfigure}{\textwidth}\centering
     \centering
@@ -811,7 +778,8 @@ observations are made from the distributions:
     median\(=0.19\), std\(=0.035\). For \(G_2\): mean\(=0.14\), median\(=0.14\),
     std\(=0.026\) and for \(G_3\): mean\(=0.19\), median\(=0.19\), std\(=0.035\).
     None of the three distributions is normally distributed. All medians
-    are statistically different.}\label{fig:closeness_dist_cluster}
+    are statistically different. The medians of \(G_1\) and \(G_3\) are greater
+    than that of \(G_2\).}\label{fig:closeness_dist_cluster}
     \end{subfigure}
 \end{figure}
 
