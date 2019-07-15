@@ -2,47 +2,60 @@ import glob
 import imp
 import json
 import sys
+from importlib.machinery import SourceFileLoader
 
 import pandas as pd
 
 import arcas
 import unidecode
 
-tools = imp.load_source('tools', 'tools.py')
+tools = SourceFileLoader("tools", "src/tools.py").load_module()
 
-topic = sys.argv[1]
-path = 'raw_data/' + topic
+if __name__ == "__main__":
 
-for api in [arcas.Nature(), arcas.Ieee(), arcas.Plos(), arcas.Arxiv(), arcas.Springer()]:
+    topic = sys.argv[1]
+    path = "src/raw_data/" + topic
 
-    raw_articles = []
-    api_name = api.__class__.__name__
+    for api in [
+        arcas.Nature(),
+        arcas.Ieee(),
+        arcas.Plos(),
+        arcas.Arxiv(),
+        arcas.Springer(),
+    ]:
 
-    d = []
-    for filename in glob.glob('{}/*_{}_*.json'.format(path, api_name)):
-        with open(filename) as json_data:
-            d = json.load(json_data)
-            raw_articles.append(d)
-    if raw_articles:
-        flat_list = [item for sublist in raw_articles for item in sublist]
+        raw_articles = []
+        api_name = api.__class__.__name__
 
-        articles = []
-        for art in flat_list:
-            articles.append(api.to_dataframe(art))
+        d = []
+        for filename in glob.glob("{}/*_{}_*.json".format(path, api_name)):
+            with open(filename) as json_data:
+                d = json.load(json_data)
+                raw_articles.append(d)
+        if raw_articles:
+            flat_list = [item for sublist in raw_articles for item in sublist]
 
-        dataframe = pd.concat(articles, ignore_index=True)
-        dataframe = dataframe[~(dataframe['author']=='No authors found for this document.')]
-        names = dataframe.author
+            articles = []
+            for art in flat_list:
+                articles.append(api.to_dataframe(art))
 
-        if api_name == 'Springer':
-            edited = []
-            for name in names:
-                first, last = name.split(' ', 1)
-                edited.append(last + ' ' + first)
-            names = edited
+            dataframe = pd.concat(articles, ignore_index=True)
+            dataframe = dataframe[
+                ~(dataframe["author"] == "No authors found for this document.")
+            ]
+            names = dataframe.author
 
-        edited_names = [tools.normalise_names(name) for name in names]
-        unicoded_names = [unidecode.unidecode(name) for name in edited_names]
-        dataframe.author =  unicoded_names
+            if api_name == "Springer":
+                edited = []
+                for name in names:
+                    first, last = name.split(" ", 1)
+                    edited.append(last + " " + first)
+                names = edited
 
-        api.export(dataframe, 'data/{}_{}.json'.format(topic, api_name))
+            edited_names = [tools.normalise_names(name) for name in names]
+            unicoded_names = [
+                unidecode.unidecode(name) for name in edited_names
+            ]
+            dataframe.author = unicoded_names
+
+            api.export(dataframe, "src/data/{}_{}.json".format(topic, api_name))
