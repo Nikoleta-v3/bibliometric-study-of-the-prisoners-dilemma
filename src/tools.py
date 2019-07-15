@@ -1,62 +1,34 @@
-import spacy
-from nltk.corpus import stopwords
-from sklearn.feature_extraction.stop_words import ENGLISH_STOP_WORDS
-import string
+from scipy import stats
 
-parser = spacy.load('en')
+def normalise_names(s):
+    elements = s.split()
+    
+    new = elements[0].title() + ' ' #[0].upper()+'.'
+    new += elements[-1].title()
+    
+    return new
 
-STOPLIST = set(stopwords.words('english') + list(ENGLISH_STOP_WORDS))
-SYMBOLS = " ".join(string.punctuation).split(" ")
-SPECIAL_CHAR = ["n't", "'s", "'m", "'ve", "-", "'", "’s", "‘", ":", "n'",
-                "-----", "---", '--', "...", "…", "“", "”", "–", "—"]
-NON_TERMS = ['prisoner', 'dilemma', 'game', 'theory', 'iterated']
+def write_to_file(filename, metric):
+    file = open("../../assets/{}".format(filename), 'w')
+    file.write('{}'.format(metric))
+    file.close()
 
+def test_kruskal(distributions):
+    alpha = 0.05
+    _, p = stats.kruskal(*distributions)
+    
+    if p < alpha:
+        print(p, "The null hypothesis can be rejected.")
+    else:
+        print(p, "The null hypothesis cannot be rejected.")
 
-def clean_text(text):
-    """
-    A function which cleans the text of symbols and lowercase everything
-    """
-    # get rid of newlines
-    text = text.strip().replace("\n", " ").replace("\r", " ")
-    text = text.strip().replace("\\", " ").replace("$", " ")
+def test_mannwhitneyu(distributions, alternative=None):
+    alpha = 0.05
+    _, p = stats.mannwhitneyu(*distributions, alternative=alternative)
+    
+    if p < alpha:
+        print(p, "The null hypothesis can be rejected.")
+    else:
+        print(p, "The null hypothesis cannot be rejected.")
 
-    # repla ce HTML symbols
-    text = text.replace("&amp;", "and").replace("&gt;", ">").replace("&lt;",
-                                                                     "<")
-    # lowercase
-    text = text.lower()
-    return text
-
-
-def tokenize_text(raw_text):
-    """
-    A function which tokenize the input text 
-    """
-    raw_text = clean_text(raw_text)
-    # spacy function to get tokens
-    tokens = parser(raw_text)
-
-    # lemmatize
-    lemmas = []
-    for tok in tokens:
-        # if tok.like_num == False:
-        lemmas.append(
-            tok.lemma_.lower().strip() if tok.lemma_ != "-PRON-" else tok.lower_)
-    tokens = lemmas
-
-    # remove stopwords & symbols
-    tokens = [tok for tok in tokens if tok not in STOPLIST]
-    tokens = [tok for tok in tokens if tok not in SYMBOLS]
-    tokens = [tok for tok in tokens if tok not in SPECIAL_CHAR]
-
-    # remove spaces if they exist
-    while "" in tokens:
-        tokens.remove("")
-    while " " in tokens:
-        tokens.remove(" ")
-    while "\n" in tokens:
-        tokens.remove("\n")
-    while "\n\n" in tokens:
-        tokens.remove("\n\n")
-
-    return tokens
+        

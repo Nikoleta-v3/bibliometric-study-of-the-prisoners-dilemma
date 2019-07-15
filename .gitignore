@@ -29,6 +29,7 @@ src/nbs/pd_cc_dist.tex
 # notebooks
 *.ipynb_checkpoints/
 */__pycache__/
+src/nbs/Draw clusters.ipynb
 
 # password to axelbib
 src/password.py
