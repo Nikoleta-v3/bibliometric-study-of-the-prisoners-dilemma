@@ -34,7 +34,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%PARAMETERS%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\totalarticles}{\input{assets/total_articles.txt}}
 \newcommand{\manual}{\input{assets/prov_manual.txt}}
-\newcommand{\authors}{\input{assets/num_Nodes.txt}}
+\newcommand{\authors}{\input{assets/number_of_authors.txt}}
 \newcommand{\edges}{\input{assets/num_Edges.txt}}
 \newcommand{\isolated}{\input{assets/num_Isolated_nodes.txt}}
 \newcommand{\isolatedpercentage}{\input{assets/perce_Isolated_nodes.txt}}
@@ -42,15 +42,6 @@
 \newcommand{\communities}{\input{assets/num_Communities.txt}}
 \newcommand{\largestcc}{\input{assets/Size_of_largest_component.txt}}
 \newcommand{\clustering}{\input{assets/Clustering_coeff.txt}}
-\newcommand{\avdegree}{\input{assets/Av._degree.txt}}
-% \newcommand{\prisonerscc}{\input{assets/prisoners_clustering.txt}}
-% \newcommand{\pricecon}{\input{assets/price_connected_components.txt}}
-% \newcommand{\pricecc}{\input{assets/price_clustering.txt}}
-% \newcommand{\auctioncon}{\input{assets/auction_connected_components.txt}}
-% \newcommand{\auctioncc}{\input{assets/auction_clustering.txt}}
-% \newcommand{\prisonerisolated}{\input{assets/prisoners_isolated.txt}}
-% \newcommand{\auctionisolated}{\input{assets/auction_isolated.txt}}
-% \newcommand{\priceisolated}{\input{assets/price_isolated.txt}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{A systematic literature review of the Prisoner's Dilemma; collaboration and influence.}
@@ -636,10 +627,10 @@ limited.
     \end{figure}
 
 Other mechanisms that have studied how cooperators may interact more so that
-cooperation can emerge include reputation~\cite{janssen2006, nowak1998, suzuki2005}
-and communication tokens~\cite{miller2002} which are partner identification methods.
-Another related approach is using a tag based partner identification~\cite{choi2006,
-hales2000, miller2002, riolo2001}. Tags allow cooperative strategies to distinguish
+cooperation can emerge include reputation~\cite{Janssen2006, Nowak1998, Suzuki2005}
+and communication tokens~\cite{Miller2002} which are partner identification methods.
+Another related approach is using a tag based partner identification~\cite{Choi2006,
+Hales2000, Miller2002, Riolo2001}. Tags allow cooperative strategies to distinguish
 `them' from the rest.
 
 This section has focused on evolutionary dynamics and how different evolutionary
@@ -970,98 +961,106 @@ of the field have been presented here.
 
 \section{Analysing a large corpus of articles}\label{section:analysis}
 
-The focus of Section~\ref{section:timeline} has been the academic publications on
-the topic of the iterated prisoner's dilemma. Whilst in Section~\ref{section:timeline}
-several publications of specific interest were covered and the literature was manually
-partitioned in different sections, in the second part of this paper the publications
-are analysed using a large dataset of articles. In Section~\ref{section:background}
-some background
-research on bibliometrics is covered. The data collection process is covered in
-Section~\ref{section:data_collection} and a preliminary analysis of the data is
-conducted in Section~\ref{section:preliminary_analysis}. In Section~\ref{section:methodology},
-the methodology which will be used to analyse the author relationships is presented.
-In summary, graph theoretical methods will be used to ascertain the level of
-collaborative nature of the field and identify influence.
+The focus of Section~\ref{section:timeline} has been to review academic
+publications on the topic of the iterated prisoner's dilemma. Whilst in
+Section~\ref{section:timeline} several publications of specific interest were
+covered and the literature was manually partitioned in different sections, in
+the second part of this paper the publications are analysed using a large
+dataset of articles.
+
+In Section~\ref{section:background} some background research on bibliometrics is
+discussed. The data collection process is covered in Section
+\ref{section:data_collection} and a preliminary analysis of the data is
+conducted in Section~\ref{section:preliminary_analysis}. In
+Section~\ref{section:methodology}, the methodology which will be used to analyse
+the author relationships is presented, that is graph theoretical methods used to
+ascertain the level of collaborative nature of the field and identify influence.
 This type of analysis has been carried out in~\cite{Liu2015}. The novelty here
-is to consider approaches not considered in~\cite{Liu2015} and new origins of
-publications. A further comparison of the results are made, relative to
-two other sub fields of game theory: auction games~\cite{menezes2005} and
-the price of anarchy~\cite{roughgarden2005} and a temporal analysis.
-Finally in Section~\ref{section:results}, the results of the analysis are presented.
+is to consider approaches not considered in~\cite{Liu2015} such as the
+centrality measures of the network, and apply them to a new dataset. A further
+comparison of the results are made, relative to two other sub fields of game
+theory: auction games~\cite{menezes2005} and the price of
+anarchy~\cite{roughgarden2005} and a temporal analysis. Finally in
+Section~\ref{section:results}, the results of the analysis are presented.
 
 \subsection{Background}\label{section:background}
 
-As discussed in~\cite{youngblood2018}, bibliometrics or the statistical analysis
-of published works (originally described by~\cite{pritchard1969}) 
-have been used to support historical assumptions about the development of fields
-\cite{raina1998}, identify connections between scientific growth and policy changes 
-\cite{das2016}, develop a quantitative understanding of author order~\cite{sekara2018},
-and investigate the collaborative structure of an interdisciplinary field~\cite{Liu2015}.
-Most academic research is undertaken in the form of collaborative effort and as~\cite{Kyvik2017}
-points out, it is rationale that two or more people have the potential to do better
-as a group than individually. Collaboration in groups has a long tradition in experimental 
-sciences and it has be proven to be productive according to~\cite{Etzkowitz1992}.
-The number of collaborations can be very different between research fields and
-understanding how collaborative a field is, is not always an easy task.
-Several studies tend to consider academic citations as a measure for these things.
-A blog post published in Nature~\cite{nature_blog} argues that depending on citations
-can often be misleading because the true number of citations can not be
-known. Citations can be missed due to data entry errors, academics are influenced
-by many more papers than they actually cite and several of the citations are
-superficial.
+As discussed in~\cite{youngblood2018}, bibliometrics (the statistical analysis
+of published works originally described by~\cite{pritchard1969}) has been used
+to support historical assumptions about the development of fields
+\cite{raina1998}, identify connections between scientific growth and policy
+changes \cite{das2016}, develop a quantitative understanding of author
+order~\cite{sekara2018}, and investigate the collaborative structure of an
+interdisciplinary field~\cite{Liu2015}. Most academic research is undertaken in
+the form of collaborative effort and as~\cite{Kyvik2017} points out, it is
+rational that two or more people have the potential to do better as a group
+than individually. Collaboration in groups has a long tradition in experimental
+sciences and it has be proven to be productive according
+to~\cite{Etzkowitz1992}. The number of collaborations can be very different
+between research fields and understanding how collaborative a field is is not
+always an easy task. Several studies tend to consider academic citations as a
+measure for these things. A blog post published by Nature~\cite{nature_blog}
+argues that depending on citations can often be misleading because the true
+number of citations can not be known. Citations can be missed due to data entry
+errors, academics are influenced by many more papers than they actually cite and
+several of the citations are superficial.
 
 A more recent approach to measure collaborative behaviour is to use the co
 authorship network, as described in~\cite{Liu2015}. Using this approach has many
 advantages as several graph theoretic measures can be used as proxies to explain
-authors relationship. In~\cite{Liu2015}, they analyse the development of the field
-``evolution of cooperation'' using this approach. The topic ``evolution of cooperation''
-is a multidisciplinary field which also includes a large number of publications
-on the prisoner's dilemma. This paper builds upon the work done by~\cite{Liu2015}
-and extends their methodology. Though in
-\cite{Liu2015}, they considered a data set from a single source, Web of Science,
-the data set described here has been collected from five different sources. Moreover, the collaborative
-results of the analysis are compared to those of two different sub fields.
-Co authorship networks have also been used in~\cite{youngblood2018} for classifying
-topics of an interdisciplinary field. This was done using centrality measures,
-which will be covered below, here centrality measures are used in order to understand
-the influence an author can have and can receive by being part of an academic group.
-Furthermore, in~\cite{alshebli2018} they look at the relationship between research
-impact and five classes of diversity: ethnicity, discipline, gender, affiliation,
-and academic age. These characteristics of the authors are not being captured here.
+authors relationship. In~\cite{Liu2015}, they analyse the development of the
+field ``evolution of cooperation'' using this approach. The topic ``evolution of
+cooperation'' is a multidisciplinary field which also includes a large number of
+publications on the prisoner's dilemma. This paper builds upon the work done
+by~\cite{Liu2015} and extends their methodology. Though in \cite{Liu2015}, they
+considered a data set from a single source, Web of Science, the data set
+described here has been collected from five different sources. Moreover, the
+collaborative results of the analysis are compared to those of two different sub
+fields.
+
+Co authorship networks have also been used in~\cite{youngblood2018} for
+classifying topics of an interdisciplinary field. This was done using centrality
+measures, which will be covered in Section~\ref{section:data_collection}, here
+centrality measures are used in order to understand the influence an author can
+have and can receive by being part of an academic group. Furthermore,
+in~\cite{alshebli2018} they look at the relationship between research impact and
+five classes of diversity: ethnicity, discipline, gender, affiliation, and
+academic age. These characteristics of the authors are not being captured here.
 In future work these characteristics would be included in the analysis.
 
 \subsection{Data Collection}\label{section:data_collection}
 
-Academic articles are accessible through scholarly databases.
-Several databases and collections today offer access through
-an open application protocol interface (API). An API allows users to query
-directly a journal's database and bypass the user interface side of the journal.
-Interacting with an API has two phases: requesting and receiving.
-The request phase includes composing a url with the details of the request. For
-example, \url{http://export.arxiv.org/api/query?search_query=abs:prisoner's dilemma&max_results=1}
-represents a request message. The first part of the request is the address
-of the API.
-In this example the address corresponds to the API of arXiv.
-The second part of the request contains the search arguments. In this example 
-it is requested that the word `prisoners dilemma' exists within the article's title.
-The format of the request message is different from API to API.
-The receive phase includes receiving a number of raw metadata of articles that
-satisfies the request message. The raw metadata are commonly received in extensive markup
-language (xml) or Javascript object notation (json) formats~\cite{nurseitov2009}.
-Similarly to the request message, the structure of the received data differs from journal
+Academic articles are accessible through scholarly databases. Several databases
+and collections today offer access through an open application protocol
+interface (API). An API allows users to query directly a journal's database and
+bypass the graphical user interface. Interacting with an API has two phases:
+requesting and receiving. The request phase includes composing a url with the
+details of the request. For example,
+\url{http://export.arxiv.org/api/query?search_query=abs:prisoner's
+dilemma&max_results=1} represents a request message. The first part of the
+request is the address of the API. In this example the address corresponds to
+the API of arXiv. The second part of the request contains the search arguments.
+In this example it is requested that the word `prisoners dilemma' exists within
+the article's title. The format of the request message is different from API to
+API. The receive phase includes receiving a number of raw metadata of articles
+that satisfies the request message. The raw metadata are commonly received in
+extensive markup language (xml) or Javascript object notation (json)
+formats~\cite{nurseitov2009}. Similarly to the request message, the structure of
+the received data differs from journal
 to journal.
 
 The data collection is crucial to this study. To ensure that this study can be
-reproduced all code used to query the different APIs has been packaged as a Python library and is
-available online~\cite{nikoleta_2017}. The software could be used for any type of
-projects similar to the one described here, documentation for it is available at:
-\url{http://arcas.readthedocs.io/en/latest/}.
-Project~\cite{nikoleta_2017} allow users to collect articles from a list of APIs by
-specifying just a single keyword. Four prominent journals in the field and a
-pre print server were used as sources to collect data for this analysis:
-PLOS, Nature, IEEE, Springer and arXiv.
+reproduced all code used to query the different APIs has been packaged as a
+Python library and is available online~\cite{nikoleta_2017}. The software could
+be used for any type of projects similar to the one described here,
+documentation for it is available at:
+\url{http://arcas.readthedocs.io/en/latest/}. Project~\cite{nikoleta_2017} allow
+users to collect articles from a list of APIs by specifying just a single
+keyword. Four prominent journals in the field and a pre print server were used
+as sources to collect data for this analysis: PLOS, Nature, IEEE, Springer and
+arXiv.
 
-A series of search terms were used to identify relevant articles:
+The following series of search terms were used to identify relevant articles:
 
 \begin{itemize}
     \item ``prisoner's dilemma'',
@@ -1073,15 +1072,15 @@ A series of search terms were used to identify relevant articles:
 
 and articles for which any of these terms existed within the title, the abstract
 or the text are included in the analysis. More specifically, 23\% of article
-considered here were included because any of the above terms existed within
-the abstract, 50\% within the main text and 27\% within the title.
-As will be described in Section~\ref{section:preliminary_analysis}, two other
-game theoretic sub fields were also considered in this work, auction games and the
-price of anarchy. For collecting data on these sub fields the search terms used
-were ``auction game theory'' and ``price of anarchy''. The three data sets
-are archived and available at. % TODO: archive data.
-Note that the latest data collection was perform on November
-2018.% TODO Ensure this stay accurate
+considered here were included because any of the above terms existed within the
+abstract, 50\% within the main text and 27\% within the title. As will be
+described in Section~\ref{section:preliminary_analysis}, two other game
+theoretic sub fields auction games and the price of anarchy were also considered
+in this work. For collecting data on these sub fields the search terms used were
+``auction game theory'' and ``price of anarchy''. The three data sets are
+archived and available at~\cite{auction_data_2018, anarchy_data_2018,
+pd_data_2018}. Note that the latest data collection was performed on \(30^{\text{th}}\)November 2018.
+% TODO Ensure this stay accurate
 
 \subsection{Preliminary Analysis}\label{section:preliminary_analysis}
 
@@ -1089,75 +1088,73 @@ A summary of each of the three data sets used is presented in this section.
 The three data sets are:
 
 \begin{itemize}
-    \item The main data set which contains articles on the prisoner's dilemma.
-    \item A data set which contains article on auction games.
-    \item A data set which contains articles on the price of anarchy.
+    \item The main data set which contains articles on the prisoner's dilemma~\cite{pd_data_2018}.
+    \item A data set which contains article on auction games~\cite{auction_data_2018}.
+    \item A data set which contains articles on the price of anarchy~\cite{anarchy_data_2018}.
 \end{itemize}
-% TODO archive all data sets
 
-The main data set is archived at~[ref]. It
+The main data set is archived at~\cite{pd_data_2018}. It
 consists of \totalarticles articles with unique titles. In case of duplicates
 the preprint version of an article (collected from arXiv) was dropped.
-%TODO add reference to archived dataset
 Of these \totalarticles article, \manual have not been collected from the
 aforementioned APIs. These articles were of specific interest and manually added
 to the dataset throughout the writing of Section~\ref{section:timeline}. A
 similar approach was used in~\cite{Liu2015} where a number of articles of interest
 where manually added to the data set. A more
 detailed summary of the articles' provenance is given by Table~\ref{table:provenance}.
-Only 3\% of the data set consists of articles that were manually added and 33\% of the
+Only 3\% of the data set consists of articles that were manually added and 34\% of the
 articles were collected from arXiv.
 
 \begin{table}[!hbtp]
     \begin{center}
     \input{assets/provenance_table}
     \end{center}
-    \caption{Articles' provenance for the main data set.} % Use citation when archived
+    \caption{Articles' provenance for the main data set~\cite{pd_data_2018}.}
     \label{table:provenance}
 \end{table}
 
 The average number of publications was calculated for the entire dataset and for
-each provenance. The average number of publications is denoted as,
-\(\mu_P = \frac{N_A}{N_Y},\) where \(N_A\) is the total number of articles and
-\(N_Y\) is the years of publication. The years of publication is calculated as
-the range between the collection date and the first published article, for each provenance,
-within the data.
-These averages are summarised in Table~\ref{table:publication_rates}.
-Overall an average of 49 articles are published per year on the topic. The most
-significant contribution to this appears to be from arXiv with 16 articles per year,
-followed by Nature with 10 and Springer with 9.
+each provenance. The average number of publications is denoted as, \(\mu_P =
+\frac{N_A}{N_Y},\) where \(N_A\) is the total number of articles and \(N_Y\) is
+the years of publication. The years of publication is calculated as the range
+between the collection date and the first published article, for each
+provenance, within the data. These averages are summarised in
+Table~\ref{table:publication_rates}. Overall an average of 49 articles are
+published per year on the topic. The most significant contribution to this
+appears to be from arXiv with 16 articles per year, followed by Nature with 10
+and Springer with 9.
 
 \begin{table}[!hbtp]
     \begin{center}
     \input{assets/rates_table}
     \end{center}
-    \caption{Average publication for main data set.} % Use citation when archived
+    \caption{Average yearly publication $(\mu_P)$ for main data set~\cite{pd_data_2018}.}
     \label{table:publication_rates}
 \end{table}
 
 Though the average publication offers insights about the publications of the
 fields, it remains a constant number. The data handled here is a time
-series between 1950, when the game was introduced, and 2018 (Figure~\ref{fig:timeseries}). 
+series from 1950, when the game was introduced, until 2018 (Figure~\ref{fig:timeseries}). 
 Two observations can be made from Figure~\ref{fig:timeseries}.
 
 \begin{enumerate}
-    \item There is a steady increase to the number of publications since the 1980s
-    and the introduction of computer tournaments.
-    \item There is a decrease in 2017-2018. This is due to our data set being incomplete.
-    Articles that have been written in 2017-2018 have either not being published
-    or have are not retrievable by the APIs yet.
+    \item There is a steady increase to the number of publications since the
+    1980s and the introduction of computer tournaments.
+    \item There is a decrease in 2017-2018. This is due to our data set being
+    incomplete. Articles that have been written in 2017-2018 have either not
+    being published or are not retrievable by the APIs yet.
 \end{enumerate}
 
 These observations can be confirmed by studying the time series.
-Using~\cite{scipy}, an exponential distribution is fitted to
-the data from 1980-2016. The exponential fitting proves that since 1980 there has
-been an increase in the number of publications till 2016 (Figure~\ref{fig:fitting}).
-The fitted model can also be used to project the behaviour of the field for the next 
-5 years. The forecasted periods are plotted in Figure~\ref{fig:forecasting} and
-their exact values are given by Table~\ref{table:forecast}. The time series
-has indicated a slight decrease however the model forecasts that the number
-of publications will keep increasing, thus indicating that the field of the iterated
-prisoner's dilemma still attracts academic attention.
+Using~\cite{scipy}, an exponential distribution is fitted to the data from
+1980-2016. The exponential fit demonstrates that since 1980 there has been an
+increase in the number of publications until 2016 (Figure~\ref{fig:fitting}).
+The fitted model can also be used to forecast the behaviour of the field for the
+next 5 years. The forecasted periods are plotted in
+Figure~\ref{fig:forecasting}. The time series has indicated a slight decrease
+however the model forecasts that the number of publications will keep
+increasing, thus indicating that the field of the iterated prisoner's dilemma
+still attracts academic attention.
 
 \begin{figure}[!hbtp]
 \begin{minipage}{.45\textwidth}
@@ -1178,34 +1175,27 @@ prisoner's dilemma still attracts academic attention.
     \caption{Forecast for 2017-2022.}\label{fig:forecasting}
 \end{figure}
 
-\begin{table}[!hbtp]
-    \begin{center}
-    \input{assets/predictions.tex}
-    \end{center}
-    \caption{Forecasting the number of publications over the next 10 years.}
-    \label{table:forecast}
-\end{table}
-
 To allow for a comparative analysis two sub fields of game theory have been chosen
 for this work; auction games and the price of anarchy.
 
 \begin{itemize}
-    \item Auction theory is a branch of game theory which researches the properties
-    of auction markets.
-    Game theory is used for years to study auctions and the behaviour of
-    bidders~\cite{Shubik1971}. The earliest entry in our data set~[ref] goes
-    back to 1974 (Figure~\ref{fig:timeseries_ag}). Note that no articles
-    have been added manually for auction games.
-    \item Price of Anarchy is a concept in game theory which
-    measures how the efficiency of a system degrades due to selfish behaviour of
-    it's agents. There is a variety of such measures however the price of anarchy
-    has attracted a lot of attention since it's informal introduction in 1999
-    by~\cite{Koutsoupias1999}. Note that~\cite{Koutsoupias1999} has been manually
-    added to the date set and it's its first entry (Figure~\ref{fig:timeseries_pa}).
+    \item Auction theory is a branch of game theory which researches the
+    properties of auction markets. Game theory has been used for years to study
+    auctions and the behaviour of bidders~\cite{Shubik1971}. The earliest entry
+    in our data set~\cite{auction_data_2018} goes back to 1974
+    (Figure~\ref{fig:timeseries_ag}). Note that no articles have been added
+    manually for auction games.
+    \item Price of Anarchy is a concept in game theory which measures how the
+    efficiency of a system degrades due to selfish behaviour of it's agents.
+    There is a variety of such measures however the price of anarchy has
+    attracted a lot of attention since it's informal introduction in 1999
+    by~\cite{Koutsoupias1999}. Note that~\cite{Koutsoupias1999} has been
+    manually added to the date set~\cite{anarchy_data_2018} and it's the first entry
+    (Figure~\ref{fig:timeseries_pa}).
 \end{itemize}
 
-A summary of both data sets collected on both topics, in comparison to that of
-[ref], is given by Table~\ref{table:summary_other_topics}.
+A summary of both data sets, in comparison to that of~\cite{pd_data_2018}, is
+given by Table~\ref{table:summary_other_topics}.
 
 \begin{table}[!hbtp]
     \centering
@@ -1214,22 +1204,22 @@ A summary of both data sets collected on both topics, in comparison to that of
     \caption{Measures of all three data sets.}\label{table:summary_other_topics}
 \end{table}
 
-The iterated prisoner's dilemma and auction theory are very well studied topics
-that have been publicising for decades. A large number of articles have
+The iterated prisoner's dilemma and auction theory are popular topics and have
+been studied for decades. A large number of articles have
 been collected for both topics, \totalarticles and 34444 respectively. Though, auction
 games have a larger number of articles, the iterated prisoner's dilemma
 has almost 300 more authors.
 
 Auction games have an overall average yearly publication
 of 93 articles per year compared to the prisoner's dilemma with 49 per year. 50\% of articles
-for [ref] have been collected from the pre print server arXiv and no articles have
+for auction games have been collected from the pre print server arXiv and no articles have
 been published in PLOS.
 
 Compared to these two topics the price of anarchy is a fairly recent one. Only a
 total of 747 articles have been collected, however it has a large number
-of 1229 authors. On average each paper had had at least two authors.
-It has an overall average publication of 39 articles and the biggest contribution
-has been made to Springer.
+of 1229 authors. On average each paper has two authors. It has an overall average
+yearly publication rate of 39 articles and the biggest contribution has been made
+to Springer (37\%).
 
 \begin{figure}[!hbtp]
     \begin{minipage}{.45\textwidth}
@@ -1246,16 +1236,17 @@ has been made to Springer.
 
 \subsection{Methodology}\label{section:methodology}
 
-The relationship between the authors within a field will be modelled as a graph \(G\) with
-a set \(V_G\) of nodes and \(E_G\) of edges. The set \(V_G\) represents the authors
-and an edge connects two authors if and only if those authors have written together.
-The co authorship network is constructed using the main data set described in
+The relationship between the authors within a field will be modelled as a graph
+\(G = (V_G, E_G)\) where \(V_G\) is the set of nodes and \(E_G\)  is the setof
+edges. The set \(V_G\) represents the authors and an edge connects two authors
+if and only if those authors have written together. The co authorship network is
+constructed using the main data set described in
 Section~\ref{section:preliminary_analysis} and the open source package
 \cite{networkx}. The prisoner's dilemma network is denoted as \(G_1\) where the
 number of unique authors \(|V(G_1)|\) is \authors and \(|E(G_1)|\) is \edges.
-All authors' names were formatted as their last name and
-first initial (i.e. Martin A. Nowak to Martin Nowak). This was done to avoid errors
-such as Martin A. Nowak and Martin Nowak, being treated as a different person.
+All authors' names were formatted as their last name and first initial (i.e.
+Martin A. Nowak to Martin Nowak). This was done to avoid errors such as Martin
+A. Nowak and Martin Nowak, being treated as a different person.
 
 Collaborativeness, will be analysed using measures such as, isolated nodes,
 connected components, clustering coefficient, communities, modularity and average degree.
@@ -1299,21 +1290,21 @@ aspects fo social networks~\cite{Landherr2010}. Two centrality measures have bee
 chosen for this paper and these are closeness and betweenness centrality.
 
 \begin{enumerate}
-    \item In networks some nodes have a short distance to other nodes and consequently
-    are able to spread information on the network very effectively.
-    A representative of this idea is \textbf{closeness centrality}, where a person is seen
-    as centrally involved in the network if it requires only few intermediaries
-    to contact others and thus is structurally relatively independent. Here,
-    this is defined as influence. Authors with a high value of closeness centrality,
-    are the authors that spread scientific knowledge easier on the network
-    and they have high influence.
+    \item In networks some nodes have a short distance to a lot of nodes and
+    consequently are able to spread information on the network very effectively.
+    A representative of this idea is \textbf{closeness centrality}, where a node
+    is seen as centrally involved in the network if it requires only few
+    intermediaries to contact others and thus is structurally relatively
+    independent. Here, this is interpreted as influence. Authors with a high
+    value of closeness centrality, are the authors that spread scientific
+    knowledge easier on the network and they have high influence.
     \item Another centrality measure is the \textbf{betweenness centrality},
-    where the determination of an author's centrality is based on the quotient of
-    the number of all shortest paths between nodes in the network that include
-    the regarded node and the number of all shortest paths in the network.
-    In betweenness centrality the position of the node matters. Nodes
+    where the determination of an author's centrality is based on the quotient
+    of the number of all shortest paths between nodes in the network that
+    include the node in question and the number of all shortest paths in the
+    network. In betweenness centrality the position of the node matters. Nodes
     with a higher value of betweenness centrality are located in positions that
-    a lot of information pass through them, this is defined as the gain from
+    a lot of information pass through them, this is interpreted as the gain from
     the influence, thus these authors gain the most from their networks.
 \end{enumerate}
 
@@ -1322,41 +1313,35 @@ sets in order to provide insights into the field.
 
 \subsection{Analysis of co authorship network}\label{section:results}
 
-As mentioned previously, \(G_1\) denotes the co authorship network of the iterated
-prisoner's dilemma. It's graphical representation is given by Figure~\ref{fig:g_one_network}.
-It is evident that the network is disjoint, which is only natural as many authors
-write academic articles on their own. More specifically, a total of \isolated authors,
-have had single author publications, which corresponds to the \isolatedpercentage (\%)
-of authors in \(G_1\).
+As mentioned previously, \(G_1\) denotes the co authorship network of the
+iterated prisoner's dilemma. A graphical representation is given by
+Figure~\ref{fig:g_one_network}. It is evident that the network is disjoint,
+which is only natural as many authors write academic articles on their own. More
+specifically, a total of \isolated authors, have had single author publications,
+which corresponds to the \isolatedpercentage (\%) of authors in \(G_1\).
 
-There are a total of \connectedcomponents connected components and the largest one
-has a size of \largestcc nodes. The largest connected component is shown in Figure~\ref{fig:g_one_cluster}
-and is going to be refereed to as the main cluster of the network.
-There are total of \communities communities in \(G_1\). The network has a clustering
-coefficient of \clustering,
-thus authors are 70\% likely to write with a collaborator's co author and the degree
-distribution, Figure~\ref{fig:degree_distrs}, shows that the average degree is \(\approx4\).
-Thus authors are on average connected to 4 other authors, however there are authors
-with far more connections, the largest one being 58.
+There are a total of \connectedcomponents connected components and the largest
+one has a size of \largestcc nodes. The largest connected component is shown in
+Figure~\ref{fig:g_one_cluster} and is going to be refereed to as the main
+cluster of the network. There are total of \communities communities in \(G_1\).
+The network has a clustering coefficient of \clustering, thus authors are 70\%
+likely to write with a collaborator's co author and the degree distribution,
+Figure~\ref{fig:degree_distrs}, shows that the average degree is approximately
+\(4\). Thus authors are on average connected to 4 other authors, however there
+are authors with far more connections, the largest one being 58.
 
 In~\cite{Liu2015} the collaborative metrics for the ``evolution of cooperation''
 co authorship network were reported. Though their network is of smaller size
 (number of nodes 3670 \(<\) 5394), the collaborative metrics are fairly similar
-between the two graphs (clustering coeff. \(0.632\approx0.708\) and modularity
-\(0.950\approx0.977\)), indicating that for the same multidisciplinary field the same
-remarks can be made from a different co authors network. But how does these compare to other fields
-and more specifically to other fields of game theory? The representation of the
-two graphs,
+between the two graphs (clustering coeff. \(0.632\) and modularity
+0.950 close to 0.977, indicating that for the same multidisciplinary field the same
+remarks can be made from a different co authors network. How do these compare to other fields
+and more specifically to other fields of game theory?
 
-\begin{itemize}
-    \item \(G_2\) for auction games and
-    \item \(G_3\) for the price of anarchy,
-\end{itemize}
-
+The auction games network \(G_2\), and the price of anarchy network \(G_3\)
 are given by Figures~\ref{fig:g_two} and~\ref{fig:g_three} and their respective
-clusters in Figures~\ref{fig:g_two_cluster} and \ref{fig:g_three_cluster}.
-As stated before \(G_3\) is the smallest network of all three, this is also clear
-from it's graphical representation. The \(G_2\) network appears to be
+largest cluster in Figures~\ref{fig:g_two_cluster} and \ref{fig:g_three_cluster}.
+As stated before \(G_3\) is the smallest network. \(G_2\) network appears to be
 very similar to \(G_1\), however it's main cluster is larger in size.
 
 \begin{figure}[!hbtp]
@@ -1366,7 +1351,7 @@ very similar to \(G_1\), however it's main cluster is larger in size.
     \end{subfigure}
     \begin{subfigure}{.45\textwidth}\centering
         \includegraphics[width=.54\textwidth]{./assets/images/pd_network_cluster.pdf}
-        \caption{\(G_1\) larger connected component.}\label{fig:g_one_cluster}
+        \caption{\(G_1\) largest connected component, \(\bar{G}_{1}\).}\label{fig:g_one_cluster}
      \end{subfigure}
      
      \begin{subfigure}{.45\textwidth}\centering
@@ -1375,7 +1360,7 @@ very similar to \(G_1\), however it's main cluster is larger in size.
      \end{subfigure}
     \begin{subfigure}{.45\textwidth}\centering
         \includegraphics[width=.54\textwidth]{./assets/images/auction_network_cluster.pdf}
-        \caption{\(G_2\) larger connected component.}\label{fig:g_two_cluster}
+        \caption{\(G_2\) largest connected component,  \(\bar{G}_{2}\).}\label{fig:g_two_cluster}
     \end{subfigure}
 
     \begin{subfigure}{.45\textwidth}\centering
@@ -1384,17 +1369,15 @@ very similar to \(G_1\), however it's main cluster is larger in size.
      \end{subfigure}
      \begin{subfigure}{.45\textwidth}\centering
         \includegraphics[width=.54\textwidth]{./assets/images/anarchy_network_cluster.pdf}
-        \caption{\(G_3\) larger connected component.}\label{fig:g_three_cluster}
+        \caption{\(G_3\) largest connected component,  \(\bar{G}_{3}\).}\label{fig:g_three_cluster}
      \end{subfigure}
      \caption{Graphical representations of \(G_1, G_2, G_3\) and their respective
      main clusters.}
 \end{figure}
 
 A summary of the collaborative metrics for all three co authorship networks is given by
-Table~\ref{table:summary_other_networks} and shown in Figure~\ref{fig:degree_distrs}
-are the degree distributions of all three networks. In \(G_1\) and \(G_2\) there
-are cases of high degree (\(> 20\)) but this could be an affect of the size of
-the data, networks and subsequently the size of the main clusters.
+Table~\ref{table:summary_other_networks} and the degree distribution of all three
+networks is shown in Figure~\ref{fig:degree_distrs}.
 
 \begin{table}[!hbtp]
     \centering
@@ -1417,8 +1400,8 @@ the data, networks and subsequently the size of the main clusters.
     are significantly large than that of \(G_2\).}\label{fig:degree_distrs}
 \end{figure}
 
-Regarding the three sub fields of game theory and using Table~\ref{table:summary_other_networks}
-and Figure~\ref{fig:degree_distrs} the following remarks can be made:
+Using Table~\ref{table:summary_other_networks} and Figure~\ref{fig:degree_distrs}
+the following remarks can be made:
 
 \begin{itemize}
     \item All three networks have similar values of modularity index, and they are
@@ -1431,11 +1414,11 @@ and Figure~\ref{fig:degree_distrs} the following remarks can be made:
     component (corresponding to a fully connected graph), and due to that density
     they are also a community on their own.
     \item Comparing to another well studied topic, auction games, the field of the
-    iterated prisoner's dilemma appear to be more collaborative. Due to the
+    iterated prisoner's dilemma appears to be more collaborative. Due to the
     value of the average degree, authors in \(G_1\) are known to have on average almost
     one more collaboration than \(G_2\). A slightly lower cluster coefficient ($ .622 < .702$)
-    of auction games indicate that is less likely for authors in \(G_2\) to collaborate
-    with a collaborators co author.
+    of auction games indicate that it is less likely for authors in \(G_2\) to collaborate
+    with a co author.
     \item Regarding the price of anarchy, the measures indicate that the field
     is not as mature as the other two sub fields. There are no isolated authors,
     which is more of an indication of the time the field has been active. As a
@@ -1445,23 +1428,20 @@ and Figure~\ref{fig:degree_distrs} the following remarks can be made:
     of the iterated prisoner's dilemma.
 \end{itemize}
 
-These results can be extend to the main clusters of each network, Table~\ref{table:summary_clusters}.
-The metrics's values are fairly similar and the size of \(G_2\)'s main cluster
-does not appear to gave any significant effect; all the same conclusions are made.
-Compared to auction games the iterated prisoner's
-dilemma is a more collaborative field, and it is fairly similar to the price of
-anarchy. However, our analysis suggests that the price of anarchy is still a
-maturing field.
+These results can be extended to the main clusters of each network, as shown in
+Table~\ref{table:summary_clusters}. The metrics's values are fairly similar and
+the size of \(G_2\)'s main cluster does not appear to gave any significant
+effect; all the same conclusions are made.
 
 \begin{table}[!hbtp]
     \centering
     \resizebox{\textwidth}{!}{
     \input{assets/clusters_comparison.tex}}
-    \caption{Network metrics for \(G_1, G_2, G_3\).}\label{table:summary_clusters}
+    \caption{Network metrics for largest components of \(G_1, G_2, G_3\).}\label{table:summary_clusters}
 \end{table}
 
 The change of the networks over time is also studied by constructing the network
-cumulatively with a year interval. A total of 64 sub graphs
+cumulatively using a year interval. A total of 64 sub graphs
 over 64 periods, starting in 1950, were created and all the collaborative metrics
 for each sub graph have been calculated. Note that years 1952 and 1953 have no
 publications in our data set. The metrics of each network for each period are given by
@@ -1473,7 +1453,7 @@ grows over time and that the network always had a high value of modularity.
     \centering
     \begin{adjustbox}{totalheight=.8\textheight-2\baselineskip, width=\textwidth}
     \input{assets/cumulative_graphs_table.tex}}
-    \caption{Collaborativeness metrics for cumulative graphs.}\label{table:coll_cumulative}
+    \caption{Collaborativeness metrics for cumulative graphs, \(G \subseteq G_1\).}\label{table:coll_cumulative}
 \end{adjustbox}
 \end{table}
 
@@ -1481,7 +1461,7 @@ grows over time and that the network always had a high value of modularity.
     \centering
     \begin{adjustbox}{totalheight=\textheight-2\baselineskip, width=\textwidth}
     \input{assets/cumulative_clusters_table.tex}}
-    \caption{Collaborativeness metrics for cumulative graphs' main clusters.}\label{table:clusters_cumulative}
+    \caption{Collaborativeness metrics for cumulative graphs' main clusters, \(G \subseteq \bar{G}_1\).}\label{table:clusters_cumulative}
 \end{adjustbox}
 \end{table}
 
@@ -1502,19 +1482,19 @@ the three networks can be compared.
     \ref{fig:normalised_number_connected_components}, \ref{fig:normalised_size_of_cc}.
     A connected components represents at least one publication which means that indeed
     more articles are being gathered from 2000 onwards.
-    \item Auction games have been through out time less collaborative compared
+    \item Auction games have been throughout of time less collaborative compared
     to the iterated prisoner's dilemma. The average degree (Figure~\ref{fig:average_degree})
     and the clustering coefficient (Figure~\ref{fig:clustering_coefficient}) of 
     the cumulative sub graphs have been lower than that of \(G_1\).
-    The only exception is during years 2001-2008. For these
+    The only exception is during the years 2001-2008. For these
     year auction games appear to have had a more collaborative environment.
     \item In the price of anarchy cumulative graphs a sharp increase since the 
     beginning of the field can be observed for all metrics. There are not
     many data points due to the recent development of the field, however
     these steep trends could be an indication that game theoretic and potentially
     all scientific research has over time been more collaborative. This could
-    be due to logistic and techical solutions.
-    \item The high values of modularity through out time is not true only for the
+    be due to logistic and technical solutions.
+    \item The high values of modularity throughout time is not true only for the
     network reported in~\cite{Liu2015} but also for all three networks of this
     field. This could indicate a limitation to the co authorship network. The
     measure is likely to be skewed, as each paper is more likely a connected
@@ -1554,10 +1534,10 @@ the three networks can be compared.
 \end{figure}
 
 The cumulative collaborative metrics have also been calculated for each main
-cluster, given in Table~\ref{table:clusters_cumulative}. Summarily, the results
+cluster, given in Table~\ref{table:clusters_cumulative}. Similarly, the results
 do not appear to change over the main cluster.
 
-\newpage
+% \newpage
 
 The next results discussed here are on centrality measures. As a reminder,
 two centrality measures are reported here, these are the closeness centrality
@@ -1576,12 +1556,12 @@ The betweenness centrality of the
 most central authors in \(G_1\) are rather low with the highest ranked author
 being Matjaz Perc with a between centrality of 0.008, Table~\ref{table:central_authors}.
 A publication of Perc's work has been briefly discussed in
-Section, and the centrality measure suggest that the network is very influenced by him.
+Section, and the centrality measure suggest that the network is influenced by him.
 He is connected to a total of 58 nodes and he has published to all five of the different
 sources considered in the study. Though he also gains from his position
 in the network, the gain is minor. An author who is not in the top influencers but
-does indeed gain from his position in the network is Martin Nowak. An author
-that his work has been discussed in Section~\ref{section:timeline}.
+does indeed gain from his position in the network is Martin Nowak, who was
+extensively discussed in Section~\ref{section:timeline}.
 
 \begin{figure}[!hbtp]
     \centering
@@ -1644,14 +1624,14 @@ the influence of their fields.
 \end{figure}
 
 In relation to influencing your field. An author is most likely to influence their
-field if the write for the price of anarchy and authors that publish on auctions
+field if they write for the price of anarchy and authors that publish on auctions
 game are more likely to influence compared to authors in the iterated prisoner's
 dilemma. Though if an author was to be placed in the main cluster of the respective
 field they would chose to be in either \(G_1\) or \(G_3\).
 In conclusion, authors regarding both influence metrics that have been defined here
 are more likely to gain more if they were to published on either topics of auction
-games or the price of anarchy. Though the value of gaining is actual very small,
-you are more likely to influence you field more in another compared to that
+games or the price of anarchy. Though the value of gaining is actual small,
+you are more likely to influence your field more in another field compared to that
 of the prisoner's dilemma.
 
 \begin{figure}[!hbtp]
@@ -1680,7 +1660,7 @@ of the prisoner's dilemma.
     \end{subfigure}
 \end{figure}
 
-\section{Acknowledges}
+\section{Acknowledgements}
 
 A variety of software libraries have been used in this work:
 

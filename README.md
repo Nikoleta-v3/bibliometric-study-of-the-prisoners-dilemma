@@ -1,55 +1,23 @@
-# Literature-Article
-A repository for an article on the literature review of the Prisoner's Dilemma.
+# A systematic literature review of the Prisoner’s Dilemma; collaboration and influence.
 
-The repository is structured as follows:
+**Authors:** [@Nikoleta-v3](https://twitter.com/NikoletaGlyn) and [@drvinceknight](https://twitter.com/drvinceknight)
 
+## Software
+The source code for this work is written in Python. The source files can be
+found under `src`.
 
-```
-.
-|---  assets
-      |--- images
-      |--- tex
-|---  src
-      |--- nbs/
-      |--- data/ # hidden
-      |--- articles_to_axelbib.py 
-      |--- password.py # hidden
-      |--- scraping.py 
-|---  .gitignore
-|---  environment.yml
-|---  bibliography.bib
-|---  main.pdf
-|---  main.tex
-|---  README.md
-```
+An anaconda environment specifying all versions of libraries used is given in
+`environment.yml`.
 
+## Data
 
-The command to compile `main.tex` is:
+The data have been collected using the open source package `arcas` (for installing
+guidelines refer to the package's [repository](https://github.com/ArcasProject/Arcas)).
 
-`pdflatex --shell-escape main`
+The data sets have been archived and are available here:
 
-The articles has the following structure:
+## Reproducibility
 
-```
-|---  Introduction
-      |--- introduction
-      |--- applications
-|---  Timeline
-      |--- papers I have read
-|---  Analysis
-      |--- papers I have not read
-      |--- data
-            |--- description of data set
-            |--- temporal analysis
-            |--- co-authors analysis
-            .... 
-|---  Reproducing
-      |--- zenodo
-      |--- axelbib
-      |--- repository with notebooks for analysis
-|---  Conclusions
-      |--- -//- of articles
-      |--- -//- of the analysis
-      |--- -//- of the paper
+## License
 
-```
+The software is released under an MIT license.
