@@ -1,6 +1,6 @@
 \documentclass{article}
 % Package to manage page layout
-\usepackage[margin=1.5cm, includefoot, footskip=30pt]{geometry}
+\usepackage[margin=2cm, includefoot, footskip=30pt]{geometry}
 
 \setlength\parindent{0pt}
 \setlength{\parskip}{1em}
@@ -53,38 +53,46 @@
 \maketitle
 
 \begin{abstract}
-    The prisoner's dilemma is a well known game used since the 1950's as a
+    The Prisoner's Dilemma is a well known game used since the 1950's as a
     framework for studying the emergence of cooperation; a topic of continuing
     interest for mathematical, social, biological and ecological sciences. The
-    iterated version of the game attracted attention in the 1980's after the
-    publication of the ``The Evolution of Cooperation'' and has been a topic of
-    pioneering research ever since. This paper aims to provide a detailed
-    literature review of the field. This is achieved by partitioning the
-    timeline into six different sections. Furthermore, a comprehensive data set
-    of literature is analysed using network theoretic approaches in order to
-    explore the influence and the collaborative behaviour of the field itself.
+    iterated version of the game, the Iterated Prisoner's Dilemma, attracted
+    attention in the 1980's after the publication of the ``The Evolution of
+    Cooperation'' and has been a topic of pioneering research ever since.
+    The aim of this paper is to provide a systematic literature review on the
+    Prisoner's Dilemma. This is achieved in two parts.
+
+    Firstly, we provide a detailed literature review by reviewing selected
+    pieces of work. The timeline has been partitioned into five different
+    sections, each reviewing a different aspect of it's research. Secondly, we
+    analyse a comprehensive data set which consists with literature of the
+    Prisoner's Dilemma collected from five different prominent journals.
+    The questions answered in this manuscript are (1) what are the research trends
+    in the field, (2) what are the already existing results within the field,
+    (3) how collaborative is the field and (4) do people influence the file more
+    compared to other fields?
 \end{abstract}
 
 \section{Introduction}\label{section:introduction}
 
-In everyday life people choose between being selfish or being selfless when they
-interact with others. The question that arises is: which behaviour is more beneficial?
-There is a simple way of representing these behaviours/concepts. This is to use a
-particular two player non-cooperative game called the prisoner's dilemma, originally
-described in~\cite{Flood1958}.
+Though cooperative behavior seems at odds with the Darwinian principle of
+survival of the fittest, cooperation is abundant in nature~\cite{Stewart15348}.
+The golden paradigm of understanding these behaviours/concepts, which is to use
+a particular two player non-cooperative game called the Prisoner's Dilemma (PD),
+originally described in~\cite{Flood1958}.
 
-Each player has two choices, to either be selfness and cooperate or to act in a
-selfish manner and choose to defect. Each decision is made simultaneously and independently.
-The fitness of each player is influenced by its own behaviour, and the behaviour
-of the opponent. Both players do better if they choose to cooperate than if both
-choose to defect. However, a player has the temptation to deviate as that player will
-receive a higher payoff than that of a mutual cooperation.
-
-A player's payoffs are generally represented by (\ref{eq:the_pd_payoffs}). Both
+In the PD each player has two choices, to either be selfless and cooperate or to
+be selfish and choose to defect. Each decision is made simultaneously and
+independently. The utility of each player is influenced by its own behaviour,
+and the behaviour of the opponent. Both players do better if they choose to
+cooperate than if both choose to defect. However, a player has the temptation to
+deviate as that player will receive a higher payoff than that of a mutual
+cooperation.
+Players' payoffs are generally represented by (\ref{eq:the_pd_payoffs}). Both
 players receive a reward for mutual cooperation, \(R\), and a payoff \(P\) for
 mutual defection. A player that defects while the other cooperates receives a payoff of
 \(T\), whereas the cooperator receives \(S\). The dilemma exists due
-to constrains (\ref{eq:constrain_one}) and (\ref{eq:constrain_two}).
+to constraints (\ref{eq:constrain_one}) and (\ref{eq:constrain_two}).
 
 \begin{equation} \label{eq:the_pd_payoffs}
     \begin{pmatrix}
@@ -102,7 +110,7 @@ to constrains (\ref{eq:constrain_one}) and (\ref{eq:constrain_two}).
 
 Another common representation of the payoff matrix is given by~(\ref{eq:the_pd_payoffs_with_cost}),
 where \(b\) is the benefit of the altruistic behaviour and \(c\) it's its cost
-(constrains (\ref{eq:constrain_one}) - (\ref{eq:constrain_two}) still hold).
+(constraints (\ref{eq:constrain_one}) and (\ref{eq:constrain_two}) still hold).
 
 \begin{equation}\label{eq:the_pd_payoffs_with_cost}
     \begin{pmatrix}
@@ -110,28 +118,50 @@ where \(b\) is the benefit of the altruistic behaviour and \(c\) it's its cost
     \end{pmatrix}
 \end{equation}
 
-Constrains (\ref{eq:constrain_one}) - (\ref{eq:constrain_two}) and rational behaviour
-guarantee that it never benefits a player to cooperate. However,
-when the game is studied in a manner where prior outcome matters,
-defecting is no longer necessarily the dominant choice.
+Constraints (\ref{eq:constrain_one}), (\ref{eq:constrain_two}) and rational
+behaviour guarantee that it never benefits a player to cooperate, indeed mutual
+defections is a Nash equilibrium. However, when the game is studied in a manner
+where prior outcome matters, defecting is no longer necessarily the dominant
+choice.
 
-The repeated form of the game is called the iterated prisoner's dilemma and theoretical
-works have shown that cooperation can emerge once players interact repeatedly.
-Arguably, the most important of these works has been R. Axelrod's
-``The Evolution of Cooperation''~\cite{Axelrod1984}.
-In his book Axelrod reports on a series of computer tournaments he organised of
-a finite turns games of the iterated prisoner's dilemma. Participants
+The repeated form of the game is called the Iterated Prisoner's Dilemma (IPD)
+and theoretical works have shown that cooperation can emerge once players
+interact repeatedly. Arguably, the most important of these works has been Robert
+Axelrod's ``The Evolution of Cooperation''~\cite{Axelrod1984}. In his book
+Axelrod reports on a series of computer tournaments he organised. Participants
 had to choose between cooperation and defection again and again while having
-memory of their previous encounters. Academics from several fields were invited to
-design computer strategies to compete. The pioneering work of Axelrod
-showed that greedy strategies did very poorly in the long run whereas altruistic
+memory of their previous encounters. Academics from several fields were invited
+to design computer strategies to compete. The pioneering work of Axelrod showed
+that greedy strategies did very poorly in the long run whereas altruistic
 strategies did better.
-
 ``The Evolution of Cooperation'' is considered a milestone in the field but it
-is not the only one. On the contrary, the prisoner's dilemma has attracted much
-attention ever since the game's origins. In Section~\ref{section:analysis} a comprehensive
-data set of literature regarding the prisoner's dilemma, and collected from
-the following sources, is presented and analysed.
+is not the only one. On the contrary, the PD has attracted attention ever since
+the game's origins.
+
+In Section~\ref{section:timeline}, a qualitative description of selected pieces
+of work will be presented. These have been separated into five sections, each
+reviewing a different aspect of research. The topics reviewed at each section
+are the following:
+
+\begin{itemize}
+    \item Section~\ref{section:origin}, the \textbf{origins of the Prisoner's
+    Dilemma}.
+    \item Section~\ref{subsection:intelligent_design}, \textbf{Axelrod's
+    tournaments and intelligent design of strategies}.
+    \item Section~\ref{subsection:evolutionary_dynamics}, \textbf{Evolutionary Dynamics}
+    \item Section~\ref{section:structured_strategies}, \textbf{Structured
+    strategies and training}.
+    \item Section~\ref{section:software}, \textbf{Software}.
+\end{itemize}
+
+The aim of this paper is to provide a concrete summary of the existing
+literature of the PD research. This is done to provide the
+research community a review which will allow it's members to understand overall
+trends in the field, and already existing results.
+
+In Section~\ref{section:analysis} a comprehensive data set of literature
+regarding the PD, and collected from the following sources, is presented and
+analysed. The data set has been archived and is available at~\cite{pd_data_2018}.
 
 \begin{multicols}{2}
     \begin{itemize}
@@ -164,395 +194,263 @@ as well as to measure and explore the collaborations within the field.
 
 \section{Timeline}\label{section:timeline}
 
-In this section a large amount of literature regarding the prisoner's
-dilemma is reviewed. The review starts from the year the game was formulated
-and covers publications all the way to today.
+In this section literature regarding the prisoner's dilemma is reviewed. The
+review starts from the formulation of the game and covers publications all the
+way to today.
 
 \subsection{Origins of the prisoner's dilemma}\label{section:origin}
 
-The origin of the prisoner's dilemma goes back to the 1950s in early experiments
-conducted at RAND~\cite{Flood1958} to test the applicability of games
-described in~\cite{VonNeumann1944}. The game received it's name later the same year.
-According to~\cite{Tucker1983}, A. W. Tucker (the PhD supervisor of J. Nash~\cite{Nash1951}),
-in an attempt to delivery the game with a story during a talk described the players
-as prisoners and the game has been known as the prisoner's dilemma ever since.
+The origin of the PD goes back to the 1950s in early experiments conducted at
+RAND~\cite{Flood1958} to test the applicability of games described
+in~\cite{VonNeumann1944}. The game received it's name later the same year.
+According to~\cite{Tucker1983}, Albert W. Tucker (the PhD supervisor of John
+Nash~\cite{Nash1951}), in an attempt to delivery the game with a story during a
+talk described the players as prisoners and the game has been known as the
+Prisoner's Dilemma ever since.
 
-The early research on the prisoner's dilemma had been very constrained. The only
-source of experimental results was through groups of humans that simulated rounds
-of the games and human groups came with disadvantages. Human can behave very
-randomly and in several experiments both the size and the background of the
-individuals were different. Thus comparing results of two or more studies
-became tricky.
+The early research on the PD had been very constrained. The only source of
+experimental results was through human subject research, where pairs of
+participants simulated rounds of the game. Human subject research has
+disadvantages. Humans can behave randomly and in several experiments both the
+size and the background of the individuals were different, thus comparing
+results of two or more studies became difficult.
 
-The main aim of these experiments had been to understand the conditions behind
-the emergence of cooperation. Conditions such as the gender~\cite{Evans1966, Lutzker1961, Mack1971} of
-individuals, the representation of the game~\cite{Evans1966}, the distance between
-players~\cite{Sensenig1972}, the initial effects~\cite{Tedeschi1968} and whether
-the experimenter was biased~\cite{Gallo1968} were being explored and still are
-today.
+The main aim of these early research experiments had been to understand how
+conditions such as the gender of the participants~\cite{Evans1966, Lutzker1961,
+Mack1971}, the physical distance between the players~\cite{Sensenig1972}, the
+effect of the opening moves~\cite{Tedeschi1968} and the experimenter, by varying
+the tone of their voice and facial expressions~\cite{Gallo1968}, could influence
+the outcomes and subsequently the emergence of cooperation. An early figure that
+sought out to understand several of these conditions was the mathematical
+psychologist Professor Anatol Rapoport. The results of his work are summarised
+in \cite{rapoport1965}, written alongside Albert M. Chammah.
 
-An early figure that sought out to understand the conditions under which altruist
-behaviour emerged was Prof A. Rapoport. A mathematical psychologist, whose work focused on
-how to promote international and national cooperation. Rapoport tried to conceptualize
-strategies that could promote international cooperation. In his teaching and research
-he used the prisoner's dilemma. Rapoport offered the field many insights, he
-is the creator of strategies such as Tit for Tat and Pavlov, which are going to be
-discussed in later parts of this paper.
+Rapoport was also interested in conceptualising strategies that could promote
+international cooperation. Decades later he would submit the winning strategy
+Tit for Tat of the first computer tournament, run by Robert Axelrod. Though
+human subject research is used until today~\cite{Testori2019} they have largely
+been replaced by computer tournaments. In the next section  these tournaments
+and several strategies that were designed by researchers, such as Rapoport, are
+introduced.
 
-Decades later the political scientist R. Axelrod introduced the 
-pioneer computer tournaments that have largely replaced human subjects in the study
-of the iterated prisoner's dilemma ever since. In the next section  these
-tournaments and several strategies that were design by researchers,
-such as Rapoport, are introduced.
-
-\subsection{Axelrod's tournaments and intelligent design of strategies}\label{subsection:intelligent_design}
+\subsection{Axelrod's tournaments and intelligently designed strategies}
+\label{subsection:intelligent_design}
 
 As discussed in Section~\ref{section:origin}, before 1980 a great deal of
 research was done in the field, however, as described in~\cite{Axelrod2012}, the
-political scientist R. Axelrod believed that there was no clear answer to the question
-of how to avoid conflict, or even how an individual should play the game. Combining
-his interest in artificial intelligence and political sciences Axelrod created a
-framework for exploring these questions using computer tournaments.
+political scientist Robert Axelrod believed that there was no clear answer to the
+question of how to avoid conflict, or even how an individual should play the
+game. Combining his interest in artificial intelligence and political science
+Axelrod created a framework for exploring these questions using computer
+tournaments. Axelrod asked researchers to design a strategy with the purpose of
+wining an IPD tournament. These strategies were constructed and not designed
+through an undirected process (such as in
+Section~\ref{section:structured_strategies}), and here they are refereed to as
+strategies of intelligent design. This section covers Axelrod's original
+tournaments as well as research that introduced new intelligently designed
+strategies.
 
-Axelrod's tournaments made the study of cooperation of critical interest
-once again, academic articles were being published reproducing Axelord's work,
-accessing and further developing his results. As described in~\cite{Rapoport2015},
-``Axelrod's “new approach” has been extremely
+Axelrod's tournaments made the study of cooperation of critical interest. As
+described in~\cite{Rapoport2015}, ``Axelrod's “new approach” has been extremely
 successful and immensely influential in casting light on the conflict between an
-individual and the collective rationality reflected in the choices of a population
-whose members are unknown and its size unspecified, thereby opening a new avenue
-of research''.
-In a collaboration with a colleague, Douglas Dion, Axelrod in~\cite{Axelrod1988}
-summarized a number of works that were immediately inspired from the ``Evolution of Cooperation''
-and in 2012,~\cite{Jurisic2012} wrote a review on iterated prisoner's
-dilemma strategies and big competitions that had occurred since the originals.
+individual and the collective rationality reflected in the choices of a
+population whose members are unknown and its size unspecified, thereby opening a
+new avenue of research''. In a collaboration with a colleague, Douglas Dion,
+Axelrod in~\cite{Axelrod1988} summarized a number of works that were immediately
+inspired from the ``Evolution of Cooperation'' and in 2012,~\cite{Jurisic2012}
+wrote a review on IPD strategies and big competitions
+that had occurred since the originals.
 
-In essence, Axelrod asked researchers to design a strategy,
-set a number of rules, with the purpose of wining an iterated prisoner's dilemma
-tournament. These strategies were constructed by an intelligent cause and not an
-undirected process, and here there are refereed to as strategies of intelligent
-design. This section covers Axelrod's original tournaments as well as 
-research that introduced new strategies of intelligent design.
+The first reported computer tournament took place in 1980~\cite{Axelrod1980a}. A
+total of 13 strategies were submitted, written in the programming languages
+Fortran or Basic. Each competed in a 200 turn match against all 12 opponents,
+itself and a player that played randomly (called \textbf{Random}). This type of
+tournament is referred to as a round robin. The tournament was run only once,
+each participant knew the exact length of the matches and had access to the full
+history of each match. Furthermore, Axelrod performed a preliminary tournament
+and the results were known to the participants. This preliminary tournament is
+mentioned in~\cite{Axelrod1980a} but no details were given. The payoff values
+used for equation~(\ref{eq:the_pd_payoffs}) where \(R=3, P=1, T=5\) and \(S=0\).
+These values are commonly used in the literature and unless specified will be
+the values used in the rest of the work described here.
 
-The first reported computer tournament took place in 1980~\cite{Axelrod1980a}.
-Several scientists were invited to submit their strategies, written in the
-programming languages Fortran or Basic. There was a total of 13 submissions
-made by the following researchers,
+The winner of the tournament was determined by the total average score and not
+by the number of matches won. The strategy that was announced the winner was the
+strategy submitted by Rapoport, \textbf{Tit For Tat}. The success of Tit for Tat
+came as a surprise. It was not only the simplest submitted strategy, it would
+always cooperates on the first round and then mimic the opponent's previous
+move, but it had also won the tournament even though it could never beat
+any player it was interacting with.
 
-\begin{multicols}{2}
-    \begin{enumerate}
-        \item T Nicolaus Tideman and Paula Chieruzz;
-        \item Rudy Nydegger;
-        \item Bernard Grofman;
-        \item Martin Shubik;
-        \item Stein and Anatol Rapoport;
-        \item James W Friedman;
-        \item Morton Davis;
-        \item Jim Graaskamp;
-        \item Leslie Downing;
-        \item Scott Feld;
-        \item Johann Joss;
-        \item Gordon Tullock;
-    \end{enumerate}
-\end{multicols}
+In order to further test the results Axelrod performed a second tournament
+in 1980~\cite{Axelrod1980b}. The second tournament received much more attention
+and had a total of 62 entries. The participants knew the results of the previous
+tournament and the rules were similar with only a few alterations. The
+tournament was repeated 5 times and the length of each match was not known to
+the participants. Axelrod intended to use a fixed probability (refereed to as
+`shadow of the future'~\cite{Axelrod1988}) of the game ending on the next move.
+However, 5 different match lengths were selected for each match 63, 77, 151,
+308 and 401, such that the average length would be around 200 turns.
 
-and a \(13^{th}\) who remained anonymous.
+At least 9 of the original participants competed again and two strategies that
+remained the same were Tit For Tat and \textbf{Grudger}. Grudger is a strategy
+that will cooperate as long as the opponent does not defect, originally
+submitted by James W. Friedman. The name Grudger was give to the strategy
+in~\cite{Li2014}. Though the strategy goes by many names in the literature such
+as, Spite~\cite{Beaufils1997}, Grim Trigger~\cite{Banks1990} and
+Grim~\cite{Van2015}. New entries in the second tournament included \textbf{Tit
+for Two Tats} submitted by John Maynard Smith and \textbf{KPavlovC}. KPavlovC,
+is also known as Simpleton~\cite{rapoport1965}, introduced by Rapoport or just
+Pavlov~\cite{Nowak1993}. The strategy is based on the fundamental behavioural
+mechanism win-stay, lose-shift. It starts off with a cooperation and then
+repeats it's previous move only if it was awarder with a payoff of \(R\) or
+\(T\). Pavlov is heavily studied in the literature and similarly to Tit for Tat
+it's used in tournaments perform until today and has had many variants trying to
+build upon it's success, for example \textbf{PavlovD} and \textbf{Adaptive
+Pavlov}~\cite{Li2007}.
 
-Each competed in a 200 turn match against all 12 opponents, itself and a player
-that played randomly (called \textbf{Random}). This type of tournament is referred to as a round robin.
-The tournament was run only once, each participant knew
-the exact length of the matches and had access to the full history of each match.
-Furthermore, Axelrod performed a preliminary tournament and the results were known
-to the participants. The payoff values used for equation~(\ref{eq:the_pd_payoffs}) where
-\(R=3, P=1, T=5\) and \(S=0\). These values are commonly used in the literature
-and unless specified will be the values used in the rest of the work described here.
-
-The winner of the tournament was determined by the total average score and not by
-the number of matches won. The strategy that was announced the winner was
-submitted by Rapoport and was called \textbf{Tit For Tat}. Tit for Tat, is a
-strategy that always cooperates on the first round and then mimics the opponent's
-previous move.
-The success of Tit for Tat came as a surprise. It was not only the simplest submitted
-strategy but it had also won the tournament even though it could never do better
-than any player it was interacting with.
-
-In order to further test the results Axelrod performed a second
-tournament later in 1980~\cite{Axelrod1980b}. The results of the first tournament
-had been publicised and the second tournament received much more attention, with 62 entries
-made by the following people,
-
-\begin{multicols}{3}
-    \begin{enumerate}
-        \item Gail Grisell;
-        \item Harold Rabbie;
-        \item James W Friedman;
-        \item Abraham Getzler;
-        \item Roger Hotz;
-        \item George Lefevre;
-        \item Nelson Weiderman;
-        \item Tom Almy;
-        \item Robert Adams;
-        \item Herb Weiner;
-        \item Otto Borufsen;
-        \item R D Anderson;
-        \item William Adams;
-        \item Michael F McGurrin;
-        \item Graham J Eatherley;
-        \item Richard Hufford;
-        \item George Hufford;
-        \item Rob Cave;
-        \item Rik Smoody;
-        \item John Willaim Colbert;
-        \item David A Smith;
-        \item Henry Nussbacher;
-        \item William H Robertson;
-        \item Steve Newman;
-        \item Stanley F Quayle;
-        \item Rudy Nydegger;
-        \item Glen Rowsam;
-        \item Leslie Downing;
-        \item Jim Graaskamp and Ken Katzen;
-        \item Danny C Champion;
-        \item Howard R Hollander;
-        \item George Duisman;
-        \item Brian Yamachi;
-        \item Mark F Batell;
-        \item Ray Mikkelson;
-        \item Craig Feathers;
-        \item Fransois Leyvraz;
-        \item Johann Joss;
-        \item Robert Pebly;
-        \item James E Hall;
-        \item Edward C White Jr;
-        \item George Zimmerman;
-        \item Edward Friedland;
-        \item X	Edward Friedland;
-        \item Paul D Harrington;
-        \item David Gladstein;
-        \item Scott Feld;
-        \item Fred Mauk;
-        \item Dennis Ambuehl and Kevin Hickey;
-        \item Robyn M Dawes and Mark Batell;
-        \item Martyn Jones;
-        \item Robert A Leyland;
-        \item Paul E Black;
-        \item T Nicolaus Tideman and Paula Chieruzz;
-        \item Robert B Falk and James M Langsted;
-        \item Bernard Grofman;
-        \item E E H Schurmann;
-        \item Scott Appold;
-        \item Gene Snodgrass;
-        \item John Maynard Smith;
-        \item Jonathan Pinkley;
-        \item Anatol Rapoport.
-    \end{enumerate}
-\end{multicols}
-
-The new participants knew the results of the previous tournament. The rules
-were similar with only a few alternations. The tournament was repeated 5 times
-and the length of each match was not known to the participants. Axelrod intended
-to use a fixed probability (refereed to as `shadow of the future'~\cite{Axelrod1988})
-of the game ending on the next move. However, 5 different length matches were
-selected for each match 63, 77, 151, 308 and 401, such that the average length
-would be around 200 turns.
-
-Several entries of the second tournament tended to be variants of Tit for Tat, such as
-\textbf{Tit for Two Tats} submitted by John Maynard Smith. Tit for Two
-Tats defects only when the opponent has defected twice in a row. Another well
-known entry was \textbf{Grudger}.
-Grudger was originally submitted by James W. Friedman. Grudger is a strategy that
-will cooperate as long as the opponent does not defect. The name Grudger was give
-to the strategy in~\cite{Li2014}. Though the strategy goes by many names in the
-literature such as, Spite~\cite{Beaufils1997}, Grim Trigger~\cite{Banks1990} and
-Grim~\cite{Van2015}.
-
-Despite the larger size of the second tournament, none of the variants and new strategies managed
-to outperform the simple designed strategy. The winner was once again Tit for Tat.
-The conclusions made from the first two tournaments were that the strong performance
-of the strategy was due to:
+Despite the larger size of the second tournament none of the new entries managed
+to outperform the simpler designed strategy. The winner was once again Tit for
+Tat. Axelrod deduce that the performance of the strategy was due to:
 
 \begin{itemize}
     \item The strategy would start of by cooperating.
     \item It would forgive it's opponent after a defection.
     \item It would always be provoked by a defection no matter the history.
+    \item It was simple.
     \item As soon as the opponents identified that they were playing Tit for Tat,
     they would choose to cooperate for the rest of the game.
 \end{itemize}
 
-However, the success of Tit for Tat was not unquestionable. Several papers
-showed that  stochastic uncertainty severely undercut the effectiveness
-of reciprocating strategies. Though such stochastic uncertainty
-are unlikely to occur in a computer tournament, but have to be expected in real
-life situations~\cite{Milinski1987}.
+The success of Tit for Tat, however, was not unquestionable. Several papers
+showed that stochastic uncertainties severely undercut the effectiveness of
+reciprocating strategies and such stochastic uncertainties have to be expected
+in real life situations~\cite{Milinski1987}. Moreover, research believed that
+the strategy's simplicity was not necessarily a feature, but a limitation~\cite{Beaufils1997}.
 
-In~\cite{Molander1985} it was proved that
-in an environment where \textbf{noise} is introduced two strategies playing Tit
-for Tat receive the same average payoff as two Random players. Noise is a probability
-that a player's move will be flipped. In 1986,~\cite{Donninger1986} ran a computer
-tournament with a 10 percent chance of noise and Tit for Tat finished sixth out of
-21 strategies. Bendor in~\cite{Bendor1991} performed tournament similar to Axelrod's
-with noise and a probability of 0.0067 of ending in the next turn.
-His results demonstrated the poor performance of Tit for Tat once again and showed
-that the highest ranked strategies were more generous ones.
-His top ranked strategy was called \textbf{Nice and Forgiving}.
-Nice and Forgiving, differs in significant ways
-from Tit for Tat. Initially, Nice's generosity takes the form of a benign indifference.
-It will continue to play cooperation as long as its rival's cooperation level
-exceeded 80\%. Secondly, although it will retaliate if its rival's observed cooperation fell
-below 80, it is willing to revert to full cooperation before its partner does,
-so long as the partner satisfies a certain thresholds of acceptable behaviour.
+Regarding stochastic uncertainties, \cite{Molander1985} proved that in an
+environment where \textbf{noise} is introduced two strategies playing Tit for
+Tat receive the same average payoff as two Random players (a probability that a
+player's move will be flipped) and in a computer tournament with a 10 percent of
+noise and Tit for Tat finished sixth out of 21 strategies~\cite{Donninger1986}.
+Jonathan Bendor in~\cite{Bendor1991} performed tournament similar to Axelrod's
+with noise and a probability of 0.0067 of ending in the next turn. His results
+demonstrated the poor performance of Tit for Tat once again and showed that the
+highest ranked strategies were more generous ones. His top ranked strategy was
+called \textbf{Nice and Forgiving}. Hammerstein~\cite{Hammerstein1984}, pointed
+out another weakness of Tit for Tat in noisy environments. If by mistake, one of
+two Tit for Tat players makes a wrong move, this locks the two opponents into a
+hopeless sequence of alternating defections and cooperations. To overcome this
+error~\cite{Wolfgang2006} introduced another more generous variant of Tit for
+Tat, \textbf{OmegaTFT}. A second type of stochastic uncertainty is
+misperception, where a player's action is made correctly but it's recorder
+incorrectly by the opponent. In 1986,~\cite{Wu1995} a strategy
+called~\textbf{Contrite Tit for Tat} that was more successful than Tit for Tat
+in such environments. The difference between the strategies was that Contrite
+Tit for Tat was not so fast to retaliate a defection. All these aforementioned
+works hinted that there are at least two ways of coping with unindented
+defections, that are due to happen in uncertain environments, generosity and
+contrition. Generosity is letting a percentage of defections go unpunished and
+contrition, it's lowering a strategy's readiness to defect and a defection.
 
-Hammerstein~\cite{Hammerstein1984}, pointed out another weakness of Tit
-for Tat in noisy environments. If by mistake, one of two Tit for Tat players makes a wrong move,
-this locks the two opponents into a hopeless sequence of alternating defections
-and cooperations. To overcome this error~\cite{Wolfgang2006} introduced another more
-generous variant of Tit for Tat, \textbf{OmegaTFT}. They also altered their strategy
-so that it had the ability
-to recognize and exploit the Random strategy in a way that after an opponent
-strategy crosses a certain randomness threshold they conclude that the opponent is
-a Random strategy and change the behaviour to act as a \textbf{Defector}, a strategy that
-always choose to defect.
+Regarding the limitations of simplicity, the advantages of complexity were shown
+by~\cite{Beaufils1997} in 1997. A new strategy was constructed to have the the
+same qualities as those of Tit for Tat except one, Gradual has a memory of the
+game since the beginning of it. Gradual punishes defections with a growing
+number of defections but after punishing enters a calming state in which it
+cooperates for two rounds. In a tournament of 12 strategies, Gradual scored
+first and outperformed both Tit for Tat and Pavlov. Another antagonist of
+intelligent design with a infnite memory of the game is \textbf{Adaptive Tit for
+Tat}. The authors of~\cite{tzafestas-2000a} conducted the exact same tournament
+as~\cite{Beaufils1997} with now 13 strategies and their strategy ranked first.
+These results are the first of many that illustrated the advantages of
+\textbf{memory} in the IPD games. This topic will be discussed in more detail in
+Section~\ref{section:structured_strategies}.
 
-A second type of stochastic uncertainty is misperception, where a player's action is made correctly
-but it's recorder incorrectly by the opponent. In 1986,~\cite{Sugden2004} introduced
-a strategy called~\textbf{Contrite Tit for Tat} that was more successful than Tit
-for Tat in such environments. The difference between the strategies was that
-Contrite Tit for Tat was not so fast to retaliate a defection. This hints, alongside
-more generous versions of Tit for Tat as discussed above, that the counter attack
-to stochastic uncertainties is a strategy's readiness to defect after a defection.
+The last family of intelligently designed strategies that are presented in this
+section are those of teams~\cite{J.P.Delahaye1993Lp, J.P.Delahaye1995LIeP,
+A.Rogers2007Ctpw}. A team of strategies include strategies that have been been
+programmed with a recognition mechanism by default. Once the strategies
+recognise one another, one would act as leader and the other as a follower. The
+follower then plays as a Cooperator, cooperates unconditionally and the leader
+would play as a Defector gaining the highest achievable score. Followers would
+behave as Defector towards other strategies to defect their score and help the
+leader. In~\cite{A.Rogers2007Ctpw}, a team for the University of Southampton
+used teams and recognition patterns and managed to win the 2004 Anniversary
+Iterated Prisoner's Dilemma Tournament.
 
-Another protagonist in the literature and better perform strategy than Tit for Tat
-came along in 1993. The strategy was \textbf{Pavlov} and though the name was
-formally given  by Nowak~\cite{Nowak1993} the strategy had been around since 1965
-known as Simpleton~\cite{rapoport1965}, introduced by Rapoport himself.
-The strategy is based on the fundamental
-behavioural mechanism win-stay, lose-shift. It starts off with a cooperation and
-then repeats it's previous move only if it was awarder with a payoff of \(R\) or
-\(T\). Pavlov is heavily studied in the literature and similarly to Tit for Tat
-it's used in tournaments perform until today and has had many variants trying
-to build upon it's success. \textbf{PavlovD}, just a Pavlov which starts the game
-with a defection and \textbf{Adaptive Pavlov}. Adaptive Pavlov tried to
-classify it's opponents as as one of the following strategies, \textbf{Cooperator}, Defector,
-Pavlov, Random or Pavlov and chooses a strategy that maximise it's payoff against
-the now `known' opponent.
-Cooperator is a deterministic strategy that conditionally cooperates.
-
-Several researchers, and this will discussed in later sections as well, argued
-with Axelrod's result on simplicity. The advantages of complexity were shown
-by~\cite{Beaufils1997} in 1997 where they introduced another well known strategy
-\textbf{Gradual}. Gradual starts off by cooperating,
-then after the first defection of the other player, it defects one time and cooperates
-twice. After the second defection of the opponent, it defects two times and cooperates
-twice. After the \(n^{th}\) defection it reacts with \(n\) consecutive defections 
-and then two cooperations. In a tournament of 12 strategies~\cite{Beaufils1997},
-Gradual had managed to outperform strategies such as Tit for Tat and Pavlov.
-Gradual was surpassed by yet another complex and intelligent designed strategy
-\textbf{Adaptive Tit for Tat}. The authors of~\cite{tzafestas-2000a} conducted
-the exact same tournament as~\cite{Beaufils1997} with now 13 strategies and their
-strategy ranked first.
-
-Another interesting research on intelligent design strategies is on teams~\cite{J.P.Delahaye1993Lp,
-J.P.Delahaye1995LIeP, A.Rogers2007Ctpw}. The strategies which make the team 
-have been programmed with a recognition mechanism
-by default. Once the strategies recognise one another, one would act as leader
-and the other as a follower. The follower then plays as a Cooperator, cooperates
-unconditionally and the leader would play as a Defector gaining the highest achievable
-score. Followers would behave as Defector towards other strategies to defect
-their score and help the leader. In~\cite{A.Rogers2007Ctpw}, a team for the University
-of Southampton used teams and recognition patterns and managed to win the 2004
-Anniversary Iterated Prisoner's Dilemma Tournament.
-
-The next section focuses on a different aspect of research which is evolutionary
-dynamics.
+In this section the original computer tournaments and the origins of several
+intelligently designed strategies were covered. Axelrod's tournaments showed the
+advantages of reciprocal cooperation and simplicity in certain environments.
+Other works, also looked their limitations. Finally, the design of teams and the
+notion of recognition patterns were discussed. The next section focuses on a
+different aspect of research which is evolutionary dynamics.
 
 \subsection{Evolutionary Dynamics}\label{subsection:evolutionary_dynamics}
 
-Following Axelrod's tournaments it was proven that direct reciprocity can
-make cooperation successful is an round robin setting. A long standing question
-has been to understand the conditions required for the emergence and maintenance
-of cooperation in evolving populations. Is reciprocity the key here as well?
-and what other mechanisms could favour cooperation? Due to the complex nature of
-the iterated prisoner's dilemma strategies makes their evolutionary stability
-more complex to study and though the question and these still remain open questions.
-Even so, several insights have been published over the years and in this section
-several remarks that have been made on the evolutionary dynamics are discussed.
+So far the emergence of cooperation has been discussed in the contexts of the
+the one shot PD game and in IPD tournaments. In the one shoot game cooperation it
+can be proven that cooperation fails, the
+only Nash equilibrium is that of mutual defection, moreover, in a series of
+influencing works Axelrod's argued that reciprocal cooperation will emerge when
+individuals interact repeatedly. But does natural selection favours cooperation?
 
-In the later sections of~\cite{Axelrod1980b}, Axelrod discusses about
-an ecological tournament he performed using the 62 strategy of the second tournament
-An ecological approach is a simulation of theoretical
-future rounds of the game where strategies that do better are more likely to be
-included in future rounds than others.
-The simulation of the process, as described in~\cite{Axelrod1980b}, is straightforward.
-Let us consider an example with four strategies Tit for Tat, Tit for Two Tat,
-Cooperator and Defector compete in an ecological tournament.
-The expected payoff matrix, when these four strategies interact, is give by,
 
-\[\begin{bmatrix}
-    3.0,  & 3.0,  & 3.0, & 0.99 \\
-    3.0,  & 3.0,  & 3.0, & 0.99 \\
-    3.0,  & 3.0,  & 3.0, & 0.0  \\
-    1.02, & 1.039,& 5.0, & 1.0 \\
-\end{bmatrix}\]
-
-Starting with proportions of each type in a given generation, their proportions
-for the next generation needs to be calculated. This is achieved by calculating
-the weighted average of the scores of a given strategy with all other players.
-
-\begin{itemize}
-    \item The weights are the numbers of the other strategies which
-    exist in the current generation.
-    \item The numbers of a given strategy in the next generation is then taken to
-    be proportional to the product of its numbers in the current generation and
-    its score in the current generation.
-\end{itemize}
-
-\begin{figure}[!hbtp]
+\begin{figure}
     \centering
-    \includegraphics[width=.6\textwidth]{./assets/images/ecological_tournament.png}
-    \caption{Results on an ecological tournament with Tit for Tat, Tit for Two Tats,
-    Cooperator and Defector.}
-    \label{fig:ecological_tournament}
+    \includestandalone{assets/tex/natural_selection}
+    \caption{Natural Selection}
 \end{figure}
 
-The process is then repeated for a given number of future tournaments.
-Figure~\ref{fig:ecological_tournament} illustrates a simulation of our
-ecological tournament, as shown strategies that cooperate quickly kill off the Defector.
-A similar result was presented by Axelrod. In his ecological tournament cooperative
-strategies managed to take over the population over time. On the other hand exploitative
-strategies started to die off as weaker strategies were becoming extinct. In other
-words they were dying because there was fewer and fewer prey for them to exploit.
-In 1981, Axelrod also studied the prisoner's dilemma in an evolutionary context based
-on the evolutionary approaches of John Maynard Smith~\cite{Smith1973,
-Smith1974, Smith1979}. Smith is a well know evolutionary biologist as well
-as an attendant of Axelord's second tournament. John Maynard Smith alongside George Price
-are considered fundamental figures of evolutionary game theory. In~\cite{Smith1973}
-they introduced the definition of an evolutionary stable strategy (ESS).
+The importance of understanding the the conditions under which natural selection
+can favour cooperative behaviour lies within understanding social behaviour
+almost humans and other mammals~\cite{Boyd1987}.
 
-Imagine a population made up of individuals where everyone follows the
-same strategy \(B\) and a single individual adopts a mutant strategy \(A\).
-Strategy \(A\) is said to invade strategy \(B\) if the payoff of \(A\) against \(B\)
-is greater than the expected payoff received by \(B\) against itself.
-Since strategy \(B\) is in a population that interacts only with itself,
-the concept of invasion is equivalent to a single mutant being able to outperform
-the average population. Thus for a strategy to be ESS it must be able to resists
-any invasion.
+This section covers a number of works in understanding the evolutionary outcomes
+of the IPD. Most of these studies have been made possible due to Evolutionary
+Game Theory, and several of the approaches used by these works have been
+established by biologist John M. Smith~\cite{Smith1973, Smith1974, Smith1979}. A
+fundamental figure within evolutionarily game theory and a participant of
+Axelrod's second tournament.
 
+In the later sections of~\cite{Axelrod1980b}, Axelrod discusses about an
+ecological tournament he performed using the 62 strategy of the second
+tournament to understand the reproductive success of Tit for Tat. In his
+ecological tournament the prevalence of each type of strategy in each round was
+determined by that strategy's success in the previous round. The competition in
+each round becomes stronger as weaker performers are reduced and eliminated. His
+results have been that a handful of nice strategies came to dominate the
+population.
+
+Following this ecological tournament Axelrod alread studied the PD
+in evolutionary context baseoud. Alongside the biologist William Donald Hamilton
+they wrote about the biological applications of the evolutionary dynamics of the
+iterated prisoner's dilemma~\cite{Axelrod1984} and won the Newcomb-Cleveland
+prize of the American Association for the Advancement of Science. 
 The work described in~\cite{axelrod1981}, studied the evolutionary stability of
-Tit for Tat and although the strategy was likely to take over the population, its
-stability was conditional on the importance of the future of the game. This is
-represented by a discounting factor denoted as \(w\). Axelrod showed that if \(w\)
-was sufficiently large, Tit for Tat could resist invasion by any other strategy.
-Moreover, he showed how a small cluster of Tit for Tat players could invade a extortionate
-environment.
-Alongside the biologist William Donald Hamilton they wrote about the biological applications
-of the evolutionary dynamics of the iterated prisoner's dilemma~\cite{Axelrod1984}
-and won the Newcomb-Cleveland prize of the American Association for the Advancement
-of Science. Arguing with Axelrod's results.
-In~\cite{Boyd1987} Boyd and Lorderbaum show that if \(w\), the importance of the
-future of the game, is large enough then no deterministic strategy is ESS because
-it can always be invaded by any pair of other strategies. This was also independently
-proven by~\cite{Pudaite1987}, so is reciprocity the answer to the emergence of
-cooperation?
+Tit for Tat.
+
+% In Axelrod's odel pairl of individuals were peared gorm a politao and player the
+% IPD. The wa are wpro that a par more ine more than t times, w_t 0 < w< 1. Axelrod's
+% results showed taht dor a sufficient high w Tit for Tat, nice, were likely
+% to become commen. Though Axelrod acreuf collective stable.
+% In~\cite{Boyd1987} Boyd and Lorderbaum show that if \(w\), the importance of the
+% future of the game, is large enough then no deterministic strategy is ESS because
+% it can always be invaded by any pair of other strategies. This was also independently
+% proven by~\cite{Pudaite1987}, so is reciprocity the answer to the emergence of
+% cooperation?
+
+Boyd \& Lorberbaum\cite{Boyd1987}  have shown that no pure
+strategy, including TFT, is evolutionarily stable in the sense that each can be
+invaded by the joint effect of two invading strategies when long-term
+interaction occurs in the repeated game and future moves are discounted.
+This was also independently
+proven by~\cite{Pudaite1987}. More over, 
+Farrell
+\& Ware (1989, Theor. Popul. Biol. 36, 161) have since extended these results to
+include finite mixes of pure strategies as well.
+
+Summary, and structured populations.
 
 Cooperation can be favoured in several other settings, in~\cite{nowak1989},
 Nowak and Sigmund studied the dynamics of the evolutionary
@@ -881,30 +779,29 @@ moreover for the second tournament the only source code available is the code
 for the 62 strategies (found on Axelrod's personal website~\cite{fortan_code}).
 
 Several projects, however, are open, available and have been used as research
-tools or educational platforms over the years. Two research tools are briefly mentioned
-here~\cite{prison, axelrodproject} and two educational tools~\cite{pd_trust, pd_game}.
-Both~\cite{prison, axelrodproject} are open source projects used as research
-tools. PRISON is written in the programming language Java and preliminary version
-was launched on 1998. It was used by it's authors in several publications, such
-as~\cite{Beaufils1997} which introduced Gradual and~\cite{Beaufils1988}. The project
-includes a good number of strategies from the literature but unfortunately the
-last update of the project dates back in 2004.
-Axelrod-Python is a package used by several papers covered in Section~\ref{section:structured_strategies}.
-It is written in the programming language Python following best practice
-approaches and contains the larger to date data set of strategies, known to the
-author. The strategy
-list of the project has been cited by publications~\cite{Anastassacos2018,
-Hayes2017, Neumann2018} and the package has been for several manuscripts
-such as~\cite{Goodman2018, Wang2017}.
+tools or educational platforms over the years. Two research tools are briefly
+mentioned here~\cite{prison, axelrodproject} and two educational
+tools~\cite{pd_trust, pd_game}. Both~\cite{prison, axelrodproject} are open
+source projects used as research tools. PRISON is written in the programming
+language Java and preliminary version was launched on 1998. It was used by it's
+authors in several publications, such as~\cite{Beaufils1997} which introduced
+Gradual and~\cite{Beaufils1988}. The project includes a good number of
+strategies from the literature but unfortunately the last update of the project
+dates back in 2004. Axelrod-Python is a package used
+by~\cite{Knight2017,KnightHGC17, Goodman2018, Wang2017}. It is written in the
+programming language Python following best practice approaches and contains the
+largest collection of strategies, known to the author. The strategy list of
+the project has been cited by publications~\cite{Anastassacos2018, Hayes2017,
+Neumann2018}.
 
 The `Game of Trust'~\cite{pd_trust} is an on-line, graphical user interface
-educational platform for learning the basics of game theory, the iterated prisoner's
-dilemma and the notion of strategies. It attracted a lot of attention due to
-being ``well-presented with scribble-y hand drawn characters''~\cite{trust_blogb}
-and ``a whole heap of fun''~\cite{trust_bloga}. Finally~\cite{pd_game} is a
-personal project written in PHP. It's graphical user interface platform that offers
-a big collection of strategies and allows the user to try several matches and
-tournament configurations.
+educational platform for learning the basics of game theory, the iterated
+prisoner's dilemma and the notion of strategies. It attracted a lot of attention
+due to being ``well-presented with scribble-y hand drawn
+characters''~\cite{trust_blogb} and ``a whole heap of fun''~\cite{trust_bloga}.
+Finally~\cite{pd_game} is a personal project written in PHP. It's graphical user
+interface that offers a big collection of strategies and allows the user to try
+several matches and tournament configurations.
 
 \subsection{Conclusion and Contemporary period}\label{section:contemporary_period}
 
