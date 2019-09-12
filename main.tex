@@ -71,7 +71,7 @@
     The questions answered in this manuscript are (1) what are the research trends
     in the field, (2) what are the already existing results within the field,
     (3) how collaborative is the field and (4) do authors influence the field more
-    compared to other fields?
+    compared to other fields.
 \end{abstract}
 
 \section{Introduction}\label{section:introduction}
@@ -147,7 +147,7 @@ are the following:
     Dilemma}.
     \item Section~\ref{subsection:intelligent_design}, \textbf{Axelrod's
     tournaments and intelligent design of strategies}.
-    \item Section~\ref{subsection:evolutionary_dynamics}, \textbf{Evolutionary Dynamics}
+    \item Section~\ref{subsection:evolutionary_dynamics}, \textbf{Evolutionary dynamics}
     \item Section~\ref{section:structured_strategies}, \textbf{Structured
     strategies and training}.
     \item Section~\ref{section:software}, \textbf{Software}.
@@ -226,9 +226,9 @@ in \cite{rapoport1965}, written alongside Albert M. Chammah.
 
 Rapoport was also interested in conceptualising strategies that could promote
 international cooperation. Decades later he would submit the winning strategy
-Tit for Tat of the first computer tournament, run by Robert Axelrod. Though
-human subject research is used until today~\cite{Testori2019} they have largely
-been replaced by computer tournaments. In the next section  these tournaments
+(Tit for Tat) of the first computer tournament, run by Robert Axelrod. Though
+human subject research is still used today~\cite{Testori2019} they have largely
+been replaced by computer tournaments. In the next section these tournaments,
 and several strategies that were designed by researchers, such as Rapoport, are
 introduced.
 
@@ -244,7 +244,7 @@ Axelrod created a framework for exploring these questions using computer
 tournaments. Axelrod asked researchers to design a strategy with the purpose of
 wining an IPD tournament. These strategies were constructed and not designed
 through an undirected process (such as in
-Section~\ref{section:structured_strategies}), and here they are refereed to as
+Section~\ref{section:structured_strategies}), and here they are referred to as
 strategies of intelligent design. This section covers Axelrod's original
 tournaments as well as research that introduced new intelligently designed
 strategies.
@@ -256,9 +256,8 @@ individual and the collective rationality reflected in the choices of a
 population whose members are unknown and its size unspecified, thereby opening a
 new avenue of research''. In a collaboration with a colleague, Douglas Dion,
 Axelrod in~\cite{Axelrod1988} summarized a number of works that were immediately
-inspired from the ``Evolution of Cooperation'' and in 2012,~\cite{Jurisic2012}
-wrote a review on IPD strategies and big competitions
-that had occurred since the originals.
+inspired from the ``Evolution of Cooperation'', and~\cite{Jurisic2012} gives a
+review of tournaments that have been conducted since the originals.
 
 The first reported computer tournament took place in 1980~\cite{Axelrod1980a}. A
 total of 13 strategies were submitted, written in the programming languages
@@ -269,7 +268,7 @@ each participant knew the exact length of the matches and had access to the full
 history of each match. Furthermore, Axelrod performed a preliminary tournament
 and the results were known to the participants. This preliminary tournament is
 mentioned in~\cite{Axelrod1980a} but no details were given. The payoff values
-used for equation~(\ref{eq:the_pd_payoffs}) where \(R=3, P=1, T=5\) and \(S=0\).
+used for equation~(\ref{eq:the_pd_payoffs}) were \(R=3, P=1, T=5\) and \(S=0\).
 These values are commonly used in the literature and unless specified will be
 the values used in the rest of the works described here.
 
@@ -295,7 +294,7 @@ Nine of the original participants competed again in the second tournament. Two
 strategies that remained the same were Tit For Tat and \textbf{Grudger}. Grudger
 is a strategy that will cooperate as long as the opponent does not defect,
 submitted by James W. Friedman. The name Grudger was give to the strategy
-in~\cite{Li2014}. Though the strategy goes by many names in the literature such
+in~\cite{Li2014}, though the strategy goes by many names in the literature such
 as, Spite~\cite{Beaufils1997}, Grim Trigger~\cite{Banks1990} and
 Grim~\cite{Van2015}. New entries in the second tournament included \textbf{Tit
 for Two Tats} submitted by John Maynard Smith and \textbf{KPavlovC}. KPavlovC,
@@ -308,7 +307,7 @@ had many variants trying to build upon it's success, for example
 
 Despite the larger size of the second tournament none of the new entries managed
 to outperform the simpler designed strategy. The winner was once again Tit for
-Tat. Axelrod deduce that the performance of the strategy was due to:
+Tat. Axelrod deduced that the performance of the strategy was because:
 
 \begin{itemize}
     \item The strategy would start of by cooperating.
@@ -319,202 +318,145 @@ Tat. Axelrod deduce that the performance of the strategy was due to:
     they would choose to cooperate for the rest of the game.
 \end{itemize}
 
-The success of Tit for Tat, however, was not unquestionable.
+The success of Tit for Tat, however, was not unquestionable. Several papers
+showed that stochastic uncertainties severely undercut the effectiveness of
+reciprocating strategies and such stochastic uncertainties have to be expected
+in real life situations~\cite{Milinski1987}. For example, in~\cite{Molander1985}
+it's 
+proven that in an environment where \textbf{noise} (a probability that a
+player's move will be flipped) is introduced two strategies playing Tit for Tat
+receive the same average payoff as two Random players.
+Hammerstein, pointed out that if by mistake, one of two
+Tit for Tat players makes a wrong move, this locks the two opponents into a
+hopeless sequence of alternating defections and cooperations~\cite{Hammerstein1984}.
 
-Several papers showed that stochastic uncertainties severely undercut the
-effectiveness of reciprocating strategies and such stochastic uncertainties have
-to be expected in real life situations~\cite{Milinski1987}. For
-example~\cite{Molander1985} proved that in an environment where \textbf{noise}
-(a probability that a player's move will be flipped) is introduced two
-strategies playing Tit for Tat receive the same average payoff as two Random
-players. Hammerstein~\cite{Hammerstein1984}, pointed out that if by mistake, one
-of two Tit for Tat players makes a wrong move, this locks the two opponents into
-a hopeless sequence of alternating defections and cooperations. The strategy
-does not fall short only in self interactions,~\cite{Bendor1991}
-and~\cite{Donninger1986} demonstrated that the strategy performed poorly in
-tournaments with noise as well. In~\cite{Bendor1991, Wolfgang2006} the authors
-concluded tha to overcome the noise error more generous strategies that Tit For
-Tat were needed. The introduced the strategies \textbf{Nice and Forgiving} and
-\textbf{OmegaTFT} respectively. A second type of stochastic uncertainty is
-misperception, where a player's action is made correctly but it's recorder
-incorrectly by the opponent. In 1986~\cite{Wu1995} introduced a strategy
-called~\textbf{Contrite Tit for Tat} that was more successful than Tit for Tat
+The poor performance of the strategy in noisy environments was also demonstrated
+in tournaments. In~\cite{Bendor1991, Donninger1986} round robin
+tournaments with noise were performed, and Tit For Tat did not win either.
+The authors concluded that to overcome the noise error more generous strategies
+than Tit For Tat were needed. They introduced the strategies \textbf{Nice and Forgiving}
+and \textbf{OmegaTFT} respectively. A second type of stochastic uncertainty is
+misperception, where a player's action is made correctly but it's recorded
+incorrectly by the opponent. In~\cite{Wu1995}, a strategy
+called~\textbf{Contrite Tit for Tat} was introduced that was more successful than Tit for Tat
 in such environments. The difference between the strategies was that Contrite
-Tit for Tat was not so fast to retaliate a defection. The conclusions of all the
-aforementioned works show that there are at least two ways of coping with
-unintended defections that are due to happen in uncertain environments.
-Generosity and contrition. Generosity is letting a percentage of defections go
-unpunished and contrition, it's lowering a strategy's readiness to defect
-following an opponent's defection. These are properties not implemented within
-the basic reciprocity approach of Tit for Tat.
+Tit for Tat was not so fast to retaliate a defection.
 
-Several other works extended the reciprocity based approach which has led to new
-strategies that out perform Tit for Tat. For example
-Gradual~\cite{Beaufils1997}. Gradual was constructed to have the same qualities
-as those of Tit for Tat except one, their strategy \textbf{Gradual} had a memory
-of the game since the beginning of it. Gradual recorded the number of defections
-by the opponent and punished them with a growing number of defections. It would
-then enter a calming state in which it would cooperates for two rounds. In a
-tournament of 12 strategies, including both Tit for Tat and Pavlov, Gradual
-managed to outperformed them all. A strategy with the same intuition as Gradual
-is \textbf{Adaptive Tit for Tat}~\cite{tzafestas-2000a}. Adaptive Tit for Tat
-does keep a permanent count of past defections it maintains a continually
-updated estimate of the opponent’s behaviour, and uses this estimate to
-condition its future actions. In the exact same tournament
-as~\cite{Beaufils1997} with now 13 strategies Adaptive Tit for Tat ranked first.
-These results are some of many that illustrated the advantages of
-\textbf{memory} in the IPD games. Both these
-strategies are still of intelligent design. In
-Section~\ref{section:structured_strategies} this topic will be discussed further
-with structured strategies.
+Several works extended the reciprocity based approach which has led to new
+strategies. For example Gradual~\cite{Beaufils1997}. Gradual was constructed to
+have the same qualities as those of Tit for Tat except one,
+\textbf{Gradual} had a memory of the game since the beginning of it. Gradual
+recorded the number of defections by the opponent and punished them with a
+growing number of defections. It would then enter a calming state in which it
+would cooperates for two rounds. In a tournament of 12 strategies, including
+both Tit for Tat and Pavlov, Gradual managed to outperformed them all. A
+strategy with the same intuition as Gradual is \textbf{Adaptive Tit for
+Tat}~\cite{tzafestas-2000a}. Adaptive Tit for Tat does not keep a permanent
+count of past defections, it maintains a continually updated estimate of the
+opponent’s behaviour, and uses this estimate to condition its future actions. In
+the exact same tournament as in~\cite{Beaufils1997} with now 13 strategies Adaptive
+Tit for Tat ranked first.
 
-The last family of intelligently designed strategies that are presented in this
-section are those of teams~\cite{J.P.Delahaye1993Lp, J.P.Delahaye1995LIeP,
-A.Rogers2007Ctpw}. In 2004 Graham Kendall led the Anniversary Iterated
-Prisoner's Dilemma Tournament with a total of 223 entries. In this tournament
-participants were allowed to submit multiple strategies. A team from the
-University of Southampton submitted a total of 60
-strategies~\cite{A.Rogers2007Ctpw}. All these were include strategies that have
-been been programmed with a recognition mechanism by default. Once the
-strategies recognise one another, one would act as leader and the other as a
-follower. The follower plays as a \textbf{Cooperator}, cooperates
-unconditionally and the leader would play as a \textbf{Defector} gaining the
-highest achievable score. The followers would defect unconditionally against
-other strategies to lower their score and help the leader. The result is that
-Southampton had the top three performers.
+Another extension of strategies was that of teams of
+strategies~\cite{J.P.Delahaye1993Lp, J.P.Delahaye1995LIeP, A.Rogers2007Ctpw}
+that collude to increase one member's score. In 2004 Graham Kendall led the
+Anniversary Iterated Prisoner's Dilemma Tournament with a total of 223 entries.
+In this tournament participants were allowed to submit multiple strategies. A
+team from the University of Southampton submitted a total of 60
+strategies~\cite{A.Rogers2007Ctpw}. All these were strategies that had been
+programmed with a recognition mechanism by default. Once the strategies
+recognised one another, one would act as leader and the other as a follower. The
+follower plays as a \textbf{Cooperator}, cooperates unconditionally and the
+leader would play as a \textbf{Defector} gaining the highest achievable score.
+The followers would defect unconditionally against other strategies to lower
+their score and help the leader. The result was that Southampton had the top
+three performers. Nick Jennings, who was part of the team, said that ``We
+developed ways of looking at the Prisoner's Dilemma in a more realistic
+environment and we devised a way for computer agents to recognise and collude
+with one another despite the noise. Our solution beats the standard Tit For Tat
+strategy"~\cite{southampton_blog}.
 
-In this section the original computer tournaments and the origins of several
-intelligently designed strategies were covered. Axelrod's tournaments showed the
-advantages of reciprocal cooperation and simplicity in certain environments.
-Other works, also looked their limitations. The poor performance of reciprocal
-behaviour in noisy environments was highlighted by a number of works and
-finally, the design of teams and the notion of recognition patterns were
-discussed. The next section focuses on a different aspect of research which is
-evolutionary dynamics.
+\subsubsection{Memory one Strategies}\label{subsection:memory_one}
 
-% The papers covered in this sections included strategies have
-% been trained using generic strategy archetypes based on lookup tables, neural
-% networks finite state machines etc arriving at particularly effective parameter
-% choices through evolutionary or particle swarm algorithms.
+A set of intelligent design strategies that have received a lot of attention in
+the literature are \textbf{memory one} strategies. In~\cite{nowak1989},
+Nowak and Sigmund proposed a structure for studying simple strategies that
+remembered only the previous turn, and moreover, only recorded the move of the
+opponent. These are called \textbf{reactive} strategies and they can be
+represented by using three parameters \((y, p_1, p_2)\), where \(y\) is the
+probability to cooperate in the first move, and \(p_1\) and \(p_2\) the
+conditional probabilities to cooperate, given that the opponent's last move was
+a cooperation or a defection. For example Tit For Tat is a reactive strategy and
+it can be written as \((1, 1, 0)\). Another reactive strategy well known in
+the literature is \textbf{Generous Tit for Tat}~\cite{Nowak1992}.
 
-% In 1989~\cite{nowak1989}, Nowak and Sigmund proposed a structure for studying
-% sophisticated strategies instead of deterministic ones. They studied
-% a set of very simple strategies that remember only the previous
-% turn, and moreover, only record the move of the opponent. They are called reactive
-% strategies and they can be represented by using three parameters \((y, p_1, p_2)\), where \(y\) is the
-% probability to cooperate in the first move, and \(p_1\) and \(p_2\) the conditional probabilities
-% to cooperate, given that the opponent's last move was a cooperation or a defection.
-% Using the above notation a strategy can now be defined by a triple. For example,
-% Defector: (0, 0, 0), Cooperator: (1, 1, 1), Tit for Tat: (1, 1, 0) and Pavlov: (0, 1, 1, 0).
+In~\cite{Nowak1990}, Nowak and Sigmund extended
+their work to include strategies which consider the entire history of the previous turn to make a decision.
+These are called \textbf{memory one} strategies.
+If only a single turn of the game is taken into account and depending on the
+simultaneous moves of the two players there are only four possible states that
+the players could be in. These are ,\(CC, CD, DC, DD\), thus a memory one strategy
+is denoted by the probabilities of cooperating after each state and the probability
+of cooperating in the first round, \((y, p_1, p_2, p_3, p_4)\).
+For example Pavlov's memory one representation is \((1, 1, 0, 0, 1)\).
 
-% This framework was used by the authors to study the evolution of a population
-% composed of 99 reactive strategies. The strategy that managed to take
-% over was \textbf{Generous Tit for Tat} which is given by the triplet \((1, 0, \frac{2}{3})\).
-% In~\cite{Nowak1990} the reactive strategies structure was expanded and a formal definition
-% of a \textbf{memory one strategy} was given for the first time.
-% Memory one strategies consider the entire history of
-% the previous turn to make a decision (thus reactive strategies are a subset of
-% memory one).
+Memory one strategies made an impact when a specific set of memory one
+strategies were introduced called \textbf{Zero-determinant}
+(ZD)~\cite{Press2012}. The American Mathematical Society's news section~\cite{hilbe2015}
+stated that ``the world of game theory is currently on fire'' and in~\cite{Stewart2012}
+it was stated that
+``Press and Dyson have fundamentally changed the viewpoint on the Prisoner's Dilemma''.
+ZD are a set of
+extortionate strategies that can force a linear relationship between
+the long-run scores of both themselves and the opponent, therefore ensuring that the
+opponent will never do better than them.
 
-% If only a single turn of the game is taken into account and depending on the
-% simultaneous moves of two players there are only four possible states that
-% players could possibly be in. These are \(CC, CD, DC\) and \(DD\). A memory one
-% strategy is denoted by the probabilities of cooperating after each of these states,
-% \( p = (p_1, p_2, p_3, p_4) \in\mathbb{R}_{[0,1]}^{4} \).
-% A match between two memory one players \(p\) and \(q\) can be modelled as a
-% stochastic process, where the players move from state to state. More specifically,
-% it can be modelled by the use of a Markov chain~\cite{gamerman2006markov},
-% which is described by a matrix \(M\).
+Press and Dyson's suggested the ZD were the dominant family of strategies in the
+IPD. Moreover, they argued that memory is not beneficial. In~\cite{Adami2013,
+Hilbe2013, Hilbe2013b, hilbe2015, KnightHGC17, Lee2015, Stewart2012} the
+effectiveness of ZD strategies is questioned. In~\cite{Adami2013}, it was shown that ZD
+strategies are not evolutionary stable, and in~\cite{Stewart2012} a more
+generous set of ZDs, the~\textbf{Generous ZD}, were shown to outperform the more
+extortionate ZDs. Finally, in~\cite{Lee2015}, the `memory does not benefit a
+strategy' statement was questioned. A set of more complex strategies, strategies
+that take in account the entire history set of the game, were trained and proven
+to be more stable than ZD strategies.
 
-% \begin{equation}\label{eq:markov_matrix}
-%     M =
-% \begin{bmatrix}
-%     p_{1} q_{1} & p_{1} (- q_{1} + 1) & q_{1} (- p_{1} + 1) & (- p_{1} + 1) (- q_{1} + 1)
-%     \\
-%     p_{2} q_{3} & p_{2} (- q_{3} + 1) & q_{3} (- p_{2} + 1) & (- p_{2} + 1) (- q_{3} + 1)
-%     \\
-%     p_{3} q_{2} & p_{3} (- q_{2} + 1) & q_{2} (- p_{3} + 1) & (- p_{3} + 1) (- q_{2} + 1)
-%     \\
-%     p_{4} q_{4} & p_{4} (- q_{4} + 1) & q_{4} (- p_{4} + 1) & (- p_{4} + 1) (- q_{4} + 1)
-%     \\
-% \end{bmatrix}
-% \end{equation}
+This section covered the original computer tournaments of Axelrod and
+the early success of Tit For Tat in these tournaments. Though Tit For Tat was
+considered to be the most robust basic strategy, reciprocity was found to not
+be enough in environments with uncertainties. There are at least two properties,
+that have been discussed in this section, for coping with such uncertainties;
+generosity and contrition. Generosity is letting a percentage of defections go
+unpunished, and contrition, is lowering a strategy's readiness to defect
+following an opponent's defection.
 
-% The players are assumed to move from each state until the system reaches a state
-% steady, let the steady states vector be denoted as \(\bar{v}\).
-% The utility of a player can be given by multiplying the steady states of
-% \(M\) by the payoffs of equation~(\ref{eq:the_pd_payoffs}). Thus~\cite{Nowak1990}
-% offered a mathematical framework to calculate the utility of two players without
-% actually simulating the game. The payoff of a player \(p\) can be obtained by,
+In the later part of this section a series of new strategies which were build on
+the basic reciprocal approachs were presented, followed by the infamous memory
+one strategies, the zero-determinant. Though the ZDs can be proven to be robust
+in pairwise interactions they were found to be lacking in evolutionary settings
+and in computer tournaments. Evolutionary settings and the emergence
+of cooperation under natural selection are covered in the next section.
 
-% \[s_p = \bar{v} \times \begin{pmatrix} R \\ S \\ T \\ P \end{pmatrix}\]
-
-% The family of memory one strategies have been proven rather useful in the terms
-% of exploring strategies. The most famous work of memory one strategies is that
-% of Press and Dyson~\cite{Press2012}.
-% In 2012,~\cite{Press2012} presented
-% a new set of strategies called \textbf{zero determinant (ZD)}. The ZD strategies
-% are memory one strategies that manage to force a linear relationship between their
-% score and that of the opponent. The payoffs of players \(p\) and \(q\) are denoted
-% as:
-
-% \begin{align*}
-%     s_p = v S_p \\
-%     s_q = v S_q
-% \end{align*}
-
-% where \(v\) is a vector of the steady states of matrix \(M\) and \(S_p\), \(S_q\)
-% are the equivalent payoff values of the players for each state \(CC, CD, DC, DD\).
-% Using linear algebra, Press and Dyson showed that the dot product of the stationary
-% distribution of \(v\) with any vector \(f\) can be expressed as a \(4\times 4\)
-% determinant. In which one column is \(f\), one column is entirely under the control
-% of player \(p\) and another column is entirely under the control of player \(q\).
-% This meant that either \(p\) or \(q\) could independently force the dot product
-% of \(v\) with some other chosen vector \(f\) to be zero by choosing their
-% strategy so as to make the column they control be proportional to \(f\).
-% In particular, by
-
-% \begin{equation}\label{eq:exortion}
-%     f = \alpha S_p + \beta S_q + \gamma
-% \end{equation}
-
-% any player can force a given linear relation to hold between the long-run scores
-% of both players. Press and Dyson's suggested that these extortionate strategies
-% are the dominant family of strategies and that memory does not benefit them,
-% thus it would not benefit any strategy.
-
-% The ZD strategies have attracted a lot of attention. It was stated that
-% ``Press and Dyson have fundamentally changed the viewpoint on the Prisoner's
-% Dilemma''~\cite{Stewart2012} and as stated in~\cite{hilbe2015} the American
-% Mathematical Society's news section said that ``the world of game theory is currently on fire''.
-% In~\cite{Adami2013, Hilbe2013b, Hilbe2013, hilbe2015, KnightHGC17,
-% Lee2015, Stewart2012} they question the effectiveness of ZD strategies. In~\cite{Stewart2012},
-% they revealed a more generous set of ZDs the~\textbf{Generous ZD},~\cite{Adami2013}
-% showed that ZD strategies were not evolutionarily stable and
-% in~\cite{Lee2015}, the `memory of a strategy does not matter' statement was
-% questioned. A set of more complex strategies, strategies that take in account
-% the entire history set of the game, were trained and proven to be more stable than
-% ZD strategies.
-
-\subsection{Evolutionary Dynamics}\label{subsection:evolutionary_dynamics}
+\subsection{Evolutionary dynamics}\label{subsection:evolutionary_dynamics}
 
 As yet, the emergence of cooperation has been discussed in the contexts of the
-one shot PD game and the IPD round robin tournaments. In the one shot game it is
-proven that cooperation fails, furthermore, in a series of influencing works
-Axelrod's demonstrated that reciprocal behaviour favours cooperation when
+one shot PD game and the IPD round robin tournaments. In the PD it is
+proven that cooperation will not emerge, furthermore, in a series of influencing works
+Axelrod demonstrated that reciprocal behaviour favours cooperation when
 individuals interact repeatedly. But does natural selection favours cooperation?
 Understanding the conditions under which natural selection can favour
 cooperative behaviour is important in understanding social behaviour amongst
 humans and other mammals~\cite{Boyd1987}.
 
-Imagine a mix population of cooperators, \(C\) and defectors, \(D\). The average
-payoff for defectors is always higher than cooperators. Under natural
-selection the frequency of defectors steadily increases until cooperators
-became extinct. Thus natural selection favours defection in the PD
-(Figure~\ref{fig:natural_selection_diagram}). However, there several
-evolutionary mechanisms that allow the emergence of cooperation. These
-mechanisms and papers which explore the PD in evolutionary settings are
-covered in this section.
+Imagine a mixed population of cooperators, \(C\), and defectors, \(D\), where every
+time two individuals meet they play a game of PD. In such population the average
+payoff for defectors is always higher than cooperators. Under natural selection
+the frequency of defectors will steadily increase until cooperators become
+extinct. Thus natural selection favours defection in the PD
+(Figure~\ref{fig:natural_selection_diagram}). However, there several mechanisms
+that allow the emergence of cooperation in an evolutionary context which will be
+cover in this section.
 
 \begin{figure}[!hbtp]
     \centering
@@ -523,75 +465,68 @@ covered in this section.
     and Defectors.}\label{fig:natural_selection_diagram}
 \end{figure}
 
-In the later sections of~\cite{Axelrod1980b}, Axelrod discusses about an
-ecological tournament he performed using the 62 strategy of the second
+In the later sections of~\cite{Axelrod1980b}, Axelrod discusses an
+ecological tournament that he performed using the 62 strategies of the second
 tournament to understand the reproductive success of Tit for Tat. In his
 ecological tournament the prevalence of each type of strategy in each round was
 determined by that strategy's success in the previous round. The competition in
 each round would become stronger as weaker performers were reduced and
 eliminated. The ecological simulation concluded with a handful of nice
 strategies dominating the population whilst exploitative strategies had died off
-as weaker strategies were becoming extincted. This new result led Axelrod to
+as weaker strategies were becoming extinct. This new result led Axelrod to
 study the IPD in an evolutionary context based on several of the approaches
-established by the biologist John M. Smith~\cite{Smith1973, Smith1974,
-Smith1979}. A fundamental figure within evolutionary game theory and a
+established by the biologist John M. Smith~\cite{Smith1974,
+Smith1979, Smith1973}. A fundamental figure in evolutionary game theory and a
 participant of Axelrod's second tournament. Axelrod and the biologist William
 Donald Hamilton wrote about the biological applications of the evolutionary
-dynamics of the iterated prisoner's dilemma~\cite{Axelrod1984} and won the
+dynamics of the IPD~\cite{Axelrod1984} and won the
 Newcomb-Cleveland prize of the American Association for the Advancement of
 Science.
 
 In Axelrod's model~\cite{axelrod1981} pairs of individuals were paired from a
 population and played the IPD. The number of interactions between the pairs were
 not fixed, but there was a probability defined as the importance of the future
-of the game \(w\), where \(0 < w < 1\), that the pair would interact again. For
-a sufficient high \(w\) \cite{axelrod1981} showed that Tit for Tat would become
-common. Note that Axelrod stated that Tit for Tat would be evolutionary stable
-(ESS), however, this results is inaccurate. In~\cite{axelrod1981} he states that
-"Tit For Tat is a ESS if and only if it is invadable neither by a Defector nor
-the strategy which alternates defection and cooperation", which is not the
-definition of an ESS. Moreover, Boyd and Lorderbaum~\cite{Boyd1987} proved that
-if \(w\), the importance of the future of the game, is large enough then no
-deterministic strategy is ESS because it can always be invaded by any pair of
-other strategies. This was also independently proven by~\cite{Pudaite1987}.
+of the game \(w\), where \(0 < w < 1\), that the pair would interact again. In
+\cite{axelrod1981} it was shown that for
+a sufficient high \(w\) Tit For Tat strategies
+would become common and remain common because they were ``collectively stable".
+Axelrod argued that collective stability implied evolutionary stability (ESS)
+and that when a collectively stable strategy is common in a population and
+individuals are paired randomly, no other rare strategy can invade. However,
+Boyd and Lorderbaum in~\cite{Boyd1987} proved that if \(w\), the importance of the
+future of the game, is large enough then no pure strategy is ESS because it can
+always be invaded by any pair of other strategies. This was also independently
+proven in~\cite{Pudaite1987}.
 
-Thus no single mutant can do better than nice strategies in the IPD in
-evolutionary context, no cooperative strategy as long as it is deterministic can
-be ESS because it can always be invaded. These conclusions are all made in
-populations where individuals could interact with everyone in the population.
-Another approach is to consider constrained interactions were some sort of
-structure is applied to who individual can interact with who. This was
-originally formulated in 1992 by~\cite{Nowak1992b}. Nowak and May. They explored
-how local interaction alone can facilitate population wide cooperation in a one
-shot PD game.
+All these conclusions were made in populations where the individuals could all
+interact with each other. In 1992, Nowak and May, considered a structured population
+where an individual's interactions were limited to it's neighbours.
+More specifically, in~\cite{Nowak1992b} they explored how local interaction
+alone can facilitate population wide cooperation in a one shot PD game. The two
+deterministic strategies Defector and Cooperator, were placed onto a two
+dimensional square array where the individuals could interact only with the
+immediate neighbours. The number of immediate neighbours could be either,
+fourth, six or eight, as shown in Figure~\ref{fig:topologies}, where each node
+represents a player and the edges denote whether two players will interact. This
+topology is refereed to as spatial topology. Each cell of the lattice is
+occupied by a Cooperator or a Defector and at each generation step each cell owner
+interacts with its immediate neighbours. The score of each player is calculated
+as the sum of all the scores the player achieved at each generation. At the
+start of the next generation, each lattice cell is occupied by the player with
+the highest score among the previous owner and their immediate neighbours.
 
-The two deterministic strategies Defector and Cooperator, were placed onto a two
-dimensional square array where the individuals could interact only with the immediate
-neighbours. The number of immediate neighbours could be either, fourth, six or eight.
-As shown in Figure~\ref{fig:topologies}, where each node represents a player and
-the edges denote whether two players will interact. This topology is refereed to
-as spatial topology. Thus, each cell of the lattice is occupied by a Cooperator
-or a Defector. At each generation step each cell owner interacts with its immediate
-neighbours. The score of each player is calculated as the sum of all the scores the player
-achieved at each generation. At the start of the next generation, each lattice
-cell is occupied by the player with the highest score among the previous owner
-and the immediate neighbours.
-
-Local interactions proved that as long as small clusters of cooperators form and
-they can benefit from interactions with other cooperators and while avoiding
+Local interactions proved that as long as small clusters of cooperators form, where
+they can benefit from interactions with other cooperators while avoiding
 interactions with defectors, global cooperation will continue. Thus, local
-interactions proved that even for PD cooperation will be extinct.
-
-Structured populations continue to prove the emergence of cooperation in natural
-selection. Whilst using the payoff matrix~(\ref{eq:the_pd_payoffs_with_cost}),
-~\cite{Ohtsuki2006} proved that as long as the benefit to cost ratio
-\(\frac{b}{c}\) is higher to the number of neighbours, cooperation can evolve.
-In~\cite{MASUDA2003} it was shown that small world topology graphs favour
-cooperation. Moreover,~\cite{Perc2011} studied graphs were a probability of
-rewiring ones connections was in place, however, the rewire could be with any
-given node in the graphs and not just with imitate neighbours. Perc etc all
-showed that ``making of new friends'' may be an important activity for the
-successful evolution of cooperation, but also that partners must be selected
+interactions proved that even for the PD cooperation can emerge. Moreover in
+\cite{Ohtsuki2006}, whilst using the payoff
+matrix~(\ref{eq:the_pd_payoffs_with_cost}), it was that shown cooperation will
+evolve in a structured population as long as the benefit to cost ratio \(b / c\)
+is higher to the number of neighbours. In~\cite{Perc2011}, graphs were a probability
+of rewiring ones connections was in place were studied. The rewire could be with any
+given node in the graphs and not just with imitate neighbours. Perc et al
+concluded that ``making new friends'' may be an important activity for the
+successful evolution of cooperation, but also they must be selected
 carefully and one should keep their number limited.
 
 \begin{figure}[!hbtp]
@@ -600,99 +535,92 @@ carefully and one should keep their number limited.
         \includestandalone[width=\textwidth]{assets/tex/square_lattice}
     \end{subfigure}
     \begin{subfigure}{.25\textwidth}\centering
-        \includestandalone[width=\textwidth]{assets/tex/square_lattice_eight}
+        \includestandalone[width=\textwidth]{assets/tex/hexagonal_lattice}
      \end{subfigure}
      \begin{subfigure}{.25\textwidth}\centering
-        \includestandalone[width=\textwidth]{assets/tex/hexagonal_lattice}
+        \includestandalone[width=\textwidth]{assets/tex/square_lattice_eight}
      \end{subfigure}
      \caption{Spatial neighbourhoods}\label{fig:topologies}
     \end{figure}
 
-Finally, other mechanisms include reputation~\cite{Janssen2006, Nowak1998, Suzuki2005}
-and communication tokens~\cite{Miller2002} which are partner identification methods.
-Another related approach is using a tag based partner identification~\cite{Choi2006,
-Hales2000, Miller2002, Riolo2001}. Tags allow cooperative strategies to distinguish
-`them' from the rest.
+Another approach for increasing the likelihood of cooperation by increasing of
+assortative interactions among cooperative agents, include partner identification
+methods such as reputation~\cite{Janssen2006, Nowak1998, Suzuki2005},
+communication tokens~\cite{Miller2002} and tags~\cite{Choi2006, Hales2000,
+Miller2002, Riolo2001}.
 
-This section has focused on evolutionary dynamics and how different evolutionary
-settings can used to shed some light to how cooperation emerges in populations.
-In the following section evolutionary settings are used to train strategies.
+In this section evolutionary dynamics and the emergence of cooperation were
+reviewed. The following section focuses on strategy archetypes, training methods
+and strategies obtained from training.
 
 \subsection{Structured strategies and training}
 \label{section:structured_strategies}
 
-This section covers strategies opposite to that of intelligent designed
-discussed in Section~\ref{subsection:intelligent_design}. These are strategies
-that have been trained using generic strategy archetypes. For example,
+This section covers strategies that are different to that of intelligent design discussed
+in Section~\ref{subsection:intelligent_design}. These are strategies that have
+been \textbf{trained} using generic strategy archetypes. For example,
 in~\cite{Axelrod1987} Axelrod decided to explore deterministic strategies that
-took into account the last 3 turns of the game. For each turn there are 4
-possible outcomes \((CC, CD, DC, DD)\), thus for 3 turns there are a total of
+took into account the last 3 turns of the game. As discussed in
+Section~\ref{subsection:memory_one}, for each turn there are 4 possible outcomes,
+\(CC, CD, DC, DD\), thus for 3 turns there are a total of
 \(4\times4\times4=64\) possible combinations. Therefore, the strategy can be
-defined by a series of 64 C's/D's, corresponding to each history; a lookup
-table. A lookup table is a generic strategy archetype. This lookup table was
-then trained using a genetic algorithm. The outcome strategies of the training
-are refereed here as structured strategies, and, several structured strategies
-are covered in this section.
+defined by a series of 64 C's/D's, corresponding to each combination; a lookup table
+(a generic strategy archetype). This lookup table was then trained using a
+genetic algorithm. During the training process random changes are made to a
+given lookup table. If the utility of the strategy has increased this
+change is kept, otherwise not. The strategies obtained by these training process are
+referred here as structured strategies, and several structured strategies as
+well as archetypes and training methods are covered in this section.
 
-In 1996~\cite{Miller1996} considered finite state automata as an archetype, more
-specifically, Moore machines~\cite{moore1956}. He used a genetic
-algorithm was used to train finite state machines this time, in environments
-with noise. Miller's results showed that even a small difference in noise (from
-1\% to 3\%) significantly changed the characteristics of the evolving
-strategies. The strategies he introduced were \textbf{Punish Twice}, \textbf{Punish
-Once for Two Tats} and \textbf{Punish Twice and Wait}. In~\cite{Ashlock2006b}
-finite state automata and genetic algorithm were also used for a series experiments.
-The size of the population varied between the experiments, however, there
-were two strategies frequently developed by the training process and more
-over they were developed only after the evolution had gone on for many generations.
-These were \textbf{Fortess3} and \textbf{Fortess4}.
+In 1996 John Miller considered finite state automata as an
+archetype~\cite{Miller1996}, more specifically, Moore
+machines~\cite{moore1956}. He used a genetic algorithm to train finite state
+machines in environments with noise. Miller's results showed that even a small
+difference in noise (from 1\% to 3\%) significantly changed the characteristics
+of the evolving strategies. The strategies he introduced were \textbf{Punish
+Twice}, \textbf{Punish Once for Two Tats} and \textbf{Punish Twice and Wait}.
+In~\cite{Ashlock2006b} finite state automata and genetic algorithms were also
+used to introduce new strategies. In a series of experiments where the size of
+the population varied, there were two strategies frequently developed by the
+training process and more over they were developed only after the evolution had
+gone on for many generations. These were \textbf{Fortess3} and
+\textbf{Fortess4}.
+Following Miller's work in 1996, the first structured strategies based on neural
+networks that had be trained using a genetic algorithm was introduced
+in~\cite{Harrald1996} by Harrald and Fogel. Harrald and Fogel considered a
+single layered neural network which had 6 inputs. These were the last 3 moves of
+the player and the opponent, similar to~\cite{Axelrod1987}. Neural networks have
+broadly been used to train IPD strategies since then with genetic
+algorithms~\cite{Ashlock2006a, Chong2005, Marks1999} and particle swarm
+optimization~\cite{Franken2005}.
 
-Following Miller's work in 1996~\cite{Harrald1996} introduced the first
-structured strategies based on neural networks that had be trained using a
-genetic algorithm. Harrald and Fogel considered a single layered neural network
-which had 6 inputs. These were the last 3 moves of the player and the opponent,
-similar to~\cite{Axelrod1987}. Neural networks have broadly been used to train
-IPD strategies with genetic algorithms~\cite{Ashlock2006a, Chong2005, Marks1999}
-and particle swarm optimization~\cite{Franken2005}.
-
-In a series of works~\cite{Knight2017} and~\cite{KnightHGC17} explored several
-of the aforementioned archetypes, and the two mentioned training methods; the
-genetic algorithm and the particle swarm algorithm. The archetypes used included
-lookerup tables, finite state machines, neural networks, hidden Markov
+In~\cite{Knight2017, KnightHGC17} both genetic algorithm and particle swarm
+optimization were used to introduce a series of structured strategies based on
+lookup tables, finite state machines, neural networks, hidden Markov
 models~\cite{eddy1996} and a Gambler. Hidden Markov models, are a stochastic
 variant of a finite state machine and Gamblers are stochastic variants of lookup
-tables.
-
-The structured strategies that arised for the training were put up against a
-large number of strategies in two following settings:
-
-\begin{itemize}
-    \item A Moran process, which is an evolutionary model of invasion and resistance across
-    time during which high performing individuals are more likely to be replicated.
-    \item A round robin tournament.
-\end{itemize}
-
-In a round robin tournament with over 200 strategies (the tournament was
-simulated using the and the strategies implemented within the
-software),~\cite{Knight2017} showed that the top spots were dominated by the
-trained strategies of all the archetypes. More specifically, the top three
-strategies had been \textbf{Evolved LookUp 2 2 2}, \textbf{Evolved HMM 5} and
-\textbf{Evolved FSM 16}.
-
-The result of~\cite{KnightHGC17} showed that the trained strategies would
-overtake the population. More over, the strategies evolve an ability to
-recognise themselves by using a handshake. This characteristic of the strategies
-was an important one because in a Moran process this recognition mechanism
-allowed these strategies to resist invasion.
+tables. The structured strategies that arised for the training were put up
+against a large number of strategies in (1) a Moran process, which is an
+evolutionary model of invasion and resistance across time during which high
+performing individuals are more likely to be replicated and (2)
+a round robin tournament. In a round robin tournament which was simulated using the
+software~\cite{axelrodproject} and the 200 strategies implemented within the
+software, the top spots were dominated by the trained strategies of all the
+archetypes. More specifically, the top three strategies had been \textbf{Evolved
+LookUp 2 2 2}, \textbf{Evolved HMM 5} and \textbf{Evolved FSM 16}. Moreover,
+\cite{KnightHGC17} demonstrated that these trained strategies
+would overtake the population in a Moran process. The strategies evolved an ability
+to recognise themselves by using a handshake. This recognition mechanism allowed the strategies
+to resist invasion by increasing the interactions between themselves, an approach described
+in Section~\ref{subsection:evolutionary_dynamics}.
 
 Throughout the different methods of training that have been discussed in this
-section, a spectrum of structured strategies can be returned. Differentiating
+section, a spectrum of structured strategies can be found. Differentiating
 between strategies is not always an easy task. It is not obvious looking at a
 finite state diagram how a machine will behave, and many different machines, or
 neural networks can represent the same strategy. For example
 Figure~\ref{fig:machine_tft} shows two finite automata and both are a
 representation of Tit for Tat.
-
 
 \begin{figure}[!hbtp]
     \begin{subfigure}{.45\textwidth}\centering
@@ -710,8 +638,8 @@ representation of Tit for Tat.
      \(A\) is the opponent's last action and \(R\) is the player's response.}\label{fig:machine_tft}
 \end{figure}
 
-To allow for easier identification of similar strategies~\cite{Ashlock2005}
-introduced a method called fingerprinting. The method of fingerprinting is a
+To allow for easier identification of similar strategies a method called
+fingerprinting was introduced in~\cite{Ashlock2005}. The method of fingerprinting is a
 technique for generating a functional signature for a
 strategy~\cite{Ashlock2008}. This is achieved by computing the score of a
 strategy against a spectrum of opponents. The basic method is to play the
@@ -730,17 +658,17 @@ Ashlock2010, Ashlock2006a}.
 \end{figure}
 
 This section covered structured strategies and training methods. In the following
-section software that has been developed with main aim simulating the iterated
-prisoner's dilemma is presented.
+section software that has been developed with main aim simulating the IPD
+is presented.
 
 \subsection{Software}\label{section:software}
 
-The research of the iterated prisoner's dilemma heavily relays on software.
+The research of the IPD heavily relays on software.
 This is to be expected as the pioneer computer tournaments have become the main
-mean of simulating the interactions in an iterated prisoner's dilemma game.
-Many academics fields suffer from the lack of source code availability and the prisoner's dilemma
-is not an exception. Though several of the tournaments that have been discussed so far were generated
-using computer code not all of the source code was made available by the authors.
+means of simulating the interactions in an IPD game.
+Many academic fields suffer from the lack of source code availability and the PD
+is not an exception. Several of the tournaments that have been discussed so far were generated
+using computer code, though not all of the source code was made available by the authors.
 The code for Axelrod's original tournament is known to be lost and
 moreover for the second tournament the only source code available is the code
 for the 62 strategies (found on Axelrod's personal website~\cite{fortan_code}).
@@ -751,82 +679,83 @@ mentioned here~\cite{prison, axelrodproject} and two educational
 tools~\cite{pd_trust, pd_game}. Both~\cite{prison, axelrodproject} are open
 source projects used as research tools. PRISON is written in the programming
 language Java and preliminary version was launched on 1998. It was used by it's
-authors in several publications, such as~\cite{Beaufils1997} which introduced
-Gradual and~\cite{Beaufils1988}. The project includes a good number of
+authors in several publications, such as~\cite{Beaufils1997}, which introduced
+Gradual, and~\cite{Beaufils1988}. The project includes a good number of
 strategies from the literature but unfortunately the last update of the project
-dates back in 2004. Axelrod-Python is a package used
+dates back in 2004. Axelrod-Python is a software used
 by~\cite{Knight2017,KnightHGC17, Goodman2018, Wang2017}. It is written in the
 programming language Python following best practice approaches and contains the
 largest collection of strategies, known to the author. The strategy list of
 the project has been cited by publications~\cite{Anastassacos2018, Hayes2017,
 Neumann2018}.
 
-The `Game of Trust'~\cite{pd_trust} is an on-line, graphical user interface
-educational platform for learning the basics of game theory, the iterated
-prisoner's dilemma and the notion of strategies. It attracted a lot of attention
+The ``Game of Trust"~\cite{pd_trust} is an on-line, graphical user interface
+educational platform for learning the basics of game theory, the IPD
+and the notion of strategies. It attracted a lot of attention
 due to being ``well-presented with scribble-y hand drawn
 characters''~\cite{trust_blogb} and ``a whole heap of fun''~\cite{trust_bloga}.
 Finally~\cite{pd_game} is a personal project written in PHP. It's graphical user
 interface that offers a big collection of strategies and allows the user to try
 several matches and tournament configurations.
 
-\subsection{Conclusion and Contemporary period}\label{section:contemporary_period}
+\subsection{Conclusion and Contemporary research}\label{section:contemporary_period}
 
-This section of the paper served as a review of publications on the prisoner's
-dilemma. This review has partitioned the literature into five different sections,
+This section of the paper served as a review of publications on the PD.
+This review has partitioned the literature into five different sections,
 focusing on different aspects of the research. Section~\ref{section:origin}
 covered the early years of research. This was when simulating turns of the game
 was only possible with human subject research.
-
 Following the early years, the pioneer tournaments of Axelord were introduced in
 Section~\ref{subsection:intelligent_design}. Axelrod's work offered the field an
-agent based game theoretic framework to study the iterated prisoner's dilemma.
+agent based game theoretic framework to study the IPD.
 In his original papers he asked researchers to design strategies to test their
 performance with the new framework. The winning strategy of both his tournaments
 was Tit for Tat. The strategy however came with limitations which were explored
-by other researchers and new strategies of intelligent design were introduced in
+by other researchers, and new strategies of intelligent design were introduced in
 order to surpass Tit for Tat with some contributions such as Pavlov and Gradual.
 
 Soon researchers came to realise that strategies should not just do well in a tournament setting
 but should also be evolutionary robust. Evolutionary dynamics methods were
-applied to many works in the fields, and factors under which cooperation
+applied to many works in the field, and factors under which cooperation
 emerges were explored, as described in Section~\ref{subsection:evolutionary_dynamics}.
 This was not done only for unstructured populations, where all strategies
-in the population interacted with each other, but also in population where
+in the population can interact with each other, but also in population where
 interactions were limited to only strategies that were close to each other.
 In such topologies it was proven that even in the one shot game cooperation can
 indeed emerge.
 
-Evolutionary approaches can offer many insights in the study of the prisoner's
-dilemma. In evolutionary settings strategies can learn to adapt and take over
-population by adjusting their actions;
-Such algorithms can be applied so that evolutionary robust strategies can emerge.
-Algorithms and structures used to train strategies in the literature were covered in
-Section~\ref{section:structured_strategies}. Several strategies can emerge from
-such processes, and to be able to differentiate between strategies fingerprinting
-was introduced. The research of best play and cooperation has been going on
-since the 1950s, and software has been developed along the way.
-Few have been briefly discussed in Section~\ref{section:software}.
+Evolutionary approaches can offer many insights in the study of the PD. In
+evolutionary settings strategies can learn to adapt and take over population by
+adjusting their actions; such algorithms can be applied so that evolutionarily
+robust strategies can emerge. Algorithms and structures used to train strategies
+in the literature were covered in Section~\ref{section:structured_strategies}.
+From these training methods several strategies can emerge,
+and to be able to differentiate between strategies the method fingerprinting was
+introduced. The research of best play and cooperation has been going on since
+the 1950s, and for simulating the game software has been developed along the
+way. Few research and educational software have been briefly discussed
+in Section~\ref{section:software}.
 
-The study of the prisoner's dilemma is still an ongoing field of pioneer and
-innovating research, where new variants and new structures of strategies are
+The study of the PD is still an ongoing field of pioneer and
+innovating research where new variants and new structures of strategies are
 continuously being explored~\cite{Ohtsuki2018}. The game now serves as a model
 in a wide range of applications, for example in medicine and the study of cancer
 cells~\cite{archetti2018, Kaznatchee2017}, as well as in social situations and
-how they can be driven by rewards~\cite{Dridi2018}. A lot of work is still being
-published on  evolutionarily dynamics on graphs~\cite{Allen2017, hathcock2018,
+how they can be driven by rewards~\cite{Dridi2018}. New research is still ongoing
+on the topics/trend covered in each section of this literature review,
+for example on evolutionarily dynamics on graphs~\cite{Allen2017, hathcock2018,
 Liu2017}.
 
 A large scale of articles has been covered in each of the corresponding sections
 of this review. This literature doe not pretend to have covered all the publications
-in the field. It will soon in the following section that the field has hab many
+in the field. It will soon in the following section that the field has had many
 publications, exceeding 3000 articles. However, several important milestones
 of the field have been presented here.
 
 \section{Analysing a large corpus of articles}\label{section:analysis}
 
 The focus of Section~\ref{section:timeline} has been to review academic
-publications on the topic of the iterated prisoner's dilemma. Whilst in
+publications on the topic of the IPD. Whilst in
 Section~\ref{section:timeline} several publications of specific interest were
 covered and the literature was manually partitioned in different sections, in
 the second part of this paper the publications are analysed using a large
@@ -861,7 +790,7 @@ rational that two or more people have the potential to do better as a group
 than individually. Collaboration in groups has a long tradition in experimental
 sciences and it has be proven to be productive according
 to~\cite{Etzkowitz1992}. The number of collaborations can be very different
-between research fields and understanding how collaborative a field is is not
+between research fields and understanding how collaborative a field is not
 always an easy task. Several studies tend to consider academic citations as a
 measure for these things. A blog post published by Nature~\cite{nature_blog}
 argues that depending on citations can often be misleading because the true
@@ -875,7 +804,7 @@ advantages as several graph theoretic measures can be used as proxies to explain
 authors relationship. In~\cite{Liu2015}, they analyse the development of the
 field ``evolution of cooperation'' using this approach. The topic ``evolution of
 cooperation'' is a multidisciplinary field which also includes a large number of
-publications on the prisoner's dilemma. This paper builds upon the work done
+publications on the PD. This paper builds upon the work done
 by~\cite{Liu2015} and extends their methodology. Though in \cite{Liu2015}, they
 considered a data set from a single source, Web of Science, the data set
 described here has been collected from five different sources. Moreover, the
@@ -1006,7 +935,8 @@ Two observations can be made from Figure~\ref{fig:timeseries}.
     1980s and the introduction of computer tournaments.
     \item There is a decrease in 2017-2018. This is due to our data set being
     incomplete. Articles that have been written in 2017-2018 have either not
-    being published or are not retrievable by the APIs yet.
+    being published or were not retrievable by the APIs by the time of writing
+    this manuscript.
 \end{enumerate}
 
 These observations can be confirmed by studying the time series.
@@ -1068,14 +998,14 @@ given by Table~\ref{table:summary_other_topics}.
     \caption{Measures of all three data sets.}\label{table:summary_other_topics}
 \end{table}
 
-The iterated prisoner's dilemma and auction theory are popular topics and have
+The IPD and auction theory are popular topics and have
 been studied for decades. A large number of articles have
-been collected for both topics, \totalarticles and 34444 respectively. Though, auction
-games have a larger number of articles, the iterated prisoner's dilemma
+been collected for both topics, \totalarticles and 3444 respectively. Though, auction
+games have a larger number of articles, the IPD
 has almost 300 more authors.
 
 Auction games have an overall average yearly publication
-of 93 articles per year compared to the prisoner's dilemma with 49 per year. 50\% of articles
+of 93 articles per year compared to the PD with 49 per year. The 50\% of articles
 for auction games have been collected from the pre print server arXiv and no articles have
 been published in PLOS.
 
@@ -1101,13 +1031,13 @@ to Springer (37\%).
 \subsection{Methodology}\label{section:methodology}
 
 The relationship between the authors within a field will be modelled as a graph
-\(G = (V_G, E_G)\) where \(V_G\) is the set of nodes and \(E_G\)  is the setof
+\(G = (V_G, E_G)\) where \(V_G\) is the set of nodes and \(E_G\)  is the set of
 edges. The set \(V_G\) represents the authors and an edge connects two authors
 if and only if those authors have written together. The co authorship network is
 constructed using the main data set described in
 Section~\ref{section:preliminary_analysis} and the open source package
-\cite{networkx}. The prisoner's dilemma network is denoted as \(G_1\) where the
-number of unique authors \(|V(G_1)|\) is \authors and \(|E(G_1)|\) is \edges.
+\cite{networkx}. The PD network is denoted as \(G_1\) where the
+number of unique authors \(|V(G_1)|\) is \authors and \(|E(G_1)|\) is 10397.
 All authors' names were formatted as their last name and first initial (i.e.
 Martin A. Nowak to Martin Nowak). This was done to avoid errors such as Martin
 A. Nowak and Martin Nowak, being treated as a different person.
@@ -1178,7 +1108,7 @@ sets in order to provide insights into the field.
 \subsection{Analysis of co authorship network}\label{section:results}
 
 As mentioned previously, \(G_1\) denotes the co authorship network of the
-iterated prisoner's dilemma. A graphical representation is given by
+IPD. A graphical representation is given by
 Figure~\ref{fig:g_one_network}. It is evident that the network is disjoint,
 which is only natural as many authors write academic articles on their own. More
 specifically, a total of \isolated authors, have had single author publications,
@@ -1188,7 +1118,7 @@ There are a total of \connectedcomponents connected components and the largest
 one has a size of \largestcc nodes. The largest connected component is shown in
 Figure~\ref{fig:g_one_cluster} and is going to be refereed to as the main
 cluster of the network. There are total of \communities communities in \(G_1\).
-The network has a clustering coefficient of \clustering, thus authors are 70\%
+The network has a clustering coefficient of 0.708, thus authors are 70\%
 likely to write with a collaborator's co author and the degree distribution,
 Figure~\ref{fig:degree_distrs}, shows that the average degree is approximately
 \(4\). Thus authors are on average connected to 4 other authors, however there
@@ -1198,7 +1128,7 @@ In~\cite{Liu2015} the collaborative metrics for the ``evolution of cooperation''
 co authorship network were reported. Though their network is of smaller size
 (number of nodes 3670 \(<\) 5394), the collaborative metrics are fairly similar
 between the two graphs (clustering coeff. \(0.632\) and modularity
-0.950 close to 0.977, indicating that for the same multidisciplinary field the same
+0.950 close to 0.977), indicating that for the same multidisciplinary field the same
 remarks can be made from a different co authors network. How do these compare to other fields
 and more specifically to other fields of game theory?
 
@@ -1268,17 +1198,8 @@ Using Table~\ref{table:summary_other_networks} and Figure~\ref{fig:degree_distrs
 the following remarks can be made:
 
 \begin{itemize}
-    \item All three networks have similar values of modularity index, and they are
-    all very high (Table~\ref{table:summary_other_networks}), indicating that the
-    networks are partitioned in many communities.
-    Note that the number of
-    communities is very much similar to the number of connected components.
-    This is all to expected. Due to the nature of our network, most connected
-    components represent a single publication written by all the authors in the
-    component (corresponding to a fully connected graph), and due to that density
-    they are also a community on their own.
     \item Comparing to another well studied topic, auction games, the field of the
-    iterated prisoner's dilemma appears to be more collaborative. Due to the
+    IPD appears to be more collaborative. Due to the
     value of the average degree, authors in \(G_1\) are known to have on average almost
     one more collaboration than \(G_2\). A slightly lower cluster coefficient ($ .622 < .702$)
     of auction games indicate that it is less likely for authors in \(G_2\) to collaborate
@@ -1289,11 +1210,11 @@ the following remarks can be made:
     more recent field there had been better communication tools that enable more
     collaborations between researches. The average degree as well as the clustering
     coefficient (clustering coeff.$=0.713$) of \(G_3\) is comparable to those
-    of the iterated prisoner's dilemma.
+    of the IPD.
 \end{itemize}
 
 These results can be extended to the main clusters of each network, as shown in
-Table~\ref{table:summary_clusters}. The metrics's values are fairly similar and
+Table~\ref{table:summary_clusters}. The metrics' values are fairly similar and
 the size of \(G_2\)'s main cluster does not appear to gave any significant
 effect; all the same conclusions are made.
 
@@ -1301,7 +1222,7 @@ effect; all the same conclusions are made.
     \centering
     \resizebox{\textwidth}{!}{
     \input{assets/clusters_comparison.tex}}
-    \caption{Network metrics for largest components of \(G_1, G_2, G_3\).}\label{table:summary_clusters}
+    \caption{Network metrics for largest components, \(\bar{G}_1, \bar{G}_2, \bar{G}_3\).}\label{table:summary_clusters}
 \end{table}
 
 The change of the networks over time is also studied by constructing the network
@@ -1347,7 +1268,7 @@ the three networks can be compared.
     A connected components represents at least one publication which means that indeed
     more articles are being gathered from 2000 onwards.
     \item Auction games have been throughout of time less collaborative compared
-    to the iterated prisoner's dilemma. The average degree (Figure~\ref{fig:average_degree})
+    to the IPD. The average degree (Figure~\ref{fig:average_degree})
     and the clustering coefficient (Figure~\ref{fig:clustering_coefficient}) of 
     the cumulative sub graphs have been lower than that of \(G_1\).
     The only exception is during the years 2001-2008. For these
@@ -1360,9 +1281,8 @@ the three networks can be compared.
     be due to logistic and technical solutions.
     \item The high values of modularity throughout time is not true only for the
     network reported in~\cite{Liu2015} but also for all three networks of this
-    field. This could indicate a limitation to the co authorship network. The
-    measure is likely to be skewed, as each paper is more likely a connected
-    component on it's own.
+    field. Indicating that authors tend to create communities and write only
+    with people from their communities and not others.
 \end{itemize}
 
 \begin{figure}[!hbtp]
@@ -1401,8 +1321,6 @@ The cumulative collaborative metrics have also been calculated for each main
 cluster, given in Table~\ref{table:clusters_cumulative}. Similarly, the results
 do not appear to change over the main cluster.
 
-% \newpage
-
 The next results discussed here are on centrality measures. As a reminder,
 two centrality measures are reported here, these are the closeness centrality
 and the betweenness centrality. Closeness centrality is a measure of how
@@ -1427,7 +1345,7 @@ in the network, the gain is minor. An author who is not in the top influencers b
 does indeed gain from his position in the network is Martin Nowak, who was
 extensively discussed in Section~\ref{section:timeline}.
 
-\begin{figure}[!hbtp]
+\begin{figure}[H]
     \centering
     \begin{minipage}{.45\textwidth}
         \centering
@@ -1440,7 +1358,6 @@ extensively discussed in Section~\ref{section:timeline}.
         \caption{Authors that gain the most influence in \(G_1\).}\label{table:central_authors}
     \end{minipage}
 \end{figure}
-
 
 From Tables~\ref{table:central_authors_cc} and \ref{table:central_authors} it
 can be seen that authors in \(G_1\) are more likely to affect their field instead
@@ -1484,19 +1401,20 @@ the influence of their fields.
         statistical difference between the medians of \(G_1\) and \(G_3\). There
         is however, statistical difference between the median of \(G_2\).
         These have been tested using a Kruskal Wallis test.}\label{fig:betweenness_dist_cluster}
-    \end{subfigure}%
+    \end{subfigure}
+    \caption{}
 \end{figure}
 
 In relation to influencing your field. An author is most likely to influence their
 field if they write for the price of anarchy and authors that publish on auctions
-game are more likely to influence compared to authors in the iterated prisoner's
-dilemma. Though if an author was to be placed in the main cluster of the respective
+game are more likely to influence compared to authors in the IPD.
+Though if an author was to be placed in the main cluster of the respective
 field they would chose to be in either \(G_1\) or \(G_3\).
 In conclusion, authors regarding both influence metrics that have been defined here
 are more likely to gain more if they were to published on either topics of auction
 games or the price of anarchy. Though the value of gaining is actual small,
 you are more likely to influence your field more in another field compared to that
-of the prisoner's dilemma.
+of the PD.
 
 \begin{figure}[!hbtp]
     \centering
@@ -1522,16 +1440,53 @@ of the prisoner's dilemma.
     are statistically different. The medians of \(G_1\) and \(G_3\) are greater
     than that of \(G_2\).}\label{fig:closeness_dist_cluster}
     \end{subfigure}
+    \caption{}
 \end{figure}
+
+\section{Conclusion}
+
+This manuscript presented a coherent literature review on the Iterated Prisoner's
+Dilemma. The opening sections focused on the research trends of the field. Each
+trend and it's milestones were covered, followed by a presentation on
+research and educational software that has implemented for the Iterated
+Prisoner's Dilemma. The later sections presented a meta analysis of
+publications with the aim of examining the collaborativeness of the authors
+and their influence in the research of the game.
+
+The research trends covered in this manuscript included the early experiments
+using human subject research, the investigation of cooperative behaviour and the
+search of dominant strategies for the game. Human subject research had
+limitations and thought it is used by several researchers to date, they have
+been gradually replaced by the computer tournaments introduced by Axelrod in
+1980s. The search of strategies includes strategies that have been manually
+designed by an intelligent design and strategies that have been found by
+training processes of structures such as finite state automata and neural
+networks. Moreover, cooperative behaviour and it's emergence under natural
+section was discussed in Section~\ref{subsection:evolutionary_dynamics}.
+The results of several milestones have been summarised in this review. These
+included the emerge of cooperation in the PD in structured populations, the success
+and deficiency of the infamous Tit For Tat, and the training of complex strategies
+that evolved a handshake mechanism to combat invasion.
+
+The meta analysis which was covered in the second part of this paper, explored
+the publications in field, the authors collaborative behaviour and influence.
+The publications from five different journals excited the 3000 and predicted a
+continuous growth to the number of publications in the following years. The
+authors of these papers were used to create a co authorship network which was
+studied and showed that compered to two other prominent sub fields of game
+theory the Iterated Prisoner's Dilemma field is more collaborative.
 
 \section{Acknowledgements}
 
-A variety of software libraries have been used in this work:
+A variety of software have been used in this work:
 
 \begin{itemize}
-    \item Networkx~\cite{networkx}, library for analysing networks.
+    \item The Axelrod library for IPD simulations~\cite{axelrodproject}.
+    \item The Matplotlib library for visualisation~\cite{hunter2007matplotlib}.
+    \item The Numpy library for data manipulation~\cite{walt2011numpy}.
+    \item The Networkx~\cite{networkx} package for analysing networks.
     \item Gephi~\cite{ICWSM09154} open source package for visualising networks.
-    \item louvain, library for calculating the networks modularity.
+    \item The louvain library for calculating the networks modularity.
 \end{itemize}
 
 \newpage
