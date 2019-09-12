@@ -85,7 +85,7 @@ if __name__ == "__main__":
     with (open(file, "r")) as textfile:
         bibliography = textfile.read()
 
-    game_theory_section = bibliography.split("%End-GameTheory")[0]
+    game_theory_section = bibliography.split("% End Game Theory")[0]
     raw_articles = game_theory_section.split("@")
     raw_articles = [art.lower() for art in raw_articles]
 
@@ -101,7 +101,7 @@ if __name__ == "__main__":
 
     articles = []
     for i, art in enumerate(result):
-        articles.append(extract_info(art))
+        articles.append(entry_to_dictionary(art))
 
     for article in articles:
         for k, v in list(article.items()):
@@ -113,13 +113,13 @@ if __name__ == "__main__":
     # break up authors
     for article in articles:
         article["author"] = [
-            tools.normalise_names(name)
+            tools.normalise_name(name)
             for name in article["author"].split(" and")
         ]
 
     dfs = []
     for article in articles:
-        dfs.append(dict_to_dataframe(article))
+        dfs.append(dictionary_to_dataframe(article))
 
     df = pd.concat(dfs, ignore_index=True)
-    df.to_json("data/bibliography.json")
+    df.to_json("src/data/bibliography.json")

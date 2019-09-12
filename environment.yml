@@ -68,8 +68,6 @@ dependencies:
 - gevent=1.2.1=py36_0
 - glib=2.50.2=1
 - greenlet=0.4.11=py36_0
-- gst-plugins-base=1.8.0=0
-- gstreamer=1.8.0=0
 - h5py=2.6.0=np111py36_2
 - harfbuzz=0.9.39=2
 - hdf5=1.8.17=1
@@ -78,7 +76,6 @@ dependencies:
 - idna=2.2=py36_0
 - imagesize=0.7.1=py36_0
 - ipykernel=4.5.2=py36_0
-- ipython=5.1.0=py36_0
 - ipython_genutils=0.1.0=py36_0
 - ipywidgets=5.2.2=py36_1
 - isort=4.2.5=py36_0
@@ -95,7 +92,6 @@ dependencies:
 - jupyter_core=4.2.1=py36_0
 - lazy-object-proxy=1.2.2=py36_0
 - libffi=3.2.1=1
-- libgcc=4.8.5=2
 - libgfortran=3.0.0=1
 - libiconv=1.14=0
 - libpng=1.6.27=0
@@ -109,7 +105,6 @@ dependencies:
 - lxml=3.7.2=py36_0
 - markupsafe=0.23=py36_2
 - matplotlib=2.0.0=np111py36_0
-- mistune=0.7.3=py36_0
 - mkl=2017.0.1=0
 - mkl-service=1.1.2=py36_3
 - mpmath=0.19=py36_1
@@ -162,7 +157,6 @@ dependencies:
 - pytz=2016.10=py36_0
 - pyyaml=3.12=py36_0
 - pyzmq=16.0.2=py36_0
-- qt=5.6.2=3
 - qtawesome=0.4.3=py36_0
 - qtconsole=4.2.1=py36_1
 - qtpy=1.2.1=py36_0
