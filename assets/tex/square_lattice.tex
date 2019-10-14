@@ -42,7 +42,9 @@
         \draw (4) edge[out=90, in=-90, -, thick, gray!] node {} (7);
 
         \node[circle, draw=red, fill=red] (0) at (0, 0) [state] {};
-        \draw (8) edge[out=0, in=180, -, ultra thick, red , dotted] node {} (1);
-        \draw (5) edge[out=-90, in=90, -, ultra thick, red, dotted] node {} (2);
+        \draw (8) edge[out=0, in=180, -, ultra thick, red , dotted] node {} (0);
+        \draw (1) edge[out=180, in=0, -, ultra thick, red , dotted] node {} (0);
+        \draw (5) edge[out=-90, in=90, -, ultra thick, red, dotted] node {} (0);
+        \draw (2) edge[out=90, in=-90, -, ultra thick, red, dotted] node {} (0);
     \end{tikzpicture}
 \end{document}
