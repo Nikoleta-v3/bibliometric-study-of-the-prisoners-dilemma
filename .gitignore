@@ -11,7 +11,7 @@
 *.fdb_latexmk
 *.fls
 *.synctex.gz
-
+*.DS_Store
 # minted files 
 *_minted-main/*
 

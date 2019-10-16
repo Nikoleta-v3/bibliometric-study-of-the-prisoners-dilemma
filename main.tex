@@ -15,15 +15,14 @@
 \usepackage{adjustbox}
 \usepackage{tikz}
 \usepackage{booktabs}
-\usepackage{minted}
 \usepackage{multicol,multirow,array}
 \usepackage{graphicx}
 \usepackage{algorithm,algorithmic}
+\usepackage{authblk}
 \usetikzlibrary{er,positioning, calc, patterns}
 \usetikzlibrary{decorations.pathreplacing}
 
 \definecolor{background}{RGB}{5, 66, 81}
-\usemintedstyle{tango}
 
 \setcounter{secnumdepth}{4}
 \setcounter{tocdepth}{4}
@@ -45,9 +44,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{A systematic literature review of the Prisoner's Dilemma; collaboration and influence.}
-\author{Nikoleta E. Glynatsi, Vincent A. Knight}
-\date{}
 
+\author[1]{Nikoleta E. Glynatsi}
+\author[1]{Vincent A. Knight}
+
+\affil[1]{Cardiff University, School of Mathematics, Cardiff, United Kingdom}
+\date{}
+\setcounter{Maxaffil}{0}
+\renewcommand\Affilfont{\itshape\small}
 \begin{document}
 
 \maketitle
@@ -658,9 +662,9 @@ strategy against a probe strategy with varying noise parameters.
 In~\cite{Ashlock2005} Tit for Tat is used as the probe strategy. In
 Figure~\ref{fig:fingerprinting} an example of Pavlov's fingerprint is given.
 Fingerprinting has been studied in depth in~\cite{Ashlock2008, Ashlock2009,
-Ashlock2010, Ashlock2006a}. Another type of fingerprinting of strategies is the
-transitive fingerprint. This method has been implemented in~\cite{axelrodproject},
-the method represents the cooperation rate of a strategy against a set of opponents
+Ashlock2010, Ashlock2006a}. Another type of fingerprinting is the
+transitive fingerprint~\cite{axelrodproject}.
+The method represents the cooperation rate of a strategy against a set of opponents
 over a number of turns. An example of a transitive fingerprint is given in
 Figure~\ref{fig:transitive_fingerprinting}.
 
