@@ -19,9 +19,12 @@
 \usepackage{graphicx}
 \usepackage{algorithm,algorithmic}
 \usepackage{authblk}
+\usepackage{tabularx}
+\usepackage{color, colortbl}
 \usetikzlibrary{er,positioning, calc, patterns}
 \usetikzlibrary{decorations.pathreplacing}
 
+\definecolor{Gray}{gray}{0.92}
 \definecolor{background}{RGB}{5, 66, 81}
 
 \setcounter{secnumdepth}{4}
@@ -43,7 +46,8 @@
 \newcommand{\clustering}{\input{assets/Clustering_coeff.txt}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\title{A bibliometrics analysis, comparison of collaboration and influence between game theoretic subfields}
+\title{A bibliometric study of collaboration and influence in the field of
+the Iterated Prisoner's Dilemma}
 
 \author[1]{Nikoleta E. Glynatsi}
 \author[1]{Vincent A. Knight}
@@ -57,29 +61,30 @@
 \maketitle
 
 \begin{abstract}
-    % The Prisoner's Dilemma is a well known game used since the 1950's as a
-    % framework for studying the emergence of cooperation; a topic of continuing
-    % interest for mathematical, social, biological and ecological sciences. The
-    % iterated version of the game, the Iterated Prisoner's Dilemma, attracted
-    % attention in the 1980's after the publication of the ``The Evolution of
-    % Cooperation'' and has been a topic of pioneering research ever since.
-
-    % The aim of this paper is to provide a systematic literature review on
-    % Prisoner's Dilemma related research. This is achieved in two ways.
-    % Firstly, we review selected pieces of work and partition the literature
-    % into five different sections with each reviewing a different
-    % aspect of research. Secondly, we
-    % analyse a comprehensive data set of 3077 articles on the
-    % Prisoner's Dilemma collected from five different prominent journals.
-
-    % The questions answered in this manuscript are (1) what are the research trends
-    % in the field, (2) what are the already existing results within the field,
-    % (3) how collaborative is the field and (4) do authors influence the field more
-    % compared to other fields.
+This manuscript explores the collaborative behaviour of authors in the field
+of the Prisoner's Dilemma using bibliometric analysis, topic modeling, and
+the co-authorship network. The results demonstrate that the Prisoner's
+Dilemma is a field of continued interest and  a collaborative field. Authors
+are very like to cooperate with a collaborator's co-author and single author
+publications are rare. The co-authorship network however suggests that
+authors do not influence or gain much information by their connections,
+unless they are connected to a ``main'' group of authors. The articles
+collected for this work are classified based on the language of their
+abstracts in five different topics, and the results are additionally verified by
+the topics' networks.
 \end{abstract}
 
 \section{Introduction}\label{section:introduction}
 
+The Prisoner's Dilemma (PD) is a well known game used since its introduction in the
+1950's~\cite{Flood1958} as a framework for studying the emergence of
+cooperation; a topic of continuing interest for mathematical,
+social~\cite{Perc2008}, biological~\cite{Turner1999} and
+ecological~\cite{Wu2011} sciences. This manuscript presents a bibliometric
+analysis of the Prisoner's Dilemma field, in the interest of understanding the
+number of publications over the years, the research trends within the
+field, and mainly to assess the collaborative behaviour
+of the authors in the field of cooperation itself.
 
 As discussed in~\cite{youngblood2018}, bibliometrics (the statistical analysis
 of published works originally described by~\cite{pritchard1969}) has been used
@@ -101,75 +106,47 @@ number of citations can not be known. Citations can be missed due to data entry
 errors, academics are influenced by many more papers than they actually cite and
 several of the citations are superficial.
 
-A more recent approach to measure collaborative behaviour is to use the co
-authorship network, as described in~\cite{Liu2015}. Using this approach has many
+A more recent approach to measure collaborative behaviour is to use the
+co-authorship network, as described in~\cite{Liu2015}. Using this approach has many
 advantages as several graph theoretic measures can be used as proxies to explain
 authors relationship. In~\cite{Liu2015}, they analyse the development of the
 field ``evolution of cooperation'' using this approach. The topic ``evolution of
 cooperation'' is a multidisciplinary field which also includes a large number of
-publications on the PD. This paper builds upon the work done
-by~\cite{Liu2015} and extends their methodology. Though in \cite{Liu2015}, they
-considered a data set from a single source, Web of Science, the data set
-described here has been collected from five different sources. Moreover, the
-collaborative results of the analysis are compared to those of two different sub
-fields.
+publications on the PD. This paper builds upon the work done by~\cite{Liu2015}
+and extends their methodology. Though in \cite{Liu2015}, they considered a data
+set from a single source, Web of Science, the data set described here, archived
+at~\cite{pd_data_2018}, has been collected from five different sources.
+Co-authorship networks have also been used in~\cite{youngblood2018, Li2019}.
+In~\cite{youngblood2018} it is used for identifying the subdisciplines the interdisciplinary
+field of cultural evolution so that they can describe each subdiscipline and
+investigate trends in collaboration and productivity, and in~\cite{Li2019} for examining
+the long-term impact of co-authorship with established, highly-cited scientists
+on the careers of junior researchers.
 
-Co authorship networks have also been used in~\cite{youngblood2018} for
-classifying topics of an interdisciplinary field. This was done using centrality
-measures, which will be covered in Section~\ref{section:data_collection}, here
-centrality measures are used in order to understand the influence an author can
-have and can receive by being part of an academic group. Furthermore,
-in~\cite{alshebli2018} they look at the relationship between research impact and
-five classes of diversity: ethnicity, discipline, gender, affiliation, and
-academic age. These characteristics of the authors are not being captured here.
-In future work these characteristics would be included in the analysis.
+The Prisoner's Dilemma, much like cultural evolution and evolution of cooperation,
+has attracted the attention of researchers across fields, and more specifically
+its iterated version, the Iterated Prisoner's Dilemma (IPD). This is due to
+the game not only being mathematically
+intriguing~\cite{Press2012} but also being used a model of
+social~\cite{Zimmermann2005} and biological~\cite{Doebeli2005} interactions and
+having applications in numerous fields such as healthcare~\cite{Turner1999}. The
+game was chosen for this work as a result of it being a specific topic with
+publications across the academic fields.
 
-In this manuscript a comprehensive data set of literature regarding the PD,
-collected from the following sources, is presented and analysed. The data set
-has been archived and is available at~\cite{pd_data_2018}. The aim of the
-analysis is to review the amount of published academic articles as well as to
-measure and explore the collaborations within the field.
-
-\begin{multicols}{2}
-    \begin{itemize}
-        \item arXiv~\cite{mckiernan2000}; a repository of electronic preprints.
-        It consists of scientific
-        papers in the fields of mathematics, physics, astronomy, electrical engineering,
-        computer science, quantitative biology, statistics, and quantitative finance,
-        which all can be accessed online.
-        \item PLOS~\cite{plos}; a library of open access journals and other scientific literature
-        under an open content license. It launched its first journal, PLOS Biology,
-        in October 2003 and publishes seven journals, as of October 2015.
-        \item IEEE Xplore Digital Library (IEEE)~\cite{ieee}; a research database for discovery
-        and access to journal articles, conference proceedings, technical standards,
-        and related materials on computer science, electrical engineering and electronics,
-        and allied fields. It contains material published mainly by the Institute of
-        Electrical and Electronics Engineers and other partner publishers. 
-        \item Nature~\cite{nature}; a British multidisciplinary scientific journal,
-        first published on 4 November 1869. It was ranked the world's most cited
-        scientific journal by the Science Edition of the 2010 Journal Citation Reports
-        and is ascribed an impact factor of 40.137, making it one of the world's
-        top academic journals.
-        \item Springer~\cite{springer}; a leading global scientific publisher of
-        books and journals. It publishes close to 500 academic and professional
-        society journals.
-    \end{itemize}
-\end{multicols}
-
-The data collection process is covered in Section
-\ref{section:data_collection} and a preliminary analysis of the data is
-conducted in Section~\ref{section:preliminary_analysis}. In
-Section~\ref{section:methodology}, graph theoretical methods will be used to
+The type of analysis  which is carried out in this work has been carried out
+before in~\cite{Liu2015} and~\cite{youngblood2018}. The novelty here is to
+consider a new data set on a specific game theoretic topic and approaches not considered in
+either works, such as topic modeling~\cite{Blei2003} and centrality measures.
+The data set of this work contains \totalarticles
+articles' metadata on the IPD that have been collected from five different
+prominent sources. The methodology used in this manuscript, which includes the
+data collection, is covered in Section~\ref{section:methodology}. The results regarding,
+the amount of publications and the topics of the field over the years are
+described in Section~\ref{section:results}. In
+Section~\ref{section:co_authorship}, graph theoretical methods are used to
 ascertain the level of collaborative nature of the field and identify influence.
-This type of analysis has been carried out in~\cite{Liu2015}. The novelty here
-is to consider approaches not considered in~\cite{Liu2015} such as the
-centrality measures of the network, and apply them to a new dataset. A further
-comparison of the results are made, relative to two other sub fields of game
-theory: auction games~\cite{menezes2005} and the price of
-anarchy~\cite{roughgarden2005}. A temporal analysis is also considered. In
-Section~\ref{section:results}, the results of the analysis are discussed.
 
-\section{Data Collection}\label{section:data_collection}
+\section{Methodology}\label{section:methodology}
 
 Academic articles are accessible through scholarly databases. Several databases
 and collections today offer access through an open application protocol
@@ -197,58 +174,85 @@ be used for any type of projects similar to the one described here,
 documentation for it is available at:
 \url{http://arcas.readthedocs.io/en/latest/}. Project~\cite{nikoleta_2017} allow
 users to collect articles from a list of APIs by specifying just a single
-keyword. Four prominent journals in the field and a pre print server were used
-as sources to collect data for this analysis: PLOS, Nature, IEEE, Springer and
-arXiv.
-
-The following series of search terms were used to identify relevant articles:
+keyword. Articles for which any of the terms
 
 \begin{itemize}
-    \item ``prisoner's dilemma'',
-    \item ``prisoners dilemma'',
-    \item ``prisoner dilemma'',
-    \item ``prisoners evolution'',
-    \item ``prisoner game theory''
+    \item \{``prisoner's dilemma'',
+    ``prisoners dilemma'', ``prisoner dilemma'', ``prisoners evolution'', ``prisoner
+    game theory''\}
 \end{itemize}
 
-\begin{itemize}
-    \item ``auction game theory''
-    \item first price auctions
-    \item second price auctions
-\end{itemize}
+existed within the title, the abstract or the text are included
+in the analysis. Four prominent journals in the field and a preprint server
+were used as sources to collect data for this analysis:
 
-\begin{itemize}
-    \item Price of Sinking
-    \item Price of Stability
-\end{itemize}
+\begin{multicols}{2}
+    \begin{itemize}
+        \item arXiv~\cite{mckiernan2000}; a repository of electronic preprints.
+        It consists of scientific
+        papers in the fields of mathematics, physics, astronomy, electrical engineering,
+        computer science, quantitative biology, statistics, and quantitative finance,
+        which all can be accessed online.
+        \item PLOS~\cite{plos}; a library of open access journals and other scientific literature
+        under an open content license. It launched its first journal, PLOS Biology,
+        in October 2003 and publishes seven journals, as of October 2015.
+        \item IEEE Xplore Digital Library (IEEE)~\cite{ieee}; a research database for discovery
+        and access to journal articles, conference proceedings, technical standards,
+        and related materials on computer science, electrical engineering and electronics,
+        and allied fields. It contains material published mainly by the Institute of
+        Electrical and Electronics Engineers and other partner publishers. 
+        \item Nature~\cite{nature}; a British multidisciplinary scientific journal,
+        first published on 4 November 1869. It was ranked the world's most cited
+        scientific journal by the Science Edition of the 2010 Journal Citation Reports
+        and is ascribed an impact factor of 40.137, making it one of the world's
+        top academic journals.
+        \item Springer~\cite{springer}; a leading global scientific publisher of
+        books and journals. It publishes close to 500 academic and professional
+        society journals.
+    \end{itemize}
+\end{multicols}
 
-
-and articles for which any of these terms existed within the title, the abstract
-or the text are included in the analysis. More specifically, 23\% of article
-considered here were included because any of the above terms existed within the
-abstract, 50\% within the main text and 27\% within the title. As will be
-described in Section~\ref{section:preliminary_analysis}, two other game
-theoretic sub fields, auction games and the price of anarchy were also considered
-in this work. For collecting data on these sub fields the search terms used were
-``auction game theory'' and ``price of anarchy''. The three data sets are
-archived and available at~\cite{auction_data_2018, anarchy_data_2018,
-pd_data_2018}. Note that the latest data collection was performed on the \(30^{\text{th}}\)
-November 2018.
+The data set is archived and available at~\cite{pd_data_2018}. Note that the latest data
+collection was performed on the \(30^{\text{th}}\) November 2018.
 % TODO Ensure this stay accurate
 
-\section{Methodology}\label{section:methodology}
+The data set contains a total of \totalarticles articles. These will be classified
+into research topics using \textbf{topic modeling}, a computational method
+designed to summarize large collections of texts by a small number of
+conceptually connected topics or themes~\cite{Blei2003, Grimmer2013}. The text
+used for each article is its abstract. Topic modeling analyses the patterns
+with which words co-occur in the abstracts, and then a topic is defined by a
+probability distribution over words. So in one topic the word ``cooperation''
+would have a high weighting, and in another topic it would have a low weighting.
+Similarly for all the words that have been captured by the abstracts. Note that
+the words have been simplified by ignoring order and removing stop words.
+Once the topics are defined, as a distribution over words, articles are assigned
+to them based on which topic has the highest percentage contribution for a given
+article. For example let the words that contribute to Topic A be:
+\(0.039 \times\)``cooperation'', \(0.028 \times\)``study'' and \(0.026 \times\)``human''
+and for Topic B: \(0.020 \times\)``cooperation'', \(0.028 \times\)``agents'' and
+\(0.026 \times\)``strategies''. A document with abstract ``The
+study of cooperation in humans'' is assigned to Topic A because \((0.039 + 0.028 + 0.026)
+> 0.020\).
 
-The relationship between the authors within a field will be modelled as a graph
+A issue regarding the technique is that the
+number of topics need to be specified in advance before running the algorithm.
+The suitable number of topics presented here are based on the topic coherence
+measure~\cite{Roder2015} and on the minimisation of overlapping words within two
+topics. Note that the minimisation of overlapping words is done manually
+by the authors.
+
+The relationship between the authors within a field will be modeled as a graph
 \(G = (V_G, E_G)\) where \(V_G\) is the set of nodes and \(E_G\)  is the set of
 edges. The set \(V_G\) represents the authors and an edge connects two authors
-if and only if those authors have written together. The co authorship network is
-constructed using the main data set described in
-Section~\ref{section:preliminary_analysis} and the open source package
-\cite{networkx}. The PD network is denoted as \(G_1\) where the
-number of unique authors \(|V(G_1)|\) is \authors and \(|E(G_1)|\) is 10397.
-All authors' names were formatted as their last name and first initial (i.e.
+if and only if those authors have written together. The co-authorship network is
+constructed using the main data set~\cite{pd_data_2018} and the open source package
+\cite{networkx}. The PD network is denoted as \(G\) where the
+number of unique authors \(|V(G)|\) is \authors and \(|E(G)|\) is \edges.
+All authors' names were formatted as their last name and first name (i.e.
 Martin A. Nowak to Martin Nowak). This was done to avoid errors such as Martin
-A. Nowak and Martin Nowak being treated as a different person.
+A. Nowak and Martin Nowak being treated as a different person. There are some
+authors for which only their first initial was found and are left this way.
 
 Collaborativeness will be analysed using measures such as, isolated nodes,
 connected components, clustering coefficient, communities, modularity and average degree.
@@ -258,7 +262,6 @@ number of nodes that are not connected to another node, thus the
 number of authors that have published alone. The average degree denotes the average
 number of neighbours for each nodes, i.e. the average number of collaborations
 between the authors.
-
 A connected component is a maximal set of nodes such that each pair of nodes is
 connected by a path~\cite{Easley2010}. The number of connected components as well as the size of the
 largest connected component in the network are reported.
@@ -270,7 +273,6 @@ by the number of connected triples of nodes, is a local measure of the degree to
 which nodes in a graph tend to cluster together
 in a clique~\cite{Easley2010}. It is precisely the probability that the collaborators
 of an author also write together.
-
 In comparison, modularity is a global measure designed to measure the strength of
 division of a network into communities. The number of communities will be reported
 using the Clauset-Newman-Moore method~\cite{clauset2004}. Also the modularity index
@@ -280,7 +282,6 @@ corresponds to a structure where there are dense connections between the nodes w
 communities but sparse connections between nodes in different communities.
 That means that there are many sub communities of authors that write together
 but not across communities.
-
 Two further points are aimed to be explored in this work, (1) which people control the flow
 of information;
 as in which people influence the field the most and (2) which are the authors that
@@ -309,66 +310,58 @@ chosen for this paper and these are closeness and betweenness centrality.
     the influence, thus these authors gain the most from their networks.
 \end{enumerate}
 
-In the next section all the metrics discussed here are calculated for the data
-sets in order to provide insights into the field.
+In the next sections the methodology discussed here is applied to the data
+set and results regarding the publications and collaborativeness of the field
+are presented.
 
-\section{Preliminary Analysis}\label{section:preliminary_analysis}
+\section{Initial Analysis}\label{section:results}
 
-A summary of each of the three data sets used is presented in this section.
-The three data sets are:
-
-\begin{itemize}
-    \item The main data set which contains articles on the prisoner's dilemma archived at~\cite{pd_data_2018}.
-    \item A data set which contains article on auction games archived at~\cite{auction_data_2018}.
-    \item A data set which contains articles on the price of anarchy archived at~\cite{anarchy_data_2018}.
-\end{itemize}
-
-The main data set
-consists of \totalarticles articles with unique titles. In case of duplicates
-the preprint version of an article (collected from arXiv) was dropped.
-Of these \totalarticles articles, \manual have not been collected from the
-aforementioned APIs. These articles were of specific interest and manually added
-to the dataset throughout the writing of Section~\ref{section:timeline}. A
-similar approach was used in~\cite{Liu2015} where a number of articles of interest
-where manually added to the data set. A more
-detailed summary of the articles' provenance is given by Table~\ref{table:provenance}.
-Only 3\% of the data set consists of articles that were manually added and 34\% of the
-articles were collected from arXiv.
+The data set~\cite{pd_data_2018} consists of \totalarticles articles with
+unique titles. In case of duplicates the preprint version of an article
+(collected from arXiv) was dropped. Of these \totalarticles articles, \manual
+have not been collected from the aforementioned APIs but have been manually
+added because they are of interest to the authors. A similar approach was
+used in~\cite{Liu2015} where a number of articles were manually
+added to the data set. A more detailed summary of the articles' provenance is
+given by Table~\ref{table:provenance}. Only 3\% of the data set consists of
+articles that were manually added and 27\% of the articles were collected from
+arXiv.
 
 \begin{table}[!hbtp]
     \begin{center}
-    \input{assets/provenance_table}
+    \resizebox{.4\textwidth}{!}{
+    \input{assets/provenance_table}}
     \end{center}
     \caption{Articles' provenance for the main data set~\cite{pd_data_2018}.}
     \label{table:provenance}
 \end{table}
 
-The average number of publications per year is denoted as, \(\mu_P =
-\frac{N_A}{N_Y},\) where \(N_A\) is the total number of articles and \(N_Y\) is
+The average number of publications per year is denoted as \(\mu_P =
+\frac{N_A}{N_Y}\) where \(N_A\) is the total number of articles and \(N_Y\) is
 the years of publication. The years of publication is calculated as the range
 between the collection date and the first published article, for each
 provenance, within the data. These averages are summarised in
-Table~\ref{table:publication_rates}. Overall an average of 49 articles are
+Table~\ref{table:publication_rates}. Overall an average of 43 articles are
 published per year on the topic. The most significant contribution to this
-appears to be from arXiv with 16 articles per year, followed by Nature with 10
-and Springer with 9.
+appears to be from arXiv with 11 articles per year, followed by Springer with 9
+and PLOS with 8.
+Though the average publication offers insights about the publications of the
+fields, it remains a constant number. The data handled here is a time
+series starting in 1950s, when the game was introduced, until 2018 (Figure~\ref{fig:timeseries}). 
+Two observations can be made from Figure~\ref{fig:timeseries}.
 
 \begin{table}[!hbtp]
     \begin{center}
-    \input{assets/rates_table}
+    \resizebox{.15\textwidth}{!}{
+    \input{assets/rates_table}}
     \end{center}
     \caption{Average yearly publication $(\mu_P)$ for main data set~\cite{pd_data_2018}.}
     \label{table:publication_rates}
 \end{table}
 
-Though the average publication offers insights about the publications of the
-fields, it remains a constant number. The data handled here is a time
-series starting in 1950, when the game was introduced, until 2018 (Figure~\ref{fig:timeseries}). 
-Two observations can be made from Figure~\ref{fig:timeseries}.
-
 \begin{enumerate}
     \item There is a steady increase to the number of publications since the
-    1980s and the introduction of computer tournaments.
+    1980s and the introduction of computer tournaments~\cite{Axelrod1981}.
     \item There is a decrease in 2017-2018. This is due to our data set being
     incomplete. Articles that have been written in 2017-2018 have either not
     being published or were not retrievable by the APIs at the time of writing
@@ -382,7 +375,7 @@ The fitted model can be used to forecast the behaviour of the field for the
 next 5 years. The forecasted periods are plotted in
 Figure~\ref{fig:forecasting}. The time series has indicated a slight decrease
 however the model forecasts that the number of publications will keep
-increasing, thus demonstrating that the field of the iterated prisoner's dilemma
+increasing, thus demonstrating that the field of the IPD
 continues to attract academic attention.
 
 \begin{figure}[!hbtp]
@@ -400,413 +393,391 @@ continues to attract academic attention.
 
 \begin{figure}[!hbtp]
     \centering
-    \includegraphics[width=.5\textwidth]{./assets/images/forecasting.pdf}
+    \includegraphics[width=.45\textwidth]{./assets/images/forecasting.pdf}
     \caption{Forecast for 2017-2022.}\label{fig:forecasting}
 \end{figure}
 
-To allow for a comparative analysis two sub fields of game theory have been chosen
-for this work; auction games and the price of anarchy.
+The overall collaboration index (CI) or the average number of authors on
+multi-authored papers is 3.2. Thus on average a non single author publication in
+the PD has 3 authors. The interdisciplinary field of cultural evolution was also
+reported to have a CI of 3~\cite{youngblood2018} and from a blog post published
+in Nature~\cite{nature_author_blog} it can be seen that other fields such as
+Astronomy and Astrophysics, Genetics and Heredity, Nuclear and Particle Physics
+have most likely 3 authors. The CI index over time is also given in
+Figure~\ref{fig:ci_over_time}. There are some peaks in the early years 1969 and
+1980, however, a steady increase appears to happen after 2004. This could
+be an effect of better communication tools being introduced around that time
+which enabled more collaborations between researchers. The collaborative
+behaviour will be explored in more details in the following section using the
+co-authorship network.
 
-\begin{itemize}
-    \item Auction theory is a branch of game theory which researches the
-    properties of auction markets. Game theory has been used for years to study
-    auctions and the behaviour of bidders~\cite{Shubik1971}. The earliest entry
-    in our data set~\cite{auction_data_2018} goes back to 1974
-    (Figure~\ref{fig:timeseries_ag}). Note that no articles have been added
-    manually for auction games.
-    \item Price of Anarchy is a concept in game theory which measures how the
-    efficiency of a system degrades due to selfish behaviour of its agents.
-    There is a variety of such measures however the price of anarchy has
-    attracted a lot of attention since it's informal introduction in 1999
-    by~\cite{Koutsoupias1999}. Note that~\cite{Koutsoupias1999} has been
-    manually added to the date set~\cite{anarchy_data_2018}
-    (Figure~\ref{fig:timeseries_pa}).
-\end{itemize}
-
-A summary of both data sets, in comparison to that of~\cite{pd_data_2018}, is
-given by Table~\ref{table:summary_other_topics}.
-
-\begin{table}[!hbtp]
+\begin{figure}[!hbtp]
     \centering
-    \resizebox{\textwidth}{!}{
-    \input{assets/prelimanary_comparison.tex}}
-    \caption{Measures of all three data sets.}\label{table:summary_other_topics}
-\end{table}
-
-The IPD and auction theory are popular topics and have
-been studied for decades. A large number of articles have
-been collected for both topics, \totalarticles and 3444 respectively. Though, auction
-games have a larger number of articles, the IPD
-has almost 300 more authors.
-
-Auction games have an overall average yearly publication
-of 93 articles per year compared to the PD with 49 per year. 50\% of articles
-for auction games have been collected from the pre print server arXiv and no articles have
-been published in PLOS.
-
-Compared to these two topics the price of anarchy is a fairly recent one. Only a
-total of 748 articles have been collected, however it has a large number
-of 1229 authors. On average each paper has two authors. It has an overall average
-yearly publication rate of 39 articles and the biggest contribution has been made
-to Springer (37\%).
-
-\begin{figure}[!hbtp]
-    \begin{minipage}{.45\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{./assets/images/Auction_Games.pdf}
-        \caption{Line plot; number articles published on auction games 1974-2018.}\label{fig:timeseries_ag}
-    \end{minipage}%
-    \begin{minipage}{.45\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{./assets/images/Price_of_Anarchy.pdf}
-        \caption{Line plot; number articles published on the price of anarchy.}\label{fig:timeseries_pa}
-    \end{minipage}
-    \end{figure}
-
-
-\section{Analysis of co authorship network}\label{section:results}
-
-As mentioned previously, \(G_1\) denotes the co authorship network of the
-IPD. A graphical representation is given by
-Figure~\ref{fig:g_one_network}. It is evident that the network is disjoint,
-which is only natural as many authors write academic articles on their own. More
-specifically, a total of \isolated authors only have single author publications,
-which corresponds to the \isolatedpercentage (\%) of authors in \(G_1\).
-
-There are a total of \connectedcomponents connected components and the largest
-one has a size of \largestcc nodes. The largest connected component is shown in
-Figure~\ref{fig:g_one_cluster} and is going to be refereed to as the main
-cluster of the network. There are total of \communities communities in \(G_1\).
-The network has a clustering coefficient of 0.708, thus authors are 70\%
-likely to write with a collaborator's co author. The degree distribution,
-Figure~\ref{fig:degree_distrs}, shows that the average degree is approximately
-\(4\). Thus authors are on average connected to 4 other authors, however there
-are authors with far more connections, the largest one being 58.
-
-In~\cite{Liu2015} the collaborative metrics for the ``evolution of cooperation''
-co authorship network were reported. Though their network is of smaller size
-(number of nodes 3670 \(<\) 5394), the collaborative metrics are fairly similar
-between the two graphs (clustering coeff. \(0.632\) and modularity
-0.950 close to 0.977), indicating that for the same field the same
-remarks can be made from a different co authors network. How do these compare to other fields
-and more specifically to other fields of game theory?
-
-The auction games network \(G_2\), and the price of anarchy network \(G_3\)
-are given by Figures~\ref{fig:g_two} and~\ref{fig:g_three} and their respective
-largest cluster in Figures~\ref{fig:g_two_cluster} and \ref{fig:g_three_cluster}.
-As stated before \(G_3\) is the smallest network. \(G_2\) appears to be
-very similar to \(G_1\), however it's main cluster is larger in size.
-
-\begin{figure}[!hbtp]
-    \begin{subfigure}{.45\textwidth}\centering
-        \includegraphics[width=.54\textwidth]{./assets/images/pd_network.pdf}
-        \caption{\(G_1\) the co authorship network for the IPD.}\label{fig:g_one_network}
-    \end{subfigure}\hfill
-    \begin{subfigure}{.45\textwidth}\centering
-        \includegraphics[width=.54\textwidth]{./assets/images/pd_network_cluster.pdf}
-        \caption{\(\bar{G}_{1}\) the largest connected component of \(G_1\).}\label{fig:g_one_cluster}
-     \end{subfigure}
-     
-     \begin{subfigure}{.45\textwidth}\centering
-        \includegraphics[width=.54\textwidth]{./assets/images/auction.pdf}
-        \caption{\(G_2\) the co authorship network for auction games.}\label{fig:g_two}
-     \end{subfigure}\hfill
-    \begin{subfigure}{.45\textwidth}\centering
-        \includegraphics[width=.8\textwidth]{./assets/images/auction_network_cluster.pdf}
-        \caption{\(\bar{G}_{2}\) the largest connected component of \(G_2\).}\label{fig:g_two_cluster}
-    \end{subfigure}
-
-    \begin{subfigure}{.45\textwidth}\centering
-        \includegraphics[width=.54\textwidth]{./assets/images/anarchy_network.pdf}
-        \caption{\(G_3\) the co authorship network for price of anarchy.}\label{fig:g_three}
-     \end{subfigure}\hfill
-     \begin{subfigure}{.45\textwidth}\centering
-        \includegraphics[width=.8\textwidth]{./assets/images/anarchy_network_cluster.pdf}
-        \caption{\(\bar{G}_{3}\) the largest connected component of \(G_3\).}\label{fig:g_three_cluster}
-     \end{subfigure}
-     \caption{Graphical representations of \(G_1, G_2, G_3\) and their respective
-     largest components.}
+    \includegraphics[width=.5\textwidth]{./assets/images/collaborative_index.pdf}
+    \caption{Collaboration index over time.}\label{fig:ci_over_time}
 \end{figure}
 
-A summary of the collaborative metrics for all three co authorship networks is given by
-Table~\ref{table:summary_other_networks} and the degree distribution of all three
-networks is shown in Figure~\ref{fig:degree_distrs}.
+There are a total of \authors unique authors in~\cite{pd_data_2018} and several of them
+have had multiple publications collected. The highest number of articles
+collected for an author is 83 publications for Matjaz Perc. The logged
+distribution of number of papers per author is given by
+Figure~\ref{fig:num_papers_per_author} and it can be seen that Matjaz Perc is an
+outlier. Mainly the authors have had 1 to 6 publications gathered by the data
+collection.
+
+\begin{figure}[!hbtp]
+    \centering
+    \includegraphics[width=.5\textwidth]{./assets/images/papers_per_author.pdf}
+    \caption{Logged distribution of number of papers per author.}
+    \label{fig:num_papers_per_author}
+\end{figure}
+
+Topic modeling has been applied to the data set using~\cite{rehurek_lrec} and
+the \totalarticles articles have been classified into 5 different topics. The
+number of total topics was chosen based on the coherence value and the
+minimisation of overlapping words within two topics. The keywords associated
+with a topic, the most representative article of the given topic based on the percentage
+contribution and its academic reference are given by
+Table~\ref{table:topics_and_articles}. The topics are labelled as A, B, C, D and
+E, and based on the keywords and the most represented articles appear to be about:
+
+\begin{itemize}
+    \item A: human subject research
+    \item B: biological studies
+    \item C: strategies and agent based simulations
+    \item D: evolutionary dynamics on networks
+    \item E: modeling problems as a PD
+\end{itemize}
+
+The number of articles, and their equivalent percentage, assigned to each topic
+are also given in Table~\ref{table:topics_and_articles}. Most of the topics have
+been assigned 500-560 articles or 20\% of the articles, except topic B which has
+309 entries assigned to it and is the topic with the smallest number of articles.
+The number of articles per topic over the years are given by
+Figure~\ref{fig:number_of_articles_per_topic}, however, no much can be concluded
+regarding the temporal change of the topics.
+
+\begin{table}[!hbtp]
+    \begin{center}
+    \resizebox{\textwidth}{!}{
+    \input{assets/documents_of_topic}}
+    \end{center}
+    \caption{Keywords for each topic and the document with the most representative article for each topic.}
+    \label{table:topics_and_articles}
+\end{table}
+
+\begin{figure}[!hbtp]
+    \centering
+    \includegraphics[width=\textwidth]{./assets/images/papers_per_topic_over_time.pdf}
+    \caption{Number of articles per topic over the years.}\label{fig:number_of_articles_per_topic}
+\end{figure}
+
+To gain a better understanding regarding the number of topics over the years,
+a topic modeling algorithm is applied to the cumulative data set over 8 periods.
+These periods are 1951-1965, 1951-1973, 1951-1980, 1951-1988,
+1951-1995, 1951-2003, 1951-2010, 1951-2018. The number of topics for each cumulative
+subset is chosen based on the coherence value and only. The overlapping of keywords has
+not been manually minimised. As a result, the period 1951-2018 has been assigned
+6 topics instead of 5. Table~\ref{fig:number_of_articles_per_topic} gives the
+topics, their keywords, the number of articles and their respective percentage
+for each period. For period 1951 to 1965 the topics are labelled as 1 to 5
+indicating that a total number of 5 topics was selected for that period.
+
+There are several changes in the keywords over time, which is only natural as
+the scientific language within a research field itself changes, and equivalently
+the number of topics change as well. For example the word `sex', referring to
+the male and female sex, does not appear in any keywords after 1988. This
+implies that studying the effect of a participant's sex when playing an PD
+became less frequently and possibly less important. The
+word `evolution' is a keyword of topic 1 in the period 1951-1995. Topic 1 is
+the largest topic of that period, implying that researchers were starting to
+publish more on evolution. The word network is a keyword for the first time
+following 2003. Suggesting that applications of the PD in social and computer
+networks became more relevant after 2003.
+
+\begin{table}[!hbtp]
+    \begin{center}
+    \resizebox{\textwidth}{!}{
+    \input{assets/topics_per_year_table}}
+    \end{center}
+    \caption{Topic modeling result for the cumulative data set over the periods
+    }
+\end{table}
+
+In the following section the collaborative behaviour of authors in the field,
+and within the field's topics as were presented in this section, are explored
+using a network theoretic approach.
+
+\section{Analysis of co-authorship network}\label{section:co_authorship}
+
+In this section the collaborative behaviour of authors in the field of the IPD
+is assessed using the co-authorship network. As mentioned in Section~\ref{section:methodology}
+the co-authorship network is denoted as \(G\). There are a total of \connectedcomponents
+connected components in \(G\) and the largest component has a size of 
+\largestcc nodes. The largest connected component is going to be refereed to as
+the main cluster of the network. The main cluster is denoted as \(\bar{G}\) and
+a graphical representation is shown in Figure~\ref{fig:g_one_cluster}.
+The metrics for both \(G\) and \(\bar{G}\) are given by
+Table~\ref{table:network_comparison.tex}.
+
+
+\begin{figure}[!hbtp]
+    \begin{subfigure}{.45\textwidth}\centering
+        \includegraphics[width=.7\textwidth]{./assets/images/pd_network.pdf}
+        \caption{\(G\) the co-authorship network for the IPD.}\label{fig:g_one_network}
+    \end{subfigure}\hfill
+    \begin{subfigure}{.45\textwidth}\centering
+        \includegraphics[width=.7\textwidth]{./assets/images/pd_network_cluster.pdf}
+        \caption{\(\bar{G}\) the largest connected component of \(G\).}\label{fig:g_one_cluster}
+     \end{subfigure}
+\end{figure}
+
+The networks have a high modularity and a large number of communities.
+A high modularity implies that authors create their own publishing communities
+but not many publications from authors from different communities occur.
+However, the communities of the network are collaborative.
+An author on average has 4 co-authors and 0.708 likelihood of collaborating
+with a collaborator's co-author. There are only \isolated authors with single
+author publications, which corresponds to only the \isolatedpercentage\% of authors
+in \(G\). Moreover, in the PD an author from the main cluster is 7\% more
+likely to write with a collaborator's co-author and on average has 2 more
+co-authors.
+
+In~\cite{Liu2015} the collaborative metrics for the ``evolution of cooperation''
+co-authorship network were also reported. Though their network is of smaller
+size (number of nodes 3670 \(<\) \authors), the collaborative metrics are fairly
+similar between the two graphs (clustering coeff. \(0.632\) and modularity 0.95
+close to 0.96), indicating that for the same field the same remarks can be made
+from a different co-authorship network.
 
 \begin{table}[!hbtp]
     \centering
     \resizebox{\textwidth}{!}{
     \input{assets/network_comparison.tex}}
-    \caption{Network metrics for \(G_1, G_2, G_3\).}\label{table:summary_other_networks}
+    \caption{Network metrics for \(G\) and \(\bar{G}\) respectively.}
+    \label{table:network_comparison.tex}
 \end{table}
 
-\begin{figure}[!hbtp]
-    \centering
-    \includegraphics[width=\textwidth]{./assets/images/networks_ditributions.pdf}
-    \caption{Degree distribution for networks \(G_1, G_2\) and \(G_3\). The descriptive
-    statistics for each of the distribution are for \(G_1\): mean \(=3.85\),
-    median \(=3\), std \(=4.25\). For \(G_2\): mean \(=3.04\), median \(=2\),
-    std \(=3.01\) and for \(G_3\): mean \(=3.38\), median \(=3\), std \(=2.90\).
-    It is clear that these distributions are not normally distributed, which has
-    also been verified using a statistical test. Moreover, the statistical difference
-    of the medians has been tested using a Kruskal Wallis test. The medians
-    of \(G_1\) and \(G_3\) are not significantly different, however they are
-    are significantly larger than that of \(G_2\).}\label{fig:degree_distrs}
-\end{figure}
-
-Using Table~\ref{table:summary_other_networks} and Figure~\ref{fig:degree_distrs}
-the following remarks can be made:
-
-\begin{itemize}
-    \item Comparing to another well studied topic, auction games, the field of the
-    IPD appears to be more collaborative. Due to the
-    value of the average degree, authors in \(G_1\) are known to have on average almost
-    one more collaboration than \(G_2\). A slightly lower cluster coefficient ($ .622 < .702$)
-    of auction games indicate that it is less likely for authors in \(G_2\) to collaborate
-    with a co author. This could be an influence of the nature of the field itself
-    were not only mathematics but software engineering skills are vital.
-    \item Regarding the price of anarchy, the measures indicate that the field
-    is not as mature as the other two sub fields. There are no isolated authors,
-    which is more of an indication of the time the field has been active. As a
-    more recent field there had been better communication tools that enable more
-    collaborations between researchers. The average degree as well as the clustering
-    coefficient (clustering coeff.$=0.713$) of \(G_3\) is comparable to those
-    of the IPD.
-\end{itemize}
-
-These results can be extended to the main clusters of each network, as shown in
-Table~\ref{table:summary_clusters}. The metrics' values are fairly similar and
-the size of \(G_2\)'s main cluster does not appear to gave any significant
-effect; all the same conclusions are made.
+The change of the network over time is also studied by constructing the network
+cumulatively over 51 periods. Except from the first period 1951-1966 the rest of
+the periods have a yearly interval (data for the years 1975 and 1982 have not
+been collected). The metrics of each sub network are given by
+Table~\ref{table:coll_cumulative}. This is also done for \(\bar{G}\) over the
+same periods and the results are given by Table~\ref{table:clusters_cumulative}.
+Similar to the results of~\cite{Liu2015}, it can been observed that the network
+\(G\) grows over time and that the network always has modularity. This is also
+confirmed by \(\bar{G}\).
 
 \begin{table}[!hbtp]
     \centering
     \resizebox{\textwidth}{!}{
-    \input{assets/clusters_comparison.tex}}
-    \caption{Network metrics for largest components, \(\bar{G}_1, \bar{G}_2, \bar{G}_3\).}\label{table:summary_clusters}
-\end{table}
-
-The change of the networks over time is also studied by constructing the network
-cumulatively using a yearly interval. A total of 64 sub graphs
-over 64 periods, starting in 1950, were created and all the collaborative metrics
-for each sub graph have been calculated. Note that years 1952 and 1953 have no
-publications in our data set. The metrics of each network for each period are given by
-Table~\ref{table:coll_cumulative}.
-Similar to the results of~\cite{Liu2015}, it can been observed that the network \(G_1\)
-grows over time and that the network always has modularity.
-
-\begin{table}[!hbtp]
-    \centering
-    \begin{adjustbox}{totalheight=.8\textheight-2\baselineskip, width=\textwidth}
     \input{assets/cumulative_graphs_table.tex}}
-    \caption{Collaborativeness metrics for cumulative graphs, \(G \subseteq G_1\).}\label{table:coll_cumulative}
-\end{adjustbox}
+    \caption{Collaborativeness metrics for cumulative graphs, \(\tilde{G} \subseteq G\).}\label{table:coll_cumulative}
 \end{table}
 
 \begin{table}[!hbtp]
     \centering
-    \begin{adjustbox}{totalheight=\textheight-2\baselineskip, width=\textwidth}
+    \resizebox{\textwidth}{!}{
     \input{assets/cumulative_clusters_table.tex}}
-    \caption{Collaborativeness metrics for cumulative graphs' main clusters, \(G \subseteq \bar{G}_1\).}\label{table:clusters_cumulative}
-\end{adjustbox}
+    \caption{Collaborativeness metrics for cumulative graphs' main clusters, \(\tilde{G} \subseteq \bar{G}\).}\label{table:clusters_cumulative}
 \end{table}
 
-To better assess the change over time for each metric they have been plotted in
-Figure~\ref{fig:cumulative_networks}. The number of nodes, connected components
-and the size of largest component have been normalised such that the trend between
-the three networks can be compared.
+In Section~\ref{section:results} the articles of this work were classified into
+5 different topics. The co-authorship networks for each topic have been
+constructed in the same way as \(G\). Note that authors with publications in more
+than one topic exist. These authors have not been removed.
+The metrics of the five co-authorship networks are given
+by Table~\ref{table:topics_networks}.
 
-\begin{itemize}
-    \item In Figure~\ref{fig:normalised_number_nodes} the normalised number of nodes,
-    which is calculated by dividing by the total number of nodes in each respective network,
-    is shown. A steep increase in the size of all three networks is spotted soon after
-    2000. This could indicate that more data is available in the sources
-    used in this work following the year 2000. It is however, definitely not an effect
-    of a single field, as it is true for all three sub fields considered here.
-    The sudden increase following the year 2000, is also reported by the
-    number of connected components and the size of the main cluster, Figures
-    \ref{fig:normalised_number_connected_components}, \ref{fig:normalised_size_of_cc}.
-    A connected components represents at least one publication which means that indeed
-    more articles were gathered from 2000 onwards.
-    \item Auction games have been throughout time, less collaborative compared
-    to the IPD. The average degree (Figure~\ref{fig:average_degree})
-    and the clustering coefficient (Figure~\ref{fig:clustering_coefficient}) of 
-    the cumulative sub graphs have been lower than that of \(G_1\).
-    The only exception is during the years 2001-2008. For these
-    year auction games appear to have had a more collaborative environment.
-    \item In the price of anarchy cumulative graphs a sharp increase since the 
-    beginning of the field can be observed for all metrics. There are not
-    many data points due to the recent development of the field, however
-    these steep trends could be an indication that game theoretic and potentially
-    all scientific research has over time been more collaborative. This could
-    be due to logistic and technical solutions.
-    \item The high values of modularity throughout time is not true only for the
-    network reported in~\cite{Liu2015} but also for all three networks of this
-    field. Indicating that authors tend to create communities and write only
-    with people from their communities and not others.
-\end{itemize}
+Though Topic B has the smallest number of articles and is the smallest network
+as well, with 695 authors, it has the highest average degree.
+The network of Topic A is the largest network, moreover, it has the smallest
+percentage of isolated nodes (1.3\%) and an average degree of 3.8. The networks
+of topics E and C have a large number of isolated nodes, 5.9\% and 4.6\%
+respectively, a small clustering coefficient and Topic C has the smallest
+average degree. The authors with publications in Topics B and A appear be more
+collaborative, with authors having 4 co-authors and hardly writing at all,
+compared to Topics E and C. Topic D has the largest connected component though
+it is one of the smallest networks. The connected component of topic D is made
+up by the same authors as the main cluster \(\bar{G}\), this will be clear in
+the next result.
+
+\begin{table}[H]
+    \centering
+    \resizebox{\textwidth}{!}{
+    \input{assets/topic_network_comparison.tex}}
+    \caption{Network metrics for topic networks.}\label{table:topics_networks}
+\end{table}
+
+Though the authors with publications in topics C, D and E have exhibited to be
+less collaborative it must be taken into account that authors had their
+publications assigned to multiple topics, and thus the edges of a node have been
+divided between the different networks. More specifically, a total of 1975
+authors have articles assigned to multiple topics. Out of these 1975 authors,
+55\% of them had their publications assigned to two different topics, 30\% in
+three, 10\% in four and 5\% in five,
+Figure~\ref{fig:different_topics_per_author}. The probabilities of having
+publications being assigned to a given combination of topics based on the
+different number of topics are given by Table~\ref{table:topic_probabilities}.
+Table~\ref{table:topic_probabilities} shows that authors are most likely to have
+their publications assigned to topics C and D, C and E (for \(n=2\)), C, D and E
+(for \(n=3\)) and A, C, D and E (for \(n=4\)). Indeed the authors with
+publications in topics C, D and E could have suffered from their connections
+being divided into different networks, and thus the respective networks could be
+more collaborative than the analysis has suggested.
+
 
 \begin{figure}[!hbtp]
     \centering
-    \begin{subfigure}{.45\textwidth}\centering
-        \includegraphics[width=1.1\textwidth]{./assets/images/percentage_networks_nodes.pdf}
-        \caption{\% Nodes.}\label{fig:normalised_number_nodes}
-    \end{subfigure}
-    \begin{subfigure}{.45\textwidth}\centering
-        \includegraphics[width=1.1\textwidth]{./assets/images/degrees_over_time.pdf}
-        \caption{Average Degree.}\label{fig:average_degree}
-     \end{subfigure}
-
-     \begin{subfigure}{.45\textwidth}\centering
-        \includegraphics[width=1.1\textwidth]{./assets/images/connected_components_over_time.pdf}
-        \caption{\% Connected components.}\label{fig:normalised_number_connected_components}
-     \end{subfigure}
-    \begin{subfigure}{.45\textwidth}\centering
-        \includegraphics[width=1.1\textwidth]{./assets/images/size_of_largest_cc_over_time.pdf}
-        \caption{\% Size of largest connected component.}\label{fig:normalised_size_of_cc}
-    \end{subfigure}
-
-    \begin{subfigure}{.45\textwidth}\centering
-        \includegraphics[width=1.1\textwidth]{./assets/images/clustering_coeff_over_time.pdf}
-        \caption{Clustering coefficient.}\label{fig:clustering_coefficient}
-     \end{subfigure}
-     \begin{subfigure}{.45\textwidth}\centering
-        \includegraphics[width=1.1\textwidth]{./assets/images/modularity_over_time.pdf}
-        \caption{Modularity.}\label{fig:modularity}
-     \end{subfigure}
-    \caption{Collaborative metrics over time for cumulative networks for \(G_1\),
-    \(G_2\) and \(G_3\).}\label{fig:cumulative_networks}
+    \includegraphics[width=.45\textwidth]{./assets/images/percentage_of_authors_different_topic.pdf}
+    \caption{Distribution of number of different topics authors have written in
+    excluding single topic.}
+    \label{fig:different_topics_per_author}
 \end{figure}
 
-The cumulative collaborative metrics have also been calculated for each main
-cluster, given in Table~\ref{table:clusters_cumulative}. As before,
-the conclusions do not appear to change.
+\begin{table}[!htbp]
+    \begin{center}
+    \resizebox{.55\textwidth}{!}{\input{assets/topic_probabilities.tex}}
+\end{center}
+\caption{Probabilities of an author writing in any combinations of
+topics based on the number of topics the author has publications in.}\label{table:topic_probabilities}
+\end{table}
 
-The next results discussed here are on centrality measures. As a reminder,
-two centrality measures are reported, these are the closeness centrality
-and the betweenness centrality. Closeness centrality is a measure of how
-easy it is for an author to contact others, and consequently affect them; influence them.
-Thus closeness centrality here is a measure of influence. Betweenness centrality
-is a measure of how many paths pass through a specific node, thus the amount
-of information this person has access to. Betweenness centrality is used here
-as a measure of how much an author gains from the field. All centrality measure
-can have values ranging from 0 to 1.
+The next result discussed here are on centrality measures. As a reminder, two
+centrality measures are reported, these are the closeness centrality and the
+betweenness centrality. Closeness centrality is a measure of how easy it is for
+an author to contact others, and consequently affect them; influence them. Thus
+closeness centrality here is a measure of influence. Betweenness centrality is a
+measure of how many paths pass through a specific node, thus the amount of
+information this person has access to. Betweenness centrality is used here as a
+measure of how much an author gains from the field. All centrality measure can
+have values ranging from 0 to 1.
 
-For \(G_1\)
-the most central author based on closeness and betweenness are given by Tables
-\ref{table:central_authors_cc} and \ref{table:central_authors} respectively.
-The betweenness centrality of the
-most central authors in \(G_1\) are rather low with the highest ranked author
-being Matjaz Perc with a between centrality of 0.008, Table~\ref{table:central_authors}.
-A publication of Perc's work has been briefly discussed in
-Section~\ref{section:evolutionary_dynamics}, and the centrality measure suggest that the network is influenced by him.
-He is connected to a total of 58 nodes and he has published to all five of the different
-sources considered in the study. Though he also gains from his position
-in the network, the gain is minor.
+For \(G\) and \(\bar{G}\) the most central authors based on closeness and
+betweenness centralities are given by Table~\ref{table:central_authors}. For \(G\) the
+most central author, based on both measures, is Matjaz Perc. A
+few authors appear to be central based on one measure and not the other. Martin
+Nowak, Franz Weissing, Jianye Hao, Angel Sanchez and Valerio Capraro are authors
+that have access to information due to their positioning but do not
+influence the network as much. The opposite is true for the authors Attila
+Szolnoki, Luo-Luo Jiang Sandro Meloni, Cheng-Yi Xia and Xiaojie Chen.
+Overall the values of both measures are low. The medians of the distributions, given
+in Figures~\ref{fig:bc_distributions} and~\ref{fig:cc_distributions}, are both zero.
+From Figure~\ref{fig:cc_distributions} it is evident that some authors have
+higher values of closeness centrality and thus do influence the network. These can be
+verified to be the authors from the main cluster. The most central authors
+in \(\bar{G}\) are the same people as in \(G\). This implies that
+the results on centrality heavily rely of the main cluster.
 
-From Tables~\ref{table:central_authors_cc} and \ref{table:central_authors} it
-can be seen that authors in \(G_1\) are more likely to affect their field instead
-of gaining from it. This can be better explored by considering the distributions
-of the centralities and by comparing them to other fields.
-The distributions for both centralities are
-plotted in Figures~\ref{fig:betweenness_dist} and~\ref{fig:closeness_dist}, and
-in Figures~\ref{fig:betweenness_dist_cluster} and~\ref{fig:closeness_dist_cluster}
-for their respective main clusters.
+In conclusion the authors of the PD do not gain much from the influence of their
+fields. This can even be verified by the topics networks. Table~\ref{table:central_authors_bc_topics}
+the authors that gain the most from their respective topics and the values are
+once again low. In some cases even zero (Topic A, C and E).
+In relation to authors influencing their field. There are authors in \(G\) that
+do influence the network. The group of people that do are the authors of
+the main cluster. These authors even gain from being in the main cluster and
+part of this "main" group of authors. From Table~\ref{table:central_authors_cc_topics}
+it can be seen that Topic D
+has the highest values of closeness centrality and this is because the authors
+are a subset of \(\bar{G}\). In comparison the other networks have very low
+values of centrality and the results are verified further by the topics' networks.
 
-Regarding gaining from a network. An author is more likely to gain more
-from the influence of the field if they were authors in auction games or the
-price of anarchy. Though if it were an author in the main cluster it would make
-no statistical difference in which field they were to published. Overall,
-all the betweenness values are rather small and the distributions skewed to the
-left. This could imply that in all three networks, authors do not gain much from
-the influence of their fields.
+% The distributions of the centralities over the topics are given
+% in Figures~\ref{fig:bc_distributions_topics} and~\ref{fig:bc_distributions_topics}.
+
+\begin{table}[!hbtp]
+    \begin{center}
+    \resizebox{.9\textwidth}{!}{\input{assets/centralities_pd_graph.tex}}
+\end{center}
+\caption{10 most central authors based on betweenness and closeness centralities
+for \(G\) and \(\bar{G}\).}\label{table:central_authors}
+\end{table}
 
 \begin{figure}[!hbtp]
     \centering
-    \begin{subfigure}{\textwidth}\centering
-        \includegraphics[width=\textwidth]{./assets/images/betweeness_distributions.pdf}
-        \caption{Betweenness centrality distributions \(G_1, G_2, G_3\). The descriptive
-        statistics for each of the distribution are for \(G_1\): mean\(=0.000019\),
-        median\(=0.0\), std\(=0.000207\). For \(G_2\): mean\(=0.000086\), median\(=0.0\),
-        std\(=0.000693\) and for \(G_3\): mean\(=0.000151\), median\(=0.0\), std\(=0.000931\).
-        None of the three distributions is normally distributed and there is
-        significant difference between the means (these have been tested using
-        appropriate statistical difference). According to a Mann Whitney both
-        \(G_2\) and \(G_3\) medians are significant larger than that of \(G_1\) however there
-        is not statistical difference between those two medians.}\label{fig:betweenness_dist}
-    \end{subfigure}
-    \begin{subfigure}{\textwidth}\centering
-        \includegraphics[width=\textwidth]{./assets/images/betweeness_distributions_clusters.pdf}
-        \caption{Betweenness centrality distributions for \(G_1, G_2, G_3\) respective
-        main clusters.The descriptive
-        statistics for each of the distribution are for \(G_1\): mean\(=0.0054\),
-        median\(=0.0\), std\(=0.022\). For \(G_2\): mean\(=0.0048\), median\(=0.0\),
-        std\(=0.019\) and for \(G_3\): mean\(=0.02\), median\(=0.0\), std\(=0.055\).
-        None of the three distributions is normally distributed. There is no
-        statistical difference between the medians of \(G_1\) and \(G_3\). There
-        is however, statistical difference between the median of \(G_2\).
-        These have been tested using a Kruskal Wallis test.}\label{fig:betweenness_dist_cluster}
-    \end{subfigure}
-    \caption{}
+    \includegraphics[width=.55\textwidth]{./assets/images/pd_betweeness_centralities.pdf}
+    \caption{Distributions of betweenness centrality in \(G\) and \(\bar{G}\)}
+    \label{fig:bc_distributions}
 \end{figure}
-
-In relation to influencing your field. An author is most likely to influence their
-field if they write for the price of anarchy and authors that publish on auctions
-game are more likely to influence compared to authors in the IPD.
-Though if an author was to be placed in the main cluster of the respective
-field they would chose to be in either \(G_1\) or \(G_3\).
-In conclusion, authors regarding both influence metrics that have been defined here
-are more likely to gain more if they were to published on either topics of auction
-games or the price of anarchy. Though the value of gaining is actual small,
-you are more likely to influence your field more in another field compared to that
-of the PD.
 
 \begin{figure}[!hbtp]
     \centering
-    \begin{subfigure}{\textwidth}\centering
-    \includegraphics[width=\textwidth]{./assets/images/closeness_distributions.pdf}
-    \caption{Closeness centrality distributions \(G_1, G_2, G_3\). The descriptive
-        statistics for each of the distribution are for \(G_1\): mean\(=0.0050\),
-        median\(=0.00056\), std\(=0.010\). For \(G_2\): mean\(=0.000086\), median\(=0.00058\),
-        std\(=0.000693\) and for \(G_3\): mean\(=0.000151\), median\(=0\), std\(=0.000931\).
-        None of the three distributions is normally distributed and the median
-        of \(G_3\) is statistically larger than that of \(G_2\), which is
-        larger than that of \(G_1\).}\label{fig:closeness_dist}
-\end{subfigure}
-\begin{subfigure}{\textwidth}\centering
-    \centering
-    \includegraphics[width=\textwidth]{./assets/images/closeness_distributions_clusters.pdf}
-    \caption{Closeness centrality distributions for \(G_1, G_2, G_3\) respective
-    main clusters. The descriptive statistics for each of the distribution are
-    for \(G_1\): mean\(=0.19\),
-    median\(=0.19\), std\(=0.035\). For \(G_2\): mean\(=0.14\), median\(=0.14\),
-    std\(=0.026\) and for \(G_3\): mean\(=0.19\), median\(=0.19\), std\(=0.035\).
-    None of the three distributions is normally distributed. All medians
-    are statistically different. The medians of \(G_1\) and \(G_3\) are greater
-    than that of \(G_2\).}\label{fig:closeness_dist_cluster}
-    \end{subfigure}
-    \caption{}
+    \includegraphics[width=.55\textwidth]{./assets/images/pd_closeness_centralities.pdf}
+    \caption{Distributions of closeness centrality in \(G\) and \(\bar{G}\)}
+    \label{fig:cc_distributions}
 \end{figure}
+
+\newcolumntype{g}{>{\columncolor{Gray}}l}
+\begin{table}[!hbtp]
+    \begin{center}
+    \resizebox{.9\textwidth}{!}{\input{assets/betweeness_topics_graphs.tex}}
+\end{center}
+\caption{10 most central authors based on betweenness centrality
+for topics' networks.}\label{table:central_authors_bc_topics}
+\end{table}
+
+\newcolumntype{g}{>{\columncolor{Gray}}l}
+\begin{table}[!hbtp]
+    \begin{center}
+    \resizebox{.9\textwidth}{!}{\input{assets/closeness_topics_graphs.tex}}
+\end{center}
+\caption{10 most central authors based on closeness centrality
+for topics' networks.}\label{table:central_authors_cc_topics}
+\end{table}
+
+% \begin{figure}[!hbtp]
+%     \centering
+%     \includegraphics[width=.5\textwidth]{./assets/images/topics_betweeness_distributions.pdf}
+%     \caption{Distributions of betweenness centrality in topics' networks.}
+%     \label{fig:bc_distributions_topics}
+% \end{figure}
+
+% \begin{figure}[!hbtp]
+%     \centering
+%     \includegraphics[width=.5\textwidth]{./assets/images/topics_closeness_distributions.pdf}
+%     \caption{Distributions of closeness centrality in topics' networks.}
+%     \label{fig:cc_distributions_topics}
+% \end{figure}
 
 \section{Conclusion}
 
-The meta analysis which was covered in the second part of this paper explored
-the number of publications, the authors collaborative behaviour and influence in
-the research field of the Iterated Prisoner's Dilemma. More than 3000
-publications were automatically collected from five different sources using a bespoke
-piece of software written for this purpose~\cite{nikoleta_2017}. A time
-series analysis predicted a continuous growth to the number of publications in
-the following years. Moreover, the authors of these papers were used to create a
-co authorship network which was studied to compare the field to two other
-prominent sub fields of game theory. The results of the analysis showed that the
-Iterated Prisoner's Dilemma field is more collaborative than the fields of
-auction games and the price of anarchy. However, authors are less
-likely to influence their peers.
+This manuscript has explored the number of publications, the authors'
+collaborative behaviour and their influence in the research topic of the Iterated
+Prisoner's Dilemma. This was achieved by applying network theoretic approaches and
+a bibliometric analysis in a data containing more than 2000 publications.
+The data set was automatically
+collected from five different sources using a bespoke piece of software written
+for this purpose~\cite{nikoleta_2017}.
 
+The data collection and an introduction to the methodology used in this work
+were covered in Section~\ref{section:methodology}.
+The data set contains a total of \totalarticles articles, it has been archive
+and it available in~\cite{pd_data_2018} for further analysis.
+Section~\ref{section:results} covered an initial analysis of the data set,
+and applied a topic modeling algorithm which classified the articles into
+topics. The initial analysis demonstrated that the field of the Prisoner's
+Dilemma remains a prominent field with several papers being published in journals.
+The topic modeling analysis identified five different topics which appeared
+to be human subject research, biological studies, strategies and agent based simulations,
+evolutionary dynamics on networks and modeling problems as a PD.
+A temporal topic modeling analysis showed that over time not only
+the number of topic changed, but also the scientific language and the most important
+the topics authors were publishing on.
+
+Following Section~\ref{section:results}, the collaborative behaviour of the field was explored
+in Section~\ref{section:co_authorship}. It was concluded that the field
+of the Iterated Prisoner's Dilemma is a collaborative field where authors
+are likely to write with a collaborator's co-authors and on average an author
+has 4 co-authors. The results on collaborativeness were verified when studying
+the co-authorship network for each of the five topics defined in Section~\ref{section:results}
+as well. Exploring the influence of authors and their gain from being in the
+network of the field demonstrated that authors do not gain much, and the authors
+with influence are the ones connected to the main cluster, to a "main" group of authors.
+
+The study of the Prisoner's Dilemma is the study of cooperation and investigating
+the cooperative behaviours of authors is what this work has aimed to achieve.
 Interesting areas of future work would include extending this analysis to more
-game theoretic sub fields, to evaluate whether the results remain the same. The
-study of the Prisoner's Dilemma is the study of cooperation, investigating the
-cooperative behaviours of authors is what this work has aimed to achieve.
-
+game theoretic sub fields, to evaluate whether the results remain the same.
 
 \section{Acknowledgements}
 
@@ -818,10 +789,10 @@ A variety of software have been used in this work:
     \item The Numpy library for data manipulation~\cite{walt2011numpy}.
     \item The Networkx~\cite{networkx} package for analysing networks.
     \item Gephi~\cite{ICWSM09154} open source package for visualising networks.
+    \item The Gensim library for the topic modeling~\cite{rehurek_lrec}.
     \item The louvain library for calculating the networks modularity \url{https://github.com/taynaud/python-louvain/issues}.
 \end{itemize}
 
-\newpage
 \bibliographystyle{plain}
 \bibliography{bibliography.bib}
 \end{document}
