@@ -24,22 +24,10 @@ def get_raw_articles_on_search(api, arguments, start):
 
 if __name__ == "__main__":
 
-    words = [
-        "prisoner's dilemma",
-        "prisoners dilemma",
-        "prisoners evolution",
-        "prisoner dilemma",
-        "prisoner game theory",
-    ]
-
-    for p in [
-        arcas.Nature,
-        arcas.Plos,
-        arcas.Arxiv,
-        arcas.Springer,
-        arcas.Ieee,
-    ]:
-        pbar = tqdm(total=len(words) * 2)
+    words = ["price of sinking", "price of stability"]
+    apis = [arcas.Arxiv, arcas.Springer, arcas.Plos, arcas.Nature]
+    for p in apis:
+        pbar = tqdm(total=len(words) * len(apis))
         for key in words:
             api = p()
             for field in ["title", "abstract"]:
@@ -51,14 +39,16 @@ if __name__ == "__main__":
                     raw_articles = get_raw_articles_on_search(
                         api=api, arguments=arguments, start=start
                     )
-
-                    if raw_articles:
-                        filename = "raw_data/PD/result_{}_{}_{}.json".format(
-                            field, api.__class__.__name__, start
+                    try:
+                        articles = []
+                        for art in raw_articles:
+                            articles.append(api.to_dataframe(art))
+                        df = pd.concat(articles, ignore_index=True)
+                        filename = "raw_data/price/result_{}_{}_{}_{}.json".format(
+                            field, api.__class__.__name__, start, key
                         )
-                        with open(filename, "w") as outfile:
-                            json.dump(raw_articles, outfile)
-                    else:
+                        df.to_json(filename)
+                    except (TypeError, ValueError) as e:
                         switch = False
                     start += 10
                 pbar.update(1)
