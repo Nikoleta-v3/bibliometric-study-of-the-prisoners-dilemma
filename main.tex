@@ -117,6 +117,9 @@ A more recent approach to measuring collaborative behaviour, and to studying the
 development of a field is to use the co-authorship network, as described
 in~\cite{Liu2015}. The co-authorship network has many advantages as several
 graph theoretic measures can be used as proxies to explain author relationships.
+For example the average degree of a node corresponds to the average number of
+an authors' collaborators, and clustering coefficient corresponds to the extent that
+two collaborators of an author also collaborate with each other.
 In~\cite{Liu2015}, the approach was applied to analyse the development of the field
 ``evolution of cooperation'', and in~\cite{youngblood2018} to identify the
 subdisciplines of the interdisciplinary field of ``cultural evolution'' and
@@ -263,7 +266,7 @@ Clustering coefficient and modularity are also calculated. The clustering
 coefficient, defined as 3 times the number of triangles on the graph divided
 by the number of connected triples of nodes, is a local measure of the degree to
 which nodes in a graph tend to cluster together
-in a clique~\cite{Easley2010}. It is precisely the probability that the collaborators
+in a clique~\cite{Easley2010}. It shows to which extent the collaborators
 of an author also write together.
 In comparison, modularity is a global measure designed to measure the strength of
 division of a network into communities. The number of communities will be reported
