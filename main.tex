@@ -684,15 +684,36 @@ average 4 collaborators and a 70\% probability of collaborating with a
 collaborator's co-author. An author of \(\bar{G}\) on average is 7\% more likely
 to write with a collaborator's co-author and on average has 2 more
 collaborators. Moreover, there are only \isolatedpercentage\% of authors in the
-PD that has no connection to any other author. These results seem to indicate that the
-PD is a collaborative field.
+PD that has no connection to any other author.
+
+But how does this compare to other fields? Two more data sets for the topics
+``Price of Anarchy'' and ``Auction Games'' have been collected in order to
+compare the collaborative behaviour of the PD to other game theoretic fields. A
+total of 3444 publications have been collected for Auction games and 748 for
+Price of Anarchy. Price of Anarchy is relatively a new field, with the first
+publication on the topic being~\cite{Koutsoupias1999} in 1999. This examples the
+small number of articles that have been retrieved. Both data sets have been
+archived and are available in~\cite{auction_data_2018, anarchy_data_2018}.
+The networks for both data sets have been generated in the same way as \(G\).
+A summary of the networks' metrics are given by Table~\ref{table:other_topics_network_comparison.tex}.
+
+The average degrees for the Price of Anarchy and for Auction games are lower
+than the PD's. In Auction games an author is more likely to have no collaborators,
+and in the Price of Anarchy there are almost no authors that are not connected
+to someone.This could be an effect of the field being introduced in more modern
+days. Overall, the an author in the PD has on average more collaborators
+and there are less isolated authors compared to an other well established game
+theoretic field. These results seem to indicate that the PD is a collaborative
+field.
 
 However, both \(G\) and \(\bar{G}\) have a high modularity (larger than 0.84) and a large number of
 communities (967 and 25 respectively). A high modularity implies that authors create their own publishing
 communities but not many publications from authors from different communities
 occur. Thus, author tends to collaborate with authors in their communities but
 not many efforts are made to create new connections to other communities and
-spread the knowledge of the field across academic teams.
+spread the knowledge of the field across academic teams. The fields
+of both Price of Anarchy and Auction game also have high modularity, and
+that could indicate that is in fact how academic publications are.
 
 Thus, \textbf{the PD is indeed a collaborative field but perhaps it is not
 more collaborative than other fields}, as there is no effort from the authors
@@ -704,6 +725,14 @@ to write with people outside their community.
     \input{assets/network_comparison.tex}}
     \caption{Network metrics for \(G\) and \(\bar{G}\) respectively.}
     \label{table:network_comparison.tex}
+\end{table}
+
+\begin{table}[!hbtp]
+    \centering
+    \resizebox{\textwidth}{!}{
+    \input{assets/other_topics_network_comparison.tex}}
+    \caption{Network metrics for auction games and price of anarchy networks respectively.}
+    \label{table:other_topics_network_comparison.tex}
 \end{table}
 
 The evolution of the networks was also explored over time by constructing the
