@@ -459,12 +459,14 @@ value of 0.418.
     \label{fig:coherence_value_over_number_of_topcis}
 \end{figure}
 
-A dimensionality reduction approach called t-Distributed Stochastic Neighbor Embedding
-(t-SNE)~\cite{Maaten2008} is applied to the LDA model outputs to visualise the
-result. An LDA model outputs an \(N \times n\) matrix - \(N\) rows for \(N\)
+An LDA model outputs an \(N \times n\) matrix - \(N\) rows for \(N\)
 abstracts and \(n\) columns for \(n\) topics. The cells contain the percentage
 contributions for each topic for each abstract, \(c_i^ j\) for
-\(i \in \{1, 2, \dots, n\}\) for \(j \in \{1, 2, \dots, N\}\).
+\(i \in \{1, 2, \dots, n\}\) for \(j \in \{1, 2, \dots, N\}\). In essence,
+LDA maps every paper to a vector space of dimension of topics. In the case
+of 6 topics it is difficult to visualise the clustering of topics. To overcome
+this a dimensionality reduction approach called t-Distributed Stochastic Neighbor Embedding
+(t-SNE)~\cite{Maaten2008} is applied to the LDA model outputs. More specifically,
 t-SNE is used to reduce the dimensions of each \(c^j\) from \(n\) to 2.
 Figure~\ref{fig:lda_visualisation_six}, gives the visualisation of LDA for \(n=6\).
 Each point represents a single document and its color corresponds to the topic
