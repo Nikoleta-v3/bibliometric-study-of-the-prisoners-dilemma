@@ -463,7 +463,7 @@ An LDA model outputs an \(N \times n\) matrix - \(N\) rows for \(N\)
 abstracts and \(n\) columns for \(n\) topics. The cells contain the percentage
 contributions for each topic for each abstract, \(c_i^ j\) for
 \(i \in \{1, 2, \dots, n\}\) for \(j \in \{1, 2, \dots, N\}\). In essence,
-LDA maps every paper to a vector space of dimension of topics. In the case
+LDA maps every paper to a vector space of dimension the number of topics. In the case
 of 6 topics it is difficult to visualise the clustering of topics. To overcome
 this a dimensionality reduction approach called t-Distributed Stochastic Neighbor Embedding
 (t-SNE)~\cite{Maaten2008} is applied to the LDA model outputs. More specifically,
@@ -479,7 +479,7 @@ closer to documents from other topics than each other. For example the documents
 of topic 2 are divided into two clusters. The one cluster is closer to documents
 from topic 4 and the other has a few documents closer to topic 1. In the case of \(n=6\)
 topic 4 appears to be on ``evolution of cooperation on networks'', and the
-papers from topic 2 surronded from topic 4 incluce the articles
+papers from topic 2 surrounded from topic 4 include the articles
 ``Evolutionary prisoner's dilemma game on hierarchical lattices''~\cite{Vukov2005}
 and ``Social evolution in structured populations''~\cite{Debarre2014}. Publications
 that clearly also fit topic 4.
@@ -592,7 +592,7 @@ with topics B and D having a later start. Following the introduction of a topic
 the publications in that topic have been increasing. There is no decreasing
 trend in any of the topics. All the topics have been publishing for years and
 they still attract the interest of academics. Thus, \textbf{there does not
-seem to any given topic more or less in fashion}.
+seem to be any given topic more or less in fashion}.
 
 \begin{figure}[!hbtp]
     \centering
@@ -693,12 +693,12 @@ to write with a collaborator's co-author and on average has 2 more
 collaborators. Moreover, there are only \isolatedpercentage\% of authors in the
 PD that has no connection to any other author.
 
-But how does this compare to other fields? Two more data sets for the topics
+How does this compare to other fields? Two more data sets for the topics
 ``Price of Anarchy'' and ``Auction Games'' have been collected in order to
 compare the collaborative behaviour of the PD to other game theoretic fields. A
 total of 3444 publications have been collected for Auction games and 748 for
 Price of Anarchy. Price of Anarchy is relatively a new field, with the first
-publication on the topic being~\cite{Koutsoupias1999} in 1999. This examples the
+publication on the topic being~\cite{Koutsoupias1999} in 1999. This explains the
 small number of articles that have been retrieved. Both data sets have been
 archived and are available in~\cite{auction_data_2018, anarchy_data_2018}.
 The networks for both data sets have been generated in the same way as \(G\).
@@ -707,10 +707,10 @@ A summary of the networks' metrics are given by Table~\ref{table:other_topics_ne
 The average degrees for the Price of Anarchy and for Auction games are lower
 than the PD's. In Auction games an author is more likely to have no collaborators,
 and in the Price of Anarchy there are almost no authors that are not connected
-to someone.This could be an effect of the field being introduced in more modern
-days. Overall, the an author in the PD has on average more collaborators
-and there are less isolated authors compared to an other well established game
-theoretic field. These results seem to indicate that the PD is a collaborative
+to someone. This could be an effect of the field being introduced in more modern
+days. Overall, an author in the PD has on average more collaborators
+and there are less isolated authors compared to another well established game
+theoretic field. These results seem to indicate that the PD is a \textit{relatively} collaborative
 field.
 
 However, both \(G\) and \(\bar{G}\) have a high modularity (larger than 0.84) and a large number of
@@ -719,7 +719,7 @@ communities but not many publications from authors from different communities
 occur. Thus, author tends to collaborate with authors in their communities but
 not many efforts are made to create new connections to other communities and
 spread the knowledge of the field across academic teams. The fields
-of both Price of Anarchy and Auction game also have high modularity, and
+of both Price of Anarchy and Auction games also have high modularity, and
 that could indicate that is in fact how academic publications are.
 
 Thus, \textbf{the PD is indeed a collaborative field but perhaps it is not
@@ -837,11 +837,11 @@ corresponding to research topics of the PD are only the people from the main
 cluster of \(G\).
 
 The fact that most authors of the main cluster are primarily publishing in
-evolutionary dynamics on networks indicates that publishing in the specific
+evolutionary dynamics on networks indicates that publishing in this specific
 topic differs from the other topics covered in this manuscript. There appears to
 be more collaboration and influence in the publications on evolutionary
 dynamics and authors are more likely to gain from their position,
-though is not clear as to why.
+though it is not clear as to why.
 
 \newcolumntype{g}{>{\columncolor{Gray}}l}
 \begin{table}[!hbtp]
@@ -901,7 +901,7 @@ field of the PD. Exploring the influence of authors and their gain from being in
 the network of the field demonstrated that authors do not gain much, and the
 authors with influence are only the ones connected to the main cluster, to a
 ``main'' group of authors. This `main'' group of authors consists of authors
-publishing in evolutionary dynamics on networks. Thus, an author would be aim
+publishing in evolutionary dynamics on networks. Thus, an author would be aiming
 to publish on this topic if they were interested in gaining from their position
 in the publications of the PD.
 
