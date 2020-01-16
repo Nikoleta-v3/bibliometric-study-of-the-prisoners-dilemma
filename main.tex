@@ -427,17 +427,9 @@ PD, the LDA algorithm implemented in~\cite{rehurek_lrec} is applied to the
 abstracts of the data set. As mentioned before, the number of topics, which
 will be denoted as \(n\), needs to be specified before running the algorithm.
 The appropriate number of topics is chosen based on the coherence
-value~\cite{Roder2015}. Figure~\ref{fig:coherence_value_over_number_of_topcis}
-gives the coherence values of 18 models where \(n \in \{2, 3, \dots, 19\}\), and
-it can be seen than the most appropriate number of topics is 6 with a coherence
-value of 0.418.
-
-\begin{figure}[!hbtp]
-    \centering
-    \includegraphics[width=.45\textwidth]{./assets/images/coherence_values.pdf}
-    \caption{Coherence for LDA models over the number of topics.}
-    \label{fig:coherence_value_over_number_of_topcis}
-\end{figure}
+value~\cite{Roder2015}. The coherence value was calculated for 18 models 
+where \(n \in \{2, 3, \dots, 19\}\), and the model with the highest coherence value
+was that of \(n=6\) with a coherence value of 0.418.
 
 An LDA model outputs an \(N \times n\) matrix - \(N\) rows for \(N\)
 abstracts and \(n\) columns for \(n\) topics. The cells contain the percentage
@@ -777,7 +769,7 @@ for \(G\) and \(\bar{G}\).}\label{table:central_authors}
 
 The centrality measures for the topic networks have also been estimated and are
 given in
-Tables~\ref{table:central_authors_bc_topics}-\ref{table:central_authors_cc_topics}.
+Table~\ref{table:central_authors_topics}.
 If information was flowing between the communities of the research topics then
 there would be an increase to the values of centralities for the sub networks.
 However, the only topic where authors gain from their positions are the authors
@@ -799,17 +791,8 @@ though it is not clear as to why.
     \begin{center}
     \resizebox{.9\textwidth}{!}{\input{assets/betweeness_topics_graphs.tex}}
 \end{center}
-\caption{10 most central authors based on betweenness centrality
-for topics' networks.}\label{table:central_authors_bc_topics}
-\end{table}
-
-\newcolumntype{g}{>{\columncolor{Gray}}l}
-\begin{table}[!hbtp]
-    \begin{center}
-    \resizebox{.9\textwidth}{!}{\input{assets/closeness_topics_graphs.tex}}
-\end{center}
-\caption{10 most central authors based on closeness centrality
-for topics' networks.}\label{table:central_authors_cc_topics}
+\caption{10 most central authors based on two centralities
+for topics' networks.}\label{table:central_authors_topics}
 \end{table}
 
 The distributions of both centrality measures for all the networks of this
