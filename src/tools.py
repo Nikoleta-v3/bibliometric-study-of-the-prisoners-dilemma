@@ -1,62 +1,93 @@
-import spacy
-from nltk.corpus import stopwords
-from sklearn.feature_extraction.stop_words import ENGLISH_STOP_WORDS
-import string
+import collections
+import itertools
 
-parser = spacy.load('en')
+from scipy import stats
 
-STOPLIST = set(stopwords.words('english') + list(ENGLISH_STOP_WORDS))
-SYMBOLS = " ".join(string.punctuation).split(" ")
-SPECIAL_CHAR = ["n't", "'s", "'m", "'ve", "-", "'", "’s", "‘", ":", "n'",
-                "-----", "---", '--', "...", "…", "“", "”", "–", "—"]
-NON_TERMS = ['prisoner', 'dilemma', 'game', 'theory', 'iterated']
+import networkx as nx
 
 
-def clean_text(text):
+def normalise_name(name):
     """
-    A function which cleans the text of symbols and lowercase everything
+    Normalise name to: Forename Surname
     """
-    # get rid of newlines
-    text = text.strip().replace("\n", " ").replace("\r", " ")
-    text = text.strip().replace("\\", " ").replace("$", " ")
+    elements = name.split()
 
-    # repla ce HTML symbols
-    text = text.replace("&amp;", "and").replace("&gt;", ">").replace("&lt;",
-                                                                     "<")
-    # lowercase
-    text = text.lower()
-    return text
+    new = elements[0].title() + " "
+    new += elements[-1].title()
+
+    return new
 
 
-def tokenize_text(raw_text):
+def write_to_file(filename, metric, in_assets=True):
     """
-    A function which tokenize the input text 
+    Saves metric value in filename. The metric's value is then read in
+    automatically to `main.tex`.
+
+    If `in_assets` is True the file in save under the assets folder.
     """
-    raw_text = clean_text(raw_text)
-    # spacy function to get tokens
-    tokens = parser(raw_text)
+    if in_assets is True:
+        file = open("../../assets/{}".format(filename), "w")  # pragma: no cover
+    else:
+        file = open(filename, "w")
+    file.write("{}".format(metric))
+    file.close()
 
-    # lemmatize
-    lemmas = []
-    for tok in tokens:
-        # if tok.like_num == False:
-        lemmas.append(
-            tok.lemma_.lower().strip() if tok.lemma_ != "-PRON-" else tok.lower_)
-    tokens = lemmas
 
-    # remove stopwords & symbols
-    tokens = [tok for tok in tokens if tok not in STOPLIST]
-    tokens = [tok for tok in tokens if tok not in SYMBOLS]
-    tokens = [tok for tok in tokens if tok not in SPECIAL_CHAR]
+def test_kruskal(distributions, alpha=0.05):
+    """
+    Performs a Kruskal–Wallis test. Returns the p-value and tests the hypothesis
+    with a (1 - alpha) confidence.
+    """
+    _, p = stats.kruskal(*distributions)
 
-    # remove spaces if they exist
-    while "" in tokens:
-        tokens.remove("")
-    while " " in tokens:
-        tokens.remove(" ")
-    while "\n" in tokens:
-        tokens.remove("\n")
-    while "\n\n" in tokens:
-        tokens.remove("\n\n")
+    if p < alpha:
+        print(p, "The null hypothesis can be rejected.")
+    else:
+        print(p, "The null hypothesis cannot be rejected.")
+    return p
 
-    return tokens
+
+def test_mannwhitneyu(distributions, alternative="two-sided", alpha=0.05):
+    """
+    Performs a Mann Whitney U test. Returns the p-value and tests the hypothesis
+    with a (1 - alpha) confidence.
+    """
+    _, p = stats.mannwhitneyu(*distributions, alternative=alternative)
+
+    if p < alpha:
+        print(p, "The null hypothesis can be rejected.")
+    else:
+        print(p, "The null hypothesis cannot be rejected.")
+    return p
+
+
+def generate_co_authorship_graph(data):
+    """
+    Returns a `networkx` graph where the nodes are authors and the edges
+    collaborations.
+    """
+    data.author = data.author.str.lower()
+
+    pairs = []
+    for _, d in data.groupby("unique_key"):
+        pairs += tuple(
+            sorted(list(itertools.combinations(d["author"].unique(), 2)))
+        )
+        co_authors = collections.Counter(pairs)
+
+    authors_num_papers = (
+        data.groupby(["author", "unique_key"])
+        .size()
+        .reset_index()
+        .groupby("author")
+        .count()
+    )
+    authors_num_papers = authors_num_papers.drop(0, axis=1)
+
+    graph = nx.Graph()
+    for name, w in zip(data.author, authors_num_papers["unique_key"].values):
+        graph.add_node(name)
+    for pair in co_authors.items():
+        graph.add_edge(*pair[0])
+
+    return graph

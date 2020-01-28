@@ -11,12 +11,14 @@
 *.fdb_latexmk
 *.fls
 *.synctex.gz
-
+*.DS_Store
 # minted files 
 *_minted-main/*
 
 # data
+*raw_data
 src/data
+src/articles
 src/nbs/ag_bc_dist.tex
 src/nbs/ag_cc_dist.tex
 src/nbs/pa_bc_dist.tex
@@ -27,6 +29,7 @@ src/nbs/pd_cc_dist.tex
 # notebooks
 *.ipynb_checkpoints/
 */__pycache__/
+src/nbs/Draw clusters.ipynb
 
 # password to axelbib
 src/password.py
