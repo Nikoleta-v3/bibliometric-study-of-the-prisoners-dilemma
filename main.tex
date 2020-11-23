@@ -21,6 +21,8 @@
 \usepackage{authblk}
 \usepackage{tabularx}
 \usepackage{color, colortbl}
+\usepackage{smartdiagram}
+\usesmartdiagramlibrary{additions}
 \usetikzlibrary{er,positioning, calc, patterns}
 \usetikzlibrary{decorations.pathreplacing}
 
@@ -168,6 +170,12 @@ makes usage of the methodology and data to address the following questions:
     network?
 \end{enumerate}
 
+Several of the approaches described in this section have previously been
+carried out in~\cite{Bergmann2018,Liu2015,Sugimoto2011, youngblood2018},
+the novelty here is combining the approaches as well as applying them
+to a new data set. A preliminary analysis of the data set is presented in the
+following section.
+
 Results regarding questions 1-3 are presented in Section~\ref{section:topics}
 and questions 4-6 are addressed in Section~\ref{section:co_authorship}. The
 results are summarised in Section~\ref{section:conclusion}.
@@ -200,10 +208,36 @@ be used for any type of projects similar to the one described here,
 documentation for it is available at:
 \url{http://arcas.readthedocs.io/en/latest/}. Project~\cite{nikoleta_2017} allow
 users to collect articles from a list of APIs by specifying just a single
-keyword. Articles for which any of the terms ``prisoner's dilemma'',
-``prisoners dilemma'', ``prisoner dilemma'', ``prisoners evolution'', ``prisoner
-game theory'' existed within the title, the abstract or the text are included
-in the analysis. Four prominent journals in the field and a preprint server
+keyword.
+
+\begin{center}
+    \includestandalone{assets/tex/scrape}
+\end{center}
+    
+
+\begin{center}
+\includestandalone{assets/tex/data_collection_diagram}
+\end{center}
+
+Articles for which any of the terms:
+
+\begin{itemize}
+\item prisoner's dilemma
+\item prisoners dilemma
+\item prisoner dilemma
+\item prisoners evolution
+\item prisoner game theory
+\end{itemize}
+
+existed within the title, the abstract or the text are included in the analysis.
+we looked at a number of paper that we know are relevant and identified that
+these are the relevant keywords. Other terms such as donation game, etc could
+also have been used but were not. Whilst the results obtained, do generalise to
+the overall stated goal of the paper they are inferred only from the dataset
+used which is available at.
+
+
+Four prominent journals in the field and a preprint server
 were used as sources to collect data for this analysis:
 
 \begin{multicols}{2}
@@ -236,111 +270,6 @@ The data set has been archived and is available at~\cite{pd_data_2018}. Note tha
 collection was performed on the \(30^{\text{th}}\) November 2018.
 % TODO Ensure this stay accurate
 
-The relationship between the authors within a field will be modeled as a graph
-\(G = (V_G, E_G)\) where \(V_G\) is the set of nodes and \(E_G\)  is the set of
-edges. The set \(V_G\) represents the authors and an edge connects two authors
-if and only if those authors have written together. This co-authorship network is
-constructed using the main data set~\cite{pd_data_2018} and the open source package
-\cite{networkx}. The PD network is denoted as \(G\) where the
-number of unique authors \(|V(G)|\) is \authors and \(|E(G)|\) is \edges.
-All authors' names were formatted as their first name and last name (i.e.
-Martin A. Nowak to Martin Nowak). This was done to avoid errors such as Martin
-A. Nowak and Martin Nowak being treated as a different person. There are some
-authors for which only their first initial was found. These entries are left as
-such.
-
-The collaborativeness of the authors will be analysed using measures such as, isolated nodes,
-connected components, clustering coefficient, communities, modularity and average degree.
-These measures show the number of connections authors can have
-and how strongly connected these people are. The number of isolated nodes is the
-number of nodes that are not connected to another node, thus the
-number of authors that have published alone. The average degree denotes the average
-number of neighbours for each nodes, i.e. the average number of collaborations
-between the authors.
-A connected component is a maximal set of nodes such that each pair of nodes is
-connected by a path~\cite{Easley2010}. The number of connected components as well as the size of the
-largest connected component in the network are reported.
-The size of the largest connected component represents the scale of the central cluster
-of the entire network, as will be discussed in the analysis section.
-Clustering coefficient and modularity are also calculated. The clustering
-coefficient, defined as 3 times the number of triangles on the graph divided
-by the number of connected triples of nodes, is a local measure of the degree to
-which nodes in a graph tend to cluster together
-in a clique~\cite{Easley2010}. It shows to which extent the collaborators
-of an author also write together.
-In comparison, modularity is a global measure designed to measure the strength of
-division of a network into communities. The number of communities will be reported
-using the Clauset-Newman-Moore method~\cite{clauset2004}. Also the modularity index
-is calculated using the Louvain method described in~\cite{Blondel2008}. The value
-of the modularity index can vary between \([-1, 1]\), a high value of modularity
-corresponds to a structure where there are dense connections between the nodes within
-communities but sparse connections between nodes in different communities.
-That means that there are many sub communities of authors that write together
-but not across communities.
-Two further points are aimed to be explored in this work, (1) which people control the flow
-of information;
-as in which people influence the field the most and (2) which are the authors that
-gain the most from the influence of the field. To measure these concepts
-centrality measures are going to be used.
-Centrality measures are often used to understand different
-aspects of social networks~\cite{Landherr2010}. Two centrality measures have been
-chosen for this paper and these are closeness and betweenness centrality.
-
-\begin{enumerate}
-    \item In networks some nodes have a short distance to a lot of nodes and
-    consequently are able to spread information on the network very effectively.
-    A representative of this idea is \textbf{closeness centrality}, where a node
-    is seen as centrally involved in the network if it requires only few
-    intermediaries to contact others and thus is structurally relatively
-    independent. Closeness centrality is interpreted as influence. Authors with a high
-    value of closeness centrality, are the authors that spread scientific
-    knowledge easier on the network and they have high influence.
-    \item Another centrality measure is the \textbf{betweenness centrality},
-    where the determination of an author's centrality is based on the quotient
-    of the number of all shortest paths between nodes in the network that
-    include the node in question and the number of all shortest paths in the
-    network. In betweenness centrality the position of the node matters. Nodes
-    with a higher value of betweenness centrality are located in positions that
-    a lot of information pass through, this is interpreted as the gain from
-    the influence, thus these authors gain the most from their networks.
-\end{enumerate}
-
-The articles contained in the data set (\cite{pd_data_2018}) will be classified
-into research topics using LDA an unsupervised machine learning technique
-designed to summarize large collections of documents by a small number of
-conceptually connected topics or themes~\cite{Blei2003, Grimmer2013}. The
-documents are the articles' abstracts and LDA was carried out using~\cite{rehurek_lrec}.
-In LDA, each document/abstract is represented by a distribution over topics,
-and the topics themselves are represented by a distribution over words. More
-specifically, each topics is described by weights associated with words and
-each document by the probabilities of belonging to a specific topic. The
-probability of a document belonging to a topic is referred to as the percentage
-contribution denoted as \(c\). For example the words and their associated
-weights for two topics A and B could be:
-
-\begin{itemize}
-    \item Topic A: \(0.039 \times\)``cooperation'', \(0.028 \times\)``study'' and \(0.026 \times\)``human''.
-    \item Topic B: \(0.020 \times\)``cooperation'', \(0.028 \times\)``agents'' and
-    \(0.026 \times\)``strategies''.
-\end{itemize}
-
-The percentage contribution for a document with abstract ``The study of
-cooperation in humans'' has a \(c_{A} = 0.039 + 0.028 + 0.026 = 0.093\) and
-\(c_B = .020 + 0.0 + 0.0 = 0.020\). The topic to which a document is assigned to
-is based on the highest percentage contribution denoted as \(c^*\). For the
-given example the dominant topic is Topic A \(c^*=c_A\). LAD requires that
-the number of topics is specified in advance before running the algorithm. The
-number of topics can be chosen using the coherence value~\cite{Roder2015} or
-through subjective minimisation of the overlapping keywords between two topics.
-Both these approaches will be used in this work.
-
-Several of the approaches described in this section have previously been
-carried out in~\cite{Bergmann2018,Liu2015,Sugimoto2011, youngblood2018},
-the novelty here is combining the approaches as well as applying them
-to a new data set. A preliminary analysis of the data set is presented in the
-following section.
-
-\section{Preliminary Analysis}\label{section:preliminary}
 
 The data set~\cite{pd_data_2018} consists of \totalarticles articles with unique
 titles. In case of duplicates the preprint version of an article (collected from
@@ -440,7 +369,105 @@ collaborative behaviour and relative influence of authors will also be explored
 in co-authorship networks which correspond to their publications research topics.
 These topics are presented in the next section.
 
-\section{Research topics in the Prisoner's Dilemma research}\label{section:topics}
+\section{Results}\label{section:topics}
+
+The relationship between the authors within a field will be modeled as a graph
+\(G = (V_G, E_G)\) where \(V_G\) is the set of nodes and \(E_G\)  is the set of
+edges. The set \(V_G\) represents the authors and an edge connects two authors
+if and only if those authors have written together. This co-authorship network is
+constructed using the main data set~\cite{pd_data_2018} and the open source package
+\cite{networkx}. The PD network is denoted as \(G\) where the
+number of unique authors \(|V(G)|\) is \authors and \(|E(G)|\) is \edges.
+All authors' names were formatted as their first name and last name (i.e.
+Martin A. Nowak to Martin Nowak). This was done to avoid errors such as Martin
+A. Nowak and Martin Nowak being treated as a different person. There are some
+authors for which only their first initial was found. These entries are left as
+such.
+
+The collaborativeness of the authors will be analysed using measures such as, isolated nodes,
+connected components, clustering coefficient, communities, modularity and average degree.
+These measures show the number of connections authors can have
+and how strongly connected these people are. The number of isolated nodes is the
+number of nodes that are not connected to another node, thus the
+number of authors that have published alone. The average degree denotes the average
+number of neighbours for each nodes, i.e. the average number of collaborations
+between the authors.
+A connected component is a maximal set of nodes such that each pair of nodes is
+connected by a path~\cite{Easley2010}. The number of connected components as well as the size of the
+largest connected component in the network are reported.
+The size of the largest connected component represents the scale of the central cluster
+of the entire network, as will be discussed in the analysis section.
+Clustering coefficient and modularity are also calculated. The clustering
+coefficient, defined as 3 times the number of triangles on the graph divided
+by the number of connected triples of nodes, is a local measure of the degree to
+which nodes in a graph tend to cluster together
+in a clique~\cite{Easley2010}. It shows to which extent the collaborators
+of an author also write together.
+In comparison, modularity is a global measure designed to measure the strength of
+division of a network into communities. The number of communities will be reported
+using the Clauset-Newman-Moore method~\cite{clauset2004}. Also the modularity index
+is calculated using the Louvain method described in~\cite{Blondel2008}. The value
+of the modularity index can vary between \([-1, 1]\), a high value of modularity
+corresponds to a structure where there are dense connections between the nodes within
+communities but sparse connections between nodes in different communities.
+That means that there are many sub communities of authors that write together
+but not across communities.
+Two further points are aimed to be explored in this work, (1) which people control the flow
+of information;
+as in which people influence the field the most and (2) which are the authors that
+gain the most from the influence of the field. To measure these concepts
+centrality measures are going to be used.
+Centrality measures are often used to understand different
+aspects of social networks~\cite{Landherr2010}. Two centrality measures have been
+chosen for this paper and these are closeness and betweenness centrality.
+
+\begin{enumerate}
+    \item In networks some nodes have a short distance to a lot of nodes and
+    consequently are able to spread information on the network very effectively.
+    A representative of this idea is \textbf{closeness centrality}, where a node
+    is seen as centrally involved in the network if it requires only few
+    intermediaries to contact others and thus is structurally relatively
+    independent. Closeness centrality is interpreted as influence. Authors with a high
+    value of closeness centrality, are the authors that spread scientific
+    knowledge easier on the network and they have high influence.
+    \item Another centrality measure is the \textbf{betweenness centrality},
+    where the determination of an author's centrality is based on the quotient
+    of the number of all shortest paths between nodes in the network that
+    include the node in question and the number of all shortest paths in the
+    network. In betweenness centrality the position of the node matters. Nodes
+    with a higher value of betweenness centrality are located in positions that
+    a lot of information pass through, this is interpreted as the gain from
+    the influence, thus these authors gain the most from their networks.
+\end{enumerate}
+
+The articles contained in the data set (\cite{pd_data_2018}) will be classified
+into research topics using LDA an unsupervised machine learning technique
+designed to summarize large collections of documents by a small number of
+conceptually connected topics or themes~\cite{Blei2003, Grimmer2013}. The
+documents are the articles' abstracts and LDA was carried out using~\cite{rehurek_lrec}.
+In LDA, each document/abstract is represented by a distribution over topics,
+and the topics themselves are represented by a distribution over words. More
+specifically, each topics is described by weights associated with words and
+each document by the probabilities of belonging to a specific topic. The
+probability of a document belonging to a topic is referred to as the percentage
+contribution denoted as \(c\). For example the words and their associated
+weights for two topics A and B could be:
+
+\begin{itemize}
+    \item Topic A: \(0.039 \times\)``cooperation'', \(0.028 \times\)``study'' and \(0.026 \times\)``human''.
+    \item Topic B: \(0.020 \times\)``cooperation'', \(0.028 \times\)``agents'' and
+    \(0.026 \times\)``strategies''.
+\end{itemize}
+
+The percentage contribution for a document with abstract ``The study of
+cooperation in humans'' has a \(c_{A} = 0.039 + 0.028 + 0.026 = 0.093\) and
+\(c_B = .020 + 0.0 + 0.0 = 0.020\). The topic to which a document is assigned to
+is based on the highest percentage contribution denoted as \(c^*\). For the
+given example the dominant topic is Topic A \(c^*=c_A\). LAD requires that
+the number of topics is specified in advance before running the algorithm. The
+number of topics can be chosen using the coherence value~\cite{Roder2015} or
+through subjective minimisation of the overlapping keywords between two topics.
+Both these approaches will be used in this work.
 
 In order to identify the topics which are being discussed in the field of the
 PD, the LDA algorithm implemented in~\cite{rehurek_lrec} is applied to the
