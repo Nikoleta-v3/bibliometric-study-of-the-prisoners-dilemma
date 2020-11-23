@@ -21,6 +21,8 @@
 \usepackage{authblk}
 \usepackage{tabularx}
 \usepackage{color, colortbl}
+\usepackage{smartdiagram}
+\usesmartdiagramlibrary{additions}
 \usetikzlibrary{er,positioning, calc, patterns}
 \usetikzlibrary{decorations.pathreplacing}
 
@@ -163,6 +165,12 @@ makes usage of the methodology and data to address the following questions:
     network?
 \end{enumerate}
 
+Several of the approaches described in this section have previously been
+carried out in~\cite{Bergmann2018,Liu2015,Sugimoto2011, youngblood2018},
+the novelty here is combining the approaches as well as applying them
+to a new data set. A preliminary analysis of the data set is presented in the
+following section.
+
 Results regarding questions 1-3 are presented in Section~\ref{section:topics}
 and questions 4-6 are addressed in Section~\ref{section:co_authorship}. The
 results are summarised in Section~\ref{section:conclusion}.
@@ -195,10 +203,36 @@ be used for any type of projects similar to the one described here,
 documentation for it is available at:
 \url{http://arcas.readthedocs.io/en/latest/}. Project~\cite{nikoleta_2017} allow
 users to collect articles from a list of APIs by specifying just a single
-keyword. Articles for which any of the terms ``prisoner's dilemma'',
-``prisoners dilemma'', ``prisoner dilemma'', ``prisoners evolution'', ``prisoner
-game theory'' existed within the title, the abstract or the text are included
-in the analysis. Four prominent journals in the field and a preprint server
+keyword.
+
+\begin{center}
+    \includestandalone{assets/tex/scrape}
+\end{center}
+    
+
+\begin{center}
+\includestandalone{assets/tex/data_collection_diagram}
+\end{center}
+
+Articles for which any of the terms:
+
+\begin{itemize}
+\item prisoner's dilemma
+\item prisoners dilemma
+\item prisoner dilemma
+\item prisoners evolution
+\item prisoner game theory
+\end{itemize}
+
+existed within the title, the abstract or the text are included in the analysis.
+we looked at a number of paper that we know are relevant and identified that
+these are the relevant keywords. Other terms such as donation game, etc could
+also have been used but were not. Whilst the results obtained, do generalise to
+the overall stated goal of the paper they are inferred only from the dataset
+used which is available at.
+
+
+Four prominent journals in the field and a preprint server
 were used as sources to collect data for this analysis:
 
 \begin{multicols}{2}
@@ -230,6 +264,87 @@ were used as sources to collect data for this analysis:
 The data set has been archived and is available at~\cite{pd_data_2018}. Note that the latest data
 collection was performed on the \(30^{\text{th}}\) November 2018.
 % TODO Ensure this stay accurate
+
+
+The data set~\cite{pd_data_2018} consists of \totalarticles articles with unique
+titles. In case of duplicates the preprint version of an article (collected from
+arXiv) was dropped. Similarly to~\cite{Liu2015}, \manual articles have not been
+collected from the aforementioned APIs but have been manually added because they
+are of interest. Examples of such papers include~\cite{Flood1958}
+the first publication on the PD,~\cite{Ohtsuki2006, Stewart2012} two well cited
+articles in the field, and a series of works from Robert Axelrod
+~\cite{Axelrod1981, Riolo2001} a
+leading author of the field. A more detailed summary of the articles' provenance
+is given by Table~\ref{table:preliminary_table}. Only 3\% of the data set consists of
+articles that were manually added and 27\% of the articles were collected from
+arXiv. The average number of publications is also included in
+Table~\ref{table:preliminary_table}. Overall an average of 43 articles are published
+per year on the topic. The most significant contribution to this appears to be
+from arXiv with 11 articles per year, followed by Springer with 9 and PLOS with
+8.
+
+\begin{table}[!hbtp]
+    \begin{center}
+    \resizebox{.9\textwidth}{!}{
+    \input{assets/preliminary_table}}
+    \end{center}
+    \caption{Summary of~\cite{pd_data_2018} per provenance.}
+    \label{table:preliminary_table}
+\end{table}
+
+The data handled  here is in fact a time series from the 1950s, the formulation
+of the game, until 2018 (Figure~\ref{fig:timeseries}). Two observations can be
+made from Figure~\ref{fig:timeseries}.
+
+\begin{enumerate}
+    \item There is a steady increase of the number of publications since the
+    1980s and the introduction of computer tournaments~\cite{Axelrod1981}
+    (work by Robert Axelrod).
+    \item There is a decrease in 2017-2018. This is due to our data set being
+    incomplete. Articles that have been written in 2017-2018 have either not
+    being published or were not retrievable by the APIs at the time of the last
+    data collection.
+\end{enumerate}
+
+These observations can be confirmed by studying the time series.
+Using~\cite{scipy}, an exponential distribution is fitted to the data.
+The fitted model can be used to forecast the
+behaviour of the field for the next 5 years. Even
+though the time series has indicated a slight decrease, the model forecasts that
+the number of publications will keep increasing, thus demonstrating that the
+field of the PD continues to attract academic attention.
+
+\begin{figure}[!hbtp]
+    \centering
+    \includegraphics[width=.50\textwidth]{./assets/images/forecasting.pdf}
+    \caption{Number of articles published on the PD 1951-2018 (on a log scale),
+    with a fitted exponential line, and a forecast for 2017-2022.}\label{fig:timeseries}
+\end{figure}
+
+There are a total of \authors authors in the data set (\cite{pd_data_2018}) and several of these
+authors have had multiple publications collected from the data collection process.
+The highest number of articles collected for an
+author is 83 publications for Matjaz Perc. Howver, Matjaz Perc is an outlier
+most authors have 1 to 6 publications in the data set.
+
+The overall Collaboration Index (CI) or the average number of authors on
+multi-authored papers is 3.2, thus on average a non single author publication in
+the PD has 3 authors. This appears to be quite standard compared to other fields
+such as cultural evolution~\cite{youngblood2018}, Astronomy and Astrophysics,
+Genetics and Heredity, Nuclear and Particle Physics as reported
+by~\cite{nature_author_blog}.
+There are only a total of 545 publications with a single author, which
+corresponds to the 22\% of the papers. It appears that academic publications
+tend to be undertaken in the form of collaborative effort, which is in line
+with the claim of~\cite{Kyvik2017}.
+
+The collaborativeness of the authors is explored in more detail in
+Section~\ref{section:co_authorship} using the co-authorship network. The
+collaborative behaviour and relative influence of authors will also be explored
+in co-authorship networks which correspond to their publications research topics.
+These topics are presented in the next section.
+
+\section{Results}\label{section:topics}
 
 The relationship between the authors within a field will be modeled as a graph
 \(G = (V_G, E_G)\) where \(V_G\) is the set of nodes and \(E_G\)  is the set of
@@ -328,94 +443,6 @@ the number of topics is specified in advance before running the algorithm. The
 number of topics can be chosen using the coherence value~\cite{Roder2015} or
 through subjective minimisation of the overlapping keywords between two topics.
 Both these approaches will be used in this work.
-
-Several of the approaches described in this section have previously been
-carried out in~\cite{Bergmann2018,Liu2015,Sugimoto2011, youngblood2018},
-the novelty here is combining the approaches as well as applying them
-to a new data set. A preliminary analysis of the data set is presented in the
-following section.
-
-\section{Preliminary Analysis}\label{section:preliminary}
-
-The data set~\cite{pd_data_2018} consists of \totalarticles articles with unique
-titles. In case of duplicates the preprint version of an article (collected from
-arXiv) was dropped. Similarly to~\cite{Liu2015}, \manual articles have not been
-collected from the aforementioned APIs but have been manually added because they
-are of interest. Examples of such papers include~\cite{Flood1958}
-the first publication on the PD,~\cite{Ohtsuki2006, Stewart2012} two well cited
-articles in the field, and a series of works from Robert Axelrod
-~\cite{Axelrod1981, Riolo2001} a
-leading author of the field. A more detailed summary of the articles' provenance
-is given by Table~\ref{table:preliminary_table}. Only 3\% of the data set consists of
-articles that were manually added and 27\% of the articles were collected from
-arXiv. The average number of publications is also included in
-Table~\ref{table:preliminary_table}. Overall an average of 43 articles are published
-per year on the topic. The most significant contribution to this appears to be
-from arXiv with 11 articles per year, followed by Springer with 9 and PLOS with
-8.
-
-\begin{table}[!hbtp]
-    \begin{center}
-    \resizebox{.9\textwidth}{!}{
-    \input{assets/preliminary_table}}
-    \end{center}
-    \caption{Summary of~\cite{pd_data_2018} per provenance.}
-    \label{table:preliminary_table}
-\end{table}
-
-The data handled  here is in fact a time series from the 1950s, the formulation
-of the game, until 2018 (Figure~\ref{fig:timeseries}). Two observations can be
-made from Figure~\ref{fig:timeseries}.
-
-\begin{enumerate}
-    \item There is a steady increase of the number of publications since the
-    1980s and the introduction of computer tournaments~\cite{Axelrod1981}
-    (work by Robert Axelrod).
-    \item There is a decrease in 2017-2018. This is due to our data set being
-    incomplete. Articles that have been written in 2017-2018 have either not
-    being published or were not retrievable by the APIs at the time of the last
-    data collection.
-\end{enumerate}
-
-These observations can be confirmed by studying the time series.
-Using~\cite{scipy}, an exponential distribution is fitted to the data.
-The fitted model can be used to forecast the
-behaviour of the field for the next 5 years. Even
-though the time series has indicated a slight decrease, the model forecasts that
-the number of publications will keep increasing, thus demonstrating that the
-field of the PD continues to attract academic attention.
-
-\begin{figure}[!hbtp]
-    \centering
-    \includegraphics[width=.50\textwidth]{./assets/images/forecasting.pdf}
-    \caption{Number of articles published on the PD 1951-2018 (on a log scale),
-    with a fitted exponential line, and a forecast for 2017-2022.}\label{fig:timeseries}
-\end{figure}
-
-There are a total of \authors authors in the data set (\cite{pd_data_2018}) and several of these
-authors have had multiple publications collected from the data collection process.
-The highest number of articles collected for an
-author is 83 publications for Matjaz Perc. Howver, Matjaz Perc is an outlier
-most authors have 1 to 6 publications in the data set.
-
-The overall Collaboration Index (CI) or the average number of authors on
-multi-authored papers is 3.2, thus on average a non single author publication in
-the PD has 3 authors. This appears to be quite standard compared to other fields
-such as cultural evolution~\cite{youngblood2018}, Astronomy and Astrophysics,
-Genetics and Heredity, Nuclear and Particle Physics as reported
-by~\cite{nature_author_blog}.
-There are only a total of 545 publications with a single author, which
-corresponds to the 22\% of the papers. It appears that academic publications
-tend to be undertaken in the form of collaborative effort, which is in line
-with the claim of~\cite{Kyvik2017}.
-
-The collaborativeness of the authors is explored in more detail in
-Section~\ref{section:co_authorship} using the co-authorship network. The
-collaborative behaviour and relative influence of authors will also be explored
-in co-authorship networks which correspond to their publications research topics.
-These topics are presented in the next section.
-
-\section{Research topics in the Prisoner's Dilemma research}\label{section:topics}
 
 In order to identify the topics which are being discussed in the field of the
 PD, the LDA algorithm implemented in~\cite{rehurek_lrec} is applied to the
