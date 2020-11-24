@@ -195,39 +195,11 @@ reproduced all code used to query the different APIs has been packaged as a
 Python library and is available online~\cite{nikoleta_2017}. The software could
 be used for any type of projects similar to the one described here,
 documentation for it is available at:
-\url{http://arcas.readthedocs.io/en/latest/}. Project~\cite{nikoleta_2017} allow
-users to collect articles from a list of APIs by specifying just a single
-keyword.
+\url{http://arcas.readthedocs.io/en/latest/}.
 
-\begin{center}
-    \includestandalone{assets/tex/scrape}
-\end{center}
-    
-
-\begin{center}
-\includestandalone{assets/tex/data_collection_diagram}
-\end{center}
-
-Articles for which any of the terms:
-
-\begin{itemize}
-\item prisoner's dilemma
-\item prisoners dilemma
-\item prisoner dilemma
-\item prisoners evolution
-\item prisoner game theory
-\end{itemize}
-
-existed within the title, the abstract or the text are included in the analysis.
-we looked at a number of paper that we know are relevant and identified that
-these are the relevant keywords. Other terms such as donation game, etc could
-also have been used but were not. Whilst the results obtained, do generalise to
-the overall stated goal of the paper they are inferred only from the dataset
-used which is available at.
-
-
-Four prominent journals in the field and a preprint server
-were used as sources to collect data for this analysis:
+There are five different APIs implemented within project~\cite{nikoleta_2017}.
+These five APIs correspond to four prominent publishers of the field and a
+preprint server:
 
 \begin{multicols}{2}
     \begin{itemize}
@@ -255,18 +227,27 @@ were used as sources to collect data for this analysis:
     \end{itemize}
 \end{multicols}
 
-The data set has been archived and is available at~\cite{pd_data_2018}. Note that the latest data
-collection was performed on the \(30^{\text{th}}\) November 2018.
-% TODO Ensure this stay accurate
+The specific APIs were choosen to be implemented not only because they correspond
+to prominent publishers, but also because they allow for free use of their APIs
+and free collection of their data.
+For a given API,~\cite{nikoleta_2017} allows users to collect articles by simple
+specifying search terms and search fields. Articles for which any of the terms:
+
+\begin{itemize}
+\item prisoner's dilemma
+\item prisoners dilemma
+\item prisoner dilemma
+\item prisoners evolution
+\item prisoner game theory
+\end{itemize}
 
 existed within the title, the abstract or the text are included in the analysis.
 These search terms were chosen after identifying that these are terms that
 appear in papers known to be relevant in the field. Note that there are several
-other terms that could have been used as well, such as donation game. The results of
+other terms that have been used as well, such as donation game. The results of
 the manuscript do generalise to the overall stated goals
 (Section~\ref{section:introduction}), but they are inferred only from
 the data collected on the specific search terms and search fields.
-%TODO VK to have a thing about this sentence
 
 The latest data collection was performed on the \(30^{\text{th}}\) November
 2018. Following the automatic collection the data set was cleaned manually. More
@@ -296,14 +277,7 @@ This data set has been archived and is available at~\cite{pd_data_2018}.
 %reviewer's comment
 
 The data set~\cite{pd_data_2018} consists of \totalarticles articles with unique
-titles. In case of duplicates the preprint version of an article (collected from
-arXiv) was dropped. Similarly to~\cite{Liu2015}, \manual articles have not been
-collected from the aforementioned APIs but have been manually added because they
-are of interest. Examples of such papers include~\cite{Flood1958}
-the first publication on the PD,~\cite{Ohtsuki2006, Stewart2012} two well cited
-articles in the field, and a series of works from Robert Axelrod
-~\cite{Axelrod1981, Riolo2001} a
-leading author of the field. A more detailed summary of the articles' provenance
+titles. A more detailed summary of the articles' provenance
 is given by Table~\ref{table:preliminary_table}. Only 3\% of the data set consists of
 articles that were manually added and 27\% of the articles were collected from
 arXiv. The average number of publications is also included in
