@@ -257,6 +257,41 @@ The data set has been archived and is available at~\cite{pd_data_2018}. Note tha
 collection was performed on the \(30^{\text{th}}\) November 2018.
 % TODO Ensure this stay accurate
 
+existed within the title, the abstract or the text are included in the analysis.
+These search terms were chosen after identifying that these are terms that
+appear in papers known to be relevant in the field. Note that there are several
+other terms that could have been used as well, such as donation game. The results of
+the manuscript do generalise to the overall stated goals
+(Section~\ref{section:introduction}), but they are inferred only from
+the data collected on the specific search terms and search fields.
+%TODO VK to have a thing about this sentence
+
+The latest data collection was performed on the \(30^{\text{th}}\) November
+2018. Following the automatic collection the data set was cleaned manually. More
+specifically, papers for which the search terms existed within the text were
+check to reassure their relevance to the PD topic. A number of articles were
+removed in this step. Moreover, the data were checked for duplicates. In case
+of duplicates the preprint version of an article (collected fromarXiv) was dropped.
+A total of \manual articles were not
+collected but were manually added because they are of interest to the field.
+Examples of such papers include~\cite{Flood1958} the first publication on the
+PD,~\cite{Ohtsuki2006, Stewart2012} two well cited articles in the field, and a
+series of works from Robert Axelrod ~\cite{Axelrod1980, Axelrod1980more,
+Axelrod1987, Axelrod1981, Riolo2001} a leading author of the field.
+
+The process of obtaining the final and clean data set used in the manuscript is
+shown in Figure~\ref{figure:colection_process}.
+This data set has been archived and is available at~\cite{pd_data_2018}.
+
+\begin{figure}[!hbtp]
+    \begin{center}
+        \includestandalone[width=\textwidth]{assets/tex/data_collection_diagram}
+    \end{center}
+    \caption{The generating process of~\cite{pd_data_2018}.}\label{figure:colection_process}
+\end{figure}
+
+%TODO add that sentence to summarise again our choices in the data collection:
+%reviewer's comment
 
 The data set~\cite{pd_data_2018} consists of \totalarticles articles with unique
 titles. In case of duplicates the preprint version of an article (collected from
@@ -331,83 +366,16 @@ tend to be undertaken in the form of collaborative effort, which is in line
 with the claim of~\cite{Kyvik2017}.
 
 The collaborativeness of the authors is explored in more detail in
-Section~\ref{section:co_authorship} using the co-authorship network. The
-collaborative behaviour and relative influence of authors will also be explored
-in co-authorship networks which correspond to their publications research topics.
-These topics are presented in the next section.
+Section~\ref{section:results} using the co-authorship network. The collaborative
+behaviour of authors will also be explored in co-authorship networks which
+correspond to their publications research topics. These topics and their
+reverence over time are also presented in the next section.
 
 \section{Results}\label{section:results}
 
-The relationship between the authors within a field will be modeled as a graph
-\(G = (V_G, E_G)\) where \(V_G\) is the set of nodes and \(E_G\)  is the set of
-edges. The set \(V_G\) represents the authors and an edge connects two authors
-if and only if those authors have written together. This co-authorship network is
-constructed using the main data set~\cite{pd_data_2018} and the open source package
-\cite{networkx}. The PD network is denoted as \(G\) where the
-number of unique authors \(|V(G)|\) is \authors and \(|E(G)|\) is \edges.
-All authors' names were formatted as their first name and last name (i.e.
-Martin A. Nowak to Martin Nowak). This was done to avoid errors such as Martin
-A. Nowak and Martin Nowak being treated as a different person. There are some
-authors for which only their first initial was found. These entries are left as
-such.
+\subsection{Research topics in the Prisoner's Dilemma research}\label{subsection:research_topics}
 
-The collaborativeness of the authors will be analysed using measures such as, isolated nodes,
-connected components, clustering coefficient, communities, modularity and average degree.
-These measures show the number of connections authors can have
-and how strongly connected these people are. The number of isolated nodes is the
-number of nodes that are not connected to another node, thus the
-number of authors that have published alone. The average degree denotes the average
-number of neighbours for each nodes, i.e. the average number of collaborations
-between the authors.
-A connected component is a maximal set of nodes such that each pair of nodes is
-connected by a path~\cite{Easley2010}. The number of connected components as well as the size of the
-largest connected component in the network are reported.
-The size of the largest connected component represents the scale of the central cluster
-of the entire network, as will be discussed in the analysis section.
-Clustering coefficient and modularity are also calculated. The clustering
-coefficient, defined as 3 times the number of triangles on the graph divided
-by the number of connected triples of nodes, is a local measure of the degree to
-which nodes in a graph tend to cluster together
-in a clique~\cite{Easley2010}. It shows to which extent the collaborators
-of an author also write together.
-In comparison, modularity is a global measure designed to measure the strength of
-division of a network into communities. The number of communities will be reported
-using the Clauset-Newman-Moore method~\cite{clauset2004}. Also the modularity index
-is calculated using the Louvain method described in~\cite{Blondel2008}. The value
-of the modularity index can vary between \([-1, 1]\), a high value of modularity
-corresponds to a structure where there are dense connections between the nodes within
-communities but sparse connections between nodes in different communities.
-That means that there are many sub communities of authors that write together
-but not across communities.
-Two further points are aimed to be explored in this work, (1) which people control the flow
-of information;
-as in which people influence the field the most and (2) which are the authors that
-gain the most from the influence of the field. To measure these concepts
-centrality measures are going to be used.
-Centrality measures are often used to understand different
-aspects of social networks~\cite{Landherr2010}. Two centrality measures have been
-chosen for this paper and these are closeness and betweenness centrality.
-
-\begin{enumerate}
-    \item In networks some nodes have a short distance to a lot of nodes and
-    consequently are able to spread information on the network very effectively.
-    A representative of this idea is \textbf{closeness centrality}, where a node
-    is seen as centrally involved in the network if it requires only few
-    intermediaries to contact others and thus is structurally relatively
-    independent. Closeness centrality is interpreted as influence. Authors with a high
-    value of closeness centrality, are the authors that spread scientific
-    knowledge easier on the network and they have high influence.
-    \item Another centrality measure is the \textbf{betweenness centrality},
-    where the determination of an author's centrality is based on the quotient
-    of the number of all shortest paths between nodes in the network that
-    include the node in question and the number of all shortest paths in the
-    network. In betweenness centrality the position of the node matters. Nodes
-    with a higher value of betweenness centrality are located in positions that
-    a lot of information pass through, this is interpreted as the gain from
-    the influence, thus these authors gain the most from their networks.
-\end{enumerate}
-
-The articles contained in the data set (\cite{pd_data_2018}) will be classified
+The articles contained in the data set (\cite{pd_data_2018}) are classified
 into research topics using LDA an unsupervised machine learning technique
 designed to summarize large collections of documents by a small number of
 conceptually connected topics or themes~\cite{Blei2003, Grimmer2013}. The
@@ -430,71 +398,48 @@ The percentage contribution for a document with abstract ``The study of
 cooperation in humans'' has a \(c_{A} = 0.039 + 0.028 + 0.026 = 0.093\) and
 \(c_B = .020 + 0.0 + 0.0 = 0.020\). The topic to which a document is assigned to
 is based on the highest percentage contribution denoted as \(c^*\). For the
-given example the dominant topic is Topic A \(c^*=c_A\). LAD requires that
-the number of topics is specified in advance before running the algorithm. The
-number of topics can be chosen using the coherence value~\cite{Roder2015} or
-through subjective minimisation of the overlapping keywords between two topics.
-Both these approaches will be used in this work.
+given example the dominant topic is Topic A \(c^*=c_A\).
 
-In order to identify the topics which are being discussed in the field of the
-PD, the LDA algorithm implemented in~\cite{rehurek_lrec} is applied to the
-abstracts of the data set. As mentioned before, the number of topics, which
-will be denoted as \(n\), needs to be specified before running the algorithm.
-The appropriate number of topics is chosen based on the coherence
-value~\cite{Roder2015}. The coherence value was calculated for 18 models 
-where \(n \in \{2, 3, \dots, 19\}\), and the model with the highest coherence value
-was that of \(n=6\) with a coherence value of 0.418.
+LAD requires that the number of topics is specified in advance before running
+the algorithm. The appropriate number of topics is chosen based on the
+coherence score~\cite{Roder2015} and the exclusivity~\cite{Airoldi2012}. The
+coherence score measures the degree of semantic similarity between high scoring
+words of a topic. There are cases for which a few topics can be dominated by very
+common words, and for that reason the exclusivity of words to topics has also
+been calculated.
+Figure~\ref{fig:coherence_value_over_number_of_topics} gives the topic coherence
+and Figure~\ref{fig:exclusivity_value_over_number_of_topics} gives the
+exclusivity of 18 models where \(n \in \{2, 3, \dots, 18\}\).
+The LDA models and the topic coherence for each model were calculating using the
+open source project~\cite{rehurek_lrec}. The exclusivity measure was calculated
+with an altered version of~\cite{rehurek_lrec} which has been archived
+at~\cite{gensim_nikoleta}.
 
-An LDA model outputs an \(N \times n\) matrix - \(N\) rows for \(N\)
-abstracts and \(n\) columns for \(n\) topics. The cells contain the percentage
-contributions for each topic for each abstract, \(c_i^ j\) for
-\(i \in \{1, 2, \dots, n\}\) for \(j \in \{1, 2, \dots, N\}\). In essence,
-LDA maps every paper to a vector space of dimension the number of topics. In the case
-of 6 topics it is difficult to visualise the clustering of topics. To overcome
-this a dimensionality reduction approach called t-Distributed Stochastic Neighbor Embedding
-(t-SNE)~\cite{Maaten2008} is applied to the LDA model outputs. More specifically,
-t-SNE is used to reduce the dimensions of each \(c^j\) from \(n\) to 2.
-Figure~\ref{fig:lda_visualisation_six}, gives the visualisation of LDA for \(n=6\).
-Each point represents a single document and its color corresponds to the topic
-with the highest percentage contribution. The documents which are clustered
-together have a similar percentage contribution distribution over the topics.
+From Figure~\ref{fig:coherence_value_over_number_of_topics} it can be seen that
+the number of topics with the highest coherence score are $n=6$ (coherence score
+of 0.418) and $n=12$ (coherence score of 0.417).
+Figure~\ref{fig:coherence_value_over_number_of_topics} shows that the
+exclusivity of the high ranking words of the topics is decreasing as the number
+of topics increases. A number of topics $n=5$ has a better exclusivity value
+than the model of $n=6$, and it's coherence score is 0.406 (which is closed to
+0.418). For that reason $n=5$ is chosen to carry out the analysis of this work.
 
-Even though the LDA model with \(n=6\) has the highest coherence value, Figure
-\ref{fig:lda_visualisation_six} shows that documents of the same topic are
-closer to documents from other topics than each other. For example the documents
-of topic 2 are divided into two clusters. The one cluster is closer to documents
-from topic 4 and the other has a few documents closer to topic 1. In the case of \(n=6\)
-topic 4 appears to be on ``evolution of cooperation on networks'', and the
-papers from topic 2 surrounded from topic 4 include the articles
-``Evolutionary prisoner's dilemma game on hierarchical lattices''~\cite{Vukov2005}
-and ``Social evolution in structured populations''~\cite{Debarre2014}. Publications
-that clearly also fit topic 4.
-
-In comparison,
-\ref{fig:lda_visualisation_five} gives the visualisation of LDA \(n=5\) where
-the separation of the documents is more clear. Though
-several models, Figure~\ref{fig:coherence_value_over_number_of_topcis}, have a
-higher coherence value than the LDA model with \(n=5\), the separation
-of topics is not as clear for any model as it is for \(n=5\). Thus, \(n=5\) is
-chosen to carry out the analysis of this work, and moreover the LDA model for
-\(n=5\) has a coherence value 0.406 which is close to 0.418.
 
 \begin{figure}[!hbtp]
     \centering
     \begin{subfigure}{.45\textwidth}
         \centering
-        \includegraphics[width=.9\textwidth]{./assets/images/topics_scatter_plot_6.pdf}
-        \caption{With \(n=6\)}\label{fig:lda_visualisation_six}
-    \end{subfigure}\hfill
-    \begin{subfigure}{.45\textwidth}
+        \includegraphics[width=\textwidth]{./assets/images/coherence_values.pdf}
+        \caption{Coherence for LDA models over the number of topics.}
+        \label{fig:coherence_value_over_number_of_topics}
+    \end{minipage}\hfill
+    \begin{minipage}{.45\textwidth}
         \centering
-        \includegraphics[width=.9\textwidth]{./assets/images/topics_scatter_plot_5.pdf}
-        \caption{With \(n=5\)}\label{fig:lda_visualisation_five}
-    \end{subfigure}
-    \caption{Visualisation of LDA on 2 dimensions.}
+        \includegraphics[width=\textwidth]{./assets/images/exclusivity_values.pdf}
+        \caption{Exclusivity for LDA models over the number of topics.}
+        \label{fig:exclusivity_value_over_number_of_topics}
+    \end{minipage}
 \end{figure}
-
-\textbf{What are the research topics of the Prisoner's Dilemma?}
 
 For \(n=5\) the articles are clustered and assigned to their dominant topic,
 based on the highest percentage contribution. The keywords associated with a
@@ -561,25 +506,22 @@ E, and more specifically:
 Note that the whilst for the choice of 5 topics the actual clustering is not
 subjective (the algorithm is determining the output) the interpretation above is.
 
-\textbf{Five topics in the PD publications identified by the data set of this
+The five topics in the PD publications identified by the data set of this
 work are human subject research, biological studies, strategies, evolutionary
-dynamics on networks and modeling problems as a PD}.
-
+dynamics on networks and modeling problems as a PD
 These 5 topics nicely
 summarise the PD research. They highlight the interdisciplinarity of the field;
 how it brings together applied modeling of real world situations (Topic B and E)
 and more theoretical notions such as evolutionary dynamics and optimality of
 strategies.
 
-\textbf{Is one topic currently more in fashion?}
-
 Figure~\ref{fig:number_of_articles_per_topic} gives the number of articles
 per topic over time. The topics appear to have had a similar trend over the years,
 with topics B and D having a later start. Following the introduction of a topic
 the publications in that topic have been increasing. There is no decreasing
 trend in any of the topics. All the topics have been publishing for years and
-they still attract the interest of academics. Thus, \textbf{there does not
-seem to be any given topic more or less in fashion}.
+they still attract the interest of academics. Thus, there does not
+seem to be any given topic more or less in fashion.
 
 \begin{figure}[!hbtp]
     \centering
@@ -587,14 +529,12 @@ seem to be any given topic more or less in fashion}.
     \caption{Number of articles per topic over the years (on a logged scale).}\label{fig:number_of_articles_per_topic}
 \end{figure}
 
-\textbf{How do the research topics change over the years?}
-
 To gain a better understanding regarding the change in the topics over the years,
 LDA is applied to the cumulative data set over 8 time periods. These periods are
 1951-1965, 1951-1973, 1951-1980, 1951-1988, 1951-1995, 1951-2003, 1951-2010,
-1951-2018. The number of topics for each cumulative subset is chosen based on
-the coherence value and no objective approach is used. As a result, the period
-1951-2018 has been assigned \(n=6\) which had the highest coherence
+1951-2018. The number of topics for each cumulative subset is chosen based only
+on the topic coherence, and the exclusivity is not taken into account. As a result,
+the period 1951-2018 has been assigned \(n=6\) which had the highest coherence
 value instead of 5. The chosen models for each period including the
 number of topics, their keywords and number of articles assigned to them are
 given in the Appendix~\ref{appendix:topics_per_year}.
@@ -602,7 +542,8 @@ given in the Appendix~\ref{appendix:topics_per_year}.
 But how well do the five topics which were presented earlier fit the
 publications over time? This is answered by comparing the performance of three
 LDA models over the cumulative periods' publications. The three models are LDA
-models for the entire data set for \(n\) equal to 5, 6 and the optimal number of topics over time. For
+models for the entire data set for \(n\) equal to 5, 6 and the models of
+Table~\ref{table:topics_per_year} for each time period. For
 each model the \(c^*\) is estimated for each document in the cumulative data
 sets. The performance of the models are then compared based on:
 
@@ -621,9 +562,9 @@ The five topics of the PD presented in this manuscript appear to always be
 less good at fitting the publications compared to the six topics of LDA \(n=6\).
 Moreover, there are less good than the topics of the optimal number of topics
 from 1951 to 1995. The difference in the performance values, equation (\ref{eq:ratio}),
-however are small. \textbf{The relevances of the five topics has been increasing
+however are small. The relevances of the five topics has been increasing
 over time, and though, the topics did not always fit the majority of published
-work over time, there were still papers being published on those topics}.
+work over time, there were still papers being published on those topics.
 
 \begin{figure}[!hbtp]
     \centering
