@@ -38,13 +38,13 @@ size=10mm]
 }
 \makeatother
 
-\node (title) at (-.5, 1.2) {DATA SCRAPING};
+\node (title) at (1.5, 1.2) {COLLECTING DATA FROM SOURCES};
 \node [circle, black, fill=black] (start) at (-2,0) {};
 \node [place] (api) at (0, 0) {SELECT API};
 \node [place] (field) at (4, 0) {SELECT SEARCH FIELD};
 \node [place] (term) at (9, 0) {SELECT SEARCH TERM};
 
-\node [red place] (arcas) at (11.5, -2) {};
+\node [red place, font=\tiny] (arcas) at (11.5, -2) {Project~\cite{nikoleta_2017}};
 \node[database,label=below:raw data,database radius=.5cm,database segment
 height=0.2cm] (db) at (9,-4) {};
 
@@ -60,8 +60,8 @@ height=0.2cm] (db) at (9,-4) {};
 \draw (start) edge[out=0, in=180, ->, thick] node [] {} (api);
 \draw (api) edge[out=0, in=180, ->, thick] node [] {} (field);
 \draw (field) edge[out=0, in=180, ->, thick] node [] {} (term);
-\draw (term) edge[out=0, in=90, ->, thick] node [] {} (arcas);
-\draw (arcas) edge[out=-90, in=0, ->, thick] node [] {} (db);
+\draw (term) edge[out=0, in=90, ->, thick] node [] {query} (arcas);
+\draw (arcas) edge[out=-90, in=0, ->, thick] node [] {articles} (db);
 \draw (db) edge[out=90, in=-90, ->, thick] node [] {} (if_term);
 
 
@@ -72,8 +72,7 @@ height=0.2cm] (db) at (9,-4) {};
 \draw (if_field) edge[out=180, in=0, ->, thick] node [above] {Yes} (if_api);
 
 \draw (if_api) edge[out=90, in=-90, ->, thick] node [right] {No} (api);
-\draw (if_api) edge[out=-90, in=180, ->, thick, dotted] node [above] {stop
-collection} (db);
+\draw[dotted, ->, thick] (if_api) |- node [above right] {stop collection} (db);
 
 % second layer
 
@@ -83,7 +82,7 @@ height=0.2cm] (db_to_clean) at (9, -6.5) {};
 \draw (db) edge[out=-90, in=90, ->, thick, dotted] node [above] {} (db_to_clean);
 
 \node [place, draw=orange!80, fill=orange!25, font=\footnotesize, text width=14em, text badly centered] (titles) at (5,
--6.5) {\textbf{LIST} lexicographical similar titles \textbf{REMOVE} duplicates};
+-6.5) {\textbf{FIND} semantic similar titles \textbf{REMOVE} duplicate articles};
 
 \draw (db_to_clean) edge[out=180, in=0, ->, thick, dashed] node  {} (titles);
 
@@ -94,7 +93,8 @@ height=0.2cm] (db_left) at (1, -6.5) {};
 \draw (titles) edge[out=180, in=0, ->, thick, dashed] node  {} (db_left);
 
 \node [place, draw=orange!80, fill=orange!25, font=\footnotesize, text width=14em, text badly centered] (authors) at (5,
--8.5) {\textbf{LIST} lexicographical similar authors \textbf{Fix} authors name};
+-8.5) {\textbf{FIND} semantic similar authors \\ \textbf{FIX} an author's
+name instances to one style};
 
 \draw (db_left) edge[out=-90, in=180, ->, thick, dashed] node  {} (authors);
 
@@ -104,8 +104,8 @@ height=0.2cm] (db_right) at (9, -8.5) {};
 \draw (authors) edge[out=0, in=180, ->, thick, dashed] node  {} (db_right);
 
 \node [place, draw=orange!80, fill=orange!25, font=\footnotesize, text width=14em, text badly centered] (entries) at (5,
--10.5) {\textbf{LIST} lexicographical similar authors \textbf{Fix} authors
-name};
+-10.5) {\textbf{FIND} articles that were collected because a search term existed
+in the text \\ \textbf{REMOVE} not relevant articles};
 
 \draw (db_right) edge[out=-90, in=0, ->, thick, dashed] node  {} (entries);
 
