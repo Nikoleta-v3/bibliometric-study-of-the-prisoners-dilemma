@@ -48,9 +48,11 @@
 \newcommand{\clustering}{\input{assets/Clustering_coeff.txt}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\title{A bibliometric study of research topics, collaboration and influence
+\title{A bibliometric study of research topics and collaboration
 in the Iterated Prisoner's Dilemma}
-%TODO change title
+
+%TODO VK: or A bibliometric study of research topics, collaboration and centrality
+% in the Iterated Prisoner's Dilemma
 
 \author{}
 
@@ -67,16 +69,14 @@ of time. These are human subject research, biological studies, strategies,
 evolutionary dynamics on networks and modeling problems as a Prisoner's Dilemma
 game. Moreover, the results demonstrated the Prisoner's Dilemma is a field of
 continued interest, and although it is a collaborative field, it is not
-necessarily more collaborative than other scientific fields. The co-authorship
+necessarily more collaborative than other game theoretic fields. The co-authorship
 network suggests that authors are focused on their communities and not many
-connections across the communities are made. The Prisoner Dilemma authors also
-do not influence or gain much information by their connections, unless they are
-connected to a ``main'' group of authors.
+connections across the communities are made.
 \end{abstract}
 %TODO The last sentence should be replaced with a sentence such as:
 %The network grows over time. So does the main cluster of the network.
 %The most central people are the people in the main cluster
-%and they all write in the evolutonary on networks topic
+%and they all write in the evolutionary on networks topic
 
 \section{Introduction}\label{section:introduction}
 
@@ -86,12 +86,12 @@ cooperation; a topic of continued interest for mathematical,
 social, biological and
 ecological sciences. This manuscript presents a bibliometric
 analysis of 2,420 published articles on the Prisoner's Dilemma between 1951 and
-2018. It presents the dominant topics in the PD publications, which have been
+2018. It presents a number of research topics in the PD publications, which have been
 identified using Latent Dirichlet Allocation (LDA)~\cite{Blei2003}, and it explores the changes in the
-dominant topics over time. The collaborative behaviour of the field is explored
+research topics over time. The collaborative behaviour of the field is explored
 using the co-authorship network, and furthermore, the LDA
 topic analysis is combined with the co-authorship network analysis to assess
-the relative influence of authors in these topics. Assessing the collaborative
+the most central authors in these topics. Assessing the collaborative
 behaviour of the field of collaboration itself is the main aim of this work.
 
 As discussed in~\cite{youngblood2018}, bibliometrics (the statistical analysis
@@ -128,11 +128,7 @@ subdisciplines of the interdisciplinary field of ``cultural evolution'' and
 investigate trends in collaboration and productivity between these subdisciplines.
 Moreover, \cite{Li2019} examined the
 long-term impact of co-authorship with established, highly-cited scientists on
-the careers of junior researchers. This paper builds upon the work done
-by~\cite{Liu2015} and ~\cite{youngblood2018}, and extends their methodology.
-In \cite{Liu2015, youngblood2018}, a data set from a
-single source, Web of Science, is considered whereas the data set described here, archived
-at~\cite{pd_data_2018}, has been collected from five sources.
+the careers of junior researchers.
 
 LDA is a topic modeling technique proposed
 in~\cite{Blei2003} as a generative probabilistic model for discovering
@@ -151,21 +147,17 @@ in~\cite{Bergmann2018}. In~\cite{Bergmann2018} the LDA approach is combined with
 clustering and a co-authorship network analysis. A clustering analysis is
 applied to the LDA topics, and the co-authorship network is analysed as a whole
 where the clusters are only used to differentiate between the authors' topics.
-In comparison, this works applies
-LDA to identify dominant topics in the PD fields and analyses
-the networks corresponding to these topics individually.
 
-Though several of the approaches used in this manuscript have previously been
-carried out, as already discussed, the novelty here is combining the approaches
-as well as applying them to a new data set. The methodology used in this
-manuscript, which includes the data collection and a preliminary analysis of the
-data set, are covered in Section~\ref{section:methodology}. The results are
-presented in Section~\ref{section:results} and summarised in
-Section~\ref{section:conclusion}. The results of the manuscript fit two
-categories. Initially, the results on the research topics of the PD and secondly
-the results of the co-authorship network.
-%TODO add a result sentence?
-
+This paper builds upon the previous works of~\cite{Bergmann2018, Liu2015,
+youngblood2018}. It extends their methodology, it combines identified topics by
+an LDA model with the co-authorship network analysis, and applies all these
+techniques to a new data set. The methodology used in this manuscript, which
+includes the data collection and a preliminary analysis of the data set, is
+covered in Section~\ref{section:methodology}. The results on the research topics
+of the PD are presented in Section~\ref{subsection:research_topics}, and the
+results on the co-authorship network are presented in
+Section~\ref{subsection:co_authorship}. Finally, the conclusions are summarised
+in Section~\ref{section:conclusion}.
 
 \section{Methodology}\label{section:methodology}
 
@@ -227,7 +219,7 @@ preprint server:
     \end{itemize}
 \end{multicols}
 
-The specific APIs were choosen to be implemented not only because they correspond
+The specific APIs were chosen to be implemented not only because they correspond
 to prominent publishers, but also because they allow for free use of their APIs
 and free collection of their data.
 For a given API,~\cite{nikoleta_2017} allows users to collect articles by simple
@@ -555,7 +547,7 @@ In the following section the collaborative behaviour of authors in the field,
 and within the field's topics as were presented in this section, are explored
 using a network theoretic approach.
 
-\section{Analysis of co-authorship network}\label{section:co_authorship}
+\section{Analysis of co-authorship network}\label{subsection:co_authorship}
 
 The relationship between the authors within a field will be modeled as a graph
 \(G = (V_G, E_G)\) where \(V_G\) is the set of nodes and \(E_G\)  is the set of
