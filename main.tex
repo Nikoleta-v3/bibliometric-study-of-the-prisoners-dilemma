@@ -545,9 +545,9 @@ In the following section the collaborative behaviour of authors in the field,
 and within the field's topics as were presented in this section, are explored
 using a network theoretic approach.
 
-\section{Analysis of co-authorship network}\label{subsection:co_authorship}
+\subsection{Analysis of co-authorship network}\label{subsection:co_authorship}
 
-The relationship between the authors within a field will be modeled as a graph
+The relationship between the authors within a field is modeled as a graph
 \(G = (V_G, E_G)\) where \(V_G\) is the set of nodes and \(E_G\)  is the set of
 edges. The set \(V_G\) represents the authors and an edge connects two authors
 if and only if those authors have written together. This co-authorship network is
@@ -556,7 +556,7 @@ constructed using the main data set~\cite{pd_data_2018} and the open source pack
 number of unique authors \(|V(G)|\) is \authors and \(|E(G)|\) is \edges.
 
 
-The collaborativeness of the authors will be analysed using measures such as, isolated nodes,
+The collaborativeness of the authors is analysed using measures such as, isolated nodes,
 connected components, clustering coefficient, communities, modularity and average degree.
 These measures show the number of connections authors can have
 and how strongly connected these people are. The number of isolated nodes is the
@@ -568,7 +568,7 @@ A connected component is a maximal set of nodes such that each pair of nodes is
 connected by a path~\cite{Easley2010}. The number of connected components as well as the size of the
 largest connected component in the network are reported.
 The size of the largest connected component represents the scale of the central cluster
-of the entire network, as will be discussed in the analysis section.
+of the entire network.
 Clustering coefficient and modularity are also calculated. The clustering
 coefficient, defined as 3 times the number of triangles on the graph divided
 by the number of connected triples of nodes, is a local measure of the degree to
@@ -576,59 +576,40 @@ which nodes in a graph tend to cluster together
 in a clique~\cite{Easley2010}. It shows to which extent the collaborators
 of an author also write together.
 In comparison, modularity is a global measure designed to measure the strength of
-division of a network into communities. The number of communities will be reported
+division of a network into communities. The number of communities is reported
 using the Clauset-Newman-Moore method~\cite{clauset2004}. Also the modularity index
-is calculated using the Louvain method described in~\cite{Blondel2008}. The value
+based on the Louvain method~\cite{Blondel2008} is calculated using~\cite{python_louvain}. The value
 of the modularity index can vary between \([-1, 1]\), a high value of modularity
 corresponds to a structure where there are dense connections between the nodes within
 communities but sparse connections between nodes in different communities.
 That means that there are many sub communities of authors that write together
 but not across communities.
-Two further points are aimed to be explored in this work, (1) which people control the flow
-of information;
-as in which people influence the field the most and (2) which are the authors that
-gain the most from the influence of the field. To measure these concepts
-centrality measures are going to be used.
-Centrality measures are often used to understand different
-aspects of social networks~\cite{Landherr2010}. Two centrality measures have been
-chosen for this paper and these are closeness and betweenness centrality.
+Two centrality measures are also reported. These are:
 
 \begin{enumerate}
-    \item In networks some nodes have a short distance to a lot of nodes and
-    consequently are able to spread information on the network very effectively.
-    A representative of this idea is \textbf{closeness centrality}, where a node
+    \item \textbf{Closeness centrality}, where a node
     is seen as centrally involved in the network if it requires only few
     intermediaries to contact others and thus is structurally relatively
-    independent. Closeness centrality is interpreted as influence. Authors with a high
-    value of closeness centrality, are the authors that spread scientific
-    knowledge easier on the network and they have high influence.
-    \item Another centrality measure is the \textbf{betweenness centrality},
+    independent.
+    \item \textbf{Betweenness centrality},
     where the determination of an author's centrality is based on the quotient
     of the number of all shortest paths between nodes in the network that
     include the node in question and the number of all shortest paths in the
-    network. In betweenness centrality the position of the node matters. Nodes
-    with a higher value of betweenness centrality are located in positions that
-    a lot of information pass through, this is interpreted as the gain from
-    the influence, thus these authors gain the most from their networks.
+    network. In betweenness centrality the position of the node matters.
 \end{enumerate}
 
-The collaborative behaviour of authors in the field of the PD is assessed using
-the co-authorship network, which as mentioned in
-Section~\ref{section:methodology} is denoted as \(G\). There are a total of
+There are a total of
 \connectedcomponents connected components in \(G\) and the largest component has
 a size of \largestcc nodes. The largest connected component is going to be
 refereed to as the main cluster of the network and is denoted as \(\bar{G}\). A
 metrics summary of both networks is given
 by Table~\ref{table:network_comparison}.
-
-\textbf{Is the Prisoner's Dilemma a collaborative field?}
-
 Based on Table~\ref{table:network_comparison} an author in \(G\) has on
 average 4 collaborators and a 70\% probability of collaborating with a
 collaborator's co-author. An author of \(\bar{G}\) on average is 7\% more likely
 to write with a collaborator's co-author and on average has 2 more
 collaborators. Moreover, there are only \isolatedpercentage\% of authors in the
-PD that has no connection to any other author.
+PD that have no connection to any other author.
 
 How does this compare to other fields? Two more data sets for the topics
 ``Price of Anarchy'' and ``Auction Games'' have been collected in order to
@@ -638,18 +619,14 @@ Price of Anarchy. Price of Anarchy is relatively a new field, with the first
 publication on the topic being~\cite{Koutsoupias1999} in 1999. This explains the
 small number of articles that have been retrieved. Both data sets have been
 archived and are available in~\cite{auction_data_2018, anarchy_data_2018}.
-The networks for both data sets have been generated in the same way as \(G\).
-A summary of the networks' metrics are also given by Table~\ref{table:network_comparison}.
+The networks for both data sets have been generated in the same way as \(G\),
+and a summary of the networks' metrics is also given by Table~\ref{table:network_comparison}.
 
 The average degrees for the Price of Anarchy and for Auction games are lower
-than the PD's. In Auction games an author is more likely to have no collaborators,
-and in the Price of Anarchy there are almost no authors that are not connected
-to someone. This could be an effect of the field being introduced in more modern
-days. Overall, an author in the PD has on average more collaborators
-and there are less isolated authors compared to another well established game
-theoretic field. These results seem to indicate that the PD is a \textit{relatively} collaborative
-field.
-
+than the PD's, and so are their respective clustering coefficients. Moreover,
+both the Price of Anarchy and Auction games have a larger number of isolated
+authors. These results seem to indicate that the PD is a \textit{relatively} collaborative
+field, compared to other game theoretic fields.
 However, both \(G\) and \(\bar{G}\) have a high modularity (larger than 0.84) and a large number of
 communities (967 and 25 respectively). A high modularity implies that authors create their own publishing
 communities but not many publications from authors from different communities
@@ -658,10 +635,6 @@ not many efforts are made to create new connections to other communities and
 spread the knowledge of the field across academic teams. The fields
 of both Price of Anarchy and Auction games also have high modularity, and
 that could indicate that is in fact how academic publications are.
-
-Thus, \textbf{the PD is indeed a collaborative field but perhaps it is not
-more collaborative than other fields}, as there is no effort from the authors
-to write with people outside their community.
 
 \begin{table}[!hbtp]
     \centering
@@ -676,35 +649,30 @@ network cumulatively over 51 periods. Except from the first period 1951-1966 the
 rest of the periods have a yearly interval (data for the years 1975 and 1982
 were not retrieved by the collection data process). The metrics of each sub
 network are given in the Appendix~\ref{appendix:tables}.
-
 The results, similarly to the results of~\cite{Liu2015}, confirm that the
 networks grow over time and that the networks always had a high modularity.
 Since the first publications authors tend to write with people from their
 communities, and that is not an effect of a specific time period.
 
-\textbf{Are some topics more collaborative than other?}
-
-The networks corresponding to the topics of Section~\ref{section:preliminary} have
+The networks corresponding to the topics of Section~\ref{subsection:research_topics} have
 also been generated similarly to \(G\). Note that authors with publications in
 more than one topic exist, and these authors are included in all the corresponding
 networks. A metrics' summary for all five topic networks is given by Table
 \ref{table:topics_networks}.
 
-Topic B is the network with the highest average degree followed by Topic A. The
-topic with the smallest average degree, 2.5, is Topic C. In topics A and B the
-number of isolated nodes is very small (less than 0.2) compared to Topic E where the
-percentage of isolated nodes is approximately 6\%. Moreover, in topics C and E
-an author is 10\% more likely to collaborate with a collaborator's co-author.
-Thus, \textbf{topics ``human subject research'' and ``biological studies'' tend
-to be more collaborative than the topic of ``strategies'', and an authors in
-these are less likely to have at least one collaborator compared to the topic of
-``modeling problems as a PD''}.
+Topics A and B have the highest average degree and clustering coefficient.
+Moreover, both topics have a small number of isolated nodes. Compared to that
+Topic C has a smallest average degree and Topic E has the highest number of
+isolated authors. These indicate that the topics ``human subject research'' and
+``biological studies'' tend to be more collaborative than the topic of
+``strategies'', and an authors in these are more likely to have at least one
+collaborator compared to the topic of ``modeling problems as a PD''.
 
-\textbf{``Evolutionary dynamics on networks'' also appear to be a collaborative topic}.
-In fact the network of the topic  is a
-sub graph of \(\bar{G}\), the main cluster of \(G\) and it will be demonstrated in the following section that
-authors in this network are more like to gain from the influence of the network
-compared to any other topic network.
+Topic ``Evolutionary dynamics on networks'' also appears to be a collaborative
+topic. It is the topic with smallest number of isolated authors, and has an
+average degree of 3.4. In fact the network of the topic is a
+sub graph of \(\bar{G}\), the main cluster of $G$. This is discussed in the next
+part of this analysis.
 
 \begin{table}[H]
     \centering
@@ -713,18 +681,11 @@ compared to any other topic network.
     \caption{Network metrics for topic networks.}\label{table:topics_networks}
 \end{table}
 
-\textbf{Are there authors which benefit more from their position in the network?}
-
 There are two centrality measures reported in this work, closeness and
 betweenness centrality. Closeness centrality is a measure of how easy it is for
-an author to contact others, and consequently affect them; influence them. Thus
-closeness centrality here is a measure of influence. Betweenness centrality is a
-measure of how many paths pass through a specific node, thus the amount of
-information this person has access to. Betweenness centrality is used here as a
-measure of how much an author gains from the field. All centrality measure can
-have values ranging from 0 to 1. The influence and the amount of information
-an author has access to are used to explore which authors benefit more
-from their position.
+an author to contact others, and betweenness centrality is a
+measure of how many paths pass through a specific node. All centrality measure can
+have values ranging from 0 to 1.
 
 For \(G\) and \(\bar{G}\) the most central authors based on closeness and
 betweenness centralities are given by Table~\ref{table:central_authors}. The
@@ -734,16 +695,9 @@ author with 83 publications in the data set and the most central authors based
 on both centrality measures. The most central authors are fairly similar between
 the two measures. The author that appear to be central based on one measure and
 not the other are Martin Nowak, Franz Weissing, Jianye Hao, Angel Sanchez and
-Valerio Capraro which have access to information due to their
-positioning but do not influence the network as much, and the opposite is true
-for Attila Szolnoki, Luo-Luo Jiang Sandro Meloni, Cheng-Yi Xia and Xiaojie Chen.
-
-It is obvious that in \(G\) the centralities values are low which suggests
-that in the PD authors do not benefit from their positions. This could be an
-effect of information not flowing from one community to another as authors tend
-to write with people from their communities. Nevertheless,
-\textbf{there are authors that do benefit from their position, but these are
-only the authors connected to the main cluster}.
+Valerio Capraro which are central based on betweeness centrality, and 
+the opposite is true for Attila Szolnoki, Luo-Luo Jiang Sandro Meloni, Cheng-Yi
+Xia and Xiaojie Chen.
 
 \begin{table}[!hbtp]
     \begin{center}
@@ -753,23 +707,23 @@ only the authors connected to the main cluster}.
 for \(G\) and \(\bar{G}\).}\label{table:central_authors}
 \end{table}
 
-The centrality measures for the topic networks have also been estimated and are
-given in
-Table~\ref{table:central_authors_topics}.
-If information was flowing between the communities of the research topics then
-there would be an increase to the values of centralities for the sub networks.
-However, the only topic where authors gain from their positions are the authors
-of Topic D (topic on evolutionary dynamics on network). From the list of names it is obvious that these authors are
-part of \(\bar{G}\), and that the network of Topic D is a sub network of \(\bar{G}\).
-This confirms the results. The people benefiting from their position in the co-authorship networks
-corresponding to research topics of the PD are only the people from the main
-cluster of \(G\).
+The centrality values for both \(G\) and \(\bar{G}\) are low. This indicates
+that there is no one most important author in the network. It could be assumed,
+however, that important authors could exist within research topics. The
+centrality measures for the topic networks have also been estimated and are
+given in Tables~\ref{table:central_authors_topics_bt}
+and~\ref{table:central_authors_topics_cl}. The centrality measure for the
+topics' networks are still very low, expect from the case of Topic D. From the
+list of names it is obvious that these authors are part of \(\bar{G}\), and that
+the network of evolutionary dynamics on network is a sub network of \(\bar{G}\).
 
+This confirms the result that the most benefiting authors from their position in
+the co-authorship network are authors from the main cluster of \(G\).
 The fact that most authors of the main cluster are primarily publishing in
 evolutionary dynamics on networks indicates that publishing in this specific
 topic differs from the other topics covered in this manuscript. There appears to
 be more collaboration and influence in the publications on evolutionary
-dynamics and authors are more likely to gain from their position,
+dynamics and authors are more likely to gain from their connections,
 though it is not clear as to why.
 
 \newcolumntype{g}{>{\columncolor{Gray}}l}
@@ -777,9 +731,20 @@ though it is not clear as to why.
     \begin{center}
     \resizebox{.9\textwidth}{!}{\input{assets/betweeness_topics_graphs.tex}}
 \end{center}
-\caption{10 most central authors based on two centralities
-for topics' networks.}\label{table:central_authors_topics}
+\caption{10 most central authors based on betweeness centrality
+for topics' networks.}\label{table:central_authors_topics_bt}
 \end{table}
+
+\newcolumntype{g}{>{\columncolor{Gray}}l}
+\begin{table}[!hbtp]
+    \begin{center}
+    \resizebox{.9\textwidth}{!}{\input{assets/closeness_topics_graphs.tex}}
+\end{center}
+\caption{10 most central authors based on closeness centrality
+for topics' networks.}\label{table:central_authors_topics_cl}
+\end{table}
+
+
 
 The distributions of both centrality measures for all the networks of this
 work are given in the Appendix~\ref{appendix:distributions}.
@@ -794,6 +759,10 @@ summarise the PD research. They highlight the interdisciplinarity of the field;
 how it brings together applied modeling of real world situations (Topic B and E)
 and more theoretical notions such as evolutionary dynamics and optimality of
 strategies.
+
+Thus, \textbf{the PD is indeed a collaborative field but perhaps it is not
+more collaborative than other fields}, as there is no effort from the authors
+to write with people outside their community.
 
 This manuscript has explored the research topics in the publications of the
 Iterated Prisoner's Dilemma, and moreover, the authors' collaborative behaviour
@@ -837,14 +806,6 @@ The study of the PD is the study of cooperation and investigating
 the cooperative behaviours of authors is what this work has aimed to achieve.
 Interesting areas of future work would include extending this analysis to more
 game theoretic sub fields, to evaluate whether the results remain the same.
-
-\section{Acknowledgements}
-
-A variety of software have been used in this work:
-
-\begin{itemize}
-    \item The louvain library for calculating the networks modularity \url{https://github.com/taynaud/python-louvain}.
-\end{itemize}
 
 \bibliographystyle{plain}
 \bibliography{bibliography.bib}
