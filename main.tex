@@ -39,7 +39,7 @@
 \newcommand{\totalarticles}{\input{assets/total_articles.txt}}
 \newcommand{\manual}{\input{assets/prov_manual.txt}}
 \newcommand{\authors}{\input{assets/number_of_authors.txt}}
-\newcommand{\edges}{\input{assets/num_Edges.txt}}
+\newcommand{\edges}{\input{assets/num_Edges.txt}\unskip}
 \newcommand{\isolated}{\input{assets/num_Isolated_nodes.txt}}
 \newcommand{\isolatedpercentage}{\input{assets/perce_Isolated_nodes.txt}}
 \newcommand{\connectedcomponents}{\input{assets/num_Connected_components.txt}}
@@ -68,15 +68,17 @@ research topics in the Prisoner's Dilemma which have been relevant over the cour
 of time. These are human subject research, biological studies, strategies,
 evolutionary dynamics on networks and modeling problems as a Prisoner's Dilemma
 game. Moreover, the results demonstrated the Prisoner's Dilemma is a field of
-continued interest, and although it is a collaborative field, it is not
-necessarily more collaborative than other game theoretic fields. The co-authorship
+continued interest, and that it is a collaborative field compared to other
+game theoretic fields. The co-authorship
 network suggests that authors are focused on their communities and not many
-connections across the communities are made.
+connections across the communities are made. The most central authors of the network
+are the authors connected to the main cluster, and through examining the networks
+of topics, it was uncovered that the main cluster is characterised by the
+collaboration of authors in a single topic.
 \end{abstract}
-%TODO The last sentence should be replaced with a sentence such as:
-%The network grows over time. So does the main cluster of the network.
-%The most central people are the people in the main cluster
-%and they all write in the evolutionary on networks topic
+
+%TODO why is that interesting? It shows that collaborative behaviour across many
+%people and publications is still possible? 
 
 \section{Introduction}\label{section:introduction}
 
@@ -85,7 +87,7 @@ the 1950's~\cite{Flood1958} as a framework for studying the emergence of
 cooperation; a topic of continued interest for mathematical,
 social, biological and
 ecological sciences. This manuscript presents a bibliometric
-analysis of 2,420 published articles on the Prisoner's Dilemma between 1951 and
+analysis of 2420 published articles on the Prisoner's Dilemma between 1951 and
 2018. It presents a number of research topics in the PD publications, which have been
 identified using Latent Dirichlet Allocation (LDA)~\cite{Blei2003}, and it explores the changes in the
 research topics over time. The collaborative behaviour of the field is explored
@@ -157,10 +159,12 @@ they are well known publishers in the field, and the preprint server arXiv
 because papers that have not been published yet can be collected. The search
 terms used to collect data appear on relevant articles and the search fields
 that were used were the title, abstract and text. However, papers can refer to
-the PD but not analyze the topic. For this reason it was manually check that the
-papers included in the analysis are relevant. An amount of well known articles
-which are not published in any of the selected publishers were manually included
-in the data set.
+the PD but not analyze the topic. For this reason it was manually checked that
+the papers included in the analysis are relevant. Moreover, an amount of well
+known articles, which are not published in any of the selected publishers, were
+manually included in the data set.
+
+%TODO check that this is the right place for this paragraph
 
 The methodology used in this manuscript, which
 includes the data collection and a preliminary analysis of the data set, is
@@ -227,7 +231,7 @@ publishers and a preprint server:
 \end{multicols}
 
 These publishers were chosen because they are prominent publishers in the field. For
-each source data can be collected by specifying a search term and a search field.
+each source, data can be collected by specifying a search term and a search field.
 Articles for which any of the terms:
 
 \begin{itemize}
@@ -241,7 +245,7 @@ Articles for which any of the terms:
 existed within the title, the abstract or the text are included in the analysis.
 These terms we selected because they are occurring terms in paper known to be
 relevant in the field. However, the authors acknowledge that there are other
-terms that have been used, for example `` donation game''. The authors believe
+terms that have been used, for example ``donation game''. The authors believe
 that the results of the manuscript do generalise to the overall stated goals
 (Section~\ref{section:introduction}), but they are inferred only from
 the data collected on the specific search terms and search fields.
@@ -256,7 +260,7 @@ versions of a paper were collected. The preprint versions
 was also applied in the names of the collected authors. The names that were
 highlighted as similar were manually checked. In case of a duplicate, for
 example ``Martin Nowak'' and ``Martin A. Nowak'' are considered duplicates, all
-instances of that author were fixed to a single style. Most commonly the middle
+entries of that author were fixed to a single style. Most commonly the middle
 name was dropped. Finally, articles that were collected because the search terms
 existed within the text were checked to reassure their relevance to the PD
 topic. Non relevant articles were dropped at this stage. 
@@ -265,7 +269,7 @@ Following the cleaning process, a total of \manual articles were manually added
 to the data set because they are of interest to the field. This was also done
 in~\cite{Liu2015}. Examples of such papers include~\cite{Flood1958} the first publication on the
 PD,~\cite{Ohtsuki2006, Stewart2012} two well cited articles in the field, and a
-series of works from Robert Axelrod ~\cite{Axelrod1980, Axelrod1980more,
+series of works from Robert Axelrod~\cite{Axelrod1980, Axelrod1980more,
 Axelrod1987, Axelrod1981, Riolo2001} a leading author of the field.
 The process of obtaining the data set used in analysis presented in the
 manuscript is illustrated in Figure~\ref{figure:colection_process}.
@@ -278,8 +282,6 @@ This data set has been archived and is available at~\cite{pd_data_2018}.
     \caption{The generating process of the data set~\cite{pd_data_2018}.}\label{figure:colection_process}
 \end{figure}
 
-%TODO add that sentence to summarise again our choices in the data collection:
-%reviewer's comment
 
 The data set consists of \totalarticles articles with unique
 titles. A more detailed summary of the articles' provenance
@@ -386,14 +388,14 @@ given example the dominant topic is Topic A \(c^*=c_A\).
 LAD requires that the number of topics is specified in advance before running
 the algorithm. The appropriate number of topics is chosen based on the
 coherence score~\cite{Roder2015} and the exclusivity~\cite{Airoldi2012}. The
-coherence score measures the degree of semantic similarity between high weighted
+coherence score measures the degree of semantic similarity between highly weighted
 words of a topic. There are cases for which a few topics can be dominated by very
 common words, and for that reason the exclusivity of words to topics has also
 been calculated.
 Figure~\ref{fig:coherence_value_over_number_of_topics} gives the topic coherence
 and Figure~\ref{fig:exclusivity_value_over_number_of_topics} gives the
 exclusivity of 18 models where \(n \in \{2, 3, \dots, 18\}\).
-The topic coherence for each model were calculating using the
+The topic coherence for each model was calculated using the
 open source project~\cite{rehurek_lrec}. The exclusivity measure was calculated
 with an altered version of~\cite{rehurek_lrec} which has been archived
 at~\cite{gensim_nikoleta}.
@@ -402,9 +404,9 @@ From Figure~\ref{fig:coherence_value_over_number_of_topics} it can be seen that
 the number of topics with the highest coherence score are $n=6$ (coherence score
 of 0.418) and $n=12$ (coherence score of 0.417).
 Figure~\ref{fig:coherence_value_over_number_of_topics} shows that the
-exclusivity of the high ranking words of the topics is decreasing as the number
+exclusivity of the highly weighted words of the topics is decreasing as the number
 of topics increases. A number of topics $n=5$ has a better exclusivity value
-than the model of $n=6$, and it's coherence score is 0.406 (which is closed to
+than the model of $n=6$, and its coherence score is 0.406 (which is closed to
 0.418). For that reason $n=5$ is chosen to carry out the analysis of this work.
 
 
@@ -616,8 +618,8 @@ refereed to as the main cluster of the network and is denoted as \(\bar{G}\). A
 metrics summary of both networks is given
 by Table~\ref{table:network_comparison}.
 Based on Table~\ref{table:network_comparison} an author in \(G\) has on
-average 4 collaborators and a 70\% probability of collaborating with a
-collaborator's co-author. An author of \(\bar{G}\) on average is 7\% more likely
+average 4 collaborators and a 67\% probability of collaborating with a
+collaborator's co-author. An author of \(\bar{G}\) on average is 10\% more likely
 to write with a collaborator's co-author and on average has 2 more
 collaborators. Moreover, there are only \isolatedpercentage\% of authors in the
 PD that have no connection to any other author.
@@ -636,7 +638,7 @@ and a summary of the networks' metrics is also given by Table~\ref{table:network
 The average degrees for the Price of Anarchy and for Auction games are lower
 than the PD's, and so are their respective clustering coefficients. Moreover,
 both the Price of Anarchy and Auction games have a larger number of isolated
-authors. These results seem to indicate that the PD is a \textit{relatively} collaborative
+authors. These results seem to indicate that the PD is a relatively collaborative
 field, compared to other game theoretic fields.
 However, both \(G\) and \(\bar{G}\) have a high modularity (larger than 0.84) and a large number of
 communities (967 and 25 respectively). A high modularity implies that authors create their own publishing
@@ -676,7 +678,7 @@ Moreover, both topics have a small number of isolated nodes. Compared to that
 Topic C has a smallest average degree and Topic E has the highest number of
 isolated authors. These indicate that the topics ``human subject research'' and
 ``biological studies'' tend to be more collaborative than the topic of
-``strategies'', and an authors in these are more likely to have at least one
+``strategies'', and authors in these are more likely to have at least one
 collaborator compared to the topic of ``modeling problems as a PD''.
 
 Topic ``Evolutionary dynamics on networks'' also appears to be a collaborative
@@ -718,22 +720,20 @@ Xia and Xiaojie Chen.
 for \(G\) and \(\bar{G}\).}\label{table:central_authors}
 \end{table}
 
-The centrality values for both \(G\) and \(\bar{G}\) are low. This indicates
-that there is no one most important author in the network. It could be assumed,
-however, that important authors could exist within research topics. The
+The
 centrality measures for the topic networks have also been estimated and are
 given in Tables~\ref{table:central_authors_topics_bt}
 and~\ref{table:central_authors_topics_cl}. The centrality measure for the
-topics' networks are still very low, expect from the case of Topic D. From the
-list of names it is obvious that these authors are part of \(\bar{G}\), and that
-the network of evolutionary dynamics on network is a sub network of \(\bar{G}\).
+topics' networks are very low  except from the case of Topic D. From the
+list of names it is obvious that the most central authors of Topic D are part of \(\bar{G}\), and that
+the network of evolutionary dynamics on networks is a sub network of \(\bar{G}\).
 
 This confirms the result that the most central authors of 
 the co-authorship network are the authors of the main cluster of \(G\).
 The fact that most authors of the main cluster are primarily publishing in
 evolutionary dynamics on networks indicates that publishing in this specific
-topic differs from the other topics covered in this manuscript, or rather it
-indicates that authors publishing in evolutionary dynamics are more similar to other
+topic differs from the other topics covered in this manuscript. It could also
+indicate that authors publishing in evolutionary dynamics are more similar to other
 disciplines as they can collaborate with them more.
 
 \newcolumntype{g}{>{\columncolor{Gray}}l}
@@ -761,65 +761,60 @@ work are given in the Appendix~\ref{appendix:distributions}.
 
 This manuscript has explored the research topics in the publications of the
 Iterated Prisoner's Dilemma, and moreover, the authors' collaborative behaviour
-and the most central authors of the co-authorship network. This was achieved by
+and their centrality. This was achieved by
 applying network theoretic approaches and a LDA algorithm to a total of 2422
-publications. Both the software~\cite{nikoleta_2017} and the data~\cite{pd_data_2018}
-have been archived and are available to be used by other researchers.
+publications.
+The data collection and an initial analysis of the data set were covered in
+Section~\ref{section:methodology}. The analysis  demonstrated that the PD is a
+field that continues to attract academic attention and publications.
 
-The data collection and an introduction to the methodology used in this work
-were covered in Section~\ref{section:methodology}.
-Section~\ref{section:preliminary} covered an initial analysis of the data set
-which demonstrated that the PD is a field that continues to attract academic
-attention and publications. In Section~\ref{section:topics} LDA was
-applied to the data set to identify topics on which researchers have been
-publishing. The LDA analysis showed that the data could be classified into 5
-topics associated with human subject research, biological studies, strategies,
-evolutionary dynamics on networks and modeling
-problems as a PD. These topics summarize the field of the PD well, as they
-demonstrate its interdisciplinarity and applications to a variety of problems. A
-temporal analysis explored how relevant these topics have been over the course
-of time, and it revealed that even though there were not the necessarily always
-the most discussed topics they were still being explored by researchers.
+In Section~\ref{subsection:research_topics} LDA was applied to the data set to
+identify topics on which researchers have been publishing. The five topics in
+the PD publications identified by the data set of this work are human subject
+research, biological studies, strategies, evolutionary dynamics on networks and
+modeling problems as a PD. These 5 topics nicely summarise the PD research. They
+highlight the interdisciplinarity of the field; how it brings together applied
+modeling of real world situations (biological studies and modeling problems as a
+PD) and more theoretical notions such as evolutionary dynamics and optimality of
+strategies. A temporal analysis explored how relevant these topics have been
+over the course of time, and it revealed that even though there were not
+necessarily always the most discussed topics there were still being explored
+by researchers.
 
 The collaborative behaviour of the field was explored in
-Section~\ref{section:co_authorship} by constructing the co authorship network.
-It was concluded that the field is a collaborative field, where authors are
-likely to write with a collaborator's co-authors and on average an author has 4
-co-authors, however it not necessarily more collaborative than other fields. The
-authors tend to collaborate with authors from one community, but not many
-authors are involved in multiple communities. This however
-might be an effect of academic research, and it might not be true just for the
-field of the PD. Exploring the influence of authors and their gain from being in
-the network of the field demonstrated that authors do not gain much, and the
-authors with influence are only the ones connected to the main cluster, to a
-``main'' group of authors. This `main'' group of authors consists of authors
-publishing in evolutionary dynamics on networks. Thus, an author would be aiming
-to publish on this topic if they were interested in gaining from their position
-in the publications of the PD.
+Section~\ref{subsection:co_authorship} by constructing the co-authorship
+network. It was concluded that the field is a collaborative field, where authors
+are likely to write with a collaborator's co-authors and on average an author
+has 4 co-authors. The results were compared to the networks of two other game
+theoretic fields, and it was shown that the PD network is more collaborative. The
+authors however, tend to collaborate with authors from one community, but not
+many authors are involved in multiple communities. This might be an effect of
+academic research, and it might not be true just for the field of the PD.
 
-The study of the PD is the study of cooperation and investigating
-the cooperative behaviours of authors is what this work has aimed to achieve.
+Exploring the centrality of authors showed that the most central author of this
+manuscript is Matjaz Perc. More importantly, it was shown that most central
+authors of the network were the authors connected to the main cluster.
+Interestingly, it was uncovered that these authors were the most central due to
+their publication on a single topic alone. That was the topic of “evolutionary
+dynamics on networks”. There appears to be more collaboration and more influence
+in the publications on evolutionary dynamics. The authors are most likely to
+gain from their position, and come across as the more important authors in the
+field. Though it is not clear as to why, attention should be paid to the
+collaborative behaviour of authors of “evolutionary dynamics on networks”.
+%TODO me trying to sound poetic/publishable. Feel free to delete.
+
+The study of the PD is the study of cooperation and investigating the
+cooperative behaviours of authors is what this work has aimed to achieve.
 Interesting areas of future work would include extending this analysis to more
 game theoretic sub fields, to evaluate whether the results remain the same.
+Moreover, the networks of this work were created by not taking into account the
+strength of ties. The strength of ties could be analysed to map multiple
+collaborations between two nodes. However, a preliminary assessment showed that
+the presented results do not change.
 
-The five topics in the PD publications identified by the data set of this
-work are human subject research, biological studies, strategies, evolutionary
-dynamics on networks and modeling problems as a PD
-These 5 topics nicely
-summarise the PD research. They highlight the interdisciplinarity of the field;
-how it brings together applied modeling of real world situations (Topic B and E)
-and more theoretical notions such as evolutionary dynamics and optimality of
-strategies.
-
-There appears to
-be more collaboration and influence in the publications on evolutionary
-dynamics, though it is not clear as to why.
-
-Thus, \textbf{the PD is indeed a collaborative field but perhaps it is not
-more collaborative than other fields}, as there is no effort from the authors
-to write with people outside their community.
-
-The strength of ties could be analyzed to map multiple collaborations between two nodes.
+Both the software~\cite{nikoleta_2017} and the data~\cite{pd_data_2018} used in
+the manuscript have been archived and are available to be used by other
+researchers.
 
 \bibliographystyle{plain}
 \bibliography{bibliography.bib}
