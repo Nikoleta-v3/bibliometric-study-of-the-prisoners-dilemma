@@ -151,7 +151,18 @@ where the clusters are only used to differentiate between the authors' topics.
 This paper builds upon the previous works of~\cite{Bergmann2018, Liu2015,
 youngblood2018}. It extends their methodology, it combines identified topics by
 an LDA model with the co-authorship network analysis, and applies all these
-techniques to a new data set. The methodology used in this manuscript, which
+techniques to a new data set. This data set was collected not from a single
+source but from five different sources. The four publishers were chosen because
+they are well known publishers in the field, and the preprint server arXiv
+because papers that have not been published yet can be collected. The search
+terms used to collect data appear on relevant articles and the search fields
+that were used were the title, abstract and text. However, papers can refer to
+the PD but not analyze the topic. For this reason it was manually check that the
+papers included in the analysis are relevant. An amount of well known articles
+which are not published in any of the selected publishers were manually included
+in the data set.
+
+The methodology used in this manuscript, which
 includes the data collection and a preliminary analysis of the data set, is
 covered in Section~\ref{section:methodology}. The results on the research topics
 of the PD are presented in Section~\ref{subsection:research_topics}, and the
@@ -717,14 +728,13 @@ topics' networks are still very low, expect from the case of Topic D. From the
 list of names it is obvious that these authors are part of \(\bar{G}\), and that
 the network of evolutionary dynamics on network is a sub network of \(\bar{G}\).
 
-This confirms the result that the most benefiting authors from their position in
-the co-authorship network are authors from the main cluster of \(G\).
+This confirms the result that the most central authors of 
+the co-authorship network are the authors of the main cluster of \(G\).
 The fact that most authors of the main cluster are primarily publishing in
 evolutionary dynamics on networks indicates that publishing in this specific
-topic differs from the other topics covered in this manuscript. There appears to
-be more collaboration and influence in the publications on evolutionary
-dynamics and authors are more likely to gain from their connections,
-though it is not clear as to why.
+topic differs from the other topics covered in this manuscript, or rather it
+indicates that authors publishing in evolutionary dynamics are more similar to other
+disciplines as they can collaborate with them more.
 
 \newcolumntype{g}{>{\columncolor{Gray}}l}
 \begin{table}[!hbtp]
@@ -744,29 +754,14 @@ for topics' networks.}\label{table:central_authors_topics_bt}
 for topics' networks.}\label{table:central_authors_topics_cl}
 \end{table}
 
-
-
 The distributions of both centrality measures for all the networks of this
 work are given in the Appendix~\ref{appendix:distributions}.
 
 \section{Conclusion}\label{section:conclusion}
 
-The five topics in the PD publications identified by the data set of this
-work are human subject research, biological studies, strategies, evolutionary
-dynamics on networks and modeling problems as a PD
-These 5 topics nicely
-summarise the PD research. They highlight the interdisciplinarity of the field;
-how it brings together applied modeling of real world situations (Topic B and E)
-and more theoretical notions such as evolutionary dynamics and optimality of
-strategies.
-
-Thus, \textbf{the PD is indeed a collaborative field but perhaps it is not
-more collaborative than other fields}, as there is no effort from the authors
-to write with people outside their community.
-
 This manuscript has explored the research topics in the publications of the
 Iterated Prisoner's Dilemma, and moreover, the authors' collaborative behaviour
-and their influence in the research field. This was achieved by
+and the most central authors of the co-authorship network. This was achieved by
 applying network theoretic approaches and a LDA algorithm to a total of 2422
 publications. Both the software~\cite{nikoleta_2017} and the data~\cite{pd_data_2018}
 have been archived and are available to be used by other researchers.
@@ -806,6 +801,23 @@ The study of the PD is the study of cooperation and investigating
 the cooperative behaviours of authors is what this work has aimed to achieve.
 Interesting areas of future work would include extending this analysis to more
 game theoretic sub fields, to evaluate whether the results remain the same.
+
+The five topics in the PD publications identified by the data set of this
+work are human subject research, biological studies, strategies, evolutionary
+dynamics on networks and modeling problems as a PD
+These 5 topics nicely
+summarise the PD research. They highlight the interdisciplinarity of the field;
+how it brings together applied modeling of real world situations (Topic B and E)
+and more theoretical notions such as evolutionary dynamics and optimality of
+strategies.
+
+There appears to
+be more collaboration and influence in the publications on evolutionary
+dynamics, though it is not clear as to why.
+
+Thus, \textbf{the PD is indeed a collaborative field but perhaps it is not
+more collaborative than other fields}, as there is no effort from the authors
+to write with people outside their community.
 
 \bibliographystyle{plain}
 \bibliography{bibliography.bib}
