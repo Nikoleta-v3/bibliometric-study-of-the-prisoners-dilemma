@@ -48,12 +48,8 @@
 \newcommand{\clustering}{\input{assets/Clustering_coeff.txt}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\title{A bibliometric study of research topics and collaboration
-in the Iterated Prisoner's Dilemma}
-
-%TODO VK: or A bibliometric study of research topics, collaboration and centrality
-% in the Iterated Prisoner's Dilemma
-
+\title{A bibliometric study of research topics, collaboration and centrality 
+       in the Iterated Prisoner's Dilemma}
 \author{}
 
 \begin{document}
@@ -70,7 +66,7 @@ evolutionary dynamics on networks and modeling problems as a Prisoner's Dilemma
 game. Moreover, the results demonstrated the Prisoner's Dilemma is a field of
 continued interest, and that it is a collaborative field compared to other
 game theoretic fields. The co-authorship
-network suggests that authors are focused on their communities and not many
+network suggests that authors are focused on their communities and that not many
 connections across the communities are made. The most central authors of the network
 are the authors connected to the main cluster, and through examining the networks
 of topics, it was uncovered that the main cluster is characterised by the
@@ -155,8 +151,8 @@ youngblood2018}. It extends their methodology, it combines identified topics by
 an LDA model with the co-authorship network analysis, and applies all these
 techniques to a new data set. This data set was collected not from a single
 source but from five different sources. The four publishers were chosen because
-they are well known publishers in the field, and the preprint server arXiv
-because papers that have not been published yet can be collected. The search
+they are well known publishers in the field, and the arXiv preprint server. 
+The search
 terms used to collect data appear on relevant articles and the search fields
 that were used were the title, abstract and text. However, papers can refer to
 the PD but not analyze the topic. For this reason it was manually checked that
@@ -235,17 +231,17 @@ each source, data can be collected by specifying a search term and a search fiel
 Articles for which any of the terms:
 
 \begin{itemize}
-\item prisoner's dilemma
-\item prisoners dilemma
-\item prisoner dilemma
-\item prisoners evolution
-\item prisoner game theory
+    \item prisoner's dilemma
+    \item prisoners dilemma
+    \item prisoner dilemma
+    \item prisoners evolution
+    \item prisoner game theory
 \end{itemize}
 
 existed within the title, the abstract or the text are included in the analysis.
 These terms we selected because they are occurring terms in paper known to be
 relevant in the field. However, the authors acknowledge that there are other
-terms that have been used, for example ``donation game''. The authors believe
+terms that could have been used, for example ``donation game''. The authors believe
 that the results of the manuscript do generalise to the overall stated goals
 (Section~\ref{section:introduction}), but they are inferred only from
 the data collected on the specific search terms and search fields.
@@ -354,14 +350,14 @@ with the claim of~\cite{Kyvik2017}.
 The collaborativeness of the authors is explored in more detail in
 Section~\ref{subsection:co_authorship} using the co-authorship network. The collaborative
 behaviour of authors will also be explored at the research topics level. These topics and their
-reverence over time are presented in Section~\ref{subsection:research_topics}.
+relevance over time are presented in Section~\ref{subsection:research_topics}.
 
 \section{Results}\label{section:results}
 
 \subsection{Research topics in the Prisoner's Dilemma research}\label{subsection:research_topics}
 
 The articles contained in the data set (\cite{pd_data_2018}) are classified
-into research topics using LDA an unsupervised machine learning technique
+into research topics using LDA, an unsupervised machine learning technique
 designed to summarize large collections of documents by a small number of
 conceptually connected topics or themes~\cite{Blei2003, Grimmer2013}. The
 documents are the articles' abstracts and LDA was carried out using~\cite{rehurek_lrec}.
@@ -369,8 +365,8 @@ In LDA, each document/abstract is represented by a distribution over topics,
 and the topics themselves are represented by a distribution over words. More
 specifically, each topic is described by weights associated with words and
 each document by the probabilities of belonging to a specific topic. The
-probability of a document belonging to a topic is referred to as the percentage
-contribution denoted as \(c\). For example the words and their associated
+probability of a document belonging to topic \(T\) is referred to as the percentage
+contribution denoted as \(c_T\). For example the words and their associated
 weights for two topics A and B could be:
 
 \begin{itemize}
@@ -386,15 +382,15 @@ is based on the highest percentage contribution denoted as \(c^*\). For the
 given example the dominant topic is Topic A \(c^*=c_A\).
 
 LAD requires that the number of topics is specified in advance before running
-the algorithm. The appropriate number of topics is chosen based on the
-coherence score~\cite{Roder2015} and the exclusivity~\cite{Airoldi2012}. The
+the algorithm. The appropriate number of topics can be chosen based on the
+coherence score~\cite{Roder2015} or the exclusivity score~\cite{Airoldi2012}. The
 coherence score measures the degree of semantic similarity between highly weighted
 words of a topic. There are cases for which a few topics can be dominated by very
 common words, and for that reason the exclusivity of words to topics has also
 been calculated.
 Figure~\ref{fig:coherence_value_over_number_of_topics} gives the topic coherence
 and Figure~\ref{fig:exclusivity_value_over_number_of_topics} gives the
-exclusivity of 18 models where \(n \in \{2, 3, \dots, 18\}\).
+exclusivity of 18 models where the number of topics \(n \in \{2, 3, \dots, 18\}\).
 The topic coherence for each model was calculated using the
 open source project~\cite{rehurek_lrec}. The exclusivity measure was calculated
 with an altered version of~\cite{rehurek_lrec} which has been archived
@@ -524,7 +520,7 @@ Table~\ref{table:topics_per_year} for each time period. Thus, for the period
 13.
 
 For each model the \(c^*\) is estimated for each document in the cumulative data
-sets. The performance of the models is then compared based on:
+sets. The performance of the models are then compared based on:
 
 \begin{equation}\label{eq:ratio}
     \bar{c^*} \times n
@@ -539,9 +535,9 @@ given by Figure~\ref{fig:median_percentage_contribution_over_time}.
 
 The five topics of the PD presented in this manuscript appear to always be
 less good at fitting the publications compared to the six topics of LDA \(n=6\).
-Moreover, there are less good than the models of periods 1951-1965 to 1951-1995.
+Moreover, these are less good than the models of periods 1951-1965 to 1951-1995.
 The difference in the performance values, equation (\ref{eq:ratio}),
-however are small. The relevances of the five topics has been increasing
+however is small. The relevances of the five topics has been increasing
 over time, and though, the topics did not always fit the majority of published
 work, there were still papers being published on those topics.
 
@@ -569,8 +565,8 @@ constructed using the main data set~\cite{pd_data_2018} and the open source pack
 number of unique authors \(|V(G)|\) is \authors and \(|E(G)|\) is \edges.
 
 
-The collaborativeness of the authors is analysed using measures such as, isolated nodes,
-connected components, clustering coefficient, communities, modularity and average degree.
+The collaborativeness of the authors is analysed using measures such as, number of isolated nodes,
+number of connected components, clustering coefficient, number of communities, modularity and average degree.
 These measures show the number of connections authors can have
 and how strongly connected these people are. The number of isolated nodes is the
 number of nodes that are not connected to another node, thus the
@@ -697,7 +693,7 @@ part of this analysis.
 There are two centrality measures reported in this work, closeness and
 betweenness centrality. Closeness centrality is a measure of how easy it is for
 an author to contact others, and betweenness centrality is a
-measure of how many paths pass through a specific node. All centrality measure can
+measure of how many paths pass through a specific node. All centrality measures 
 have values ranging from 0 to 1.
 
 For \(G\) and \(\bar{G}\) the most central authors based on closeness and
@@ -724,7 +720,7 @@ The
 centrality measures for the topic networks have also been estimated and are
 given in Tables~\ref{table:central_authors_topics_bt}
 and~\ref{table:central_authors_topics_cl}. The centrality measure for the
-topics' networks are very low  except from the case of Topic D. From the
+topics' networks are low except from the case of Topic D. From the
 list of names it is obvious that the most central authors of Topic D are part of \(\bar{G}\), and that
 the network of evolutionary dynamics on networks is a sub network of \(\bar{G}\).
 
@@ -772,21 +768,21 @@ In Section~\ref{subsection:research_topics} LDA was applied to the data set to
 identify topics on which researchers have been publishing. The five topics in
 the PD publications identified by the data set of this work are human subject
 research, biological studies, strategies, evolutionary dynamics on networks and
-modeling problems as a PD. These 5 topics nicely summarise the PD research. They
+modeling problems as a PD. These 5 topics nicely summarise PD research. They
 highlight the interdisciplinarity of the field; how it brings together applied
 modeling of real world situations (biological studies and modeling problems as a
 PD) and more theoretical notions such as evolutionary dynamics and optimality of
 strategies. A temporal analysis explored how relevant these topics have been
-over the course of time, and it revealed that even though there were not
+over the course of time, and it revealed that even though they were not
 necessarily always the most discussed topics there were still being explored
 by researchers.
 
 The collaborative behaviour of the field was explored in
-Section~\ref{subsection:co_authorship} by constructing the co-authorship
+Section~\ref{subsection:co_authorship} investigated the co-authorship
 network. It was concluded that the field is a collaborative field, where authors
 are likely to write with a collaborator's co-authors and on average an author
 has 4 co-authors. The results were compared to the networks of two other game
-theoretic fields, and it was shown that the PD network is more collaborative. The
+theoretic fields, and it was shown that the PD network is relatively more collaborative. The
 authors however, tend to collaborate with authors from one community, but not
 many authors are involved in multiple communities. This might be an effect of
 academic research, and it might not be true just for the field of the PD.
@@ -830,8 +826,8 @@ researchers.
     \end{center}
     \caption{Topic modeling results for the cumulative data sets over the
     periods: 1951-1965, 1951-1973, 1951-1980, 1951-1988, 1951-1995, 1951-2003, 1951-2010,
-    1951-2018. The number of topics $n$ for each period is given in the column
-    "Topic". For example in the period 1951-1980 the selected $n$ was 13. The
+    1951-2018. The number of topics \(n\) for each period is given in the column
+    ``Topic". For example in the period 1951-1980 the selected \(n\) was 13. The
     number of topics here were chosen only based on the coherence score.
     The number of documents and the percentage of documents assigned to each
     topic, for each period is also given.}\label{table:topics_per_year}
