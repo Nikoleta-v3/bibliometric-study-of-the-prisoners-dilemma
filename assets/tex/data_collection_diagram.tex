@@ -38,7 +38,7 @@ size=10mm]
 }
 \makeatother
 
-\node (title) at (1.5, 1.2) {DATA COLLECTING};
+\node (title) at (0, 1.2) {DATA COLLECTING};
 \node [circle, black, fill=black] (start) at (-2,0) {};
 \node [place] (api) at (0, 0) {SELECT API};
 \node [place] (field) at (4, 0) {SELECT SEARCH FIELD};
@@ -141,7 +141,7 @@ height=0.2cm] (db_final) at (9,-13) {};
       (db_clean.north  -| db_clean.west)  rectangle (db_final.south  -| db_final.east);
 \end{pgfonlayer}
 
-\node [orange, ] at (5, -12.2) {ADDITIONS};
+\node [orange, ] at (5, -12.2) {SUPPLEMENTING};
 
 \end{tikzpicture}
 \end{document}
