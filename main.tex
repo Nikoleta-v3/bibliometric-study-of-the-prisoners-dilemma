@@ -39,16 +39,16 @@
 \linenumbers
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%PARAMETERS%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\totalarticles}{\input{assets/total_articles.txt}}
-\newcommand{\manual}{\input{assets/prov_manual.txt}}
-\newcommand{\authors}{\input{assets/number_of_authors.txt}}
-\newcommand{\edges}{\input{assets/num_Edges.txt}\unskip}
-\newcommand{\isolated}{\input{assets/num_Isolated_nodes.txt}}
-\newcommand{\isolatedpercentage}{\input{assets/perce_Isolated_nodes.txt}}
-\newcommand{\connectedcomponents}{\input{assets/num_Connected_components.txt}}
-\newcommand{\communities}{\input{assets/num_Communities.txt}}
-\newcommand{\largestcc}{\input{assets/Size_of_largest_component.txt}}
-\newcommand{\clustering}{\input{assets/Clustering_coeff.txt}}
+\newcommand{\totalarticles}{\input{total_articles.txt}}
+\newcommand{\manual}{\input{prov_manual.txt}}
+\newcommand{\authors}{\input{number_of_authors.txt}}
+\newcommand{\edges}{\input{num_Edges.txt}\unskip}
+\newcommand{\isolated}{\input{num_Isolated_nodes.txt}}
+\newcommand{\isolatedpercentage}{\input{perce_Isolated_nodes.txt}}
+\newcommand{\connectedcomponents}{\input{num_Connected_components.txt}}
+\newcommand{\communities}{\input{num_Communities.txt}}
+\newcommand{\largestcc}{\input{Size_of_largest_component.txt}}
+\newcommand{\clustering}{\input{Clustering_coeff.txt}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{A bibliometric study of research topics, collaboration and centrality 
@@ -78,9 +78,6 @@ collaboration of authors in a single topic.
 These findings add to the bibliometrics study in another field and present new questions 
 and avenues of research to understand the reasons for the measured behaviours.
 \end{abstract}
-
-%TODO why is that interesting? It shows that collaborative behaviour across many
-%people and publications is still possible? 
 
 \section{Introduction}\label{section:introduction}
 
@@ -278,7 +275,7 @@ This data set has been archived and is available at~\cite{pd_data_2018}.
 
 \begin{figure}[!hbtp]
     \begin{center}
-        \includestandalone[width=.8\textwidth]{assets/tex/data_collection_diagram}
+        \includestandalone[width=.8\textwidth]{data_collection_diagram}
     \end{center}
     \caption{The generating process of the data set~\cite{pd_data_2018}.}\label{figure:colection_process}
 \end{figure}
@@ -297,7 +294,7 @@ from arXiv with 11 articles per year, followed by Springer with 9 and PLOS with
 \begin{table}[!hbtp]
     \begin{center}
     \resizebox{.9\textwidth}{!}{
-    \input{assets/preliminary_table}}
+    \input{preliminary_table}}
     \end{center}
     \caption{Summary of~\cite{pd_data_2018} per provenance.}
     \label{table:preliminary_table}
@@ -331,7 +328,7 @@ field of the PD continues to attract academic attention.
 
 \begin{figure}[!hbtp]
     \centering
-    \includegraphics[width=.50\textwidth]{./assets/images/forecasting.pdf}
+    \includegraphics[width=.50\textwidth]{forecasting.pdf}
     \caption{Number of articles published on the PD 1951-2018 (on a log scale),
     with a fitted exponential line, and a forecast for 2017-2022.}\label{fig:timeseries}
 \end{figure}
@@ -415,16 +412,17 @@ than the model of $n=6$, and its coherence score is 0.406 (which is closed to
     \centering
     \begin{subfigure}{.45\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{./assets/images/coherence_values.pdf}
+        \includegraphics[width=\textwidth]{coherence_values.pdf}
         \caption{Coherence for LDA models over the number of topics.}
         \label{fig:coherence_value_over_number_of_topics}
     \end{subfigure}\hfill
     \begin{subfigure}{.45\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{./assets/images/exclusivity_values.pdf}
+        \includegraphics[width=\textwidth]{exclusivity_values.pdf}
         \caption{Exclusivity for LDA models over the number of topics.}
         \label{fig:exclusivity_value_over_number_of_topics}
     \end{subfigure}
+    \caption{Coherence and exclusivity for LDA models over the number of topics.}
 \end{figure}
 
 For \(n=5\) the articles are clustered and assigned to their dominant topic,
@@ -483,7 +481,7 @@ E, and more specifically:
 \begin{table}[!hbtp]
     \begin{center}
     \resizebox{\textwidth}{!}{
-    \input{assets/documents_of_topic}}
+    \input{documents_of_topic}}
     \end{center}
     \caption{Keywords for each topic and the document with the most representative article for each topic.}
     \label{table:topics_and_articles}
@@ -502,7 +500,7 @@ seem to be any given topic more or less in fashion.
 
 \begin{figure}[!hbtp]
     \centering
-    \includegraphics[width=\textwidth]{./assets/images/papers_per_topic_over_time.pdf}
+    \includegraphics[width=\textwidth]{papers_per_topic_over_time.pdf}
     \caption{Number of articles per topic over the years (on a logged scale).}\label{fig:number_of_articles_per_topic}
 \end{figure}
 
@@ -548,7 +546,7 @@ work, there were still papers being published on those topics.
 
 \begin{figure}[!hbtp]
     \centering
-    \includegraphics[width=.75\textwidth]{./assets/images/contribution_over_time.pdf}
+    \includegraphics[width=.75\textwidth]{contribution_over_time.pdf}
     \caption{Maximum percentage contributions (\(c^*\)) over the time periods,
     for the LDA models for the entire data set for \(n\) equal to 5, 6
     and for the models of Table~\ref{table:topics_per_year}.}
@@ -653,7 +651,7 @@ that could indicate that is in fact how academic publications are.
 \begin{table}[!hbtp]
     \centering
     \resizebox{\textwidth}{!}{
-    \input{assets/network_comparison.tex}}
+    \input{network_comparison.tex}}
     \caption{Network metrics for \(G\) and \(\bar{G}\) respectively.}
     \label{table:network_comparison}
 \end{table}
@@ -691,7 +689,7 @@ part of this analysis.
 \begin{table}[H]
     \centering
     \resizebox{\textwidth}{!}{
-    \input{assets/topic_network_comparison.tex}}
+    \input{topic_network_comparison.tex}}
     \caption{Network metrics for topic networks.}\label{table:topics_networks}
 \end{table}
 
@@ -715,7 +713,7 @@ Xia and Xiaojie Chen.
 
 \begin{table}[!hbtp]
     \begin{center}
-    \resizebox{.9\textwidth}{!}{\input{assets/centralities_pd_graph.tex}}
+    \resizebox{.9\textwidth}{!}{\input{centralities_pd_graph.tex}}
 \end{center}
 \caption{10 most central authors based on betweenness and closeness centralities
 for \(G\) and \(\bar{G}\).}\label{table:central_authors}
@@ -740,7 +738,7 @@ disciplines as they can collaborate with them more.
 \newcolumntype{g}{>{\columncolor{Gray}}l}
 \begin{table}[!hbtp]
     \begin{center}
-    \resizebox{.9\textwidth}{!}{\input{assets/betweeness_topics_graphs.tex}}
+    \resizebox{.9\textwidth}{!}{\input{betweeness_topics_graphs.tex}}
 \end{center}
 \caption{10 most central authors based on betweeness centrality
 for topics' networks.}\label{table:central_authors_topics_bt}
@@ -749,7 +747,7 @@ for topics' networks.}\label{table:central_authors_topics_bt}
 \newcolumntype{g}{>{\columncolor{Gray}}l}
 \begin{table}[!hbtp]
     \begin{center}
-    \resizebox{.9\textwidth}{!}{\input{assets/closeness_topics_graphs.tex}}
+    \resizebox{.9\textwidth}{!}{\input{closeness_topics_graphs.tex}}
 \end{center}
 \caption{10 most central authors based on closeness centrality
 for topics' networks.}\label{table:central_authors_topics_cl}
@@ -816,8 +814,7 @@ Both the software~\cite{nikoleta_2017} and the data~\cite{pd_data_2018} used in
 the manuscript have been archived and are available to be used by other
 researchers.
 
-\bibliographystyle{plain}
-\bibliography{bibliography.bib}
+\bibliography{bibliography.bbl}
 
 \appendix
 
@@ -826,7 +823,7 @@ researchers.
 \begin{table}[!hbtp]
     \begin{center}
     \resizebox{\textwidth}{!}{
-    \input{assets/topics_per_year_table}}
+    \input{topics_per_year_table}}
     \end{center}
     \caption{Topic modeling results for the cumulative data sets over the
     periods: 1951-1965, 1951-1973, 1951-1980, 1951-1988, 1951-1995, 1951-2003, 1951-2010,
@@ -843,7 +840,7 @@ researchers.
 \begin{table}[!hbtp]
     \centering
     \resizebox{.8\textwidth}{!}{
-    \input{assets/cumulative_graphs_table.tex}}
+    \input{cumulative_graphs_table.tex}}
 \end{table}
 
 \newpage
@@ -852,7 +849,7 @@ researchers.
 \begin{table}[!hbtp]
     \centering
     \resizebox{.8\textwidth}{!}{
-    \input{assets/cumulative_clusters_table.tex}}
+    \input{cumulative_clusters_table.tex}}
 \end{table}
 
 
@@ -862,14 +859,14 @@ researchers.
 
 \begin{figure}[!hbtp]
     \centering
-    \includegraphics[width=.8\textwidth]{./assets/images/pd_betweeness_centralities.pdf}
+    \includegraphics[width=.8\textwidth]{pd_betweeness_centralities.pdf}
     \caption{Distributions of betweenness centrality in \(G\) and \(\bar{G}\)}
     \label{fig:bc_distributions}
 \end{figure}
 
 \begin{figure}[!hbtp]
     \centering
-    \includegraphics[width=.8\textwidth]{./assets/images/pd_closeness_centralities.pdf}
+    \includegraphics[width=.8\textwidth]{pd_closeness_centralities.pdf}
     \caption{Distributions of closeness centrality in \(G\) and \(\bar{G}\)}
     \label{fig:cc_distributions}
 \end{figure}
@@ -878,14 +875,14 @@ researchers.
 
 \begin{figure}[!hbtp]
     \centering
-    \includegraphics[width=\textwidth]{./assets/images/topics_betweeness_distributions.pdf}
+    \includegraphics[width=\textwidth]{topics_betweeness_distributions.pdf}
     \caption{Distributions of betweenness centrality in topics' networks.}
     \label{fig:bc_distributions_topics}
 \end{figure}
 
 \begin{figure}[!hbtp]
     \centering
-    \includegraphics[width=\textwidth]{./assets/images/topics_closeness_distributions.pdf}
+    \includegraphics[width=\textwidth]{topics_closeness_distributions.pdf}
     \caption{Distributions of closeness centrality in topics' networks.}
     \label{fig:cc_distributions_topics}
 \end{figure}
