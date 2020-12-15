@@ -17,7 +17,7 @@
 
 # data
 *raw_data
-src/data
+*data
 src/articles
 src/nbs/ag_bc_dist.tex
 src/nbs/ag_cc_dist.tex
@@ -37,3 +37,5 @@ src/password.py
 # ingored notebooks
 src/nbs/examples.ipynb
 
+# diagnostics
+*diagnostics_*

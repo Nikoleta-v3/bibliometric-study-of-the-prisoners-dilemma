@@ -1,0 +1,313 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{fullpage}
+\usepackage{hyperref}
+
+% package needed for optional arguments
+\usepackage{xifthen}
+% define counters for reviewers and their points
+\newcounter{reviewer}
+\setcounter{reviewer}{0}
+\newcounter{point}[reviewer]
+\setcounter{point}{0}
+
+% This refines the format of how the reviewer/point reference will appear.
+\renewcommand{\thepoint}{P\,\thereviewer.\arabic{point}} 
+
+% command declarations for reviewer points and our responses
+\newcommand{\reviewersection}{\stepcounter{reviewer} \bigskip \hrule
+				  \section*{Reviewer \thereviewer}}
+
+\newenvironment{point}
+   {\refstepcounter{point} \bigskip \noindent {\textbf{Reviewer~Point~\thepoint}
+   } ---\ } {\par }
+
+\newcommand{\shortpoint}[1]{\refstepcounter{point}  \bigskip \noindent
+	{\textbf{Reviewer~Point~\thepoint} } ---~#1\par }
+
+\newenvironment{reply}
+   {\medskip \noindent \begin{sf}\textbf{Reply}:\  } {\medskip \end{sf}}
+
+\newcommand{\shortreply}[2][]{\medskip \noindent \begin{sf}\textbf{Reply}:\  #2
+	\ifthenelse{\equal{#1}{}}{}{ \hfill \footnotesize (#1)}%
+	\medskip \end{sf}}
+
+\title{A bibliometric study of research topics, collaboration and centrality in
+the Iterated Prisoner's Dilemma.}
+
+\begin{document}
+
+\maketitle
+
+\section*{Response to the reviewers}
+
+We would like to open this response by thanking the reviewers for their
+thoughtful comments and suggestions. We have fully taken their comments on board
+and made modifications and additions to the manuscript. We feel this has greatly
+improved the work.
+
+%TODO do we need to address that the Editor suggested we rerun the data
+%collection?
+
+We will now take each comment of the reviewers in turn and highlight our efforts
+to improve the work.
+
+\reviewersection
+
+\begin{point}
+First, the authors used search terms ``prisoner's dilemma'', ``prisoners
+dilemma'', ``prisoner dilemma'', ``prisoners evolution'', and ``prisoner game
+theory'' to collect data. However, they did not justify the reasons for the use
+of these terms. Why these terms, is there any support for the choice?
+\end{point}
+
+\begin{reply}
+We have added a sentence justifying the use of the specific search terms.
+\end{reply}
+
+\begin{point}
+Second, I am wondering whether you had conducted manual screening of collected
+literature to ensure their close relation to the research target. Different from
+systematic review aiming to provide in-depth analysis of representative
+literature, bibliometric analysis is used for big data analysis to enable a
+comprehensive and general view. Thus, sufficient coverage of relevant literature
+are especially essential for a bibliometric study. In particular, you included
+articles which had used any of the search terms in the title, the abstract or
+the text. The use of title and abstract is understandable since they are
+commonly used to search articles (you can refer to bibliometric studies such as,
+
+\begin{itemize}
+\item \url{https://www.sciencedirect.com/science/article/pii/S0360131520300555},
+
+\item
+\url{https://bera-journals.onlinelibrary.wiley.com/doi/full/10.1111/bjet.12907?casa_token=vCNbiEvDF5gAAAAA%3Ap9AeWKgtwePj-ABgaPIFecQrTObZdjh26sG49aeHs47Ms7zHROw8I_JhUpvQnOlZ0Vx5oCrzwmCN1kTsVQ},
+
+\item
+\url{https://idp.springer.com/authorize/casa?redirect_uri=https://link.springer.com/article/10.1007/s11042-020-09062-7&casa_token=z8E4b9PYoncAAAAA:9X2oCiTpIRj2V6xMkkLsjXvAyD2NSmMxVNYK_K-fLdb67SLc3zUFxoCmmniFJCNprc20XInB9KPum71LMCw)},
+\end{itemize}
+
+however, the inclusion of full text can be troublesome as it may result in too
+many irrelevant articles being included. Thus, manual screening is needed and
+should be conducted to ensure data quality.
+\end{point}
+
+\begin{reply}
+We agree with the reviewer's point. We agree that articles which refer to the
+prisoner's dilemma in the text do not necessarily study the topic. For that
+reason we have conducted a manual check of all the articles included in our study
+when the search terms existed only in the text. This was not clarified in our
+original submission. We now clearly state that manual screening was conducted.
+\end{reply}
+
+\begin{point}
+Third, you have to clearly justify bibliographically your paper selection, your
+descriptors, inclusion and exclusion criteria you used to select paper, and the
+aspects you analyze, in such a way that your viewpoint is rationalized.
+\end{point}
+
+\begin{reply}
+We have included a sentence, in the Introduction section, to justify our selections.
+\end{reply}
+
+\begin{point}
+Fourth, in your study, the appropriate number of topics was chosen based on the
+coherence value. Coherence indicates the possibility terms within a topic
+commonly appear together. However, there is also another commonly used indicator
+called exclusivity, which indicates the possibility the terms are exclusively
+related to the topic. Commonly, the two indicators will be used to select the
+best fitted model together. Hence, suggest adding it in your study, so to choose
+the appropriate number of topics by using both coherence and exclusivity.
+\end{point}
+
+\begin{reply}
+We thank the reviewer for their suggestion to also include the exclusivity
+score. We have included exclusivity in our analysis.
+\end{reply}
+
+\begin{point}
+Fifth, in page 9, the authors mentioned “The three models are LDA models for the
+entire data set for n equal to 5, 6 and the optimal number of topics over time,”
+it is not clear to me what do you mean by “the optimal number of topics over
+time.” How was it defined and calculated? Details should be provided.
+\end{point}
+
+\begin{reply}
+We have included more details.
+\end{reply}
+
+\begin{point}
+In addition, the authors should specify clearly the significance of their study,
+what specific implications can be obtained from their analyses, particularly
+those concerning future research directions As one of the typical aims for
+review paper is to analyze the previous studies in order to provide helpful
+suggestions or directions for researches to conduct future studies. This should
+have been done in the Discussion and Conclusion sections. The authors need to
+summarize their findings instead of presenting and discussing individual
+findings. More importantly, they need to inspire the readers by providing a list
+of suggestions/directions of future research based on the discussion. The
+authors need to advise readers what to do next rather than ask the readers to
+interpret the data on their own.
+\end{point}
+
+\begin{reply}
+Thank you for this comment which encouraged us to reflect on the conclusions
+of the paper. As a result we have re-written the conclusion section.
+\end{reply}
+
+\reviewersection
+
+\begin{point}
+\begin{itemize}
+	\item The analysis of the co-authorship network is not convincing for me. The author
+	created a cross-sectional map of the co-authorship network and argued that
+	people in central positions benefit from their network. But it is not analyzed
+	whether they benefit in anything only whether someone if centrally located or
+	not and how dense is the network. The author did not analyze whether those who
+	are more in a central position indeed get more collaboration subsequently or
+	not. Further, the author said‘Nevertheless, there are authors that do benefit
+	from their position, but these are only the authors connected to the main
+	cluster.’ This is a tautology as the criteria for benefitting was based on their
+	central position.
+	\item I suggest only analyzing the centrality measures and structure of the co-author
+	network (result section) and discussing what this could mean based on the
+	previous literature (conclusion section). I would avoid claiming that benefit
+	were tested in this paper.
+\end{itemize}
+\end{point}
+
+\begin{reply}
+	We agree with these two points made by the reviewer. We have removed the
+	discussion regarding benefits and we just present the results on the centrality
+	measures.
+\end{reply}
+
+
+\begin{point}
+The author said that “The fact that most authors of the main cluster are
+primarily publishing in evolutionary dynamics on networks indicates that
+publishing in this specific topic differs from the other topics covered in this
+manuscript.”. Couldn’t this mean rather that authors publishing in evolutionary
+dynamics are more similar to other disciplines as they can collaborate with them
+more?
+\end{point}
+
+\begin{reply}
+We agree with the reviewer. The suggested interpretation was included in the paper.
+\end{reply}
+
+\begin{point}
+	\begin{itemize}
+		\item I was not convinced that the dataset covered all relevant article and only the
+		relevant articles. It was not described at all what steps were taken to find the
+		grey literature that was not covered by the database searches. Did you
+		hand-searched the citation of eligible studies or consulted with experts? These
+		are all very important steps to get a comprehensive review. I know that some
+		steps were taken as the author mentions to include some extra paper. Further,
+		what steps were taken to ensure that only relevant articles were included? An
+		abstract can mention Prisoner’s Dilemma but not analyze this topic. Usually, it
+		is good to scope the abstract (at least) to check whether studies were of
+		interest. Further, the number of duplicates should be reported.
+
+		\item I suggest mapping your data collection in a flow chart.
+	\end{itemize}
+\end{point}
+
+\begin{reply}
+We have re-written our data collection process to include more details.
+We have also included a flow chart to visualize the process.
+\end{reply}
+
+\begin{point}
+The strength of ties could be analyzed to map multiple collaborations between
+two nodes. 
+\end{point}
+
+\begin{reply}
+We agree with this point. We performed a preliminary assessment which showed
+that our results remain the same. This is included in the conclusion.
+\end{reply}
+
+\begin{point}
+The contribution of the paper should be named in the introduction. 
+\end{point}
+
+\begin{reply}
+We have made this suggested change.
+\end{reply}
+
+\begin{point}
+Disciplines differ a lot in the number of co-authors. For example, medical
+papers often have more than 5 co-authors where sociology papers often have
+single authors. Isn't the results merely coming from this pre-established
+difference between disciplines?
+\end{point}
+
+\begin{reply}
+We agree with the reviewer that there is a pre-established
+difference between disciplines. The aim of the paper is to understand the
+difference of the prisoner's dilemma compared to other game theoretic fields.
+\end{reply}
+
+\begin{point}
+The structure of the text needs to be improved a lot before this work is
+publishable. The methodology should be outlined in the Methodology section and
+not in the Results section (e.g. fitting exponential lines to the number of
+articles to see that the numbers are increasing). The contribution of the paper
+needs to be in the introduction and not in the last paragraph of the Methodology
+section.
+\end{point}
+
+\begin{reply}
+We have made this suggested change.
+\end{reply}
+
+\begin{point}
+The text contains some grammar mistakes (e.g. “The performance of the models
+are”) typos (e.g. “Figure ??”) and unclear reference (e.g. “In comparison, 2b
+gives the visualisation of LDA” where 2b could refer to a Table, Figure, or
+topic).
+\end{point}
+
+\begin{reply}
+We have gone over the manuscript and corrected any typos.
+\end{reply}
+
+\begin{point}
+The abbreviation should be spelt out the first time they are used and then the
+short version should be used consequently.
+\end{point}
+
+\begin{reply}
+We have made this suggested change.
+\end{reply}
+
+\begin{point}
+I like that Latent Dirichlet Allocation is defined in the introduction. But it
+would enhance the readability if it was defined the first time it is used.
+\end{point}
+
+\begin{reply}
+We have made this suggested change.
+\end{reply}
+
+
+\begin{point}
+The author said that “The appropriate number of topics is chosen based on the
+coherence value”. 6 topics provided the best coherence value but still 5 topics
+were selected. The description of this conduct is a bit confusing.
+\end{point}
+
+\begin{reply}
+We have made this suggested change.
+\end{reply}
+
+\begin{point}
+Reference to software should go to the method section instead of the
+Acknowledgment.
+\end{point}
+
+\begin{reply}
+We have made this suggested change.
+\end{reply}
+
+\end{document}
