@@ -39,16 +39,16 @@
 \linenumbers
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%PARAMETERS%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newcommand{\totalarticles}{\input{total_articles.txt}}
-\newcommand{\manual}{\input{prov_manual.txt}}
-\newcommand{\authors}{\input{number_of_authors.txt}}
-\newcommand{\edges}{\input{num_Edges.txt}\unskip}
-\newcommand{\isolated}{\input{num_Isolated_nodes.txt}}
-\newcommand{\isolatedpercentage}{\input{perce_Isolated_nodes.txt}}
-\newcommand{\connectedcomponents}{\input{num_Connected_components.txt}}
-\newcommand{\communities}{\input{num_Communities.txt}}
-\newcommand{\largestcc}{\input{Size_of_largest_component.txt}}
-\newcommand{\clustering}{\input{Clustering_coeff.txt}}
+\newcommand{\totalarticles}{2422}
+\newcommand{\manual}{76}
+\newcommand{\authors}{4226}
+\newcommand{\edges}{7642}
+\newcommand{\isolated}{338}
+\newcommand{\isolatedpercentage}{8.0}
+\newcommand{\connectedcomponents}{1157}
+\newcommand{\communities}{1177}
+\newcommand{\largestcc}{796}
+\newcommand{\clustering}{0.666}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{A bibliometric study of research topics, collaboration and centrality 
@@ -263,7 +263,7 @@ name was dropped. Finally, articles that were collected because the search terms
 existed within the text were checked to reassure their relevance to the PD
 topic. Non relevant articles were dropped at this stage. 
 
-Following the cleaning process, a total of \manual articles were manually added
+Following the cleaning process, a total of \manual~articles were manually added
 to the data set because they are of interest to the field. This was also done
 in~\cite{Liu2015}. Examples of such papers include~\cite{Flood1958} the first publication on the
 PD,~\cite{Ohtsuki2006, Stewart2012} two well cited articles in the field, and a
@@ -281,7 +281,7 @@ This data set has been archived and is available at~\cite{pd_data_2018}.
 \end{figure}
 
 
-The data set consists of \totalarticles articles with unique
+The data set consists of \totalarticles~articles with unique
 titles. A more detailed summary of the articles' provenance
 is given by Table~\ref{table:preliminary_table}. Only 3\% of the data set consists of
 articles that were manually added and 27\% of the articles were collected from
@@ -294,7 +294,20 @@ from arXiv with 11 articles per year, followed by Springer with 9 and PLOS with
 \begin{table}[!hbtp]
     \begin{center}
     \resizebox{.9\textwidth}{!}{
-    \input{preliminary_table}}
+        \begin{tabular}{lrrrr}
+            \toprule
+            {} &  Number of Articles &  Percentage \% &  Year of first publication &  Average number of publications per year\\
+            \midrule
+            IEEE     &               294 &       12.14\% &                    1973 &                             5\\
+            Manual   &                76 &        3.14\% &                    1951 &                             1\\
+            Nature   &               436 &       18.00\% &                    1959 &                             8\\
+            PLOS     &               477 &       19.69\% &                    2005 &                             8\\
+            Springer &               533 &       22.01\% &                    1966 &                             9\\
+            arXiv    &               654 &       27.00\% &                    1993 &                            11\\
+            Overall  &              2470 &      100.00\% &                    1951 &                            43\\
+            \bottomrule
+        \end{tabular}
+    }
     \end{center}
     \caption{Summary of~\cite{pd_data_2018} per provenance.}
     \label{table:preliminary_table}
@@ -333,7 +346,7 @@ field of the PD continues to attract academic attention.
     with a fitted exponential line, and a forecast for 2017-2022.}\label{fig:timeseries}
 \end{figure}
 
-There are a total of \authors authors in the data set (\cite{pd_data_2018}) and several of these
+There are a total of \authors~authors in the data set (\cite{pd_data_2018}) and several of these
 authors have had multiple publications collected from the data collection process.
 The highest number of articles collected for an
 author is 83 publications for Matjaz Perc. However, Matjaz Perc is an outlier
@@ -481,7 +494,18 @@ E, and more specifically:
 \begin{table}[!hbtp]
     \begin{center}
     \resizebox{\textwidth}{!}{
-    \input{documents_of_topic}}
+    \begin{tabularx}{1.5\textwidth}{lXXl|cc}
+        \toprule
+        Dominant Topic &                                                                                                 Topic Keywords &                                                                                                                                    Most Representative Article Title &        Reference &  \# Documents &  \% Documents \\
+        \midrule
+        A &                 social, behavior, human, study, experiment, cooperative, cooperation, suggest, find, behaviour &                                                                                      Facing Aggression: Cues Differ for Female versus Male Faces &  \cite{Geniole2012} &                496.0 &                   0.2008 \\
+        B &                               individual, group, good, show, high, increase, punishment, cost, result, benefit &  Genomic and Gene-Expression Comparisons among Phage-Resistant Type-IV Pilus Mutants of Pseudomonas syringae pathovar phaseolicola &  \cite{Sistrom2015} &                309.0 &                   0.1251 \\
+        C &                             game, strategy, player, agent, dilemma, play, payoff, state, prisoner, equilibrium &                                                            Fingerprinting: Visualization and Automatic Analysis of Prisoner's Dilemma Strategies &  \cite{ashlock2008fingerprinting} &                561.0 &                   0.2271 \\
+        D &  cooperation, network, population, evolutionary, evolution, interaction, dynamic, structure, cooperator, study &                                                   Influence of initial distributions on robust cooperation in evolutionary  Prisoner's Dilemma &     \cite{Chen2007} &                556.0 &                   0.2251 \\
+        E &                           model, theory, base, system, problem, paper, propose, information, provide, approach &                                                                          Gaming and price spikes in electric power markets and possible remedies &     \cite{Guan2002} &                548.0 &                   0.2219 \\
+        \bottomrule
+    \end{tabularx}
+    }
     \end{center}
     \caption{Keywords for each topic and the document with the most representative article for each topic.}
     \label{table:topics_and_articles}
@@ -531,7 +555,7 @@ sets. The performance of the models are then compared based on:
 
 where \(\bar{c^*}\) is the median highest percentage contribution and \(n\)
 is the number of topics of a given period. A model with more topics will have more
-difficulty to assign papers. Thus, equation (ref{eq:ratio}) is a measure of confidence
+difficulty to assign papers. Thus, equation (\ref{eq:ratio}) is a measure of confidence
 in assigning a given paper to its topic weighted by the number of topics.
 The performances are
 given by Figure~\ref{fig:median_percentage_contribution_over_time}.
@@ -565,7 +589,7 @@ edges. The set \(V_G\) represents the authors and an edge connects two authors
 if and only if those authors have written together. This co-authorship network is
 constructed using the main data set~\cite{pd_data_2018} and the open source package
 \cite{networkx}. The PD network is denoted as \(G\) where the
-number of unique authors \(|V(G)|\) is \authors and \(|E(G)|\) is \edges.
+number of unique authors \(|V(G)|\) is \authors~and \(|E(G)|\) is \edges.
 
 
 The collaborativeness of the authors is analysed using measures such as, number of isolated nodes,
@@ -611,8 +635,8 @@ Two centrality measures are also reported. These are:
 \end{enumerate}
 
 There are a total of
-\connectedcomponents connected components in \(G\) and the largest component has
-a size of \largestcc nodes. The largest connected component is going to be
+\connectedcomponents~connected components in \(G\) and the largest component has
+a size of \largestcc~nodes. The largest connected component is going to be
 refereed to as the main cluster of the network and is denoted as \(\bar{G}\). A
 metrics summary of both networks is given
 by Table~\ref{table:network_comparison}.
@@ -651,7 +675,17 @@ that could indicate that is in fact how academic publications are.
 \begin{table}[!hbtp]
     \centering
     \resizebox{\textwidth}{!}{
-    \input{network_comparison.tex}}
+        \begin{tabular}{lrrrrrrrrrr}
+            \toprule
+            {} &  \# Nodes &  \# Edges &  \# Isolated nodes &  \% Isolated nodes &  \# Connected components &  Size of largest component &  Av. degree &  \# Communities &  Modularity &  Clustering coeff \\
+            \midrule
+            $G$              &     4221 &     7642 &               338 &               8.0 &                    1157 &                        796 &       3.621 &           1177 &    0.965264 &             0.666 \\
+            $\bar{G}$        &      796 &     2214 &                 0 &               0.0 &                       1 &                        796 &       5.563 &             29 &    0.840138 &             0.773 \\
+            Auction Games    &     5362 &     7861 &               453 &               8.4 &                    1469 &                       1348 &       2.932 &           1493 &    0.957238 &             0.599 \\
+            Price of Anarchy &     1315 &     1952 &               165 &              12.5 &                     406 &                        221 &       2.969 &            414 &    0.964498 &             0.626 \\
+            \bottomrule
+    \end{tabular}
+    }
     \caption{Network metrics for \(G\), \(\bar{G}\), Auction games and Price of
     Anarchy.}
     \label{table:network_comparison}
@@ -690,7 +724,18 @@ part of this analysis.
 \begin{table}[H]
     \centering
     \resizebox{\textwidth}{!}{
-    \input{topic_network_comparison.tex}}
+\begin{tabular}{lrrrrrrrrrr}
+        \toprule
+        {} &  \# Nodes &  \# Edges &  \# Isolated nodes &  \% Isolated nodes &  \# Connected components &  Size of largest component &  Av. degree &  \# Communities &  Modularity &  Clustering coeff \\
+        \midrule
+        Topic A &     1193 &     2137 &                84 &               7.0 &                     333 &                         56 &       3.583 &            334 &       0.983 &             0.715 \\
+        Topic B &      727 &     1382 &                45 &               6.2 &                     189 &                         80 &       3.802 &            190 &       0.950 &             0.739 \\
+        Topic C &      931 &     1141 &                72 &               7.7 &                     312 &                         29 &       2.451 &            312 &       0.981 &             0.615 \\
+        Topic D &      891 &     1509 &                28 &               3.1 &                     185 &                        312 &       3.387 &            193 &       0.917 &             0.692 \\
+        Topic E &     1152 &     1964 &               166 &              14.4 &                     461 &                         31 &       3.410 &            461 &       0.926 &             0.602 \\
+        \bottomrule
+\end{tabular}
+    }
     \caption{Network metrics for topic networks.}\label{table:topics_networks}
 \end{table}
 
@@ -714,7 +759,26 @@ Xia and Xiaojie Chen.
 
 \begin{table}[!hbtp]
     \begin{center}
-    \resizebox{.9\textwidth}{!}{\input{centralities_pd_graph.tex}}
+    \resizebox{.9\textwidth}{!}{
+\begin{tabular}{llrlrlrlr}
+\toprule
+& \multicolumn{4}{c}{$G$} & \multicolumn{4}{c}{$\bar{G}$} \\
+\midrule
+{} &             Name &  Betweenness &             Name &  Closeness &             Name &  Betweenness &             Name &  Closeness \\
+\midrule
+1  &      Matjaz Perc &        0.013 &      Matjaz Perc &      0.062 &      Matjaz Perc &        0.373 &      Matjaz Perc &      0.330 \\
+2  &        Zhen Wang &        0.010 &        Long Wang &      0.057 &        Zhen Wang &        0.279 &        Long Wang &      0.301 \\
+3  &        Long Wang &        0.006 &     Yamir Moreno &      0.056 &        Long Wang &        0.170 &     Yamir Moreno &      0.299 \\
+4  &     Martin Nowak &        0.006 &  Attila Szolnoki &      0.056 &     Martin Nowak &        0.159 &  Attila Szolnoki &      0.297 \\
+5  &    Angel Sanchez &        0.004 &        Zhen Wang &      0.056 &    Angel Sanchez &        0.114 &        Zhen Wang &      0.296 \\
+6  &     Yamir Moreno &        0.004 &    Arne Traulsen &      0.053 &     Yamir Moreno &        0.110 &    Arne Traulsen &      0.281 \\
+7  &    Arne Traulsen &        0.004 &    Luo-Luo Jiang &      0.053 &    Arne Traulsen &        0.107 &    Luo-Luo Jiang &      0.280 \\
+8  &   Franz Weissing &        0.004 &    Sandro Meloni &      0.052 &   Franz Weissing &        0.101 &    Sandro Meloni &      0.278 \\
+9  &       Jianye Hao &        0.003 &     Cheng-Yi Xia &      0.052 &       Jianye Hao &        0.094 &     Cheng-Yi Xia &      0.276 \\
+10 &  Valerio Capraro &        0.003 &     Xiaojie Chen &      0.052 &  Valerio Capraro &        0.093 &     Xiaojie Chen &      0.276 \\
+\bottomrule
+\end{tabular}
+    }
 \end{center}
 \caption{10 most central authors based on betweenness and closeness centralities
 for \(G\) and \(\bar{G}\).}\label{table:central_authors}
@@ -739,7 +803,26 @@ disciplines as they can collaborate with them more.
 \newcolumntype{g}{>{\columncolor{Gray}}l}
 \begin{table}[!hbtp]
     \begin{center}
-    \resizebox{.9\textwidth}{!}{\input{betweeness_topics_graphs.tex}}
+    \resizebox{.9\textwidth}{!}{
+\begin{tabular}{lggllggllgg}
+\toprule
+& \multicolumn{2}{g}{Topic A} & \multicolumn{2}{c}{Topic B} & \multicolumn{2}{g}{Topic C} & \multicolumn{2}{c}{Topic D} & \\
+\midrule
+{} &                 Name &  Betweeness &             Name &  Betweeness &             Name &  Betweeness &              Name &  Betweeness &                  Name &  Betweeness \\
+\midrule
+1  &           David Rand &       0.001 &        Long Wang &       0.006 &   Daniel Ashlock &       0.001 &       Matjaz Perc &       0.062 &             Zengru Di &         0.0 \\
+2  &      Valerio Capraro &       0.001 &    Luo-Luo Jiang &       0.004 &      Matjaz Perc &       0.000 &     Luo-Luo Jiang &       0.036 &             Jian Yang &         0.0 \\
+3  &        Angel Sanchez &       0.000 &     Martin Nowak &       0.004 &       Karl Tuyls &       0.000 &      Yamir Moreno &       0.031 &  Yevgeniy Vorobeychik &         0.0 \\
+4  &              Feng Fu &       0.000 &      Matjaz Perc &       0.003 &  Philip Hingston &       0.000 &  Christoph Hauert &       0.027 &       Otavio Teixeira &         0.0 \\
+5  &         Martin Nowak &       0.000 &  Attila Szolnoki &       0.002 &     Eun-Youn Kim &       0.000 &         Long Wang &       0.023 &      Roberto Oliveira &         0.0 \\
+6  &  Nicholas Christakis &       0.000 &  Christian Hilbe &       0.002 &    Wendy Ashlock &       0.000 &         Zhen Wang &       0.023 &              M. Nowak &         0.0 \\
+7  &   Pablo Branas-Garza &       0.000 &     Yamir Moreno &       0.002 &  Attila Szolnoki &       0.000 &      Han-Xin Yang &       0.022 &             M. Harper &         0.0 \\
+8  &     Toshio Yamagishi &       0.000 &     Xiaojie Chen &       0.002 &       Seung Baek &       0.000 &      Martin Nowak &       0.019 &              Xiao Han &         0.0 \\
+9  &         James Fowler &       0.000 &    Arne Traulsen &       0.002 &     Martin Nowak &       0.000 &     Angel Sanchez &       0.016 &            Zhesi Shen &         0.0 \\
+10 &            Long Wang &       0.000 &        Zhen Wang &       0.002 &    Thore Graepel &       0.000 &       Zhihai Rong &       0.015 &           Wen-Xu Wang &         0.0 \\
+\bottomrule
+\end{tabular}
+}
 \end{center}
 \caption{10 most central authors based on betweeness centrality
 for topics' networks.}\label{table:central_authors_topics_bt}
@@ -748,7 +831,26 @@ for topics' networks.}\label{table:central_authors_topics_bt}
 \newcolumntype{g}{>{\columncolor{Gray}}l}
 \begin{table}[!hbtp]
     \begin{center}
-    \resizebox{.9\textwidth}{!}{\input{closeness_topics_graphs.tex}}
+\resizebox{.9\textwidth}{!}{
+\begin{tabular}{lggllggllgg}
+    \toprule
+    & \multicolumn{2}{g}{Topic A} & \multicolumn{2}{c}{Topic B} & \multicolumn{2}{g}{Topic C} & \multicolumn{2}{c}{Topic D} & \\
+    \midrule
+    {} &                 Name &  Closeness &               Name &  Closeness &                 Name &  Closeness &             Name &  Closeness &             Name &  Closeness \\
+    \midrule
+    1  &           David Rand &      0.026 &          Long Wang &      0.042 &           Karl Tuyls &      0.021 &      Matjaz Perc &      0.122 &  Stefanie Widder &      0.026 \\
+    2  &      Valerio Capraro &      0.022 &        Matjaz Perc &      0.039 &        Thore Graepel &      0.019 &        Zhen Wang &      0.107 &   Rosalind Allen &      0.026 \\
+    3  &       Jillian Jordan &      0.021 &    Attila Szolnoki &      0.039 &           Joel Leibo &      0.018 &        Long Wang &      0.105 &  Thomas Pfeiffer &      0.026 \\
+    4  &  Nicholas Christakis &      0.020 &       Martin Nowak &      0.038 &        Edward Hughes &      0.017 &     Yamir Moreno &      0.103 &    Thomas Curtis &      0.026 \\
+    5  &         James Fowler &      0.019 &  Olivier Tenaillon &      0.037 &     Matthew Phillips &      0.017 &    Luo-Luo Jiang &      0.102 &     Carsten Wiuf &      0.026 \\
+    6  &         Martin Nowak &      0.019 &       Xiaojie Chen &      0.036 &  Edgar Duenez-Guzman &      0.017 &  Attila Szolnoki &      0.102 &    William Sloan &      0.026 \\
+    7  &        Angel Sanchez &      0.018 &             Bin Wu &      0.036 &    Antonio Castaneda &      0.017 &     Gyorgy Szabo &      0.101 &     Otto Cordero &      0.026 \\
+    8  &      Samuel Arbesman &      0.018 &      Yanling Zhang &      0.035 &         Iain Dunning &      0.017 &     Xiaojie Chen &      0.100 &        Sam Brown &      0.026 \\
+    9  &    Gordon Kraft-Todd &      0.018 &            Feng Fu &      0.035 &             Tina Zhu &      0.017 &    Guangming Xie &      0.100 &     Babak Momeni &      0.026 \\
+    10 &        Akihiro Nishi &      0.018 &         David Rand &      0.035 &          Kevin Mckee &      0.017 &     Lucas Wardil &      0.100 &     Wenying Shou &      0.026 \\
+    \bottomrule
+\end{tabular}
+}
 \end{center}
 \caption{10 most central authors based on closeness centrality
 for topics' networks.}\label{table:central_authors_topics_cl}
@@ -815,8 +917,430 @@ Both the software~\cite{nikoleta_2017} and the data~\cite{pd_data_2018} used in
 the manuscript have been archived and are available to be used by other
 researchers.
 
-\bibliographystyle{plain}
-\bibliography{bibliography.bib}
+\begin{thebibliography}{10}
+
+    \bibitem{plos}
+    {PLOS} public library of science.
+    \newblock https://www.plos.org/.
+    
+    \bibitem{adami2013evolutionary}
+    Christoph Adami and Arend Hintze.
+    \newblock Evolutionary instability of zero-determinant strategies demonstrates
+      that winning is not everything.
+    \newblock {\em Nature communications}, 4:2193, 2013.
+    
+    \bibitem{Airoldi2012}
+    Edoardo~M Airoldi and Jonathan~M Bischof.
+    \newblock A poisson convolution model for characterizing topical content with
+      word frequency and exclusivity.
+    \newblock {\em arXiv preprint arXiv:1206.4631}, 2012.
+    
+    \bibitem{ashlock2008fingerprinting}
+    Daniel Ashlock and Eun-Youn Kim.
+    \newblock Fingerprinting: Visualization and automatic analysis of prisoner's
+      dilemma strategies.
+    \newblock {\em IEEE Transactions on Evolutionary Computation}, 12(5):647--659,
+      2008.
+    
+    \bibitem{auction_data_2018}
+    Author.
+    \newblock Articles' meta data on auction games.
+    \newblock https://doi.org/10.5281/zenodo.3406544, September 2019.
+    
+    \bibitem{anarchy_data_2018}
+    Author.
+    \newblock Articles' meta data on the price of anarchy.
+    \newblock https://doi.org/10.5281/zenodo.3406542, September 2019.
+    
+    \bibitem{pd_data_2018}
+    Author.
+    \newblock Articles' meta data on the prisoner's dilemma.
+    \newblock https://doi.org/10.5281/zenodo.3406536, September 2019.
+    
+    \bibitem{nikoleta_2017}
+    Authors.
+    \newblock Nikoleta-v3/arcas: Arcas v 0.0.4.
+    \newblock https://doi.org/10.5281/zenodo.1127684, December 2017.
+    
+    \bibitem{Axelrod1980}
+    Robert Axelrod.
+    \newblock Effective choice in the prisoner's dilemma.
+    \newblock {\em Journal of conflict resolution}, 24(1):3--25, 1980.
+    
+    \bibitem{Axelrod1980more}
+    Robert Axelrod.
+    \newblock More effective choice in the prisoner's dilemma.
+    \newblock {\em Journal of Conflict Resolution}, 24(3):379--403, 1980.
+    
+    \bibitem{Axelrod1987}
+    Robert Axelrod et~al.
+    \newblock The evolution of strategies in the iterated prisoner’s dilemma.
+    \newblock {\em The dynamics of norms}, pages 1--16, 1987.
+    
+    \bibitem{Axelrod1981}
+    Robert Axelrod and William~D Hamilton.
+    \newblock The evolution of cooperation.
+    \newblock {\em science}, 211(4489):1390--1396, 1981.
+    
+    \bibitem{python_louvain}
+    Thomas Aynaud.
+    \newblock python-louvain x.y: Louvain algorithm for community detection.
+    \newblock
+      \href{https://github.com/taynaud/python-louvain}{\texttt{https://github.com/taynaud/python-louvain}},
+      2020.
+    
+    \bibitem{banerjee2007reaching}
+    Dipyaman Banerjee and Sandip Sen.
+    \newblock Reaching pareto-optimality in prisoner’s dilemma using conditional
+      joint action learning.
+    \newblock {\em Autonomous Agents and Multi-Agent Systems}, 15(1):91--108, 2007.
+    
+    \bibitem{Bell2017}
+    Raoul Bell, Laura Mieth, and Axel Buchner.
+    \newblock Separating conditional and unconditional cooperation in a sequential
+      prisoner’s dilemma game.
+    \newblock {\em PloS one}, 12(11):e0187952, 2017.
+    
+    \bibitem{Bergmann2018}
+    TILL Bergmann and RICK Dale.
+    \newblock A scientometric analysis of evolang: Intersections and authorships.
+    \newblock In {\em The evolution of language: Proceedings of the 11th
+      international conference (EVOLANGX11). http://evolang.
+      org/neworleans/papers/182. html. Retrieved}, volume~22, 2018.
+    
+    \bibitem{Blei2003}
+    David~M Blei, Andrew~Y Ng, and Michael~I Jordan.
+    \newblock Latent dirichlet allocation.
+    \newblock {\em Journal of machine Learning research}, 3(Jan):993--1022, 2003.
+    
+    \bibitem{Blondel2008}
+    V.~D. Blondel, J.L. Guillaume, R.~Lambiotte, and E.~Lefebvre.
+    \newblock Fast unfolding of communities in large networks.
+    \newblock {\em Journal of statistical mechanics: theory and experiment},
+      2008(10):P10008, 2008.
+    
+    \bibitem{Chen2007}
+    Xiaojie Chen, Feng Fu, and Long Wang.
+    \newblock Influence of initial distributions on robust cooperation in
+      evolutionary prisoner's dilemma.
+    \newblock {\em arXiv preprint physics/0701318}, 2007.
+    
+    \bibitem{chen2016fixation}
+    Yu-Ting Chen, Alex McAvoy, and Martin~A Nowak.
+    \newblock Fixation probabilities for any configuration of two strategies on
+      regular graphs.
+    \newblock {\em Scientific reports}, 6:39181, 2016.
+    
+    \bibitem{clauset2004}
+    A.~Clauset, M.~E.J. Newman, and C.~Moore.
+    \newblock Finding community structure in very large networks.
+    \newblock {\em Physical review E}, 70(6):066111, 2004.
+    
+    \bibitem{Coelho2010}
+    Luis~Pedro Coelho, Tao Peng, and Robert~F Murphy.
+    \newblock Quantifying the distribution of probes between subcellular locations
+      using unsupervised pattern unmixing.
+    \newblock {\em Bioinformatics}, 26(12):i7--i12, 2010.
+    
+    \bibitem{das2016}
+    R.~das Neves~Machado, B.~Vargas-Quesada, and J.~Leta.
+    \newblock Intellectual structure in stem cell research: exploring brazilian
+      scientific articles from 2001 to 2010.
+    \newblock {\em Scientometrics}, 106(2):525--537, 2016.
+    
+    \bibitem{Easley2010}
+    D.~Easley, J.~Kleinberg, et~al.
+    \newblock {\em Networks, crowds, and markets}, volume~8.
+    \newblock Cambridge university press Cambridge, 2010.
+    
+    \bibitem{Etzkowitz1992}
+    H.~Etzkowitz.
+    \newblock Individual investigators and their research groups.
+    \newblock {\em Minerva}, 30(1):28--50, 1992.
+    
+    \bibitem{feng2008trilateral}
+    Xiuzhen Feng and Yijian Liu.
+    \newblock Trilateral game analysis on information sharing among members in a
+      virtual team.
+    \newblock In {\em 2008 IEEE Symposium on Advanced Management of Information for
+      Globalized Enterprises (AMIGE)}, pages 1--5. IEEE, 2008.
+    
+    \bibitem{Flood1958}
+    M.~M. Flood.
+    \newblock Some experimental games.
+    \newblock {\em Management Science}, 5(1):5--26, 1958.
+    
+    \bibitem{Geniole2012}
+    Shawn~N Geniole, Amanda~E Keyes, Catherine~J Mondloch, Justin~M Carr{\'e}, and
+      Cheryl~M McCormick.
+    \newblock Facing aggression: Cues differ for female versus male faces.
+    \newblock {\em PLOS one}, 7(1):e30366, 2012.
+    
+    \bibitem{Grimmer2013}
+    Justin Grimmer and Brandon~M Stewart.
+    \newblock Text as data: The promise and pitfalls of automatic content analysis
+      methods for political texts.
+    \newblock {\em Political analysis}, 21(3):267--297, 2013.
+    
+    \bibitem{nature}
+    Nature~Publishing Group.
+    \newblock Nature.
+    \newblock https://www.nature.com/, 1869.
+    
+    \bibitem{Guan2002}
+    Xiaohong Guan.
+    \newblock Gaming and price spikes in electric power markets and possible
+      remedies.
+    \newblock In {\em Proceedings. International Conference on Power System
+      Technology}, volume~1, pages 188--vol. IEEE, 2002.
+    
+    \bibitem{networkx}
+    A.~A. Hagberg, D.~A. Schult, and P.~J. Swart.
+    \newblock Exploring network structure, dynamics, and function using {NetworkX}.
+    \newblock In {\em Proceedings of the 7th Python in Science Conference
+      (SciPy2008)}, pages 11--15, Pasadena, CA USA, August 2008.
+    
+    \bibitem{hunter2007matplotlib}
+    J.~D. Hunter.
+    \newblock {Matplotlib: A 2D graphics environment}.
+    \newblock {\em Computing In Science \& Engineering}, 9(3):90--95, 2007.
+    
+    \bibitem{hutchins2016relative}
+    B~Ian Hutchins, Xin Yuan, James~M Anderson, and George~M Santangelo.
+    \newblock Relative citation ratio (rcr): A new metric that uses citation rates
+      to measure influence at the article level.
+    \newblock {\em PLoS biology}, 14(9):e1002541, 2016.
+    
+    \bibitem{ichinose2013robustness}
+    Genki Ichinose, Yuto Tenguishi, and Toshihiro Tanizawa.
+    \newblock Robustness of cooperation on scale-free networks under continuous
+      topological change.
+    \newblock {\em Physical Review E}, 88(5):052808, 2013.
+    
+    \bibitem{ieee}
+    IEEE.
+    \newblock Ieee xplore digital library.
+    \newblock http://ieeexplore.ieee.org/Xplore/home.jsp.
+    
+    \bibitem{Inglis2018}
+    Matthew Inglis and Colin Foster.
+    \newblock Five decades of mathematics education research.
+    \newblock {\em Journal for Research in Mathematics Education}, 49(4):462--500,
+      2018.
+    
+    \bibitem{ishibuchi2011evolution}
+    Hisao Ishibuchi, Hiroyuki Ohyanagi, and Yusuke Nojima.
+    \newblock Evolution of strategies with different representation schemes in a
+      spatial iterated prisoner's dilemma game.
+    \newblock {\em IEEE Transactions on Computational Intelligence and AI in
+      Games}, 3(1):67--82, 2011.
+    
+    \bibitem{scipy}
+    E.~Jones, T.~Oliphant, P.~Peterson, et~al.
+    \newblock {SciPy}: Open source scientific tools for {Python}, 2001--.
+    \newblock [misc; accessed <today>].
+    
+    \bibitem{Koutsoupias1999}
+    E.~Koutsoupias and C.~Papadimitriou.
+    \newblock Worst-case equilibria.
+    \newblock In {\em Proceedings of the 16th Annual Conference on Theoretical
+      Aspects of Computer Science}, STACS'99, pages 404--413, Berlin, Heidelberg,
+      1999. Springer-Verlag.
+    
+    \bibitem{Kyvik2017}
+    S.~Kyvik and I.~Reymert.
+    \newblock Research collaboration in groups and networks: differences across
+      academic fields.
+    \newblock {\em Scientometrics}, 113(2):951--967, 2017.
+    
+    \bibitem{Li2014}
+    Jing Li, Liqi Zhu, and Michaela Gummerum.
+    \newblock The relationship between moral judgment and cooperation in children
+      with high-functioning autism.
+    \newblock {\em Scientific Reports}, 4:4314, 2014.
+    
+    \bibitem{Li2019}
+    Weihua Li, Tomaso Aste, Fabio Caccioli, and Giacomo Livan.
+    \newblock Early coauthorship with top scientists predicts success in academic
+      careers.
+    \newblock {\em Nature Communications}, 10(1):2041--1723, 2019.
+    
+    \bibitem{Liu2015}
+    P.~Liu and H.~Xia.
+    \newblock Structure and evolution of co-authorship network in an
+      interdisciplinary research field.
+    \newblock {\em Scientometrics}, 103(1):101--134, Apr 2015.
+    
+    \bibitem{nature_author_blog}
+    Smriti Mallapaty.
+    \newblock Paper authorship goes hyper.
+    \newblock
+      \url{https://www.natureindex.com/news-blog/paper-authorship-goes-hyper},
+      2018.
+    
+    \bibitem{Matsumoto2016}
+    Yoshie Matsumoto, Toshio Yamagishi, Yang Li, and Toko Kiyonari.
+    \newblock Prosocial behavior increases with age across five economic games.
+    \newblock {\em PloS one}, 11(7):e0158671, 2016.
+    
+    \bibitem{mckiernan2000}
+    G.~McKiernan.
+    \newblock arxiv. org: the los alamos national laboratory e-print server.
+    \newblock {\em International Journal on Grey Literature}, 1(3):127--138, 2000.
+    
+    \bibitem{springer}
+    Mannheim Media.
+    \newblock Springer publishing.
+    \newblock http://www.springer.com/, 1950.
+    
+    \bibitem{Molina2013}
+    J~Alberto Molina, J~Ignacio Gim{\'e}nez-Nadal, Jos{\'e}~A Cuesta, Carlos
+      Gracia-Lazaro, Yamir Moreno, and Angel Sanchez.
+    \newblock Gender differences in cooperation: experimental evidence on high
+      school students.
+    \newblock {\em PloS one}, 8(12):e83700, 2013.
+    
+    \bibitem{nature_blog}
+    R.~Van Noorden.
+    \newblock The science that’s never been cited.
+    \newblock \url{https://www.nature.com/articles/d41586-017-08404-0}, 2017.
+    
+    \bibitem{nurseitov2009}
+    N.~Nurseitov, M.~Paulson, R.~Reynolds, and C.~Izurieta.
+    \newblock Comparison of json and xml data interchange formats: a case study.
+    \newblock {\em Caine}, 2009:157--162, 2009.
+    
+    \bibitem{Ohtsuki2006}
+    Hisashi Ohtsuki, Christoph Hauert, Erez Lieberman, and Martin~A Nowak.
+    \newblock A simple rule for the evolution of cooperation on graphs and social
+      networks.
+    \newblock {\em Nature}, 441(7092):502, 2006.
+    
+    \bibitem{ormerod2010or}
+    Richard~J Ormerod.
+    \newblock Or as rational choice: A decision and game theory perspective.
+    \newblock {\em Journal of the Operational Research Society}, 61(12):1761--1776,
+      2010.
+    
+    \bibitem{pritchard1969}
+    A.~Pritchard et~al.
+    \newblock Statistical bibliography or bibliometrics.
+    \newblock {\em Journal of documentation}, 25(4):348--349, 1969.
+    
+    \bibitem{raina1998}
+    D.~Raina and B.~M. Gupta.
+    \newblock Four aspects of the institutionalization of physics research in india
+      (1990--1950): Substantiating the claims of histortical sociology through
+      bibliometrics.
+    \newblock {\em Scientometrics}, 42(1):17--40, 1998.
+    
+    \bibitem{rehurek_lrec}
+    Radim {\v R}eh{\r u}{\v r}ek and Petr Sojka.
+    \newblock {Software Framework for Topic Modelling with Large Corpora}.
+    \newblock In {\em {Proceedings of the LREC 2010 Workshop on New Challenges for
+      NLP Frameworks}}, pages 45--50, Valletta, Malta, May 2010. ELRA.
+    \newblock \url{http://is.muni.cz/publication/884893/en}.
+    
+    \bibitem{Riolo2001}
+    Rick~L Riolo, Michael~D Cohen, and Robert Axelrod.
+    \newblock Evolution of cooperation without reciprocity.
+    \newblock {\em Nature}, 414(6862):441, 2001.
+    
+    \bibitem{Roder2015}
+    Michael R{\"o}der, Andreas Both, and Alexander Hinneburg.
+    \newblock Exploring the space of topic coherence measures.
+    \newblock In {\em Proceedings of the eighth ACM international conference on Web
+      search and data mining}, pages 399--408. ACM, 2015.
+    
+    \bibitem{sartakhti2017}
+    Javad~Salimi Sartakhti, Mohammad~Hossein Manshaei, David Basanta, and Mehdi
+      Sadeghi.
+    \newblock Evolutionary emergence of angiogenesis in avascular tumors using a
+      spatial public goods game.
+    \newblock {\em PloS one}, 12(4):e0175063, 2017.
+    
+    \bibitem{sekara2018}
+    V.~Sekara, P.~Deville, S.~E. Ahnert, A.~Barab{\'a}si, R.~Sinatra, and
+      S.~Lehmann.
+    \newblock The chaperone effect in scientific publishing.
+    \newblock {\em Proceedings of the National Academy of Sciences},
+      115(50):12603--12607, 2018.
+    
+    \bibitem{Sistrom2015}
+    Mark Sistrom, Derek Park, Heath~E O’Brien, Zheng Wang, David~S Guttman,
+      Jeffrey~P Townsend, and Paul~E Turner.
+    \newblock Genomic and gene-expression comparisons among phage-resistant type-iv
+      pilus mutants of pseudomonas syringae pathovar phaseolicola.
+    \newblock {\em PloS one}, 10(12):e0144514, 2015.
+    
+    \bibitem{Stewart2012}
+    Alexander~J Stewart and Joshua~B Plotkin.
+    \newblock Extortion and cooperation in the prisoner’s dilemma.
+    \newblock {\em Proceedings of the National Academy of Sciences},
+      109(26):10134--10135, 2012.
+    
+    \bibitem{stewart2013extortion}
+    Alexander~J Stewart and Joshua~B Plotkin.
+    \newblock From extortion to generosity, evolution in the iterated prisoner’s
+      dilemma.
+    \newblock {\em Proceedings of the National Academy of Sciences},
+      110(38):15348--15353, 2013.
+    
+    \bibitem{Sugimoto2011}
+    Cassidy~R Sugimoto, Daifeng Li, Terrell~G Russell, S~Craig Finlay, and Ying
+      Ding.
+    \newblock The shifting sands of disciplinary development: Analyzing north
+      american library and information science dissertations using latent dirichlet
+      allocation.
+    \newblock {\em Journal of the American Society for Information Science and
+      Technology}, 62(1):185--204, 2011.
+    
+    \bibitem{Turner1999}
+    Paul~E Turner and Lin Chao.
+    \newblock Prisoner's dilemma in an rna virus.
+    \newblock {\em Nature}, 398(6726):441, 1999.
+    
+    \bibitem{walt2011numpy}
+    S.~Walt, S.~C. Colbert, and G.~Varoquaux.
+    \newblock {The NumPy array: a structure for efficient numerical computation}.
+    \newblock {\em Computing in Science \& Engineering}, 13(2):22--30, 2011.
+    
+    \bibitem{wang2012spatial}
+    Juan Wang, ChengYi Xia, YiLing Wang, Shuai Ding, and JunQing Sun.
+    \newblock Spatial prisoner’s dilemma games with increasing size of the
+      interaction neighborhood on regular lattices.
+    \newblock {\em Chinese science bulletin}, 57(7):724--728, 2012.
+    
+    \bibitem{Wang2008}
+    Xiaogang Wang, Xiaoxu Ma, and W~Eric~L Grimson.
+    \newblock Unsupervised activity perception in crowded and complicated scenes
+      using hierarchical bayesian models.
+    \newblock {\em IEEE Transactions on pattern analysis and machine intelligence},
+      31(3):539--555, 2008.
+    
+    \bibitem{wu2019phenotype}
+    Te~Wu, Feng Fu, and Long Wang.
+    \newblock Phenotype affinity mediated interactions can facilitate the evolution
+      of cooperation.
+    \newblock {\em Journal of theoretical biology}, 462:361--369, 2019.
+    
+    \bibitem{youngblood2018}
+    M.~Youngblood and D.~Lahti.
+    \newblock A bibliometric analysis of the interdisciplinary field of cultural
+      evolution.
+    \newblock {\em Palgrave Communications}, 4(1):120, 2018.
+    
+    \bibitem{gensim_nikoleta}
+    Radim Řehůřek, Lev Konstantinovskiy, Ivan Menshikh, Gordon Mohr, Chinmaya
+      Pancholi, Michael Penkov, Christopher Corley, Stefan Otte, Jayant Jain, Jan
+      Zikes, sebastien j, mataddy, Parul Sethi, Matti Lyra, Federico Barrios,
+      Bhargav~Srinivasa Desikan, Ólavur Mortensen, horpto, Mohit Rathore, Timothy
+      Emerick, Vít Novotný, Prakhar Pratyush, Devashish Deshpande, Lars, Stephan
+      Gabler, Dave Challis, hyhan, drenerbas, Pengo Wray, and Mack.
+    \newblock Nikoleta-v3/gensim 1.0.0, November 2020.
+    
+\end{thebibliography}
+
 
 \appendix
 
@@ -825,7 +1349,91 @@ researchers.
 \begin{table}[!hbtp]
     \begin{center}
     \resizebox{\textwidth}{!}{
-    \input{topics_per_year_table}}
+        \begin{tabular}{llccc}
+            \toprule
+                Period &  Topic &                                                                                                Topic Keywords & Num of Documents & Percentage of Documents \\
+            \midrule
+             1951-1965 &               1 &                 problem, technology, divert, euler, subsystem, requirement, trace, technique, system, untried &                3 &                   0.375 \\
+             1951-1965 &               2 &            interpret, requirement, programme, evolution, article, increase, policy, system, trace, technology &                2 &                    0.25 \\
+             1951-1965 &               3 &          equipment, agency, conjecture, development, untried, programme, trend, technology, weapon, technique &                1 &                   0.125 \\
+             1951-1965 &               4 &                 variation, celebrated, trend, untried, change, involve, month, technique, subsystem, research &                1 &                   0.125 \\
+             1951-1965 &               5 &                           give, good, modern, trace, technique, ambiguity, problem, trend, technology, system &                1 &                   0.125 \\
+             \midrule
+             1951-1973 &               1 &                           study, shock, cooperative, money, part, vary, investigate, good, receive, equipment &               12 &                  0.3243 \\
+             1951-1973 &               2 &          cooperation, level, significantly, sequence, reward, provoke, descriptive, principal, display, argue &                4 &                  0.1081 \\
+             1951-1973 &               3 &               player, make, effect, triad, experimental, motivation, dominate, hypothesis, instruction, trend &                3 &                  0.0811 \\
+             1951-1973 &               4 &                                           ss, sex, male, female, dyad, design, suggest, college, factor, tend &                3 &                  0.0811 \\
+             1951-1973 &               5 &               result, research, format, change, operational, analysis, relate, understanding, decision, money &                2 &                  0.0541 \\
+             1951-1973 &               6 &                          condition, give, high, treatment, conflict, cc, real, original, replication, promote &                2 &                  0.0541 \\
+             1951-1973 &               7 &              group, competitive, show, interpret, scale, compete, escalation, free, variable, individualistic &                2 &                  0.0541 \\
+             1951-1973 &               8 &                        outcome, strategy, choice, type, pdg, difference, dummy, conclude, compare, consistent &                2 &                  0.0541 \\
+             1951-1973 &               9 &                   game, difference, pair, approach, behavior, person, weapon, occur, advantaged, differential &                2 &                  0.0541 \\
+             1951-1973 &              10 &                    response, present, dilemma, influence, cooperate, bias, point, amount, participate, factor &                2 &                  0.0541 \\
+             1951-1973 &              11 &                       trial, problem, previous, involve, prisoner, experiment, follow, tit, increase, initial &                1 &                   0.027 \\
+             1951-1973 &              12 &                           matrix, behavior, rational, black, model, research, broad, distance, complex, trace &                1 &                   0.027 \\
+             1951-1973 &              13 &                    play, finding, individual, noncooperative, white, nature, race, ratio, represent, prisoner &                1 &                   0.027 \\
+             \midrule
+             1951-1980 &               1 &                                      play, trial, group, follow, white, interpret, scale, black, trend, small &               14 &                    0.25 \\
+             1951-1980 &               2 &                              outcome, level, effect, type, dyad, vary, pdg, participate, understanding, arise &                9 &                  0.1607 \\
+             1951-1980 &               3 &         game, strategy, cooperation, significant, difference, sentence, text, occur, differential, hypothesis &                4 &                  0.0714 \\
+             1951-1980 &               4 &                        male, female, find, result, sex, subject, experimental, situation, treatment, computer &                4 &                  0.0714 \\
+             1951-1980 &               5 &                         research, problem, influence, matrix, format, model, analysis, year, crime, equipment &                4 &                  0.0714 \\
+             1951-1980 &               6 &                                    condition, dilemma, bias, free, attempt, book, year, dummy, prison, design &                4 &                  0.0714 \\
+             1951-1980 &               7 &                    variable, result, factor, individual, ability, triad, half, migration, change, investigate &                3 &                  0.0536 \\
+             1951-1980 &               8 &                 show, present, suggest, rational, compete, approach, characteristic, examine, person, conduct &                3 &                  0.0536 \\
+             1951-1980 &               9 &                         behavior, high, finding, relate, obtain, assistance, ratio, good, weapon, competition &                3 &                  0.0536 \\
+             1951-1980 &              10 &                               ss, shock, money, competitive, part, difference, pair, amount, man, information &                3 &                  0.0536 \\
+             1951-1980 &              11 &             player, conflict, theory, decision, determine, produce, maker, cooperate, specialist, programming &                2 &                  0.0357 \\
+             1951-1980 &              12 &            study, prisoner, make, response, experiment, noncooperative, standard, separate, conclude, initial &                2 &                  0.0357 \\
+             1951-1980 &              13 &                       give, cooperative, choice, cognitive, real, operational, set, subject, ascribe, concern &                1 &                  0.0179 \\
+             \midrule
+             1951-1988 &               1 &                     trial, difference, find, choice, significant, competitive, effect, triad, interact, occur &               24 &                  0.2553 \\
+             1951-1988 &               2 &                                            ss, shock, money, pair, response, part, high, tit, receive, amount &               13 &                  0.1383 \\
+             1951-1988 &               3 &                         suggest, paper, case, debate, view, achieve, framework, natural, assumption, finitely &               10 &                  0.1064 \\
+             1951-1988 &               4 &                     prisoner, dilemma, behavior, model, present, involve, person, increase, trust, experiment &                8 &                  0.0851 \\
+             1951-1988 &               5 &                                   game, player, show, approach, repeat, previous, move, tat, related, include &                8 &                  0.0851 \\
+             1951-1988 &               6 &                cooperation, level, mutual, equilibrium, standard, provide, information, human, real, question &                6 &                  0.0638 \\
+             1951-1988 &               7 &                      play, result, male, subject, female, cooperative, sex, experimental, treatment, computer &                5 &                  0.0532 \\
+             1951-1988 &               8 &                        research, study, variable, ability, factor, conflict, matrix, year, student, interpret &                4 &                  0.0426 \\
+             1951-1988 &               9 &                                         problem, group, small, scale, social, issue, large, base, bias, party &                4 &                  0.0426 \\
+             1951-1988 &              10 &                          game, strategy, outcome, type, cooperate, ethical, pdg, explain, dependent, separate &                4 &                  0.0426 \\
+             1951-1988 &              11 &              give, condition, individual, major, dyad, behaviour, produce, conflict, assistance, collectively &                3 &                  0.0319 \\
+             1951-1988 &              12 &                        situation, iterate, statement, rational, card, side, paradox, true, consequence, front &                2 &                  0.0213 \\
+             1951-1988 &              13 &                               inflation, hypothesis, rate, run, change, demand, nominal, cost, output, growth &                2 &                  0.0213 \\
+             1951-1988 &              14 &                                     theory, make, analysis, decision, system, examine, work, soft, lead, hard &                1 &                  0.0106 \\
+             \midrule
+             1951-1995 &               1 &                            strategy, population, evolution, iterate, tit, opponent, evolve, dynamic, set, tat &               31 &                  0.1732 \\
+             1951-1995 &               2 &                 game, repeat, assumption, rule, person, equilibrium, general, finitely, indefinitely, analyze &               24 &                  0.1341 \\
+             1951-1995 &               3 &                            inflation, long, rate, hypothesis, run, policy, cost, nominal, demand, programming &               20 &                  0.1117 \\
+             1951-1995 &               4 &            condition, outcome, trial, find, difference, cooperation, experiment, level, significant, response &               15 &                  0.0838 \\
+             1951-1995 &               5 &                     rational, result, receive, statement, money, paradox, shock, iterate, consequence, common &               14 &                  0.0782 \\
+             1951-1995 &               6 &             cooperation, show, competitive, high, probability, conflict, simulation, altruism, yield, natural &               14 &                  0.0782 \\
+             1951-1995 &               7 &                           prisoner, dilemma, give, point, defect, form, cooperator, increase, relate, ethical &               10 &                  0.0559 \\
+             1951-1995 &               8 &                       player, give, decision, provide, cooperative, game, previous, pair, determine, interact &                9 &                  0.0503 \\
+             1951-1995 &               9 &                          play, cooperate, result, male, subject, female, time, relationship, suggest, student &                8 &                  0.0447 \\
+             1951-1995 &              10 &                                   problem, group, theory, good, approach, society, large, scale, issue, level &                8 &                  0.0447 \\
+             1951-1995 &              11 &            study, situation, behaviour, computer, argue, change, implication, characteristic, real, associate &                8 &                  0.0447 \\
+             1951-1995 &              12 &                        model, paper, behavior, examine, present, mutual, expectation, develop, type, variable &                7 &                  0.0391 \\
+             1951-1995 &              13 &                                   make, research, system, analysis, choice, work, base, relation, world, wide &                6 &                  0.0335 \\
+             1951-1995 &              14 &               individual, social, behavior, standard, choose, evolutionary, partner, payoff, defection, small &                5 &                  0.0279 \\
+             \midrule
+             1951-2003 &               1 &                                    game, player, dilemma, prisoner, theory, give, paper, make, group, problem &              151 &                  0.4266 \\
+             1951-2003 &               2 &                         cooperation, result, play, show, cooperate, condition, cooperative, high, level, time &              106 &                  0.2994 \\
+             1951-2003 &               3 &                  strategy, model, agent, study, behavior, individual, population, evolutionary, state, player &               97 &                   0.274 \\
+             \midrule
+             1951-2010 &               1 &                                  model, theory, paper, base, make, present, problem, provide, human, decision &              325 &                  0.3454 \\
+             1951-2010 &               2 &                                   game, strategy, player, agent, play, dilemma, system, behavior, show, state &              322 &                  0.3422 \\
+             1951-2010 &               3 &  cooperation, network, study, population, individual, evolutionary, social, evolution, interaction, structure &              294 &                  0.3124 \\
+             \midrule
+             1951-2018 &               1 &                              model, theory, system, base, paper, problem, propose, present, approach, provide &              556 &                  0.2251 \\
+             1951-2018 &               2 &                        behavior, social, human, decision, study, experiment, make, suggest, result, behaviour &              482 &                  0.1951 \\
+             1951-2018 &               3 &                     individual, group, good, social, punishment, level, cost, mechanism, dilemma, cooperative &              428 &                  0.1733 \\
+             1951-2018 &               4 &                            game, strategy, player, agent, play, dilemma, state, prisoner, payoff, equilibrium &              380 &                  0.1538 \\
+             1951-2018 &               5 &                 population, evolutionary, dynamic, model, selection, result, evolution, evolve, show, process &              351 &                  0.1421 \\
+             1951-2018 &               6 &       cooperation, network, interaction, structure, study, evolution, find, behavior, cooperative, simulation &              273 &                  0.1105 \\
+            \bottomrule
+            \end{tabular}            
+    }
     \end{center}
     \caption{Topic modeling results for the cumulative data sets over the
     periods: 1951-1965, 1951-1973, 1951-1980, 1951-1988, 1951-1995, 1951-2003, 1951-2010,
@@ -842,7 +1450,64 @@ researchers.
 \begin{table}[!hbtp]
     \centering
     \resizebox{.8\textwidth}{!}{
-    \input{cumulative_graphs_table.tex}}
+        \begin{tabular}{lrrrrrrrrrr}
+            \toprule
+            {} &  \# Nodes &  \# Edges &  \# Isolated nodes &  \% Isolated nodes &  \# Connected components &  Size of largest component &  Av. degree &  \# Communities &  Modularity &  Clustering coeff \\
+            \midrule
+            Period 0  &       11 &        3 &                 5 &              45.5 &                       8 &                          2 &       0.545 &              8 &       0.667 &             0.000 \\
+            Period 1  &       14 &        4 &                 6 &              42.9 &                      10 &                          2 &       0.571 &             10 &       0.750 &             0.000 \\
+            Period 2  &       27 &       15 &                 8 &              29.6 &                      16 &                          5 &       1.111 &             16 &       0.684 &             0.160 \\
+            Period 3  &       29 &       17 &                 9 &              31.0 &                      17 &                          6 &       1.172 &             17 &       0.630 &             0.172 \\
+            Period 4  &       32 &       18 &                10 &              31.2 &                      19 &                          6 &       1.125 &             19 &       0.667 &             0.156 \\
+            Period 5  &       43 &       28 &                10 &              23.3 &                      23 &                          6 &       1.302 &             23 &       0.827 &             0.326 \\
+            Period 6  &       49 &       34 &                10 &              20.4 &                      25 &                          6 &       1.388 &             25 &       0.867 &             0.408 \\
+            Period 7  &       52 &       35 &                11 &              21.2 &                      27 &                          6 &       1.346 &             27 &       0.873 &             0.385 \\
+            Period 8  &       54 &       35 &                13 &              24.1 &                      29 &                          6 &       1.296 &             29 &       0.873 &             0.370 \\
+            Period 9  &       54 &       35 &                13 &              24.1 &                      29 &                          6 &       1.296 &             29 &       0.873 &             0.370 \\
+            Period 10 &       59 &       36 &                16 &              27.1 &                      33 &                          6 &       1.220 &             33 &       0.880 &             0.339 \\
+            Period 11 &       60 &       36 &                17 &              28.3 &                      34 &                          6 &       1.200 &             34 &       0.880 &             0.333 \\
+            Period 12 &       63 &       40 &                17 &              27.0 &                      34 &                          6 &       1.270 &             34 &       0.884 &             0.339 \\
+            Period 13 &       65 &       40 &                19 &              29.2 &                      36 &                          6 &       1.231 &             36 &       0.884 &             0.328 \\
+            Period 14 &       69 &       46 &                20 &              29.0 &                      37 &                          6 &       1.333 &             37 &       0.889 &             0.360 \\
+            Period 15 &       71 &       46 &                22 &              31.0 &                      39 &                          6 &       1.296 &             39 &       0.889 &             0.350 \\
+            Period 16 &       75 &       47 &                24 &              32.0 &                      42 &                          6 &       1.253 &             42 &       0.894 &             0.331 \\
+            Period 17 &       80 &       47 &                29 &              36.2 &                      47 &                          6 &       1.175 &             47 &       0.894 &             0.310 \\
+            Period 18 &       84 &       47 &                33 &              39.3 &                      51 &                          6 &       1.119 &             51 &       0.894 &             0.296 \\
+            Period 19 &       92 &       48 &                39 &              42.4 &                      58 &                          6 &       1.043 &             58 &       0.898 &             0.270 \\
+            Period 20 &      101 &       52 &                43 &              42.6 &                      64 &                          6 &       1.030 &             64 &       0.909 &             0.276 \\
+            Period 21 &      114 &       62 &                44 &              38.6 &                      70 &                          6 &       1.088 &             70 &       0.926 &             0.279 \\
+            Period 22 &      119 &       64 &                45 &              37.8 &                      73 &                          6 &       1.076 &             73 &       0.930 &             0.268 \\
+            Period 23 &      129 &       69 &                48 &              37.2 &                      79 &                          6 &       1.070 &             79 &       0.937 &             0.270 \\
+            Period 24 &      140 &       72 &                55 &              39.3 &                      87 &                          6 &       1.029 &             87 &       0.941 &             0.249 \\
+            Period 25 &      154 &       81 &                60 &              39.0 &                      95 &                          6 &       1.052 &             95 &       0.947 &             0.252 \\
+            Period 26 &      179 &       95 &                71 &              39.7 &                     111 &                          6 &       1.061 &            111 &       0.955 &             0.273 \\
+            Period 27 &      192 &      102 &                74 &              38.5 &                     118 &                          6 &       1.062 &            118 &       0.960 &             0.270 \\
+            Period 28 &      199 &      105 &                75 &              37.7 &                     122 &                          6 &       1.055 &            122 &       0.962 &             0.260 \\
+            Period 29 &      214 &      115 &                79 &              36.9 &                     130 &                          6 &       1.075 &            130 &       0.966 &             0.284 \\
+            Period 30 &      255 &      140 &                85 &              33.3 &                     151 &                          6 &       1.098 &            151 &       0.973 &             0.275 \\
+            Period 31 &      288 &      169 &                92 &              31.9 &                     166 &                          6 &       1.174 &            166 &       0.977 &             0.304 \\
+            Period 32 &      319 &      195 &                96 &              30.1 &                     179 &                          6 &       1.223 &            179 &       0.979 &             0.327 \\
+            Period 33 &      360 &      235 &               103 &              28.6 &                     198 &                          7 &       1.306 &            198 &       0.977 &             0.334 \\
+            Period 34 &      411 &      278 &               112 &              27.3 &                     222 &                          7 &       1.353 &            222 &       0.979 &             0.349 \\
+            Period 35 &      459 &      310 &               118 &              25.7 &                     246 &                          7 &       1.351 &            246 &       0.982 &             0.343 \\
+            Period 36 &      521 &      370 &               124 &              23.8 &                     269 &                         10 &       1.420 &            269 &       0.983 &             0.355 \\
+            Period 37 &      621 &      476 &               130 &              20.9 &                     303 &                         19 &       1.533 &            303 &       0.985 &             0.393 \\
+            Period 38 &      738 &      603 &               141 &              19.1 &                     344 &                         22 &       1.634 &            344 &       0.987 &             0.422 \\
+            Period 39 &      904 &      877 &               157 &              17.4 &                     394 &                         25 &       1.940 &            394 &       0.985 &             0.467 \\
+            Period 40 &     1062 &     1170 &               164 &              15.4 &                     432 &                         33 &       2.203 &            433 &       0.985 &             0.498 \\
+            Period 41 &     1232 &     1442 &               178 &              14.4 &                     480 &                         71 &       2.341 &            482 &       0.982 &             0.515 \\
+            Period 42 &     1429 &     1936 &               195 &              13.6 &                     531 &                        133 &       2.710 &            535 &       0.965 &             0.538 \\
+            Period 43 &     1695 &     2375 &               214 &              12.6 &                     607 &                        157 &       2.802 &            610 &       0.970 &             0.564 \\
+            Period 44 &     1980 &     2865 &               223 &              11.3 &                     677 &                        209 &       2.894 &            680 &       0.968 &             0.589 \\
+            Period 45 &     2300 &     3420 &               244 &              10.6 &                     754 &                        322 &       2.974 &            760 &       0.965 &             0.602 \\
+            Period 46 &     2643 &     3971 &               265 &              10.0 &                     845 &                        399 &       3.005 &            856 &       0.962 &             0.618 \\
+            Period 47 &     3106 &     4877 &               278 &               9.0 &                     933 &                        504 &       3.140 &            947 &       0.965 &             0.639 \\
+            Period 48 &     3664 &     6532 &               309 &               8.4 &                    1045 &                        613 &       3.566 &           1058 &       0.964 &             0.659 \\
+            Period 49 &     3938 &     7072 &               322 &               8.2 &                    1098 &                        706 &       3.592 &           1115 &       0.965 &             0.664 \\
+            Period 50 &     4221 &     7642 &               338 &               8.0 &                    1157 &                        796 &       3.621 &           1177 &       0.965 &             0.666 \\
+            \bottomrule
+            \end{tabular}
+}
     \caption{Collaborativeness metrics for cumulative graphs, \(\tilde{G} \subseteq G\).}
 \end{table}
 
@@ -852,7 +1517,64 @@ researchers.
 \begin{table}[!hbtp]
     \centering
     \resizebox{.8\textwidth}{!}{
-    \input{cumulative_clusters_table.tex}}
+        \begin{tabular}{lrrrrrrrrrr}
+            \toprule
+            {} &  \# Nodes &  \# Edges &  \# Isolated nodes &  \% Isolated nodes &  \# Connected components &  Size of largest component &  Av. degree &  \# Communities &  Modularity &  Clustering coeff \\
+            \midrule
+            0  &        2 &        1 &                 0 &               0.0 &                       1 &                          2 &       1.000 &              1 &       0.000 &             0.000 \\
+            1  &        2 &        1 &                 0 &               0.0 &                       1 &                          2 &       1.000 &              1 &       0.000 &             0.000 \\
+            2  &        5 &        8 &                 0 &               0.0 &                       1 &                          5 &       3.200 &              1 &       0.000 &             0.867 \\
+            3  &        6 &       10 &                 0 &               0.0 &                       1 &                          6 &       3.333 &              2 &       0.020 &             0.833 \\
+            4  &        6 &       10 &                 0 &               0.0 &                       1 &                          6 &       3.333 &              2 &       0.020 &             0.833 \\
+            5  &        6 &       10 &                 0 &               0.0 &                       1 &                          6 &       3.333 &              2 &       0.020 &             0.833 \\
+            6  &        6 &       10 &                 0 &               0.0 &                       1 &                          6 &       3.333 &              2 &       0.020 &             0.833 \\
+            7  &        6 &       10 &                 0 &               0.0 &                       1 &                          6 &       3.333 &              2 &       0.020 &             0.833 \\
+            8  &        6 &       10 &                 0 &               0.0 &                       1 &                          6 &       3.333 &              2 &       0.020 &             0.833 \\
+            9  &        6 &       10 &                 0 &               0.0 &                       1 &                          6 &       3.333 &              2 &       0.020 &             0.833 \\
+            10 &        6 &       10 &                 0 &               0.0 &                       1 &                          6 &       3.333 &              2 &       0.020 &             0.833 \\
+            11 &        6 &       10 &                 0 &               0.0 &                       1 &                          6 &       3.333 &              2 &       0.020 &             0.833 \\
+            12 &        6 &       10 &                 0 &               0.0 &                       1 &                          6 &       3.333 &              2 &       0.020 &             0.833 \\
+            13 &        6 &       10 &                 0 &               0.0 &                       1 &                          6 &       3.333 &              2 &       0.020 &             0.833 \\
+            14 &        6 &       10 &                 0 &               0.0 &                       1 &                          6 &       3.333 &              2 &       0.020 &             0.833 \\
+            15 &        6 &       10 &                 0 &               0.0 &                       1 &                          6 &       3.333 &              2 &       0.020 &             0.833 \\
+            16 &        6 &       10 &                 0 &               0.0 &                       1 &                          6 &       3.333 &              2 &       0.020 &             0.833 \\
+            17 &        6 &       10 &                 0 &               0.0 &                       1 &                          6 &       3.333 &              2 &       0.020 &             0.833 \\
+            18 &        6 &       10 &                 0 &               0.0 &                       1 &                          6 &       3.333 &              2 &       0.020 &             0.833 \\
+            19 &        6 &       10 &                 0 &               0.0 &                       1 &                          6 &       3.333 &              2 &       0.020 &             0.833 \\
+            20 &        6 &       10 &                 0 &               0.0 &                       1 &                          6 &       3.333 &              2 &       0.020 &             0.833 \\
+            21 &        6 &       10 &                 0 &               0.0 &                       1 &                          6 &       3.333 &              2 &       0.020 &             0.833 \\
+            22 &        6 &       10 &                 0 &               0.0 &                       1 &                          6 &       3.333 &              2 &       0.020 &             0.833 \\
+            23 &        6 &       10 &                 0 &               0.0 &                       1 &                          6 &       3.333 &              2 &       0.020 &             0.833 \\
+            24 &        6 &       10 &                 0 &               0.0 &                       1 &                          6 &       3.333 &              2 &       0.020 &             0.833 \\
+            25 &        6 &       10 &                 0 &               0.0 &                       1 &                          6 &       3.333 &              2 &       0.020 &             0.833 \\
+            26 &        6 &       10 &                 0 &               0.0 &                       1 &                          6 &       3.333 &              2 &       0.020 &             0.833 \\
+            27 &        6 &       10 &                 0 &               0.0 &                       1 &                          6 &       3.333 &              2 &       0.020 &             0.833 \\
+            28 &        6 &       10 &                 0 &               0.0 &                       1 &                          6 &       3.333 &              2 &       0.020 &             0.833 \\
+            29 &        6 &       10 &                 0 &               0.0 &                       1 &                          6 &       3.333 &              2 &       0.020 &             0.833 \\
+            30 &        6 &       10 &                 0 &               0.0 &                       1 &                          6 &       3.333 &              2 &       0.020 &             0.833 \\
+            31 &        6 &       10 &                 0 &               0.0 &                       1 &                          6 &       3.333 &              2 &       0.020 &             0.833 \\
+            32 &        6 &       10 &                 0 &               0.0 &                       1 &                          6 &       3.333 &              2 &       0.020 &             0.833 \\
+            33 &        7 &       21 &                 0 &               0.0 &                       1 &                          7 &       6.000 &              1 &       0.000 &             1.000 \\
+            34 &        7 &       21 &                 0 &               0.0 &                       1 &                          7 &       6.000 &              1 &       0.000 &             1.000 \\
+            35 &        7 &       21 &                 0 &               0.0 &                       1 &                          7 &       6.000 &              1 &       0.000 &             1.000 \\
+            36 &       10 &       13 &                 0 &               0.0 &                       1 &                         10 &       2.600 &              2 &       0.376 &             0.553 \\
+            37 &       19 &       28 &                 0 &               0.0 &                       1 &                         19 &       2.947 &              3 &       0.544 &             0.730 \\
+            38 &       22 &       35 &                 0 &               0.0 &                       1 &                         22 &       3.182 &              4 &       0.541 &             0.720 \\
+            39 &       25 &       39 &                 0 &               0.0 &                       1 &                         25 &       3.120 &              5 &       0.558 &             0.686 \\
+            40 &       33 &       62 &                 0 &               0.0 &                       1 &                         33 &       3.758 &              4 &       0.623 &             0.736 \\
+            41 &       71 &      148 &                 0 &               0.0 &                       1 &                         71 &       4.169 &              6 &       0.726 &             0.698 \\
+            42 &      133 &      387 &                 0 &               0.0 &                       1 &                        133 &       5.820 &              7 &       0.726 &             0.749 \\
+            43 &      157 &      465 &                 0 &               0.0 &                       1 &                        157 &       5.924 &              8 &       0.721 &             0.725 \\
+            44 &      209 &      611 &                 0 &               0.0 &                       1 &                        209 &       5.847 &             13 &       0.738 &             0.737 \\
+            45 &      322 &      892 &                 0 &               0.0 &                       1 &                        322 &       5.540 &             16 &       0.780 &             0.743 \\
+            46 &      399 &     1109 &                 0 &               0.0 &                       1 &                        399 &       5.559 &             15 &       0.792 &             0.742 \\
+            47 &      504 &     1368 &                 0 &               0.0 &                       1 &                        504 &       5.429 &             21 &       0.809 &             0.751 \\
+            48 &      613 &     1677 &                 0 &               0.0 &                       1 &                        613 &       5.471 &             24 &       0.820 &             0.761 \\
+            49 &      706 &     1935 &                 0 &               0.0 &                       1 &                        706 &       5.482 &             28 &       0.832 &             0.772 \\
+            50 &      796 &     2214 &                 0 &               0.0 &                       1 &                        796 &       5.563 &             29 &       0.843 &             0.773 \\
+            \bottomrule
+            \end{tabular}
+            }
     \caption{Collaborativeness metrics for cumulative graphs' main clusters, \(\tilde{G} \subseteq \bar{G}\).}
 \end{table}
 
