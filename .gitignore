@@ -14,6 +14,9 @@
 *.DS_Store
 # minted files 
 *_minted-main/*
+*.bcf
+*.bib
+*.run.xml
 
 # data
 *raw_data

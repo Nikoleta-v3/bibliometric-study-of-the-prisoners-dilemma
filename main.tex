@@ -22,6 +22,7 @@
 \usepackage{tabularx}
 \usepackage{color, colortbl}
 \usepackage{smartdiagram}
+\usepackage[round]{natbib}
 \usesmartdiagramlibrary{additions}
 \usetikzlibrary{er,positioning, calc, patterns}
 \usetikzlibrary{decorations.pathreplacing}
@@ -35,8 +36,9 @@
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
 
-\usepackage[switch]{lineno}
-\linenumbers
+% \usepackage[backend=biber,style=alphabetic,sorting=ynt]{biblatex}
+
+% \addbibresource{bibliography.bib}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%PARAMETERS%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\totalarticles}{2422}
@@ -53,7 +55,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{A bibliometric study of research topics, collaboration and centrality 
        in the Iterated Prisoner's Dilemma}
-\author{}
+
+\author[1, 2, *]{Nikoleta E. Glynatsi}
+\author[1]{Vincent A. Knight}
+
+\affil[1]{Cardiff University, School of Mathematics, United Kingdom}
+\affil[2]{Max Planck Institute for Evolutionary Biology, Germany}
+\affil[*]{Corresponding author: Nikoleta E. Glynatsi, glynatsi@evolbio.mpg.de}
+\date{}
+\setcounter{Maxaffil}{0}
+\renewcommand\Affilfont{\itshape\small}
 
 \begin{document}
 
@@ -82,35 +93,35 @@ and avenues of research to understand the reasons for the measured behaviours.
 \section{Introduction}\label{section:introduction}
 
 The Prisoner's Dilemma (PD) is a well known game used since its introduction in
-the 1950's~\cite{Flood1958} as a framework for studying the emergence of
+the 1950's~\citep{Flood1958} as a framework for studying the emergence of
 cooperation; a topic of continued interest for mathematical,
 social, biological and
 ecological sciences. This manuscript presents a bibliometric
 analysis of 2420 published articles on the Prisoner's Dilemma between 1951 and
 2018. It presents a number of research topics in the PD publications, which have been
-identified using Latent Dirichlet Allocation (LDA)~\cite{Blei2003}, and it explores the changes in the
+identified using Latent Dirichlet Allocation (LDA)~\citep{Blei2003}, and it explores the changes in the
 research topics over time. The collaborative behaviour of the field is explored
 using the co-authorship network, and furthermore, the LDA
 topic analysis is combined with the co-authorship network analysis to assess
 the most central authors in these topics. Assessing the collaborative
 behaviour of the field of collaboration itself is the main aim of this work.
 
-As discussed in~\cite{youngblood2018}, bibliometrics (the statistical analysis
-of published works originally described by~\cite{pritchard1969}) has been used
+As discussed in~\citep{youngblood2018}, bibliometrics (the statistical analysis
+of published works originally described by~\citep{pritchard1969}) has been used
 to support historical assumptions about the development of fields
-\cite{raina1998}, identify connections between scientific growth and policy
-changes \cite{das2016}, develop a quantitative understanding of author
-order~\cite{sekara2018}, and investigate the collaborative structure of an
-interdisciplinary field~\cite{Liu2015}. Most academic research is undertaken in
-the form of collaborative effort and as~\cite{Kyvik2017} points out, it is
+\citep{raina1998}, identify connections between scientific growth and policy
+changes \citep{das2016}, develop a quantitative understanding of author
+order~\citep{sekara2018}, and investigate the collaborative structure of an
+interdisciplinary field~\citep{Liu2015}. Most academic research is undertaken in
+the form of collaborative effort and as~\citep{Kyvik2017} points out, it is
 rational that two or more people have the potential to do better as a group
 than individually. Indeed this is the very premise of the PD itself.
 Collaboration in groups has a long tradition in experimental
 sciences and it has be proven to be productive according
-to~\cite{Etzkowitz1992}. The number of collaborations can be different
+to~\citep{Etzkowitz1992}. The number of collaborations can be different
 between research fields and understanding how collaborative a field is not
 always an easy task. Several studies tend to consider academic citations as a
-measure for these things. A blog post published by Nature~\cite{nature_blog}
+measure for these things. A blog post published by Nature~\citep{nature_blog}
 argues that depending on citations can often be misleading because the true
 number of citations can not be known. Citations can be missed due to data entry
 errors, academics are influenced by many more papers than they actually cite and
@@ -118,38 +129,38 @@ several of the citations are superficial.
 
 A more recent approach to measuring collaborative behaviour, and to studying the
 development of a field is to use the co-authorship network, as described
-in~\cite{Liu2015}. The co-authorship network has many advantages as several
+in~\citep{Liu2015}. The co-authorship network has many advantages as several
 graph theoretic measures can be used as proxies to explain author relationships.
 For example the average degree of a node corresponds to the average number of
 an authors' collaborators, and clustering coefficient corresponds to the extent that
 two collaborators of an author also collaborate with each other.
-In~\cite{Liu2015}, the approach was applied to analyse the development of the field
-``evolution of cooperation'', and in~\cite{youngblood2018} to identify the
+In~\citep{Liu2015}, the approach was applied to analyse the development of the field
+``evolution of cooperation'', and in~\citep{youngblood2018} to identify the
 subdisciplines of the interdisciplinary field of ``cultural evolution'' and
 investigate trends in collaboration and productivity between these subdisciplines.
-Moreover, \cite{Li2019} examined the
+Moreover, \citep{Li2019} examined the
 long-term impact of co-authorship with established, highly-cited scientists on
 the careers of junior researchers.
 
 LDA is a topic modeling technique proposed
-in~\cite{Blei2003} as a generative probabilistic model for discovering
+in~\citep{Blei2003} as a generative probabilistic model for discovering
 underlying topics in collections of data.
-Applications of the technique include detection in image data~\cite{
-Coelho2010} and detection in video~\cite{Wang2008}. Nevertheless,
+Applications of the technique include detection in image data~\citep{
+Coelho2010} and detection in video~\citep{Wang2008}. Nevertheless,
 LDA has been applied by several works on publication data for identifying the
-topic structure of a subject area. In~\cite{Inglis2018}, it was applied to the
+topic structure of a subject area. In~\citep{Inglis2018}, it was applied to the
 publications on mathematical education of the journals ``Educational Studies in
 Mathematics'' and ``Journal for Research in Mathematics Education'' to
 identify the dominant topics that each journal was publishing on. The topics of
 the North American library and Information Science dissertations were 
-studied chronologically in~\cite{Sugimoto2011}, and the main topic of the
+studied chronologically in~\citep{Sugimoto2011}, and the main topic of the
 scientific content presented at EvoLang conferences was identified
-in~\cite{Bergmann2018}. In~\cite{Bergmann2018} the LDA approach is combined with
+in~\citep{Bergmann2018}. In~\citep{Bergmann2018} the LDA approach is combined with
 clustering and a co-authorship network analysis. A clustering analysis is
 applied to the LDA topics, and the co-authorship network is analysed as a whole
 where the clusters are only used to differentiate between the authors' topics.
 
-This paper builds upon the previous works of~\cite{Bergmann2018, Liu2015,
+This paper builds upon the previous works of~\citep{Bergmann2018, Liu2015,
 youngblood2018}. It extends their methodology, it combines identified topics by
 an LDA model with the co-authorship network analysis, and applies all these
 techniques to a new data set. This data set was collected not from a single
@@ -189,40 +200,40 @@ the article's title. The format of the request message is different from API to
 API. The receive phase includes receiving a number of raw metadata of articles
 that satisfies the request message. The raw metadata are commonly received in
 extensive markup language (xml) or Javascript object notation (json)
-formats~\cite{nurseitov2009}. Similarly to the request message, the structure of
+formats~\citep{nurseitov2009}. Similarly to the request message, the structure of
 the received data differs from publisher
 to publisher.
 
 The data collection is crucial to this study. To ensure that this study can be
 reproduced all code used to query the different publishers' APIs has been packaged as a
-Python library and is available online~\cite{nikoleta_2017}. The software could
+Python library and is available online~\citep{nikoleta_2017}. The software could
 be used for any type of projects similar to the one described here,
 documentation for it is available at:
-\url{http://arcas.readthedocs.io/en/latest/}. Project~\cite{nikoleta_2017} can
+\url{http://arcas.readthedocs.io/en/latest/}. Project~\citep{nikoleta_2017} can
 collect data from five different sources. These correspond to four
 publishers and a preprint server:
 
 \begin{multicols}{2}
     \begin{itemize}
-        \item arXiv~\cite{mckiernan2000}; a repository of electronic preprints.
+        \item arXiv~\citep{mckiernan2000}; a repository of electronic preprints.
         It consists of scientific
         papers in the fields of mathematics, physics, astronomy, electrical engineering,
         computer science, quantitative biology, statistics, and quantitative finance,
         which all can be accessed online.
-        \item PLOS~\cite{plos}; a library of open access journals and other scientific literature
+        \item PLOS~\citep{plos}; a library of open access journals and other scientific literature
         under an open content license. It launched its first journal, PLOS Biology,
         in October 2003 and publishes seven journals, as of October 2015.
-        \item IEEE Xplore Digital Library (IEEE)~\cite{ieee}; a research database for discovery
+        \item IEEE Xplore Digital Library (IEEE)~\citep{ieee}; a research database for discovery
         and access to journal articles, conference proceedings, technical standards,
         and related materials on computer science, electrical engineering and electronics,
         and allied fields. It contains material published mainly by the Institute of
         Electrical and Electronics Engineers and other partner publishers. 
-        \item Nature~\cite{nature}; a multidisciplinary scientific journal,
+        \item Nature~\citep{nature}; a multidisciplinary scientific journal,
         first published on 4 November 1869. It was ranked the world's most cited
         scientific journal by the Science Edition of the 2010 Journal Citation Reports
         and is ascribed an impact factor of 40.137, making it one of the world's
         top academic journals.
-        \item Springer~\cite{springer}; a leading global scientific publisher of
+        \item Springer~\citep{springer}; a leading global scientific publisher of
         books and journals. It publishes close to 500 academic and professional
         society journals.
     \end{itemize}
@@ -265,19 +276,19 @@ topic. Non relevant articles were dropped at this stage.
 
 Following the cleaning process, a total of \manual~articles were manually added
 to the data set because they are of interest to the field. This was also done
-in~\cite{Liu2015}. Examples of such papers include~\cite{Flood1958} the first publication on the
-PD,~\cite{Ohtsuki2006, Stewart2012} two well cited articles in the field, and a
-series of works from Robert Axelrod~\cite{Axelrod1980, Axelrod1980more,
+in~\citep{Liu2015}. Examples of such papers include~\citep{Flood1958} the first publication on the
+PD,~\citep{Ohtsuki2006, Stewart2012} two well cited articles in the field, and a
+series of works from Robert Axelrod~\citep{Axelrod1980, Axelrod1980more,
 Axelrod1987, Axelrod1981, Riolo2001} a leading author of the field.
 The process of obtaining the data set used in analysis presented in the
 manuscript is illustrated in Figure~\ref{figure:colection_process}.
-This data set has been archived and is available at~\cite{pd_data_2018}.
+This data set has been archived and is available at~\citep{pd_data_2018}.
 
 \begin{figure}[!hbtp]
     \begin{center}
-        \includestandalone[width=.8\textwidth]{data_collection_diagram}
+        \includegraphics[width=.8\textwidth]{data_collection_diagram.pdf}
     \end{center}
-    \caption{The generating process of the data set~\cite{pd_data_2018}.}\label{figure:colection_process}
+    \caption{The generating process of the data set~\citep{pd_data_2018}.}\label{figure:colection_process}
 \end{figure}
 
 
@@ -309,12 +320,12 @@ from arXiv with 11 articles per year, followed by Springer with 9 and PLOS with
         \end{tabular}
     }
     \end{center}
-    \caption{Summary of~\cite{pd_data_2018} per provenance.}
+    \caption{Summary of~\citep{pd_data_2018} per provenance.}
     \label{table:preliminary_table}
 \end{table}
 
 All the visualisations presented in the manuscript were generated
-using~\cite{hunter2007matplotlib}, and project~\cite{walt2011numpy} was used for
+using~\citep{hunter2007matplotlib}, and project~\citep{walt2011numpy} was used for
 manipulating the data.
 
 The data handled here is in fact a time series from the 1950s, the formulation
@@ -323,7 +334,7 @@ made from Figure~\ref{fig:timeseries}.
 
 \begin{enumerate}
     \item There is a steady increase of the number of publications since the
-    1980s and the introduction of computer tournaments~\cite{Axelrod1981}
+    1980s and the introduction of computer tournaments~\citep{Axelrod1981}
     (work by Robert Axelrod).
     \item There is a decrease in 2017-2018. This is due to our data set being
     incomplete. Articles that have been written in 2017-2018 have either not
@@ -332,7 +343,7 @@ made from Figure~\ref{fig:timeseries}.
 \end{enumerate}
 
 These observations can be confirmed by studying the time series.
-Using~\cite{scipy}, an exponential distribution is fitted to the data.
+Using~\citep{scipy}, an exponential distribution is fitted to the data.
 The fitted model can be used to forecast the
 behaviour of the field for the next 5 years. Even
 though the time series has indicated a slight decrease, the model forecasts that
@@ -346,7 +357,7 @@ field of the PD continues to attract academic attention.
     with a fitted exponential line, and a forecast for 2017-2022.}\label{fig:timeseries}
 \end{figure}
 
-There are a total of \authors~authors in the data set (\cite{pd_data_2018}) and several of these
+There are a total of \authors~authors in the data set \citep{pd_data_2018} and several of these
 authors have had multiple publications collected from the data collection process.
 The highest number of articles collected for an
 author is 83 publications for Matjaz Perc. However, Matjaz Perc is an outlier
@@ -354,13 +365,13 @@ most authors have 1 to 6 publications in the data set.
 The overall Collaboration Index (CI) or the average number of authors on
 multi-authored papers is 3.2, thus on average a non single author publication in
 the PD has 3 authors. This appears to be quite standard compared to other fields
-such as cultural evolution~\cite{youngblood2018}, Astronomy and Astrophysics,
+such as cultural evolution~\citep{youngblood2018}, Astronomy and Astrophysics,
 Genetics and Heredity, Nuclear and Particle Physics as reported
-by~\cite{nature_author_blog}.
+by~\citep{nature_author_blog}.
 There are only a total of 545 publications with a single author, which
 corresponds to the 22\% of the papers. It appears that academic publications
 tend to be undertaken in the form of collaborative effort, which is in line
-with the claim of~\cite{Kyvik2017}.
+with the claim of~\citep{Kyvik2017}.
 
 The collaborativeness of the authors is explored in more detail in
 Section~\ref{subsection:co_authorship} using the co-authorship network. The collaborative
@@ -371,11 +382,11 @@ relevance over time are presented in Section~\ref{subsection:research_topics}.
 
 \subsection{Research topics in the Prisoner's Dilemma research}\label{subsection:research_topics}
 
-The articles contained in the data set (\cite{pd_data_2018}) are classified
+The articles contained in the data set \citep{pd_data_2018} are classified
 into research topics using LDA, an unsupervised machine learning technique
 designed to summarize large collections of documents by a small number of
-conceptually connected topics or themes~\cite{Blei2003, Grimmer2013}. The
-documents are the articles' abstracts and LDA was carried out using~\cite{rehurek_lrec}.
+conceptually connected topics or themes~\citep{Blei2003, Grimmer2013}. The
+documents are the articles' abstracts and LDA was carried out using~\citep{rehurek_lrec}.
 In LDA, each document/abstract is represented by a distribution over topics,
 and the topics themselves are represented by a distribution over words. More
 specifically, each topic is described by weights associated with words and
@@ -398,7 +409,7 @@ given example the dominant topic is Topic A \(c^*=c_A\).
 
 LAD requires that the number of topics is specified in advance before running
 the algorithm. The appropriate number of topics can be chosen based on the
-coherence score~\cite{Roder2015} or the exclusivity score~\cite{Airoldi2012}. The
+coherence score~\citep{Roder2015} or the exclusivity score~\citep{Airoldi2012}. The
 coherence score measures the degree of semantic similarity between highly weighted
 words of a topic. There are cases for which a few topics can be dominated by very
 common words, and for that reason the exclusivity of words to topics has also
@@ -407,9 +418,9 @@ Figure~\ref{fig:coherence_value_over_number_of_topics} gives the topic coherence
 and Figure~\ref{fig:exclusivity_value_over_number_of_topics} gives the
 exclusivity of 18 models where the number of topics \(n \in \{2, 3, \dots, 18\}\).
 The topic coherence for each model was calculated using the
-open source project~\cite{rehurek_lrec}. The exclusivity measure was calculated
-with an altered version of~\cite{rehurek_lrec} which has been archived
-at~\cite{gensim_nikoleta}.
+open source project~\citep{rehurek_lrec}. The exclusivity measure was calculated
+with an altered version of~\citep{rehurek_lrec} which has been archived
+at~\citep{gensim_nikoleta}.
 
 From Figure~\ref{fig:coherence_value_over_number_of_topics} it can be seen that
 the number of topics with the highest coherence score are $n=6$ (coherence score
@@ -435,7 +446,7 @@ than the model of $n=6$, and its coherence score is 0.406 (which is closed to
         \caption{Exclusivity for LDA models over the number of topics.}
         \label{fig:exclusivity_value_over_number_of_topics}
     \end{subfigure}
-    \caption{Coherence and exclusivity for LDA models over the number of topics.}
+    \caption{Coherence and exclusivity for LDA models over the number of topics.}\label{figure:models_scores}
 \end{figure}
 
 For \(n=5\) the articles are clustered and assigned to their dominant topic,
@@ -450,45 +461,45 @@ E, and more specifically:
     representative article, Topic A appears to be about \textbf{human subject
     research}. Several publications assigned to the topic study the PD by
     setting experiments and having human participants simulate the game
-    instead of computer simulations. These articles include~\cite{Matsumoto2016}
+    instead of computer simulations. These articles include~\citep{Matsumoto2016}
     which showed that prosocial behavior increased with the age of the
-    participants, ~\cite{Li2014} which studied the difference in cooperation
+    participants, ~\citep{Li2014} which studied the difference in cooperation
     between high-functioning autistic and typically developing
-    children,~\cite{Molina2013} explored the gender effect in highschool
-    students and~\cite{Bell2017} explored the effect of facial expressions of
+    children,~\citep{Molina2013} explored the gender effect in highschool
+    students and~\citep{Bell2017} explored the effect of facial expressions of
     individuals.
     \item Though it is not immediate from the keywords associated with
     Topic B, investigating the papers assigned to the topic indicate that it
     is focused on \textbf{biological studies}. Papers assigned to the topic include
-    papers which apply the PD to genetics~\cite{Sistrom2015}, to
-    the study of tumours~\cite{sartakhti2017} and
-    viruses~\cite{Turner1999}. Other works include how phenotype affinity
-    can affect the emergence of cooperation~\cite{wu2019phenotype} and modeling
+    papers which apply the PD to genetics~\citep{Sistrom2015}, to
+    the study of tumours~\citep{sartakhti2017} and
+    viruses~\citep{Turner1999}. Other works include how phenotype affinity
+    can affect the emergence of cooperation~\citep{wu2019phenotype} and modeling
     bacterial communities as a spatial structured social dilemma.
     \item Based on the keywords and the most representative article Topic
     C appears to include publications on PD \textbf{strategies}. Publications
-    in the topic include the introduction of new strategies~\cite{stewart2013extortion},
-    the search of optimality in strategies~\cite{banerjee2007reaching} and the
-    training of strategies~\cite{ishibuchi2011evolution} with different
+    in the topic include the introduction of new strategies~\citep{stewart2013extortion},
+    the search of optimality in strategies~\citep{banerjee2007reaching} and the
+    training of strategies~\citep{ishibuchi2011evolution} with different
     representation methods. Moreover, publications that study the evolutionary
-    stability of strategies~\cite{adami2013evolutionary} and introduced methods
-    of differentiating between them~\cite{ashlock2008fingerprinting} are
+    stability of strategies~\citep{adami2013evolutionary} and introduced methods
+    of differentiating between them~\citep{ashlock2008fingerprinting} are
     also assigned to C.
     \item The keywords associated with Topic D clearly show that the topic
     is focused on \textbf{evolutionary dynamics on networks}. Publications include
-    \cite{ichinose2013robustness} which explored the robustness of cooperation
-    on networks,~\cite{wang2012spatial} which studied the effect of a strategy's neighbourhood
-    on the emergence of cooperation and~\cite{chen2016fixation} which explored
+    \citep{ichinose2013robustness} which explored the robustness of cooperation
+    on networks,~\citep{wang2012spatial} which studied the effect of a strategy's neighbourhood
+    on the emergence of cooperation and~\citep{chen2016fixation} which explored
     the fixation probabilities of any two strategies is spatial
     structures.
     \item The publication assigned to Topic E are on \textbf{modeling problems
     as a PD game}. Though Topic B is also concerned with problems being formulated
     as a PD, it includes only biological problems. In comparison, the problems
     in Topic E include decision making in
-    operational research~\cite{ormerod2010or}, information sharing among members
-    in a virtual team~\cite{feng2008trilateral}, the measurement of influence
-    in articles based on citations~\cite{hutchins2016relative} and the price
-    spikes in electric power markets~\cite{Guan2002}, and not on biological studies.
+    operational research~\citep{ormerod2010or}, information sharing among members
+    in a virtual team~\citep{feng2008trilateral}, the measurement of influence
+    in articles based on citations~\citep{hutchins2016relative} and the price
+    spikes in electric power markets~\citep{Guan2002}, and not on biological studies.
 \end{itemize}
 
 \begin{table}[!hbtp]
@@ -498,11 +509,11 @@ E, and more specifically:
         \toprule
         Dominant Topic &                                                                                                 Topic Keywords &                                                                                                                                    Most Representative Article Title &        Reference &  \# Documents &  \% Documents \\
         \midrule
-        A &                 social, behavior, human, study, experiment, cooperative, cooperation, suggest, find, behaviour &                                                                                      Facing Aggression: Cues Differ for Female versus Male Faces &  \cite{Geniole2012} &                496.0 &                   0.2008 \\
-        B &                               individual, group, good, show, high, increase, punishment, cost, result, benefit &  Genomic and Gene-Expression Comparisons among Phage-Resistant Type-IV Pilus Mutants of Pseudomonas syringae pathovar phaseolicola &  \cite{Sistrom2015} &                309.0 &                   0.1251 \\
-        C &                             game, strategy, player, agent, dilemma, play, payoff, state, prisoner, equilibrium &                                                            Fingerprinting: Visualization and Automatic Analysis of Prisoner's Dilemma Strategies &  \cite{ashlock2008fingerprinting} &                561.0 &                   0.2271 \\
-        D &  cooperation, network, population, evolutionary, evolution, interaction, dynamic, structure, cooperator, study &                                                   Influence of initial distributions on robust cooperation in evolutionary  Prisoner's Dilemma &     \cite{Chen2007} &                556.0 &                   0.2251 \\
-        E &                           model, theory, base, system, problem, paper, propose, information, provide, approach &                                                                          Gaming and price spikes in electric power markets and possible remedies &     \cite{Guan2002} &                548.0 &                   0.2219 \\
+        A &                 social, behavior, human, study, experiment, cooperative, cooperation, suggest, find, behaviour &                                                                                      Facing Aggression: Cues Differ for Female versus Male Faces &  \citep{Geniole2012} &                496.0 &                   0.2008 \\
+        B &                               individual, group, good, show, high, increase, punishment, cost, result, benefit &  Genomic and Gene-Expression Comparisons among Phage-Resistant Type-IV Pilus Mutants of Pseudomonas syringae pathovar phaseolicola &  \citep{Sistrom2015} &                309.0 &                   0.1251 \\
+        C &                             game, strategy, player, agent, dilemma, play, payoff, state, prisoner, equilibrium &                                                            Fingerprinting: Visualization and Automatic Analysis of Prisoner's Dilemma Strategies &  \citep{ashlock2008fingerprinting} &                561.0 &                   0.2271 \\
+        D &  cooperation, network, population, evolutionary, evolution, interaction, dynamic, structure, cooperator, study &                                                   Influence of initial distributions on robust cooperation in evolutionary  Prisoner's Dilemma &     \citep{Chen2007} &                556.0 &                   0.2251 \\
+        E &                           model, theory, base, system, problem, paper, propose, information, provide, approach &                                                                          Gaming and price spikes in electric power markets and possible remedies &     \citep{Guan2002} &                548.0 &                   0.2219 \\
         \bottomrule
     \end{tabularx}
     }
@@ -587,8 +598,8 @@ The relationship between the authors within a field is modeled as a graph
 \(G = (V_G, E_G)\) where \(V_G\) is the set of nodes and \(E_G\)  is the set of
 edges. The set \(V_G\) represents the authors and an edge connects two authors
 if and only if those authors have written together. This co-authorship network is
-constructed using the main data set~\cite{pd_data_2018} and the open source package
-\cite{networkx}. The PD network is denoted as \(G\) where the
+constructed using the main data set~\citep{pd_data_2018} and the open source package
+\citep{networkx}. The PD network is denoted as \(G\) where the
 number of unique authors \(|V(G)|\) is \authors~and \(|E(G)|\) is \edges.
 
 
@@ -601,7 +612,7 @@ number of authors that have published alone. The average degree denotes the aver
 number of neighbours for each nodes, i.e. the average number of collaborations
 between the authors.
 A connected component is a maximal set of nodes such that each pair of nodes is
-connected by a path~\cite{Easley2010}. The number of connected components as well as the size of the
+connected by a path~\citep{Easley2010}. The number of connected components as well as the size of the
 largest connected component in the network are reported.
 The size of the largest connected component represents the scale of the central cluster
 of the entire network.
@@ -609,12 +620,12 @@ Clustering coefficient and modularity are also calculated. The clustering
 coefficient, defined as 3 times the number of triangles on the graph divided
 by the number of connected triples of nodes, is a local measure of the degree to
 which nodes in a graph tend to cluster together
-in a clique~\cite{Easley2010}. It shows to which extent the collaborators
+in a clique~\citep{Easley2010}. It shows to which extent the collaborators
 of an author also write together.
 In comparison, modularity is a global measure designed to measure the strength of
 division of a network into communities. The number of communities is reported
-using the Clauset-Newman-Moore method~\cite{clauset2004}. Also the modularity index
-based on the Louvain method~\cite{Blondel2008} is calculated using~\cite{python_louvain}. The value
+using the Clauset-Newman-Moore method~\citep{clauset2004}. Also the modularity index
+based on the Louvain method~\citep{Blondel2008} is calculated using~\citep{python_louvain}. The value
 of the modularity index can vary between \([-1, 1]\), a high value of modularity
 corresponds to a structure where there are dense connections between the nodes within
 communities but sparse connections between nodes in different communities.
@@ -652,9 +663,9 @@ How does this compare to other fields? Two more data sets for the topics
 compare the collaborative behaviour of the PD to other game theoretic fields. A
 total of 3444 publications have been collected for Auction games and 748 for
 Price of Anarchy. Price of Anarchy is relatively a new field, with the first
-publication on the topic being~\cite{Koutsoupias1999} in 1999. This explains the
+publication on the topic being~\citep{Koutsoupias1999} in 1999. This explains the
 small number of articles that have been retrieved. Both data sets have been
-archived and are available in~\cite{auction_data_2018, anarchy_data_2018}.
+archived and are available in~\citep{auction_data_2018, anarchy_data_2018}.
 The networks for both data sets have been generated in the same way as \(G\),
 and a summary of the networks' metrics is also given by Table~\ref{table:network_comparison}.
 
@@ -696,7 +707,7 @@ network cumulatively over 51 periods. Except from the first period 1951-1966 the
 rest of the periods have a yearly interval (data for the years 1975 and 1982
 were not retrieved by the collection data process). The metrics of each sub
 network are given in the Appendix~\ref{appendix:tables}.
-The results, similarly to the results of~\cite{Liu2015}, confirm that the
+The results, similarly to the results of~\citep{Liu2015}, confirm that the
 networks grow over time and that the networks always had a high modularity.
 Since the first publications authors tend to write with people from their
 communities, and that is not an effect of a specific time period.
@@ -913,434 +924,482 @@ strength of ties. The strength of ties could be analysed to map multiple
 collaborations between two nodes. However, a preliminary assessment showed that
 the presented results do not change.
 
-Both the software~\cite{nikoleta_2017} and the data~\cite{pd_data_2018} used in
+Both the software~\citep{nikoleta_2017} and the data~\citep{pd_data_2018} used in
 the manuscript have been archived and are available to be used by other
 researchers.
 
-\begin{thebibliography}{10}
+\section*{Competing Interests}
 
-    \bibitem{plos}
-    {PLOS} public library of science.
-    \newblock https://www.plos.org/.
+The authors declare no competing interests.
+
+\section*{Acknowledgements}
+
+The authors would like to thank the anonymous reviewers for their comments which
+helped improve the paper.
+
+\section*{Data Availability}
+
+The datasets generated and analysed during the current study are available
+in~\citep{anarchy_data_2018, auction_data_2018, pd_data_2018}.
+
+\section*{Figures Legends}
+
+\begin{itemize}
+  \item Figure~\ref{figure:colection_process}. The generating process of the
+  data set~\citep{pd_data_2018}.
+  \item Figure~\ref{fig:timeseries}. Number of articles published on the PD
+  1951-2018 (on a log scale), with a fitted exponential line, and aforecast for
+  2017-2022.
+  \item Figure~\ref{figure:models_scores}. Coherence and exclusivity for LDA
+  models over the number of topics.
+  \item Figure~\ref{fig:number_of_articles_per_topic}. Number of articles per
+  topic over the years (on a logged scale).
+  \item Figure~\ref{fig:median_percentage_contribution_over_time}. Maximum
+  percentage contributions (\(c^*\)) over the time periods,
+  for the LDA models for the entire data set for \(n\) equal to 5, 6
+  and for the models of Table~\ref{table:topics_per_year}.
+\end{itemize}
+
+\begin{thebibliography}{71}
+    \providecommand{\natexlab}[1]{#1}
+    \providecommand{\url}[1]{\texttt{#1}}
+    \expandafter\ifx\csname urlstyle\endcsname\relax
+      \providecommand{\doi}[1]{doi: #1}\else
+      \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
     
-    \bibitem{adami2013evolutionary}
-    Christoph Adami and Arend Hintze.
+    \bibitem[Adami and Hintze(2013)]{adami2013evolutionary}
+    Adami, C and Hintze, A (2013).
     \newblock Evolutionary instability of zero-determinant strategies demonstrates
       that winning is not everything.
-    \newblock {\em Nature communications}, 4:2193, 2013.
+    \newblock \emph{Nature communications}, 4:\penalty0 2193.
     
-    \bibitem{Airoldi2012}
-    Edoardo~M Airoldi and Jonathan~M Bischof.
+    \bibitem[Airoldi and Bischof(2012)]{Airoldi2012}
+    Airoldi, EM and Bischof, JM (2012).
     \newblock A poisson convolution model for characterizing topical content with
       word frequency and exclusivity.
-    \newblock {\em arXiv preprint arXiv:1206.4631}, 2012.
+    \newblock \emph{arXiv}.
     
-    \bibitem{ashlock2008fingerprinting}
-    Daniel Ashlock and Eun-Youn Kim.
+    \bibitem[Ashlock and Kim(2008)]{ashlock2008fingerprinting}
+    Ashlock, D and Kim, EY (2008).
     \newblock Fingerprinting: Visualization and automatic analysis of prisoner's
       dilemma strategies.
-    \newblock {\em IEEE Transactions on Evolutionary Computation}, 12(5):647--659,
-      2008.
+    \newblock \emph{IEEE Transactions on Evolutionary Computation}, 12\penalty0
+      (5):\penalty0 647--659.
     
-    \bibitem{auction_data_2018}
-    Author.
-    \newblock Articles' meta data on auction games.
-    \newblock https://doi.org/10.5281/zenodo.3406544, September 2019.
-    
-    \bibitem{anarchy_data_2018}
-    Author.
-    \newblock Articles' meta data on the price of anarchy.
-    \newblock https://doi.org/10.5281/zenodo.3406542, September 2019.
-    
-    \bibitem{pd_data_2018}
-    Author.
-    \newblock Articles' meta data on the prisoner's dilemma.
-    \newblock https://doi.org/10.5281/zenodo.3406536, September 2019.
-    
-    \bibitem{nikoleta_2017}
-    Authors.
-    \newblock Nikoleta-v3/arcas: Arcas v 0.0.4.
-    \newblock https://doi.org/10.5281/zenodo.1127684, December 2017.
-    
-    \bibitem{Axelrod1980}
-    Robert Axelrod.
+    \bibitem[Axelrod(1980{\natexlab{a}})]{Axelrod1980}
+    Axelrod, R (1980){\natexlab{a}}.
     \newblock Effective choice in the prisoner's dilemma.
-    \newblock {\em Journal of conflict resolution}, 24(1):3--25, 1980.
+    \newblock \emph{Journal of conflict resolution}, 24\penalty0 (1):\penalty0
+      3--25.
     
-    \bibitem{Axelrod1980more}
-    Robert Axelrod.
+    \bibitem[Axelrod(1980{\natexlab{b}})]{Axelrod1980more}
+    Axelrod, R (1980){\natexlab{b}}.
     \newblock More effective choice in the prisoner's dilemma.
-    \newblock {\em Journal of Conflict Resolution}, 24(3):379--403, 1980.
+    \newblock \emph{Journal of Conflict Resolution}, 24\penalty0 (3):\penalty0
+      379--403.
     
-    \bibitem{Axelrod1987}
-    Robert Axelrod et~al.
-    \newblock The evolution of strategies in the iterated prisoner’s dilemma.
-    \newblock {\em The dynamics of norms}, pages 1--16, 1987.
-    
-    \bibitem{Axelrod1981}
-    Robert Axelrod and William~D Hamilton.
+    \bibitem[Axelrod and Hamilton(1981)]{Axelrod1981}
+    Axelrod, R and Hamilton, WD (1981).
     \newblock The evolution of cooperation.
-    \newblock {\em science}, 211(4489):1390--1396, 1981.
+    \newblock \emph{science}, 211\penalty0 (4489):\penalty0 1390--1396.
     
-    \bibitem{python_louvain}
-    Thomas Aynaud.
-    \newblock python-louvain x.y: Louvain algorithm for community detection.
-    \newblock
-      \href{https://github.com/taynaud/python-louvain}{\texttt{https://github.com/taynaud/python-louvain}},
-      2020.
+    \bibitem[Axelrod et~al.(1987)]{Axelrod1987}
+    Axelrod, R et~al. (1987).
+    \newblock The evolution of strategies in the iterated prisoner’s dilemma.
+    \newblock \emph{The dynamics of norms}, pages 1--16.
     
-    \bibitem{banerjee2007reaching}
-    Dipyaman Banerjee and Sandip Sen.
+    \bibitem[Aynaud(2020)]{python_louvain}
+    Aynaud, T (2020).
+    \newblock python-louvain 0.14: Louvain algorithm for community detection.
+    \newblock \url{https://github.com/taynaud/python-louvain}.
+    
+    \bibitem[Banerjee and Sen(2007)]{banerjee2007reaching}
+    Banerjee, D and Sen, S (2007).
     \newblock Reaching pareto-optimality in prisoner’s dilemma using conditional
       joint action learning.
-    \newblock {\em Autonomous Agents and Multi-Agent Systems}, 15(1):91--108, 2007.
+    \newblock \emph{Autonomous Agents and Multi-Agent Systems}, 15\penalty0
+      (1):\penalty0 91--108.
     
-    \bibitem{Bell2017}
-    Raoul Bell, Laura Mieth, and Axel Buchner.
+    \bibitem[Bell et~al.(2017)Bell, Mieth, and Buchner]{Bell2017}
+    Bell, R, Mieth, L, and Buchner, A (2017).
     \newblock Separating conditional and unconditional cooperation in a sequential
       prisoner’s dilemma game.
-    \newblock {\em PloS one}, 12(11):e0187952, 2017.
+    \newblock \emph{PloS one}, 12\penalty0 (11):\penalty0 e0187952.
     
-    \bibitem{Bergmann2018}
-    TILL Bergmann and RICK Dale.
+    \bibitem[Bergmann and Dale(2018)]{Bergmann2018}
+    Bergmann, T and Dale, R (2018).
     \newblock A scientometric analysis of evolang: Intersections and authorships.
-    \newblock In {\em The evolution of language: Proceedings of the 11th
+    \newblock In \emph{The evolution of language: Proceedings of the 11th
       international conference (EVOLANGX11). http://evolang.
       org/neworleans/papers/182. html. Retrieved}, volume~22, 2018.
     
-    \bibitem{Blei2003}
-    David~M Blei, Andrew~Y Ng, and Michael~I Jordan.
+    \bibitem[Blei et~al.(2003)Blei, Ng, and Jordan]{Blei2003}
+    Blei, DM, Ng, AY, and Jordan, MI (2003).
     \newblock Latent dirichlet allocation.
-    \newblock {\em Journal of machine Learning research}, 3(Jan):993--1022, 2003.
+    \newblock \emph{Journal of machine Learning research}, 3:\penalty0 993--1022.
     
-    \bibitem{Blondel2008}
-    V.~D. Blondel, J.L. Guillaume, R.~Lambiotte, and E.~Lefebvre.
+    \bibitem[Blondel et~al.(2008)Blondel, Guillaume, Lambiotte, and
+      Lefebvre]{Blondel2008}
+    Blondel, VD, Guillaume, JL, Lambiotte, R, and Lefebvre, E (2008).
     \newblock Fast unfolding of communities in large networks.
-    \newblock {\em Journal of statistical mechanics: theory and experiment},
-      2008(10):P10008, 2008.
+    \newblock \emph{Journal of statistical mechanics: theory and experiment},
+      2008\penalty0 (10):\penalty0 P10008.
     
-    \bibitem{Chen2007}
-    Xiaojie Chen, Feng Fu, and Long Wang.
+    \bibitem[Chen et~al.(2007)Chen, Fu, and Wang]{Chen2007}
+    Chen, X, Fu, F, and Wang, L (2007).
     \newblock Influence of initial distributions on robust cooperation in
       evolutionary prisoner's dilemma.
-    \newblock {\em arXiv preprint physics/0701318}, 2007.
+    \newblock \emph{arXiv}.
     
-    \bibitem{chen2016fixation}
-    Yu-Ting Chen, Alex McAvoy, and Martin~A Nowak.
+    \bibitem[Chen et~al.(2016)Chen, McAvoy, and Nowak]{chen2016fixation}
+    Chen, YT, McAvoy, A, and Nowak, MA (2016).
     \newblock Fixation probabilities for any configuration of two strategies on
       regular graphs.
-    \newblock {\em Scientific reports}, 6:39181, 2016.
+    \newblock \emph{Scientific reports}, 6:\penalty0 39181.
     
-    \bibitem{clauset2004}
-    A.~Clauset, M.~E.J. Newman, and C.~Moore.
+    \bibitem[Clauset et~al.(2004)Clauset, Newman, and Moore]{clauset2004}
+    Clauset, A, Newman, MEJ, and Moore, C (2004).
     \newblock Finding community structure in very large networks.
-    \newblock {\em Physical review E}, 70(6):066111, 2004.
+    \newblock \emph{Physical review E}, 70\penalty0 (6):\penalty0 066111.
     
-    \bibitem{Coelho2010}
-    Luis~Pedro Coelho, Tao Peng, and Robert~F Murphy.
+    \bibitem[Coelho et~al.(2010)Coelho, Peng, and Murphy]{Coelho2010}
+    Coelho, LP, Peng, T, and Murphy, RF (2010).
     \newblock Quantifying the distribution of probes between subcellular locations
       using unsupervised pattern unmixing.
-    \newblock {\em Bioinformatics}, 26(12):i7--i12, 2010.
+    \newblock \emph{Bioinformatics}, 26\penalty0 (12):\penalty0 i7--i12.
     
-    \bibitem{das2016}
-    R.~das Neves~Machado, B.~Vargas-Quesada, and J.~Leta.
+    \bibitem[das Neves~Machado et~al.(2016)das Neves~Machado, Vargas-Quesada, and
+      Leta]{das2016}
+    das Neves~Machado, R, Vargas-Quesada, B, and Leta, J (2016).
     \newblock Intellectual structure in stem cell research: exploring brazilian
       scientific articles from 2001 to 2010.
-    \newblock {\em Scientometrics}, 106(2):525--537, 2016.
+    \newblock \emph{Scientometrics}, 106\penalty0 (2):\penalty0 525--537.
     
-    \bibitem{Easley2010}
-    D.~Easley, J.~Kleinberg, et~al.
-    \newblock {\em Networks, crowds, and markets}, volume~8.
-    \newblock Cambridge university press Cambridge, 2010.
+    \bibitem[Easley et~al.(2010)Easley, Kleinberg, et~al.]{Easley2010}
+    Easley, D, Kleinberg, J, et~al. (2010).
+    \newblock Networks, crowds, and markets.
+    \newblock 8th Edition.
     
-    \bibitem{Etzkowitz1992}
-    H.~Etzkowitz.
+    \bibitem[Etzkowitz(1992)]{Etzkowitz1992}
+    Etzkowitz, H (1992).
     \newblock Individual investigators and their research groups.
-    \newblock {\em Minerva}, 30(1):28--50, 1992.
+    \newblock \emph{Minerva}, 30\penalty0 (1):\penalty0 28--50.
     
-    \bibitem{feng2008trilateral}
-    Xiuzhen Feng and Yijian Liu.
+    \bibitem[Feng and Liu(2008)]{feng2008trilateral}
+    Feng, X and Liu, Y (2008).
     \newblock Trilateral game analysis on information sharing among members in a
       virtual team.
-    \newblock In {\em 2008 IEEE Symposium on Advanced Management of Information for
-      Globalized Enterprises (AMIGE)}, pages 1--5. IEEE, 2008.
+    \newblock In \emph{2008 IEEE Symposium on Advanced Management of Information
+      for Globalized Enterprises (AMIGE}, pages 1--5. IEEE, 2008.
     
-    \bibitem{Flood1958}
-    M.~M. Flood.
+    \bibitem[Flood(1958)]{Flood1958}
+    Flood, MM (1958).
     \newblock Some experimental games.
-    \newblock {\em Management Science}, 5(1):5--26, 1958.
+    \newblock \emph{Management Science}, 5:\penalty0 5--26.
     
-    \bibitem{Geniole2012}
-    Shawn~N Geniole, Amanda~E Keyes, Catherine~J Mondloch, Justin~M Carr{\'e}, and
-      Cheryl~M McCormick.
+    \bibitem[Geniole et~al.(2012)Geniole, Keyes, Mondloch, Carr{\'e}, and
+      McCormick]{Geniole2012}
+    Geniole, SN, Keyes, AE, Mondloch, CJ, Carr{\'e}, JM, and McCormick, CM (2012).
     \newblock Facing aggression: Cues differ for female versus male faces.
-    \newblock {\em PLOS one}, 7(1):e30366, 2012.
+    \newblock \emph{PLOS one}, 7\penalty0 (1):\penalty0 e30366.
     
-    \bibitem{Grimmer2013}
-    Justin Grimmer and Brandon~M Stewart.
+    \bibitem[Glynatsi(2017)]{nikoleta_2017}
+    Glynatsi, NE (2017).
+    \newblock Nikoleta-v3/arcas: Arcas v 0.0.4.
+    \newblock \url{https://doi.org/10.5281/zenodo.1127684}.
+    
+    \bibitem[Glynatsi(2019{\natexlab{a}})]{anarchy_data_2018}
+    Glynatsi, NE (2019){\natexlab{a}}.
+    \newblock Articles' meta data on the price of anarchy.
+    \newblock \url{https://doi.org/10.5281/zenodo.3406542}.
+    
+    \bibitem[Glynatsi(2019{\natexlab{b}})]{auction_data_2018}
+    Glynatsi, NE (2019){\natexlab{b}}.
+    \newblock Articles' meta data on auction games.
+    \newblock \url{https://doi.org/10.5281/zenodo.3406544}.
+    
+    \bibitem[Glynatsi(2019{\natexlab{c}})]{pd_data_2018}
+    Glynatsi, NE (2019){\natexlab{c}}.
+    \newblock Articles' meta data on the prisoner's dilemma.
+
+    \bibitem[Glynatsi(2020)]{gensim_nikoleta}
+    Glynatsi, NE (2020).
+    \newblock Nikoleta-v3/gensim 1.0.0.
+    \newblock \url{https://doi.org/10.5281/zenodo.4290015}.
+    
+    \bibitem[Grimmer and Stewart(2013)]{Grimmer2013}
+    Grimmer, J and Stewart, BM (2013).
     \newblock Text as data: The promise and pitfalls of automatic content analysis
       methods for political texts.
-    \newblock {\em Political analysis}, 21(3):267--297, 2013.
+    \newblock \emph{Political analysis}, 21\penalty0 (3):\penalty0 267--297.
     
-    \bibitem{nature}
-    Nature~Publishing Group.
-    \newblock Nature.
-    \newblock https://www.nature.com/, 1869.
-    
-    \bibitem{Guan2002}
-    Xiaohong Guan.
+    \bibitem[Guan(2002)]{Guan2002}
+    Guan, X (2002).
     \newblock Gaming and price spikes in electric power markets and possible
       remedies.
-    \newblock In {\em Proceedings. International Conference on Power System
+    \newblock In \emph{Proceedings. International Conference on Power System
       Technology}, volume~1, pages 188--vol. IEEE, 2002.
     
-    \bibitem{networkx}
-    A.~A. Hagberg, D.~A. Schult, and P.~J. Swart.
+    \bibitem[Hagberg et~al.(2008)Hagberg, Schult, and Swart]{networkx}
+    Hagberg, AA, Schult, DA, and Swart, PJ (2008).
     \newblock Exploring network structure, dynamics, and function using {NetworkX}.
-    \newblock In {\em Proceedings of the 7th Python in Science Conference
-      (SciPy2008)}, pages 11--15, Pasadena, CA USA, August 2008.
+    \newblock In \emph{Proceedings of the 7th Python in Science Conference
+      (SciPy2008}, pages 11--15, Pasadena, CA USA, 2008.
     
-    \bibitem{hunter2007matplotlib}
-    J.~D. Hunter.
+    \bibitem[Hunter(2007)]{hunter2007matplotlib}
+    Hunter, JD (2007).
     \newblock {Matplotlib: A 2D graphics environment}.
-    \newblock {\em Computing In Science \& Engineering}, 9(3):90--95, 2007.
+    \newblock \emph{Computing In Science \& Engineering}, 9\penalty0 (3):\penalty0
+      90--95.
     
-    \bibitem{hutchins2016relative}
-    B~Ian Hutchins, Xin Yuan, James~M Anderson, and George~M Santangelo.
+    \bibitem[Hutchins et~al.(2016)Hutchins, Yuan, Anderson, and
+      Santangelo]{hutchins2016relative}
+    Hutchins, BI, Yuan, X, Anderson, JM, and Santangelo, GM (2016).
     \newblock Relative citation ratio (rcr): A new metric that uses citation rates
       to measure influence at the article level.
-    \newblock {\em PLoS biology}, 14(9):e1002541, 2016.
+    \newblock \emph{PLoS biology}, 14\penalty0 (9):\penalty0 e1002541.
     
-    \bibitem{ichinose2013robustness}
-    Genki Ichinose, Yuto Tenguishi, and Toshihiro Tanizawa.
+    \bibitem[Ichinose et~al.(2013)Ichinose, Tenguishi, and
+      Tanizawa]{ichinose2013robustness}
+    Ichinose, G, Tenguishi, Y, and Tanizawa, T (2013).
     \newblock Robustness of cooperation on scale-free networks under continuous
       topological change.
-    \newblock {\em Physical Review E}, 88(5):052808, 2013.
+    \newblock \emph{Physical Review E}, 88\penalty0 (5):\penalty0 052808.
     
-    \bibitem{ieee}
-    IEEE.
-    \newblock Ieee xplore digital library.
-    \newblock http://ieeexplore.ieee.org/Xplore/home.jsp.
+    \bibitem[IEEE(1963)]{ieee}
+    IEEE (1963).
+    \newblock {IEEE} xplore digital library.
+    \newblock \url{http://ieeexplore.ieee.org/Xplore/home.jsp}.
     
-    \bibitem{Inglis2018}
-    Matthew Inglis and Colin Foster.
+    \bibitem[Inglis and Foster(2018)]{Inglis2018}
+    Inglis, M and Foster, C (2018).
     \newblock Five decades of mathematics education research.
-    \newblock {\em Journal for Research in Mathematics Education}, 49(4):462--500,
-      2018.
+    \newblock \emph{Journal for Research in Mathematics Education}, 49\penalty0
+      (4):\penalty0 462--500.
     
-    \bibitem{ishibuchi2011evolution}
-    Hisao Ishibuchi, Hiroyuki Ohyanagi, and Yusuke Nojima.
+    \bibitem[Ishibuchi et~al.(2011)Ishibuchi, Ohyanagi, and
+      Nojima]{ishibuchi2011evolution}
+    Ishibuchi, H, Ohyanagi, H, and Nojima, Y (2011).
     \newblock Evolution of strategies with different representation schemes in a
       spatial iterated prisoner's dilemma game.
-    \newblock {\em IEEE Transactions on Computational Intelligence and AI in
-      Games}, 3(1):67--82, 2011.
+    \newblock \emph{IEEE Transactions on Computational Intelligence and AI in
+      Games}, 3\penalty0 (1):\penalty0 67--82.
     
-    \bibitem{scipy}
-    E.~Jones, T.~Oliphant, P.~Peterson, et~al.
-    \newblock {SciPy}: Open source scientific tools for {Python}, 2001--.
-    \newblock [misc; accessed <today>].
+    \bibitem[Jones et~al.(2001)Jones, Oliphant, Peterson, et~al.]{scipy}
+    Jones, E, Oliphant, T, Peterson, P, et~al. (2001).
+    \newblock {SciPy}: Open source scientific tools for {Python}.
+    \newblock \url{http://www.scipy.org/}.
     
-    \bibitem{Koutsoupias1999}
-    E.~Koutsoupias and C.~Papadimitriou.
+    \bibitem[Koutsoupias and Papadimitriou(1999)]{Koutsoupias1999}
+    Koutsoupias, E and Papadimitriou, C (1999).
     \newblock Worst-case equilibria.
-    \newblock In {\em Proceedings of the 16th Annual Conference on Theoretical
+    \newblock In \emph{Proceedings of the 16th Annual Conference on Theoretical
       Aspects of Computer Science}, STACS'99, pages 404--413, Berlin, Heidelberg,
       1999. Springer-Verlag.
+    \newblock ISBN 3-540-65691-X.
     
-    \bibitem{Kyvik2017}
-    S.~Kyvik and I.~Reymert.
+    \bibitem[Kyvik and Reymert(2017)]{Kyvik2017}
+    Kyvik, S and Reymert, I (2017).
     \newblock Research collaboration in groups and networks: differences across
       academic fields.
-    \newblock {\em Scientometrics}, 113(2):951--967, 2017.
+    \newblock \emph{Scientometrics}, 113\penalty0 (2):\penalty0 951--967.
     
-    \bibitem{Li2014}
-    Jing Li, Liqi Zhu, and Michaela Gummerum.
+    \bibitem[Li et~al.(2014)Li, Zhu, and Gummerum]{Li2014}
+    Li, J, Zhu, L, and Gummerum, M (2014).
     \newblock The relationship between moral judgment and cooperation in children
       with high-functioning autism.
-    \newblock {\em Scientific Reports}, 4:4314, 2014.
+    \newblock \emph{Scientific Reports}, 4:\penalty0 4314.
     
-    \bibitem{Li2019}
-    Weihua Li, Tomaso Aste, Fabio Caccioli, and Giacomo Livan.
+    \bibitem[Li et~al.(2019)Li, Aste, Caccioli, and Livan]{Li2019}
+    Li, W, Aste, T, Caccioli, F, and Livan, G (2019).
     \newblock Early coauthorship with top scientists predicts success in academic
       careers.
-    \newblock {\em Nature Communications}, 10(1):2041--1723, 2019.
+    \newblock \emph{Nature Communications}, 10\penalty0 (1):\penalty0 2041--1723.
     
-    \bibitem{Liu2015}
-    P.~Liu and H.~Xia.
+    \bibitem[Liu and Xia(2015)]{Liu2015}
+    Liu, P and Xia, H, (2015).
     \newblock Structure and evolution of co-authorship network in an
       interdisciplinary research field.
-    \newblock {\em Scientometrics}, 103(1):101--134, Apr 2015.
+    \newblock \emph{Scientometrics}, 103\penalty0 (1):\penalty0 101--134.
     
-    \bibitem{nature_author_blog}
-    Smriti Mallapaty.
+    \bibitem[Mallapaty(2018)]{nature_author_blog}
+    Mallapaty, S, 2018.
     \newblock Paper authorship goes hyper.
     \newblock
-      \url{https://www.natureindex.com/news-blog/paper-authorship-goes-hyper},
-      2018.
+      \url{https://www.natureindex.com/news-blog/paper-authorship-goes-hyper}.
     
-    \bibitem{Matsumoto2016}
-    Yoshie Matsumoto, Toshio Yamagishi, Yang Li, and Toko Kiyonari.
-    \newblock Prosocial behavior increases with age across five economic games.
-    \newblock {\em PloS one}, 11(7):e0158671, 2016.
-    
-    \bibitem{mckiernan2000}
-    G.~McKiernan.
-    \newblock arxiv. org: the los alamos national laboratory e-print server.
-    \newblock {\em International Journal on Grey Literature}, 1(3):127--138, 2000.
-    
-    \bibitem{springer}
-    Mannheim Media.
+    \bibitem[{Mannheim Media}(1950)]{springer}
+    {Mannheim Media} (1950).
     \newblock Springer publishing.
-    \newblock http://www.springer.com/, 1950.
+    \newblock \url{http://www.springer.com/}.
     
-    \bibitem{Molina2013}
-    J~Alberto Molina, J~Ignacio Gim{\'e}nez-Nadal, Jos{\'e}~A Cuesta, Carlos
-      Gracia-Lazaro, Yamir Moreno, and Angel Sanchez.
+    \bibitem[Matsumoto et~al.(2016)Matsumoto, Yamagishi, Li, and
+      Kiyonari]{Matsumoto2016}
+    Matsumoto, Y, Yamagishi, T, Li, Y, and Kiyonari, T (2016).
+    \newblock Prosocial behavior increases with age across five economic games.
+    \newblock \emph{PloS one}, 11\penalty0 (7):\penalty0 e0158671.
+    
+    \bibitem[McKiernan(2000)]{mckiernan2000}
+    McKiernan, G (2000).
+    \newblock arxiv. org: the los alamos national laboratory e-print server.
+    \newblock \emph{International Journal on Grey Literature}, 1\penalty0
+      (3):\penalty0 127--138.
+    
+    \bibitem[Molina et~al.(2013)Molina, Gim{\'e}nez-Nadal, Cuesta, Gracia-Lazaro,
+      Moreno, and Sanchez]{Molina2013}
+    Molina, J~Alberto, Gim{\'e}nez-Nadal, J~Ignacio, Cuesta, Jos{\'e}~A,
+      Gracia-Lazaro, Carlos, Moreno, Yamir, and Sanchez, Angel (2013).
     \newblock Gender differences in cooperation: experimental evidence on high
       school students.
-    \newblock {\em PloS one}, 8(12):e83700, 2013.
+    \newblock \emph{PloS one}, 8\penalty0 (12):\penalty0 e83700.
     
-    \bibitem{nature_blog}
-    R.~Van Noorden.
-    \newblock The science that’s never been cited.
-    \newblock \url{https://www.nature.com/articles/d41586-017-08404-0}, 2017.
+    \bibitem[{Nature Publishing Group}(1869)]{nature}
+    {Nature Publishing Group} (1869).
+    \newblock Nature.
+    \newblock \url{https://www.nature.com/}.
     
-    \bibitem{nurseitov2009}
-    N.~Nurseitov, M.~Paulson, R.~Reynolds, and C.~Izurieta.
+    \bibitem[Nurseitov et~al.(2009)Nurseitov, Paulson, Reynolds, and
+      Izurieta]{nurseitov2009}
+    Nurseitov, N, Paulson, M, Reynolds, R, and Izurieta, C (2009).
     \newblock Comparison of json and xml data interchange formats: a case study.
-    \newblock {\em Caine}, 2009:157--162, 2009.
+    \newblock \emph{Caine}, 2009:\penalty0 157--162.
     
-    \bibitem{Ohtsuki2006}
-    Hisashi Ohtsuki, Christoph Hauert, Erez Lieberman, and Martin~A Nowak.
+    \bibitem[Ohtsuki et~al.(2006)Ohtsuki, Hauert, Lieberman, and
+      Nowak]{Ohtsuki2006}
+    Ohtsuki, H, Hauert, C, Lieberman, E, and Nowak, MA (2006).
     \newblock A simple rule for the evolution of cooperation on graphs and social
       networks.
-    \newblock {\em Nature}, 441(7092):502, 2006.
+    \newblock \emph{Nature}, 441\penalty0 (7092):\penalty0 502.
     
-    \bibitem{ormerod2010or}
-    Richard~J Ormerod.
+    \bibitem[Ormerod(2010)]{ormerod2010or}
+    Ormerod, RJ (2010).
     \newblock Or as rational choice: A decision and game theory perspective.
-    \newblock {\em Journal of the Operational Research Society}, 61(12):1761--1776,
-      2010.
+    \newblock \emph{Journal of the Operational Research Society}, 61\penalty0
+      (12):\penalty0 1761--1776.
     
-    \bibitem{pritchard1969}
-    A.~Pritchard et~al.
+    \bibitem[PLOS(2000)]{plos}
+    PLOS (2000).
+    \newblock {PLOS} public library of science.
+    \newblock \url{https://www.plos.org/}.
+    
+    \bibitem[Pritchard et~al.(1969)]{pritchard1969}
+    Pritchard, A et~al. (1969).
     \newblock Statistical bibliography or bibliometrics.
-    \newblock {\em Journal of documentation}, 25(4):348--349, 1969.
+    \newblock \emph{Journal of documentation}, 25\penalty0 (4):\penalty0 348--349.
     
-    \bibitem{raina1998}
-    D.~Raina and B.~M. Gupta.
+    \bibitem[Raina and Gupta(1998)]{raina1998}
+    Raina, D and Gupta, BM (1998).
     \newblock Four aspects of the institutionalization of physics research in india
       (1990--1950): Substantiating the claims of histortical sociology through
       bibliometrics.
-    \newblock {\em Scientometrics}, 42(1):17--40, 1998.
+    \newblock \emph{Scientometrics}, 42\penalty0 (1):\penalty0 17--40.
     
-    \bibitem{rehurek_lrec}
-    Radim {\v R}eh{\r u}{\v r}ek and Petr Sojka.
-    \newblock {Software Framework for Topic Modelling with Large Corpora}.
-    \newblock In {\em {Proceedings of the LREC 2010 Workshop on New Challenges for
-      NLP Frameworks}}, pages 45--50, Valletta, Malta, May 2010. ELRA.
-    \newblock \url{http://is.muni.cz/publication/884893/en}.
+    \bibitem[Rehurek and Sojka(2010)]{rehurek_lrec}
+    Rehurek, R and Sojka, P (2010).
+    \newblock Software framework for topic modelling with large corpora.
+    \newblock In \emph{In Proceedings of the LREC 2010 Workshop on New Challenges
+      for NLP Frameworks}. Citeseer, 2010.
     
-    \bibitem{Riolo2001}
-    Rick~L Riolo, Michael~D Cohen, and Robert Axelrod.
+    \bibitem[Riolo et~al.(2001)Riolo, Cohen, and Axelrod]{Riolo2001}
+    Riolo, RL, Cohen, MD, and Axelrod, R (2001).
     \newblock Evolution of cooperation without reciprocity.
-    \newblock {\em Nature}, 414(6862):441, 2001.
+    \newblock \emph{Nature}, 414\penalty0 (6862):\penalty0 441.
     
-    \bibitem{Roder2015}
-    Michael R{\"o}der, Andreas Both, and Alexander Hinneburg.
+    \bibitem[R{\"o}der et~al.(2015)R{\"o}der, Both, and Hinneburg]{Roder2015}
+    R{\"o}der, M, Both, A, and Hinneburg, A (2015).
     \newblock Exploring the space of topic coherence measures.
-    \newblock In {\em Proceedings of the eighth ACM international conference on Web
-      search and data mining}, pages 399--408. ACM, 2015.
+    \newblock In \emph{Proceedings of the eighth ACM international conference on
+      Web search and data mining}, pages 399--408. ACM, 2015.
     
-    \bibitem{sartakhti2017}
-    Javad~Salimi Sartakhti, Mohammad~Hossein Manshaei, David Basanta, and Mehdi
-      Sadeghi.
+    \bibitem[Sartakhti et~al.(2017)Sartakhti, Manshaei, Basanta, and
+      Sadeghi]{sartakhti2017}
+    Sartakhti, JS, Manshaei, MH, Basanta, D, and Sadeghi, M (2017).
     \newblock Evolutionary emergence of angiogenesis in avascular tumors using a
       spatial public goods game.
-    \newblock {\em PloS one}, 12(4):e0175063, 2017.
+    \newblock \emph{PloS one}, 12\penalty0 (4):\penalty0 e0175063.
     
-    \bibitem{sekara2018}
-    V.~Sekara, P.~Deville, S.~E. Ahnert, A.~Barab{\'a}si, R.~Sinatra, and
-      S.~Lehmann.
+    \bibitem[Sekara et~al.(2018)Sekara, Deville, Ahnert, Barab{\'a}si, Sinatra, and
+      Lehmann]{sekara2018}
+    Sekara, V, Deville, P, Ahnert, SE, Barab{\'a}si, A, Sinatra, R, and Lehmann, S
+      (2018).
     \newblock The chaperone effect in scientific publishing.
-    \newblock {\em Proceedings of the National Academy of Sciences},
-      115(50):12603--12607, 2018.
+    \newblock \emph{Proceedings of the National Academy of Sciences}, 115\penalty0
+      (50):\penalty0 12603--12607.
+    \newblock \doi{10.1073/pnas.1800471115}.
     
-    \bibitem{Sistrom2015}
-    Mark Sistrom, Derek Park, Heath~E O’Brien, Zheng Wang, David~S Guttman,
-      Jeffrey~P Townsend, and Paul~E Turner.
+    \bibitem[Sistrom et~al.(2015)Sistrom, Park, O’Brien, Wang, Guttman, Townsend,
+      and Turner]{Sistrom2015}
+    Sistrom, M, Park, D, O’Brien, HE, Wang, Z, Guttman, DS, Townsend, JP, and
+      Turner, PE (2015).
     \newblock Genomic and gene-expression comparisons among phage-resistant type-iv
       pilus mutants of pseudomonas syringae pathovar phaseolicola.
-    \newblock {\em PloS one}, 10(12):e0144514, 2015.
+    \newblock \emph{PloS one}, 10\penalty0 (12):\penalty0 e0144514.
     
-    \bibitem{Stewart2012}
-    Alexander~J Stewart and Joshua~B Plotkin.
+    \bibitem[Stewart and Plotkin(2012)]{Stewart2012}
+    Stewart, AJ and Plotkin, JB (2012).
     \newblock Extortion and cooperation in the prisoner’s dilemma.
-    \newblock {\em Proceedings of the National Academy of Sciences},
-      109(26):10134--10135, 2012.
+    \newblock \emph{Proceedings of the National Academy of Sciences}, 109\penalty0
+      (26):\penalty0 10134--10135.
     
-    \bibitem{stewart2013extortion}
-    Alexander~J Stewart and Joshua~B Plotkin.
+    \bibitem[Stewart and Plotkin(2013)]{stewart2013extortion}
+    Stewart, AJ and Plotkin, JB (2013).
     \newblock From extortion to generosity, evolution in the iterated prisoner’s
       dilemma.
-    \newblock {\em Proceedings of the National Academy of Sciences},
-      110(38):15348--15353, 2013.
+    \newblock \emph{Proceedings of the National Academy of Sciences}, 110\penalty0
+      (38):\penalty0 15348--15353.
     
-    \bibitem{Sugimoto2011}
-    Cassidy~R Sugimoto, Daifeng Li, Terrell~G Russell, S~Craig Finlay, and Ying
-      Ding.
+    \bibitem[Sugimoto et~al.(2011)Sugimoto, Li, Russell, Finlay, and
+      Ding]{Sugimoto2011}
+    Sugimoto, CR, Li, D, Russell, TG, Finlay, SC, and Ding, Y (2011).
     \newblock The shifting sands of disciplinary development: Analyzing north
       american library and information science dissertations using latent dirichlet
       allocation.
-    \newblock {\em Journal of the American Society for Information Science and
-      Technology}, 62(1):185--204, 2011.
+    \newblock \emph{Journal of the American Society for Information Science and
+      Technology}, 62\penalty0 (1):\penalty0 185--204.
     
-    \bibitem{Turner1999}
-    Paul~E Turner and Lin Chao.
+    \bibitem[Turner and Chao(1999)]{Turner1999}
+    Turner, PE and Chao, L (1999).
     \newblock Prisoner's dilemma in an rna virus.
-    \newblock {\em Nature}, 398(6726):441, 1999.
+    \newblock \emph{Nature}, 398\penalty0 (6726):\penalty0 441.
     
-    \bibitem{walt2011numpy}
-    S.~Walt, S.~C. Colbert, and G.~Varoquaux.
+    \bibitem[van Noorden(2017)]{nature_blog}
+    van Noorden, R (2017).
+    \newblock The science that’s never been cited.
+    \newblock \url{https://www.nature.com/articles/d41586-017-08404-0}.
+    
+    \bibitem[Walt et~al.(2011)Walt, Colbert, and Varoquaux]{walt2011numpy}
+    Walt, S, Colbert, SC, and Varoquaux, G (2011).
     \newblock {The NumPy array: a structure for efficient numerical computation}.
-    \newblock {\em Computing in Science \& Engineering}, 13(2):22--30, 2011.
+    \newblock \emph{Computing in Science \& Engineering}, 13\penalty0 (2):\penalty0
+      22--30.
     
-    \bibitem{wang2012spatial}
-    Juan Wang, ChengYi Xia, YiLing Wang, Shuai Ding, and JunQing Sun.
+    \bibitem[Wang et~al.(2012)Wang, Xia, W, Ding, and Sun]{wang2012spatial}
+    Wang, J, Xia, CY, W, YL, Ding, S, and Sun, JQ (2012).
     \newblock Spatial prisoner’s dilemma games with increasing size of the
       interaction neighborhood on regular lattices.
-    \newblock {\em Chinese science bulletin}, 57(7):724--728, 2012.
+    \newblock \emph{Chinese science bulletin}, 57\penalty0 (7):\penalty0 724--728.
     
-    \bibitem{Wang2008}
-    Xiaogang Wang, Xiaoxu Ma, and W~Eric~L Grimson.
+    \bibitem[Wang et~al.(2008)Wang, Ma, and Grimson]{Wang2008}
+    Wang, X, Ma, X, and Grimson, WEL (2008).
     \newblock Unsupervised activity perception in crowded and complicated scenes
       using hierarchical bayesian models.
-    \newblock {\em IEEE Transactions on pattern analysis and machine intelligence},
-      31(3):539--555, 2008.
+    \newblock \emph{IEEE Transactions on pattern analysis and machine
+      intelligence}, 31\penalty0 (3):\penalty0 539--555.
     
-    \bibitem{wu2019phenotype}
-    Te~Wu, Feng Fu, and Long Wang.
+    \bibitem[Wu et~al.(2019)Wu, Fu, and Wang]{wu2019phenotype}
+    Wu, T, Fu, F, and Wang, L (2019).
     \newblock Phenotype affinity mediated interactions can facilitate the evolution
       of cooperation.
-    \newblock {\em Journal of theoretical biology}, 462:361--369, 2019.
+    \newblock \emph{Journal of theoretical biology}, 462:\penalty0 361--369.
     
-    \bibitem{youngblood2018}
-    M.~Youngblood and D.~Lahti.
+    \bibitem[Youngblood and Lahti(2018)]{youngblood2018}
+    Youngblood, M and Lahti, D (2018).
     \newblock A bibliometric analysis of the interdisciplinary field of cultural
       evolution.
-    \newblock {\em Palgrave Communications}, 4(1):120, 2018.
+    \newblock \emph{Palgrave Communications}, 4\penalty0 (1):\penalty0 120.
     
-    \bibitem{gensim_nikoleta}
-    Radim Řehůřek, Lev Konstantinovskiy, Ivan Menshikh, Gordon Mohr, Chinmaya
-      Pancholi, Michael Penkov, Christopher Corley, Stefan Otte, Jayant Jain, Jan
-      Zikes, sebastien j, mataddy, Parul Sethi, Matti Lyra, Federico Barrios,
-      Bhargav~Srinivasa Desikan, Ólavur Mortensen, horpto, Mohit Rathore, Timothy
-      Emerick, Vít Novotný, Prakhar Pratyush, Devashish Deshpande, Lars, Stephan
-      Gabler, Dave Challis, hyhan, drenerbas, Pengo Wray, and Mack.
-    \newblock Nikoleta-v3/gensim 1.0.0, November 2020.
+    \end{thebibliography}
     
-\end{thebibliography}
-
 
 \appendix
 

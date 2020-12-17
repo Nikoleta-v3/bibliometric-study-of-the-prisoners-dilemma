@@ -3,7 +3,7 @@
 \usepackage{tikz}
 \usetikzlibrary{arrows,shapes,snakes,automata,backgrounds,petri}
 \usetikzlibrary{shapes.geometric}
-\usepackage[version=0.96]{pgf}
+\usepackage{pgf}
 
 \begin{document}
 
@@ -44,7 +44,7 @@ size=10mm]
 \node [place] (field) at (4, 0) {SELECT SEARCH FIELD};
 \node [place] (term) at (9, 0) {SELECT SEARCH TERM};
 
-\node [red place, font=\tiny] (arcas) at (11.5, -2) {Project~\cite{nikoleta_2017}};
+\node [red place, font=\tiny] (arcas) at (11.5, -2) {Project~(Glynatsi, 2017)};
 \node[database,label=below:raw data,database radius=.5cm,database segment
 height=0.2cm] (db) at (9,-4) {};
 
@@ -144,4 +144,5 @@ height=0.2cm] (db_final) at (9,-13) {};
 \node [orange, ] at (5, -12.2) {SUPPLEMENTING};
 
 \end{tikzpicture}
+
 \end{document}
